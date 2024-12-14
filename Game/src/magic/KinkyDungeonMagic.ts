@@ -861,11 +861,6 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 			KDDoGaggedMiscastFlag(data, cpp);
 	}
 
-	// Check if the player does not have a partial miscast due to calcMiscastPartial events
-	if (KinkyDungeoCheckComponentsPartial(spell, KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, false, undefined).length == 0) {
-		flags.miscastChance = 0;
-		data.gaggedMiscastFlag = false;
-	}
 
 	if (!enemy && !bullet && player) {
 		KinkyDungeonSendEvent("beforeCast", data);
