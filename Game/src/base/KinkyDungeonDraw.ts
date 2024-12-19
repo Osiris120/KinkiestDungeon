@@ -596,7 +596,7 @@ const KDOverlays: KDSprites = {
 		let r = KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(_x + 1, _y));
 		let u = KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(_x, _y - 1));
 		let d = KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(_x, _y + 1));
-		return ((u || l || r) && !d) ? "StairsDown" : "SpiralStairsDown";
+		return (!d && u) ? "StairsDown" : "SpiralStairsDown";
 	},
 	"S": (_x, _y, _Fog, _noReplace) => {
 		let u = KinkyDungeonWallTiles.includes(KinkyDungeonMapGet(_x, _y - 1));

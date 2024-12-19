@@ -667,7 +667,7 @@ function KinkyDungeonGetCost(Spell: spell): number {
  * @param [mult] - Radius multiplier
  * @param [hideShockwave]
  */
-function KinkyDungeonMakeNoiseSignal(enemy: entity, mult: number = 1, hideShockwave?: boolean) {
+function KinkyDungeonMakeNoiseSignal(enemy: entity, mult: number = 1, hideShockwave?: boolean): entity[] {
 	let data = {
 		enemy: enemy,
 		mult: mult,
@@ -709,6 +709,8 @@ function KinkyDungeonMakeNoiseSignal(enemy: entity, mult: number = 1, hideShockw
 
 
 	KinkyDungeonSendEvent("afterSignal", data);
+
+	return data.enemiesHeard;
 }
 
 /**
@@ -717,8 +719,10 @@ function KinkyDungeonMakeNoiseSignal(enemy: entity, mult: number = 1, hideShockw
  * @param noiseY - Location of noise
  * @param [hideShockwave] - Whether it shows a ping
  * @param [attachToEntity] - Whether it adds to the entity's sound or not
+ * @returns {entity[]} enemies who heard it
  */
-function KinkyDungeonMakeNoise(radius: number, noiseX: number, noiseY: number, hideShockwave?: boolean, attachToEntity?: boolean) {
+function KinkyDungeonMakeNoise(radius: number, noiseX: number, noiseY: number, hideShockwave?: boolean,
+	attachToEntity?: boolean): entity[] {
 	let data = {
 		radius: radius,
 		x: noiseX,
@@ -754,6 +758,7 @@ function KinkyDungeonMakeNoise(radius: number, noiseX: number, noiseY: number, h
 		}
 	}
 	KinkyDungeonSendEvent("afterNoise", data);
+	return data.enemiesHeard;
 }
 
 /**
@@ -1340,6 +1345,21 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 	}*/
 
 	if (!enemy && !bullet && player) { // Costs for the player
+		// Sawflags
+		if (data.components?.length > 0) {
+			let nearby = KDNearbyEnemies(KDPlayer().x, KDPlayer().y, 10, undefined, true)
+				.filter((en) => {return !!en.aware ||
+					(spell.noise && KDCanHearSound(en, spell.noise, KDPlayer().x, KDPlayer().y));});
+			let f = "";
+			for (let en of nearby) {
+				for (let c of data.components) {
+					f = "saw_" + c;
+					if (!en.flags || !en.flags[f])
+					KDSetIDFlag(en.id, f, -1);
+				}
+			}
+		}
+
 		KinkyDungeonSetFlag("PlayerCombat", 8);
 
 		if (data.targetingSpellItem) {

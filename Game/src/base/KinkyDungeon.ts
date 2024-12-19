@@ -460,7 +460,9 @@ let KDDefaultJourney = ["grv", "cat", "jng", "tmp", "bel"];
 let KDDefaultAlt = ["tmb", "lib", "cry", "ore", "bel"];
 
 
+
 interface KDGameDataBase {
+	SawFlags: Record<string, Record<string, number>>,
 	PersistentItems: Record<string, Record<string, number>>,
 	JourneyProgression:		string[],
 	AttachedWep:			string,
@@ -653,6 +655,7 @@ interface KDGameDataBase {
 };
 
 let KDGameDataBase: KDGameDataBase = {
+	SawFlags: {},
 	NamesGenerated: {},
 	PersistentNPCCache: {},
 	Containers: {},

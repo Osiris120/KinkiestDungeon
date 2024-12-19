@@ -5053,7 +5053,17 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 				if (data.skipTurn) skip = 1;
 				KDChangeStamina("attack", "weapon", "attack", data.attackCost, false, 1);
 				KinkyDungeonTickBuffTag(KinkyDungeonPlayerEntity, "attack", 1);
-				KinkyDungeonSetFlag("armattack", 1);
+				if (!KinkyDungeonPlayerDamage.noHands) {
+					KinkyDungeonSetFlag("armattack", 1);
+					let nearby = KDNearbyEnemies(KDPlayer().x, KDPlayer().y, 10, undefined, true)
+						.filter((en) => {return !!en.aware;});
+					let f = "";
+					for (let en of nearby) {
+						f = "saw_Arms";
+						if (!en.flags || !en.flags[f])
+						KDSetIDFlag(en.id, f, -1);
+					}
+				}
 				KinkyDungeonSetEnemyFlag(data.target, "targetedForAttack", 4);
 			} else {
 				if ((Enemy.lifetime > 9000 || !Enemy.maxlifetime))

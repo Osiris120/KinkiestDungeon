@@ -31,6 +31,9 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+5.4.22
+- Added framework for enemies witnessing spell components,
+
 5.4.21
 - Dragon lairs are here
 - When created in map gen, dragons create a lair.

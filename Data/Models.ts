@@ -23,7 +23,53 @@ function InitLayers(layers: string[]): {[_: string]: number} {
 	}
 	return table;
 }
+/**
+ * returns a meta layer for each non meta layer
+ */
+function InitMetaLayers(bounds: metaLayerBound[]):
+	{forward: Record<string, string[]>, reverse: Record<string, string>, order: Record<string, number>} {
+	let forward: Record<string, string[]> = {};
+	let reverse: Record<string, string> = {};
+	let order: Record<string, number> = {};
+
+	let currentIndex = 0;
+	let layerCount = 0;
+	let currentLayer = LAYERS_BASE[currentIndex];
+	for (let meta of bounds) {
+		let layers: string[] = [];
+		// Skip ahead if needed
+		while (LAYERS_BASE[currentIndex] != meta.start) {
+			if (!reverse[LAYERS_BASE[currentIndex]]) {
+				// Create a singleton if needed
+				order[LAYERS_BASE[currentIndex]] = layerCount;
+				forward[LAYERS_BASE[currentIndex]] = [LAYERS_BASE[currentIndex]];
+				reverse[LAYERS_BASE[currentIndex]] = LAYERS_BASE[currentIndex];
+				layerCount++;
+			}
+			currentIndex++;
+		}
+		// Do the register
+		while (LAYERS_BASE[currentIndex]) {
+			currentLayer = LAYERS_BASE[currentIndex];
+			layers.push(currentLayer);
+			reverse[currentLayer] = meta.id;
+			if (currentLayer == meta.end || LAYERS_BASE[currentIndex + 1] == meta.end) {
+				break;
+			}
+			currentIndex++;
+		}
+		forward[meta.id] = layers;
+		order[meta.id] = layerCount;
+		layerCount++;
+	}
+	return {forward: forward, reverse: reverse, order: order};
+}
+
 let ModelLayers = InitLayers(LAYERS_BASE);
+let metaLayersData = InitMetaLayers(metaLayerBoundaries);
+let metaLayer = metaLayersData.forward;
+let metaLayerReverse = metaLayersData.reverse;
+let metaLayerOrder = metaLayersData.order;
 
 
 let ModelDefs: {[_: string]: Model} = {};

@@ -1222,7 +1222,29 @@ function KDGetJailDoor(x: number, y: number): { tile: any; x: number; y: number 
 	return {tile: KinkyDungeonTilesGet((x) + "," + y), x: x, y: y};
 }
 
+function KDGetSawFlag(flag: string, faction: string) {
+	if (!KDGameData.SawFlags) {
+		KDGameData.SawFlags = {};
+	}
+	if (KDGameData.SawFlags[faction] && KDGameData.SawFlags[faction][flag])
+		return KDGameData.SawFlags[faction][flag];
+	return 0;
+}
+
 function KDDefeatedPlayerTick(nodefeat?: boolean) {
+	// Go thru all enemies on map and commit their sawFlags to faction dir
+	let seenFlags: Record<string, Record<string, number>> = {};
+	for (let en of KDMapData.Entities) {
+		let faction = KDGetFaction(en);
+		if (!seenFlags[faction]) seenFlags[faction] = {};
+
+		for (let f of Object.keys(en.flags)) {
+			if (f.startsWith("saw_")) {
+				seenFlags[faction][f] = KDGetSawFlag(f, faction) + 1;
+			}
+		}
+	}
+
 	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly
 	KinkyDungeonRemoveBuffsWithTag(KinkyDungeonPlayerEntity, ["removeDefeat"]);
 	KDGameData.JailGuard = 0;
