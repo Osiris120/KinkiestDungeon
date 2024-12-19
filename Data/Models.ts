@@ -67,7 +67,7 @@ function InitMetaLayers(bounds: metaLayerBound[]):
 
 let ModelLayers = InitLayers(LAYERS_BASE);
 let metaLayersData = InitMetaLayers(metaLayerBoundaries);
-let metaLayer = metaLayersData.forward;
+let metaLayerForward = metaLayersData.forward;
 let metaLayerReverse = metaLayersData.reverse;
 let metaLayerOrder = metaLayersData.order;
 
