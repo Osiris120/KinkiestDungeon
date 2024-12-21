@@ -247,25 +247,28 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 		}
 	}
 
-	DrawButtonKDEx("cancelJourney", (bdata) => {
-		KinkyDungeonState = "Game";
-		KDGameData.JourneyTarget = null;
-		return true;
-	}, true, 800, 900, 400, 55, TextGet("KinkyDungeonCancel"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
-		hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
-		hotkeyPress: KinkyDungeonKeySkip[0],
-	});
-
-	if (KDGameData.JourneyTarget && KinkyDungeonStairTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)))
-		DrawButtonKDEx("confirmJourney", (bdata) => {
+	if (allowChoose) {
+		DrawButtonKDEx("cancelJourney", (bdata) => {
 			KinkyDungeonState = "Game";
-			KinkyDungeonConfirmStairs = true;
-			KinkyDungeonMove({x: 0, y: 0}, 1, true);
+			KDGameData.JourneyTarget = null;
 			return true;
-		}, true, 1300, 900, 400, 55, TextGet("KDNavMapConfirm"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
-			hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
-			hotkeyPress: KinkyDungeonKeyEnter[0],
+		}, true, 800, 900, 400, 55, TextGet("KinkyDungeonCancel"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
+			hotkey: KDHotkeyToText(KinkyDungeonKeySkip[0]),
+			hotkeyPress: KinkyDungeonKeySkip[0],
 		});
+
+		if (KDGameData.JourneyTarget && KinkyDungeonStairTiles.includes(KinkyDungeonMapGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)))
+			DrawButtonKDEx("confirmJourney", (bdata) => {
+				KinkyDungeonState = "Game";
+				KinkyDungeonConfirmStairs = true;
+				KinkyDungeonMove({x: 0, y: 0}, 1, true);
+				return true;
+			}, true, 1300, 900, 400, 55, TextGet("KDNavMapConfirm"), "white", undefined, undefined, undefined, undefined, undefined, undefined, undefined,  {
+				hotkey: KDHotkeyToText(KinkyDungeonKeyEnter[0]),
+				hotkeyPress: KinkyDungeonKeyEnter[0],
+			});
+	}
+
 
 
 	if (!KDGameBoardAddedJourney) {
