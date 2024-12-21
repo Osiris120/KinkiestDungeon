@@ -3135,6 +3135,7 @@ let KinkyDungeonEnemies: enemy[] = [
 				{tags: ["vineSuspend"], count: 1},
 			],
 		},
+		ignoreflag: ["dragonIgnore"],
 		creationScript: "DragonLair",
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
@@ -3174,6 +3175,7 @@ let KinkyDungeonEnemies: enemy[] = [
 				{tags: ["vineSuspend"], count: 1},
 			],
 		},
+		ignoreflag: ["dragonIgnore"],
 		creationScript: "DragonLair",
 		dropTable: [{name: "WaterRune", weight: 3}]},
 
@@ -3215,6 +3217,7 @@ let KinkyDungeonEnemies: enemy[] = [
 				{tags: ["crystalEncase"], count: 1},
 			],
 		},
+		ignoreflag: ["dragonIgnore"],
 		startBuffs: [
 			{
 				id: "DragonQueenCritArmor",
@@ -3263,7 +3266,6 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
-		ignoreflag: ["Furniture"],
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 2.5,
@@ -3273,6 +3275,7 @@ let KinkyDungeonEnemies: enemy[] = [
 				{tags: ["crystalEncase"], count: 1},
 			],
 		},
+		ignoreflag: ["dragonIgnore"],
 		visionRadius: 9, maxhp: 30, minLevel:0, weight:0, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeBindLockWillEffect",
 		stunTime: 1, attackWidth: 1, attackRange: 1, power: 4.5, dmgType: "crush", fullBoundBonus: 2,
 		terrainTags: {"magic": 7, "dragongirl": 50}, shrines: ["Leather", "Conjure"], floors: {},
@@ -3317,6 +3320,7 @@ let KinkyDungeonEnemies: enemy[] = [
 				{tags: ["shadowBall"], count: 1},
 			],
 		},
+		ignoreflag: ["dragonIgnore"],
 		startBuffs: [
 			{
 				id: "DragonQueenCritArmor",
@@ -3372,6 +3376,7 @@ let KinkyDungeonEnemies: enemy[] = [
 				{tags: ["shadowBall"], count: 1},
 			],
 		},
+		ignoreflag: ["dragonIgnore"],
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
 		noKiteWhenHarmless: true,
@@ -3419,6 +3424,7 @@ let KinkyDungeonEnemies: enemy[] = [
 				{tags: ["iceEncase"], count: 1},
 			],
 		},
+		ignoreflag: ["dragonIgnore"],
 		Awareness: {
 			chaseradius: 25,
 			hearingMult: 2,
@@ -3485,6 +3491,7 @@ let KinkyDungeonEnemies: enemy[] = [
 				{tags: ["iceEncase"], count: 1},
 			],
 		},
+		ignoreflag: ["dragonIgnore"],
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
 		events: [

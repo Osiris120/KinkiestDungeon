@@ -2658,6 +2658,7 @@ function DialogueAddCursedEnchantedHexed(
 	enchantlevelmax: number = 10,
 	returnOnly: boolean = false,
 	inventory: boolean = false,
+	Lock?: string,
 ): item {
 
 	let unlockcurse = null;
@@ -2703,6 +2704,7 @@ function DialogueAddCursedEnchantedHexed(
 			template: restraint.name,
 			events: events,
 		};
+		if (!!(unlockcurse ? undefined : Lock)) variant.lock = Lock;
 		if (hexVariant) {
 			events.push(...KDEventHexModular[hexVariant].events({variant: variant}));
 		}
@@ -2727,7 +2729,7 @@ function DialogueAddCursedEnchantedHexed(
 					undefined, 1);
 
 			} else {
-				KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, undefined, true, false,
+				KDEquipInventoryVariant(variant, KDEventEnchantmentModular[enchantVariant]?.prefix, 0, true, unlockcurse ? undefined : Lock, true, false,
 					(enemy ? KDGetFaction(enemy) : undefined) || (unlockcurse ? "Curse" : undefined), true, unlockcurse, enemy, false, undefined, undefined, KDEventEnchantmentModular[enchantVariant]?.suffix);
 
 			}

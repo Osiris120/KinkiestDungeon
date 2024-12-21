@@ -5,6 +5,7 @@ let KDCancelEvents = {
 	JourneyChoice: (_x, _y, _tile, data) => {
 		if (data.force) return "";
 		KinkyDungeonState = "JourneyMap";
+		KDGameData.JourneyTarget = null;
 	},
 };
 let KDCancelFilters = {
@@ -273,7 +274,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					) {
 						data.overrideRoomType = true;
 						KDGameData.RoomType = "PerkRoom";
-						KDGameData.MapMod = "";
+						data.mapMod = "";
 					} else data.AdvanceAmount = 1;
 					//data.AdvanceAmount = 0;
 				} else {

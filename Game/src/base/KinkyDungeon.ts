@@ -158,7 +158,7 @@ let KinkyDungeonKeyEnter = ['Enter'];
 let KinkyDungeonKeySprint = ['ShiftLeft'];
 let KinkyDungeonKeyWeapon = ['R',];
 let KinkyDungeonKeyUpcast = ['ControlLeft', 'AltLeft'];
-let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*', '-', '_', "Home"]; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection, Pause
+let KinkyDungeonKeyMenu = ['V', 'I', 'U', 'M', 'L', '*', '-', '_', "Home", "PageUp"]; // QuikInv, Inventory, Reputation, Magic, Log, Quest, Collection, Pause, Journey
 let KinkyDungeonKeyToggle = ['O', 'P', 'B', 'Backspace', '=', "ShiftRight", 'T', '?', '/', "'"]; // Log, Passing, Door, Auto Struggle, Auto Pathfind, Inspect, Wait till interrupted, Make Noise, Crouch
 let KinkyDungeonKeySpellPage = ['`'];
 let KinkyDungeonKeySwitchWeapon = ['F', 'G', 'H', 'J']; // Swap, Offhand, OffhandPrevious
@@ -267,9 +267,11 @@ let KDToggles = {
 
 	OScreenFilter: true,
 	DistractScreenFilter: true,
+	MMLabels: true,
 };
 
 let KDToggleCategories = {
+	MMLabels: "UI",
 	RawDP: "UI",
 	Backgrounds: "GFX",
 	ShowZoom: "UI",
@@ -392,6 +394,7 @@ let KDDefaultKB = {
 	Collection: KinkyDungeonKeyMenu[6],
 	Facilities: KinkyDungeonKeyMenu[7],
 	Restart: KinkyDungeonKeyMenu[8],
+	JourneyMap: KinkyDungeonKeyMenu[9],
 
 
 	SwitchWeapon: KinkyDungeonKeySwitchWeapon[0],
@@ -2883,7 +2886,7 @@ function KinkyDungeonRun() {
 					KDGameData.SlowMoveTurns -= 1;
 					KDGameData.BalancePause = true;
 					KDSendInput("tick", {delta: 1, NoUpdate: false, NoMsgTick: true}, false, true);
-					KinkyDungeonSleepTime = CommonTime() + 150 * (0.25 + KDAnimSpeed * 0.75);
+					KinkyDungeonSleepTime = CommonTime() + 150 * (0.35 + KDAnimSpeed * 0.65);
 				}
 			} else if (KinkyDungeonFastMove && KinkyDungeonFastMovePath && KinkyDungeonFastMovePath.length > 0) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
@@ -3560,6 +3563,7 @@ function KDMouseWheel (event: WheelEvent): void {
 	if (KDFunctionRestraintIndexScroll(event.deltaY)) return;
 	if (KDFunctionShopScroll(event.deltaY)) return;
 	if (KDFunctionSpellPageScroll(event.deltaY || event.deltaX)) return;
+	if (KDFunctionJourneyMapScroll(event.deltaY || event.deltaX)) return;
 }
 
 function KDFunctionOptionsScroll(amount: number): boolean {
@@ -3628,6 +3632,17 @@ function KDFunctionContainerScroll(amount: number): boolean {
 			KDClickButton("conDown");
 		} else {
 			KDClickButton("conUp");
+		}
+		return true;
+	}
+	return false;
+}
+function KDFunctionJourneyMapScroll(amount: number): boolean {
+	if (KinkyDungeonState == "Game" && KinkyDungeonDrawState == "JourneyMap") {
+		if (amount > 0) {
+			KDClickButton("journeyDown");
+		} else {
+			KDClickButton("journeyUp");
 		}
 		return true;
 	}
@@ -4023,6 +4038,9 @@ function KDCommitKeybindings() {
 		KinkyDungeonKeybindings.Log,
 		KinkyDungeonKeybindings.Quest,
 		KinkyDungeonKeybindings.Collection,
+		KinkyDungeonKeybindings.Facilities,
+		KinkyDungeonKeybindings.Restart,
+		KinkyDungeonKeybindings.JourneyMap,
 	];
 	KinkyDungeonKeyToggle = [
 		KinkyDungeonKeybindings.MsgLog,

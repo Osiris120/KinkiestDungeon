@@ -2076,6 +2076,8 @@ function KinkyDungeonDrawGame() {
 					ElementValue("KDCopyPerks", txt);
 				}
 			}
+		} else if (KDCustomDrawState[KinkyDungeonDrawState]) {
+			KDCustomDrawState[KinkyDungeonDrawState]();
 		}
 		if (KDShouldDrawFloaters())
 			KinkyDungeonDrawFloaters(0, 0, true);
@@ -2847,6 +2849,60 @@ function DrawTextFitKDTo (
 	let alignment = Align ? Align : "center";
 
 	DrawTextVisKD(Container || kdcanvas, kdpixisprites, Text + (!unique ? "," + X + "," + Y : "_unique"), {
+		Text: Text,
+		X: X,
+		Y: Y,
+		Width: Width,
+		Color: Color,
+		BackColor: BackColor ? BackColor : (Color == KDTextGray2 ? KDTextGray0 : (Color == KDTextGray0 ? KDTextGray3 : KDTextGray2)),
+		FontSize: FontSize ? FontSize : 30,
+		align: alignment,
+		zIndex: zIndex,
+		alpha: alpha,
+		border: border,
+		unique: unique,
+		font: font,
+	});
+}
+
+
+/**
+ * @param Container
+ * @param Text
+ * @param X
+ * @param Y
+ * @param Width
+ * @param Color
+ * @param [BackColor]
+ * @param [FontSize]
+ * @param [Align]
+ * @param [zIndex]
+ * @param [alpha]
+ * @param [border]
+ * @param [unique] - This button is not differentiated by position
+ * @param [font] - This button is not differentiated by position
+ */
+function DrawTextFitKDTo2 (
+	Container:  PIXIContainer,
+	Map: Map<string, any>,
+	Text:       string,
+	X:          number,
+	Y:          number,
+	Width:      number,
+	Color:      string,
+	BackColor?: string,
+	FontSize?:  number,
+	Align?:     string,
+	zIndex:     number = 110,
+	alpha:      number = 1.0,
+	border:     number = undefined,
+	unique:     boolean = undefined,
+	font?:     string
+) {
+	if (!Text) return;
+	let alignment = Align ? Align : "center";
+
+	DrawTextVisKD(Container || kdcanvas, Map, Text + (!unique ? "," + X + "," + Y : "_unique"), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -4026,11 +4082,11 @@ let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, tex
 	'X': () => {return {color: "#aaaaaa", text: "X"};},
 	'?': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
 	',': () => {return {color: "#ffffff", noInspect: true, text: "Hook"};},
-	'S': () => {return {color: "#96caff", noInspect: true, text: "S"};},
-	's': () => {return {color: "#4c6885", noInspect: true, text: "s"};},
+	'S': () => {return {color: "#6a8eb3", noInspect: true, text: "S"};},
+	's': () => {return {color: "#96caff", noInspect: true, text: "s"};},
 	'H': (x, y) => {
 		let tile = KinkyDungeonTilesGet(x + ',' + y);
-		return {color: "#4c6885", noInspect: true, text: "H", desc:
+		return {color: "#96caff", noInspect: true, text: "H", desc:
 			TextGet("KDLeadsTo").replace("PLCE", KDGetDungeonName({
 				mapX: KDGetCurrentLocation().mapX,
 				mapY: KDGetCurrentLocation().mapY,
@@ -4050,6 +4106,8 @@ let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, tex
 	'V': () => {return {color: "#ffffff", noInspect: true, text: "V"};},
 	'v': () => {return {color: "#ffffff", noInspect: true, text: "v"};},
 	'N': () => {return {color: "#4c6885", noInspect: true, text: "N"};},
+	'=': () => {return {color: "#aaaaaa", noInspect: true, text: "="};},
+	'+': () => {return {color: "#ffffff", noInspect: true, text: "+"};},
 };
 
 function KDGetTileColor(x: number, y: number): string {

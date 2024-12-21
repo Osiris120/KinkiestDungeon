@@ -915,7 +915,8 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 			return true;
 		},true,
 		1700, 100, 125, 40, "", "#ffffff", KinkyDungeonRootDirectory + "Up.png",
-		"", false, false, KDButtonColor, undefined, undefined, {centered: true}
+		"", false, false, KDButtonColor, undefined,
+		undefined, {centered: true}
 		);
 
 	}

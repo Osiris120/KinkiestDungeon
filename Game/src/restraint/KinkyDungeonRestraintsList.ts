@@ -167,11 +167,18 @@ const KinkyDungeonRestraints: restraint[] = [
 		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
+		recycleresource: {
+			Rope: 2,
+		},
 		minLevel: 0, allFloors: true, shrine: ["Charms", "Tape", "Raw"]},
 	{inventory: true, name: "DuctTapeRaw",
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
+		recycleresource: {
+			Rope: 1,
+			Latex: 1,
+		},
 		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
@@ -351,6 +358,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		disassembleAs: "MysticDuctTapeRaw",
 		sfxGroup: "Rubber",
 		quickBindCondition: "TapeBlindfold",
+		recycleresource: {
+			Rope: 2,
+			Latex: 1,
+		},
 		Filters: {
 			Tape: {"gamma":1,"saturation":1,"contrast":1.2666666666666668,"brightness":0.6666666666666666,"red":1,"green":1.6833333333333333,"blue":0.6666666666666666,"alpha":1},
 		},
@@ -442,6 +453,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
+		recycleresource: {
+			Rope: 1,
+			Latex: 2,
+		},
 		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
@@ -535,6 +550,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
+		recycleresource: {
+			Latex: 2,
+		},
 		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
@@ -984,6 +1002,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
+		recycleresource: {
+			Latex: 3,
+		},
 		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
@@ -992,6 +1013,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
+		recycleresource: {
+			Latex: 3,
+		},
 		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
@@ -5223,6 +5247,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
+		recycleresource: {
+			Rope: 3,
+		},
 		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},
@@ -5328,6 +5355,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		noRecycle: true,
 		requireSingleTagToEquip: ["Impossible"],
 		Asset: "", Color: "",
+		recycleresource: {
+			Rope: 1,
+		},
 		Group: "ItemDevices", power: 1, weight: -1000,
 		escapeChance: {"Struggle": 0.15, "Cut": 0.45, "Remove": 0.05},
 		enemyTags: {}, playerTags: {},

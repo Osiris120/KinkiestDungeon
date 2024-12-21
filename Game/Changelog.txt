@@ -31,8 +31,18 @@ TODO:
 TODO remove hogtie when released
 TODO Add Cuddle play type
 
+- TODO extend modding framework for witnessing components to include:
+- Mana cost of spells
+- decay per faction
+
+5.4.23
+- Added minimap labels (option in UI)
+- Minimap moves with inspection
+- Allow viewing journey map in journal
+
 5.4.22
-- Added framework for enemies witnessing spell components,
+- Various bugfixes
+- Added modding framework for enemies witnessing spell components and applying prison restraints accordingly
 
 5.4.21
 - Dragon lairs are here

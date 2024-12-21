@@ -2824,85 +2824,89 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
 		if (!(enemy.lifetime < 9000)) {
 			if (enemy.playerdmg) {
 
-				if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.boss)
-					KinkyDungeonChangeRep("Ghost", -3);
-				else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.miniboss)
-					KinkyDungeonChangeRep("Ghost", -1);
-				else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.elite && KDRandom() < 0.33)
-					KinkyDungeonChangeRep("Ghost", -1);
+				if (!KDEntityHasFlag(enemy, "killedOnce")) {
+					KinkyDungeonSetEnemyFlag(enemy, "killedOnce", -1);
+					if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.boss)
+						KinkyDungeonChangeRep("Ghost", -3);
+					else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.miniboss)
+						KinkyDungeonChangeRep("Ghost", -1);
+					else if (enemy.Enemy && enemy.Enemy.tags && enemy.Enemy.tags.elite && KDRandom() < 0.33)
+						KinkyDungeonChangeRep("Ghost", -1);
 
 
 
-				if (enemy.rep)
-					for (let rep of Object.keys(enemy.rep))
-						KinkyDungeonChangeRep(rep, enemy.rep[rep]);
+					if (enemy.rep)
+						for (let rep of Object.keys(enemy.rep))
+							KinkyDungeonChangeRep(rep, enemy.rep[rep]);
 
-				if (enemy.factionrep)
-					for (let rep of Object.keys(enemy.factionrep))
-						KinkyDungeonChangeFactionRep(rep, enemy.factionrep[rep]);
+					if (enemy.factionrep)
+						for (let rep of Object.keys(enemy.factionrep))
+							KinkyDungeonChangeFactionRep(rep, enemy.factionrep[rep]);
 
-				if (enemy.Enemy.rep && !KDEnemyHasFlag(enemy, "norep"))
-					for (let rep of Object.keys(enemy.Enemy.rep))
-						KinkyDungeonChangeRep(rep, enemy.Enemy.rep[rep]);
+					if (enemy.Enemy.rep && !KDEnemyHasFlag(enemy, "norep"))
+						for (let rep of Object.keys(enemy.Enemy.rep))
+							KinkyDungeonChangeRep(rep, enemy.Enemy.rep[rep]);
 
-				if (enemy.Enemy.factionrep && !KDEnemyHasFlag(enemy, "norep"))
-					for (let rep of Object.keys(enemy.Enemy.factionrep))
-						KinkyDungeonChangeFactionRep(rep, enemy.Enemy.factionrep[rep]);
+					if (enemy.Enemy.factionrep && !KDEnemyHasFlag(enemy, "norep"))
+						for (let rep of Object.keys(enemy.Enemy.factionrep))
+							KinkyDungeonChangeFactionRep(rep, enemy.Enemy.factionrep[rep]);
 
-				if (KinkyDungeonStatsChoice.has("Vengeance")) {
-					KDChangeDistraction("Vengeance", "perk", "kill", Math.max(0, 0.1*Math.ceil(Math.pow(enemy.Enemy.maxhp, 0.7))), false, 0.75);
-				}
-
-				let faction = KDGetFaction(enemy);
-				let amount = KDGetEnemyRep(enemy);
-				if (!noRepHit && !KDEnemyHasFlag(enemy, "norep")) {
-					let will = KDGetEnemyWillReward(enemy);
-					if (will > 0) {
-						if (!KinkyDungeonFlags.get("tut_kill")) {
-							KinkyDungeonSetFlag("tut_kill", -1);
-							KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill"), "#ffffff", 10);
-							KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill2"), "#ffffff", 10);
-						}
-						KDChangeWill("enemy" + enemy.id, "reward", "kill", will, false);
+					if (KinkyDungeonStatsChoice.has("Vengeance")) {
+						KDChangeDistraction("Vengeance", "perk", "kill", Math.max(0, 0.1*Math.ceil(Math.pow(enemy.Enemy.maxhp, 0.7))), false, 0.75);
 					}
-				}
+
+					let faction = KDGetFaction(enemy);
+					let amount = KDGetEnemyRep(enemy);
+					if (!noRepHit && !KDEnemyHasFlag(enemy, "norep")) {
+						let will = KDGetEnemyWillReward(enemy);
+						if (will > 0) {
+							if (!KinkyDungeonFlags.get("tut_kill")) {
+								KinkyDungeonSetFlag("tut_kill", -1);
+								KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill"), "#ffffff", 10);
+								KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill2"), "#ffffff", 10);
+							}
+							KDChangeWill("enemy" + enemy.id, "reward", "kill", will, false);
+						}
+					}
 
 
-				if (amount && !noRepHit && !enemy.Enemy.Reputation?.noRepLoss) {
+					if (amount && !noRepHit && !enemy.Enemy.Reputation?.noRepLoss) {
 
-					KDGameData.Guilt = Math.max(0, (KDGameData.Guilt || 0) + KDEnemyRank(enemy)**2)
+						KDGameData.Guilt = Math.max(0, (KDGameData.Guilt || 0) + KDEnemyRank(enemy)**2)
 
-					KinkyDungeonChangeFactionRep(faction, -amount);
+						KinkyDungeonChangeFactionRep(faction, -amount);
 
-					// For being near a faction
-					let boostfactions = [];
-					let hurtfactions = [];
-					for (let e of KDMapData.Entities) {
-						let dist = KDistChebyshev(e.x - enemy.x, e.y - enemy.y);
-						if (dist < 10) {
-							let faction2 = KDGetFaction(e);
-							if (!KinkyDungeonHiddenFactions.has(faction2)) {
-								if (KDFactionRelation(faction, faction2) < -0.1 && !boostfactions.includes(faction2)) {
-									boostfactions.push(faction2);
-									let mult = 1.0;
-									if (amount > 0) {
-										if (KDFactionRelation("Player", faction2) > 0.5)
-											mult *= 0.05;
-										else if (KDFactionRelation("Player", faction2) > 0.25)
-											mult *= 0.5;
+						// For being near a faction
+						let boostfactions = [];
+						let hurtfactions = [];
+						for (let e of KDMapData.Entities) {
+							let dist = KDistChebyshev(e.x - enemy.x, e.y - enemy.y);
+							if (dist < 10) {
+								let faction2 = KDGetFaction(e);
+								if (!KinkyDungeonHiddenFactions.has(faction2)) {
+									if (KDFactionRelation(faction, faction2) < -0.1 && !boostfactions.includes(faction2)) {
+										boostfactions.push(faction2);
+										let mult = 1.0;
+										if (amount > 0) {
+											if (KDFactionRelation("Player", faction2) > 0.5)
+												mult *= 0.05;
+											else if (KDFactionRelation("Player", faction2) > 0.25)
+												mult *= 0.5;
+										}
+										KinkyDungeonChangeFactionRep(faction2, 0.5 * amount * mult * -KDFactionRelation(faction, faction2));
+										// Add a favor
+										KDAddFavor(faction2, amount);
+									} else
+									if (KDFactionRelation(faction, faction2) > 0.1 && !hurtfactions.includes(faction2)) {
+										hurtfactions.push(faction2);
+										KinkyDungeonChangeFactionRep(faction2, 0.5 * amount * -KDFactionRelation(faction, faction2));
 									}
-									KinkyDungeonChangeFactionRep(faction2, 0.5 * amount * mult * -KDFactionRelation(faction, faction2));
-									// Add a favor
-									KDAddFavor(faction2, amount);
-								} else
-								if (KDFactionRelation(faction, faction2) > 0.1 && !hurtfactions.includes(faction2)) {
-									hurtfactions.push(faction2);
-									KinkyDungeonChangeFactionRep(faction2, 0.5 * amount * -KDFactionRelation(faction, faction2));
 								}
 							}
 						}
 					}
 				}
+
 			} else if (!enemy.summoned && !KDIsImmobile(enemy) && !enemy.Enemy.tags.temporary) {
 				if (!KDGameData.RespawnQueue) KDGameData.RespawnQueue = [];
 				KDGameData.RespawnQueue.push({enemy: enemy.Enemy.name, faction: KDGetFaction(enemy)});
@@ -5046,7 +5050,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			KinkyDungeonSetEnemyFlag(enemy, "wander", 0); // Reset wander timer
 
 
-		if (!KDEnemyHasFlag(enemy, "StayHere")) {
+		if (!KDEnemyHasFlag(enemy, "StayHere")
+			&& !KDEnemyHasFlag(enemy, "overrideMove")) {
 			// Enemies that arent told to hold still will decide to follow their targets
 			if (KDEnemyHasFlag(enemy, "Defensive")) {
 				// Defensive AI will follow the player

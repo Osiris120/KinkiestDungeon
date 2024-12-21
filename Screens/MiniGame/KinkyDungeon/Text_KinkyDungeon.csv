@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.21"
+KDVersionStr,"5.4.23"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -45,6 +45,8 @@ KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
+
+KDToggleMMLabels,Show Minimap Labels
 KDToggle,Auto loot all from chests
 
 KDToggleApplyPaletteRestraint,Apply palettes to Restraints
@@ -147,7 +149,7 @@ KDAnimSpeed,Animation Time:
 KDGamma,Map Brightness:
 KDSelectedFont,Game Font:
 KDButtonFont,Button Font:
-
+KinkyDungeonJourneyMap,Journey
 KinkyDungeonJourney,"Select a journey. This will determine the ordering of game areas."
 KinkyDungeonJourney0,"Standard: The intended experience"
 KinkyDungeonJourney1,"Random: A chaotic journey"
@@ -1073,6 +1075,7 @@ KinkyDungeonKeyBulletTransparency,Hide Bullets
 KinkyDungeonKeyQInventory,Quick Inventory
 KinkyDungeonKeyInventory,Inventory
 KinkyDungeonKeyReputation,Reputation
+KinkyDungeonKeyJourneyMap,Journey Map
 KinkyDungeonKeyQuest,Quests
 KinkyDungeonKeyMagic,Spell List
 KinkyDungeonKeyLog,Journal
@@ -3469,7 +3472,7 @@ KinkyDungeonObject,"object"
 KinkyDungeonObjectCharger,"It appears to be a receptacle for an ancient crystal."
 KinkyDungeonObjectChargerDestroyed,"It's a pile of slag emitting a strange magic smoke..."
 KinkyDungeonObjectLock,"That object is locked with a LKTP."
-KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE. A pool of mana glimmers below."
+KinkyDungeonObjectShrine,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectShrineCommerce,"A shrine to the goddess of TYPE."
 KinkyDungeonObjectDoor,"That door is open. Do you want to close it?"
 KinkyDungeonCloseDoorDone,"You slam the door and jam it shut!"
@@ -5601,6 +5604,8 @@ KDTileTooltipv,Safety Conveyor
 KDTileTooltipt,Doll Terminal
 KDTileTooltipu,Doll Supply
 KDTileTooltipN,Bondage Machine
+KDTileTooltip+,Empty Fixture
+KDTileTooltip=,Filled Fixture
 
 
 
@@ -22447,6 +22452,7 @@ KinkyDungeonInventoryItemDiscPickDesc2,"Features a replaceable head in case an u
 
 
 KDRep,Rep
+KDJourneyMap,Journey
 
 KDMagicWeapon,Magical Weapon
 
@@ -26121,3 +26127,41 @@ KDLeadsTo,Leads to PLCE
 KDUnknown,???
 
 rWardenCourier,"(You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'"
+
+KinkyDungeonDragonLairDefeat1,It becomes hard to resist the dragon's fury...
+KinkyDungeonDragonLairDefeat2,The dragon overwhelms you with sheer force...
+KinkyDungeonDragonLairDefeat3,Your strength begins to fade...
+
+KDMinimapLabel_Ghost,Ghost
+KDMinimapLabel_Orb,Orb
+KDMinimapLabel_S,>Entrance
+KDMinimapLabel_s,>Exit
+KDMinimapLabel_H,>Stairs
+KDMinimapLabel_ShrineQuest,Quest Shrine (GDS)
+KDMinimapLabel_Shrine,Shrine (GDS)
+KDMinimapLabel_+,""
+KDMinimapLabel_=,""
+KDMinimapLabel_Bed,Bed (Usable)
+KDMinimapLabel_BedFail,Bed
+KDMinimapLabel_Tablet,Tablet
+KDMinimapLabel_C_undefined,Chest
+KDMinimapLabel_C_chest,Chest
+KDMinimapLabel_C_silver,Chest (Silver)
+KDMinimapLabel_C_gold,Chest (Gold)
+KDMinimapLabel_C_lessergold,Chest (Gold)
+KDMinimapLabel_C_shadow,Chest (Shadow)
+KDMinimapLabel_C_lessershadow,Chest (Shadow)
+KDMinimapLabel_C_kitty,Chest (Kitty)
+KDMinimapLabel_C_wizard,Chest
+KDMinimapLabel_C_robot,Chest (Mecha)
+KDMinimapLabel_C_pearl,Chest (Holy)
+KDMinimapLabel_C_storage,Storage
+KDMinimapLabel_C_blue,Chest (Orb)
+KDMinimapLabel_C_tutorial1,chest
+KDMinimapLabel_C_magicWeapon,Chest
+KDMinimapLabel_C_pair,Chest
+KDMinimapLabel_C_lost_items,Lost Items
+KDMinimapLabel_C_cache,Cache
+KDMinimapLabel_C_magicrestraint,Chest
+KDMinimapLabel_C_,Chest
+KDMinimapLabel_C_kinky,Toy Chest

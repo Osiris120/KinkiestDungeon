@@ -9099,12 +9099,15 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 			if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0) {
 				if (data.enemy == enemy && data.target == KinkyDungeonPlayerEntity && data.restraintsAdded && data.restraintsAdded.length == 0) {
 					KDTripleBuffKill("DragonLairDefeat", KinkyDungeonPlayerEntity, 30, (_tt) => {
+						KinkyDungeonSetFlag("dragonIgnore", 45);
 						if (KDGetAltType(MiniGameKinkyDungeonLevel)?.name != "DragonLair") {
 							AIData.defeat = true;
 							KDCustomDefeat = "DragonLair";
 							KDCustomDefeatEnemy = enemy;
-						} else
+						} else {
 							KinkyDungeonPassOut();
+							KDAddDefeatRestraints(enemy, true);
+						}
 					}, "Blindness",
 					(_target) => {
 						// Just in case
@@ -9124,8 +9127,10 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 							AIData.defeat = true;
 							KDCustomDefeat = "DemonTransition";
 							KDCustomDefeatEnemy = enemy;
-						} else
+						} else {
 							KinkyDungeonPassOut();
+							KDAddDefeatRestraints(enemy, true);
+						}
 					}, "Blindness",
 					(_target) => {
 						// Create a portal
@@ -9147,6 +9152,8 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 				KDTripleBuffKill("ShadowEngulf", player, 15, (_tt) => {
 					// Passes out the player, but does NOT teleport
 					KinkyDungeonPassOut(true);
+
+					KDAddDefeatRestraints(enemy, true);
 					KDBreakTether(player);
 
 					// Instead it applies a debuff, and leash

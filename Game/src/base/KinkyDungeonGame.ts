@@ -4738,6 +4738,7 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Quest" ? "Game" : "Quest"; break;
 				case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = (KinkyDungeonDrawState == "Collection" || KinkyDungeonDrawState == "Bondage") ? "Game" : "Collection"; break;
 				case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = KinkyDungeonDrawState == "Facilities" ? "Game" : "Facilities"; break;
+				case KinkyDungeonKeyMenu[9]: KinkyDungeonDrawState = KinkyDungeonDrawState == "JourneyMap" ? "Game" : "JourneyMap"; break;
 				case KinkyDungeonKeyMenu[8]: KinkyDungeonDrawState = "Restart"; break;
 			}
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Click.ogg");
@@ -4761,6 +4762,7 @@ function KinkyDungeonGameKeyDown() {
 				case KinkyDungeonKeyMenu[5]: KinkyDungeonDrawState = "Quest"; break;
 				case KinkyDungeonKeyMenu[6]: KinkyDungeonDrawState = "Collection"; break;
 				case KinkyDungeonKeyMenu[7]: KinkyDungeonDrawState = "Facilities"; break;
+				case KinkyDungeonKeyMenu[9]: KinkyDungeonDrawState = "JourneyMap"; break;
 				case KinkyDungeonKeySkip[0]:
 				case KinkyDungeonKeyMenu[8]:
 					KinkyDungeonDrawState = "Game"; break;

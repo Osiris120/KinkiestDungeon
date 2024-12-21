@@ -1344,7 +1344,6 @@ function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
 
 	// Now we add the encasement
 
-	KDAddDefeatRestraints(dragon, true);
 
 	KinkyDungeonDressPlayer();
 	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
@@ -1356,6 +1355,8 @@ function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
 
 	KinkyDungeonLoseJailKeys();
 	KDResetAllAggro();
+
+	KDAddDefeatRestraints(dragon, true);
 
 	KinkyDungeonSaveGame();
 }
@@ -1715,23 +1716,26 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 
 	} else {
 		KDMovePlayer(nearestJail.x + (nearestJail.direction?.x || 0), nearestJail.y + (nearestJail.direction?.y || 0), false);
+
+		if (leasher)
+			KDAddDefeatRestraints(leasher, true);
+
+		if (nearestJail.direction) {
+			KinkyDungeonSetFlag("conveyed", 1);
+		}
+		if (nearestJail.restraint) {
+			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), KDGetEffLevel(),false, undefined);
+		}
+		if (nearestJail.restrainttags) {
+			let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined);
+			if (restraint)
+				KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
+		}
 	}
 
 	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
 	KDFixPlayerClothes(outfit?.palette || KinkyDungeonPlayer.Palette || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
 	KinkyDungeonDressPlayer();
-
-	if (nearestJail.direction) {
-		KinkyDungeonSetFlag("conveyed", 1);
-	}
-	if (nearestJail.restraint) {
-		KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), KDGetEffLevel(),false, undefined);
-	}
-	if (nearestJail.restrainttags) {
-		let restraint = KinkyDungeonGetRestraint({tags: nearestJail.restrainttags}, KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), false, undefined);
-		if (restraint)
-			KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
-	}
 
 	KinkyDungeonLoseJailKeys();
 
@@ -1756,6 +1760,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	KDResetAllAggro();
 
 	KDRepairRubble(true);
+
 
 	KinkyDungeonSaveGame();
 }
@@ -2084,7 +2089,9 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 		MiniGameKinkyDungeonLevel = 0;
 		KDCurrentWorldSlot = {x: 0, y: 0};
 		let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
-		KinkyDungeonCreateMap(params, "ShopStart", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, undefined, false, undefined);
+		KinkyDungeonCreateMap(params, "ShopStart", "", MiniGameKinkyDungeonLevel,
+			undefined, undefined, undefined, {x: 0, y: 0},
+			 false, undefined);
 		KDStartDialog("ShopkeeperTeleport", enemy.Enemy.name, true, "", enemy);
 
 	},

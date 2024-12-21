@@ -2,32 +2,6 @@
 // Lots of good info here: http://www.adammil.net/blog/v125_Roguelike_Vision_Algorithms.html#permissivecode
 // -Ada
 
-let KDMinimapIcons = {
-	'G': (_x, _y) => {return "UI/MiniMap/Ghost.png";},
-	'O': (_x, _y) => {return "UI/MiniMap/Orb.png";},
-	'S': (_x, _y) => {return "UI/MiniMap/Stairs.png";},
-	's': (_x, _y) => {return "UI/MiniMap/StairsDown.png";},
-	'H': (_x, _y) => {return "UI/MiniMap/StairsDown.png";},
-	'A': (x, y) => {
-		if (KinkyDungeonTilesGet(x + "," + y)?.drunk) {
-			if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
-				return "UI/MiniMap/ShrineQuest.png";
-			return "UI/MiniMap/ShrineMana.png";
-		}
-		if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
-			return "UI/MiniMap/ShrineManaQuest.png";
-		return "UI/MiniMap/ShrineMana.png";},
-	'=': (_x, _y) => {return "UI/MiniMap/ChargerEmpty.png";},
-	'+': (_x, _y) => {return "UI/MiniMap/ChargerCrystal.png";},
-	'D': (_x, _y) => {return "UI/MiniMap/DoorClosed.png";},
-	'd': (_x, _y) => {return "UI/MiniMap/DoorOpen.png";},
-	'B': (_x, _y) => {return "UI/MiniMap/Bed.png";},
-	'b': (_x, _y) => {return "UI/MiniMap/Bars.png";},
-	'g': (_x, _y) => {return "UI/MiniMap/Grate.png";},
-	'M': (_x, _y) => {return "UI/MiniMap/Tablet.png";},
-	'C': (_x, _y) => {return "UI/MiniMap/Chest.png";},
-};
-
 
 let KDRedrawFog = 0;
 let KDRedrawMM = 0;
@@ -842,7 +816,13 @@ function KDDrawFog(CamX: number, CamY: number, CamX_offset: number, CamY_offset:
 	}
 
 	if (KDRedrawMM > 0) {
-		KDRenderMinimap(KinkyDungeonPlayerEntity.x - w/2, KinkyDungeonPlayerEntity.y-h/2, w, h, scale, alpha, borders, blackMap);
+		let xxx = KinkyDungeonPlayerEntity.x - w/2
+		let yyy = KinkyDungeonPlayerEntity.y-h/2;
+		if (KinkyDungeonInspect) {
+			xxx = KDInspectCamera.x - w/2;
+			yyy = KDInspectCamera.y - h/2;
+		}
+		KDRenderMinimap(xxx, yyy, w, h, scale, alpha, borders, blackMap);
 		if (KDRedrawMM > 0) KDRedrawMM -= 1;
 	}
 
@@ -915,6 +895,19 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 			for (let yy = 0; yy < h; yy++)  {
 
 				if (KDIsInBounds(x+xx, y+yy, 1) && (KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 || (allowFog && KDMapData.FogGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0))) {
+					if (KDToggles.MMLabels) {
+						if (KDMinimapLabels[KinkyDungeonMapGet(x+xx, y+yy)]) {
+							let label = KDMinimapLabels[KinkyDungeonMapGet(x+xx, y+yy)](x+xx, y+yy);
+							if (label) {
+								DrawTextFitKDTo2(kdminimap, kdminimapsprites, label, (xx + 0.5)*scale, (yy-0.1)*scale,
+									scale * 32, KDGetTileColor(x + xx, y + yy) || "#ffffff", "#000000", 12, "center",
+									10, 0.9, 2
+								)
+							}
+
+						}
+					}
+
 					if (KDMinimapIcons[KinkyDungeonMapGet(x+xx, y+yy)]) {
 						KDDraw(kdminimap, kdminimapsprites, `minimapIcon${KinkyDungeonMapGet(x+xx, y+yy)},${x+xx},${y+yy}`,
 							KinkyDungeonRootDirectory + KDMinimapIcons[KinkyDungeonMapGet(x+xx, y+yy)](x+xx, y+yy),
@@ -947,22 +940,22 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 		kdminimap.lineStyle(4, 0);
 		kdminimap.beginFill(0xffffff, 1.);
 		kdminimap.drawCircle(
-			w/2*scale+scale/2,
-			h/2*scale+scale/2,
+			w/2*scale+scale/2 + (KinkyDungeonPlayerEntity.x - KDInspectCamera.x)*scale,
+			h/2*scale+scale/2 + (KinkyDungeonPlayerEntity.y - KDInspectCamera.y)*scale,
 			scale);
 		kdminimap.endFill();
 		if (KinkyDungeonInspect) {
 			// Camera square
-			let xpre = w/2*scale - scale*KinkyDungeonGridWidthDisplay/2 + scale*(KDInspectCamera.x - KinkyDungeonPlayerEntity.x);
-			let ypre = h/2*scale - scale*KinkyDungeonGridHeightDisplay/2 + scale*(KDInspectCamera.y - KinkyDungeonPlayerEntity.y);
+			let xpre = w/2*scale - scale*KinkyDungeonGridWidthDisplay + scale*(KDInspectCamera.x - KinkyDungeonPlayerEntity.x);
+			let ypre = h/2*scale - scale*KinkyDungeonGridHeightDisplay + scale*(KDInspectCamera.y - KinkyDungeonPlayerEntity.y);
 			let xx = Math.max(0, xpre);
 			let yy = Math.max(0, ypre);
 			kdminimap.lineStyle(2, 0xffffff);
 			kdminimap.drawRect(
 				xx,
 				yy,
-				Math.min(scale*w-xx, scale * KinkyDungeonGridWidthDisplay + Math.min(0, xpre)),
-				Math.min(scale*h-yy, scale * KinkyDungeonGridHeightDisplay + Math.min(0, ypre)));
+				Math.min(scale*w-xx, 2*scale * KinkyDungeonGridWidthDisplay + Math.min(0, xpre)),
+				Math.min(scale*h-yy, 2*scale * KinkyDungeonGridHeightDisplay + Math.min(0, ypre)));
 			kdminimap.endFill();
 		}
 	}

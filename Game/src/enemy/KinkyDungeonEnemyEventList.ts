@@ -626,8 +626,13 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (!KDHostile(enemy))
 				KinkyDungeonSetEnemyFlag(enemy, "noHarshPlay", 12);
 
-			if (!KinkyDungeonFlags.has("TempLeash") || !(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints"))) {
-				if (!(KinkyDungeonPlayerTags.get("Collars") && KinkyDungeonGetRestraintItem("ItemNeckRestraints")) || KDGameData.PrisonerState != 'jail') {
+			if (!KinkyDungeonFlags.has("TempLeash")
+				|| !(KinkyDungeonPlayerTags.get("Collars")
+				&& KinkyDungeonGetRestraintItem("ItemNeckRestraints"))) {
+				if (!(KinkyDungeonPlayerTags.get("Collars")
+					&& KinkyDungeonGetRestraintItem("ItemNeckRestraints"))
+					|| KDGameData.PrisonerState != 'jail'
+					|| KDIsInPartyID(enemy.id)) {
 					enemy.IntentAction = '';
 					enemy.IntentLeashPoint = null;
 					KinkyDungeonSetEnemyFlag(enemy, "wander", 7);
@@ -760,7 +765,9 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 				// Enemies will still be able to play with you!
 				KinkyDungeonSetFlag("overrideleashprotection", 2);
 
-				if (KinkyDungeonFlags.get("TempLeash") == 10 && KDGameData.PrisonerState == 'jail') {
+				let returnToJail = KDGameData.PrisonerState == 'jail';
+
+				if (KinkyDungeonFlags.get("TempLeash") == 10 && returnToJail) {
 					KinkyDungeonSendDialogue(enemy,
 						TextGet("KinkyDungeonJailer" + KDJailPersonality(enemy) + "LeashEndReturn").replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 						KDGetColor(enemy), 7, 7);

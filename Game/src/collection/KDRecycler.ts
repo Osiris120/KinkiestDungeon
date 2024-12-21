@@ -448,9 +448,15 @@ function KDRecyclerResources(restraint: restraint, mult: number = 1.4, variant?:
 		res.Rune = (res.Rune || 0) + Math.ceil(RecyclerResources.Rune.Yield * mult);
 	}
 
-	for (let shrine of restraint.shrine) {
-		if (RecyclerResources[shrine]) {
-			res[shrine] = (res[shrine] || 0) + Math.ceil(RecyclerResources[shrine].Yield * mult);
+	if (restraint.recycleresource) {
+		for (let resource of Object.entries(restraint.recycleresource)) {
+			res[resource[0]] = (res[resource[0]] || 0) + Math.ceil(resource[1]);
+		}
+	} else {
+		for (let shrine of restraint.shrine) {
+			if (RecyclerResources[shrine]) {
+				res[shrine] = (res[shrine] || 0) + Math.ceil(RecyclerResources[shrine].Yield * mult);
+			}
 		}
 	}
 	return res;

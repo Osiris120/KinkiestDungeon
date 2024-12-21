@@ -247,7 +247,7 @@ function KDDoLairOutpostConnections(slot: KDWorldSlot, id: string,
 			!slot.lairsToPlace[roomFrom]?.includes(id)
 			&& !slot.data[roomFrom]?.LairsToPlace?.includes(id)
 			&& !(slot.data[roomFrom]?.UsedEntrances && slot.data[roomFrom]?.UsedEntrances[id])
-		)
+		) && roomFrom != id
 	) {
 		KDPersonalAlt[id].Entrance[roomFrom] = entranceType;
 		if (slot.data[roomFrom]) {
@@ -274,7 +274,7 @@ function KDDoLairOutpostConnections(slot: KDWorldSlot, id: string,
 			!slot.lairsToPlace[id]?.includes(roomFrom)
 			&& !slot.data[id]?.LairsToPlace?.includes(roomFrom)
 			&& !(slot.data[id]?.UsedEntrances && slot.data[id]?.UsedEntrances[roomFrom])
-		)
+		) && roomFrom != id
 	) {
 		if (KDPersonalAlt[roomFrom])
 			KDPersonalAlt[roomFrom].Entrance[id] = entranceTypeFrom;

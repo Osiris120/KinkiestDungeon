@@ -1672,7 +1672,9 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 					MiniGameKinkyDungeonLevel = 0;
 
-					KinkyDungeonCreateMap(params, "ShopStart", "", MiniGameKinkyDungeonLevel, undefined, undefined, undefined, {x: 0, y: 0}, false, undefined);
+					KinkyDungeonCreateMap(params, "ShopStart", "",
+						MiniGameKinkyDungeonLevel, undefined, undefined,
+						undefined, {x: 0, y: 0}, false, undefined);
 
 					// Place return portal
 					KinkyDungeonMapSet(KDMapData.EndPosition.x, KDMapData.EndPosition.y, ';');

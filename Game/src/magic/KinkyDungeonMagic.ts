@@ -1359,6 +1359,19 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 				}
 			}
 		}
+		if (spell.tags?.length > 0) {
+			let nearby = KDNearbyEnemies(KDPlayer().x, KDPlayer().y, 10, undefined, true)
+				.filter((en) => {return !!en.aware ||
+					(spell.noise && KDCanHearSound(en, spell.noise, KDPlayer().x, KDPlayer().y));});
+			let f = "";
+			for (let en of nearby) {
+				for (let c of spell.tags) {
+					f = "saw_" + c;
+					if (!en.flags || !en.flags[f])
+					KDSetIDFlag(en.id, f, -1);
+				}
+			}
+		}
 
 		KinkyDungeonSetFlag("PlayerCombat", 8);
 

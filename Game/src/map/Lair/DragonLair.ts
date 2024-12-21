@@ -286,10 +286,10 @@ function KDMapgenCreateCave(POI, VisitedRooms, width, height, openness, density,
 					allowLowPower: true
 				});
 			let item = DialogueAddCursedEnchantedHexed(
-				restraint, undefined, curse ? undefined : Lock, HexList, EnchantList,
+				restraint, undefined, curse, HexList, EnchantList,
 				0, 5 + KDGetEffLevel(),
 				0, 8 + KDGetEffLevel(),
-				true
+				true, undefined, Lock
 			);
 			let inv = {x:point.x, y:point.y, name: item.inventoryVariant || item.name};
 				(KDMapData).GroundItems.push(inv);
