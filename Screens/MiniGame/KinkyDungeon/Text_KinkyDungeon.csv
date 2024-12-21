@@ -5606,6 +5606,7 @@ KDTileTooltipu,Doll Supply
 KDTileTooltipN,Bondage Machine
 KDTileTooltip+,Empty Fixture
 KDTileTooltip=,Filled Fixture
+KDTileTooltipM,Tablet
 
 
 
@@ -26138,10 +26139,10 @@ KDMinimapLabel_S,>Entrance
 KDMinimapLabel_s,>Exit
 KDMinimapLabel_H,>Stairs
 KDMinimapLabel_ShrineQuest,Quest(GDSNM)
-KDMinimapLabel_Shrine,Shrine(GDSNM)
+KDMinimapLabel_Shrine,[GDSNM]
 KDMinimapLabel_+,""
 KDMinimapLabel_=,""
-KDMinimapLabel_Bed,Bed (Usable)
+KDMinimapLabel_Bed,Bed!
 KDMinimapLabel_BedFail,Bed
 KDMinimapLabel_Tablet,Tablet
 KDMinimapLabel_C_undefined,Chest

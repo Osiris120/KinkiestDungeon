@@ -5846,6 +5846,9 @@ function KinkyDungeonTargetTileMsg() {
 	if (KDObjectMessages[KinkyDungeonTargetTile.Type]) {
 		KDObjectMessages[KinkyDungeonTargetTile.Type]();
 	} else if (KinkyDungeonTargetTile.Lock) {
+
+		KinkyDungeonTargetTile.LockSeen =
+			KinkyDungeonTargetTile.Lock;
 		if (KinkyDungeonTargetTile.Faction)
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectFaction")
 				.replace("FACTION", TextGet("KinkyDungeonFaction" + KinkyDungeonTargetTile.Faction)), "#ff5277", 2, true);
@@ -5855,6 +5858,8 @@ function KinkyDungeonTargetTileMsg() {
 			.replace("LKTP", TextGet(`Kinky${KinkyDungeonTargetTile.Lock}Lock`))
 		, "#ffffff", 1, true);
 	} else {
+
+		KinkyDungeonTargetTile.LockSeen = undefined;
 		let suff = "";
 		if (KinkyDungeonTargetTile.Faction)
 			KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonObjectFaction")

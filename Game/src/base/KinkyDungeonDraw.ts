@@ -4070,6 +4070,7 @@ let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, tex
 	'L': () => {return {color: "#812913", noInspect: true, text: "L"};},
 	'F': () => {return {color: "#812913", noInspect: true, text: "F"};},
 	'A': () => {return {color: "#6d89d7", noInspect: true, text: "A"};},
+	'M': () => {return {color: "#cb6161", noInspect: true, text: "M"};},
 	'a': () => {return {color: "#ffffff", text: "a"};},
 	'O': () => {return {color: "#92e8c0", text: "O"};},
 	'o': () => {return {color: "#ffffff", text: "o"};},

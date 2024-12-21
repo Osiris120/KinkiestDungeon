@@ -2092,42 +2092,54 @@ function KDInputFocusControlToggle(key: string, value: boolean) {
 }
 
 
+function KDDrawMMButtons(MinimapX: number, MinimapY: number, zIndex: number) {
+	let spacing = 40;
+	let starty = MinimapY;
+	let ii = 0;
+	DrawButtonKDEx("minimapzoomin", (_bdata) => {
+		KDMinimapExpandedSize = Math.max(KDMinimapW, KDMinimapExpandedSize - KDMinimapExpandedSizeTick);
+		KDRedrawMM = 2;
+		KDUpdateMinimapTarget(true);
+		return true;
+	}, true, MinimapX, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomIn.png", undefined, false, true,
+	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+	DrawButtonKDEx("minimapzoomout", (_bdata) => {
+		KDMinimapExpandedSize = Math.min(KDMinimapWBig, KDMinimapExpandedSize + KDMinimapExpandedSizeTick);
+		KDRedrawMM = 2;
+		KDUpdateMinimapTarget(true);
+		return true;
+	}, true, MinimapX, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomOut.png", undefined, false, true,
+	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+	DrawButtonKDEx("minimapexpand", (_bdata) => {
+		KDMinimapExpandedZoom = Math.min(KDMinimapScaleBig, KDMinimapExpandedZoom + KDMinimapExpandedZoomTick);
+		KDRedrawMM = 2;
+		KDUpdateMinimapTarget(true);
+		return true;
+	}, true, MinimapX, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Expand.png", undefined, false, true,
+	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+	DrawButtonKDEx("minimapshrink", (_bdata) => {
+		KDMinimapExpandedZoom = Math.max(KDMinimapExpandedZoomTick, KDMinimapExpandedZoom - KDMinimapExpandedZoomTick);
+		KDRedrawMM = 2;
+		KDUpdateMinimapTarget(true);
+		return true;
+	}, true, MinimapX, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Shrink.png", undefined, false, true,
+	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+	DrawButtonKDEx("minimapLabels", (_bdata) => {
+		KDToggles.MMLabels = !KDToggles.MMLabels;
+		KDRedrawMM = 2;
+		KDUpdateMinimapTarget(true);
+		return true;
+	}, true, MinimapX, starty + ii*spacing, 46, 46,
+	"", KDButtonColor, KinkyDungeonRootDirectory + "UI/Labels.png", undefined, false, true,
+	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+}
+
 
 function KDDrawMinimap(MinimapX: number, MinimapY: number) {
 	if (kdminimap.visible) {
 		let zIndex = (KDExpandMinimap || MouseIn(MinimapX, MinimapY, KDMinimapWidth()+21, KDMinimapHeight()+21)) ? 150 : 90;
 		if (KDExpandMinimap) {
-			let spacing = 40;
-			let starty = MinimapY;
-			let ii = 0;
-			DrawButtonKDEx("minimapzoomin", (_bdata) => {
-				KDMinimapExpandedSize = Math.max(KDMinimapW, KDMinimapExpandedSize - KDMinimapExpandedSizeTick);
-				KDRedrawMM = 2;
-				KDUpdateMinimapTarget(true);
-				return true;
-			}, true, MinimapX, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomIn.png", undefined, false, true,
-			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
-			DrawButtonKDEx("minimapzoomout", (_bdata) => {
-				KDMinimapExpandedSize = Math.min(KDMinimapWBig, KDMinimapExpandedSize + KDMinimapExpandedSizeTick);
-				KDRedrawMM = 2;
-				KDUpdateMinimapTarget(true);
-				return true;
-			}, true, MinimapX, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/ZoomOut.png", undefined, false, true,
-			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
-			DrawButtonKDEx("minimapexpand", (_bdata) => {
-				KDMinimapExpandedZoom = Math.min(KDMinimapScaleBig, KDMinimapExpandedZoom + KDMinimapExpandedZoomTick);
-				KDRedrawMM = 2;
-				KDUpdateMinimapTarget(true);
-				return true;
-			}, true, MinimapX, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Expand.png", undefined, false, true,
-			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
-			DrawButtonKDEx("minimapshrink", (_bdata) => {
-				KDMinimapExpandedZoom = Math.max(KDMinimapExpandedZoomTick, KDMinimapExpandedZoom - KDMinimapExpandedZoomTick);
-				KDRedrawMM = 2;
-				KDUpdateMinimapTarget(true);
-				return true;
-			}, true, MinimapX, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Shrink.png", undefined, false, true,
-			"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+			KDDrawMMButtons(MinimapX, MinimapY, zIndex);
 		}
 		kdminimap.zIndex = zIndex - 1;
 
