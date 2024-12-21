@@ -3425,6 +3425,7 @@
             </struct>
             <key type="filename">../Game/ChangeSpell.png</key>
             <key type="filename">../Game/UI/Expand.png</key>
+            <key type="filename">../Game/UI/Labels.png</key>
             <key type="filename">../Game/UI/Shrink.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

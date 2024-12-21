@@ -2130,7 +2130,8 @@ function KDDrawMMButtons(MinimapX: number, MinimapY: number, zIndex: number) {
 		KDUpdateMinimapTarget(true);
 		return true;
 	}, true, MinimapX, starty + ii*spacing, 46, 46,
-	"", KDButtonColor, KinkyDungeonRootDirectory + "UI/Labels.png", undefined, false, true,
+	"", KDButtonColor, KinkyDungeonRootDirectory + "UI/Labels.png",
+	undefined, false, !KDToggles.MMLabels,
 	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
 }
 
