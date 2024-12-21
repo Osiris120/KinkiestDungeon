@@ -304,6 +304,7 @@ function KDProcessInput(type: string, data: any): string {
 				if (KinkyDungeonPickAttempt()) {
 					KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
 					KinkyDungeonTargetTile.Lock = undefined;
+					KinkyDungeonTargetTile.LockSeen = undefined;
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
@@ -321,6 +322,7 @@ function KDProcessInput(type: string, data: any): string {
 				if (KinkyDungeonTargetTile?.Lock) {
 					KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
 					KinkyDungeonTargetTile.Lock = undefined;
+					KinkyDungeonTargetTile.LockSeen = undefined;
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
@@ -349,6 +351,7 @@ function KDProcessInput(type: string, data: any): string {
 					if (KinkyDungeonTargetTile?.Lock) {
 						KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
 						KinkyDungeonTargetTile.Lock = undefined;
+						KinkyDungeonTargetTile.LockSeen = undefined;
 						if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
@@ -376,6 +379,7 @@ function KDProcessInput(type: string, data: any): string {
 					if (KinkyDungeonTargetTile?.Lock) {
 						KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
 						KinkyDungeonTargetTile.Lock = undefined;
+						KinkyDungeonTargetTile.LockSeen = undefined;
 						if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
@@ -403,6 +407,7 @@ function KDProcessInput(type: string, data: any): string {
 				if (KinkyDungeonUnlockAttempt(KinkyDungeonTargetTile.Lock)) {
 					KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
 					KinkyDungeonTargetTile.Lock = undefined;
+					KinkyDungeonTargetTile.LockSeen = undefined;
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
@@ -428,6 +433,7 @@ function KDProcessInput(type: string, data: any): string {
 				if (KDRandom() > miscast) {
 					KinkyDungeonTargetTile.OGLock = KinkyDungeonTargetTile.Lock;
 					KinkyDungeonTargetTile.Lock = undefined;
+					KinkyDungeonTargetTile.LockSeen = undefined;
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KDUpdateDoorNavMap();
 					KinkyDungeonTargetTile = null;

@@ -735,6 +735,7 @@ function KinkyDungeonHandleJailSpawns(delta: number, useExistingGuard: boolean =
 		for (let T of Object.values(KDMapData.Tiles)) {
 			if (T.Lock && T.Type == "Door" && T.Jail) {
 				T.OGLock = T.Lock;
+				//T.LockSeen = T.Lock;
 				T.Lock = undefined;
 			}
 		}

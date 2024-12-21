@@ -26137,8 +26137,8 @@ KDMinimapLabel_Orb,Orb
 KDMinimapLabel_S,>Entrance
 KDMinimapLabel_s,>Exit
 KDMinimapLabel_H,>Stairs
-KDMinimapLabel_ShrineQuest,Quest Shrine (GDS)
-KDMinimapLabel_Shrine,Shrine (GDS)
+KDMinimapLabel_ShrineQuest,Quest(GDSNM)
+KDMinimapLabel_Shrine,Shrine(GDSNM)
 KDMinimapLabel_+,""
 KDMinimapLabel_=,""
 KDMinimapLabel_Bed,Bed (Usable)
@@ -26146,17 +26146,17 @@ KDMinimapLabel_BedFail,Bed
 KDMinimapLabel_Tablet,Tablet
 KDMinimapLabel_C_undefined,Chest
 KDMinimapLabel_C_chest,Chest
-KDMinimapLabel_C_silver,Chest (Silver)
-KDMinimapLabel_C_gold,Chest (Gold)
-KDMinimapLabel_C_lessergold,Chest (Gold)
-KDMinimapLabel_C_shadow,Chest (Shadow)
-KDMinimapLabel_C_lessershadow,Chest (Shadow)
-KDMinimapLabel_C_kitty,Chest (Kitty)
+KDMinimapLabel_C_silver,Silver
+KDMinimapLabel_C_gold,Gold
+KDMinimapLabel_C_lessergold,Gold
+KDMinimapLabel_C_shadow,Shadow
+KDMinimapLabel_C_lessershadow,Shadow
+KDMinimapLabel_C_kitty,Kitty
 KDMinimapLabel_C_wizard,Chest
-KDMinimapLabel_C_robot,Chest (Mecha)
-KDMinimapLabel_C_pearl,Chest (Holy)
-KDMinimapLabel_C_storage,Storage
-KDMinimapLabel_C_blue,Chest (Orb)
+KDMinimapLabel_C_robot,Mecha
+KDMinimapLabel_C_pearl,Holy
+KDMinimapLabel_C_storage,Chest
+KDMinimapLabel_C_blue,Blue
 KDMinimapLabel_C_tutorial1,chest
 KDMinimapLabel_C_magicWeapon,Chest
 KDMinimapLabel_C_pair,Chest
@@ -26165,3 +26165,4 @@ KDMinimapLabel_C_cache,Cache
 KDMinimapLabel_C_magicrestraint,Chest
 KDMinimapLabel_C_,Chest
 KDMinimapLabel_C_kinky,Toy Chest
+KDMMLocked,"(L)"

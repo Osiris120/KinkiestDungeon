@@ -2099,6 +2099,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						if (doorTile.tile) {
 							doorTile['OGLock'] = doorTile['Lock'];
 							doorTile.tile.Lock = undefined;
+							doorTile.tile.LockSeen = undefined;
 							KDUpdateDoorNavMap();
 						}
 						KinkyDungeonMapSet(door.x, door.y, 'd');

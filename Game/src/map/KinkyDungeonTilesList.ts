@@ -1741,7 +1741,8 @@ let KDStairsAltAction = {
 
 function KDAttemptDoor(moveX: number, moveY: number) {
 	KinkyDungeonAdvanceTime(1, true);
-	let open = !KinkyDungeonStatsChoice.get("Doorknobs") || !KinkyDungeonIsHandsBound(true, true, 0.45);
+	let open = !KinkyDungeonStatsChoice.get("Doorknobs")
+		|| !KinkyDungeonIsHandsBound(true, true, 0.45);
 	if (!open) {
 		if (KinkyDungeonCanUseFeet(false)) {
 			KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFeet"), "#88ff88", 2);

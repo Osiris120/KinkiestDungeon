@@ -49,14 +49,9 @@ let KDMinimapLabels: Record<string, (_x: number, _y:number) => string> = {
 	'A': (x, y) => {
 		if (KinkyDungeonTilesGet(x + "," + y)?.MMLabel)
 			return TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(x + "," + y).MMLabel);
-		if (KinkyDungeonTilesGet(x + "," + y)?.drunk) {
-			if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
-				return TextGet("KDMinimapLabel_ShrineQuest");
-			return TextGet("KDMinimapLabel_ShrineMana");
-		}
 		if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
-			return TextGet("KDMinimapLabel_ShrineManaQuest");
-		return TextGet("KDMinimapLabel_ShrineMana");},
+			return TextGet("KDMinimapLabel_ShrineQuest");
+		return TextGet("KDMinimapLabel_Shrine");},
 	'=': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_=");},

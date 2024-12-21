@@ -1440,6 +1440,7 @@ function KDPrisonerRescue(name: string, faction: string, enemytypes: string[]): 
 				if (door.tile?.Lock) {
 					door.tile.OGLock = door.tile.Lock;
 					door.tile.Lock = undefined;
+					door.tile.LockSeen = undefined;
 					KDUpdateDoorNavMap();
 				}
 				KinkyDungeonMapSet(door.x, door.y, 'd');

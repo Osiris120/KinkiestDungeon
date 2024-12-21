@@ -654,6 +654,7 @@ interface KDGameDataBase {
 	PersistentNPCCache:			Record<string, number[]>,
 	NamesGenerated:			Record<string, number>,
 	Guilt: number,
+	LastSave: number,
 
 };
 
@@ -902,6 +903,8 @@ let KDGameDataBase: KDGameDataBase = {
 		MP: 0,
 		WP: 0,
 	},
+
+	LastSave: 50,
 };
 
 let KDGameData: KDGameDataBase = Object.assign({}, KDGameDataBase);

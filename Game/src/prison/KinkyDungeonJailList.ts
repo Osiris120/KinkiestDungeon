@@ -56,6 +56,7 @@ let KDJailEvents: Record<string, {weight: (guard: any, xx: any, yy: any) => numb
 			KDGameData.KinkyDungeonPrisonExtraGhostRep = 0;
 
 			if (KinkyDungeonTilesGet((xx-1) + "," + yy)?.Lock && KinkyDungeonTilesGet((xx-1) + "," + yy).Type == "Door") {
+
 				KinkyDungeonTilesGet((xx-1) + "," + yy).OGLock = KinkyDungeonTilesGet((xx-1) + "," + yy).Lock;
 				KinkyDungeonTilesGet((xx-1) + "," + yy).Lock = undefined;
 			}

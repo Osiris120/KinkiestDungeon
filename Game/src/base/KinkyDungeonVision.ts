@@ -899,9 +899,20 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 						if (KDMinimapLabels[KinkyDungeonMapGet(x+xx, y+yy)]) {
 							let label = KDMinimapLabels[KinkyDungeonMapGet(x+xx, y+yy)](x+xx, y+yy);
 							if (label) {
+								if (KinkyDungeonTilesGet((x+xx) + "," + (y+yy))?.Lock) {
+									if (KinkyDungeonTilesGet((x+xx) + "," + (y+yy)).LockSeen) {
+										label = label + TextGet("KDMMLocked");
+									}
+								}
+								if (KinkyDungeonTilesGet((x+xx) + "," + (y+yy))?.Name) {
+									label = label.replace("GDSNM",
+										TextGet("KinkyDungeonShrine"
+											+ KinkyDungeonTilesGet((x+xx) + "," + (y+yy)).Name))
+								}
 								DrawTextFitKDTo2(kdminimap, kdminimapsprites, label, (xx + 0.5)*scale, (yy-0.1)*scale,
-									scale * 32, KDGetTileColor(x + xx, y + yy) || "#ffffff", "#000000", 12, "center",
-									10, 0.9, 2
+									scale * 32, KDGetTileColor(x + xx, y + yy) || "#ffffff", "#111111",
+									Math.max(12, 28 - scale), "center",
+									10, 1.0, 3
 								)
 							}
 

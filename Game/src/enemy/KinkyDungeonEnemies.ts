@@ -3631,6 +3631,10 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 				let jaildoor = KDGetJailDoor(xx, yy).tile;
 				if (jaildoor?.Lock && jaildoor.Type == "Door" && KDShouldUnLock(xx, yy, jaildoor)) {
 					jaildoor.OGLock = jaildoor.Lock;
+
+					if (jaildoor.LockSeen)
+						jaildoor.LockSeen =
+							jaildoor.Lock;
 					jaildoor.Lock = undefined;
 				}
 			}
@@ -6962,6 +6966,9 @@ function KinkyDungeonEnemyTryMove (
 				&& (!KinkyDungeonFlags.has("nojailbreak") || KinkyDungeonTilesGet(enemy.x + "," + enemy.y)?.OGLock)
 				&& KDShouldLock(enemy.x, enemy.y, KinkyDungeonTilesGet(enemy.x + ',' +enemy.y))) {
 				KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Type = "Door";
+				if (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).LockSeen)
+					KinkyDungeonTilesGet(enemy.x + "," + enemy.y).LockSeen =
+						KinkyDungeonTilesGet(x + ',' +y).Lock;
 				KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Lock =  KinkyDungeonTilesGet(enemy.x + "," + enemy.y).OGLock || "Red";
 				KDUpdateDoorNavMap();
 			}
@@ -7011,6 +7018,10 @@ function KinkyDungeonEnemyTryMove (
 				&& KinkyDungeonTilesGet(x + ',' +y).Type == "Door"
 				&& KDShouldUnLock(x, y, KinkyDungeonTilesGet(x + ',' +y))) {
 				KinkyDungeonTilesGet(x + ',' +y).OGLock = KinkyDungeonTilesGet(x + ',' +y).Lock;
+
+				if (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).LockSeen)
+					KinkyDungeonTilesGet(enemy.x + "," + enemy.y).LockSeen =
+						KinkyDungeonTilesGet(x + ',' +y).Lock;
 				KinkyDungeonTilesGet(x + ',' +y).Lock = undefined;
 			}
 			if (dist < 5) {
