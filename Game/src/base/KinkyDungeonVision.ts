@@ -869,7 +869,7 @@ let KDMinimapWTarget = KDMinimapWCurrent;
 let KDMinimapHTarget = KDMinimapHCurrent;
 
 let KDMinimapSoftTextBoostWidth = 3;
-let KDMinimapSoftTextBoostWidthCMult = 0.3;
+let KDMinimapSoftTextBoostWidthCMult = 0.25;
 
 /**
  * @param x
@@ -921,7 +921,7 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 									if (i == 0) continue;
 									yBoost[(i + x+xx) + "," + (y+yy)] = Math.max(curr,
 										(yBoost[(i + x+xx) + "," + (y+yy)] || 0))
-										+ (2 - (Math.abs((2 / (mm + 1)) * i)**2));
+										+ (2 - 2*(Math.abs((i / (mm + 1)))**2));
 								}
 
 								drawLabels.push({xx: xx, yy: yy, label: label});
