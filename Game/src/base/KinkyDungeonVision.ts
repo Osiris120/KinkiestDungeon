@@ -868,6 +868,8 @@ let KDMinimapHCurrent = KDMinimapH*KDMinimapScale;
 let KDMinimapWTarget = KDMinimapWCurrent;
 let KDMinimapHTarget = KDMinimapHCurrent;
 
+let KDMinimapSoftTextBoostWidth = 3;
+let KDMinimapSoftTextBoostWidthCMult = 0.3;
 
 /**
  * @param x
@@ -889,8 +891,10 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 		(w)*scale,
 		(h)*scale);
 	kdminimap.endFill();
+	let yBoost: Record<string, number> = {};
 	if (KDToggles.EnableMinimap || !blackMap) {
 		let allowFog = KDAllowFog();
+		let drawLabels: {xx: number, yy: number, label: string}[] = [];
 		for (let xx = 0; xx < w; xx++)  {
 			for (let yy = 0; yy < h; yy++)  {
 
@@ -909,14 +913,22 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 										TextGet("KinkyDungeonShrine"
 											+ KinkyDungeonTilesGet((x+xx) + "," + (y+yy)).Name))
 								}
-								DrawTextFitKDTo2(kdminimap, kdminimapsprites, label, (xx + 0.5)*scale, (yy-0.1)*scale,
-									scale * 32, KDGetTileColor(x + xx, y + yy) || "#ffffff", "#111111",
-									Math.max(12, 28 - scale), "center",
-									10, 1.0, 3
-								)
-							}
 
+								let curr = 0;//((yBoost[(x+xx) + "," + (y+yy)] || 0))
+								let mm = Math.ceil(KDMinimapSoftTextBoostWidth
+									+ label.length * KDMinimapSoftTextBoostWidthCMult);
+								for (let i = - mm; i <= mm; i++) {
+									if (i == 0) continue;
+									yBoost[(i + x+xx) + "," + (y+yy)] = Math.max(curr,
+										(yBoost[(i + x+xx) + "," + (y+yy)] || 0))
+										+ (2 - (Math.abs((2 / (mm + 1)) * i)**2));
+								}
+
+								drawLabels.push({xx: xx, yy: yy, label: label});
+
+							}
 						}
+
 					}
 
 					if (KDMinimapIcons[KinkyDungeonMapGet(x+xx, y+yy)]) {
@@ -946,6 +958,19 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 				}
 			}
 		}
+
+
+		let fs = Math.max(10, 6+Math.ceil(h * 0.2));
+		for (let d of drawLabels) {
+			DrawTextFitKDTo2(kdminimap, kdminimapsprites, d.label,
+				 (d.xx + 0.5)*scale,
+				  (d.yy-0.5)*scale + fs * (0 - 0.45 * ((yBoost[(x+d.xx) + "," + (y+d.yy)] || 0))),
+				scale * 32, KDGetTileColor(x + d.xx, y + d.yy) || "#ffffff", "#111111",
+				fs, "center",
+				20, 1.0, Math.max(2,  1 + Math.ceil(h * 0.05))
+			);
+		}
+
 		KinkyDungeonSendEvent("drawminimap", {update: KDDrawUpdate, x:x, y:y, w:w, h:h, scale:scale});
 		// Player circle
 		kdminimap.lineStyle(4, 0);
