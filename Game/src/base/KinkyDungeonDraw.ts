@@ -83,6 +83,7 @@ let kdminimap = new PIXI.Graphics();
 kdminimap.x = 500;
 kdminimap.y = 10;
 kdminimap.zIndex = 80;
+kdminimap.sortableChildren = true;
 
 let kdmapboard = new PIXI.Container();
 kdmapboard.zIndex = -2;
