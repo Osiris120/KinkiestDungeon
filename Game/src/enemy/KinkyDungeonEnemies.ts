@@ -6968,8 +6968,9 @@ function KinkyDungeonEnemyTryMove (
 				KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Type = "Door";
 				if (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).LockSeen)
 					KinkyDungeonTilesGet(enemy.x + "," + enemy.y).LockSeen =
-						KinkyDungeonTilesGet(x + ',' +y).Lock;
-				KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Lock =  KinkyDungeonTilesGet(enemy.x + "," + enemy.y).OGLock || "Red";
+						KinkyDungeonTilesGet(enemy.x + ',' +enemy.y).Lock;
+				KinkyDungeonTilesGet(enemy.x + "," + enemy.y).Lock =
+					KinkyDungeonTilesGet(enemy.x + "," + enemy.y).OGLock || "Red";
 				KDUpdateDoorNavMap();
 			}
 			if (dist < 10) {
@@ -7019,8 +7020,8 @@ function KinkyDungeonEnemyTryMove (
 				&& KDShouldUnLock(x, y, KinkyDungeonTilesGet(x + ',' +y))) {
 				KinkyDungeonTilesGet(x + ',' +y).OGLock = KinkyDungeonTilesGet(x + ',' +y).Lock;
 
-				if (KinkyDungeonTilesGet(enemy.x + "," + enemy.y).LockSeen)
-					KinkyDungeonTilesGet(enemy.x + "," + enemy.y).LockSeen =
+				if (KinkyDungeonTilesGet(x + "," + y).LockSeen)
+					KinkyDungeonTilesGet(x + "," + y).LockSeen =
 						KinkyDungeonTilesGet(x + ',' +y).Lock;
 				KinkyDungeonTilesGet(x + ',' +y).Lock = undefined;
 			}

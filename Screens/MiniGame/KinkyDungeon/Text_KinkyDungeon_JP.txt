@@ -1856,7 +1856,7 @@ Continue Last Save
 最後のセーブデータをロード
 Load Saved Game
 ロード
-Save Outfit (overwrites!)
+Save Outfit (overwrite!)
 衣装を上書き保存
 Save Outfit (Clothes Only!)
 衣装をセーブ(衣装のみ)

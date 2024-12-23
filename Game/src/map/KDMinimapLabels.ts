@@ -26,57 +26,71 @@ let KDMinimapIcons: Record<string, (_x: number, _y:number) => string> = {
 };
 
 
-let KDMinimapLabels: Record<string, (_x: number, _y:number) => string> = {
-	'G': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+let KDMinimapLabels: Record<string, (_x: number, _y:number, force: boolean) => string> = {
+	'G': (_x, _y, force) => {if (!force && !KDMMLabels_Shrine) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_Ghost");},
-	'O': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'O': (_x, _y, force) => {if (!force && !KDMMLabels_Shrine) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_Orb");},
-	'S': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'S': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_S");},
-	's': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	's': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_s");},
-	'H': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'H': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : (KinkyDungeonTilesGet(_x + "," + _y).RoomType ? ">" + KDGetDungeonName({
 			mapX: KDGetCurrentLocation().mapX,
 			mapY: KDGetCurrentLocation().mapY,
 			room: KinkyDungeonTilesGet(_x + "," + _y).RoomType
 		}): TextGet("KDMinimapLabel_H"));},
-	'A': (x, y) => {
+	'A': (x, y, force) => {if (!force && !KDMMLabels_Shrine) return "";
 		if (KinkyDungeonTilesGet(x + "," + y)?.MMLabel)
 			return TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(x + "," + y).MMLabel);
 		if (KinkyDungeonTilesGet(x + "," + y)?.Quest)
 			return TextGet("KDMinimapLabel_ShrineQuest");
 		return TextGet("KDMinimapLabel_Shrine");},
-	'=': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'=': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_=");},
-	'+': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'+': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_+");},
-	'D': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'D': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : "";},
-	'd': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'd': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : "";},
-	'B': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'B': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_Bed" + (KinkyDungeonFlags.get("slept") ? "Fail" : ""));},
-	'b': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'b': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : "";},
-	'g': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'g': (_x, _y, force) => {if (!force && !KDMMLabels_Other) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : "";},
-	'M': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'M': (_x, _y, force) => {if (!force && !KDMMLabels_Shrine) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_Tablet");},
-	'C': (_x, _y) => {return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
+	'C': (_x, _y, force) => {if (!force && !KDMMLabels_Chest) return "";
+		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
 		 : TextGet("KDMinimapLabel_C_" + KinkyDungeonTilesGet(_x + "," + _y)?.Loot);},
 }

@@ -35,6 +35,15 @@ TODO Add Cuddle play type
 - Mana cost of spells
 - decay per faction
 
+5.4.24
+- Made minimap more readable and added toggleable filters
+- Fix viewing future journey
+- Fixed cursed plugs being removable through belts
+- Fixed high guilt causing negative security gain when chased
+- Fixed too long autosave interval
+- Added compat to help old saves not be broken by new journey organization
+- Fix issues with minimap labels
+
 5.4.23
 - Added minimap labels (option in UI)
 - Minimap moves with inspection

@@ -2124,6 +2124,19 @@ function KDDrawMMButtons(MinimapX: number, MinimapY: number, zIndex: number) {
 		return true;
 	}, true, MinimapX, starty + ii*spacing, 46, 46, "", KDButtonColor, KinkyDungeonRootDirectory + "UI/Shrink.png", undefined, false, true,
 	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+
+
+
+
+}
+
+function KDDrawRightMMButtons(MinimapX: number, MinimapY: number, zIndex: number, MinimapWidth: number) {
+	let spacing = 40;
+	let starty = MinimapY;
+	let ii = 0;
+	MinimapX += MinimapWidth - 65;
+
+
 	DrawButtonKDEx("minimapLabels", (_bdata) => {
 		KDToggles.MMLabels = !KDToggles.MMLabels;
 		KDRedrawMM = 2;
@@ -2133,14 +2146,45 @@ function KDDrawMMButtons(MinimapX: number, MinimapY: number, zIndex: number) {
 	"", KDButtonColor, KinkyDungeonRootDirectory + "UI/Labels.png",
 	undefined, false, !KDToggles.MMLabels,
 	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+	DrawButtonKDEx("minimapLabelsChest", (_bdata) => {
+		KDMMLabels_Chest = !KDMMLabels_Chest;
+		KDRedrawMM = 2;
+		KDUpdateMinimapTarget(true);
+		return true;
+	}, true, MinimapX, starty + ii*spacing, 46, 46,
+	"", KDButtonColor, KinkyDungeonRootDirectory + "UI/LabelsChest.png",
+	undefined, false, !(KDMMLabels_Chest && KDToggles.MMLabels),
+	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+	DrawButtonKDEx("minimapLabelsShrine", (_bdata) => {
+		KDMMLabels_Shrine = !KDMMLabels_Shrine;
+		KDRedrawMM = 2;
+		KDUpdateMinimapTarget(true);
+		return true;
+	}, true, MinimapX, starty + ii*spacing, 46, 46,
+	"", KDButtonColor, KinkyDungeonRootDirectory + "UI/LabelsShrine.png",
+	undefined, false, !(KDMMLabels_Shrine && KDToggles.MMLabels),
+	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
+	DrawButtonKDEx("minimapLabelsOther", (_bdata) => {
+		KDMMLabels_Other = !KDMMLabels_Other;
+		KDRedrawMM = 2;
+		KDUpdateMinimapTarget(true);
+		return true;
+	}, true, MinimapX, starty + ii*spacing, 46, 46,
+	"", KDButtonColor, KinkyDungeonRootDirectory + "UI/LabelsOther.png",
+	undefined, false, !(KDMMLabels_Other && KDToggles.MMLabels),
+	"#000000", undefined, undefined, {zIndex: zIndex, alpha: 0}); ii++;
 }
 
+let KDMMLabels_Chest = true;
+let KDMMLabels_Shrine = true;
+let KDMMLabels_Other = true;
 
 function KDDrawMinimap(MinimapX: number, MinimapY: number) {
 	if (kdminimap.visible) {
 		let zIndex = (KDExpandMinimap || MouseIn(MinimapX, MinimapY, KDMinimapWidth()+21, KDMinimapHeight()+21)) ? 150 : 90;
 		if (KDExpandMinimap) {
 			KDDrawMMButtons(MinimapX, MinimapY, zIndex);
+			KDDrawRightMMButtons(MinimapX, MinimapY, zIndex, KDMinimapWidth()+21);
 		}
 		kdminimap.zIndex = zIndex - 1;
 

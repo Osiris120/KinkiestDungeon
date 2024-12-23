@@ -3339,6 +3339,8 @@ type KDParticleEmitterData = {
 }
 
 interface KDCursedDef {
+	/** Always removes even if under a chastity belt */
+	alwaysRemoveOnUnlock?: boolean,
 	/** Restraints with this curse are unremovable via shrine */
 	noShrine?: boolean,
 	/** This curse is treated as a type of lock, for display purposes */
@@ -3363,7 +3365,8 @@ interface KDCursedDef {
 	customInfo?: (item: item, Curse?: string) => void,
 	onApply?: (item: item, host?: item) => void,
 	condition: (item: item) => boolean,
-	remove: (item: item, host: item, specialMethod: boolean) => void, events?: KinkyDungeonEvent[]
+	/** Can return a boolean. True means the item is removed, if unlocked */
+	remove: (item: item, host: item, specialMethod: boolean) => boolean | void, events?: KinkyDungeonEvent[]
 }
 
 type KDRestraintVariant = {

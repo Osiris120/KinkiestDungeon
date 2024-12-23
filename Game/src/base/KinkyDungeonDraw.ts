@@ -4,8 +4,8 @@ let KDDebugOverlay = false;
 let CHIBIMOD: PoseMod[] = [
 	{
 		Layer: "HairBack",
-		scale_x: 0.8,
-		scale_y: 0.8,
+		scale_x: 1.0,
+		scale_y: 0.65,
 		rotation_x_anchor: 1190,
 		rotation_y_anchor: 690,
 		offset_x: 1100,
@@ -997,7 +997,8 @@ function KinkyDungeonDrawGame() {
 	else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = 500;
 
 	if (!KDGameData.LastSave) KDGameData.LastSave = KinkyDungeonCurrentTick;
-	if (KinkyDungeonCurrentTick > KDGameData.LastSave + wt && KinkyDungeonStatsChoice.get("saveMode")) {
+	if (KinkyDungeonCurrentTick > KDGameData.LastSave + wt && KinkyDungeonStatsChoice.get("saveMode")
+		&& !KDSaveBusy) {
 		KDGameData.LastSave = KinkyDungeonCurrentTick
 		KinkyDungeonSaveGame();
 	}

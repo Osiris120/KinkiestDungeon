@@ -946,7 +946,7 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 		if (Enemy) {
 			let e = DialogueCreateEnemy(x, y, Enemy.name);
 			if (
-			KDImprisonEnemy(e, noJam, undefined, rest ? {
+			KDImprisonEnemy(e, noJam, "PrisonerJail", rest ? {
 				name: rest.name,
 				lock: lock,
 				id: KinkyDungeonGetItemID(),
@@ -954,7 +954,7 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 			} : undefined)) {
 				e.faction = "Prisoner";
 				e.boundLevel = e.hp * 11;
-				e.prisondialogue = "PrisonerJail";
+				//e.prisondialogue = "PrisonerJail";
 				e.items = [];
 			} else {
 				// Just spawn them with no items

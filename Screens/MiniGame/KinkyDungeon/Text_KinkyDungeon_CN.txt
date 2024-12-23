@@ -1856,7 +1856,7 @@ Continue Last Save
 继续上次游戏
 Load Saved Game
 加载已保存的游戏
-Save Outfit (overwrites!)
+Save Outfit (overwrite!)
 保存服装 ( 覆盖！ )
 Save Outfit (Clothes Only!)
 保存服装 ( 仅衣物！ )

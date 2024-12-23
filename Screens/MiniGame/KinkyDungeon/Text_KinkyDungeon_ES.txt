@@ -1762,7 +1762,7 @@ Continue Last Save
 Continuar último guardado
 ### Load Saved Game
 
-Save Outfit (overwrites!)
+Save Outfit (overwrite!)
 Guardar atuendo (¡sobrescribe!)
 ### Save Outfit (Clothes Only!)
 

@@ -901,9 +901,15 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
 			for (let yy = 0; yy < h; yy++)  {
 
 				if (KDIsInBounds(x+xx, y+yy, 1) && (KDMapExtraData.VisionGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0 || (allowFog && KDMapData.FogGrid[(x+xx) + (y+yy)*KDMapData.GridWidth] > 0))) {
-					if (KDToggles.MMLabels) {
+					let mouseOver = false;/*MouseIn(
+						kdminimap.x + (w/2*scale-scale/2 + (x+xx)*scale)*kdminimap.scale.x,
+						kdminimap.y + (h/2*scale-scale/2 + (y+yy)*scale)*kdminimap.scale.y,
+						scale*kdminimap.scale.x, scale*kdminimap.scale.y);*/
+					if (mouseOver || KDToggles.MMLabels) {
 						if (KDMinimapLabels[KinkyDungeonMapGet(x+xx, y+yy)]) {
-							let label = KDMinimapLabels[KinkyDungeonMapGet(x+xx, y+yy)](x+xx, y+yy);
+							let label = KDMinimapLabels[KinkyDungeonMapGet(x+xx, y+yy)](x+xx, y+yy,
+								mouseOver
+							);
 							if (label) {
 								if (KinkyDungeonTilesGet((x+xx) + "," + (y+yy))?.Lock) {
 									if (KinkyDungeonTilesGet((x+xx) + "," + (y+yy)).LockSeen) {

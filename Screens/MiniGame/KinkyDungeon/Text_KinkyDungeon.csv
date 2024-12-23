@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.23"
+KDVersionStr,"5.4.24"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -999,7 +999,7 @@ GameStart,Start New Game
 KinkyDungeonNewGamePlus,New Game+
 GameContinue,Continue Last Save
 LoadGame,Load Saved Game
-LoadOutfit,Save Outfit (overwrites!)
+LoadOutfit,Save Outfit (overwrite!)
 LoadOutfitClothes,Save Outfit (Clothes Only!)
 GameReturnToMenu,Save Keybindings
 GameReturnToMenu2,Cancel Changes

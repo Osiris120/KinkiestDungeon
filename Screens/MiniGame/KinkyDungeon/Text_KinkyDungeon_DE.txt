@@ -1616,7 +1616,7 @@
 
 ### Load Saved Game
 
-### Save Outfit (overwrites!)
+### Save Outfit (overwrite!)
 
 ### Save Outfit (Clothes Only!)
 

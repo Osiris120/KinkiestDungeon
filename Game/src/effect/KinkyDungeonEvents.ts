@@ -3630,6 +3630,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 						}
 
 						if (!player) return;
+						if (player && !enemy.aware) return;
 						if (KinkyDungeonCheckLOS(
 							enemy,
 							player,
@@ -3716,6 +3717,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 						}
 
 						if (!player) return;
+						if (player && !enemy.aware) return;
 						if (KinkyDungeonCheckLOS(enemy, player,
 								KDistChebyshev(enemy.x - player.x, enemy.y - player.y), dist, false, true, 1)) {
 							let origin = enemy;

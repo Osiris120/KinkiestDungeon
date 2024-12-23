@@ -567,7 +567,11 @@ function KinkyDungeonCurseUnlock(group: string, index: number, Curse: string) {
 	}
 
 	if (KDCurses[Curse]) {
-		KDCurses[Curse].remove(restraint, host, false);
+		unlock = KDCurses[Curse].alwaysRemoveOnUnlock || !KDGroupBlocked(group);
+		let res = KDCurses[Curse].remove(restraint, host, false);
+		if (typeof res === "boolean") {
+			unlock = res;
+		}
 	}
 
 	if (unlock) {

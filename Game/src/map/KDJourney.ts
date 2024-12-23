@@ -502,26 +502,30 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 
 
 	if (allowScroll) {
-		DrawButtonKDEx("journeyUp", (_b) => {
-			if (KDJourneyIndex > 0) KDJourneyIndex -= KDLevelsPerCheckpoint;
-			if (KDJourneyIndex < 0) KDJourneyIndex = 0;
-			return true;
-		}, true, xOffset - 45, 95, 90, 40, "",
-		KDJourneyIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined, undefined, undefined, {
-			hotkey: KDHotkeyToText(KinkyDungeonKey[0]),
-			hotkeyPress: KinkyDungeonKey[0],
-		});
-		DrawButtonKDEx("journeyDown", (_b) => {
-			KDJourneyIndex += KDLevelsPerCheckpoint;
-			if (KDJourneyIndex > KinkyDungeonMaxLevel - KDLevelsPerCheckpoint - 1)
-				KDJourneyIndex = KinkyDungeonMaxLevel - KDLevelsPerCheckpoint - 1;
-			return true;
-		}, true, xOffset - 45, 830, 90, 40, "",
-		KDJourneyIndex < KinkyDungeonMaxLevel - KDLevelsPerCheckpoint - 1 ? "white" : "#888888",
-		KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined, undefined, undefined, {
-			hotkey: KDHotkeyToText(KinkyDungeonKey[2]),
-			hotkeyPress: KinkyDungeonKey[2],
-		});
+		let maxY = Math.floor(Math.max(1, KDGameData.HighestLevelCurrent || 1) / KDLevelsPerCheckpoint)
+			* KDLevelsPerCheckpoint;
+		if (KDJourneyIndex > 0)
+			DrawButtonKDEx("journeyUp", (_b) => {
+				if (KDJourneyIndex > 0) KDJourneyIndex -= KDLevelsPerCheckpoint;
+				if (KDJourneyIndex < 0) KDJourneyIndex = 0;
+				return true;
+			}, true, xOffset - 45, 95, 90, 40, "",
+			KDJourneyIndex > 0 ? "white" : "#888888", KinkyDungeonRootDirectory + "Up.png", undefined, undefined, undefined, undefined, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKey[0]),
+				hotkeyPress: KinkyDungeonKey[0],
+			});
+		if (KDJourneyIndex < maxY)
+			DrawButtonKDEx("journeyDown", (_b) => {
+				KDJourneyIndex += KDLevelsPerCheckpoint;
+				if (KDJourneyIndex > maxY)
+					KDJourneyIndex = maxY;
+				return true;
+			}, true, xOffset - 45, 830, 90, 40, "",
+			KDJourneyIndex < maxY ? "white" : "#888888",
+			KinkyDungeonRootDirectory + "Down.png", undefined, undefined, undefined, undefined, undefined, undefined, {
+				hotkey: KDHotkeyToText(KinkyDungeonKey[2]),
+				hotkeyPress: KinkyDungeonKey[2],
+			});
 
 	} else {
 

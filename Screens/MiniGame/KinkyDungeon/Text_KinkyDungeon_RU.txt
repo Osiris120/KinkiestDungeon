@@ -1818,7 +1818,7 @@ Continue Last Save
 Продолжить с последнего сохранения
 ### Load Saved Game
 
-Save Outfit (overwrites!)
+Save Outfit (overwrite!)
 Подтвердить (Одежда+тело!)
 Save Outfit (Clothes Only!)
 Подтвердить (Только одежда!)

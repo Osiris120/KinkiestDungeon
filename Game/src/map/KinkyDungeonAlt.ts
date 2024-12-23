@@ -1201,6 +1201,8 @@ let KinkyDungeonCreateMapGenType: Record<string, (
 		KinkyDungeonCreateJourneyFloor(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"ShopStart": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
+		let slot = KDGetWorldMapLocation(KDCoordToPoint(KDGetCurrentLocation()));
+		if (slot?.jx) slot.jx = 0; // Fix for old savegames!!!!!
 		KinkyDungeonCreateShopStart(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
 	},
 	"ElevatorRoom": (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {

@@ -1750,7 +1750,7 @@ Continue Last Save
 마지막 저장 시점에서 계속
 ### Load Saved Game
 
-Save Outfit (overwrites!)
+Save Outfit (overwrite!)
 옷 저장(덮어쓰기!)
 ### Save Outfit (Clothes Only!)
 

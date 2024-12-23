@@ -324,7 +324,7 @@ function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, f
 
 			if (KinkyDungeonFlags.has("PlayerCombat"))
 				KinkyDungeonChangeRep("Ghost", -5 * repMult - GuiltAmount*KDGuiltMult);
-			KinkyDungeonChangeRep("Prisoner", 10 * repMult - GuiltAmount*KDGuiltMult);
+			KinkyDungeonChangeRep("Prisoner", 10 * repMult + GuiltAmount*KDGuiltMult);
 
 			KDGameData.Guilt = Math.max(0, (KDGameData.Guilt || 0) - GuiltAmount);
 			KDGameData.PrisonerState = "chase";
