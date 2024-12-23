@@ -231,6 +231,7 @@ let KDModalArea_width = 800;
 let KDModalArea_height = 100;
 let KDModalArea = false;
 let KDConfirmDeleteSave = false;
+let KDConfirmUpload = false;
 
 
 function KDHandleGame() {

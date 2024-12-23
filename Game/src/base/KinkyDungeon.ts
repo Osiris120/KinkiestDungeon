@@ -1165,7 +1165,12 @@ function KinkyDungeonLoad(): void {
 					KDZoomIndex = parsed;
 				}
 			}
-
+			// Initialize Cloud syncing login variables
+			KDCloudLogintype = localStorage.getItem('KDCloudLogintype') ? localStorage.getItem('KDCloudLogintype') : null
+        	KDCloudLogintoken = localStorage.getItem('KDCloudLogintoken') ? localStorage.getItem('KDCloudLogintoken') : null
+        	KDCloudLoginiv = localStorage.getItem('KDCloudLoginiv') ? localStorage.getItem('KDCloudLoginiv') : null
+        	KDDiscordLoginname = localStorage.getItem('KDDiscordLoginname') ? localStorage.getItem('KDDiscordLoginname') : null
+        	KDDiscordLoginpfp = localStorage.getItem('KDDiscordLoginpfp') ? localStorage.getItem('KDDiscordLoginpfp') : null
 
 
 			if (localStorage.getItem('KDLastSaveSlot') == undefined
@@ -1178,6 +1183,14 @@ function KinkyDungeonLoad(): void {
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
 					});
+				}
+				// Cursed inverted saveslots to account for cloud ones
+				// This seemed easier than creating a new indexedDB function separately for clouds
+				for (var i = -1; i > -3; i--) {
+					let num = (i);
+					KinkyDungeonDBLoad(num).then((code) => {
+						loadedcloudsaveslots[(num * -1) - 1] = code;
+					})
 				}
 			}
 
@@ -3163,6 +3176,7 @@ function KinkyDungeonRun() {
 	} else if (KinkyDungeonState == "ModConfig") {
 		KDDrawModConfigs();
 	} else if (KinkyDungeonState == "LoadSlots") {
+		KDUpdateDiscordName()
 		KDDrawLoadMenu();
 	}
 
@@ -4193,6 +4207,7 @@ function KinkyDungeonDBDelete(saveslot: number) {
 let LoadMenuCurrentSave: string;
 let LoadMenuCurrentSlot: number;
 let loadedsaveslots: string[] = [];
+let loadedcloudsaveslots: string[] = [];
 let loadedsaveNames: string[] = [];
 for (let i = 0; i < maxSaveSlots; i++) {
 	loadedsaveslots.push(null);
@@ -4207,8 +4222,16 @@ let KDSaveSlot = 1;
 
 let ModelPreviewLoaded = false;
 let KDDeleteSaveIndex = -1;
+let KDUploadSaveIndex = null;
+let KDLoadCloudGames = false;
 
 let KDSlot0 = "";
+
+let KDCloudLogintype = undefined;
+let KDCloudLogintoken = undefined;
+let KDCloudLoginiv = undefined;
+let KDDiscordLoginname = undefined;
+let KDDiscordLoginpfp = undefined;
 
 // Load Menu function
 function KDDrawLoadMenu() {
@@ -4220,93 +4243,202 @@ function KDDrawLoadMenu() {
 	let CombarXX = 520;
 	// Save slots buttons
 	DrawTextFitKD(TextGet("PlayGameWithCurrentCode"), 1250, YYstart - 70, 1000, "#ffffff", undefined, 40);
-	for (let i = 1; i < 5; i++) {
-		let num = (i);
-		// Slot button
-		DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
-			console.log("Pressed button for save slot " + num);
-			loadedSaveforPreview = null;
-			LoadMenuCurrentSlot = num;
-			LoadMenuCurrentSave = loadedsaveslots[num - 1];
-			loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
+	DrawButtonKDEx(TextGet("KDLocalSaves"), () => {
+        KDLoadCloudGames = false;
+        LoadMenuCurrentSlot = 0;
+        loadedSaveforPreview = null;
+        KDSaveSlot = null;
+    }, true, CombarXX + 50, YYstart - 5, 150, 45, TextGet("KDLocalSaves"), "#ffffff", undefined, "")
+    DrawButtonKDEx(TextGet("KDCloudSaves"), () => {
+        KDLoadCloudGames = true;
+        LoadMenuCurrentSlot = 0;
+        loadedSaveforPreview = null;
+        KDSaveSlot = null;
+    }, true, CombarXX + 210, YYstart - 5, 150, 45, TextGet("KDCloudSaves"), "#ffffff", undefined, "")
+	if (!KDLoadCloudGames) {
+		for (let i = 1; i < 5; i++) {
+			let num = (i);
+			// Slot button
+			DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
+				console.log("Pressed button for save slot " + num);
+				loadedSaveforPreview = null;
+				LoadMenuCurrentSlot = num;
+				LoadMenuCurrentSave = loadedsaveslots[num - 1];
+				loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
 
-			// @ts-ignore
-			if (!loadedSaveforPreview.invalid) {
-				// Dress the KDPreviewModel
-				ModelPreviewLoaded = false;
-				KinkyDungeonDressModelPreview();
-			}
-
-			KDConfirmDeleteSave = false;
-
-			KDSaveSlot = num;
-
-			return true;
-		}, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
-		// Selected arrow if the currently selected slot matches
-		if (num == LoadMenuCurrentSlot) {
-			DrawTextFitKD(`<--`, CombarXX + 430, YY + 35, 50, "#ffffff", undefined, 40);
-		}
-		// Delete button only if the slot has data
-		if (loadedsaveslots[num - 1]) {
-			DrawButtonKDEx("KDDeleteSlotButton" + i, (_b) => {
-				if (!KDConfirmDeleteSave || KDDeleteSaveIndex != num) {
-					KDConfirmDeleteSave = true;
-					KDDeleteSaveIndex = num;
-				} else {
-					KDConfirmDeleteSave = false;
-					KinkyDungeonDBDelete(num);
-					loadedsaveslots[num - 1] = null;
+				// @ts-ignore
+				if (!loadedSaveforPreview.invalid) {
+					// Dress the KDPreviewModel
+					ModelPreviewLoaded = false;
+					KinkyDungeonDressModelPreview();
 				}
+
+				KDConfirmDeleteSave = false;
+
+				KDSaveSlot = num;
+
 				return true;
-			}, true,
-			CombarXX + 15 - ((KDDeleteSaveIndex == num && KDConfirmDeleteSave) ? 100 + (Math.random() < 0.5 ? -1 : 1) : 0),
-			YY - ((KDDeleteSaveIndex == num && KDConfirmDeleteSave) ? (Math.random() < 0.5 ? -1 : 1) : 0),
-			64, 64, (KDDeleteSaveIndex == num && KDConfirmDeleteSave) ? "!" : "", "#ffffff", KinkyDungeonRootDirectory + "UI/X.png",
-			undefined, undefined, undefined, undefined, 36, true, {
-				centered: true,
-			});
-			if ((KDDeleteSaveIndex == num && KDConfirmDeleteSave)) {
-				DrawTextFitKD(
-					TextGet("KDDelete"),
-					CombarXX + 42,
-					YY + 32,
-					120,
-					"#ff5555",
-				);
+			}, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
+			// Selected arrow if the currently selected slot matches
+			if (num == LoadMenuCurrentSlot) {
+				DrawTextFitKD(`<--`, CombarXX + 430, YY + 35, 50, "#ffffff", undefined, 40);
 			}
-		// @ts-ignore
-		} else if (LoadMenuCurrentSlot == -1 && loadedSaveforPreview && !loadedSaveforPreview?.invalid) {
-			// Import button
-			if (
-				DrawButtonKDEx("KDImportSlotButton" + i, (_b) => {
-					if (!loadedsaveslots[num - 1]) {
-						loadedsaveslots[num - 1] = ElementValue("saveInputField");
-						KinkyDungeonDBSave(num, newValue = loadedsaveslots[num - 1]);
-						LoadMenuCurrentSlot = num;
+			// Delete button only if the slot has data
+			if (loadedsaveslots[num - 1]) {
+				DrawButtonKDEx("KDDeleteSlotButton" + i, (_b) => {
+					if (!KDConfirmDeleteSave || KDDeleteSaveIndex != num) {
+						KDConfirmDeleteSave = true;
+						KDDeleteSaveIndex = num;
+					} else {
+						KDConfirmDeleteSave = false;
+						KinkyDungeonDBDelete(num);
+						loadedsaveslots[num - 1] = null;
 					}
 					return true;
 				}, true,
-				CombarXX + 15,
-				YY,
-				64, 64, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Plus.png",
-				undefined, undefined, undefined, undefined, 36, undefined, {
+				CombarXX + 15 - ((KDDeleteSaveIndex == num && KDConfirmDeleteSave) ? 100 + (Math.random() < 0.5 ? -1 : 1) : 0),
+				YY - ((KDDeleteSaveIndex == num && KDConfirmDeleteSave) ? (Math.random() < 0.5 ? -1 : 1) : 0),
+				64, 64, (KDDeleteSaveIndex == num && KDConfirmDeleteSave) ? "!" : "", "#ffffff", KinkyDungeonRootDirectory + "UI/X.png",
+				undefined, undefined, undefined, undefined, 36, true, {
 					centered: true,
-				})
-			) {
-				DrawTextFitKD(
-					TextGet("KDImport"),
-					CombarXX + 5,
-					YY + 32,
-					300,
-					"#ffffff",
-					KDTextGray05,
-					24, "right"
-				);
+				});
+				if ((KDDeleteSaveIndex == num && KDConfirmDeleteSave)) {
+					DrawTextFitKD(
+						TextGet("KDDelete"),
+						CombarXX + 42,
+						YY + 32,
+						120,
+						"#ff5555",
+					);
+				}
+			// @ts-ignore
+			} else if (LoadMenuCurrentSlot == -1 && loadedSaveforPreview && !loadedSaveforPreview?.invalid) {
+				// Import button
+				if (
+					DrawButtonKDEx("KDImportSlotButton" + i, (_b) => {
+						if (!loadedsaveslots[num - 1]) {
+							loadedsaveslots[num - 1] = ElementValue("saveInputField");
+							KinkyDungeonDBSave(num, newValue = loadedsaveslots[num - 1]);
+							LoadMenuCurrentSlot = num;
+						}
+						return true;
+					}, true,
+					CombarXX + 15,
+					YY,
+					64, 64, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Plus.png",
+					undefined, undefined, undefined, undefined, 36, undefined, {
+						centered: true,
+					})
+				) {
+					DrawTextFitKD(
+						TextGet("KDImport"),
+						CombarXX + 5,
+						YY + 32,
+						300,
+						"#ffffff",
+						KDTextGray05,
+						24, "right"
+					);
+				}
 			}
+			YY += YYd;
 		}
-		YY += YYd;
 	}
+	else {
+        for (let i = 1; i < 3; i++) {
+            let num = (i);
+            DrawButtonKDEx(TextGet("KDSaveSlotButton") + num, () => {
+				// Slot button
+                console.log("Pressed button for save slot " + num);
+                loadedSaveforPreview = null;
+                LoadMenuCurrentSlot = num;
+                LoadMenuCurrentSave = loadedcloudsaveslots[num - 1];
+                loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
+				// @ts-ignore
+                if (!loadedSaveforPreview.invalid) {
+					// Dress the KDPreviewModel
+                    ModelPreviewLoaded = false;
+                    KinkyDungeonDressModelPreview();
+                }
+                KDConfirmDeleteSave = false;
+                KDConfirmUpload = false;
+                KDSaveSlot = num;
+                return true;
+            }, true, CombarXX + 160, YY, 240, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
+			// Selected arrow if the currently selected slot matches
+            if (num == LoadMenuCurrentSlot) {
+                DrawTextFitKD(`<--`, CombarXX + 430, YY + 35, 50, "#ffffff", undefined, 40);
+            }
+			// Delete button only if the slot has data
+            if (loadedcloudsaveslots[num - 1]) {
+                DrawButtonKDEx("KDDeleteSlotButton" + i, (_b) => {
+                    if (!KDConfirmDeleteSave || KDDeleteSaveIndex != num) {
+                        KDConfirmDeleteSave = true;
+                        KDDeleteSaveIndex = num;
+                    }
+                    else {
+                        KDConfirmDeleteSave = false;
+                        KinkyDungeonDBDelete(num * -1);
+						// @ts-ignore
+                        localStorage.setItem(`KDCloudLastSync${i - 1}`, 10)
+                        loadedcloudsaveslots[num - 1] = null;
+                    }
+                    return true;
+                }, true, CombarXX + 15 - ((KDDeleteSaveIndex == num && KDConfirmDeleteSave) ? 100 + (Math.random() < 0.5 ? -1 : 1) : 0), YY - ((KDDeleteSaveIndex == num && KDConfirmDeleteSave) ? (Math.random() < 0.5 ? -1 : 1) : 0), 64, 64, (KDDeleteSaveIndex == num && KDConfirmDeleteSave) ? "!" : "", "#ffffff", KinkyDungeonRootDirectory + "UI/X.png", undefined, undefined, undefined, undefined, 36, true, {
+                    centered: true,
+                });
+                if ((KDDeleteSaveIndex == num && KDConfirmDeleteSave)) {
+                    DrawTextFitKD(TextGet("KDDelete"), CombarXX + 42, YY + 32, 120, "#ff5555");
+                }
+                DrawButtonKDEx("KDUploadSlotButton" + i, (_b) => {
+                    if (!KDConfirmUpload || KDUploadSaveIndex != num) {
+                        KDConfirmUpload = true;
+                        KDUploadSaveIndex = num;
+                    }
+                    else {
+                        KDConfirmUpload = false;
+                        KDSaveGameToCloud(num - 1);
+                    }
+                    return true;
+                }, true, CombarXX + 88 - ((KDUploadSaveIndex == num && KDConfirmUpload) ? + (Math.random() < 0.5 ? -1 : 1) : 0), YY - ((KDUploadSaveIndex == num && KDConfirmUpload) ? (Math.random() < 0.5 ? -1 : 1) : 0), 64, 64, (KDUploadSaveIndex == num && KDConfirmUpload) ? "!" : "", "#ffffff", KinkyDungeonRootDirectory + "UI/clouduploadicon.png", undefined, undefined, undefined, undefined, 36, true, {
+                    centered: true,
+                });
+            }
+			// @ts-ignore
+            else if (LoadMenuCurrentSlot == -1 && loadedSaveforPreview && !loadedSaveforPreview?.invalid) {
+                if (DrawButtonKDEx("KDImportSlotButtonCloud" + i, (_b) => {
+                    if (!loadedcloudsaveslots[num - 1]) {
+                        loadedcloudsaveslots[num - 1] = ElementValue("saveInputField");
+                        KinkyDungeonDBSave(num * -1, newValue = loadedcloudsaveslots[num - 1]);
+                        LoadMenuCurrentSlot = num;
+                    }
+                    return true;
+                }, true, CombarXX + 15, YY, 64, 64, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Plus.png", undefined, undefined, undefined, undefined, 36, undefined, {
+                    centered: true,
+                })) {
+                    DrawTextFitKD(TextGet("KDImport"), CombarXX + 5, YY + 32, 300, "#ffffff", KDTextGray05, 24, "right");
+                }
+            }
+            YY += YYd;
+        }
+		// @ts-ignore
+        if ((KDCloudLogintoken != null) && (KDCloudLogintoken != undefined) && (KDCloudLogintoken != "null")) {
+            DrawTextFitKD(TextGet("KDDiscordSigninText"), CombarXX + 250, YY + 120, 240, "#ffffff", undefined, 40);
+            KDDraw(kdcanvas, kdpixisprites, "KDLoginPicture", KDDiscordLoginpfp, CombarXX + 45, YY + 85, 64, 64, undefined, { zIndex: 20 })
+            KDDraw(kdcanvas, kdpixisprites, "KDLoginBorder", "Game/UI/circleborder.png", CombarXX + 45, YY + 85, 64, 64, undefined, { zIndex: 21 })
+
+            DrawButtonKDEx(TextGet("KDSyncFromCloudButton"), () => {
+                KDSyncCloudSaveGame();
+            }, true, CombarXX + 15, YY, 385, 64, TextGet("KDSyncFromCloudButton"), "#ffffff", undefined, "")
+        }
+        else { // Draw a login button so they can login! 
+            DrawButtonKDEx(TextGet("KDLoginButton"), () => {
+                KDLoginDiscord();
+            }, true, CombarXX + 70, YY + 85, 280, 75, TextGet("KDLoginButton"), "#ffffff", undefined, "")
+        }
+        YY += YYd;
+        YY += YYd;
+    }
 	// Pastebox for code
 	ElementPosition("saveInputField", CombarXX + 215, YY + 165, 400, 300);
 	let newValue = ElementValue("saveInputField");
@@ -4736,6 +4868,202 @@ function KDDrawLoadMenu() {
 		LoadMenuCurrentSlot > 0 ? TextGet("KDPlayWithSlot") + LoadMenuCurrentSlot
 	: TextGet("KDPlayWithoutSlot"),
 	(((LoadMenuCurrentSave != undefined) && (LoadMenuCurrentSave != "")) ? "#ffffff" : "#888888"), "");
+}
+
+function KDUpdateDiscordName() {
+    // Set login name
+    if ((KDDiscordLoginname != "null") && (KDDiscordLoginname != null)) {
+        addTextKey('KDDiscordSigninText', TextGet(`KDDiscordSigninText_loggedin`).replace("NAME", KDDiscordLoginname))
+    }
+    else {
+        addTextKey('KDDiscordSigninText', TextGet(`KDDiscordSigninText_none`))
+    }
+}
+
+function KDLoginDiscord() {
+    let stateoutput = (localStorage.getItem('cloudsyncstate') != "null") ? localStorage.getItem('cloudsyncstate') : "no-id"
+
+    if (stateoutput == "no-id") {
+		// @ts-ignore
+        localStorage.setItem('cloudsyncstate', Math.floor(Math.random() * Math.random() * (1000000000000 * Math.random())))
+        stateoutput = localStorage.getItem('cloudsyncstate');
+        // Clear the state value after 15 minutes, same as what the remote server respects. 
+        setTimeout(() => {
+            localStorage.setItem('cloudsyncstate', null)
+        }, 900000)
+    }
+
+    let req = new XMLHttpRequest()
+    console.log(`opening https://gettoken-830808080683.us-central1.run.app?state=${stateoutput}`)
+    req.open('GET', `https://gettoken-830808080683.us-central1.run.app?state=${stateoutput}`)
+    let resp = req.send()
+
+    // Set up event listener for the request
+    req.onload = (data) => {
+        let respdata = undefined;
+        try {
+			// @ts-ignore
+            respdata = JSON.parse(data.target.response);
+            if (respdata.oauthlink) {
+                let childWindow = open(respdata.oauthlink);
+                let newinterval = setInterval(() => {
+                    if (childWindow.closed) {
+                        clearInterval(newinterval)
+                        console.log(`Window was closed!`)
+                        let reqnew = new XMLHttpRequest()
+                        reqnew.open('GET', `https://gettoken-830808080683.us-central1.run.app?state=${stateoutput}`)
+                        let respnew = reqnew.send()
+
+                        reqnew.onload = (data) => {
+                            //if (data.statusCode == 201) {
+                                console.log(data);
+								// @ts-ignore
+                                let respdata = JSON.parse(data.target.response)
+                                if (respdata.content) {
+                                    console.log(respdata.content)
+                                }
+                                else if (respdata.id != undefined) {
+                                    localStorage.setItem('KDDiscordLoginname', respdata.name);
+                                    localStorage.setItem('KDDiscordLoginpfp', respdata.pfp);
+                                    localStorage.setItem('KDCloudLogintoken', respdata.id);
+                                    localStorage.setItem('KDCloudLoginiv', respdata.iv);
+                                    localStorage.setItem('KDCloudLogintype', "Discord")
+									// @ts-ignore
+                                    localStorage.setItem('KDCloudLastLogin', Date.now()) // if this is older than 30 days, we'll invalidate on opening
+                                    KDDiscordLoginname = respdata.name
+                                    KDDiscordLoginpfp = respdata.pfp
+                                    KDCloudLogintoken = respdata.id
+                                    KDCloudLoginiv = respdata.iv
+                                    KDCloudLogintype = "Discord"
+                                    KDUpdateDiscordName()
+                                }
+                            //}
+                        }
+                    }
+                }, 100)
+            }
+            else {
+                // This shouldn't happen. 
+                console.log("It happened.")
+                localStorage.setItem('KDDiscordLoginname', respdata.name);
+                localStorage.setItem('KDDiscordLoginpfp', respdata.pfp);
+                localStorage.setItem('KDCloudLogintoken', respdata.id);
+                localStorage.setItem('KDCloudLoginiv', respdata.iv);
+                localStorage.setItem('KDCloudLogintype', "Discord")
+				// @ts-ignore
+                localStorage.setItem('KDCloudLastLogin', Date.now()) // if this is older than 30 days, we'll invalidate on opening
+                KDDiscordLoginname = respdata.name
+                KDDiscordLoginpfp = respdata.pfp
+                KDCloudLogintoken = respdata.id
+                KDCloudLoginiv = respdata.iv
+                KDCloudLogintype = "Discord"
+                KDUpdateDiscordName()
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+}
+
+function KDLogoutDiscord() {
+    localStorage.setItem('KDDiscordLoginname', null);
+    localStorage.setItem('KDDiscordLoginpfp', null);
+    localStorage.setItem('KDCloudLogintoken', null);
+    localStorage.setItem('KDCloudLoginiv', null);
+    localStorage.setItem('KDCloudLogintype', null)
+	// @ts-ignore
+    localStorage.setItem('KDCloudLastLogin', Date.now()) // if this is older than 30 days, we'll invalidate on opening
+    KDCloudLogintype = localStorage.getItem('KDCloudLogintype') ? localStorage.getItem('KDCloudLogintype') : null
+    KDCloudLogintoken = localStorage.getItem('KDCloudLogintoken') ? localStorage.getItem('KDCloudLogintoken') : null
+    KDCloudLoginiv = localStorage.getItem('KDCloudLoginiv') ? localStorage.getItem('KDCloudLoginiv') : null
+    KDDiscordLoginname = localStorage.getItem('KDDiscordLoginname') ? localStorage.getItem('KDDiscordLoginname') : null
+    KDDiscordLoginpfp = localStorage.getItem('KDDiscordLoginpfp') ? localStorage.getItem('KDDiscordLoginpfp') : null
+    KDUpdateDiscordName()
+}
+
+// Save data should be committed to the indexedDB by this point. We want to grab that. 
+function KDSaveGameToCloud(saveslot) {
+    let updateslot = ((saveslot * -1) - 1) // Should output -1 or -2, if we supply 0 or 1.
+    KinkyDungeonDBLoad(updateslot).then((res) => {
+        // res should be a save data string. Lets make sure it's not null. 
+        try {
+            if (res) {
+                const url = `https://savegame-830808080683.us-central1.run.app?id=${KDCloudLogintoken}&iv=${KDCloudLoginiv}`;
+    
+                let jsonbody = JSON.stringify({
+                    saveslot: saveslot,
+                    data: res
+                })
+
+                console.log(jsonbody)
+                
+                fetch(url, {
+                    method: 'POST',
+                    body: jsonbody,
+                    headers: {}
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.content) { // There was an error while saving
+                        if (data.content == 'Data received and stored') {
+                            console.log("Successfully saved")
+                            KDSendMusicToast(TextGet("KDCloudSavedGameSuccess").replace("SLOTNUM", saveslot + 1));
+                        }
+                        else {
+                            console.log("Problem while saving")
+                            console.log(data);
+                        }
+                    }
+                    else {
+                        console.log(data);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            }
+        }
+        catch(err) {
+            console.log(err);
+        }
+    })
+}
+
+function KDSyncCloudSaveGame() {
+    for (let i = 0; i < 2; i++) {
+        try {
+            let updateslot = ((i * -1) - 1) // Should output -1 or -2, if we supply 0 or 1.
+            let KDCloudLastSync = localStorage.getItem(`KDCloudLastSync${i}`) ? localStorage.getItem(`KDCloudLastSync${i}`) : 0
+            let lastsaveddate = (new Date(KDCloudLastSync)).valueOf()
+
+            const url = `https://retrievegame-830808080683.us-central1.run.app?id=${KDCloudLogintoken}&iv=${KDCloudLoginiv}&timestamp=${lastsaveddate}&saveslot=${i}`;
+            
+            fetch(url, {
+                method: 'GET',
+                //body: jsonbody,
+                headers: {}
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.content) {
+                    console.log(data);
+                }
+                else { // This should always be a save game with data and timestamp properties. 
+                    console.log(data);
+                    KinkyDungeonDBSave(updateslot, data.data);
+                    loadedcloudsaveslots[i] = data.data
+                    localStorage.setItem(`KDCloudLastSync${i}`, data.timestamp)
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
 }
 
 function KinkyDungeonDressModelPreview() {
