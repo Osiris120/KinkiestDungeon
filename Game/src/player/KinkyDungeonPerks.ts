@@ -304,7 +304,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"Escapee": {category: "Kinky", id: 32, cost: 2.5, block: ["Dragon"]},
 	"Dragon": {category: "Kinky", id: 33, cost: -1, block: ["Escapee"]},
 	"Dodge": {category: "Combat", id: 18, cost: 2.5, block: ["Distracted"]},
-	"Distracted": {category: "Combat", id: 19, cost: -10, block: ["Dodge"]},
+	"Distracted": {category: "Combat", id: 19, cost: -1.5, block: ["Dodge"]},
 	"Submissive": {startPriority: 0, category: "Kinky", id: 10, cost: 0},
 	"Wanted": {category: "Kinky", id: 11, cost: -0.5},
 	"QuickDraw": {category: "Combat", id: 55, cost: 2.5, block: ["Disorganized"]},
@@ -1123,7 +1123,7 @@ function drawHorizList(list: any[], x: number, y: number, w: number, h: number, 
  * @param existing
  * @param [debuff]
  */
-function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean): string[] {
+function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean, threshold: number = 1.6): string[] {
 	let poscandidate = null;
 	let poscandidates = [];
 	let singlepointcandidates = [];
@@ -1164,7 +1164,7 @@ function KDGetRandomPerks(existing: Record<string, boolean>, debuff?: boolean): 
 
 	let netcost = debuff ? 0 : KDGetPerkCost(poscandidate[1]);
 	let perks = poscandidate ? [poscandidate[0]] : [];
-	if (debuff || KDGetPerkCost(poscandidate[1]) > 1) {
+	if (debuff || KDGetPerkCost(poscandidate[1]) > threshold) {
 		negcandidates = negcandidates.filter((p) => {
 			return (KinkyDungeonCanPickStat(p[0], 999))
 				&& (debuff || !KDPerkBlocked(p[0], poscandidate[0]))
