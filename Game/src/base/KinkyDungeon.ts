@@ -2680,7 +2680,8 @@ function KinkyDungeonRun() {
 		if (!tooltip) {
 			let points = KinkyDungeonGetStatPoints(KinkyDungeonStatsChoice);
 			//let hardmode = points >= KDHardModeThresh ? TextGet("KDHardMode") : "";
-			DrawTextKD(TextGet("KinkyDungeonStatPoints").replace("AMOUNT", "" + 5*points), 1000, 150, "#ffffff", KDTextGray2);
+			DrawTextKD(TextGet("KinkyDungeonStatPoints").replace("AMOUNT",
+				"" + Math.round(KDPERKCOSTMULT*points)), 1000, 150, "#ffffff", KDTextGray2);
 		}
 
 		let minPoints = 0;

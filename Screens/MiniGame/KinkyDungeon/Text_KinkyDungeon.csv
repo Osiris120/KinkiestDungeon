@@ -8007,9 +8007,9 @@ KinkyDungeonPerksMode1,Extra
 KinkyDungeonPerksMode2,Less
 KinkyDungeonPerksMode3,Much Less
 KinkyDungeonPerksModeDesc0,"No pain, no gain."
-KinkyDungeonPerksModeDesc1,"Gain 50 extra perk points, to give you a false sense of security."
-KinkyDungeonPerksModeDesc2,"Lose 50 perk points, just to keep things interesting."
-KinkyDungeonPerksModeDesc3,"Lose 120 perk points, making things very interesting."
+KinkyDungeonPerksModeDesc1,"Gain 20 extra perk points, to give you a false sense of security."
+KinkyDungeonPerksModeDesc2,"Lose 20 perk points, just to keep things interesting."
+KinkyDungeonPerksModeDesc3,"Lose 50 perk points, making things very interesting."
 
 
 KDPerkProgressionMode,"Perk Progression Mode:"
