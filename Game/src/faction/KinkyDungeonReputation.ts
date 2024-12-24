@@ -661,7 +661,7 @@ function KinkyDungeonUpdateAngel(_delta: number): void {
 				let x = parseInt(t[0].split(',')[0]);
 				let y = parseInt(t[0].split(',')[1]);
 				if (x && y) {
-					if (t[0] == KinkyDungeonTargetTile) {
+					if (t[0] == KinkyDungeonTargetTileLocation) {
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
 					}

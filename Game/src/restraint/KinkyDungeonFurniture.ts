@@ -56,6 +56,38 @@ let KDFurniture = {
 			// Nothing yet TODO add special features like dressing the player
 		}
 	},
+	"IceBase": {
+		floor: "Brickwork",
+		sprite: "IceBase",
+		restraintTag: "iceEncase",
+		tickFunction: (_delta) => {
+			// Nothing
+		}
+	},
+	"VineBase": {
+		floor: "RubbleLooted",
+		sprite: "VineBase",
+		restraintTag: "vineSuspend",
+		tickFunction: (_delta) => {
+			// Nothing yet TODO add special features like dressing the player
+		}
+	},
+	"ShadowBase": {
+		floor: "Brickwork",
+		sprite: "ShadowBase",
+		restraintTag: "shadowBall",
+		tickFunction: (_delta) => {
+			// Nothing yet
+		}
+	},
+	"CrystalBase": {
+		floor: "RubbleLooted",
+		sprite: "CrystalBase",
+		restraintTag: "crystalEncase",
+		tickFunction: (_delta) => {
+			// Nothing yet
+		}
+	},
 	"Bed": {
 		floor: "Floor",
 		sprite: "Bed",

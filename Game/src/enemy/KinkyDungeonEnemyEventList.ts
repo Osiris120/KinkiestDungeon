@@ -1219,21 +1219,12 @@ function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: stri
 					KinkyDungeonSetFlag(t, guardDelay + 60);
 				}
 			}
-			let rest = KinkyDungeonGetRestraint(
-				{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
-				(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
-				true,
-				"",
-				true,
-				false,
-				false);
-			if (rest) {
-				KinkyDungeonAddRestraintIfWeaker(rest, 0, true);
-				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
-				KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y);
-			}
-			else return false;
 
+			let res = KDApplyFurnitureRestraint(nearestfurniture.x, nearestfurniture.y, KDPlayer());
+			if (!res) {
+				return false;
+			}
+			KinkyDungeonMakeNoise(10, nearestfurniture.x, nearestfurniture.y);
 		}
 
 		KDResetAllAggro();
@@ -1276,4 +1267,32 @@ function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0,
 		}
 
 	}
+}
+
+function KDApplyFurnitureRestraint(x: number, y: number, player: entity) {
+	let tile = KinkyDungeonTilesGet(x + "," + y);
+	if (!tile) return false;
+	let type = tile ? tile.Furniture : undefined;
+	if (!type) return false;
+	let furn = KDFurniture[type];
+	if (!furn) return false;
+
+	if (player == KDPlayer()) {
+		let rest = KinkyDungeonGetRestraint(
+			{tags: [furn.restraintTag]}, MiniGameKinkyDungeonLevel,
+			(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+			true,
+			"",
+			true,
+			false,
+			false);
+		if (rest) {
+			KinkyDungeonAddRestraintIfWeaker(rest, 0, true);
+			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Trap.ogg");
+
+			return true;
+		}
+		else return false;
+	}
+	return false;
 }

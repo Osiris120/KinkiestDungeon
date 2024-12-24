@@ -3128,7 +3128,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		visionRadius: 7, blindSight: 2.5, maxhp: 40, armor: 3, minLevel:12, weight:2.5, movePoints: 3, attackPoints: 2, attack: "SpellMeleeWillBindEffect",
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
 		terrainTags: {"nature": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
-		ondeath: [{type: "summon", enemy: "DragonGirlPoison", range: 0.5, count: 1, sameid: true, strict: false}],
+		ondeath: [{type: "summon", enemy: "DragonGirlPoison", range: 0.5, count: 1, sameid: true, storeTrueForm: true, strict: false}],
 		Defeat: {
 			furnitureTags: [
 				{tags: ["vineRestraints"], count: 12},
@@ -3246,7 +3246,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "Crystal",
 
 		terrainTags: {"crystalline": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
-		ondeath: [{type: "summon", enemy: "DragonGirlCrystal", range: 0.5, sameid: true, count: 1, strict: false}],
+		ondeath: [{type: "summon", enemy: "DragonGirlCrystal", range: 0.5, sameid: true, storeTrueForm: true, count: 1, strict: false}],
 		creationScript: "DragonLair",
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
@@ -3348,7 +3348,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackWidth: 3, attackRange: 1, tilesMinRange: 1, power: 5, dmgType: "slash",
 
 		terrainTags: {"shadow": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
-		ondeath: [{type: "summon", enemy: "DragonGirlShadow", range: 0.5, sameid: true, count: 1, strict: false}],
+		ondeath: [{type: "summon", enemy: "DragonGirlShadow", range: 0.5, sameid: true, storeTrueForm: true, count: 1, strict: false}],
 		creationScript: "DragonLair",
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
@@ -3464,7 +3464,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "Cracked", time: 1400, power: 2, chance: 0.02, aoe: 0.5},
 		],
 		terrainTags: {"ice": 4, "lair": -100, "dragonqueen": 50}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
-		ondeath: [{type: "summon", enemy: "DragonGirlIce", range: 0.5, sameid: true, count: 1, strict: false}],
+		ondeath: [{type: "summon", enemy: "DragonGirlIce", range: 0.5, sameid: true, storeTrueForm: true, count: 1, strict: false}],
 		creationScript: "DragonLair",
 		dropTable: [{name: "Gold", amountMin: 200, amountMax: 300, weight: 15}]},
 
@@ -5804,6 +5804,13 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 					f.CustomNameColor = enemy.CustomNameColor;
 					f.created = enemy.created;
 					f.homeCoord = enemy.homeCoord;
+					if (o.storeTrueForm) {
+						let NPC = KDGetPersistentNPC(f.id);
+						if (NPC) {
+							NPC.trueEntity = enemy;
+						}
+					}
+
 				} else
 					KDProcessCustomPatron(en.Enemy, en, 0, false);
 

@@ -58,7 +58,7 @@
 },
 "Game/Bullets/ArrowLongbow.png":
 {
-	"frame": {"x":1627,"y":84,"w":54,"h":17},
+	"frame": {"x":1083,"y":1006,"w":54,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":10,"y":26,"w":54,"h":17},
@@ -66,7 +66,7 @@
 },
 "Game/Bullets/ArrowNormal.png":
 {
-	"frame": {"x":1627,"y":84,"w":54,"h":17},
+	"frame": {"x":1083,"y":1006,"w":54,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":10,"y":26,"w":54,"h":17},
@@ -74,7 +74,7 @@
 },
 "Game/Bullets/ArrowRecurve.png":
 {
-	"frame": {"x":1627,"y":84,"w":54,"h":17},
+	"frame": {"x":1083,"y":1006,"w":54,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":10,"y":26,"w":54,"h":17},
@@ -114,7 +114,7 @@
 },
 "Game/Bullets/CursedArrow.png":
 {
-	"frame": {"x":1083,"y":1006,"w":54,"h":17},
+	"frame": {"x":1139,"y":1006,"w":54,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":10,"y":26,"w":54,"h":17},
@@ -170,7 +170,7 @@
 },
 "Game/Bullets/ElfArrow.png":
 {
-	"frame": {"x":1139,"y":1006,"w":54,"h":17},
+	"frame": {"x":1195,"y":1006,"w":54,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":10,"y":26,"w":54,"h":17},
@@ -538,7 +538,7 @@
 },
 "Game/EffectTiles/PressurePlate.png":
 {
-	"frame": {"x":2000,"y":647,"w":34,"h":13},
+	"frame": {"x":397,"y":1471,"w":34,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":19,"y":45,"w":34,"h":13},
@@ -546,7 +546,7 @@
 },
 "Game/EffectTiles/PressurePlateHold.png":
 {
-	"frame": {"x":393,"y":1471,"w":26,"h":13},
+	"frame": {"x":467,"y":1471,"w":26,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":23,"y":45,"w":26,"h":13},
@@ -554,7 +554,7 @@
 },
 "Game/EffectTiles/PressurePlateOneUse.png":
 {
-	"frame": {"x":2000,"y":647,"w":34,"h":13},
+	"frame": {"x":397,"y":1471,"w":34,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":19,"y":45,"w":34,"h":13},
@@ -826,10 +826,18 @@
 },
 "Game/FloorGeneric/SarcophagusGone.png":
 {
-	"frame": {"x":1195,"y":1006,"w":52,"h":13},
+	"frame": {"x":1962,"y":647,"w":52,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":10,"y":36,"w":52,"h":13},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/FloorGeneric/ShadowBase.png":
+{
+	"frame": {"x":1627,"y":84,"w":57,"h":12},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":52,"w":57,"h":12},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/GFX/Talisman.png":
@@ -850,7 +858,7 @@
 },
 "Game/HideTrue.png":
 {
-	"frame": {"x":1962,"y":647,"w":36,"h":13},
+	"frame": {"x":359,"y":1471,"w":36,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":9,"y":25,"w":36,"h":13},
@@ -894,6 +902,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":26,"w":65,"h":21},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Items/Group/ItemMouth.png":
+{
+	"frame": {"x":2016,"y":647,"w":30,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":39,"y":47,"w":30,"h":14},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/Hammer.png":
@@ -1258,7 +1274,7 @@
 },
 "Game/Poses/BlushNeutral.png":
 {
-	"frame": {"x":359,"y":1471,"w":32,"h":13},
+	"frame": {"x":433,"y":1471,"w":32,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":17,"w":32,"h":13},
@@ -1274,7 +1290,7 @@
 },
 "Game/Poses/Eyes2Heart.png":
 {
-	"frame": {"x":465,"y":1471,"w":13,"h":13},
+	"frame": {"x":304,"y":1883,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":28,"y":15,"w":13,"h":13},
@@ -1282,7 +1298,7 @@
 },
 "Game/Poses/Eyes2Neutral.png":
 {
-	"frame": {"x":1683,"y":84,"w":12,"h":15},
+	"frame": {"x":305,"y":1898,"w":12,"h":15},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":27,"y":14,"w":12,"h":15},
@@ -1290,7 +1306,7 @@
 },
 "Game/Poses/EyesHeart.png":
 {
-	"frame": {"x":465,"y":1471,"w":13,"h":13},
+	"frame": {"x":304,"y":1883,"w":13,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":15,"w":13,"h":13},
@@ -1306,7 +1322,7 @@
 },
 "Game/Poses/MouthPout.png":
 {
-	"frame": {"x":444,"y":1471,"w":19,"h":11},
+	"frame": {"x":1,"y":2036,"w":19,"h":11},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":12,"y":26,"w":19,"h":11},
@@ -1386,7 +1402,7 @@
 },
 "Game/Spells/CanUpcast.png":
 {
-	"frame": {"x":421,"y":1471,"w":21,"h":13},
+	"frame": {"x":495,"y":1471,"w":21,"h":13},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":1,"w":21,"h":13},
@@ -1482,7 +1498,7 @@
 },
 "Game/UI/key.png":
 {
-	"frame": {"x":1249,"y":1006,"w":33,"h":17},
+	"frame": {"x":1251,"y":1006,"w":33,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":9,"w":33,"h":17},
@@ -1498,7 +1514,7 @@
 },
 "Game/UI/RallyWill.png":
 {
-	"frame": {"x":2036,"y":647,"w":10,"h":14},
+	"frame": {"x":1624,"y":1926,"w":10,"h":14},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":0,"w":10,"h":14},
@@ -1584,6 +1600,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:214bfcb48bf637c7c319a1c47c8a0cb0:8bc9927f78c153d10a5006aa1a798f63:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ceedff364ab808c66a03926bd80d8e47:d2273f3902476f3870a54ae5cd19cf2b:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

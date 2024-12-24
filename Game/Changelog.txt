@@ -35,6 +35,9 @@ TODO Add Cuddle play type
 - Mana cost of spells
 - decay per faction
 
+5.4.25
+- Added 'furniture' zones for the player and dragon prisoners in the dragon lairs
+
 5.4.24
 - Made minimap more readable and added toggleable filters
 - Fix viewing future journey

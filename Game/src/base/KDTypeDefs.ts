@@ -621,6 +621,8 @@ interface floorParams {
 	factionList?: string[];
 	/** This code is run after a worldgen */
 	worldGenCode?: (coord: WorldCoord) => void;
+	/** This code is run before gencriteria*/
+	beforeWorldGenCode?: (coord: WorldCoord) => void;
 	tagModifiers?: Record<string, number>;
 	globalTags?: Record<string, boolean>;
 	shadowColor?: number,
@@ -2842,6 +2844,9 @@ type KDSideRoom = {
 	wandertags: Record<string, number>,
 	/** Runs AFTER the main's worldGenScript  */
 	worldGenScript?: (coord: WorldCoord) => void,
+	/** Runs BEFORE the main's gencriteria  */
+	beforeWorldGenScript?: (coord: WorldCoord) => void,
+
 }
 
 
@@ -2866,6 +2871,9 @@ type MapMod = {
 	altRoom: string,
 	/** Runs AFTER the worldgenscript */
 	worldGenScript?: (coord: WorldCoord) => void,
+
+	/** This code is run before gencriteria*/
+	beforeWorldGenScript?: (coord: WorldCoord) => void;
 	escapeMethod?: string,
 	noPersistentPrisoners?: boolean,
 	noPersistentSpawn?: boolean,

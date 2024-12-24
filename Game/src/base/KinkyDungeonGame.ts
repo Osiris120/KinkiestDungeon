@@ -1441,6 +1441,18 @@ function KinkyDungeonCreateMap (
 
 
 
+		if (MapParams.beforeWorldGenCode) MapParams.beforeWorldGenCode(KDGetCurrentLocation());
+		if (altType?.beforeWorldGenScript) altType?.beforeWorldGenScript(KDGetCurrentLocation());
+		if (mapMod?.beforeWorldGenScript) mapMod?.beforeWorldGenScript(KDGetCurrentLocation());
+		if (KDGetWorldMapLocation(KDCoordToPoint(KDGetCurrentLocation()))?.main == KDGameData.RoomType) {
+			// Run the sideroom WorldGenScripts
+			let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
+			let sideRooms = journeySlot?.SideRooms || [];
+			for (let sr of sideRooms) {
+				if (KDSideRooms[sr]?.beforeWorldGenScript) KDSideRooms[sr].beforeWorldGenScript(KDGetCurrentLocation());
+			}
+		}
+
 
 		if (KDTileToTest || ((KinkyDungeonNearestJailPoint(1, 1) || (altType && altType.nojail)) && (!altType || KDStageBossGenerated || !bossRules)
 			&& ((!altType?.genCriteria && KDCheckMainPath()) || altType.genCriteria(iterations)))) iterations = maxIter;

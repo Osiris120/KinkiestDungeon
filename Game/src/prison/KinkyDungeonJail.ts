@@ -1298,6 +1298,7 @@ function KDCreateDragonLair(dragon: entity, lairType: string, slot: KDWorldSlot)
 }
 
 function KDAddDefeatRestraints(enemy: entity, allowFurniture: boolean) {
+	let packed = KDUnPackEnemy(enemy);
 	if (enemy.Enemy?.Defeat?.furnitureTags) {
 		for (let tagGroup of enemy.Enemy.Defeat.furnitureTags) {
 			for (let i = 0; i < tagGroup.count; i++) {
@@ -1321,6 +1322,7 @@ function KDAddDefeatRestraints(enemy: entity, allowFurniture: boolean) {
 			}
 		}
 	}
+	if (packed) KDPackEnemy(enemy);
 }
 
 function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
@@ -1350,14 +1352,25 @@ function KDEnterDragonLair(dragon: entity, lairType: string = "DragonLair") {
 	if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/StoneDoor_Close.ogg");
 
 	KDMapData.KeysHeld = 0;
-	let p = KinkyDungeonGetNearbyPoint(KDMapData.GridWidth/2, KDMapData.GridHeight/2, true);
 
-	KDMovePlayer(p.x || KDMapData.GridWidth/2, p.y || KDMapData.GridHeight/2, false);
+	let furnitureApplied = false;
+	if (KDMapData.JailPoints.length > 0) {
+		let nearestjail = KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y,
+			["furniture"]);
+		if (nearestjail) {
+			KDMovePlayer(nearestjail.x, nearestjail.y, false);
+			furnitureApplied = KDApplyFurnitureRestraint(nearestjail.x, nearestjail.y, KDPlayer());
+		} else {
+			let p = KinkyDungeonGetNearbyPoint(KDMapData.GridWidth/2, KDMapData.GridHeight/2, true);
+			KDMovePlayer(p.x || KDMapData.GridWidth/2, p.y || KDMapData.GridHeight/2, false);
+		}
+	}
+
 
 	KinkyDungeonLoseJailKeys();
 	KDResetAllAggro();
 
-	KDAddDefeatRestraints(dragon, true);
+	KDAddDefeatRestraints(dragon, !furnitureApplied);
 
 	KinkyDungeonSaveGame();
 }

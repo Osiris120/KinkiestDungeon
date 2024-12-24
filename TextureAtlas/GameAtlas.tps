@@ -1578,6 +1578,7 @@
             <key type="filename">../Game/FloorGeneric/CrackNone.png</key>
             <key type="filename">../Game/FloorGeneric/CrackRight.png</key>
             <key type="filename">../Game/FloorGeneric/CrackVert.png</key>
+            <key type="filename">../Game/FloorGeneric/CrystalBase.png</key>
             <key type="filename">../Game/FloorGeneric/DimensionRift.png</key>
             <key type="filename">../Game/FloorGeneric/DisplayEgyptian.png</key>
             <key type="filename">../Game/FloorGeneric/DisplayStand.png</key>
@@ -1607,6 +1608,7 @@
             <key type="filename">../Game/FloorGeneric/HappyGas.png</key>
             <key type="filename">../Game/FloorGeneric/HookHigh.png</key>
             <key type="filename">../Game/FloorGeneric/HookLow.png</key>
+            <key type="filename">../Game/FloorGeneric/IceBase.png</key>
             <key type="filename">../Game/FloorGeneric/Invis.png</key>
             <key type="filename">../Game/FloorGeneric/Lantern.png</key>
             <key type="filename">../Game/FloorGeneric/LatexPipe.png</key>
@@ -1622,6 +1624,7 @@
             <key type="filename">../Game/FloorGeneric/Sarcophagus.png</key>
             <key type="filename">../Game/FloorGeneric/SarcophagusGone.png</key>
             <key type="filename">../Game/FloorGeneric/Scrap.png</key>
+            <key type="filename">../Game/FloorGeneric/ShadowBase.png</key>
             <key type="filename">../Game/FloorGeneric/Signal/AutoLock.png</key>
             <key type="filename">../Game/FloorGeneric/Signal/Button.png</key>
             <key type="filename">../Game/FloorGeneric/SpiralStairsDown.png</key>
@@ -1644,6 +1647,7 @@
             <key type="filename">../Game/FloorGeneric/Torch.png</key>
             <key type="filename">../Game/FloorGeneric/TorchOrb.png</key>
             <key type="filename">../Game/FloorGeneric/Viewscreen.png</key>
+            <key type="filename">../Game/FloorGeneric/VineBase.png</key>
             <key type="filename">../Game/FloorGeneric/Water.png</key>
             <key type="filename">../Game/FloorGeneric/WaterFoam.png</key>
             <key type="filename">../Game/Floors/Floor_DemonTransition/Barrel.png</key>

@@ -12,6 +12,8 @@ interface KDMapEnemyList {
 	minfloor?: number,
 	maxfloor?: number,
 	/** Scenery */
+	furniture?: Record<string, number>,
+	/** Scenery */
 	obstacles: Record<string, number>,
 	/** Weighted average for close party */
 	party?: Record<string, number>,
@@ -197,6 +199,8 @@ interface AltType {
 	constantX?: boolean,
 	/** Type of Prison state machine */
 	prisonType?: string,
+	/** Runs BEFORE the gencriteria */
+	beforeWorldGenScript?: (coord: WorldCoord) => void,
 	/** Runs AFTER the worldgenscript */
 	worldGenScript?: (coord: WorldCoord) => void,
 	/** Faction that owns the Jail*/

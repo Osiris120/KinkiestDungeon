@@ -3,6 +3,8 @@ interface KDPersistentNPC {
 	Name: string,
 	id: number,
 	entity: entity,
+	/** the 'true form' of an NPC, stored and used only by scripts */
+	trueEntity?: entity,
 	mapX: number, mapY: number,
 	room: string,
 	/** NPC is captured by enemies and therefore cannot be affected */

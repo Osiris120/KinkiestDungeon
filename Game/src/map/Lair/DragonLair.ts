@@ -41,6 +41,38 @@ alts.DragonLair = {
 
 	/** hehe */
 	keepItems: true,
+
+	beforeWorldGenScript: (coord) => {
+		let dtype = KDGetDragonType();
+		if (dtype?.furniture) {
+			// Place furniture
+			let furnitureSlots = KDGetDragonLairFurnitureZones(3.5, 3.5, 4,
+				KDMapData.GridWidth/2,
+				KDMapData.GridHeight/2
+			);
+			for (let fs of furnitureSlots) {
+				let Ftype = KDGetByWeight(dtype.furniture);
+				if (Ftype) {
+					KinkyDungeonMapSetForce(fs.x, fs.y, 'L');
+					KinkyDungeonTilesSet((fs.x) + "," + (fs.y), {
+						Type: "Furniture",
+						Furniture: Ftype,
+					});
+					KDMapData.JailPoints.push({x: fs.x, y: fs.y, type: "furniture", radius: 1});
+				} else {
+					if (KDRandom() < 0.33) KinkyDungeonMapSetForce(fs.x, fs.y, 'R');
+				}
+			}
+
+		}
+	},
+	genCriteria: (iteration) => {
+		let dtype = KDGetDragonType();
+		if (dtype?.furniture) {
+			return KDMapData.JailPoints.length > 0 && KDCheckMainPath();
+		}
+		return KDCheckMainPath();
+	},
 };
 
 
@@ -56,6 +88,10 @@ let KDDragonList: KDMapEnemyList[] = [
 			SoulCrystalActive: 0.01,
 			CuffedGirl: 0.1,
 		},
+		furniture: {
+			"": 0.25,
+			CrystalBase: 0.5,
+		},
 	},
 	{
 		enemy: "DragonQueenPoison",
@@ -66,6 +102,10 @@ let KDDragonList: KDMapEnemyList[] = [
 			GiantMushroom: 0.25,
 			VinePlant: 0.1,
 		},
+		furniture: {
+			"": 0.25,
+			VineBase: 0.5,
+		},
 	},
 	{
 		enemy: "DragonQueenIce",
@@ -73,6 +113,10 @@ let KDDragonList: KDMapEnemyList[] = [
 		faction: "DragonQueen",
 		obstacles: {
 			BarricadeIce: 1.0,
+		},
+		furniture: {
+			"": 0.25,
+			IceBase: 0.5,
 		},
 	},
 	{
@@ -84,6 +128,10 @@ let KDDragonList: KDMapEnemyList[] = [
 			BarricadeShadow: 1.0,
 			BarricadeShadowMetal: 0.25,
 		},
+		furniture: {
+			"": 0.25,
+			ShadowBase: 0.5,
+		},
 	},
 	{
 		enemy: "DragonGirlCrystal",
@@ -92,6 +140,12 @@ let KDDragonList: KDMapEnemyList[] = [
 		obstacles: {
 			ChaoticCrystal: 1.0,
 			ChaoticCrystalActive: 0.25,
+		},
+		furniture: {
+			"": 0.5,
+			Cage: 0.05,
+			DisplayStand: 0.05,
+			CrystalBase: 0.25,
 		},
 	},
 	{
@@ -102,6 +156,12 @@ let KDDragonList: KDMapEnemyList[] = [
 			BarricadeVine: 0.5,
 			GiantMushroom: 0.5,
 		},
+		furniture: {
+			"": 0.5,
+			Cage: 0.05,
+			DisplayStand: 0.05,
+			VineBase: 0.25,
+		},
 	},
 	{
 		enemy: "DragonGirlIce",
@@ -109,6 +169,12 @@ let KDDragonList: KDMapEnemyList[] = [
 		faction: "DragonQueen",
 		obstacles: {
 			BarricadeIce: 0.75,
+		},
+		furniture: {
+			"": 0.5,
+			Cage: 0.05,
+			DisplayStand: 0.05,
+			IceBase: 0.25,
 		},
 	},
 	{
@@ -119,6 +185,12 @@ let KDDragonList: KDMapEnemyList[] = [
 			BarricadeShadow: 0.75,
 			BarricadeShadowMetal: 0.25,
 		},
+		furniture: {
+			"": 0.5,
+			Cage: 0.05,
+			DisplayStand: 0.05,
+			ShadowBase: 0.25,
+		},
 	},
 
 
@@ -127,7 +199,6 @@ let KDDragonList: KDMapEnemyList[] = [
 
 KinkyDungeonCreateMapGenType.DragonLair = (POI, VisitedRooms, width, height, openness, density, hallopenness, data) => {
 	KDMapgenCreateCave(POI, VisitedRooms, width, height, openness, density, hallopenness, data);
-
 };
 
 function KDMapgenCreateCave(POI, VisitedRooms, width, height, openness, density, hallopenness, data) {
@@ -297,4 +368,54 @@ function KDMapgenCreateCave(POI, VisitedRooms, width, height, openness, density,
 	}
 
 
+}
+
+function KDGetDragonLairFurnitureZones(spacingX: number, spacingY: number, minDist: number, xCenter: number, yCenter: number) : KDPoint[] {
+	let points: Record<string, KDPoint> = {};
+	let doF = (x, y) => {
+		if (minDist && KDistEuclidean(x - xCenter, y - yCenter) <= minDist) return;
+		let succ = true;
+		for (let p of [{x: -1, y: 0},{x: 1, y: 0},{x: 0, y: -1},{x: 0, y: 1},]) {
+			if (!KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x + p.x, y + p.y))
+				|| points[(x + p.x) + ',' + (y + p.y)]) {
+				succ = false;
+				break;
+			}
+		}
+		if (succ) {
+			points[(x) + ',' + (y)] = {x: x, y: y};
+		}
+	};
+	for (let x = 1; x < KDMapData.GridWidth - 1; x = Math.ceil(x + KDRandom() * spacingX)) {
+		for (let y = 1; y < KDMapData.GridHeight - 1; y++) {
+			doF(x, y);
+		}
+	}
+	for (let x = 1; x < KDMapData.GridWidth - 1; x++) {
+		for (let y = 1; y < KDMapData.GridHeight - 1; y = Math.ceil(y + KDRandom() * spacingY)) {
+			doF(x, y);
+		}
+	}
+
+	return Object.values(points);
+}
+
+function KDGetDragonType(): KDMapEnemyList {
+	// Get the dragon type
+	let lair = KDPersonalAlt[KDGameData.RoomType];
+	if (lair?.OwnerNPC) {
+		let NPC = KDGetPersistentNPC(lair.OwnerNPC);
+		if (NPC.entity) {
+			let type = (NPC?.trueEntity ? KinkyDungeonGetEnemyByName(NPC.trueEntity?.Enemy)
+			: undefined) || KinkyDungeonGetEnemyByName(NPC.entity?.Enemy)
+			if (type?.name) {
+				let dtype = KDDragonList.find((d) => {
+					return d.enemy == type?.name;
+				});
+				return dtype;
+			}
+		}
+
+	}
+	return null;
 }
