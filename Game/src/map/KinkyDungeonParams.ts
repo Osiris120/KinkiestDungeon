@@ -1153,6 +1153,114 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Type: "Leather", Weight: 15},
 			{Type: "Will", Weight: 13},]
 	},
+	"DragonLair":{//DragonLair (used for music only atm)
+		successorNegative: {
+			jng: 0.3,
+			cry: 0.7,
+		},
+		successorPositive: {
+			jng: 0.4,
+			cav: 0.4,
+			cry: 0.4,
+		},
+		successorSame: {
+			cav: 0.8,
+			cry: 0.2,
+		},
+		color: "#536a60",
+		"background" : "MagicSchoolEscape",
+		"openness" : 6,
+		"density" : 2,
+		"crackchance" : 0.11,
+		"barchance" : 0.03,
+		"brightness" : 5,
+		"chargerchance": 1.0,
+		"litchargerchance": 1.0,
+		"chargercount": 4,
+		"chestcount" : 10,
+		"shrinecount" : 9,
+		"shrinechance" : 0.8,
+		"ghostchance" : 0.5,
+		"doorchance" : 0.05,
+		"nodoorchance" : 0.5,
+		"doorlockchance" : -0.05,
+		"trapchance" : 0.5,
+		"grateChance" : 0.7,
+		"rubblechance" : 0.45,
+		"brickchance" : 0.2,
+		torchchance: 0.3,
+		torchchanceboring: 0.1,
+
+		music: {
+			"Dragon Lair.ogg": 15,
+			"AREA7-LOSTTEMPLE-AMBIENT.ogg": 10,
+		},
+
+		shadowColor: 0x080311,
+
+
+		"floodchance" : 0.35,
+		"cacheInterval" : 1,
+		// Side routes have more high-value loot
+		"forbiddenChance" : 1.0,
+		"forbiddenGreaterChance" : 0.45,
+
+		tagModifiers: {
+			"open": 4,
+			"jungle": 0.5,
+			"cave": 2.0,
+			"dragon": 1.5,
+			"cavern": 7.0,
+			"urban": 0.5,
+			"door": 0.5,
+			"library": 0.0,
+		},
+
+		"setpieces": [
+			{Type: "Altar", Weight: 6},
+			{Type: "SmallAltar", Weight: 20},
+			{Type: "GuardedChest", Weight: 30},
+			{Type: "LargeGuardedChest", Weight: 20},
+			{Type: "Storage", Weight: 2},
+		],
+
+		"traps": [
+			{Name: "CustomSleepDart", Level: 0, Power: 1, Weight: 20},
+			{Name: "SpecificSpell", Spell: "TrapRopeStrong", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapSCloud", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpecificSpell", Spell: "TrapSlimeWeak", Level: 0, Power: 3, Weight: 30},
+			{Name: "SpawnEnemies", Enemy: "Bandit", strict: true, Level: 0, Power: 3, Weight: 10},
+
+			{Name: "SpawnEnemies", Enemy: "Gag", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemMouthFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "Cuffs", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimBlindfold", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemHeadFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimYoke", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimArmbinder", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimHarness", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemTorsoFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimChastity", strict: true, Level: 0, Power: 2, Weight: 10, arousalMode: true, filterTag: "ItemPelvisFull", filterBackup: "Mushy"},
+			{Name: "SpawnEnemies", Enemy: "AnimStraitjacket", strict: true, Level: 0, Power: 2, Weight: 10, filterTag: "ItemArmsFull", filterBackup: "Mushy"},
+		],
+
+		"min_width" : 4,
+		"max_width" : 6,
+		"min_height" : 4,
+		"max_height" : 8,
+
+		factionList: ["Bandit", "Elemental", "Dragon"],
+
+		enemyTags: ["mushroom", "dragon", "earth", "dragonqueen", "dragongirl", "explosiveBarrel"],
+		"defeat_outfit": "Prisoner",
+		"shrines": [
+			{Type: "Latex", Weight: 6},
+			{Type: "Commerce", Weight: 0},
+			{Type: "Elements", Weight: 10},
+			{Type: "Conjure", Weight: 3},
+			{Type: "Illusion", Weight: 3},
+			{Type: "Metal", Weight: 3},
+			{Type: "Rope", Weight: 5},
+			{Type: "Leather", Weight: 15},
+			{Type: "Will", Weight: 13},]
+	},
 	"ore":{//DungeonName8,-Orrery-
 		successorNegative: {
 			jng: 0.6,

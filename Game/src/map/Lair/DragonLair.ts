@@ -13,7 +13,7 @@ alts.DragonLair = {
 	},
 	genType: "DragonLair",
 	skin: "cav",
-	musicParams: "cav",
+	musicParams: "DragonLair",
 	lightParams: "cav",
 	useGenParams: "cav",
 	spawns: false,
