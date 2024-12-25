@@ -71,7 +71,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 
 		if (KDMapMods[MapMod]?.escapeMethod)
 			slot.EscapeMethod = KDMapMods[MapMod]?.escapeMethod;
-		else KDGetRandomEscapeMethod(slot.RoomType, slot.MapMod, y, slot.Faction);
+		else slot.EscapeMethod = KDGetRandomEscapeMethod(slot.RoomType, slot.MapMod, y, slot.Faction);
 
 		if (y > 1) {
 			let sideTop = KDGetSideRoom(slot, true, slot.SideRooms);

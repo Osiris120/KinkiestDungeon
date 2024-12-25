@@ -147,8 +147,8 @@ function KDGetEscapeMethod(_level: number) {
 }
 
 function KDGetRandomEscapeMethod(RoomType: string, MapMod: string, Level: number, Faction: string) {
-	let choices: Record<string, number>;
-	for (let method in KinkyDungeonEscapeTypes) {
+	let choices: Record<string, number> = {};
+	for (let method of Object.keys(KinkyDungeonEscapeTypes)) {
 		let weight = KinkyDungeonEscapeTypes[method].filterRandom ?
 			KinkyDungeonEscapeTypes[method].filterRandom(RoomType, MapMod, Level, Faction)
 			: 1;
