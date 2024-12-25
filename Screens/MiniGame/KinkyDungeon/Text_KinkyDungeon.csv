@@ -8056,16 +8056,16 @@ KinkyDungeonSexyPlugsFront,Allow Front Plugs
 KinkyDungeonSexyPlugs,Allow Rear Plugs
 KinkyDungeonSexyPiercings,Allow Piercings
 
-KinkyDungeonClassMode0,Fighter
-KinkyDungeonClassModeDesc0,"Start with 150 willpower and Iron Will, good at melee and blocking attacks."
-KinkyDungeonClassMode1,Rogue
-KinkyDungeonClassModeDesc1,"Start with 150 stamina and Sneaky, good at stealth and evasive gameplay."
-KinkyDungeonClassMode2,Wizard
-KinkyDungeonClassModeDesc2,"Start with 150 mana and Magical Sight, good at casting spells."
-KinkyDungeonClassMode3,Peasant
-KinkyDungeonClassModeDesc3,"Start with nothing to your name. For those who want a challenge."
-KinkyDungeonClassMode4,Trainee
-KinkyDungeonClassModeDesc4,"You are a mage, but haven't finished your formal 'training'. Requires Aroused mode."
+KinkyDungeonClassModeFighter,Fighter
+KinkyDungeonClassModeDescFighter,"Start with 150 willpower and Iron Will, good at melee and blocking attacks."
+KinkyDungeonClassModeRogue,Rogue
+KinkyDungeonClassModeDescRogue,"Start with 150 stamina and Sneaky, good at stealth and evasive gameplay."
+KinkyDungeonClassModeMage,Wizard
+KinkyDungeonClassModeDescMage,"Start with 150 mana and Magical Sight, good at casting spells."
+KinkyDungeonClassModePeasant,Peasant
+KinkyDungeonClassModeDescPeasant,"Start with nothing to your name. For those who want a challenge."
+KinkyDungeonClassModeTrainee,Trainee
+KinkyDungeonClassModeDescTrainee,"You are a mage, but haven't finished your formal 'training'. Requires Aroused mode."
 
 KDRandomMode,"Spell Choice:"
 
