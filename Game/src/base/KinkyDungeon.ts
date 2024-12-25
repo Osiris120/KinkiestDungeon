@@ -541,7 +541,6 @@ interface KDGameDataBase {
 	CurrentDialogMsgData:		Record<string, string>,
 	CurrentDialogMsgValue:		Record<string, number>,
 	AlertTimer:			number,
-	RespawnQueue:			{enemy: string, faction: string}[],
 	HeartTaken:			boolean,
 	CurrentVibration:		KinkyVibration,
 	Edged:				boolean,
@@ -842,7 +841,6 @@ let KDGameDataBase: KDGameDataBase = {
 	CurrentDialogMsgID: -1,
 
 	ConfirmAttack: false,
-	RespawnQueue: [],
 	HeartTaken: false,
 
 	CurrentVibration: null,

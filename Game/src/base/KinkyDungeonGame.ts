@@ -176,6 +176,8 @@ function KDDefaultMapData(mapX: number, mapY: number, RoomType: string = "", Map
 		Checkpoint: MiniGameKinkyDungeonCheckpoint,
 		Title: "",
 
+		RespawnQueue: [],
+
 		mapX: mapX,
 		mapY: mapY,
 
@@ -394,6 +396,8 @@ function KinkyDungeonNewGamePlus(): void {
 
 	KDGameData.ElevatorsUnlocked = {};
 
+	KDDeletedIDs = {};
+
 	for (let t of KDResertNGTags) {
 		if (KinkyDungeonFlags.has(t))
 			KinkyDungeonFlags.delete(t);
@@ -439,7 +443,6 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 	}
 
 	KinkyDungeonMessageLog = [];
-	KDGameData.RespawnQueue = [];
 
 	KDInitFactions(true);
 	CharacterReleaseTotal(KinkyDungeonPlayer);

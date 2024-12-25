@@ -2910,8 +2910,8 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
 
 			} else if (!enemy.summoned && !KDIsImmobile(enemy) && !enemy.Enemy.tags.temporary
 				&& !KDGetPersistentNPC(enemy.id)) {
-				if (!KDGameData.RespawnQueue) KDGameData.RespawnQueue = [];
-				KDGameData.RespawnQueue.push({enemy: enemy.Enemy.name, faction: KDGetFaction(enemy)});
+				if (!KDMapData.RespawnQueue) KDMapData.RespawnQueue = [];
+				KDMapData.RespawnQueue.push({enemy: enemy.Enemy.name, faction: KDGetFaction(enemy)});
 			}
 		}
 

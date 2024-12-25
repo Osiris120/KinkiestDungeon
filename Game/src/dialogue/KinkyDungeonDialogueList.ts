@@ -2109,7 +2109,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					}
 					KDMapData.Entities = [];
 					KDCommanderRoles = new Map();
-					KDGameData.RespawnQueue = [];
+					KDMapData.RespawnQueue = [];
 					KDUpdateEnemyCache = true;
 					let e = DialogueCreateEnemy(door.x, door.y, "ShopkeeperRescue");
 					e.allied = 9999;

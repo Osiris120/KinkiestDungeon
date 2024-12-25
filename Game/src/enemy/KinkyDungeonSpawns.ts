@@ -400,9 +400,9 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 	let baseChance = ((KDGameData.SleepTurns > 0 && (KinkyDungeonStatStamina > KinkyDungeonStatStaminaMax - 10 * KinkyDungeonStatStaminaRegenSleep || KDGameData.SleepTurns < 11)) ? 0.05 : 0.0005) * Math.sqrt(Math.max(1, effLevel)) * (1 + KinkyDungeonTotalSleepTurns / sleepTurnsSpeedMult);
 
 	let Queue = [];
-	if (KDGameData.RespawnQueue && KDGameData.RespawnQueue.length > 0) {
-		let firstEnemy = KDGameData.RespawnQueue[Math.floor(KDRandom() * KDGameData.RespawnQueue.length)];
-		for (let e of KDGameData.RespawnQueue) {
+	if (KDMapData.RespawnQueue && KDMapData.RespawnQueue.length > 0) {
+		let firstEnemy = KDMapData.RespawnQueue[Math.floor(KDRandom() * KDMapData.RespawnQueue.length)];
+		for (let e of KDMapData.RespawnQueue) {
 			if (KDFactionRelation(e.faction, firstEnemy.faction) >= 0.1) {
 				Queue.push(e);
 			}
@@ -482,8 +482,9 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 							miniboss = true; // Adds miniboss as a tag
 						}
 
-
-						KDGameData.RespawnQueue.splice(KDGameData.RespawnQueue.indexOf(qq), 1);
+						let ii = KDMapData.RespawnQueue.indexOf(qq);
+						if (ii >= 0)
+							KDMapData.RespawnQueue.splice(ii, 1);
 						Queue.splice(Queue.indexOf(qq), 1);
 
 						if (Enemy.summon) {

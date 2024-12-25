@@ -2741,6 +2741,7 @@ interface RepopQueueData {
 }
 
 interface KDMapDataType {
+	RespawnQueue: {faction: string, enemy: string}[],
 	SpecialAreas: {x: number, y: number, radius: number}[],
 	mapX: number,
 	mapY: number,
