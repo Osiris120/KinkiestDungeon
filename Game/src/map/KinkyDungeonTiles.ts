@@ -205,6 +205,11 @@ function KinkyDungeonHandleStairs(toTile: string, suppressCheckPoint?: boolean) 
 }
 
 function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: boolean, willing: boolean) {
+
+	// Prune inventory
+	KDPruneInventoryVariants(true, true, true);
+
+
 	KDExploreStairs(x, y);
 	let toTile = KinkyDungeonMapGet(x, y);
 	let tile = KinkyDungeonTilesGet(x + "," + y);

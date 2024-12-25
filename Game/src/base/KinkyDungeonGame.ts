@@ -5782,10 +5782,6 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 		KDGameData.InventoryAction = "";
 	}
 
-	// Prune when time advances
-	if (delta > 0) {
-		KDPruneInventoryVariants(true, true, true);
-	}
 
 	if (KDRestraintDebugLog.length > 100) {
 		KDRestraintDebugLog = KDRestraintDebugLog.splice(0, 10);
