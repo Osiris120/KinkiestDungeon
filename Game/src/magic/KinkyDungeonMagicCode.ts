@@ -732,6 +732,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					bind: 0,
 				}, false, true, undefined, undefined, entity);
 				en.hp = 0;
+				KinkyDungeonSetEnemyFlag(en, "cap", 2);
 
 				let doll = {
 					summoned: true,
@@ -780,6 +781,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					bind: 0,
 				}, false, true, undefined, undefined, entity);
 				en.hp = 0;
+				KinkyDungeonSetEnemyFlag(en, "cap", 2);
 
 				let doll = {
 					summoned: true,
@@ -865,6 +867,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					if (_miscast) return "Miscast";
 					KDChangeMana(spell.name, "spell", "cast", -cost);
 					s.hp = 0;
+					KinkyDungeonSetEnemyFlag(s, "cap", 2);
 					let Enemy = KinkyDungeonGetEnemyByName("AllyDoll");
 					let doll = {
 						summoned: true,

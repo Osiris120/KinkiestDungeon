@@ -921,18 +921,19 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 		noJam = true;
 		e.x = x;
 		e.y = y;
-		KDAddEntity(e);
+		e = KDAddEntity(e);
 
 		e.faction = "Prisoner";
 		e.boundLevel = e.hp * 11;
 		e.items = [];
 
-		KDImprisonEnemy(e, noJam, undefined, rest ? {
+		KDImprisonEnemy(e, noJam, "PrisonerJail", rest ? {
 			name: rest.name,
 			lock: lock,
 			id: KinkyDungeonGetItemID(),
 			faction: KDGetMainFaction() || "Jail",
 		} : undefined);
+
 	} else if (!persistentOnly) {
 		Enemy = KinkyDungeonGetEnemy(["imprisonable",
 			"ropeAnger", "ropeRage",
@@ -1167,5 +1168,6 @@ function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "Prisoner
 	e.playerdmg = undefined;
 	if (e.hp <= 0.5) e.hp = 0.51;
 	KDSetToExpectedBondage(e, 1);
+	if (KDIsNPCPersistent(e.id)) KDUpdatePersistentNPC(e.id);
 	return true;
 }

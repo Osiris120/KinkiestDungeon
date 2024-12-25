@@ -343,7 +343,7 @@ function KinkyDungeonCallGuard(x: number, y: number, _noTransgress: boolean, nor
 			if (mainFaction == "Player") guard.faction = "Enemy";
 			KinkyDungeonSetEnemyFlag(guard, "norep", -1);
 			KDGameData.JailGuard = guard.id;
-			KDAddEntity(guard);
+			guard = KDAddEntity(guard);
 			return guard;
 		} else {
 			KinkyDungeonJailGuard().gx = point.x;
@@ -461,8 +461,8 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 						let X = point.x;
 						let Y = point.y;
 						EnemiesSummoned.push(Enemy.name);
-						let e = {tracking: true, summoned: true, faction: qq ? qq.faction : undefined, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, shield: Enemy.shield, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
-						KDAddEntity(e);
+						let e: entity = {tracking: true, summoned: true, faction: qq ? qq.faction : undefined, Enemy: Enemy, id: KinkyDungeonGetEnemyID(), x:X, y:Y, shield: Enemy.shield, hp: (Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
+						e = KDAddEntity(e);
 						KinkyDungeonSetEnemyFlag(e, "NoFollow", -1);
 						let shop = KinkyDungeonGetShopForEnemy(e);
 						if (shop) {
@@ -541,7 +541,7 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 					if (point) {
 						e.x = point.x;
 						e.y = point.y;
-						KDAddEntity(e);
+						e = KDAddEntity(e);
 						KDGameData.Hunters.push(e.id);
 					}
 				}

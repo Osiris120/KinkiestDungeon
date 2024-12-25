@@ -1551,7 +1551,7 @@ function KinkyDungeonCreateMap (
 
 
 			for (let e of allies) {
-				KDAddEntity(e, true);
+				e = KDAddEntity(e, true);
 				let point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, true, true);
 				if (!point) point = KinkyDungeonGetNearbyPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, true, undefined, undefined, true);
 				if (!point) point = {x: KinkyDungeonPlayerEntity.x, y: KinkyDungeonPlayerEntity.y};
@@ -2159,7 +2159,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 					});
 				}
 
-				KDAddEntity(e);
+				e = KDAddEntity(e);
 				if (noPlay) {
 					KinkyDungeonSetEnemyFlag(e, "noPlay", -1);
 				}

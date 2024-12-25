@@ -5358,6 +5358,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 						};
 						KDAddEntity(doll);
 						en.hp = 0;
+						KinkyDungeonSetEnemyFlag(en, "cap", 2);
 					}
 				}
 			}

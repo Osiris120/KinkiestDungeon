@@ -645,6 +645,7 @@ function KDWanderPersistentNPCs(coord: WorldCoord, searchEntities: boolean): num
 	return spawned;
 }
 
+/** Captured by NOT PLAYER */
 function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string, faction: string): KDPersistentNPC[] {
 	let altType = KDGetAltType(Level, MapMod, RoomType);
 	let mapFaction = faction || altType?.faction || KDMapMods[MapMod ? MapMod : KDGameData.MapMod]?.faction;
@@ -652,7 +653,7 @@ function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string
 	if (!mapFaction) mapFaction = ""; // Default to no faction
 
 	let capturedPersistent = Object.values(KDPersistentNPCs).filter((npc) => {
-		return npc.captured && !npc.jailed;
+		return npc.captured && !npc.jailed && !npc.collect;
 	});
 	let eligible: KDPersistentNPC[] = [];
 	let eligible_faction: KDPersistentNPC[] = [];

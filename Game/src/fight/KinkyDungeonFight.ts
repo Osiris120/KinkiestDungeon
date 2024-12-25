@@ -2504,7 +2504,7 @@ function KinkyDungeonSummonEnemy (
 					e.teleporting = teleportTime;
 					e.teleportingmax = teleportTime;
 				}
-				KDAddEntity(e);
+				e = KDAddEntity(e);
 				if (!noBullet) {
 					let spell = KinkyDungeonFindSpell("Summon", true);
 					if (spell) {

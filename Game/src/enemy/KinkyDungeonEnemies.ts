@@ -2807,7 +2807,8 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
 	if (enemy.hp <= 0 && !KDIsImprisoned(enemy)) {
 		let noRepHit = false;
 		KinkyDungeonSendEvent("death", {enemy: enemy});
-		if (((KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0) || KDEntityHasFlag(enemy, "cap")) && KDHostile(enemy) && !enemy.Enemy.tags.nocapture && enemy.playerdmg) {
+		if (((KDBoundEffects(enemy) > 3 && enemy.boundLevel > 0) || KDEntityHasFlag(enemy, "cap"))
+			&& KDHostile(enemy) && !enemy.Enemy.tags.nocapture && enemy.playerdmg) {
 			KDDropStolenItems(enemy, mapData);
 			if (!KinkyDungeonCapture(enemy)) noRepHit = true;
 		} else {
@@ -2907,7 +2908,8 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
 					}
 				}
 
-			} else if (!enemy.summoned && !KDIsImmobile(enemy) && !enemy.Enemy.tags.temporary) {
+			} else if (!enemy.summoned && !KDIsImmobile(enemy) && !enemy.Enemy.tags.temporary
+				&& !KDGetPersistentNPC(enemy.id)) {
 				if (!KDGameData.RespawnQueue) KDGameData.RespawnQueue = [];
 				KDGameData.RespawnQueue.push({enemy: enemy.Enemy.name, faction: KDGetFaction(enemy)});
 			}
@@ -4123,7 +4125,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 						KDBreakTether(KinkyDungeonPlayerEntity);
 					}
 
-					if (enemy.Enemy.Sound.idleSoundName) {
+					if (enemy.Enemy.Sound?.idleSoundName) {
 						KDEnemyAddSound(enemy, enemy.Enemy.Sound?.baseAmount || KDDefaultEnemyIdleSound,
 							undefined,
 							TextGet(enemy.Enemy.Sound?.idleSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.idleSoundName : undefined),
@@ -8995,6 +8997,7 @@ function KDAddToParty(enemy: entity): boolean {
  */
 function KDAddToCapturedParty(enemy: entity): boolean {
 	if (!KDCapturable(enemy)) return false;
+	if (KDHostile(enemy)) return false;
 	if (KDIsInCapturedParty(enemy)) return false;
 	// Add a copy to the party
 	KDGameData.CapturedParty.push(JSON.parse(JSON.stringify(enemy)));
@@ -9226,7 +9229,7 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData?: KDMapDataType, move
 				);
 
 				if (nextExit) {
-					KDAddEntity(enemy, false, false, true,
+					enemy = KDAddEntity(enemy, false, false, true,
 						mdata
 					);
 					failPlaceThru = false;

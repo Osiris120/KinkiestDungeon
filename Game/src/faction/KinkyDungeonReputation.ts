@@ -672,19 +672,3 @@ function KinkyDungeonUpdateAngel(_delta: number): void {
 		}
 	}
 }
-
-/**
- * @param x
- * @param y
- */
-function KinkyDungeonCreateAngel(x: number, y: number) {
-	let point = KinkyDungeonGetNearbyPoint(x, y, true, undefined, true);
-	if (point) {
-		let Enemy = KinkyDungeonGetEnemyByName("Angel");
-		let angel = {summoned: true, Enemy: Enemy, id: KinkyDungeonGetEnemyID(),
-			x:point.x, y:point.y, gx: point.x, gy: point.y,
-			hp: (Enemy && Enemy.startinghp) ? Enemy.startinghp : Enemy.maxhp, movePoints: 0, attackPoints: 0};
-		KDGameData.KinkyDungeonAngel = angel.id;
-		KDAddEntity(angel);
-	}
-}
