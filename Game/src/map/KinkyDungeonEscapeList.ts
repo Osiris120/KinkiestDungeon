@@ -124,8 +124,16 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 			KinkyDungeonSendEvent("calcEscapeWolfServerTarget", data);
 			KDMapData.KillTarget = data.enemy;
 			KDMapData.KillQuota = data.number;
+
+			let maxBoringness = Math.max(...KDMapExtraData.Boringness);
 			for (let i = 0; i < data.number; i++) {
-				let point = KinkyDungeonGetRandomEnemyPoint(true);
+				let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+					return KinkyDungeonBoringGet(x, y) > 0.3 * maxBoringness;
+				}, true, false);
+				if (!point) point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+					return KinkyDungeonBoringGet(x, y) > 0;
+				}, true, false);
+					if (!point) point = KinkyDungeonGetRandomEnemyPoint(true)
 				if (point) {
 					let ens = KinkyDungeonSummonEnemy(point.x, point.y, data.enemy, 1, 2.9);
 					KinkyDungeonSetEnemyFlag(ens[0], "killtarget", -1);
