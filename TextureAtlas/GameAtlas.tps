@@ -1294,6 +1294,7 @@
             <key type="filename">../Game/Enemies/WolfGuard.png</key>
             <key type="filename">../Game/Enemies/WolfInstructor.png</key>
             <key type="filename">../Game/Enemies/WolfOperative.png</key>
+            <key type="filename">../Game/Enemies/WolfServer.png</key>
             <key type="filename">../Game/Enemies/WolfShieldDrone.png</key>
             <key type="filename">../Game/Enemies/WolfTapeDrones.png</key>
             <key type="filename">../Game/Enemies/Wolfgirl.png</key>

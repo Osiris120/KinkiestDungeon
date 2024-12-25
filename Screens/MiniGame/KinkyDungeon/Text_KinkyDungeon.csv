@@ -23276,7 +23276,18 @@ KDEscapeMethodDesc_WolfServer,Destroy Nevermere servers to unlock the door.
 KDEscapeDoor_WolfServer,Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
 NameWolfServer,Nevermere Server
 KillWolfServer,Server smashed!
-KDIdleSound_ServerHum,servers humming...
+KDAmbSound_ServerHum,servers humming...
+KDAmbSound_ServerAlarm,blaring siren
+
+KDEscapeMinimap_Fail_WolfServer,Exits locked!|Destroy NUMBER Servers!
+KDEscapeMinimap_Pass_WolfServer,Security System Compromised!
+KDEscapeMinimap_Bypass_WolfServer,Clearance Granted!
+KDEscapeMethod_WolfServer,Destroy Nevermere Servers
+KDEscapeMethodDesc_WolfServer,Destroy Nevermere servers to unlock the door.
+KDEscapeDoor_WolfServer,Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
+NameWolfServer,Nevermere Server
+KillWolfServer,Server smashed!
+KDAmbSound_NodeHum,technological noises...
 
 KDVarSuffCursed,(Cursed)
 KDVarSuffPurified,(Purified)

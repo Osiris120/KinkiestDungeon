@@ -184,6 +184,30 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {pink: 1050}, shrines: ["Latex"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 15, weight: 10}, {name: "SlimeRaw", amount: 5, weight: 10}]},
 
+	{name: "DroneNode", faction: "AncientRobot", clusterWith: "robot", color: "#00EFAB", playLine: "Robot",
+		SFX: {death: "SciFiExplode"},
+		tags: KDMapInit(["ignoreharmless", "disarmimmune", "doortrap", "robot", "flying",
+			"acidweakness", "soapweakness", "soulresist", "minor", "melee", "electricsevereweakness", "coldresist", "iceresist",
+			"slashresist", "crushsevereweakness", "pierceweakness"]),
+		followRange: 3.9, kite: 2.5, difficulty: 0.2,
+		evasion: -0.2,
+		maxblock: 1,
+		maxdodge: 0,
+		Sound: {
+			baseAmount: 4.5,
+			moveAmount: 4.5,
+			alertAmount: 12,
+			idleSoundName: "NodeHum",
+		},
+		shield: 5,
+		AI: "hunt",  visionRadius: 9, maxhp: 6, minLevel:0, weight:-4, movePoints: 1.5, cohesion: 1.0, armor: 1.5, spellResist: 1.5,
+		attackPoints: 3, attack: "", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "grope",
+		terrainTags: {"metalAnger": 4, "metalRage": 4, "nevermere": 8}, allFloors: true, shrines: ["Metal"],
+		events: [
+			{trigger: "afterEnemyTick", type: "wolfShieldDroneAura", power: 10, mult: 0.04, dist: 4.5},
+		],
+	},
+
 	{name: "WolfServer", tags: KDMapInit(["poisonmmune",
 			"soulimmune",
 			"server", "immobile", "wolfServer",
@@ -192,6 +216,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			"nonvulnerable", "nobrain",
 			"passivesignal",
 			"acidweakness", "soapsevereweakness"]),
+		SFX: {death: "SciFiExplode"},
 		faction: "Nevermere", lowpriority: true, evasion: -100, armor: -1, followRange: 100, AI: "wander",
 		visionRadius: 0, maxhp: 20, minLevel:0, weight:0, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		ondeath: [

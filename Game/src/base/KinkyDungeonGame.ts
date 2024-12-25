@@ -5523,6 +5523,9 @@ let KDVisionUpdate = 0;
 let KDLastTick = 0;
 
 function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: boolean) {
+	if (delta > 0) {
+		KDEventData.sounddesc = [];
+	}
 	if (!KinkyDungeonPlayerEntity.id) KinkyDungeonPlayerEntity.id = -1;
 
 	if (delta > 0) {
@@ -5806,6 +5809,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 			}
 		}
 	}
+
 }
 
 let KDItemEventCache = new Map();

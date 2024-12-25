@@ -3662,13 +3662,17 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			let master = KinkyDungeonFindMaster(enemy);
 			if (master.master && enemy.aware) {
 
-				if (!master.master.aware) KDEnemyAddSound(master.master, master.master.Enemy.Sound?.alertAmount != undefined ? master.master.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+				if (!master.master.aware) KDEnemyAddSound(master.master, master.master.Enemy.Sound?.alertAmount != undefined ? master.master.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+					undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+				);
 
 				master.master.aware = true;
 			}
 			if (master.master && master.master.aware) {
 
-				if (!enemy.aware && !enemy.ignore) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+				if (!enemy.aware && !enemy.ignore) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+					undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+				);
 
 				enemy.aware = true;
 			}
@@ -4119,9 +4123,20 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 						KDBreakTether(KinkyDungeonPlayerEntity);
 					}
 
+					if (enemy.Enemy.Sound.idleSoundName) {
+						KDEnemyAddSound(enemy, enemy.Enemy.Sound?.baseAmount || KDDefaultEnemyIdleSound,
+							undefined,
+							TextGet(enemy.Enemy.Sound?.idleSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.idleSoundName : undefined),
+							1
+						);
+					}
+
 					KDEnemySoundDecay(enemy, delta);
+
 				} else {
-					KDEnemyAddSound(enemy, enemy.Enemy.Sound?.moveAmount != undefined ? enemy.Enemy.Sound?.moveAmount : KDDefaultEnemyMoveSound);
+					KDEnemyAddSound(enemy, enemy.Enemy.Sound?.moveAmount != undefined ? enemy.Enemy.Sound?.moveAmount : KDDefaultEnemyMoveSound,
+						undefined, TextGet(enemy.Enemy.Sound?.moveSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.moveSoundName : undefined)
+					);
 				}
 
 				if (enemy.movePoints == 0 && enemy.attackPoints == 0 && !(enemy.warningTiles?.length > 0) && !enemy.sprinted) {
@@ -4706,7 +4721,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						4, 5, false, true);
 			}
 
-			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+				undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+			);
 
 			enemy.aware = true;
 
@@ -5096,7 +5113,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)), KDGetColor(enemy),
 						4, 5, false, true);
 			}
-			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+				undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+			);
 			let wasAware = enemy.aware;
 			enemy.aware = true;
 			// Share aggro
@@ -5133,7 +5152,9 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							} else {
 								if (!e.aware) KDAddThought(e.id, "Confused", 3, 3);
 
-								if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound);
+								if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
+									undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+								);
 
 								e.aware = true;
 							}
@@ -8392,7 +8413,7 @@ function KDDefaultSound(enemy: entity): number {
  * @param amount
  * @param [novisual]
  */
-function KDEnemyAddSound(enemy: entity, amount: number, novisual: boolean = false) {
+function KDEnemyAddSound(enemy: entity, amount: number, novisual: boolean = false, desc?: string, forcemult?: number) {
 	if (enemy.sound == undefined) enemy.sound = 0;
 	let prevSound = enemy.sound || 0;
 
@@ -8408,21 +8429,41 @@ function KDEnemyAddSound(enemy: entity, amount: number, novisual: boolean = fals
 	if (!novisual) {
 		let mult = 0.25;
 		// Draw a visual shockwave to help the player realize
-		if (enemy.sound == prevSound) {
+		if (forcemult != undefined) mult = forcemult;
+		else if (enemy.sound == prevSound) {
 			let ret = KinkyDungeonGetHearingRadius();
 			mult = 0.4 * ret.mult;
 		}
+
 		if ((enemy.sound > prevSound || (enemy.sound == prevSound && KDRandom() < mult))
-			&& (!KDCanSeeEnemy(enemy) && !(KinkyDungeonVisionGet(enemy.x, enemy.y) > 0))) {
+			&& (!KDCanSeeEnemy(enemy) || !(KinkyDungeonVisionGet(enemy.x, enemy.y) > 0))) {
 			let vol = KDCanHearSound(KinkyDungeonPlayerEntity, enemy.sound, enemy.x, enemy.y, 1.5);
 			if (vol > 0) {
-				if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
-				KDEventData.shockwaves.push({
-					x: enemy.x,
-					y: enemy.y,
-					radius: Math.min(4, vol) * 0.3 + 0.25,
-					sprite: "Particles/ShockwaveEnemy.png",
-				});
+				if (desc) {
+					if (!KDEventData.sounddesc) KDEventData.sounddesc = [];
+					KDEventData.sounddesc.push({
+						x: enemy.x,
+						y: enemy.y,
+						desc: desc,
+						shockwave: {
+							x: enemy.x,
+							y: enemy.y,
+							radius: Math.min(4, vol) * 0.3 + 0.25,
+							sprite: "Particles/ShockwaveEnemy.png",
+						},
+						shockwavePeriod: 1500,
+						lastShockwave: CommonTime(),
+					});
+				} else {
+					if (!KDEventData.shockwaves) KDEventData.shockwaves = [];
+					KDEventData.shockwaves.push({
+						x: enemy.x,
+						y: enemy.y,
+						radius: Math.min(4, vol) * 0.3 + 0.25,
+						sprite: "Particles/ShockwaveEnemy.png",
+					});
+				}
+
 			}
 
 		}

@@ -870,6 +870,8 @@ interface enemy extends KDHasTags {
 		idleSoundName?: string,
 		/* name of moving sound */
 		moveSoundName?: string,
+		/* name of moving sound */
+		alertSoundName?: string,
 	},
 
 	/** Which subroutine to select for persistent script */
