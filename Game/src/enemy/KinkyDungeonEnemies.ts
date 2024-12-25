@@ -3665,7 +3665,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			if (master.master && enemy.aware) {
 
 				if (!master.master.aware) KDEnemyAddSound(master.master, master.master.Enemy.Sound?.alertAmount != undefined ? master.master.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
-					undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+					undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 				);
 
 				master.master.aware = true;
@@ -3673,7 +3673,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			if (master.master && master.master.aware) {
 
 				if (!enemy.aware && !enemy.ignore) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
-					undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+					undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 				);
 
 				enemy.aware = true;
@@ -4128,7 +4128,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 					if (enemy.Enemy.Sound?.idleSoundName) {
 						KDEnemyAddSound(enemy, enemy.Enemy.Sound?.baseAmount || KDDefaultEnemyIdleSound,
 							undefined,
-							TextGet(enemy.Enemy.Sound?.idleSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.idleSoundName : undefined),
+							enemy.Enemy.Sound?.idleSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.idleSoundName) : undefined,
 							1
 						);
 					}
@@ -4137,7 +4137,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 
 				} else {
 					KDEnemyAddSound(enemy, enemy.Enemy.Sound?.moveAmount != undefined ? enemy.Enemy.Sound?.moveAmount : KDDefaultEnemyMoveSound,
-						undefined, TextGet(enemy.Enemy.Sound?.moveSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.moveSoundName : undefined)
+						undefined, enemy.Enemy.Sound?.moveSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.moveSoundName) : undefined
 					);
 				}
 
@@ -4724,7 +4724,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 			}
 
 			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
-				undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+				undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 			);
 
 			enemy.aware = true;
@@ -5116,7 +5116,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 						4, 5, false, true);
 			}
 			if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
-				undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+				undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 			);
 			let wasAware = enemy.aware;
 			enemy.aware = true;
@@ -5155,7 +5155,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 								if (!e.aware) KDAddThought(e.id, "Confused", 3, 3);
 
 								if (!enemy.aware) KDEnemyAddSound(enemy, enemy.Enemy.Sound?.alertAmount != undefined ? enemy.Enemy.Sound?.alertAmount : KDDefaultEnemyAlertSound,
-									undefined, TextGet(enemy.Enemy.Sound?.alertSoundName ? "KDAmbSound_" + enemy.Enemy.Sound.alertSoundName : undefined)
+									undefined, enemy.Enemy.Sound?.alertSoundName ? TextGet("KDAmbSound_" + enemy.Enemy.Sound.alertSoundName) : undefined
 								);
 
 								e.aware = true;
