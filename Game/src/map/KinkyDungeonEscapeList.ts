@@ -471,6 +471,31 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 			return TextGet("KDEscapeDoor_Boss");
 		},
 	},
+	"SealSigil": {
+		selectValid: false,
+		check: () => {
+			return KDGameData.DragonCaptured || KDGameData.SigilsErased >= KDMapData.SealErasedQuota;
+		},
+		minimaptext: () => {
+			let escape = KinkyDungeonEscapeTypes.SealSigil.check();
+			if (escape)
+				return TextGet(KDGameData.DragonCaptured ? "KDEscapeMinimap_PassKill_SealSigil" : "KDEscapeMinimap_Pass_SealSigil");
+			else
+				return TextGet("KDEscapeMinimap_Fail_SealSigil");
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_SealSigil");
+		},
+		worldgenstart: () => {
+			let quota = 1;
+			let data = {number: quota};
+			KinkyDungeonSendEvent("calcEscapeSealSigilQuota", data);
+			KDMapData.SealErasedQuota = data.number;
+			KDGameData.SigilsErased = 0;
+			KDGameData.DragonCaptured = false;
+			KDGameData.DragonTarget = 0;
+		},
+	},
 };
 
 function KDEscapeWorldgenStart(method: string) {

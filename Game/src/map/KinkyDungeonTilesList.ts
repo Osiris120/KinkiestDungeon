@@ -747,6 +747,29 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 		return false;
 	},
 
+	"SealSigil": (_delta, _entity, tile) => {
+		if (_entity?.player) {
+			tile.duration = 0;
+			KDEventData.shockwaves.push({
+				x: tile.x,
+				y: tile.y,// - .167,
+				radius: 1,
+				sprite: "Particles/SealSigil.png",
+			});
+
+			if (MiniGameKinkyDungeonLevel == KDGameData.HighestLevelCurrent) {
+				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
+				KinkyDungeonSendActionMessage(3, TextGet("KDSealSigilContact"),
+				"#88AAFF", 2);
+				KDGameData.SigilsErased = (KDGameData.SigilsErased || 0) + 1;
+			}
+
+
+
+
+		}
+		return false;
+	},
 	"DistractionMoteContact": (_delta, _entity, tile) => {
 		if (_entity?.player) {
 			tile.duration = 0;
@@ -769,7 +792,6 @@ let KDEffectTileFunctions: Record<string, (delta: number, entity: entity, tile: 
 		}
 		return false;
 	},
-
 	"DistractionMote": (_delta, _entity, tile) => {
 		if (_entity?.player) {
 			tile.duration = 0;

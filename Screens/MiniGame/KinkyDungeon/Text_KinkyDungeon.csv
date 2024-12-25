@@ -22051,6 +22051,8 @@ KDEffectTileTooltipDistractionMote,Essence Mote
 KDEffectTileTooltipDistractionMoteDesc,"A trainee can use this to focus."
 KDEffectTileTooltipDistractionMoteContact,Essence Mote
 KDEffectTileTooltipDistractionMoteContactDesc,"Pick this up to gain decaying miscast reduction."
+KDEffectTileTooltipSealSigil,Seal Sigil
+KDEffectTileTooltipSealSigilDesc,"Walk over it to erase it and unlock the next floor."
 
 NameDemonEye,The Shadow
 KillDemonEye,"The Shadow is exorcised... for now."
@@ -23267,6 +23269,15 @@ KDEscapeMethod_None,None
 KDEscapeDoor_None,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 KDEscapeMethod_,None
 KDEscapeDoor_,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
+
+
+KDEscapeMinimap_Fail_SealSigil,Exits locked!|Erase NUMBER sigil!
+KDEscapeMinimap_Pass_SealSigil,Sigils erased!
+KDEscapeMinimap_PassKill_SealSigil,Dragon defeated!
+KDEscapeMethod_SealSigil,Draconic Seal
+KDEscapeMethodDesc_SealSigil,"A dragon has sealed the entrance. Defeat the dragon, or erase the sigil from her lair."
+KDEscapeDoor_SealSigil,"A draconic spell keeps the door sealed. You will have to confront its owner."
+
 
 KDEscapeMinimap_Fail_WolfServer,Exits locked!|Destroy NUMBER Servers!
 KDEscapeMinimap_Pass_WolfServer,Security System Compromised!
@@ -26128,12 +26139,13 @@ KinkyDungeonBuffShockCollarCD,You've used Shock Collar recently and it costs mor
 
 
 RestraintEssenceNecklace,Essence Crystal
-RestraintEssenceNecklaceDesc,"When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time."
+RestraintEssenceNecklaceDesc,"When you miscast, 50% chance to emit a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time."
 RestraintEssenceNecklaceDesc2,"A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast."
 KinkyDungeonInventoryItemEssenceNecklace,Potion Absorber
 KinkyDungeonInventoryItemEssenceNecklaceDesc,"When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time."
 KinkyDungeonInventoryItemEssenceNecklaceDesc2,"A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast."
 
+KDSealSigilContact,You erase the seal sigil.
 KDEssenceMoteContact,"You absorb the mote, granting miscast reduction."
 KDEssenceNecklaceCreate,Your necklace emits a mote as a result of miscasting.
 

@@ -6626,7 +6626,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Chain: {color: "DarkNeutral", override: true},
 		},
 		events: [
-			{type: "EssenceMote", trigger: "miscast", dist: 1.5},
+			{type: "EssenceMote", trigger: "miscast", dist: 1.5, chance: 0.5},
 		],
 		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Necklaces"]},
 	{

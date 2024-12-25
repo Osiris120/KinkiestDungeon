@@ -228,7 +228,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 	},
 	"miscast": {
 		"EssenceMote": (e, item, data) => {
-			if (KinkyDungeonFlags.get("essMote")) return;
+			//if (KinkyDungeonFlags.get("essMote")) return;
 			if (data.spell && (!data.spell.manacost || data.spell.noMiscast)) return;
 			if (e.chance && KDRandom() > e.chance) return;
 			let slots: KDPoint[] = [];

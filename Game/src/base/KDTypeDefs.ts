@@ -2800,6 +2800,8 @@ interface KDMapDataType {
 	MapMod: string,
 
 	EscapeMethod: string,
+	SealErased?: number,
+	SealErasedQuota?: number,
 	KillTarget: string,
 	KillQuota: number,
 	TrapQuota: number,

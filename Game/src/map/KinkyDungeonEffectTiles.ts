@@ -173,6 +173,15 @@ let KDEffectTiles: Record<string, effectTile> = {
 		yfadeamount: 0.25,
 		tags: ["mote", "distractionmote"],
 	},
+	"SealSigil": {
+		name: "SealSigil",
+		duration: 9999,
+		infinite: true,
+		priority: 500,
+		brightness: 4.5,
+		lightColor: 0xb38eff,
+		tags: ["sigil", "objective"],
+	},
 	"Portals/Portal": {
 		name: "Portals/Portal",
 		duration: 40,
