@@ -1,6 +1,17 @@
 "use strict";
 
-let KinkyDungeonEscapeTypes = {
+interface KinkyDungeonEscapeType {
+	selectValid: boolean,
+	requireMaxQuests?: boolean,
+	filterRandom?: (roomType: string, mapMod: string, level: number, faction: string) => number,
+	filter?: (roomType: string, mapMod: string, level: number, faction: string) => number,
+	check: ()=>boolean,
+	minimaptext: ()=>string,
+	doortext: ()=>string,
+	worldgenstart?: ()=>void,
+}
+
+let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"None": {
 		selectValid: false,
 		check: () => {
@@ -90,6 +101,85 @@ let KinkyDungeonEscapeTypes = {
 		},
 		doortext: () => {
 			return TextGet("KDEscapeDoor_Kill");
+		},
+	},
+	"WolfServer": {
+		selectValid: true,
+
+		filter: (roomType, mapMod, level, faction) => {
+			return faction == "Nevermere" ? 10 : 0;
+		},
+		filterRandom: (roomType, mapMod, level, faction) => {
+			return faction == "Nevermere" ? 10 : 0;
+		},
+
+		worldgenstart: () => {
+			let enemytype = KinkyDungeonGetEnemy(["wolfServer"], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+				["wolfServer"], undefined, {"server": {mult: 4, bonus: 10}}, ["nokillescape"]);
+			let enemynumber = 3;
+			if (KinkyDungeonStatsChoice.get("extremeMode")) enemynumber = 5;
+			else if (KinkyDungeonStatsChoice.get("hardMode")) enemynumber = 4;
+
+			let data = {enemy: enemytype.name, number: enemynumber};
+			KinkyDungeonSendEvent("calcEscapeWolfServerTarget", data);
+			KDMapData.KillTarget = data.enemy;
+			KDMapData.KillQuota = data.number;
+			for (let i = 0; i < data.number; i++) {
+				let point = KinkyDungeonGetRandomEnemyPoint(true);
+				if (point) {
+					let ens = KinkyDungeonSummonEnemy(point.x, point.y, data.enemy, 1, 2.9);
+					KinkyDungeonSetEnemyFlag(ens[0], "killtarget", -1);
+					KinkyDungeonSetEnemyFlag(ens[0], "no_pers_wander", -1);
+
+					// Summon some permanent guards
+
+					for (let i = 0; i < 2; i++) {
+						let point = KinkyDungeonGetNearbyPoint(ens[0].x, ens[0].y, true);
+
+						if (point) {
+							let e = KinkyDungeonGetEnemy(["nevermere"],
+								MiniGameKinkyDungeonLevel + 2,
+								(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
+							["nevermere"], undefined,
+							{"wolfgirl": {mult: 4, bonus: 10}}, ["miniboss", "boss"]);
+							if (e) {
+								let ee = DialogueCreateEnemy(point.x, point.y, e.name);
+								if (ee) {
+									ee.faction = "Nevermere";
+									ee.AI = "looseguard";
+									KinkyDungeonSetEnemyFlag(ens[0], "no_pers_wander", -1);
+									KDRunCreationScript(ee, KDGetCurrentLocation());
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		check: () => {
+			if (!KDMapData.KillTarget) //if this wasnt the escapemethod when this floor was created, spawn targets now
+				KinkyDungeonEscapeTypes.Kill.worldgenstart();
+
+			if (KDFactionAllied("Player", "Nevermere")) return true;
+
+			var count = 0;
+			for (let enemy of KDMapData.Entities) {
+				if (KDEnemyHasFlag(enemy, "killtarget")) {
+					count++;
+				}
+			}
+			KDMapData.KillQuota = count;
+			return KDMapData.KillQuota <= 0;
+		},
+		minimaptext: () => {
+			let escape = KinkyDungeonEscapeTypes.Kill.check();
+			if (escape)
+				return TextGet(KDFactionAllied("Player", "Nevermere") ? "KDEscapeMinimap_Bypass_WolfServer" : "KDEscapeMinimap_Pass_WolfServer");
+			else
+				return TextGet("KDEscapeMinimap_Fail_WolfServer").replace("NUMBER", KDMapData.KillQuota.toString()).replace("TYPE",TextGet("Name" + KDMapData.KillTarget));
+		},
+		doortext: () => {
+			return TextGet("KDEscapeDoor_WolfServer");
 		},
 	},
 	"Miniboss": {

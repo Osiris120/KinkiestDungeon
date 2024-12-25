@@ -146,15 +146,19 @@ function KDGetEscapeMethod(_level: number) {
 	return data.escapeMethod;
 }
 
-function KDGetRandomEscapeMethod() {
-	let choices = [];
+function KDGetRandomEscapeMethod(RoomType: string, MapMod: string, Level: number, Faction: string) {
+	let choices: Record<string, number>;
 	for (let method in KinkyDungeonEscapeTypes) {
-		if (KinkyDungeonEscapeTypes[method].selectValid) {
-			choices.push(method);
+		let weight = KinkyDungeonEscapeTypes[method].filterRandom ?
+			KinkyDungeonEscapeTypes[method].filterRandom(RoomType, MapMod, Level, Faction)
+			: 1;
+		if (KinkyDungeonEscapeTypes[method].selectValid
+			&& (weight >= 1 || KDRandom() < weight)
+		) {
+			choices[method] = weight;
 		}
 	}
-	let choice = Math.floor(KDRandom()*choices.length);
-	return choices[choice];
+	return KDGetByWeight(choices);
 }
 
 /**

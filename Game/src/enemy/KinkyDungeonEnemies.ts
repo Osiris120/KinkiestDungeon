@@ -4155,14 +4155,14 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 				else if (KDGetFaction(enemy) != "Player") {
 					if (enemy.aware && (enemy.lifetime == undefined || enemy.lifetime > 9000) && !enemy.Enemy.tags.temporary && !enemy.Enemy.tags.peaceful) {
 						if (enemy.hostile > 0 && enemy.hostile < 9000 && (KDGameData.PrisonerState == 'parole' || KDGameData.PrisonerState == 'jail')) {
-							if (!(enemy.silence > 0) && KDEnemyCanSignalOthers(enemy)) {
+							if (!(enemy.silence > 0) && KDEnemyCanSignalMap(enemy)) {
 								KDGameData.tickAlertTimer = true;
 								if (KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 9 && !KDGameData.HostileFactions.includes(KDGetFaction(enemy))) {
 									KDGameData.HostileFactions.push(KDGetFaction(enemy));
 								}
 							}
 						} else if (KinkyDungeonAggressive(enemy)) {
-							if (!(enemy.silence > 0) && KDEnemyCanSignalOthers(enemy)) {
+							if (!(enemy.silence > 0) && KDEnemyCanSignalMap(enemy)) {
 								KDGameData.tickAlertTimer = true;
 								if (KDistChebyshev(KinkyDungeonPlayerEntity.x - enemy.x, KinkyDungeonPlayerEntity.y - enemy.y) < 9 && !KDGameData.HostileFactions.includes(KDGetFaction(enemy))) {
 									KDGameData.HostileFactions.push(KDGetFaction(enemy));
@@ -8566,9 +8566,18 @@ function KDEnemyCanSignal(enemy: entity): boolean {
 /**
  * @param enemy
  */
-function KDEnemyCanSignalOthers(enemy: entity): boolean {
-	return KDEnemyCanSignal(enemy) && !KDEnemyHasFlag(enemy, "nosignalothers");
+function KDEnemyCanSignalMap(enemy: entity): boolean {
+	return !enemy.Enemy.tags?.passivesignal && KDEnemyCanSignal(enemy) && !KDEnemyHasFlag(enemy, "passivesignal");
 }
+/**
+ * @param enemy
+ */
+function KDEnemyCanSignalOthers(enemy: entity): boolean {
+	return !enemy.Enemy.tags?.nosignalothers && KDEnemyCanSignal(enemy) && !KDEnemyHasFlag(enemy, "nosignalothers");
+}
+
+
+
 
 
 

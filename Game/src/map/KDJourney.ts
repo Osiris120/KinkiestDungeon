@@ -42,7 +42,7 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			Connections: [], // Temporarily empty
 			protected: false,
 			visited: false,
-			EscapeMethod: KDGetRandomEscapeMethod(),
+			EscapeMethod: "",
 			MapMod: "",
 			RoomType: "",
 			Faction: "",
@@ -60,8 +60,6 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 		KDMapModRefreshList.splice(index, 1);
 
 
-		if (KDMapMods[MapMod]?.escapeMethod)
-			slot.EscapeMethod = KDMapMods[MapMod]?.escapeMethod;
 		slot.MapMod = MapMod;
 		slot.RoomType = KDMapMods[MapMod]?.roomType || "";
 		slot.Faction = KDMapMods[MapMod]?.faction
@@ -70,6 +68,10 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 				undefined,
 				KinkyDungeonMapParams[KinkyDungeonMapIndex[checkpoint]]?.factionList)
 				|| "";
+
+		if (KDMapMods[MapMod]?.escapeMethod)
+			slot.EscapeMethod = KDMapMods[MapMod]?.escapeMethod;
+		else KDGetRandomEscapeMethod(slot.RoomType, slot.MapMod, y, slot.Faction);
 
 		if (y > 1) {
 			let sideTop = KDGetSideRoom(slot, true, slot.SideRooms);

@@ -134,6 +134,7 @@ let KDMapMods: Record<string, MapMod> = {
 		faction: "Nevermere",
 		jailType: "Nevermere",
 		guardType: "Nevermere",
+		escapeMethod: "WolfServer",
 		filter: (slot) => {
 			if (slot?.y < 3) return 0;
 			return 1.0;

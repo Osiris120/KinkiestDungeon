@@ -866,6 +866,10 @@ interface enemy extends KDHasTags {
 		alertAmount?: number,
 		/** Decay per turn */
 		decay?: number,
+		/* name of idle sound */
+		idleSoundName?: string,
+		/* name of moving sound */
+		moveSoundName?: string,
 	},
 
 	/** Which subroutine to select for persistent script */

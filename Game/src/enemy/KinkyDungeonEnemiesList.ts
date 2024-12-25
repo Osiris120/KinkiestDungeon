@@ -184,6 +184,27 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {pink: 1050}, shrines: ["Latex"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 10, amountMax: 15, weight: 10}, {name: "SlimeRaw", amount: 5, weight: 10}]},
 
+	{name: "WolfServer", tags: KDMapInit(["poisonmmune",
+			"soulimmune",
+			"server", "immobile", "wolfServer",
+			"noknockback", "melee",
+			"nofidget", "notalk",
+			"nonvulnerable", "nobrain",
+			"passivesignal",
+			"acidweakness", "soapsevereweakness"]),
+		faction: "Nevermere", lowpriority: true, evasion: -100, armor: -1, followRange: 100, AI: "wander",
+		visionRadius: 0, maxhp: 20, minLevel:0, weight:0, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		ondeath: [
+			{type: "WolfServer"}
+		],
+		Sound: {
+			baseAmount: 5,
+			moveAmount: 0,
+			idleSoundName: "ServerHum",
+		},
+		terrainTags: {"wolfServer": 100}, floors:KDMapInit([])},
+
+
 	// End Quest NPC
 
 	{name: "DirtPile", tags: KDMapInit(["poisonmmune", "soulimmune", "dirt", "immobile", "noknockback", "melee", "nofidget", "notalk", "nonvulnerable", "nobrain", "nosignal", "acidweakness", "soapsevereweakness"]),
@@ -5792,6 +5813,10 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 		}
 		KDGameData.QuestData.DirtPiles.pilesTotal += 1;
 	},
+	"WolfServer": (enemy, _o, mapData) => {
+		// TODO
+	},
+
 	"summon": (enemy, o, mapData) => {
 		if (mapData == KDMapData) {
 			let f: entity = null;

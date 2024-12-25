@@ -1525,15 +1525,9 @@ function KinkyDungeonCreateMap (
 					KDMapData.EscapeMethod = forceEscape;
 				} else {
 					if (KinkyDungeonStatsChoice.get("escaperandom")) {
-						KDMapData.EscapeMethod = KDGetRandomEscapeMethod();
-						let choices = [];
-						for (let method in KinkyDungeonEscapeTypes) {
-							if (KinkyDungeonEscapeTypes[method].selectValid) {
-								choices.push(method);
-							}
-						}
-						let choice = Math.floor(KDRandom()*choices.length);
-						KDMapData.EscapeMethod = choices[choice];
+						KDMapData.EscapeMethod = KDGetRandomEscapeMethod(KDGameData.RoomType, KDGameData.MapMod,
+							MiniGameKinkyDungeonLevel, KDMapData.MapFaction
+						);
 					}
 				}
 
