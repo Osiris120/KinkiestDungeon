@@ -23279,15 +23279,17 @@ KillWolfServer,Server smashed!
 KDAmbSound_ServerHum,servers humming...
 KDAmbSound_ServerAlarm,blaring siren
 
-KDEscapeMinimap_Fail_WolfServer,Exits locked!|Destroy NUMBER Servers!
-KDEscapeMinimap_Pass_WolfServer,Security System Compromised!
-KDEscapeMinimap_Bypass_WolfServer,Clearance Granted!
-KDEscapeMethod_WolfServer,Destroy Nevermere Servers
-KDEscapeMethodDesc_WolfServer,Destroy Nevermere servers to unlock the door.
-KDEscapeDoor_WolfServer,Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
-NameWolfServer,Nevermere Server
-KillWolfServer,Server smashed!
-KDAmbSound_NodeHum,technological noises...
+KDEscapeMinimap_Fail_DroneNode,Exits locked!|Destroy NUMBER Servers!
+KDEscapeMinimap_Pass_DroneNode,Security System Compromised!
+KDEscapeMinimap_Bypass_DroneNode,Clearance Granted!
+KDEscapeMethod_DroneNode,Destroy Drone Servers
+KDEscapeMethodDesc_DroneNode,Destroy Drone Node Servers to unlock the door.
+KDEscapeDoor_DroneNode,The path forward is controlled by several ancient Drone Servers. Destroy them.
+NameDroneNode,Drone Server Node
+KillDroneNode,Drone node destroyed!
+NameOldDroneNode,Rusty Server Node
+KillOldDroneNode,Drone node destroyed!
+KDAmbSound_NodeHum,loud beeping...
 
 KDVarSuffCursed,(Cursed)
 KDVarSuffPurified,(Purified)

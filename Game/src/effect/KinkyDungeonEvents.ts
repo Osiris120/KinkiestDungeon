@@ -9655,6 +9655,35 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 				KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 			}
 		},
+		"DroneNodeAura": (e, enemy, data) => {
+			// We apply a buff to nearby allies, but not self
+			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {
+				if (!e.chance || KDRandom() < e.chance) {
+					let nearby = KDNearbyNeutrals(enemy.x, enemy.y, e.dist, enemy);
+					for (let en of nearby) {
+						if (en.hp > 0.52 && KDMatchTags(["drone"], en)) {
+							if ((en.Enemy.shield || 0) < e.power) {
+								KinkyDungeonApplyBuffToEntity(en, {
+									id: "DroneNodeShield",
+									aura: "#00ffff", aurasprite: "EnergyShield",
+									type: "MaxShield",
+									duration: 3, power: e.power - (en.Enemy.shield || 0),
+									player: false, enemies: true, tags: ["defense", "shield"]
+								});
+							}
+							KinkyDungeonApplyBuffToEntity(en, {
+								id: "DroneNodeShieldRegen", type: "ShieldRegen", duration: 3,
+								power: e.power * e.mult, player: false, enemies: true, tags: ["defense", "shield"]
+							});
+							KinkyDungeonApplyBuffToEntity(en, {
+								id: "DroneNodeSpeedBuff", type: "MoveSpeed", duration: 3,
+								power: 0.5, player: false, enemies: true, tags: ["speed"]
+							});
+						}
+					}
+				}
+			}
+		},
 		"wolfShieldDroneAura": (e, enemy, data) => {
 			// We apply a buff to nearby allies, but not self
 			if (data.delta && KinkyDungeonCanCastSpells(enemy) && ((data.allied && KDAllied(enemy)) || (!data.allied && !KDAllied(enemy)))) {

@@ -156,6 +156,7 @@ let KDMapMods: Record<string, MapMod> = {
 		faction: "AncientRobot",
 		jailType: "AncientRobot",
 		guardType: "AncientRobot",
+		escapeMethod: "DroneNode",
 		filter: (slot) => {
 			if (slot?.y < 3) return 0;
 			return 1.0;
