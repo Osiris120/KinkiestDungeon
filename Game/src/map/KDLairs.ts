@@ -14,6 +14,7 @@ interface KDLair {
 	PlaceScriptOverride?: string,
 	Hidden?: boolean,
 	UpStairsFrom?: string,
+	data?: any,
 }
 let KDPersonalAlt: {[_ : string]: KDLair} = {};
 

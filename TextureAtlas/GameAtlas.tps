@@ -814,6 +814,7 @@
             <key type="filename">../Game/EffectTiles/Runes.png</key>
             <key type="filename">../Game/EffectTiles/RunesTrap.png</key>
             <key type="filename">../Game/EffectTiles/Sack.png</key>
+            <key type="filename">../Game/EffectTiles/SealSigil.png</key>
             <key type="filename">../Game/EffectTiles/Sleet.png</key>
             <key type="filename">../Game/EffectTiles/Slime.png</key>
             <key type="filename">../Game/EffectTiles/SlimeBurning.png</key>
@@ -1084,6 +1085,7 @@
             <key type="filename">../Game/Enemies/DressmakerQuest.png</key>
             <key type="filename">../Game/Enemies/Drone.png</key>
             <key type="filename">../Game/Enemies/DroneGuardian.png</key>
+            <key type="filename">../Game/Enemies/DroneNode.png</key>
             <key type="filename">../Game/Enemies/Dryad.png</key>
             <key type="filename">../Game/Enemies/EarthMote.png</key>
             <key type="filename">../Game/Enemies/EarthenMonolith.png</key>
@@ -1193,6 +1195,7 @@
             <key type="filename">../Game/Enemies/Nurse.png</key>
             <key type="filename">../Game/Enemies/Observer.png</key>
             <key type="filename">../Game/Enemies/OldDrone.png</key>
+            <key type="filename">../Game/Enemies/OldDroneNode.png</key>
             <key type="filename">../Game/Enemies/OldTapeDrone.png</key>
             <key type="filename">../Game/Enemies/OneBar.png</key>
             <key type="filename">../Game/Enemies/OrbGuardian.png</key>
@@ -4039,6 +4042,7 @@
                 <false/>
             </struct>
             <key type="filename">../Game/Particles/PinkGlow.png</key>
+            <key type="filename">../Game/Particles/SealSigil.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

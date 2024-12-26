@@ -3739,7 +3739,10 @@ function KinkyDungeonAttemptQuickRestraint(Name: string): boolean {
 
 
 function KDIsUnidentified(item: item) {
-	return item.inventoryVariant
+	return (item.inventoryVariant || KinkyDungeonRestraintVariants[item.name]
+		|| KinkyDungeonWeaponVariants[item.name]
+		|| KinkyDungeonConsumableVariants[item.name]
+	)
 		&& (!KDGameData.IdentifiedObj || !KDGameData.IdentifiedObj[item.inventoryVariant || item.name]);
 }
 

@@ -5889,13 +5889,10 @@ function KDGetItemName(item: item, type?: string, variant?: any): string {
 				variant = KinkyDungeonWeaponVariants[item.inventoryVariant || item.name];
 			break;
 	}
-	let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && !KDIsUnidentified(item);
+	let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item);
 	if (unidentified
 		&& (item.type == LooseRestraint || item.type == Weapon || item.type == Consumable)) {
-		return ((
-			!!item.inventoryVariant
-		) ? "" : TextGet("KDUnidentified"))
-			+ KDGetItemName(item, undefined, {})
+		return TextGet("KDUnidentified") + base;
 	}
 	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);
 	if (variant?.prefix) return TextGet("KDVarPref" + variant.prefix) + " " + base;
