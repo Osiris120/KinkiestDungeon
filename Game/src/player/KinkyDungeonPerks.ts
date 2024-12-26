@@ -295,6 +295,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"KeepOutfit":  {category: "Restraints", id: "KeepOutfit", cost: 0},
 	"CursedLocks": {category: "Restraints", id: "CursedLocks", cost: -1.5},
 	"FranticStruggle": {category: "Restraints", id: "FranticStruggle", cost: 1.5},
+	"UnidentifiedWear": {category: "Restraints", id: "UnidentifiedWear", cost: -1.5},
 	"Unchained": {category: "Kinky", id: 26, cost: 2.5, block: ["Damsel"]},
 	"Damsel": {category: "Kinky", id: 27, cost: -1, block: ["Unchained"]},
 	"Artist": {category: "Kinky", id: 28, cost: 2.5, block: ["Bunny"]},
