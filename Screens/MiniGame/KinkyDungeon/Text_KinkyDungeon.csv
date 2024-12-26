@@ -709,6 +709,9 @@ KinkyDungeonStatDescArousingMagic,"Your magic is powered by otherworldly distrac
 KinkyDungeonStatClearheaded,"Clearheaded"
 KinkyDungeonStatDescClearheaded,"Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction."
 
+KinkyDungeonStatUnidentifiedWear,"Unidentified Wear"
+KinkyDungeonStatDescUnidentifiedWear,"Enchantments on restraints and armor are hidden while unequipped."
+
 
 KinkyDungeonCopyPerks,Copy (clipboard)
 KinkyDungeonPastePerks,Paste (clipboard)
