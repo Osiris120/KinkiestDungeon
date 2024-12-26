@@ -299,7 +299,7 @@ let KDSpecialFilters: Record<string, Record<string, (item: item, handle: boolean
 	weapon: {
 		Mundane: (item, handle) => {
 			if (handle) KDFilterFilters[Weapon].Magic = false;
-			return !KDWeapon(item)?.magic && KinkyDungeonWeaponVariants[item.inventoryVariant || item.name] != undefined;
+			return !KDWeapon(item)?.magic && !KinkyDungeonWeaponVariants[item.inventoryVariant || item.name];
 		},
 		Magic: (item, handle) => {
 			if (handle) KDFilterFilters[Weapon].Mundane = false;
@@ -1088,12 +1088,9 @@ function KinkyDungeonDrawInventorySelected (
 	if (!item) return false;
 	let name = item.name;
 	let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item.item);
+
 	let prefix = "KinkyDungeonInventoryItem";
-	let nameText = (unidentified
-						&& (item.item.type == LooseRestraint || item.item.type == Weapon || item.item.type == Consumable)) ?
-						((item.item.name == KDRestraint(item.item).name) ? "" : TextGet("KDUnidentified"))
-							+ KDGetItemName(item.item, undefined, {})
-						: KDGetItemName(item.item)
+	let nameText = KDGetItemName(item.item)
 	if (item.item.type == Restraint || item.item.type == LooseRestraint) {
 		prefix = "Restraint";
 	}
@@ -3742,5 +3739,7 @@ function KinkyDungeonAttemptQuickRestraint(Name: string): boolean {
 
 
 function KDIsUnidentified(item: item) {
-	return (KDGameData.IdentifiedObj && KDGameData.IdentifiedObj[item.inventoryVariant || item.name]);
+	return item.inventoryVariant
+		&& (!KDGameData.IdentifiedObj || !KDGameData.IdentifiedObj[item.inventoryVariant || item.name]);
 }
+

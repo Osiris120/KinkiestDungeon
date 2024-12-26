@@ -1570,6 +1570,10 @@ function KinkyDungeonAttackEnemy(Enemy: entity, Damage: damageInfo, chance?: num
 
 
 	let hp = Enemy.hp;
+	if (KinkyDungeonWeaponVariants[KinkyDungeonPlayerWeapon]) {
+		if (!KDGameData.IdentifiedObj) KDGameData.IdentifiedObj = {};
+		KDGameData.IdentifiedObj[KinkyDungeonPlayerWeapon] = 2;
+	}
 	KinkyDungeonDamageEnemy(Enemy, (predata.eva) ? dmg : null, undefined, undefined, undefined, bullet, KinkyDungeonPlayerEntity, undefined, undefined, predata.vulnConsumed, predata.critical, true);
 	if (predata.eva && (Damage.sfx || (KinkyDungeonPlayerDamage && KinkyDungeonPlayerDamage.sfx))) {
 		if (KDSoundEnabled()) KDDamageQueue.push({sfx: KinkyDungeonRootDirectory + "Audio/" + (Damage.sfx || KinkyDungeonPlayerDamage.sfx) + ".ogg"});
