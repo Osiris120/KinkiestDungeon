@@ -11,6 +11,8 @@ interface KDPersistentNPC {
 	captured: boolean,
 	/** Preferential capture here */
 	captureFaction?: string,
+	/** Preferential capture here */
+	captureCaptor?: number,
 	/** NPC is in collection currently. Set to false when spawned out of collection. Otherwise set to true only when adding to the collection.*/
 	collect: boolean,
 	opinion: number,
@@ -666,13 +668,23 @@ function KDGetCapturedPersistent(Level: number, RoomType: string, MapMod: string
 			KDUnPackEnemy(npc.entity);
 		}
 		if (!KinkyDungeonFindID(npc.id)) {
-			if (!mapFaction || mapFaction == npc.captureFaction
-				|| (eligible_faction.length == 0 && KDFactionRelation(mapFaction, KDGetFaction(npc.entity)))) {
-				eligible.push(npc);
-				if (mapFaction && mapFaction == npc.captureFaction) {
-					eligible_faction.push(npc);
+			if (KDPersonalAlt[KDMapData.RoomType]?.OwnerNPC) {
+				if (KDPersonalAlt[KDMapData.RoomType]?.OwnerNPC == npc.captureCaptor
+					// Can assign an ownerfaction as well to spawn faction based captures here,
+					// e.g. witch lab owned by one witch
+					|| KDPersonalAlt[KDMapData.RoomType]?.OwnerFaction == npc.captureFaction) {
+					eligible.push(npc);
+				}
+			} else {
+				if (!mapFaction || mapFaction == npc.captureFaction
+					|| (eligible_faction.length == 0 && KDFactionRelation(mapFaction, KDGetFaction(npc.entity)))) {
+					eligible.push(npc);
+					if (mapFaction && mapFaction == npc.captureFaction) {
+						eligible_faction.push(npc);
+					}
 				}
 			}
+
 		}
 		npc.entity.Enemy = oldEnemy;
 	}

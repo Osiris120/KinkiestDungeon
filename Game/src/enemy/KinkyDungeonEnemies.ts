@@ -4114,7 +4114,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 
 						// Removed for non guards because its fun to find tied up girls around
 						if (enemy == KinkyDungeonJailGuard())
-							KDCaptureNearby(enemy);
+							KDCaptureNearby(enemy, true);
 
 						if (['s','S','H'].includes(KinkyDungeonMapGet(enemy.x, enemy.y)) && KDEnemyHasFlag(enemy, "despawn")) {
 							KDClearItems(enemy);
@@ -7725,13 +7725,20 @@ function KDIsBrat(enemy: entity): boolean {
  * Captures helpless enemies near the enemy
  * @param enemy
  */
-function KDCaptureNearby(enemy: entity) {
+function KDCaptureNearby(enemy: entity, noParty: boolean = false) {
 	let enemies = KDNearbyEnemies(enemy.x, enemy.y, 1.5, enemy);
 	for (let en of enemies) {
-		if (KDHelpless(en) && en.hp < 0.52) {
+		if (KDHelpless(en) && en.hp < 0.52 && (!noParty || KDCanCapturePartyMember(en))) {
 			en.hp = 0;
 		}
 	}
+}
+
+function KDCanCapturePartyMember(en: entity): boolean {
+	if (KDIsImprisoned(en)) return false;
+	return !KDIsInPartyID(en.id) || !(KinkyDungeonVisionGet(en.x, en.y) > 0.1 || KDistChebyshev(
+		en.x - KDPlayer().x, en.y - KDPlayer().y
+	) <= 6);
 }
 
 /**
@@ -9350,6 +9357,9 @@ function KDRemoveEntity(enemy: entity, kill?: boolean, capture?: boolean, noEven
 			} else {
 				if (KDEntityAtRiskOfCapture(enemy, data.mapData)) {
 					KDGetPersistentNPC(enemy.id).captured = true;
+					let npc = KDGetCapturingNPC(enemy, 8);
+					if (npc) KDGetPersistentNPC(npc.id).captureCaptor = npc.id;
+					else KDGetPersistentNPC(enemy.id).captureCaptor = undefined;
 					KDGetPersistentNPC(enemy.id).captureFaction = KDMapData.MapFaction;
 				}
 			}
@@ -10082,6 +10092,35 @@ function KDIsSubmissive(entity: entity, threshold: number = 0.5): boolean {
 	return false;
 }
 
+
+function KDGetCapturingNPC(enemy: entity, dist: number = 1.5) {
+	let maxDist = Math.max(0.5, Math.min(
+		KDistChebyshev(enemy.x - KDPlayer().x, enemy.y - KDPlayer().y) - 1, dist));
+	let nearbyNPCs = KDNearbyEnemies(enemy.x, enemy.y, maxDist, enemy).filter( (en) => {
+		return !KDHelpless(enemy) && !KinkyDungeonIsDisabled(en);
+	});
+	if (nearbyNPCs.length == 0) return null;
+
+	let captor: entity = nearbyNPCs[Math.floor(nearbyNPCs.length * KDRandom())];
+	let lairs = KDGetLairs(KDGetWorldMapLocation(KDCoordToPoint(KDGetCurrentLocation())));
+	let outposts = KDGetOutposts(KDGetWorldMapLocation(KDCoordToPoint(KDGetCurrentLocation())));
+
+	let nearbyLairOwners = nearbyNPCs.filter((en) => {
+		return lairs.some((op) => {return op[1] == "" + en.id;});
+	});
+	if (nearbyLairOwners.length > 0) {
+		captor = nearbyLairOwners[Math.floor(nearbyLairOwners.length * KDRandom())]
+	} else {
+		let nearbyOutpostOwners = nearbyNPCs.filter((en) => {
+			return outposts.some((op) => {return op[1] == KDGetFaction(en);});
+		});
+		if (nearbyOutpostOwners.length > 0) {
+			captor = nearbyOutpostOwners[Math.floor(nearbyOutpostOwners.length * KDRandom())]
+		}
+	}
+
+	return captor;
+}
 
 function KDEntityAtRiskOfCapture(enemy: entity, mapData: KDMapDataType): boolean {
 	let persistent = KDIsNPCPersistent(enemy.id) ? KDGetPersistentNPC(enemy.id) : undefined;

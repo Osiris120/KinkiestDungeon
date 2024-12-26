@@ -13,6 +13,10 @@ let KDUpdateChokes = true;
  * Who is helping the struggler
  */
 let KDStruggleAssisters: Record<string, number> = {};
+/**
+ * Who is capturing the struggler
+ */
+let KDCapturers: Record<string, number> = {};
 
 
 /**
@@ -674,6 +678,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 	},
 
 	helpStruggle: {
+		struggleAssist: true,
 		// Move toward struggling allies to help them
 		filter: (enemy, _data) => {
 			if (!enemy.IntentAction
@@ -775,8 +780,10 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 		global_before: (_data) => {
 			let struggleList = JSON.parse(JSON.stringify(KDStruggleAssisters));
 			KDStruggleAssisters = {};
+
 			for (let en of KDMapData.Entities) {
-				if (struggleList[en.id] != undefined && KDCommanderRoles.get(en.id) == 'helpStruggle') {
+				if (struggleList[en.id] != undefined && KDCommanderRoles.get(en.id)
+					&& KDCommanderOrders[KDCommanderRoles.get(en.id)].struggleAssist) {
 					KDStruggleAssisters[struggleList[en.id]] = en.id;
 				}
 			}
@@ -785,6 +792,7 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 	},
 
 	helpDanger: {
+		struggleAssist: true,
 		// Move toward allies in a dangerous spot who cant move, in order to bump them in a safe direction
 		filter: (enemy, _data) => {
 			if (!enemy.IntentAction
@@ -941,10 +949,116 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 		// Global role variables
 		global_before: (_data) => {
 			let struggleList = JSON.parse(JSON.stringify(KDStruggleAssisters));
-			KDStruggleAssisters = {};
 			for (let en of KDMapData.Entities) {
 				if (struggleList[en.id] != undefined && KDCommanderRoles.get(en.id) == 'helpStruggle') {
 					KDStruggleAssisters[struggleList[en.id]] = en.id;
+				}
+			}
+		},
+		global_after: (_data) => {},
+	},
+	moveToCapture: {
+		capturer: true,
+		// Move toward allies in a dangerous spot who cant move, in order to bump them in a safe direction
+		filter: (enemy, _data) => {
+			if (!enemy.IntentAction
+				&& KDIsHumanoid(enemy)
+				&& (enemy.attackPoints < 1)
+				&& !enemy.Enemy?.tags?.nohelp
+				&& !enemy.Enemy?.tags?.submissive
+				&& !KDIsImmobile(enemy)
+				&& KDBoundEffects(enemy) < 4
+				&& (!enemy.aware || KDAssaulters >= KDMaxAssaulters)
+				&& (!KDAIType[KDGetAI(enemy)]
+					|| ((!KDAIType[KDGetAI(enemy)].ambush || enemy.ambushtrigger)))
+				&& KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/1.5 || 1.5, enemy,
+					true).some((en) => {
+					return en != enemy && KDHelpless(en) && en.hp < 0.52 && KDCanCapturePartyMember(en)
+					&& (!KDCapturers[en.id] || KDCapturers[en.id] == enemy.id);
+				})
+			) return true;
+			return false;
+		},
+		weight: (_enemy, data) => {
+			return data.combat ? 0 : 150;
+		},
+		apply: (enemy, _data) => {
+			if ((enemy.aware || enemy.vp > 0.1) && KDRandom() < 0.45)
+				KinkyDungeonSendDialogue(enemy,
+					TextGet("KinkyDungeonRemindJail"
+						+ (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : "") + "Leash")
+						.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+						KDGetColor(enemy),
+					7, 7, false, true);
+
+		},
+
+		// Role maintenance
+		maintain: (enemy, _data) => {
+			if (enemy.idle && !KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/1.5 || 1.5, enemy,
+				true).some((en) => {
+				return en != enemy && KDHelpless(en) && en.hp < 0.52 && KDCanCapturePartyMember(en)
+				&& (!KDCapturers[en.id] || KDCapturers[en.id] == enemy.id);
+			})) return false;
+			return (!enemy.IntentAction
+				&& enemy != KinkyDungeonLeashingEnemy()
+				&& enemy != KinkyDungeonJailGuard()
+				&& (enemy.attackPoints < 1)
+				&& (!enemy.aware || KDAssaulters >= KDMaxAssaulters)
+				&& KDBoundEffects(enemy) < 4);
+		},
+		remove: (_enemy, _data) => {},
+		update: (enemy, _data) => {
+			if (!KDEnemyHasFlag(enemy, "tickHS")) {
+				let search = KDNearbyEnemies(enemy.x, enemy.y, 1.5, enemy,
+					true).filter((en) => {
+					return en != enemy && KDHelpless(en) && en.hp < 0.52 && KDCanCapturePartyMember(en)
+					&& (!KDCapturers[en.id] || KDCapturers[en.id] == enemy.id);
+				});
+				if (search.length == 0) search = KDNearbyEnemies(enemy.x, enemy.y, enemy.Enemy.visionRadius/1.5 || 1.5, enemy,
+					true).filter((en) => {
+					return en != enemy && KDHelpless(en) && en.hp < 0.52 && KDCanCapturePartyMember(en)
+					&& (!KDCapturers[en.id] || KDCapturers[en.id] == enemy.id);
+				})
+				KinkyDungeonSetEnemyFlag(enemy, "tickHS", 5 + Math.round(5 * KDRandom()));
+				if (search.length > 0) {
+					let capturepoint = search[Math.floor(KDRandom() * search.length)];
+					if (KDistChebyshev(capturepoint.x-enemy.x, capturepoint.y-enemy.y) < 1.5) {
+						enemy.gx = enemy.x;
+						enemy.gy = enemy.y;
+					} else {
+						let point = KinkyDungeonGetNearbyPoint(capturepoint.x, capturepoint.y, true, undefined, true);
+						if (point) {
+							enemy.gx = point.x;
+							enemy.gy = point.y;
+						} else {
+							enemy.gx = capturepoint.x;
+							enemy.gy = capturepoint.y;
+						}
+					}
+
+
+					KDCapturers[capturepoint.id] = enemy.id;
+
+					if (!KDEnemyHasFlag(enemy, "capCD"))
+						if (KDistChebyshev(enemy.x - capturepoint.x, enemy.y - capturepoint.y) < 1.5) {
+							KDCaptureNearby(enemy);
+							KinkyDungeonSetEnemyFlag(enemy, "capCD", 3);
+							return true;
+						}
+				}
+			}
+
+		},
+
+		// Global role variables
+		global_before: (_data) => {
+			let capturerList = JSON.parse(JSON.stringify(KDCapturers));
+			KDCapturers = {};
+			for (let en of KDMapData.Entities) {
+				if (capturerList[en.id] != undefined && KDCommanderRoles.get(en.id)
+					&& KDCommanderOrders[KDCommanderRoles.get(en.id)].capturer) {
+					KDCapturers[capturerList[en.id]] = en.id;
 				}
 			}
 		},

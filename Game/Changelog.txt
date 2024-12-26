@@ -35,6 +35,12 @@ TODO Add Cuddle play type
 - Mana cost of spells
 - decay per faction
 
+5.4.26
+- Added new map escape objectives: Nevermere servers, Dollsmith/Ancient Robot server drones, Draconic Seals
+- Pickaxe now can be used quickly by clicking on the wall (thanks Enraa)
+- New perk: Unidentified Wear (thanks Enraa!)
+- Did some optimizations to help performance. Please report any issues specifically with buffs not having an effect (on player or enemy).
+
 5.4.25
 - Added 'furniture' zones for the player and dragon prisoners in the dragon lairs
 - Reduced perk point multiplier to 2x

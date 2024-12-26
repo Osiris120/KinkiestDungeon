@@ -3726,6 +3726,8 @@ type KDCommanderOrderData = {
 }
 
 interface KDCommanderOrder {
+	struggleAssist?: boolean,
+	capturer?: boolean,
 	filter: (enemy: entity, data: KDCommanderOrderData) => boolean;
 	weight: (enemy: entity, data: KDCommanderOrderData) => number;
 	apply: (enemy: entity, data: KDCommanderOrderData) => void;
