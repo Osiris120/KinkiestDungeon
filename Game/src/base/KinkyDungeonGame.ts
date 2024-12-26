@@ -5368,42 +5368,40 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 				KinkyDungeonAdvanceTime(1); // was moveDirection.delta, but became too confusing
 			}
 		} else if (KDCrackableTiles.includes(moveObject)) {
-			// If the player is trying to move into a cracked wall while they have a pickaxe in their inventory, let's let them mine from it 
-            if (KDEntityHasBuff(KinkyDungeonPlayerEntity,"TryingToMine") && KinkyDungeonInventoryGet("Pickaxe")) {
-                // Took most of this code from the pickaxe spell
-                let fail = false;
-				// Check to make sure the player can actually swing the axe. There's probably a better way to check if the 
-				// player could hold a weapon using telekinesis. This would have a problem with arm scrolls. 
-				let comp = (KinkyDungeoCheckComponents({
-					components: ['Arms'],
-					name: "",
-					manacost: 0,
-					level: 0,
-					type: ""
-				}).failed.length == 0)
-				if (!comp) {
-					fail = true;
-				}
-                if (!fail) {
-                    let tileOppX = moveX + Math.sign(moveX - KinkyDungeonPlayerEntity.x);
-                    let tileOppY = moveY + Math.sign(moveY - KinkyDungeonPlayerEntity.y);
-                    let oppTile = KinkyDungeonMapGet(tileOppX, tileOppY);
-                    if (KDCrackableTiles.includes(oppTile) || KinkyDungeonMovableTiles.includes(oppTile)) {
-                        KDChangeStamina(KinkyDungeonPlayerDamage?.name || "Pickaxe", "weapon", "wepSpecial", -3, false, 1);
-                        KDCrackTile(moveX, moveY, undefined, {});
-                        KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeSucceed"), "#88ff88", 1, false);
-                    }
-                    KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoOpen"), "#ffffff", 1, true);
-                }
-				else {
-					KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoComp"), "#ff5555", 1, true);
+			// If the player is trying to move into a cracked wall while they have a pickaxe in their inventory, let's let them mine from it
+            if (KDEntityHasBuff(KinkyDungeonPlayerEntity,"TryingToMine") && KinkyDungeonPlayerDamage.digSpell) {
+				KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+                    id: "TryingToMine",
+                    type: "confirm",
+                    power: 1,
+                    duration: 5
+                });
+                KDDelayedActionPrune(["Action", "Cast"]);
+				let sp = KinkyDungeonFindSpell(KinkyDungeonPlayerDamage.digSpell || "Pickaxe", true);
+				if (sp) {
+					let res: { result: string, data: any } = KinkyDungeonCastSpell(
+						moveX,
+						moveY, sp,
+						undefined,
+						KDPlayer(),
+						undefined, undefined,
+						{
+							targetingSpellWeapon: KinkyDungeonTargetingSpellWeapon,
+						});
+					if (res.result == "Cast" && sp.sfx) {
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + sp.sfx + ".ogg");
+					}
+					if (res.result != "Fail" && !sp.quick) {
+						KinkyDungeonAdvanceTime(res.data.delta);
+					}
+					KinkyDungeonInterruptSleep();
 				}
             }
-            else if (KinkyDungeonInventoryGet("Pickaxe")) {
+            else if (KinkyDungeonPlayerDamage.digSpell) {
                 KinkyDungeonSendActionMessage(2, TextGet("KDWallAttemptToMine"), "white", 2);
                 KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
                     id: "TryingToMine",
-                    type: "MoveSpeed",
+                    type: "confirm",
                     power: 1,
                     duration: 5
                 });

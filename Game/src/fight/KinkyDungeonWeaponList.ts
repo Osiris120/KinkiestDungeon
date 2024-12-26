@@ -368,6 +368,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 	"Pickaxe": {name: "Pickaxe", damage: 3, chance: 1.0, staminacost: 3.0, type: "pierce", unarmed: false, rarity: 3, shop: true, sfx: "LightSwing",
 		tags: ["utility"],
 		crit: 1.4,
+		digSpell: "Pickaxe",
 		special: {type: "spell", spell: "Pickaxe", range: 1.5},
 		events: [{type: "ApplyBuff", trigger: "playerAttack", buff: {id: "ArmorDown", type: "ArmorBreak", duration: 6, power: -1.5, player: true, enemies: true, tags: ["debuff", "armor"]}}]},
 	"Torch": {name: "Torch", damage: 1.5, chance: 0.75, type: "fire", unarmed: false, rarity: 1, shop: true, sfx: "FireSpell",

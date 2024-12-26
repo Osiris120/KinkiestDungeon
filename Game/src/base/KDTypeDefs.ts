@@ -1404,6 +1404,8 @@ interface shopItem {
 }
 
 interface weapon extends damageInfo, NamedAndTyped {
+	/** Can autocast this into diggable tiles */
+	digSpell?: string,
 	stamPenType?: string,
 	ignoreshield?: boolean,
 	shield_crit?: boolean, // Crit thru shield
