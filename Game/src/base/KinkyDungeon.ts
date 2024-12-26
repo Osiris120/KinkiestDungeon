@@ -657,6 +657,8 @@ interface KDGameDataBase {
 	SigilsErased: number,
 	DragonCaptured?: boolean,
 	DragonTarget?: number,
+	/** 1 = seen it, 2 = worn it */
+	IdentifiedObj?: Record<string, number>,
 
 };
 
@@ -907,6 +909,7 @@ let KDGameDataBase: KDGameDataBase = {
 
 	LastSave: 50,
 	SigilsErased: 0,
+	IdentifiedObj: {},
 };
 
 let KDGameData: KDGameDataBase = Object.assign({}, KDGameDataBase);

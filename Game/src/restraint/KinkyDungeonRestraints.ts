@@ -3302,6 +3302,10 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 	if (C == KinkyDungeonPlayer && !customRestraints) {
 		let playerTags = new Map();
 		for (let inv of KinkyDungeonAllRestraintDynamic()) {
+			if (inv.item.inventoryVariant) {
+				if (!KDGameData.IdentifiedObj) KDGameData.IdentifiedObj = {};
+				KDGameData.IdentifiedObj[inv.item.inventoryVariant] = 2;
+			}
 			let group = KDRestraint(inv.item).Group;
 			if (group) {
 				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
@@ -3394,6 +3398,11 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 		let playerTags = new Map();
 		for (let inv of customRestraints) {
 			let group = KDRestraint(inv)?.Group;
+
+			if (inv.inventoryVariant) {
+				if (!KDGameData.IdentifiedObj) KDGameData.IdentifiedObj = {};
+				KDGameData.IdentifiedObj[inv.inventoryVariant] = KDGameData.IdentifiedObj[inv.inventoryVariant] || 1;
+			}
 			if (group) {
 				if (KDGroupBlocked(group)) playerTags.set(group + "Blocked", true);
 				playerTags.set(group + "Full", true);

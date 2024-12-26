@@ -1087,8 +1087,14 @@ function KinkyDungeonDrawInventorySelected (
 	}
 	if (!item) return false;
 	let name = item.name;
+	let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear")
+		&& !(KDGameData.IdentifiedObj && KDGameData.IdentifiedObj[item.item.inventoryVariant || item.item.name]);
 	let prefix = "KinkyDungeonInventoryItem";
-	let nameText = (KinkyDungeonStatsChoice.get("UnidentifiedWear") && (item.item.type == LooseRestraint)) ? ((item.item.name == KDRestraint(item.item).name) ? "" : "Enchanted ") + TextGet(`Restraint${KDRestraint(item.item).name}`) : KDGetItemName(item.item)
+	let nameText = (unidentified
+						&& (item.item.type == LooseRestraint)) ?
+						((item.item.name == KDRestraint(item.item).name) ? "" : TextGet("KDUnidentified"))
+							+ TextGet(`Restraint${KDRestraint(item.item).name}`)
+						: KDGetItemName(item.item)
 	if (item.item.type == Restraint || item.item.type == LooseRestraint) {
 		prefix = "Restraint";
 	}
@@ -1097,8 +1103,8 @@ function KinkyDungeonDrawInventorySelected (
 	DrawTextFitKD(nameText, xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale/3.35, canvasOffsetY_ui + 483*KinkyDungeonBookScale/5, 300, KDBookText, KDTextTan, undefined, undefined, 129);
 	//let wrapAmount = KDBigLanguages.includes(TranslationLanguage) ? 9 : 22;
 	let mult = KDGetFontMult();
-	let textSplit = KinkyDungeonWordWrap((KinkyDungeonStatsChoice.get("UnidentifiedWear") && prefix == "Restraint") ? TextGet(`${prefix}${KDRestraint(item.item).name}Desc`) : TextGet(prefix + name + "Desc"), 12*mult, 26*mult).split('\n');
-	let textSplit2 = KinkyDungeonWordWrap((KinkyDungeonStatsChoice.get("UnidentifiedWear") && prefix == "Restraint") ? TextGet(`${prefix}${KDRestraint(item.item).name}Desc2`) : TextGet(prefix + name + "Desc2"), 12*mult, 28*mult).split('\n');
+	let textSplit = KinkyDungeonWordWrap((unidentified && prefix == "Restraint") ? TextGet(`${prefix}${KDRestraint(item.item).name}Desc`) : TextGet(prefix + name + "Desc"), 12*mult, 26*mult).split('\n');
+	let textSplit2 = KinkyDungeonWordWrap((unidentified && prefix == "Restraint") ? TextGet(`${prefix}${KDRestraint(item.item).name}Desc2`) : TextGet(prefix + name + "Desc2"), 12*mult, 28*mult).split('\n');
 
 	let data = {
 		extraLines: [],
@@ -1310,10 +1316,10 @@ function KinkyDungeonDrawInventorySelected (
 	for (let N = 0; N < textSplit2.length; N++) {
 		DrawTextFitKD(textSplit2[N],
 			xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, KDBookText, KDTextTan, 24, undefined, 130); i++;}
-	if ((KinkyDungeonStatsChoice.get("UnidentifiedWear") && item.item.type == Restraint) || (!KinkyDungeonStatsChoice.get("UnidentifiedWear"))) {
+	if ((unidentified && item.item.type == Restraint) || (!unidentified)) {
 		for (let N = 0; N < data.extraLines.length; N++) {
 			DrawTextFitKD(data.extraLines[N],
-				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, data.extraLineColor[N], data.extraLineColorBG[N], 24, undefined, 130); i++;}	
+				xOffset + canvasOffsetX_ui + 640*KinkyDungeonBookScale*(1-1.0/3.35), canvasOffsetY_ui + 483*KinkyDungeonBookScale/5 + i * 32, 640*KinkyDungeonBookScale/2.5, data.extraLineColor[N], data.extraLineColorBG[N], 24, undefined, 130); i++;}
 	}
 	i = 0;
 
@@ -2813,6 +2819,7 @@ function KDPruneInventoryVariants(worn: boolean = true, loose: boolean = true, l
 	let entrieswep = Object.entries(KinkyDungeonWeaponVariants);
 	let entriescon = Object.entries(KinkyDungeonConsumableVariants);
 	let found = {};
+	let identified = KDGameData.IdentifiedObj || {};
 	if (worn) {
 		let list = KinkyDungeonAllRestraintDynamic();
 		for (let inv of list) {
@@ -2970,18 +2977,23 @@ function KDPruneInventoryVariants(worn: boolean = true, loose: boolean = true, l
 	for (let type of entries) {
 		if (!found[type[0]]) {
 			KDRemoveInventoryVariant(type[0]);
+			delete identified[type[0]];
 		}
 	}
 	for (let type of entrieswep) {
 		if (!found[type[0]]) {
 			KDRemoveWeaponVariant(type[0]);
+			delete identified[type[0]];
 		}
 	}
 	for (let type of entriescon) {
 		if (!found[type[0]]) {
 			KDRemoveConsumableVariant(type[0]);
+			delete identified[type[0]];
 		}
 	}
+
+	KDGameData.IdentifiedObj = identified;
 }
 
 /**
