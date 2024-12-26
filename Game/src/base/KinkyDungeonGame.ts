@@ -5372,6 +5372,18 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
             if (KDEntityHasBuff(KinkyDungeonPlayerEntity,"TryingToMine") && KinkyDungeonInventoryGet("Pickaxe")) {
                 // Took most of this code from the pickaxe spell
                 let fail = false;
+				// Check to make sure the player can actually swing the axe. There's probably a better way to check if the 
+				// player could hold a weapon using telekinesis. This would have a problem with arm scrolls. 
+				let comp = (KinkyDungeoCheckComponents({
+					components: ['Arms'],
+					name: "",
+					manacost: 0,
+					level: 0,
+					type: ""
+				}).failed.length == 0)
+				if (!comp) {
+					fail = true;
+				}
                 if (!fail) {
                     let tileOppX = moveX + Math.sign(moveX - KinkyDungeonPlayerEntity.x);
                     let tileOppY = moveY + Math.sign(moveY - KinkyDungeonPlayerEntity.y);
@@ -5383,6 +5395,9 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
                     }
                     KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoOpen"), "#ffffff", 1, true);
                 }
+				else {
+					KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoComp"), "#ff5555", 1, true);
+				}
             }
             else if (KinkyDungeonInventoryGet("Pickaxe")) {
                 KinkyDungeonSendActionMessage(2, TextGet("KDWallAttemptToMine"), "white", 2);
