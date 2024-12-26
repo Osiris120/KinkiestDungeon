@@ -976,11 +976,14 @@ let KDCommanderOrders: Record<string, KDCommanderOrder> = {
 					return en != enemy && KDHelpless(en) && en.hp < 0.52 && KDCanCapturePartyMember(en)
 					&& (!KDCapturers[en.id] || KDCapturers[en.id] == enemy.id);
 				})
-			) return true;
+			) {
+				let pos = KDGetHighSecLoc(enemy, !KDSelfishLeash(enemy));
+				return !!pos;
+			}
 			return false;
 		},
 		weight: (_enemy, data) => {
-			return data.combat ? 0 : 150;
+			return data.combat ? 0 : 50;
 		},
 		apply: (enemy, _data) => {
 			if ((enemy.aware || enemy.vp > 0.1) && KDRandom() < 0.45)

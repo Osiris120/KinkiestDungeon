@@ -3872,7 +3872,7 @@ const KinkyDungeonRestraints: restraint[] = [
 				color: "LightNeutral", override: true,
 			},
 			Straps: {
-				color: "Highlight", override: true,
+				color: "Highlight", override: false,
 			},
 			Hardware: {
 				color: "LightNeutral", override: true,
@@ -6603,8 +6603,9 @@ const KinkyDungeonRestraints: restraint[] = [
 		linkSize: 0.3,
 
 		factionFilters: {
-			Band: {color: "Highlight", override: true},
-			Cuff: {color: "DarkNeutral", override: true},
+			BaseMetal: {color: "DarkNeutral", override: true},
+			Crystal: {color: "Highlight", override: true},
+			Hardware: {color: "LightNeutral", override: true},
 		},
 		Filters: {"Hardware":{"gamma":1,"saturation":0,"contrast":1.24,"brightness":1,"red":1.8431372549019607,"green":1.0980392156862746,"blue":0.29411764705882354,"alpha":1}},
 		enemyTags: {}, playerTags: {}, minLevel: 0, floors: KDMapInit([]), shrine: ["Collars"]},
@@ -7731,7 +7732,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		Fabric: {color: "DarkNeutral", override: true},
 		Cape: {color: "DarkNeutral", override: true},
 		Gold: {color: "Highlight", override: true},
-		Pauldrons: {color: "Highlight", override: true},
+		Pauldrons: {color: "Highlight", override: false},
 		GoldBase: {color: "Highlight", override: false},
 		Plate: {color: "LightNeutral", override: false},
 		ChestPlate: {color: "LightNeutral", override: false},
