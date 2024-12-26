@@ -3234,6 +3234,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "Purple", maxdodge: 0,
 		stamina: 7,
 		preferBlock: true,
+		ondeath: [{type: "DragonSeal"}],
 		Defeat: {
 			furnitureTags: [
 				{tags: ["vineRestraints"], count: 12},
@@ -3334,6 +3335,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		noKiteWhenHarmless: true,
 		dontKiteWhenDisabled: true,
 		kite: 2.5,
+		ondeath: [{type: "DragonSeal"}],
 		Defeat: {
 			furnitureTags: [
 				{tags: ["crystalCuffs"], count: 3},
@@ -3453,6 +3455,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackLock: "Purple", maxdodge: 0,
 		stamina: 6,
 		preferBlock: true,
+		ondeath: [{type: "DragonSeal"}],
 		creationScript: "DragonLair",
 		dropTable: [{name: "PotionInvisibility", weight: 3}]},
 
@@ -3559,6 +3562,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		ignoreflag: ["dragonIgnore"],
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
+		ondeath: [{type: "DragonSeal"}],
 		events: [
 			{trigger: "beforeDamage", type: "dragonLairDefeat", power: 0, color: "#ff5277"},
 			{trigger: "afterEnemyTick", type: "createIce", power: 1, chance: 0.5, aoe: 1.0},
@@ -5859,6 +5863,11 @@ let KDOndeath: Record<string, (enemy: entity, o: any, mapData: KDMapDataType) =>
 	},
 	"WolfServer": (enemy, _o, mapData) => {
 		// TODO
+	},
+	"DragonSeal": (enemy, _o, mapData) => {
+		if (enemy.id == KDGameData.DragonTarget) {
+			KDGameData.DragonCaptured = true;
+		}
 	},
 
 	"summon": (enemy, o, mapData) => {

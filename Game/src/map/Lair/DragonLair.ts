@@ -64,7 +64,34 @@ alts.DragonLair = {
 				}
 			}
 
+
 		}
+	},
+
+	loadscript: (firsttime) => {
+		// Place sigils
+		if (!KDMapData.data) KDMapData.data = {};
+
+		if (!KDMapData.data.sigilsSpawned) {
+			let dragonid = KDPersonalAlt[KDMapData.RoomType]?.OwnerNPC;
+			if (dragonid) {
+				for (let i = 0; i < KDMapData.SealErasedQuota; i++) {
+					let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
+						return KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x, y))
+							&& !(KDEffectTileTags(x, y)["sigil"])
+					}, false, false);
+					if (point) {
+						KDCreateEffectTile(point.x, point.y, {
+							name: "SealSigil",
+							duration: 9999
+						}, 0);
+					}
+				}
+				KDGameData.DragonTarget = dragonid;
+			}
+		}
+		KDMapData.data.sigilsSpawned = true;
+		return true;
 	},
 	genCriteria: (iteration) => {
 		let dtype = KDGetDragonType();

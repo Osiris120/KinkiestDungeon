@@ -474,12 +474,13 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"SealSigil": {
 		selectValid: false,
 		check: () => {
-			return KDGameData.DragonCaptured || KDGameData.SigilsErased >= KDMapData.SealErasedQuota;
+			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] || KDGameData.SigilsErased >= KDMapData.SealErasedQuota;
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.SealSigil.check();
 			if (escape)
-				return TextGet(KDGameData.DragonCaptured ? "KDEscapeMinimap_PassKill_SealSigil" : "KDEscapeMinimap_Pass_SealSigil");
+				return TextGet(KDGameData.DragonCaptured ? "KDEscapeMinimap_PassKill_SealSigil"
+					: "KDEscapeMinimap_Pass_SealSigil");
 			else
 				return TextGet("KDEscapeMinimap_Fail_SealSigil");
 		},
@@ -488,12 +489,36 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 		},
 		worldgenstart: () => {
 			let quota = 1;
+			if (KinkyDungeonStatsChoice.get("extremeMode")) {
+				quota = 3;
+			}
+			else if (KinkyDungeonStatsChoice.get("hardMode")){
+				quota = 2;
+			}
 			let data = {number: quota};
+
 			KinkyDungeonSendEvent("calcEscapeSealSigilQuota", data);
 			KDMapData.SealErasedQuota = data.number;
 			KDGameData.SigilsErased = 0;
-			KDGameData.DragonCaptured = false;
-			KDGameData.DragonTarget = 0;
+			KDGameData.DragonCaptured = true;
+
+			// Gets all lairs, and if one of them is a persistent dragon we assign it, otherwise fail
+			for (let outpost of Object.keys(KDGetWorldMapLocation(
+				KDCoordToPoint(
+					KDGetCurrentLocation()))?.lairs)) {
+				if (KDPersonalAlt[outpost]?.OwnerNPC) {
+
+					let NPC = KDGetPersistentNPC(KDPersonalAlt[outpost]?.OwnerNPC);
+					if (NPC && (NPC.trueEntity || NPC.entity)) {
+						let enemy = KinkyDungeonGetEnemyByName((NPC.trueEntity || NPC.entity).Enemy);
+						if (enemy?.tags?.dragongirl || enemy?.tags?.dragonqueen) {
+							KDGameData.DragonTarget = KDPersonalAlt[outpost].OwnerNPC;
+							KDGameData.DragonCaptured = false;
+							return;
+						}
+					}
+				}
+			}
 		},
 	},
 };
