@@ -1239,7 +1239,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 				let img = ModelLayerString(m, l, MC.Poses);
 				let id = `layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`;
-				id = LZString.compressToBase64(id);
+				//id = LZString.compressToBase64(id);
 				if (!modified && !ContainerContainer.SpriteList.has(id)) modified = true;
 				let filters = filter;
 				if (extrafilter) filters = [...(filter || []), ...extrafilter];

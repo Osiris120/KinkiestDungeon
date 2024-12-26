@@ -553,6 +553,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			events: [
 				{type: "BattleRhythmStore", trigger: "beforePlayerLaunchAttack", always: true},
 				{type: "BattleRhythm", trigger: "doAttackCalculation"},
+				{type: "BattleRhythm", trigger: "calcEnemyAccuracy"},
 				{type: "BREvasionBlock", trigger: "tick", mult: 0.1, power: 0.1},
 				{type: "BRDecay", trigger: "tick", power: 0.01, always: true,},
 			]},

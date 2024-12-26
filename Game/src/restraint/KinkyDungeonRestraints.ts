@@ -1255,6 +1255,20 @@ function KinkyDungeonIsHandsBound(ApplyGhost?: boolean, Other?: boolean, Thresho
 }
 
 /**
+ * @param [ApplyGhost] - Can you receive help in this context?
+ * @param [Other] - Is this on yourself or another?
+ * @param Threshold - Threshold
+ */
+function KinkyDungeonIsHandsBoundFast(ApplyGhost?: boolean, Other?: boolean): boolean {
+	let blocked = !!KinkyDungeonPlayerTags.get("BoundHands");
+	let help = ApplyGhost && (KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp());
+	if (!Other && (!ApplyGhost || !(help)) && KinkyDungeonStatsChoice.get("Butterfingers")
+		&& KinkyDungeonIsArmsBoundFast(ApplyGhost, Other)) return true;
+	return (!ApplyGhost || !(help)) &&
+		blocked;
+}
+
+/**
  * Returns the total level of hands bondage, 1.0 or higher meaning unable to use hands
  * @param Other - on other or self
  * @return  - The bindhands level, sum of all bindhands properties of worn restraints
@@ -1299,6 +1313,17 @@ function KinkyDungeonIsArmsBound(ApplyGhost?: boolean, _Other?: boolean): boolea
 				break;
 			}
 		}
+	return (!ApplyGhost || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) &&
+		blocked;
+}
+/**
+ * @param [ApplyGhost]
+ * @param [Other] - Is this on yourself or another?
+ */
+function KinkyDungeonIsArmsBoundFast(ApplyGhost?: boolean, _Other?: boolean): boolean {
+	let blocked = KDGroupBlocked("ItemArms");
+	if (!blocked)
+		if (KinkyDungeonPlayerTags.get("BoundArms"))
 	return (!ApplyGhost || !(KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp())) &&
 		blocked;
 }
@@ -3316,6 +3341,8 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 				playerTags.set("BoundFeet", true);
 			if (KDRestraint(inv).bindarms)
 				playerTags.set("BoundArms", true);
+			if (KDRestraint(inv).gag)
+				playerTags.set("Gagged", true);
 			if (KDRestraint(inv).bindhands)
 				playerTags.set("BoundHands", true);
 			if (KDRestraint(inv).blindfold)
@@ -3401,6 +3428,8 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 				playerTags.set("BoundFeet", true);
 			if (KDRestraint(inv).bindarms)
 				playerTags.set("BoundArms", true);
+			if (KDRestraint(inv).gag)
+				playerTags.set("Gagged", true);
 			if (KDRestraint(inv).bindhands)
 				playerTags.set("BoundHands", true);
 			if (KDRestraint(inv).blindfold)

@@ -5810,6 +5810,28 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	}
 
 }
+let KDEntityFlagCache = new Map();
+let KDUpdateEntityFlagCache = false;
+
+
+function KDGetEntityFlagCache() {
+	if (!KDEntityFlagCache || KDUpdateEntityFlagCache) {
+		KDEntityFlagCache = new Map();
+
+		for (let npc of Object.values(KDPersistentNPCs)) {
+			if (npc.entity?.flags) {
+				if (Object.entries(npc.entity.flags).some((f) => {
+					return f[1] >= 0;
+				})) {
+					KDEntityFlagCache.set(npc, true);
+				}
+			}
+		}
+
+		KDUpdateEntityFlagCache = false;
+	}
+}
+
 
 let KDItemEventCache = new Map();
 let KDUpdateItemEventCache = false;

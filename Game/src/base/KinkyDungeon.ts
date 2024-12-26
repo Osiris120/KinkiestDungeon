@@ -912,7 +912,8 @@ let KDGameDataBase: KDGameDataBase = {
 let KDGameData: KDGameDataBase = Object.assign({}, KDGameDataBase);
 
 
-function KinkyDungeonLeashingEnemy() {
+function KinkyDungeonLeashingEnemy(): entity {
+	if (!KDPlayer().leash && !KDGameData.KinkyDungeonLeashedPlayer) return null;
 	if (KDGameData.KinkyDungeonLeashingEnemy || KDUpdateEnemyCache) {
 		return KinkyDungeonFindID(KDGameData.KinkyDungeonLeashingEnemy);
 	}
@@ -926,6 +927,7 @@ function KinkyDungeonLeashingEnemy() {
 let KDJailGuard = null;
 
 function KinkyDungeonJailGuard(): entity {
+	if (!KDGameData.JailGuard) return null;
 	return KDLookupID(KDGameData.JailGuard);
 }
 

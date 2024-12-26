@@ -1933,6 +1933,14 @@ function KinkyDungeonGagTotal(AllowFlags?: boolean, gagMult: number = 1): number
 	}
 	return total;
 }
+/**
+ * Returns the total level of gagging, 1.0 or higher meaning "fully gagged" and 0.0 being able to speak.
+ * @param   [AllowFlags] - Whether or not flags such as allowPotions and blockPotions should override the final result
+ * @return  - The gag level, sum of all gag properties of worn restraints
+ */
+function KDIsGaggedFast(): boolean {
+	return !!KinkyDungeonPlayerTags.get("Gagged");
+}
 
 function KinkyDungeonCanTalk(Loose?: boolean): boolean {
 	for (let inv of KinkyDungeonAllRestraint()) {

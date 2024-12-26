@@ -380,10 +380,12 @@ function KDAddCollection(enemy: entity, type?: string, status?: string, servantc
 
 
 function KDUpdatePersistentNPCFlags(delta: number) {
+	KDGetEntityFlagCache();
 	let curpos = KDGetCurrentLocation();
-	for (let npc of Object.values(KDPersistentNPCs)) {
+	for (let npc of KDEntityFlagCache.keys()) {
 		if (!KDCompareLocation(KDGetNPCLocation(npc.id), curpos)) {
-			KinkyDungeonTickFlagsEnemy(npc.entity, delta);
+			if (KinkyDungeonTickFlagsEnemy(npc.entity, delta))
+				KDUpdateEntityFlagCache = true;
 		}
 	}
 }

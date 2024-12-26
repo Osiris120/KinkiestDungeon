@@ -4470,6 +4470,16 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			}
 		},
 	},
+	"calcEnemyAccuracy": {
+		"BattleRhythm": (e, _spell, data) => {
+			if (data.target?.player && data.attacker) {
+				let player = KinkyDungeonPlayerEntity;
+				let power = KDEntityBuffedStat(player, "BattleRhythm");
+				let mult = power;
+				data.accuracy = Math.max(0, data.accuracy - mult);
+			}
+		},
+	},
 	"afterPlayerCast": {
 		"ManaRegenSuspend": (e, _spell, data) => {
 			if ((data.spell && data.spell.manacost != 0) && (!(KDEntityHasBuff(KinkyDungeonPlayerEntity, "ManaRegenSuspend", true)) || !KDHasSpell("ManaRegenPlus2"))) {

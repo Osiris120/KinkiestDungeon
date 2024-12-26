@@ -906,7 +906,6 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 				spellResist += KDPerkParams.KDEnemyArmorBoost;
 			}
 		}
-		KDUpdatePerksBonus();
 		let DamageAmpBonusPerks = KDDamageAmpPerks
 			+ (KinkyDungeonMeleeDamageTypes.includes(predata.type) ? KDDamageAmpPerksMelee : KDDamageAmpPerksMagic)
 			+ (Spell && !Spell.allySpell && !Spell.enemySpell ? KDDamageAmpPerksSpell : 0);
