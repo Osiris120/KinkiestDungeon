@@ -5869,22 +5869,24 @@ let KDRestraintDebugLog = [];
  * The name of an item, includes TextGet call
  * @param item
  */
-function KDGetItemName(item: item, type?: string): string {
+function KDGetItemName(item: item, type?: string, variant?: any): string {
 	let base = TextGet("KinkyDungeonInventoryItem" + item.name);
-	let variant = null;
 	switch(type || item.type) {
 		case Restraint:
 		case LooseRestraint:
 			base = TextGet("Restraint" + KDRestraint(item).name);
-			variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
+			if (variant == undefined)
+				variant = KinkyDungeonRestraintVariants[item.inventoryVariant || item.name];
 			break;
 		case Consumable:
 			base = TextGet("KinkyDungeonInventoryItem" + KDConsumable(item).name);
-			variant = KinkyDungeonConsumableVariants[item.inventoryVariant || item.name];
+			if (variant == undefined)
+				variant = KinkyDungeonConsumableVariants[item.inventoryVariant || item.name];
 			break;
 		case Weapon:
 			base = TextGet("KinkyDungeonInventoryItem" + KDWeapon(item).name);
-			variant = KinkyDungeonWeaponVariants[item.inventoryVariant || item.name];
+			if (variant == undefined)
+				variant = KinkyDungeonWeaponVariants[item.inventoryVariant || item.name];
 			break;
 	}
 	if (variant?.suffix) return base + " " + TextGet("KDVarSuff" + variant.suffix);

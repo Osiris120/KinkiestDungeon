@@ -5076,6 +5076,11 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 					}
 				}
 				KinkyDungeonSetEnemyFlag(data.target, "targetedForAttack", 4);
+
+				if (KinkyDungeonWeaponVariants[KinkyDungeonPlayerDamage.name]) {
+					if (!KDGameData.IdentifiedObj) KDGameData.IdentifiedObj = {};
+					KDGameData.IdentifiedObj[KinkyDungeonPlayerDamage.name] = 2;
+				}
 			} else {
 				if ((Enemy.lifetime > 9000 || !Enemy.maxlifetime))
 					KinkyDungeonAggro(Enemy, undefined, KinkyDungeonPlayerEntity);

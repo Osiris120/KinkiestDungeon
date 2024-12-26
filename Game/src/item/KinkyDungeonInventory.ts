@@ -1087,13 +1087,12 @@ function KinkyDungeonDrawInventorySelected (
 	}
 	if (!item) return false;
 	let name = item.name;
-	let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear")
-		&& !(KDGameData.IdentifiedObj && KDGameData.IdentifiedObj[item.item.inventoryVariant || item.item.name]);
+	let unidentified = KinkyDungeonStatsChoice.get("UnidentifiedWear") && KDIsUnidentified(item.item);
 	let prefix = "KinkyDungeonInventoryItem";
 	let nameText = (unidentified
-						&& (item.item.type == LooseRestraint)) ?
+						&& (item.item.type == LooseRestraint || item.item.type == Weapon || item.item.type == Consumable)) ?
 						((item.item.name == KDRestraint(item.item).name) ? "" : TextGet("KDUnidentified"))
-							+ TextGet(`Restraint${KDRestraint(item.item).name}`)
+							+ KDGetItemName(item.item, undefined, {})
 						: KDGetItemName(item.item)
 	if (item.item.type == Restraint || item.item.type == LooseRestraint) {
 		prefix = "Restraint";
@@ -3739,4 +3738,9 @@ function KinkyDungeonAttemptQuickRestraint(Name: string): boolean {
 	}
 
 	return true;
+}
+
+
+function KDIsUnidentified(item: item) {
+	return (KDGameData.IdentifiedObj && KDGameData.IdentifiedObj[item.inventoryVariant || item.name]);
 }

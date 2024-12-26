@@ -87,14 +87,23 @@ function KinkyDungeonResetEventVariablesTick(delta: number) {
 let KDEventMapInventoryIcon: Record<string, Record<string, (e: KinkyDungeonEvent, item: item, data: any) => void>> = {
 	"icon": {
 		"tintIcon": (e, item, data) => {
-			if (item == data.item) {
-				if (e.power > data.power) {
-					data.power = e.power;
-					if (e.color)
-						data.color = e.color;
-					if (e.bgcolor)
-						data.bgcolor = e.bgcolor;
+			if (item == data.item
+			) {
+				if (!(KinkyDungeonStatsChoice.get("UnidentifiedWear")
+					&& KDIsUnidentified(item))) {
+					if (e.power > data.power) {
+						data.power = e.power;
+						if (e.color)
+							data.color = e.color;
+						if (e.bgcolor)
+							data.bgcolor = e.bgcolor;
+					}
+				} else {
+					data.power = 0.5;
+					data.color = "#888888";
+					data.bgcolor = "#000000";
 				}
+
 			}
 		},
 	},

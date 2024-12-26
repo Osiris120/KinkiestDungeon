@@ -375,6 +375,10 @@ function KinkyDungeonUseConsumable(Name: string, Quantity: number): boolean {
 	if (!KDConsumable(item.item).noConsumeOnUse)
 		KinkyDungeonChangeConsumable(KDConsumable(item.item), -(KDConsumable(item.item).useQuantity ? KDConsumable(item.item).useQuantity : 1) * Quantity);
 
+	if (KinkyDungeonConsumableVariants[item.item.inventoryVariant || item.item.name]) {
+		if (!KDGameData.IdentifiedObj) KDGameData.IdentifiedObj = {};
+		KDGameData.IdentifiedObj[item.item.inventoryVariant || item.item.name] = 2;
+	}
 	KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonInventoryItem" + Name + "Use"), "#88FF88", 1);
 	if (KDConsumable(item.item).sfx) {
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + KDConsumable(item.item).sfx + ".ogg");
