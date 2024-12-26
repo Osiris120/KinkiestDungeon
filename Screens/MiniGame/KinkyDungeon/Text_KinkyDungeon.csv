@@ -25585,6 +25585,7 @@ KDPickaxeFailNoTarget,"Must select a cracked wall."
 KDPickaxeFailNoComp,"Your arms aren't free to swing the axe!"
 KDPickaxeFailNoOpen,"You strike the earth, but it is nothing but solid wall on the other side."
 KDPickaxeSucceed,"You strike the earth! It crumbles before you!"
+KDWallAttemptToMine,"Click again to automatically mine the wall with your pickaxe."
 
 KDTeleportPlateReact,The planar focus resonates with the teleportation magic!
 KDTeleportPlateManaReact,"The planar focusing crystal activates! Mana is drained, and turns into bindings!"
