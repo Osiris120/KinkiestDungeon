@@ -474,7 +474,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"SealSigil": {
 		selectValid: false,
 		check: () => {
-			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] || KDGameData.SigilsErased >= KDMapData.SealErasedQuota;
+			return KDGameData.DragonCaptured || !!KDGameData.Collection[KDGameData.DragonTarget + ""] || KDGameData.SigilsErased >= KDGameData.SealErasedQuota;
 		},
 		minimaptext: () => {
 			let escape = KinkyDungeonEscapeTypes.SealSigil.check();
@@ -482,7 +482,9 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 				return TextGet(KDGameData.DragonCaptured ? "KDEscapeMinimap_PassKill_SealSigil"
 					: "KDEscapeMinimap_Pass_SealSigil");
 			else
-				return TextGet("KDEscapeMinimap_Fail_SealSigil");
+				return TextGet("KDEscapeMinimap_Fail_SealSigil").replace("NUMBER",
+				"" + Math.round(KDGameData.SealErasedQuota - KDGameData.SigilsErased)
+			);
 		},
 		doortext: () => {
 			return TextGet("KDEscapeDoor_SealSigil");
@@ -498,7 +500,7 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 			let data = {number: quota};
 
 			KinkyDungeonSendEvent("calcEscapeSealSigilQuota", data);
-			KDMapData.SealErasedQuota = data.number;
+			KDGameData.SealErasedQuota = data.number;
 			KDGameData.SigilsErased = 0;
 			KDGameData.DragonCaptured = true;
 

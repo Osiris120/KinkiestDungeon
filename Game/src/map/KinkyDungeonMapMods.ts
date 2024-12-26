@@ -70,12 +70,16 @@ let KDMapMods: Record<string, MapMod> = {
 		faction: "Dragon",
 		jailType: "Dragon",
 		guardType: "Dragon",
+		escapeMethod: "SealSigil",
 		filter: (slot) => {
 			if (slot?.y < 2) return 0;
+			if (KDNoDragonLairCheckpoints.includes(slot.Checkpoint)) return 0;
 			return 1.0;
 		},
 		bonusTags: {
 			"dragon": {bonus: 7, mult: 2},
+			"draconic": {bonus: 4, mult: 1.5},
+			"dragongirl": {bonus: 4, mult: 0.5},
 		},
 		bonussetpieces: [
 			{Type: "BanditPrison", Weight: 8},

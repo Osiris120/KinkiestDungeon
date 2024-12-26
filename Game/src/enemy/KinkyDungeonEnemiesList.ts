@@ -3366,6 +3366,11 @@ let KinkyDungeonEnemies: enemy[] = [
 		wanderAISetting: "Dragon",
 		spawnAISetting: "Dragon",
 
+		RestraintFilter: {
+			unlimitedRestraints: true,
+			levelBonus: 3,
+		},
+
 		evasion: -0.5, disarm: 0.4,
 		stamina: 12, sprintspeed: 1.8,
 		maxdodge: 1,
@@ -3442,6 +3447,10 @@ let KinkyDungeonEnemies: enemy[] = [
 				{tags: ["shadowLatexRestraints"], count: 3},
 				{tags: ["shadowBall"], count: 1},
 			],
+		},
+		RestraintFilter: {
+			unlimitedRestraints: true,
+			levelBonus: 2,
 		},
 		ignoreflag: ["dragonIgnore"],
 		wanderAISetting: "Dragon",

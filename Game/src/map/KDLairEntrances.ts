@@ -18,7 +18,7 @@ let KDLairTypePlaceScript: Record<string, (lair: KDLair, data: KDMapDataType, en
 	},
 	Cave: (lair, data, entrance, roomTo) => {
 		let point = {x: entrance.x, y: entrance.y};
-		if ((KinkyDungeonGroundTiles + "4r").includes(
+		if ((KinkyDungeonGroundTiles + "4rY").includes(
 			KinkyDungeonMapGet(point.x, point.y))
 			&& !KinkyDungeonTilesGet(point.x + ',' + point.y)?.Type) {
 

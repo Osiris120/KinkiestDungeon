@@ -2115,7 +2115,7 @@ function KinkyDungeonPlaceEnemies(spawnPoints: any[], InJail: boolean, Tags: str
 					requireNonHostile: altRoom?.neutralSpawnsRequired ? KDGetMainFaction() : "",
 				},
 				BonusTags,
-				currentCluster ? filterTagsCluster : filterTags);
+				currentCluster ? filterTagsCluster : filterTags, );
 			if (!Enemy) {
 				Enemy = KinkyDungeonGetEnemy(
 					tags,
@@ -3746,6 +3746,8 @@ function KinkyDungeonReplaceDoodads(Chance: number, barchance: number, wallRubbl
 			}
 	}
 
+	let addedCave = false;
+
 	for (let X = 1; X < width-1; X += 1)
 		for (let Y = 1; Y < height-1; Y += 1) {
 			let category = (KDMapData.CategoryIndex ? KDGetCategoryIndex(X, Y)?.category : {}) as {category: string, tags: string[]};
@@ -3812,16 +3814,19 @@ function KinkyDungeonReplaceDoodads(Chance: number, barchance: number, wallRubbl
 			} else
 			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < wallRubblechance && !KDMapData.TilesSkin[X + "," + Y]) {
 				KinkyDungeonMapSet(X, Y, 'Y');
+				KDMapData.PotentialEntrances.push({
+					Excavate: [{x: X, y: Y}],
+					PlaceScript: "Cave",
+					Type: "Cave",
+					x: X,
+					y: Y,
+				})
 				if (KDAlreadyOpened(X, Y)) {
 					//KinkyDungeonMapSet(X, Y, '1');
 				}
 			}
 
 		}
-
-
-
-
 }
 
 

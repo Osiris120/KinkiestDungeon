@@ -23274,7 +23274,7 @@ KDEscapeMethod_,None
 KDEscapeDoor_,This door failed to load and cannot be opened.  Please report this bug to Ada with a save code.
 
 
-KDEscapeMinimap_Fail_SealSigil,Exits locked!|Erase NUMBER sigil!
+KDEscapeMinimap_Fail_SealSigil,Exit sealed!|Find the lair!
 KDEscapeMinimap_Pass_SealSigil,Sigils erased!
 KDEscapeMinimap_PassKill_SealSigil,Dragon defeated!
 KDEscapeMethod_SealSigil,Draconic Seal
@@ -24714,6 +24714,7 @@ AttackDragonGirlShadowLock,"The dragon girl reaches out and locks your restraint
 KDCageDrop,A cage falls from the ceiling on top of you!
 KDCrystalEncase,Crystals grow across your body and encase you!
 KDIceEncase,You are encased in a solid block of ice!
+KDShadowEncase,A shadowy sphere rises from the ground and wraps over you tightly!
 KDShadowBall,Shadows coalesce themselves around you in spherical form!
 
 RestraintCrystal,Crystal Encasement

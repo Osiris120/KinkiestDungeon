@@ -655,6 +655,7 @@ interface KDGameDataBase {
 	Guilt: number,
 	LastSave: number,
 	SigilsErased: number,
+	SealErasedQuota: number,
 	DragonCaptured?: boolean,
 	DragonTarget?: number,
 	/** 1 = seen it, 2 = worn it */
@@ -663,6 +664,7 @@ interface KDGameDataBase {
 };
 
 let KDGameDataBase: KDGameDataBase = {
+	SealErasedQuota: 0,
 	SawFlags: {},
 	NamesGenerated: {},
 	PersistentNPCCache: {},

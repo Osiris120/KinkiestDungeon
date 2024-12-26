@@ -278,9 +278,7 @@ function KDGetDungeonName(coord: WorldCoord) {
 			: TextGet("DungeonName" + dungeonName)
 	}
 
-	return KDPersonalAlt[coord.room] ?
-		KDGetLairName(coord.room)
-			: TextGet("KDUnknown");
+	return TextGet("KDUnknown");
 }
 
 function KinkyDungeonDrawInterface(_showControls: boolean) {

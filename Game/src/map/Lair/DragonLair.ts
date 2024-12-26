@@ -75,7 +75,7 @@ alts.DragonLair = {
 		if (!KDMapData.data.sigilsSpawned) {
 			let dragonid = KDPersonalAlt[KDMapData.RoomType]?.OwnerNPC;
 			if (dragonid) {
-				for (let i = 0; i < KDMapData.SealErasedQuota; i++) {
+				for (let i = 0; i < KDGameData.SealErasedQuota; i++) {
 					let point = KinkyDungeonGetRandomEnemyPointCriteria((x, y) => {
 						return KinkyDungeonGroundTiles.includes(KinkyDungeonMapGet(x, y))
 							&& !(KDEffectTileTags(x, y)["sigil"])
@@ -102,6 +102,7 @@ alts.DragonLair = {
 	},
 };
 
+let KDNoDragonLairCheckpoints = ['lib'];
 
 let KDDragonList: KDMapEnemyList[] = [
 	{
