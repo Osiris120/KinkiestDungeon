@@ -431,7 +431,11 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			//if (KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison) return 0;
 			return (hostile
 				&& (enemy.Enemy.tags.jailer || enemy.Enemy.tags.jail || enemy.Enemy.tags.leashing)
-				&& (KinkyDungeonFlags.has("Released"))
+				&& ((KinkyDungeonFlags.has("Released"))
+			|| (
+				!KDIsNearbyFurniture(enemy, 14)
+			)
+		)
 				&& !KDEnemyHasFlag(enemy, "dontChase")) ?
 				((KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["dropoff"])
 					&& !KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"])) ? 0 : 100)
@@ -445,7 +449,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 
 			let nj = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["jail"]);
 			let pos = KDMapData.StartPosition;
-			if (!nj || KinkyDungeonFlags.get("LeashToPrison")) {
+			if (!nj || KinkyDungeonFlags.get("LeashToPrison") || KDSelfishLeash(enemy)) {
 				nj = null;
 				if (KDGenHighSecCondition(!nj, enemy)) {
 					pos = KDGetHighSecLoc(enemy, !KDSelfishLeash(enemy));
@@ -1135,10 +1139,11 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 			if (KinkyDungeonFlags.get("LeashToPrison")) return 0;
 			if (KDGameData.PrisonerState == 'jail') return 0;
 			if (KDSelfishLeash(enemy)) return 0;
-			if (KinkyDungeonGetRestraintItem("ItemDevices") && KDGameData.PrisonerState != 'chase') return 0;
+			if (KinkyDungeonGetRestraintItem("ItemDevices")
+				&& KinkyDungeonSlowLevel >= 9 && KDGameData.PrisonerState != 'chase') return 0;
 			if (KDEnemyHasFlag(enemy, "dontChase")) return 0;
 			let nearestfurniture = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true);
-			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) < 14 ? (hostile ? 120 : (aiData.domMe ? 0 : 40)) : 0;
+			return nearestfurniture && KDistChebyshev(enemy.x - nearestfurniture.x, enemy.y - nearestfurniture.y) <= 14 ? (hostile ? 120 : (aiData.domMe ? 0 : 40)) : 0;
 		},
 		trigger: (enemy, aiData) => {
 			KDResetIntent(enemy, aiData);
