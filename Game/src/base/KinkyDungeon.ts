@@ -1,6 +1,9 @@
 "use strict";
 
+let KDENABLEDISCORDSYNC = false;
+
 let KDGenMapCallback: () => string = null;
+
 
 // Modders look here!
 /**
@@ -4277,18 +4280,21 @@ function KDDrawLoadMenu() {
 	let CombarXX = 520;
 	// Save slots buttons
 	DrawTextFitKD(TextGet("PlayGameWithCurrentCode"), 1250, YYstart - 70, 1000, "#ffffff", undefined, 40);
-	DrawButtonKDEx(TextGet("KDLocalSaves"), () => {
-        KDLoadCloudGames = false;
-        LoadMenuCurrentSlot = 0;
-        loadedSaveforPreview = null;
-        KDSaveSlot = null;
-    }, true, CombarXX + 50, YYstart - 5, 150, 45, TextGet("KDLocalSaves"), "#ffffff", undefined, "")
-    DrawButtonKDEx(TextGet("KDCloudSaves"), () => {
-        KDLoadCloudGames = true;
-        LoadMenuCurrentSlot = 0;
-        loadedSaveforPreview = null;
-        KDSaveSlot = null;
-    }, true, CombarXX + 210, YYstart - 5, 150, 45, TextGet("KDCloudSaves"), "#ffffff", undefined, "")
+	if (KDENABLEDISCORDSYNC) {
+		DrawButtonKDEx(TextGet("KDLocalSaves"), () => {
+			KDLoadCloudGames = false;
+			LoadMenuCurrentSlot = 0;
+			loadedSaveforPreview = null;
+			KDSaveSlot = null;
+		}, true, CombarXX + 50, YYstart - 5, 150, 45, TextGet("KDLocalSaves"), "#ffffff", undefined, "")
+		DrawButtonKDEx(TextGet("KDCloudSaves"), () => {
+			KDLoadCloudGames = true;
+			LoadMenuCurrentSlot = 0;
+			loadedSaveforPreview = null;
+			KDSaveSlot = null;
+		}, true, CombarXX + 210, YYstart - 5, 150, 45, TextGet("KDCloudSaves"), "#ffffff", undefined, "")
+	}
+
 	if (!KDLoadCloudGames) {
 		for (let i = 1; i < 5; i++) {
 			let num = (i);
@@ -4465,7 +4471,7 @@ function KDDrawLoadMenu() {
                 KDSyncCloudSaveGame();
             }, true, CombarXX + 15, YY, 385, 64, TextGet("KDSyncFromCloudButton"), "#ffffff", undefined, "")
         }
-        else { // Draw a login button so they can login! 
+        else { // Draw a login button so they can login!
             DrawButtonKDEx(TextGet("KDLoginButton"), () => {
                 KDLoginDiscord();
             }, true, CombarXX + 70, YY + 85, 280, 75, TextGet("KDLoginButton"), "#ffffff", undefined, "")
@@ -4921,7 +4927,7 @@ function KDLoginDiscord() {
 		// @ts-ignore
         localStorage.setItem('cloudsyncstate', Math.floor(Math.random() * Math.random() * (1000000000000 * Math.random())))
         stateoutput = localStorage.getItem('cloudsyncstate');
-        // Clear the state value after 15 minutes, same as what the remote server respects. 
+        // Clear the state value after 15 minutes, same as what the remote server respects.
         setTimeout(() => {
             localStorage.setItem('cloudsyncstate', null)
         }, 900000)
@@ -4977,7 +4983,7 @@ function KDLoginDiscord() {
                 }, 100)
             }
             else {
-                // This shouldn't happen. 
+                // This shouldn't happen.
                 console.log("It happened.")
                 localStorage.setItem('KDDiscordLoginname', respdata.name);
                 localStorage.setItem('KDDiscordLoginpfp', respdata.pfp);
@@ -5016,22 +5022,22 @@ function KDLogoutDiscord() {
     KDUpdateDiscordName()
 }
 
-// Save data should be committed to the indexedDB by this point. We want to grab that. 
+// Save data should be committed to the indexedDB by this point. We want to grab that.
 function KDSaveGameToCloud(saveslot) {
     let updateslot = ((saveslot * -1) - 1) // Should output -1 or -2, if we supply 0 or 1.
     KinkyDungeonDBLoad(updateslot).then((res) => {
-        // res should be a save data string. Lets make sure it's not null. 
+        // res should be a save data string. Lets make sure it's not null.
         try {
             if (res) {
                 const url = `https://savegame-830808080683.us-central1.run.app?id=${KDCloudLogintoken}&iv=${KDCloudLoginiv}`;
-    
+
                 let jsonbody = JSON.stringify({
                     saveslot: saveslot,
                     data: res
                 })
 
                 console.log(jsonbody)
-                
+
                 fetch(url, {
                     method: 'POST',
                     body: jsonbody,
@@ -5072,7 +5078,7 @@ function KDSyncCloudSaveGame() {
             let lastsaveddate = (new Date(KDCloudLastSync)).valueOf()
 
             const url = `https://retrievegame-830808080683.us-central1.run.app?id=${KDCloudLogintoken}&iv=${KDCloudLoginiv}&timestamp=${lastsaveddate}&saveslot=${i}`;
-            
+
             fetch(url, {
                 method: 'GET',
                 //body: jsonbody,
@@ -5083,7 +5089,7 @@ function KDSyncCloudSaveGame() {
                 if (data.content) {
                     console.log(data);
                 }
-                else { // This should always be a save game with data and timestamp properties. 
+                else { // This should always be a save game with data and timestamp properties.
                     console.log(data);
                     KinkyDungeonDBSave(updateslot, data.data);
                     loadedcloudsaveslots[i] = data.data
