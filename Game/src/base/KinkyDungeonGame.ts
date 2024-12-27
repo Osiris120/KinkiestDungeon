@@ -1831,6 +1831,7 @@ function KDChooseFactions(factionList: string[], Floor: number, Tags: string[], 
 	if (factionEnemy && KDRandom() < 0.6) randomFactions.push(factionEnemy);
 
 	if (Set) {
+		KDMapData.MapFaction = primaryFaction;
 		KDMapData.JailFaction.push(primaryFaction);
 		KDMapData.GuardFaction.push(primaryFaction);
 		if (factionAllied) {
