@@ -274,6 +274,8 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 	"DirectionSlow":  {category: "Major", id: "DirectionSlow", cost: -1, block: ["DirectionSlow2"]},
 	"DirectionSlow2":  {category: "Major", id: "DirectionSlow2", cost: -2.5, block: ["DirectionSlow"]},
 	"FutileStruggles":  {category: "Restraints", id: "FutileStruggles", cost: -1},
+
+	"Forgetful": {category: "Major", id: "Forgetful", cost: -2},
 	//"SecondWind":  {category: "Restraints", id: "SecondWind", cost: 1},
 
 	"Stranger": {startPriority: 1000, category: "Enemies", id: "Stranger", cost: 0, block: ["Bandit", "WrongNeighborhood"], tags: ["start"]},
@@ -445,8 +447,7 @@ let KinkyDungeonStatsPresets: Record<string, KDPerk> = {
 
 
 	"Blackout":  {category: "Senses", id: "Blackout", cost: -1, block: ["TotalBlackout", "NoBlindfolds"]},
-	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2.5, block: ["Blackout", "Forgetful", "NoBlindfolds"]},
-	"Forgetful": {category: "Senses", id: "Forgetful", cost: -1, block: ["TotalBlackout"]},
+	"TotalBlackout":  {category: "Senses", id: "TotalBlackout", cost: -2.5, block: ["Blackout", "NoBlindfolds"]},
 	"NightOwl": {category: "Senses", id: "NightOwl", cost: 2, block: ["NightBlindness", "MutualDarkness"]},
 	//"MutualDarkness": {category: "Senses", id: "NightOwl", cost: 2, block: ["NightBlindness", "NightOwl"]},
 	"Stalker": {category: "Senses", id: "Stalker", cost: 2,},

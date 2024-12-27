@@ -14,15 +14,17 @@ let KDObjectMessages: Record<string, () => void> = {
  * MUTUALLY exclusive with KDObjectDraw, as this
  * overrides the default behavior of clicking on the object and bringing up a modal
  */
-let KDObjectClick: Record<string, (x: number, y: number) => void> = {
+let KDObjectClick: Record<string, (x: number, y: number) => boolean> = {
 	"Food": (x, y) => {
 		let tile = KinkyDungeonTilesGet(x + "," + y);
 		if (tile.Food && KDFood[tile.Food] && !KDFood[tile.Food].inedible && !tile.Eaten) {
 			KinkyDungeonTargetTileLocation = x + "," + y;
 			KinkyDungeonTargetTile = tile;
 			KDStartDialog("TableFood", "", true, "");
+			return true;
 		} else
 			KinkyDungeonFoodMessage(tile);
+		return false;
 	},
 	"Elevator": (x, y) => {
 		let altType = KDGetAltType(MiniGameKinkyDungeonLevel);
@@ -40,27 +42,33 @@ let KDObjectClick: Record<string, (x: number, y: number) => void> = {
 		}
 		if (KDGameData.ElevatorsUnlocked[MiniGameKinkyDungeonLevel]) {
 			KDStartDialog("Elevator", "", true, "");
+			return true;
 		} else
 			KinkyDungeonElevatorMessage();
+		return false;
 	},
 	"Oriel": (_x, _y) => {
 		KDStartDialog("Oriel", "", true, "");
+		return true;
 	},
 	"WardenCourier": (_x, _y) => {
 		KDStartDialog("WardenCourier", "", true, "");
+		return true;
 	},
 };
 /**
  * Script happens when you interact to an object
  */
-let KDObjectInteract: Record<string, (x: number, y: number, dist?: number) => void> = {
+let KDObjectInteract: Record<string, (x: number, y: number, dist?: number) => boolean> = {
 	"DollDropoff": (x, y, dist) => {
 		if ((dist != undefined ? dist : KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y)) < 1.5) {
 			//if (!KinkyDungeonGetRestraintItem("ItemDevices")) {
 			KDGameData.InteractTargetX = x;
 			KDGameData.InteractTargetY = y;
 			KDStartDialog("DollDropoff", "", true);
+			return true;
 		}
+		return false;
 			//}
 	},
 	"Furniture": (x, y, dist) => {
@@ -69,7 +77,9 @@ let KDObjectInteract: Record<string, (x: number, y: number, dist?: number) => vo
 			KDGameData.InteractTargetX = x;
 			KDGameData.InteractTargetY = y;
 			KDStartDialog("Furniture", "", true);
+			return true;
 		}
+		return false;
 			//}
 	},
 	"Door": (x, y) => {
@@ -86,11 +96,13 @@ let KDObjectInteract: Record<string, (x: number, y: number, dist?: number) => vo
 
 
 				KinkyDungeonTargetTileMsg();
+				return true;
 			} else {
 				if (KinkyDungeonTilesGet(x + ',' + y)) {
 					KinkyDungeonTilesGet(x + ',' + y).LockSeen = undefined;
 				}
 				KDAttemptDoor(x, y);
+				return true;
 			}
 		} else if (!KinkyDungeonEntityAt(x, y, false, undefined, undefined, true)) {
 
@@ -98,20 +110,24 @@ let KDObjectInteract: Record<string, (x: number, y: number, dist?: number) => vo
 				KinkyDungeonTilesGet(x + ',' + y).LockSeen = undefined;
 			}
 			KinkyDungeonCloseDoor(x, y);
+			return true;
 		}
+		return false;
 	},
 };
 /**
  * Script happens when you interact to an tile
  */
-let KDTileInteract: Record<string, (x: number, y: number, dist?: number) => void> = {
+let KDTileInteract: Record<string, (x: number, y: number, dist?: number) => boolean> = {
 	'B': (x, y, dist) => {
 		if (dist != undefined ? dist : KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
 			if (!KinkyDungeonFlags.get("slept") && !KinkyDungeonFlags.get("nobed") && KinkyDungeonStatWill < KinkyDungeonStatWillMax * 0.49) {
 				KDGameData.InteractTargetX = x;
 				KDGameData.InteractTargetY = y;
 				KDStartDialog("Bed", "", true);
+				return true;
 			}
+		return false;
 	},
 	'c': (x, y, dist) => {
 		if (dist != undefined ? dist : KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y) < 1.5)
@@ -125,7 +141,9 @@ let KDTileInteract: Record<string, (x: number, y: number, dist?: number) => void
 				KinkyDungeonDrawState = "Container";
 				KinkyDungeonCurrentFilter = "All";
 				KDUI_Container_LastSelected = "Chest";
+				return true;
 			}
+		return false;
 	},
 };
 /**
@@ -495,7 +513,7 @@ function KDIsElevatorFloorUnlocked(num: string | number): boolean {
 /**
  * @param floor
  */
-function KDElevatorToFloor(floor: number, RoomType: string) {
+function KDElevatorToFloor(floor: number, RoomType: string, x: number = 0) {
 	// Only works if the map has been generated
 	let slot = KDWorldMap['0,' + floor];
 	if (slot) {
@@ -503,7 +521,7 @@ function KDElevatorToFloor(floor: number, RoomType: string) {
 			let subslot = KDElevatorFloorIndex[RoomType] || (slot.data ? slot.data[RoomType] : null);
 			if (subslot) {
 				let params = KinkyDungeonMapParams[subslot.Checkpoint] || (slot.data[slot.main]?.Checkpoint ? KinkyDungeonMapParams[slot.data[slot.main].Checkpoint] : undefined);
-				MiniGameKinkyDungeonLevel = floor;
+				KDSetWorldSlot(x, floor);
 				KinkyDungeonCreateMap(params,
 					RoomType,
 					undefined,
@@ -522,7 +540,7 @@ function KDElevatorToFloor(floor: number, RoomType: string) {
 			let subslot = slot.data.ElevatorRoom;
 			if (subslot) {
 				let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[subslot.Checkpoint] || subslot.Checkpoint)];
-				MiniGameKinkyDungeonLevel = floor;
+				KDSetWorldSlot(x, floor);
 				KinkyDungeonCreateMap(params,
 					subslot.RoomType,
 					subslot.MapMod,

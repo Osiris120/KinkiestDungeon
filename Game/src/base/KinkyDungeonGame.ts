@@ -214,6 +214,7 @@ function KDDefaultMapData(mapX: number, mapY: number, RoomType: string = "", Map
 
 		Entities : [],
 		FogGrid : [],
+		FogMemory : [],
 		Grid : "",
 		Traffic : [],
 		GridWidth : 31,
@@ -352,7 +353,7 @@ function KinkyDungeonSetCheckPoint(Checkpoint?: string, _AutoSave?: any, _suppre
 }
 
 function KinkyDungeonNewGamePlus(): void {
-	MiniGameKinkyDungeonLevel = 0;
+	KDSetWorldSlot(0, 0);
 
 	KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
 	// Remove all chests and add to lost items
@@ -489,7 +490,7 @@ function KinkyDungeonInitialize(Level: number, Load?: any) {
 
 	KinkyDungeonTextMessage = "";
 	KinkyDungeonActionMessage = "";
-	MiniGameKinkyDungeonLevel = Level;
+	KDSetWorldSlot(0, Level);
 	KinkyDungeonSetCheckPoint();
 
 	KDInitCanvas();
@@ -995,8 +996,8 @@ function KinkyDungeonCreateMap (
 	if (useExisting && location.data[KDGameData.RoomType]) {
 		KDLoadMapFromWorld(worldLocation.x, worldLocation.y, KDGameData.RoomType, direction, constantX);
 
-		if (!location.jx) location.jx = KDGameData.JourneyX;
-		if (!location.jy) location.jy = KDGameData.JourneyY;
+		if (location.jx == undefined) location.jx = KDGameData.JourneyX;
+		if (location.jy == undefined) location.jy = KDGameData.JourneyY;
 		// Repopulate
 		altType = KDGetAltType(MiniGameKinkyDungeonLevel);
 		if (!altType?.loadscript || altType.loadscript(false)) {
@@ -1535,7 +1536,12 @@ function KinkyDungeonCreateMap (
 				}
 
 				KDGameData.SelectedEscapeMethod = "Key";
-				KDEscapeWorldgenStart(KDGetEscapeMethod(Floor));
+
+				let mm = KDGetEscapeMethod(Floor);
+				if (mm && mm != "None")
+					KinkyDungeonSendActionMessage(10, TextGet("KDEscapeMethodDesc_" + mm),
+					"#ffffff", 10);
+				KDEscapeWorldgenStart(mm);
 			}
 			KinkyDungeonSendEvent("postQuest", {altType: altType});
 
@@ -4268,6 +4274,15 @@ function KinkyDungeonShadowGet(X: number, Y: number): number {
 function KinkyDungeonFogGet(X: number, Y: number): any {
 	return KDMapData.FogGrid[X + Y*(KDMapData.GridWidth)];
 }
+function KinkyDungeonFogSet(X: number, Y: number, val: number): any {
+	KDMapData.FogGrid[X + Y*(KDMapData.GridWidth)] = val;
+}
+function KinkyDungeonFogMemoryGet(X: number, Y: number): any {
+	return KDMapData.FogMemory[X + Y*(KDMapData.GridWidth)];
+}
+function KinkyDungeonFogMemorySet(X: number, Y: number, val: number): any {
+	KDMapData.FogMemory[X + Y*(KDMapData.GridWidth)] = val;
+}
 
 let canvasOffsetX = 0;
 let canvasOffsetY = 0;
@@ -5403,8 +5418,15 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 					}
 					KinkyDungeonInterruptSleep();
 				}
-            }
-            else if (KinkyDungeonPlayerDamage.digSpell) {
+            } else if (KDEntityHasBuff(KinkyDungeonPlayerEntity,"TryingToMine")) {
+				let wpn = Array.from(KinkyDungeonInventory.get(Weapon).values()).find((item) => {
+					return KDWeapon(item)?.digSpell && KinkyDungeonCanUseWeapon(false, undefined,
+						KDWeapon(item));
+				});
+				if (KDWeapon(wpn)?.digSpell) {
+					KDSwitchWeapon(wpn.inventoryVariant || wpn.name);
+				}
+			} else if (KinkyDungeonPlayerDamage.digSpell) {
                 KinkyDungeonSendActionMessage(2, TextGet("KDWallAttemptToMine"), "white", 2);
                 KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
                     id: "TryingToMine",
@@ -5412,6 +5434,18 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
                     power: 1,
                     duration: 5
                 });
+            } else if (Array.from(KinkyDungeonInventory.get(Weapon).values()).some((item) => {
+				return KDWeapon(item)?.digSpell && KinkyDungeonCanUseWeapon(false, undefined,
+					KDWeapon(item));
+			})) {
+                KinkyDungeonSendActionMessage(2, TextGet("KDWallAttemptToMine"), "white", 2);
+                KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
+                    id: "TryingToMine",
+                    type: "confirm",
+                    power: 1,
+                    duration: 5
+                });
+
             }
         } else if (KDMapData.GroundItems.some((item) => {return item.x == moveX && item.y == moveY;})) {
 			// We can pick up items inside walls, in case an enemy drops it into bars
@@ -5808,6 +5842,20 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	}
 
 	KinkyDungeonSendEvent("tickAfter", {delta: delta});
+
+	if (KinkyDungeonStatsChoice.get("Forgetful")) {
+		for (let X = 0; X < KDMapData.GridWidth; X++) {
+			for (let Y = 0; Y < KDMapData.GridHeight; Y++) {
+				if (X >= 0 && X <= KDMapData.GridWidth-1 && Y >= 0 && Y <= KDMapData.GridHeight-1 && !(KinkyDungeonVisionGet(X, Y) > 0.1)) {
+					if (KinkyDungeonFogMemoryGet(X, Y) > 0) {
+						KinkyDungeonFogMemorySet(X, Y, Math.max(0, KinkyDungeonFogMemoryGet(X, Y) - delta));
+					} else if (KinkyDungeonFogMemoryGet(X, Y) == 0) {
+						KinkyDungeonFogSet(X, Y, 0);
+					}
+				}
+			}
+		}
+	}
 
 	KinkyDungeonUpdateStats(0);
 
@@ -6431,7 +6479,10 @@ function KDEnemyTurnToFace(enemy: entity, x: number, y: number) {
 		enemy.flip = false;
 }
 
-function KDTurnToFace(dx: number, dy: number) {
+function KDTurnToFace(dx: number, dy: number): boolean {
+	let origx = KinkyDungeonPlayerEntity.facing_x;
+	let origy = KinkyDungeonPlayerEntity.facing_y;
+
 	KinkyDungeonPlayerEntity.facing_x = Math.min(1, Math.abs(dx)) * Math.sign(dx);
 	KinkyDungeonPlayerEntity.facing_y = Math.min(1, Math.abs(dy)) * Math.sign(dy);
 
@@ -6439,6 +6490,7 @@ function KDTurnToFace(dx: number, dy: number) {
 		KinkyDungeonPlayerEntity.facing_x_last = KinkyDungeonPlayerEntity.facing_x;
 		KinkyDungeonPlayerEntity.facing_y_last = KinkyDungeonPlayerEntity.facing_y;
 	}
+	return origx != KinkyDungeonPlayerEntity.facing_x || KinkyDungeonPlayerEntity.facing_y != origy;
 }
 
 

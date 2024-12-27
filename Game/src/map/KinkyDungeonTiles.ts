@@ -348,8 +348,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 					}
 
 					if (MiniGameKinkyDungeonLevel >= KinkyDungeonMaxLevel) {
-						MiniGameKinkyDungeonLevel = 1;
-						//KDMapData.MainPath = "grv";
+						KDSetWorldSlot(0, 0);
 						KinkyDungeonState = "End";
 						MiniGameVictory = true;
 						suppressCheckPoint = true;
@@ -439,16 +438,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 				if (data.ShortcutIndex >= 0) {
 					KDGameData.ShortcutIndex = data.ShortcutIndex;
 				} else {
-					if (data.JourneyTile?.SideRooms?.some( (sr) => {
-						return KDSideRooms[sr]?.altRoom == KDGameData.RoomType;
-					})) {
-						// Bandaid to patch the stupid shortcuts system I made
-						KDGameData.ShortcutIndex = "" + data.JourneyTile?.SideRooms?.findIndex( (sr) => {
-							return KDSideRooms[sr]?.altRoom == KDGameData.RoomType;
-						});
-					} else {
-						KDGameData.ShortcutIndex = KDGameData.RoomType;
-					}
+					KDGameData.ShortcutIndex = KDGameData.RoomType;
 				}
 				if (altRoom?.afterExit) altRoom.afterExit(data); // Handle any special contitions
 				KinkyDungeonSendEvent("AfterAdvance", data);

@@ -482,7 +482,7 @@ function KinkyDungeonHandleWanderingSpawns(delta: number) {
 							miniboss = true; // Adds miniboss as a tag
 						}
 
-						let ii = KDMapData.RespawnQueue.indexOf(qq);
+						let ii = KDMapData.RespawnQueue ? KDMapData.RespawnQueue.indexOf(qq) : -1;
 						if (ii >= 0)
 							KDMapData.RespawnQueue.splice(ii, 1);
 						Queue.splice(Queue.indexOf(qq), 1);

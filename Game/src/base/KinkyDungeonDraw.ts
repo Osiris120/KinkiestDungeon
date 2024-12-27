@@ -2006,6 +2006,7 @@ function KinkyDungeonDrawGame() {
 					}, true, 600, 560, 300, 64, "Add all restraints", "#ffffff", "");
 					DrawButtonKDEx("debugIncFloor", (_bdata) => {
 						MiniGameKinkyDungeonLevel += 1;
+						KDCurrentWorldSlot.y += 1;
 						KDGameData.JourneyY += 1;
 						KinkyDungeonSendEvent("tickFlags", {delta: 1});
 						KDTickSpecialStats();

@@ -2776,6 +2776,7 @@ interface KDMapDataType {
 	GridWidth: number;
 	GridHeight: number;
 	FogGrid: any[];
+	FogMemory: any[];
 
 
 	//MainPath: string,

@@ -1669,8 +1669,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '0');
 						KDTileDelete();
 					}
-
-					MiniGameKinkyDungeonLevel = 0;
+					KDSetWorldSlot(0, 0);
 
 					KinkyDungeonCreateMap(params, "ShopStart", "",
 						MiniGameKinkyDungeonLevel, undefined, undefined,
@@ -1714,7 +1713,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					}
 
 					if (!KDGameData.TeleportLocations) KDGameData.TeleportLocations = {};
-					MiniGameKinkyDungeonLevel = KDGameData.TeleportLocations.commerce.level;
+					KDSetWorldSlot(KDGameData.TeleportLocations.commerce.x || 0, KDGameData.TeleportLocations.commerce.level);
 					let params = KinkyDungeonMapParams[KinkyDungeonMapIndex[KDGameData.TeleportLocations.commerce.checkpoint]];
 
 

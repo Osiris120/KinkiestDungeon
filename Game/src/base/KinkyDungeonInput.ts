@@ -462,7 +462,14 @@ function KDProcessInput(type: string, data: any): string {
 		}
 		case "interact": {
 			KDDelayedActionPrune(["Action", "World"]);
-			KDInteract(data.x, data.y);
+			let tick = KinkyDungeonCurrentTick;
+			let fail = !KDInteract(data.x, data.y);
+			if (KinkyDungeonCurrentTick > tick || fail) {
+				if (KDTurnToFace(data.x, data.y)
+					&& (KinkyDungeonStatsChoice.get("DirectionSlow") || KinkyDungeonStatsChoice.get("DirectionSlow2"))) {
+					KinkyDungeonAdvanceTime(1);
+				}
+			}
 			break;
 		}
 		case "shrineBuy":
@@ -1356,7 +1363,7 @@ function KDProcessInputs(ReturnResult?: boolean): string {
 	return "";
 }
 
-function KDInteract(x: number, y: number, dist?: number) {
+function KDInteract(x: number, y: number, dist?: number): boolean {
 	if (dist == undefined) dist = KDistChebyshev(x - KDPlayer().x, y - KDPlayer().y);
 	KinkyDungeonSendEvent("beforeInteract", {x:x, y: y});
 	if (dist < 1.5 && !KinkyDungeonEntityAt(x, y, false, undefined, undefined, false))
@@ -1394,9 +1401,10 @@ function KDInteract(x: number, y: number, dist?: number) {
 
 				KDStartDialog(d, Enemy.Enemy.name, true, Enemy.personality, Enemy);
 				KinkyDungeonSendEvent("afterInteract", {x:x, y: y, type: "talk", entity: Enemy});
-				return;
+				return true;
 			}
 		}
 	}
 	KinkyDungeonSendEvent("afterInteractFail", {x:x, y: y});
+	return false;
 }

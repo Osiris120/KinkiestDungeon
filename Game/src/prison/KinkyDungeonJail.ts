@@ -1537,7 +1537,6 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	KDGameData.JailRemoveRestraintsTimer = 0;
 	if (!PutInJail) {
 		KinkyDungeonSetFlag("defeat", 25);
-		//MiniGameKinkyDungeonLevel = Math.min(MiniGameKinkyDungeonLevel, Math.max(Math.floor(MiniGameKinkyDungeonLevel/10)*10, MiniGameKinkyDungeonLevel - KinkyDungeonSpawnJailers + KinkyDungeonSpawnJailersMax - 1));
 		KinkyDungeonSendEvent("defeat", {});
 
 		if (KinkyDungeonStatsChoice.get("LivingCollars"))
@@ -1555,8 +1554,6 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 
 	KinkyDungeonStatBlind = 3;
 
-	//MiniGameKinkyDungeonLevel = Math.floor((MiniGameKinkyDungeonLevel + Math.max(0, KinkyDungeonSpawnJailersMax - KinkyDungeonSpawnJailers))/5)*5;
-	//MiniGameKinkyDungeonLevel = Math.floor(MiniGameKinkyDungeonLevel/2)*2;
 	KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonLeashed"), "#ff5277", 3);
 	if (!KinkyDungeonJailedOnce) {
 		KinkyDungeonJailedOnce = true;
@@ -2088,6 +2085,11 @@ function KDGetJailRestraints(overrideTags?: string[], requireJail?: boolean, req
 	return restraints;
 }
 
+function KDSetWorldSlot(x: number, y: number) {
+	MiniGameKinkyDungeonLevel = y;
+	KDCurrentWorldSlot = {x: x, y: y};
+}
+
 /**
  */
 let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
@@ -2100,8 +2102,7 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 	"ShopkeeperRescue": (enemy) => {
 		KDRemoveEntity(enemy);
 		KinkyDungeonSendTextMessage(10, TextGet("KDShopkeeperTeleportToStart"), "#ffffff", 4);
-		MiniGameKinkyDungeonLevel = 0;
-		KDCurrentWorldSlot = {x: 0, y: 0};
+		KDSetWorldSlot(0, 0);
 		let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 		KinkyDungeonCreateMap(params, "ShopStart", "", MiniGameKinkyDungeonLevel,
 			undefined, undefined, undefined, {x: 0, y: 0},

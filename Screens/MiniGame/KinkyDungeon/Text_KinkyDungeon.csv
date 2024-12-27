@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.26"
+KDVersionStr,"5.4.27"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -250,7 +250,7 @@ KinkyDungeonStat27,"Damsel in Chains"
 KinkyDungeonStatDesc27,"Metal restraints are harder to escape from."
 
 KinkyDungeonStatForgetful,"Forgetful"
-KinkyDungeonStatDescForgetful,"You don't remember where you've been in the level."
+KinkyDungeonStatDescForgetful,"You don't remember where you've been in the level. 30 turn timer."
 
 KinkyDungeonStatCursedLocks,"Cursed Locks"
 KinkyDungeonStatDescCursedLocks,"Those without keys shall face the Wrath of the Lock. Locked items cannot be cut and are harder to struggle."
@@ -26207,3 +26207,23 @@ KDMinimapLabel_C_magicrestraint,Chest
 KDMinimapLabel_C_,Chest
 KDMinimapLabel_C_kinky,Toy Chest
 KDMMLocked,"(L)"
+
+
+rPrisonerLatex,"(The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over the lower half of her face is taut,|you know from her whimpering moans that her mouth|is filled with a rubbery plug, useless like the rest of her body.|Some sort of stand affixes her to the floor.)"
+rPrisonerLatexNoKeys,"(You don't have any solvents that work on latex)"
+rPrisonerLatexUnlockHandsBound,"(You can't help her, bound as tightly as you are...)"
+rPrisonerLatexUnlockSlow,"(You dissolve her restraints, fumbling around for a while with your bound hands)"
+rPrisonerLatexUnlock,"(You rescue the SPEAKER)|Thank you!|Let's get out of here!"
+rPrisonerLatexUnlockGagged,"(You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)"
+rPrisonerLatexNoCut,"(You don't have any cutting tools)"
+rPrisonerLatexCutHandsBound,"(You can't pick the lock with your hands bound)"
+rPrisonerLatexCut,"(After a while, you free the SPEAKER)|Thank you!|Let's get moving!"
+rPrisonerLatexCutGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)"
+rPrisonerLatexWordNoMana,"(You don't have enough mana for Remove Slime)"
+rPrisonerLatexWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
+rPrisonerLatexWord,"(You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!"
+rPrisonerLatexWordGagged,"(You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)"
+
+dPrisonerLatex_Unlock,Dissolve the latex with a solvent
+dPrisonerLatex_Cut,Cut her out with a sharp tool
+dPrisonerLatex_Word,Use Remove Slime to unlock her

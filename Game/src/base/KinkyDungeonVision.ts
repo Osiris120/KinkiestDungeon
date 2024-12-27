@@ -2,6 +2,7 @@
 // Lots of good info here: http://www.adammil.net/blog/v125_Roguelike_Vision_Algorithms.html#permissivecode
 // -Ada
 
+let KDBaseFogMemory = 30;
 
 let KDRedrawFog = 0;
 let KDRedrawMM = 0;
@@ -79,6 +80,15 @@ function KinkyDungeonResetFog() {
 	for (let X = 0; X < KDMapData.GridWidth; X++) {
 		for (let Y = 0; Y < KDMapData.GridHeight; Y++)
 			KDMapData.FogGrid.push(0); // 0 = pitch dark
+	}
+
+	KDMapData.FogMemory = [];
+	if (KinkyDungeonStatsChoice.get("Forgetful")) {
+		// Generate the grid
+		for (let X = 0; X < KDMapData.GridWidth; X++) {
+			for (let Y = 0; Y < KDMapData.GridHeight; Y++)
+				KDMapData.FogMemory.push(0); // 0 = pitch dark
+		}
 	}
 }
 
@@ -492,6 +502,7 @@ function KinkyDungeonMakeVisionMap(width: number, height: number, Viewports: any
 		let minDist = KDGameData.MinVisionDist;
 		let dist = 0;
 		let fog = true;//KDAllowFog();
+		let forgetful = !!KinkyDungeonStatsChoice.get("Forgetful");
 		for (let X = 0; X < KDMapData.GridWidth; X++) {
 			for (let Y = 0; Y < KDMapData.GridHeight; Y++)
 				if (X >= 0 && X <= width-1 && Y >= 0 && Y <= height-1 && KDistChebyshev(X - KDPlayer().x, Y - KDPlayer().y) < rad2) {
@@ -501,7 +512,9 @@ function KinkyDungeonMakeVisionMap(width: number, height: number, Viewports: any
 						if (fog && dist < Math.ceil(minDist)
 							&& distE < minDist
 							&& KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, X, Y, true, true, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1, true)) {
-							KDMapData.FogGrid[X + Y*(width)] = Math.max(KDMapData.FogGrid[X + Y*(width)], 3);
+								KDMapData.FogGrid[X + Y*(width)] = Math.max(KDMapData.FogGrid[X + Y*(width)], 3);
+								if (forgetful)
+									KDMapData.FogMemory[X + Y*(width)] = Math.max(KDMapData.FogMemory[X + Y*(width)], KDBaseFogMemory);
 						}
 						if (distE < (KinkyDungeonDeaf ? 1.5 : 2.3) && KDMapExtraData.VisionGrid[X + Y*(width)] == 0
 							&& KinkyDungeonCheckPath(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, X, Y, true, true, flags.SeeThroughWalls ? flags.SeeThroughWalls + 1 : 1, true)) {
@@ -509,8 +522,11 @@ function KinkyDungeonMakeVisionMap(width: number, height: number, Viewports: any
 						}
 					}
 
-					if (fog)
+					if (fog) {
 						KDMapData.FogGrid[X + Y*(width)] = Math.max(KDMapData.FogGrid[X + Y*(width)], KDMapExtraData.VisionGrid[X + Y*(width)] ? 2 : 0);
+						if (forgetful)
+							KDMapData.FogMemory[X + Y*(width)] = Math.max(KDMapData.FogMemory[X + Y*(width)], KDMapExtraData.VisionGrid[X + Y*(width)] ? KDBaseFogMemory : 0);
+					}
 				}
 		}
 		for (let X = 0; X < KDMapData.GridWidth; X++) {
@@ -520,6 +536,9 @@ function KinkyDungeonMakeVisionMap(width: number, height: number, Viewports: any
 						KDMapExtraData.VisionGrid[X + Y*(width)] = Math.max(KDMapExtraData.VisionGrid[X + Y*(width)] || 0, 1);
 					} else if (KDGameData.RevealedFog && KDGameData.RevealedFog[X + ',' + Y] >= 0) {
 						KDMapData.FogGrid[X + Y*(width)] = Math.max(KDMapData.FogGrid[X + Y*(width)] || 0, 1);
+						if (forgetful) {
+							KDMapData.FogMemory[X + Y*(width)] = Math.max(KDMapData.FogMemory[X + Y*(width)] || 0, KDBaseFogMemory * 0.5);
+						}
 					}
 				}
 			}
@@ -1016,7 +1035,7 @@ function KDRenderMinimap(x: number, y: number, w: number, h: number, scale: numb
  * Allows fog of war to be rendered
  */
 function KDAllowFog() {
-	return !(KinkyDungeonStatsChoice.get("Forgetful") || (KinkyDungeonBlindLevel > 0 && KinkyDungeonStatsChoice.get("TotalBlackout")));
+	return !((KinkyDungeonBlindLevel > 0 && KinkyDungeonStatsChoice.get("TotalBlackout")));
 }
 
 /**
