@@ -833,7 +833,7 @@ All damage dealt to humanoid enemies is reduced by 90% except teasing damage and
 Curse Seeker
 诅咒探索者
 When you pick up cursed armor or restraints from chests, they equip automatically if able.
-当你会自动装备箱子中被诅咒的盔甲或拘束具。
+从箱子中拿起被诅咒的盔甲或拘束具时，符合条件的情况下会被自动装备。
 
 
 Burning Desire
