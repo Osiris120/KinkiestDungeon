@@ -6,7 +6,7 @@ let KinkyDungeonMaxDialogueTriggerDist = 5.9;
 let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 	"WeaponStop": {
 		dialogue: "WeaponFound",
-		allowedPrisonStates: ["parole"],
+		allowedPrisonStates: ["parole", "jail"],
 		excludeTags: ["zombie", "skeleton", "gagged"],
 		playRequired: true,
 		noCombat: true,
@@ -18,7 +18,8 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 				&& !KinkyDungeonPlayerDamage.unarmed
 				&& KinkyDungeonPlayerDamage.name
 				&& dist < 3.9
-				&& KDHostile(enemy)
+				&& (KDHostile(enemy)
+					|| KDFactionFavorable(KDGetFaction(enemy), KDGetMainFaction()))
 				&& KDRandom() < 0.25
 				&& !KinkyDungeonFlags.has("demand"));
 		},
