@@ -2332,6 +2332,14 @@ function KDGetLeashFaction(leashEnemy: entity): string {
 function KDGetLeashJailRoom(leashEnemy: entity): string {
 	let jailRoom = undefined;
 	if (leashEnemy
+		&& (KDFactionProperties[KDGetFaction(leashEnemy)]?.lairType
+		|| (!KDFactionProperties[KDGetFaction(leashEnemy)]
+		&& KDFactionProperties[KDGetFactionOriginal(leashEnemy)]?.lairType))) {
+		if (KDFactionProperties[KDGetFaction(leashEnemy)]?.lairType)
+			jailRoom = KDFactionProperties[KDGetFaction(leashEnemy)].lairType;
+		else
+			jailRoom = KDFactionProperties[KDGetFactionOriginal(leashEnemy)].lairType
+	} else if (leashEnemy
 		&& (KDFactionProperties[KDGetFaction(leashEnemy)]
 		|| KDFactionProperties[KDGetFactionOriginal(leashEnemy)])) {
 		if (KDFactionProperties[KDGetFaction(leashEnemy)])

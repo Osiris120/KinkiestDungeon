@@ -18,7 +18,35 @@ interface KDLair {
 }
 let KDPersonalAlt: {[_ : string]: KDLair} = {};
 
+interface lairType {
+	/** Entrances from which type of room, otherwise DefaultEntrance*/
+	Entrances?: Record<string, string>,
+	DefaultEntrance: string
+	/** Entrances to the other room from this lair, otherwise DefaultEntranceFrom*/
+	EntrancesFrom?: Record<string, string>,
+	DefaultEntranceFrom: string
+}
 
+let KDLairTypes: Record<string, lairType> = {
+	DragonLair: {
+		Entrances: {},
+		DefaultEntrance: "Cave",
+		EntrancesFrom: {},
+		DefaultEntranceFrom: "Cave",
+	},
+	Jail: {
+		Entrances: {},
+		DefaultEntrance: "Jail",
+		EntrancesFrom: {},
+		DefaultEntranceFrom: "Jail",
+	},
+	DollStorage: {
+		Entrances: {},
+		DefaultEntrance: "Jail",
+		EntrancesFrom: {},
+		DefaultEntranceFrom: "Jail",
+	},
+}
 
 function KDGenerateLairNameFromEnemy(RoomType: string, enemy: entity): string {
 	return TextGet("KDPersonalizedRoom")
@@ -120,12 +148,13 @@ function KDAddLair(
 	}
 	let gen = false;
 	if (fromRoom != undefined && KDDoLairOutpostConnections(
-	slot,
-	lairid,
-	fromRoom,
-	entranceFrom,
-	entranceFrom))
-		gen = true;
+		slot,
+		lairid,
+		fromRoom,
+		fromRoomEntrance,
+		entranceFrom))
+			gen = true;
+
 	if (KDDoLairOutpostConnections(
 	slot,
 	lairid,

@@ -8334,16 +8334,50 @@ function KDGetHighSecLoc(enemy: entity, fromHere?: boolean): KDPoint {
 	let altRoom = KDGetAltType(MiniGameKinkyDungeonLevel);
 	if (((slot.main || "") == KDGameData.RoomType) && (altRoom && altRoom.placeJailEntrances))
 		fromHere = false;
+
+	if (KDFactionProperties[KDGetFaction(enemy)]?.lairType
+		|| KDGetLairs(slot, enemy.id).length > 0) {
+		let lairType = KDLairTypes[jailroom];
+		let outpost = KDAddLair(
+			slot,
+			fromHere ? KDGameData.RoomType : slot.main || "",
+			jailroom,
+			enemy.id,
+			false,
+			lairType.Entrances[fromHere ? KDGameData.RoomType : slot.main || ""]
+				|| lairType.DefaultEntrance,
+			fromHere ? slot.main || "" : undefined,
+			fromHere ?
+			lairType.Entrances[slot.main || ""]
+				|| lairType.DefaultEntrance : undefined,
+			fromHere ?
+			lairType.EntrancesFrom[slot.main || ""]
+				|| lairType.DefaultEntranceFrom : undefined,
+			true
+		);
+
+
+		let pos = KDGetShortcutPosition(outpost || jailroom, enemy.x, enemy.y, KDMapData);
+
+		if (!pos) pos = (altRoom?.nostartstairs && !altRoom?.startatstartpos) ? KDMapData.StartPosition : KDMapData.EndPosition;
+		return pos;
+	}
+	let lairType = KDLairTypes[jailroom];
 	let outpost = KDAddOutpost(
 		slot,
 		fromHere ? KDGameData.RoomType : slot.main || "",
 		jailroom,
 		forceFaction || "Jail",
 		false,
-		"Jail",
+		lairType.Entrances[fromHere ? KDGameData.RoomType : slot.main || ""]
+			|| lairType.DefaultEntrance,
 		fromHere ? slot.main || "" : undefined,
-		fromHere ? "Jail" : undefined,
-		fromHere ? "Jail" : undefined,
+		fromHere ?
+		lairType.Entrances[slot.main || ""]
+			|| lairType.DefaultEntrance : undefined,
+		fromHere ?
+		lairType.EntrancesFrom[slot.main || ""]
+			|| lairType.DefaultEntranceFrom : undefined,
 		true
 	);
 
