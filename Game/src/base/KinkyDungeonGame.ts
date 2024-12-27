@@ -787,6 +787,7 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
 	KDPlacePlayerBasedOnDirection(direction, KDGameData.ShortcutIndex);
 
 
+
 	let aware = KDKickEnemies(undefined, ignoreAware, y); // Shuffle enemy locations
 	if (ignoreAware && aware) {
 		//KinkyDungeonLoseJailKeys();
@@ -813,7 +814,7 @@ function KDLoadMapFromWorld(x: number, y: number, room: string, direction: numbe
  * @param [direction]
  * @param [sideRoomIndex]
  */
-function KDPlacePlayerBasedOnDirection(direction: number = 0, sideRoomIndex: string = '-1') {
+function KDPlacePlayerBasedOnDirection(direction: number = 0, sideRoomIndex: string = '-1', nomove: boolean = false) {
 	let journeySlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 	let sp = KDMapData.ShortcutPositions[sideRoomIndex]
 		|| ((journeySlot?.SideRooms && journeySlot.SideRooms[sideRoomIndex]
@@ -838,6 +839,19 @@ function KDPlacePlayerBasedOnDirection(direction: number = 0, sideRoomIndex: str
 		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, id: -1, x: KDMapData.EndPosition.x, y:KDMapData.EndPosition.y, player:true};
 	} else {
 		KinkyDungeonPlayerEntity = {MemberNumber:DefaultPlayer.MemberNumber, id: -1, x: KDMapData.StartPosition.x, y:KDMapData.StartPosition.y, player:true};
+	}
+
+	if (!nomove) {
+		// Kick any enemy under the player away
+		KDUpdateEnemyCache = true;
+		if (KinkyDungeonEnemyAt(KDPlayer().x, KDPlayer().y)) {
+			let en = KinkyDungeonEnemyAt(KDPlayer().x, KDPlayer().y);
+			let pp = KinkyDungeonGetNearbyPoint(en.x, en.y, true);
+			if (pp) {
+				en.aware = true;
+				KDMoveEntity(en, pp.x, pp.y, false);
+			}
+		}
 	}
 }
 
