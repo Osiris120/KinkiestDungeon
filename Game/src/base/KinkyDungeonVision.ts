@@ -328,6 +328,8 @@ function KinkyDungeonMakeVisionMap(width: number, height: number, Viewports: any
 		visionAdjustMult: 0.1 + (0.3 * KDGameData.visionBlind || 0),
 	};
 
+	if (!KDMapData.FogMemory) KDMapData.FogMemory = [];
+
 	if (!KDGameData.visionAdjust) KDGameData.visionAdjust = 0;
 
 	KinkyDungeonSendEvent("vision",{update: delta, flags: flags});

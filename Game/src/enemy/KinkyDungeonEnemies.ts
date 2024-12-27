@@ -5620,7 +5620,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					enemy.gy = enemy.gyy;
 				}
 
-				if (enemy.despawnX && enemy.despawnY) {
+				if (enemy.goToDespawn && !KDEnemyHasFlag(enemy, "overrideMove")
+					&& enemy.despawnX && enemy.despawnY) {
 					enemy.gx = enemy.despawnX;
 					enemy.gy = enemy.despawnY;
 				} else if (allyHoming) {
@@ -9301,7 +9302,7 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData?: KDMapDataType, move
 
 		let slot = KDGetWorldMapLocation({x: moveToX || mapData.mapX, y: moveToY || mapData.mapY});
 		// Create the enemy in the next location
-		if (slot.data && slot.data[moveThruExit]) {
+		if (slot && slot.data && slot.data[moveThruExit]) {
 			let mdata = slot.data[moveThruExit];
 
 			// Enemies have an ability to pathfind only by 1...
