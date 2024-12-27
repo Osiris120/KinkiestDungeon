@@ -26227,3 +26227,6 @@ rPrisonerLatexWordGagged,"(You utter a word of release to free the SPEAKER)|Mmmm
 dPrisonerLatex_Unlock,Dissolve the latex with a solvent
 dPrisonerLatex_Cut,Cut her out with a sharp tool
 dPrisonerLatex_Word,Use Remove Slime to unlock her
+
+KDLocalSaves,Local Saves
+KDCloudSaves,Cloud Saves
