@@ -867,7 +867,6 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 	}
 
 
-
 	if (!enemy && !bullet && player) {
 		KinkyDungeonSendEvent("beforeCast", data);
 	}
