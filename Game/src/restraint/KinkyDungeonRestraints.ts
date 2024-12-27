@@ -6274,3 +6274,40 @@ function KDGetNecklaceGagType(player: entity) {
 
 	return "";
 }
+
+function KDAddFurnitureRestraintSet(entity: entity, restraintSet: Record<string, number>, faction?: string, power: number = 5) {
+	let count = 0;
+	if (entity.player) {
+		for (let r of Object.entries(restraintSet)) {
+			for (let i = 0; i < r[1]; i++) {
+				let rest = KDGetRestraintWithVariants(
+					{tags: [r[0]]},
+					KDGetEffLevel() + power,
+					(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
+					!!KinkyDungeonStatsChoice.has("MagicHands"),
+					undefined,
+					false,
+					false,
+					!KinkyDungeonStatsChoice.has("TightRestraints"),
+					undefined,
+					false,
+					undefined, undefined, undefined, true);
+				if (rest) {
+					if (KinkyDungeonAddRestraintIfWeaker(
+						rest.r, power, !!KinkyDungeonStatsChoice.has("MagicHands"),
+						undefined, false, false, undefined, faction, true,
+						undefined, undefined, true, undefined, undefined,
+						undefined, rest.v
+					)) count++;
+				}
+
+			}
+		}
+	} else {
+		for (let r of Object.entries(restraintSet)) {
+			for (let i = 0; i < r[1]; i++)
+				count += KDBindEnemyWithTags(entity.id, [r[0]], 30, power, true, undefined, undefined, undefined, undefined, faction).length;
+		}
+	}
+	return count;
+}

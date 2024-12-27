@@ -42,6 +42,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
 					return false;
 				},
 				playertext: "Default", exitDialogue: true,
@@ -58,6 +59,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
 					let zombie = DialogueCreateEnemy(KDMapData.StartPosition.x + 7, 3, "FastZombie");
 					zombie.AI = "guard";
 					zombie.gxx = KDMapData.StartPosition.x + 8;
@@ -78,6 +80,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
 					DialogueCreateEnemy(KDMapData.StartPosition.x + 22, 3, "FastZombie");
 					return false;
 				},
@@ -95,6 +98,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
 					DialogueCreateEnemy(KDMapData.StartPosition.x + 32, 4, "FastZombie");
 					return false;
 				},
@@ -1792,6 +1796,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: (_gagged, _player) => {
 							KinkyDungeonTargetTile = null;
 							KinkyDungeonTargetTileLocation = "";
+							KDModalArea = false;
 							return false;
 						},
 						playertext: "Leave", response: "Default",
@@ -1830,6 +1835,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 						clickFunction: (_gagged, _player) => {
 							KinkyDungeonTargetTile = null;
 							KinkyDungeonTargetTileLocation = "";
+							KDModalArea = false;
 							return false;
 						},
 						playertext: "Leave", response: "Default",
@@ -1841,6 +1847,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
 					return false;
 				},
 				playertext: "Leave", response: "Default",
@@ -3241,6 +3248,130 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					} else {
 						KDGameData.CurrentDialogStage = "";
 						KDGameData.CurrentDialogMsg = "PrisonerJailNoPick";
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+		}
+	},
+	"PrisonerLatex": { // For prisoners in the prison level. Doesnt increase rep much, but useful for jailbreak purposes
+		response: "Default",
+		clickFunction: (_gagged, _player) => {
+			let e = KDDialogueEnemy();
+			if (e) {
+				KDGameData.CurrentDialogMsgData = {};
+				KDGameData.CurrentDialogMsgValue = {};
+
+				KDGameData.CurrentDialogMsgData.SSSvnt = KDGetCheapestLatexSolvent() || "";
+				KDGameData.CurrentDialogMsgData.SLVNT = (KDGameData.CurrentDialogMsgData.SSSvnt ?
+					KDGetItemNameString(KDGameData.CurrentDialogMsgData.SSSvnt) : ""
+				) || TextGet("KDLatexSolvent");
+			}
+			return false;
+		},
+		options: {
+			"Leave": {
+				playertext: "Leave", response: "Default",
+				exitDialogue: true,
+			},
+			"Unlock": {
+				playertext: "Default", response: "Default",
+				clickFunction: (_gagged, player) => {
+					if (KDGameData.CurrentDialogMsgData.SLVNT && KinkyDungeonInventoryGet(KDGameData.CurrentDialogMsgData.SSSvnt)) {
+						if (!KinkyDungeonIsArmsBound()) {
+							if (KDDialogueEnemy()) {
+								let e = KDDialogueEnemy();
+								KDFreeNPC(e);
+								e.allied = 9999;
+								KDAggroMapFaction();
+								let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
+								e.faction = "Player";
+								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
+								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
+								if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
+									if (KDFactionRelation("Player", faction) < 0.25)
+										KinkyDungeonChangeFactionRep(faction, 0.03);
+									else
+										KinkyDungeonChangeFactionRep(faction, 0.015);
+								}
+								KinkyDungeonChangeRep("Prisoner", 0.5);
+								KDAddConsumable( KDGameData.CurrentDialogMsgData.SSSvnt, -1);
+								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
+									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
+									KDGameData.CurrentDialogMsg = "PrisonerLatexUnlockSlow";
+								} else {
+									KDGameData.CurrentDialogMsg = "PrisonerLatexUnlock";
+									if (e.Enemy.tags.gagged) {
+										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+									}
+								}
+								KDAddToParty(e);
+							}
+						} else {
+							KDGameData.CurrentDialogStage = "";
+							KDGameData.CurrentDialogMsg = "PrisonerLatexUnlockHandsBound";
+						}
+					} else {
+						KDGameData.CurrentDialogStage = "";
+						KDGameData.CurrentDialogMsg = "PrisonerLatexNoKeys";
+					}
+					return false;
+				},
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
+			"Cut": {
+				playertext: "Default", response: "Default",
+				clickFunction: (_gagged, player) => {
+					if (KinkyDungeonWeaponCanCut(false)) {
+						if (!KinkyDungeonIsHandsBound(false, true, 0.45)) {
+							if (KDDialogueEnemy()) {
+								let e = KDDialogueEnemy();
+								KDFreeNPC(e);
+								e.allied = 9999;
+								KDAggroMapFaction();
+
+								let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
+								e.faction = "Player";
+								KinkyDungeonSetEnemyFlag(e, "NoFollow", 0);
+								KinkyDungeonSetEnemyFlag(e, "Defensive", -1);
+								if (!KinkyDungeonHiddenFactions.has(faction) && !(KDMapData.MapFaction == faction)) {
+									if (KDFactionRelation("Player", faction) < 0.25)
+										KinkyDungeonChangeFactionRep(faction, 0.03);
+									else
+										KinkyDungeonChangeFactionRep(faction, 0.015);
+								}
+								KinkyDungeonChangeRep("Prisoner", 0.5);
+
+								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
+									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
+									KDGameData.CurrentDialogMsg = "PrisonerLatexCutSlow";
+								} else {
+									KDGameData.CurrentDialogMsg = "PrisonerLatexCut";
+									if (e.Enemy.tags.gagged) {
+										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
+									}
+								}
+								KDAddToParty(e);
+
+							}
+						} else {
+							KDGameData.CurrentDialogStage = "";
+							KDGameData.CurrentDialogMsg = "PrisonerLatexCutHandsBound";
+						}
+					} else {
+						KDGameData.CurrentDialogStage = "";
+						KDGameData.CurrentDialogMsg = "PrisonerLatexNoCut";
 					}
 					return false;
 				},

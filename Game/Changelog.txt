@@ -37,6 +37,8 @@ TODO Add Cuddle play type
 
 5.4.27
 - Interacting now turns to face if it doesnt interact with anything, or if a turn passed when you interacted
+- Prisoners that spawn in levels now come with restraints!
+- Added rare Latex Doll Stand item
 
 5.4.26
 - Added new map escape objectives: Nevermere servers, Dollsmith/Ancient Robot server drones, Draconic Seals

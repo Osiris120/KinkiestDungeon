@@ -1,5 +1,17 @@
 "use strict";
 
+interface KDLight {
+	x: number,
+	y: number,
+	y_orig?: number,
+	x_orig?: number,
+	visualxoffset?: number,
+	visualyoffset?: number,
+	brightness: number,
+	color: number,
+	nobloom?: boolean,
+}
+
 let KDDebugOverlay = false;
 let CHIBIMOD: PoseMod[] = [
 	{
@@ -3987,17 +3999,11 @@ function GetAdjacentList(list: string[], index: number, width: number) {
 }
 
 
-function KDUpdateVision(CamX?: number, CamY?: number, _CamX_offset?: number, _CamY_offset?: number) {
-	KinkyDungeonUpdateLightGrid = false;
-	KDRedrawFog = 2;
-
-	let viewpoints = [ {x: KinkyDungeonPlayerEntity.x, y:KinkyDungeonPlayerEntity.y, brightness: KinkyDungeonDeaf ? 2 : 4 }];
-
-	let data = {
-		lights: [],
-		maplights: [],
-		effecttilelights: [],
-	};
+function KDEnumLights(data: {
+	lights: KDLight[],
+	maplights: KDLight[],
+	effecttilelights: KDLight[],
+}) {
 	let l = null;
 	for (let t of Object.keys(KDMapData.Tiles)) {
 		let tile = KinkyDungeonTilesGet(t);
@@ -4020,11 +4026,30 @@ function KDUpdateVision(CamX?: number, CamY?: number, _CamX_offset?: number, _Ca
 			if (tile.duration > 0) {
 				if (tile.lightColor) {
 					l = {x: tile.x + Math.round((tile.xoffset - 0.49) || 0), y:tile.y + Math.round((tile.yoffset - 0.49) || 0), y_orig: tile.y, brightness: tile.brightness, color: tile.lightColor};
+					//data.lights.push(l);
 					data.effecttilelights.push(l);
 				}
 			}
 		}
 	}
+}
+
+function KDUpdateVision(CamX?: number, CamY?: number, _CamX_offset?: number, _CamY_offset?: number) {
+	KinkyDungeonUpdateLightGrid = false;
+	KDRedrawFog = 2;
+
+	let viewpoints = [ {x: KinkyDungeonPlayerEntity.x, y:KinkyDungeonPlayerEntity.y, brightness: KinkyDungeonDeaf ? 2 : 4 }];
+
+	let data: {
+		lights: KDLight[],
+		maplights: KDLight[],
+		effecttilelights: KDLight[],
+	} = {
+		lights: [],
+		maplights: [],
+		effecttilelights: [],
+	};
+	KDEnumLights(data);
 	KinkyDungeonSendEvent("getLights", data);
 
 	KinkyDungeonMakeBrightnessMap(KDMapData.GridWidth, KDMapData.GridHeight, KDMapData.MapBrightness, data.lights, KDVisionUpdate);

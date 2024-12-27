@@ -3250,7 +3250,7 @@ function KDCrackTile(x: number, y: number, allowCrack: boolean, data: any) {
 function KDBindEnemyWithTags(id: number, tags: string[],
 	amount: number = 0, power: number = 0,
 	forceConjure: boolean = true, maxTries: number = 100, allowOverride: boolean = false,
-	allowVariants: boolean = true, maxAdded: number = 10): string[] {
+	allowVariants: boolean = true, maxAdded: number = 10, faction: string = ""): string[] {
 	let entity = KDGetGlobalEntity(id);
 	let addedItems: string[] = [];
 	if (entity) {
@@ -3293,7 +3293,7 @@ function KDBindEnemyWithTags(id: number, tags: string[],
 						undefined,
 						undefined,
 						restraintTry.applyVariant.suffix,
-						restraintTry.faction || KDDefaultNPCBindPalette,
+						faction || restraintTry.faction || KDDefaultNPCBindPalette,
 						restraintTry.applyVariant.powerBonus
 					);
 				}
@@ -3306,7 +3306,7 @@ function KDBindEnemyWithTags(id: number, tags: string[],
 					id: variant?.id || KinkyDungeonGetItemID(),
 					lock: variant?.lock || restraintTry.lock,
 					conjured: restraintTry.forceConjure,
-					faction: restraintTry.faction || KDDefaultNPCBindPalette,
+					faction: faction || restraintTry.faction || KDDefaultNPCBindPalette,
 					events: variant?.events || undefined,
 				});
 				added += bondageStats.amount;

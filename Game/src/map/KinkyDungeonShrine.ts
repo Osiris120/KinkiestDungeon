@@ -520,6 +520,7 @@ function KinkyDungeonDrawShrine() {
 			KDSendInput("shrineUse", {type: type, cost: cost*discount, targetTile: KinkyDungeonTargetTileLocation});
 			KinkyDungeonTargetTileLocation = "";
 			KinkyDungeonTargetTile = null;
+			KDModalArea = false;
 			return true;
 		}, cost > 0, KDModalArea_x, YY + 25 - II*shrineActionSpacing, 325, 60,
 		TextGet(cost > 0 ? "KinkyDungeonPayShrine" : "KinkyDungeonPayShrineCant").replace("XXX", "" + cost*discount), cost > 0 ? "#ffffff" : KDTextGray2, "", "",
@@ -534,6 +535,7 @@ function KinkyDungeonDrawShrine() {
 				KDSendInput("shrinePray", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonTargetTile = null;
+				KDModalArea = false;
 			}
 			return true;
 		}, !KinkyDungeonTargetTile.Rescue, KDModalArea_x, YY + 25 - II*shrineActionSpacing, 325, 60,
@@ -569,6 +571,7 @@ function KinkyDungeonDrawShrine() {
 				KDSendInput("shrineDevote", {type: "", cost: cost, targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonTargetTile = null;
+				KDModalArea = false;
 				return true;
 			}, !KinkyDungeonTargetTile.Rescue, KDModalArea_x, YY + 25 - II*shrineActionSpacing, 325, 60,
 			TextGet("KDShrineActionChampionRemove"), KinkyDungeonTargetTile?.Rescue ? KDTextGray2 : "#ffffff", "", "",
@@ -580,6 +583,7 @@ function KinkyDungeonDrawShrine() {
 				KDSendInput("shrineDevote", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonTargetTile = null;
+				KDModalArea = false;
 				return true;
 			}, !KinkyDungeonTargetTile.Rescue, KDModalArea_x, YY + 25 - II*shrineActionSpacing, 325, 60,
 			TextGet("KDShrineActionChampion"), KinkyDungeonTargetTile?.Rescue ? KDTextGray2 : "#ffffff", "", "",
@@ -594,6 +598,7 @@ function KinkyDungeonDrawShrine() {
 				KDSendInput("shrineQuest", {type: type, cost: cost, targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTileLocation = "";
 				KinkyDungeonTargetTile = null;
+				KDModalArea = false;
 				return true;
 			}, true, KDModalArea_x, YY + 25 - II*shrineActionSpacing, 325, 60,
 			TextGet("KDShrineActionQuestAccept"), "#ffffff", "", "",

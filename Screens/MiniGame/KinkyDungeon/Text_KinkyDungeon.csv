@@ -587,7 +587,7 @@ KinkyDungeonStatNoBlindfolds,"No Blindfolds"
 KinkyDungeonStatDescNoBlindfolds,"In most cases you will not get blindfolded, except for cloth blindfolds which can be escaped easily."
 
 KinkyDungeonStatTotalBlackout,"Total Blackout"
-KinkyDungeonStatDescTotalBlackout,"Blindfolds are extremely punishing and you can't see explored areas while blindfolded."
+KinkyDungeonStatDescTotalBlackout,"Blindfolds are extremely punishing."
 KinkyDungeonStatNearsighted,"Poor Vision"
 KinkyDungeonStatDescNearsighted,"Vision radius is significantly reduced."
 KinkyDungeonStatKeenHearing,"Keen Hearing"
@@ -1670,13 +1670,13 @@ KinkyDungeonInventoryItemSlimethrowerDesc,"Deals crush damage. Can be used to sp
 KinkyDungeonInventoryItemSlimethrowerDesc2,"Spend 15 charge to create a pool of slime that deals 35 glue damage per tile and slows enemies."
 KinkyDungeonInventoryItemMagicAxe,Magic Axe
 KinkyDungeonInventoryItemMagicAxeDesc,"Sick and vile, like the hearts of your enemies."
-KinkyDungeonInventoryItemMagicAxeDesc2,"Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns."
+KinkyDungeonInventoryItemMagicAxeDesc2,"Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you."
 KinkyDungeonInventoryItemPickaxe,Pickaxe
 KinkyDungeonInventoryItemPickaxeDesc,"Used for drilling holes in rock and armor."
 KinkyDungeonInventoryItemPickaxeDesc2,"Deals pierce damage. Reduces enemy armor by 15 for 6 turns."
 KinkyDungeonInventoryItemMagicFlail,Magic Flail
 KinkyDungeonInventoryItemMagicFlailDesc,"A blessed censer that distributes pain equally."
-KinkyDungeonInventoryItemMagicFlailDesc2,"Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target."
+KinkyDungeonInventoryItemMagicFlailDesc2,"Deals crush damage. Deals 20 bonus holy damage to the target and enemies near the target."
 KinkyDungeonInventoryItemMagicSpear,Magic Spear
 KinkyDungeonInventoryItemMagicSpearDesc,"Seeks and pierces hearts with ease."
 KinkyDungeonInventoryItemMagicSpearDesc2,"Deals pierce damage to the target and two squares behind it. Can be used to make a ranged attack."
@@ -13292,7 +13292,7 @@ rPrisonerJailJammed,"(The SPEAKER is locked in high-security manacles.|The safet
 
 dPrisonerJail_Unlock,Use a key to unlock her
 dPrisonerJail_Pick,"Try to pick her restraints (JAMPERCENT jam chance)"
-dPrisonerJail_Word,Use a command word
+dPrisonerJail_Word,Use CMD: Unlock
 dPrisonerJailJammedRecent_Apologize,Apologize profusely!
 
 rPrisonerJailBug,"(The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)"
@@ -21486,7 +21486,11 @@ m_FashionKiguMaskSmile_l_Lock,Lock
 m_FashionKiguMaskSmile_l_EyesWhites,EyesWhites
 m_FashionKiguMaskSmile_l_MouthSmile,MouthSmile
 
-
+m_OneBarPrison_l_OneBarTop,OneBarTop
+m_OneBarPrisonLatex,OneBarPrisonLatex
+m_OneBarPrisonLatex_l_OneBarTop,OneBarTop
+m_OneBarPrisonLatex_l_OneBarFront,OneBarFront
+m_OneBarPrisonLatex_l_OneBarBack,OneBarBack
 
 
 KDHideItems,Hide Items
@@ -26209,14 +26213,15 @@ KDMinimapLabel_C_kinky,Toy Chest
 KDMMLocked,"(L)"
 
 
-rPrisonerLatex,"(The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over the lower half of her face is taut,|you know from her whimpering moans that her mouth|is filled with a rubbery plug, useless like the rest of her body.|Some sort of stand affixes her to the floor.)"
+rPrisonerLatex,"(The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)"
 rPrisonerLatexNoKeys,"(You don't have any solvents that work on latex)"
 rPrisonerLatexUnlockHandsBound,"(You can't help her, bound as tightly as you are...)"
 rPrisonerLatexUnlockSlow,"(You dissolve her restraints, fumbling around for a while with your bound hands)"
 rPrisonerLatexUnlock,"(You rescue the SPEAKER)|Thank you!|Let's get out of here!"
 rPrisonerLatexUnlockGagged,"(You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)"
-rPrisonerLatexNoCut,"(You don't have any cutting tools)"
+rPrisonerLatexNoCut,"(You are not holding a cutting tool)"
 rPrisonerLatexCutHandsBound,"(You can't pick the lock with your hands bound)"
+rPrisonerLatexCutSlow,"(You cut her restraints, fumbling around for a while with your bound hands)"
 rPrisonerLatexCut,"(After a while, you free the SPEAKER)|Thank you!|Let's get moving!"
 rPrisonerLatexCutGagged,"(After a while, you free the SPEAKER)|Mmmmph!|(She shakes her head when you go for her gag...)"
 rPrisonerLatexWordNoMana,"(You don't have enough mana for Remove Slime)"
@@ -26224,9 +26229,15 @@ rPrisonerLatexWordNoSpeak,"(Try as you might, your mouth is sealed tight)"
 rPrisonerLatexWord,"(You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!"
 rPrisonerLatexWordGagged,"(You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)"
 
-dPrisonerLatex_Unlock,Dissolve the latex with a solvent
+dPrisonerLatex_Unlock,Dissolve the latex with a SLVNT
 dPrisonerLatex_Cut,Cut her out with a sharp tool
 dPrisonerLatex_Word,Use Remove Slime to unlock her
 
 KDLocalSaves,Local Saves
 KDCloudSaves,Cloud Saves
+
+KDLatexSolvent,solvent
+
+RestraintLatexDollStand,Latex Doll Stand
+RestraintLatexDollStandDesc,"A stand for your latex dolls, coated in a smooth rubber coating."
+RestraintLatexDollStandDesc2,"Has a flange for propping up even dolls wearing chastity belts."

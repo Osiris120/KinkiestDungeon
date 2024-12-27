@@ -167,10 +167,15 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		tags: ["axe"],
 		stam50mult: 1.5,
 		events: [{type: "Cleave", trigger: "playerAttack", power: 2, damage: "slash"}]},
-	"MagicAxe": {name: "MagicAxe", damage: 2.8, chance: 1.0, staminacost: 3, type: "cold", unarmed: false, rarity: 6, magic: true, shop: false, cutBonus: 0.2, sfx: "HeavySwing",
+	"MagicAxe": {name: "MagicAxe", damage: 2.8, chance: 1.0, staminacost: 3, type: "slash", unarmed: false, rarity: 6,
+		magic: true, shop: false, cutBonus: 0.2, sfx: "HeavySwing",
 		tags: ["axe"],
 		stam50mult: 1.5,
-		events: [{type: "Cleave", trigger: "playerAttack", power: 2, damage: "cold", time: 3}, {type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "cold", time: 3}]},
+		crit: 1.5,
+		events: [{type: "Cleave", trigger: "playerAttack", power: 2, damage: "cold", time: 3},
+			{type: "ShadowBleed", trigger: "afterPlayerAttack", time: 10, power: 0.6, damage: "cold"},
+			{type: "ShadowBleedCleave", trigger: "afterPlayerAttack", time: 10, power: 0.6, damage: "cold"},
+			{type: "ElementalEffect", trigger: "playerAttack", power: 0, damage: "cold", time: 3}]},
 
 	// Hammers
 	"Hammer": {name: "Hammer", damage: 2.5, chance: 1.0, staminacost: 4, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "HeavySwing", cutBonus: 0.01,
@@ -216,7 +221,7 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 	"MagicFlail": {name: "MagicFlail", damage: 2.5, chance: 1.5, staminacost: 3.0, type: "crush", unarmed: false, rarity: 5, magic: true, shop: false, sfx: "LightSwing",
 		tags: ["mace"],
 		crit: 2.0,
-		events: [{type: "MagicFlail", trigger: "playerAttack", power: 2, damage: "cold", crit: 2.0}]},
+		events: [{type: "MagicFlail", trigger: "playerAttack", power: 2, damage: "holy", crit: 2.0}]},
 
 	// Spears
 	"Spear": {name: "Spear", damage: 4.0, chance: 1.0, staminacost: 3.3, type: "pierce", unarmed: false, rarity: 2, shop: false, sfx: "LightSwing",

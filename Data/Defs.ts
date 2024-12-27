@@ -249,6 +249,7 @@ let LAYERS_BASE = [
 	"PetsuitLegs",
 
 	"WrappingTorsoUnder",// For skintight stuff
+	"DollStandTop",
 
 	// Left Leg
 	"KneeAccLeft",

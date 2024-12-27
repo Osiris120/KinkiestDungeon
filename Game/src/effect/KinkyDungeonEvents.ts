@@ -6689,6 +6689,28 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 				}
 			}
 		},
+		"ShadowBleedCleave": (e, _weapon, data) => {
+			if (data.enemy && !data.disarm) {
+				let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5);
+				for (let enemy of nearby) {
+					if (enemy != data.enemy && KDHostile(enemy) && !KDHelpless(data.enemy)) {
+						if (KinkyDungeonEvasion(enemy)) {
+							KinkyDungeonApplyBuffToEntity(data.enemy, {
+								aura: "#aa00ff",
+								power: e.power,
+								type: "ShadowBleed",
+								id: "ShadowBleed",
+								duration: e.time,
+								events: [
+									{ trigger: 'tick', type: 'UnShadowElementalEffect', damage: e.damage, power: 0.5 * e.power },
+									{ trigger: 'tick', type: 'ShadowElementalEffect', damage: e.damage, power: e.power, time: 2 },
+								]
+							});
+						}
+					}
+				}
+			}
+		},
 		"DoubleStrike": (e, _weapon, data) => {
 			if (!KinkyDungeonAttackTwiceFlag && (!e.chance || KDRandom() < e.chance)) {
 				if (data.enemy && data.enemy.hp > 0 && !(KDHelpless(data.enemy) && data.enemy.hp < 0.6)) {

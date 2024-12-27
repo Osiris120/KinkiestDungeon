@@ -1,9 +1,17 @@
 'use strict';
+
+
 let KDFurniture = {
 	"Cage": {
 		floor: "Floor",
 		sprite: "Cage",
 		restraintTag: "cage",
+		restraintSetTags: {
+			// fiddle or yoke
+			"steelbondage": 1,
+			// leash and collar
+			"leashing": 2,
+		},
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;
@@ -20,10 +28,15 @@ let KDFurniture = {
 			}
 		}
 	},
-	"DisplayStand": {
+	"LatexDisplayStand": {
 		floor: "Floor",
-		sprite: "DisplayStand",
-		restraintTag: "displaystand",
+		sprite: "LatexDisplayStand",
+		restraintTag: "latexdollstand",
+		restraintSetTags: {
+			"latexRestraints": 5,
+			"latexRestraintsHeavy": 2,
+		},
+		forceFaction: "Rubber",
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;
@@ -44,6 +57,9 @@ let KDFurniture = {
 		floor: "Floor",
 		sprite: "FutureBox",
 		restraintTag: "futurebox",
+		restraintSetTags: {
+			"cyberDollRestraints": 8,
+		},
 		tickFunction: (_delta) => {
 			// Nothing yet TODO add special features like dressing the player
 		}
@@ -52,6 +68,9 @@ let KDFurniture = {
 		floor: "Brickwork",
 		sprite: "Sarcophagus",
 		restraintTag: "sarcophagus",
+		restraintSetTags: {
+			"mummyRestraints": 8,
+		},
 		tickFunction: (_delta) => {
 			// Nothing yet TODO add special features like dressing the player
 		}
@@ -60,6 +79,10 @@ let KDFurniture = {
 		floor: "Brickwork",
 		sprite: "IceBase",
 		restraintTag: "iceEncase",
+		restraintSetTags: {
+			"iceCuffs": 4,
+			"iceRestraints": 4,
+		},
 		tickFunction: (_delta) => {
 			// Nothing
 		}
@@ -68,6 +91,9 @@ let KDFurniture = {
 		floor: "RubbleLooted",
 		sprite: "VineBase",
 		restraintTag: "vineSuspend",
+		restraintSetTags: {
+			"vineRestraints": 10,
+		},
 		tickFunction: (_delta) => {
 			// Nothing yet TODO add special features like dressing the player
 		}
@@ -76,6 +102,9 @@ let KDFurniture = {
 		floor: "Brickwork",
 		sprite: "ShadowBase",
 		restraintTag: "shadowBall",
+		restraintSetTags: {
+			"shadowLatexRestraints": 5,
+		},
 		tickFunction: (_delta) => {
 			// Nothing yet
 		}
@@ -84,6 +113,9 @@ let KDFurniture = {
 		floor: "RubbleLooted",
 		sprite: "CrystalBase",
 		restraintTag: "crystalEncase",
+		restraintSetTags: {
+			"crystalRestraints": 5,
+		},
 		tickFunction: (_delta) => {
 			// Nothing yet
 		}
@@ -101,6 +133,9 @@ let KDFurniture = {
 		floor: "Floor",
 		sprite: "DisplayEgyptian",
 		restraintTag: "displaystand",
+		restraintSetTags: {
+			"mummyRestraints": 8,
+		},
 		tickFunction: (_delta) => {
 			if (!KDGameData.PrisonerState) {
 				let power = 0;

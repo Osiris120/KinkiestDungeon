@@ -1615,6 +1615,7 @@
             <key type="filename">../Game/FloorGeneric/IceBase.png</key>
             <key type="filename">../Game/FloorGeneric/Invis.png</key>
             <key type="filename">../Game/FloorGeneric/Lantern.png</key>
+            <key type="filename">../Game/FloorGeneric/LatexDisplayStand.png</key>
             <key type="filename">../Game/FloorGeneric/LatexPipe.png</key>
             <key type="filename">../Game/FloorGeneric/Leyline.png</key>
             <key type="filename">../Game/FloorGeneric/LightRays.png</key>
@@ -4534,6 +4535,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Game/UI/circleborder.png</key>
+            <key type="filename">../Game/UI/clouduploadicon.png</key>
             <key type="filename">../Game/UI/greyColor.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

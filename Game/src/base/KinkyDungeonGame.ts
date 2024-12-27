@@ -870,6 +870,7 @@ function KDInitTempValues(seed?: boolean): void {
 	KDEnemyCache = new Map();
 	KinkyDungeonTargetTile = null;
 	KinkyDungeonTargetTileLocation = "";
+	KDModalArea = false;
 
 	KDGameData.OfferFatigue = 0;
 	KDGameData.KeyringLocations = [];
@@ -3939,7 +3940,8 @@ function KinkyDungeonPlaceFurniture(barrelChance: number, cageChance: number, wi
 						|| (KDRandom() < barrelChance && KinkyDungeonMapGet(X, Y+1) == '1' && KinkyDungeonMapGet(X, Y-1) == '0' && KinkyDungeonMapGet(X+1, Y-1) == '0' && KinkyDungeonMapGet(X-1, Y-1) == '0'))) {
 					KinkyDungeonMapSet(X, Y, 'L'); // Barrel
 					if (KDRandom() < cageChance) {
-						let furn = KDRandom() < (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") ? 0.6 : 0.9) ? "Cage" : "DisplayStand";
+						let furn = KDRandom() < (KinkyDungeonStatsChoice.get("MoreKinkyFurniture") ? 0.6 : 0.9) ? "Cage" :
+						(KDRandom() < 0.25 ? "LatexDisplayStand" : "DisplayStand");
 						KinkyDungeonTilesSet(X + "," + Y, {Type: "Furniture", Furniture: furn});
 						KDMapData.JailPoints.push({x: X, y: Y, type: "furniture", radius: 1}); // , requireFurniture: true Standing in the cage alone will prevent jailbreak--good for stealth!
 					}
@@ -5053,7 +5055,7 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 					origbinding: Enemy.boundLevel,
 					target: Enemy,
 					attackCost: attackCost,
-					attackCostOrig: attackCost ? KinkyDungeonPlayerDamage.staminacost || 1 : 0,
+					attackCostOrig: KinkyDungeonPlayerDamage.staminacost ? KinkyDungeonPlayerDamage.staminacost : 0,
 					skipTurn: false,
 					attackData: damageInfo
 				};
@@ -5243,6 +5245,7 @@ function KinkyDungeonMove(moveDirection: {x: number, y: number }, delta: number,
 				let newDelta = 1;
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
+				KDModalArea = false;
 				// We can pick up items inside walls, in case an enemy drops it into bars
 				KinkyDungeonItemCheck(moveX, moveY, MiniGameKinkyDungeonLevel);
 				if (!KinkyDungeonHandleMoveObject(moveX, moveY, moveObject)) {// Move
@@ -6120,6 +6123,7 @@ function KinkyDungeonCloseDoor(x: number, y: number) {
 		KinkyDungeonTargetTile = null;
 		KinkyDungeonMapSet(x, y, "D");
 		KinkyDungeonTargetTileLocation = "";
+		KDModalArea = false;
 		if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/DoorClose.ogg");
 		KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonCloseDoorDone"), "white", 2);
 		KinkyDungeonAdvanceTime(1, true);

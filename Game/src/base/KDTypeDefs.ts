@@ -90,6 +90,7 @@ interface consumable extends NamedAndTyped {
 	shop?: boolean,
 	spell?: string,
 	potion?: boolean,
+	latexsolvent?: number,
 	noHands?: boolean,
 	arousalMode?: boolean,
 	/** Data var */

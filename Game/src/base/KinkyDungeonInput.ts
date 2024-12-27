@@ -308,6 +308,7 @@ function KDProcessInput(type: string, data: any): string {
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
 				}
 				KinkyDungeonAdvanceTime(1, true);
 				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
@@ -326,6 +327,7 @@ function KDProcessInput(type: string, data: any): string {
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
 					KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonSwipeDoorUse"), "lightgreen", 2);
 					KinkyDungeonAdvanceTime(1, true);
 					KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
@@ -355,6 +357,7 @@ function KDProcessInput(type: string, data: any): string {
 						if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
+						KDModalArea = false;
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonScanDoorUse"), "lightgreen", 2);
 						KinkyDungeonAdvanceTime(1, true);
 						KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
@@ -383,6 +386,7 @@ function KDProcessInput(type: string, data: any): string {
 						if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
+						KDModalArea = false;
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonHackDoorUse"), "lightgreen", 2);
 						KinkyDungeonAdvanceTime(1, true);
 						KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
@@ -411,6 +415,7 @@ function KDProcessInput(type: string, data: any): string {
 					if (KinkyDungeonTargetTile.Type == "Lock") delete KinkyDungeonTargetTile.Type;
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
 				}
 				KinkyDungeonAdvanceTime(1, true);
 				KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
@@ -438,6 +443,7 @@ function KDProcessInput(type: string, data: any): string {
 					KDUpdateDoorNavMap();
 					KinkyDungeonTargetTile = null;
 					KinkyDungeonTargetTileLocation = "";
+					KDModalArea = false;
 					if (gagTotal) {
 						KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonUnlockDoorPurpleUseGagged"), "#aa44ff", 1);
 					} else {

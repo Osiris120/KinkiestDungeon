@@ -1485,6 +1485,10 @@
             <key type="filename">../Models/Furniture/OneBarFrontClosedHeels.png</key>
             <key type="filename">../Models/Furniture/OneBarFrontSpread.png</key>
             <key type="filename">../Models/Furniture/OneBarFrontSpreadHeels.png</key>
+            <key type="filename">../Models/Furniture/OneBarTopClosed.png</key>
+            <key type="filename">../Models/Furniture/OneBarTopClosedHeels.png</key>
+            <key type="filename">../Models/Furniture/OneBarTopSpread.png</key>
+            <key type="filename">../Models/Furniture/OneBarTopSpreadHeels.png</key>
             <key type="filename">../Models/Furniture/SarcoBack.png</key>
             <key type="filename">../Models/Furniture/SarcoFront.png</key>
             <key type="filename">../Models/Furniture/SarcoWebs.png</key>
@@ -1507,6 +1511,7 @@
             <key type="filename">../Models/FutureHarness/MetalMid.png</key>
             <key type="filename">../Models/FutureHarness/StrapsChest.png</key>
             <key type="filename">../Models/FutureHarness/StrapsLower.png</key>
+            <key type="filename">../Models/FutureHarness/StrapsLowerSpread.png</key>
             <key type="filename">../Models/FutureHarness/StrapsMid.png</key>
             <key type="filename">../Models/GagLatex/NeckCorset.png</key>
             <key type="filename">../Models/GagLatex/NeckCorsetRim.png</key>
@@ -2197,8 +2202,8 @@
             <key type="filename">../Models/MaidKnightLight/ApronChestFront.png</key>
             <key type="filename">../Models/MaidKnightLight/ApronChestUp.png</key>
             <key type="filename">../Models/MaidKnightLight/ApronChestYoked.png</key>
+            <key type="filename">../Models/MaidKnightLight/ApronHogtie.png</key>
             <key type="filename">../Models/MaidKnightLight/ApronKneel.png</key>
-            <key type="filename">../Models/MaidKnightLight/ApronKneelHogtie.png</key>
             <key type="filename">../Models/MaidKnightLight/ArmLeftBoxtie.png</key>
             <key type="filename">../Models/MaidKnightLight/ArmLeftCrossed.png</key>
             <key type="filename">../Models/MaidKnightLight/ArmLeftFree.png</key>

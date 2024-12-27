@@ -30,7 +30,7 @@ let KDMinimapLabels: Record<string, (_x: number, _y:number, force: boolean) => s
 	'G': (_x, _y, force) => {if (!force && !KDMMLabels_Shrine) return "";
 		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)
-		 : TextGet("KDMinimapLabel_Ghost");},
+		 : (KinkyDungeonTilesGet(_x + "," + _y)?.Msg ? "" : TextGet("KDMinimapLabel_Ghost"));},
 	'O': (_x, _y, force) => {if (!force && !KDMMLabels_Shrine) return "";
 		return KinkyDungeonTilesGet(_x + "," + _y)?.MMLabel ?
 		TextGet("KDMinimapLabel_" + KinkyDungeonTilesGet(_x + "," + _y).MMLabel)

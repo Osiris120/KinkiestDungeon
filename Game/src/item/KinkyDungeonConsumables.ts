@@ -385,3 +385,18 @@ function KinkyDungeonUseConsumable(Name: string, Quantity: number): boolean {
 	}
 	return true;
 }
+
+
+function KDGetCheapestLatexSolvent(tag: string = "latexsolvent"): string {
+	let cheapest = "";
+	let cheapestcost = -1000;
+	for (let c of KinkyDungeonAllConsumable()) {
+		if (KDConsumable(c) && KDConsumable(c)[tag]
+			&& (cheapestcost == -1000 || KDConsumable(c)[tag] < cheapestcost)) {
+				cheapest = c.inventoryVariant || c.name;
+				cheapestcost = KDConsumable(c)[tag]
+		}
+	}
+
+	return cheapest;
+}

@@ -93,6 +93,7 @@ let KDObjectInteract: Record<string, (x: number, y: number, dist?: number) => bo
 				KDDelayedActionPrune(["Action", "World"]);
 				KinkyDungeonTargetTileLocation = "" + x + "," + y;
 				KinkyDungeonTargetTile = KinkyDungeonTilesGet(KinkyDungeonTargetTileLocation);
+				KDModalArea = false;
 
 
 				KinkyDungeonTargetTileMsg();
@@ -418,6 +419,7 @@ function KinkyDungeonDrawTablet() {
 				KDSendInput("tabletInteract", {action: "read", targetTile: KinkyDungeonTargetTileLocation});
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
+				KDModalArea = false;
 				return true;
 			}, true, KDModalArea_x + 25, KDModalArea_y + 25, 400, 60, TextGet("KinkyDungeonTabletRead"), "white", "", "");
 		}
@@ -431,6 +433,7 @@ function KinkyDungeonDrawFood() {
 			KDSendInput("foodInteract", {action: "eat", targetTile: KinkyDungeonTargetTileLocation});
 			KinkyDungeonTargetTile = null;
 			KinkyDungeonTargetTileLocation = "";
+			KDModalArea = false;
 			return true;
 		}, true, KDModalArea_x + 25, KDModalArea_y + 25, 400, 60, TextGet("KinkyDungeonFoodEat"), "white", "", "");
 	}
@@ -452,6 +455,7 @@ function KinkyDungeonHandleCharger() {
 			if (KDSendInput("chargerInteract", {action: "charge", targetTile: KinkyDungeonTargetTileLocation})) {
 				KinkyDungeonTargetTile = null;
 				KinkyDungeonTargetTileLocation = "";
+				KDModalArea = false;
 			}
 			return true;
 		} else if (MouseIn(KDModalArea_x + 25, KDModalArea_y + 25, 200, 60) && KinkyDungeonTargetTile) {

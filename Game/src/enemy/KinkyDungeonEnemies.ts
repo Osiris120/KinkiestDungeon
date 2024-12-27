@@ -6226,6 +6226,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 											KDMovePlayer(formerx, formery, false);
 											KinkyDungeonTargetTile = null;
 											KinkyDungeonTargetTileLocation = "";
+											KDModalArea = false;
 											AIData.hitsfx = "Struggle";
 											for (let invItem of KinkyDungeonAllRestraintDynamic()) {
 												let inv = invItem.item;

@@ -664,6 +664,7 @@ function KinkyDungeonUpdateAngel(_delta: number): void {
 					if (t[0] == KinkyDungeonTargetTileLocation) {
 						KinkyDungeonTargetTile = null;
 						KinkyDungeonTargetTileLocation = "";
+						KDModalArea = false;
 					}
 					KinkyDungeonTilesDelete(t[0]);
 					KinkyDungeonMapSet(x, y, '0');

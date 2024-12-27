@@ -152,6 +152,7 @@ let KDTilePalette = {
 	'FutureBox': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "FutureBox", }, jail: {type: "furniture", radius: 1}},
 	'FutureBoxStorage': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "FutureBox", jail: {type: "storage", radius: 1}}, jail: {type: "storage", radius: 1}},
 	'DisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayStand"}, jail: {type: "furniture", radius: 1}},
+	'LatexDisplayStand': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "LatexDisplayStand"}, jail: {type: "furniture", radius: 1}},
 	'DisplayEgyptian': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "DisplayEgyptian"}, jail: {type: "furniture", radius: 1}},
 	'IceBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "IceBase"}, jail: {type: "furniture", radius: 1}},
 	'CrystalBase': {type: "tile", tile: 'L', special: {Type: "Furniture", Furniture: "CrystalBase"}, jail: {type: "furniture", radius: 1}},
