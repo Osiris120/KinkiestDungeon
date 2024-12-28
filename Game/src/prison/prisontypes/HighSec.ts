@@ -2,14 +2,24 @@ let KDJailStripSearchTime = 300;
 let KDJailStripSearchTempTime = 50;
 
 function KDShouldStripSearchPlayer(player: entity, allowFlag: boolean = false): boolean {
+	if (!player.player) return false;
 	if (allowFlag && KinkyDungeonFlags.get("jailStripSearched")) return false;
 	// TODO check if player has more than a few items in inventory
 	/** Max consumables */
-	let maxItemsCheck = 1 + 3 * (1 - KinkyDungeonCalcVisibility(player, 1));
+	let maxItemsCheck = 2 + 3 * (1 - KinkyDungeonCalcVisibility(player, 1));
 	/** Max non unarmed weapons */
 	let maxWeaponsCheck = 1;
 
-	return true;
+	let currentItems = 0;
+	for (let c of KinkyDungeonAllConsumable()) {
+		if (c.quantity == undefined) currentItems++;
+		else currentItems += c.quantity;
+	}
+	let currentWeapons = KinkyDungeonAllWeapon().filter((w) => {
+		return !KDWeapon(w)?.unarmed;
+	}).length;
+
+	return currentItems > maxItemsCheck || currentWeapons > maxWeaponsCheck;
 }
 function KDDoStripSearchRemove(player: entity): string {
 	// TODO remove items from inventory
