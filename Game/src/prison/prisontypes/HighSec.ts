@@ -1,3 +1,25 @@
+let KDJailStripSearchTime = 300;
+let KDJailStripSearchTempTime = 50;
+
+function KDShouldStripSearchPlayer(player: entity, allowFlag: boolean = false): boolean {
+	if (allowFlag && KinkyDungeonFlags.get("jailStripSearched")) return false;
+	// TODO check if player has more than a few items in inventory
+	/** Max consumables */
+	let maxItemsCheck = 1 + 3 * (1 - KinkyDungeonCalcVisibility(player, 1));
+	/** Max non unarmed weapons */
+	let maxWeaponsCheck = 1;
+
+	return true;
+}
+function KDDoStripSearchRemove(player: entity): string {
+	// TODO remove items from inventory
+
+	if (KDShouldStripSearchPlayer(player)) return KDCurrentPrisonState(player);
+	return KDPopSubstate(player);
+}
+
+
+
 KDPrisonTypes.HighSec = {
 	name: "HighSec",
 	default_state: "Jail",
@@ -189,6 +211,9 @@ KDPrisonTypes.HighSec = {
 
 
 				if (KDPrisonTick(player)) {
+					if (KDShouldStripSearchPlayer(player, true)) {
+						return "Strip";
+					}
 					if (KDIsPlayerTethered(KDPlayer())) {
 						return "Jail";
 					}
@@ -334,6 +359,96 @@ KDPrisonTypes.HighSec = {
 			},
 		},
 
+
+		Strip: {name: "Strip",
+			init: (params) => {
+				return "";
+			},
+			update: (delta) => {
+				let player = KinkyDungeonPlayerEntity;
+				KDPrisonCommonGuard(player);
+				KinkyDungeonSetFlag("noWeaponStop", 10);
+				if (KDPrisonIsInFurniture(player) && !KinkyDungeonFlags.get("jailStripSearched")) {
+					KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTempTime);
+					return KDGoToSubState(player, "StripRemove");
+				}
+				// Otherwise go to travel state
+				if (KDShouldStripSearchPlayer(player))
+					return KDGoToSubState(player, "StripTravel");
+				return KDPopSubstate(player);
+			},
+		},
+		StripRemove: {name: "StripRemove",
+			init: (params) => {
+				return "";
+			},
+			update: (delta) => {
+				let player = KinkyDungeonPlayerEntity;
+				let guard = KDPrisonCommonGuard(player);
+				KinkyDungeonSetFlag("noWeaponStop", 10);
+
+				if (guard && KDPrisonIsInFurniture(player)) {
+					guard.gx = player.x;
+					guard.gy = player.y;
+					KinkyDungeonSetEnemyFlag(guard, "overrideMove", 2);
+					if (KDistChebyshev(guard.x - player.x, guard.y - player.y) < 1.5) {
+						if (KDPrisonIsInFurniture(player)) {
+							KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTime);
+							return KDDoStripSearchRemove(player);
+						}
+					} else {
+						// Stay in the current state
+						return KDCurrentPrisonState(player);
+					}
+				}
+
+				return KDPopSubstate(player);
+			},
+		},
+		StripTravel: {name: "StripTravel",
+			init: (params) => {
+				return "";
+			},
+			update: (delta) => {
+				let player = KinkyDungeonPlayerEntity;
+				KinkyDungeonSetFlag("noWeaponStop", 10);
+
+				let lostTrack = KDLostJailTrack(player);
+				if (lostTrack == "Unaware") {
+					return KDSetPrisonState(player, "Jail");
+				}
+
+				// End when the player is settled
+				if (KDPrisonIsInFurniture(player)) {
+					return KDPopSubstate(player);
+				}
+				// We are not in a furniture, so we conscript the guard
+				let guard = KDPrisonCommonGuard(player);
+				if (guard) {
+					// Assign the guard to a furniture intentaction
+					let action = (KDGameData.PrisonerState == 'jail' && !KinkyDungeonAggressive(guard, player)) ? "leashFurniture" : "leashFurnitureAggressive";
+					if (guard.IntentAction != action)
+						KDIntentEvents[action].trigger(guard, {});
+					if (lostTrack) {
+						// Any qualifying factors means they know where you should be
+						guard.gx = player.x;
+						guard.gy = player.y;
+						KinkyDungeonSetEnemyFlag(guard, "wander", 30)
+						KinkyDungeonSetEnemyFlag(guard, "overrideMove", 10);
+					}
+					if (KDGameData.PrisonerState == 'jail') {
+						KinkyDungeonSetEnemyFlag(guard, "notouchie", 2);
+					}
+				} else {
+					// forbidden state
+					return KDPopSubstate(player);
+				}
+
+				// Stay in the current state
+				return KDCurrentPrisonState(player);
+			},
+		},
+
 		Cell: {name: "Cell",
 			init: (params) => {
 				return "";
@@ -341,11 +456,7 @@ KDPrisonTypes.HighSec = {
 			update: (delta) => {
 				let player = KinkyDungeonPlayerEntity;
 				KDPrisonCommonGuard(player, undefined, false);
-				let jailPoint = KinkyDungeonNearestJailPoint(player.x, player.y, ["jail"]);
-				if (!jailPoint || jailPoint.x != player.x || jailPoint.y != player.y) {
-					// Move the player to the storage
-					return KDGoToSubState(player, "CellTravel");
-				}
+
 
 				if (KDPrisonIsInFurniture(player)) {
 					// Stay in the current state, but increment the Cell timer, return to jail state if too much
@@ -357,6 +468,12 @@ KDPrisonTypes.HighSec = {
 					}
 					return KDCurrentPrisonState(player);
 				}
+
+				if (!KinkyDungeonPlayerInCell()) {
+					// Move the player to the storage
+					return KDGoToSubState(player, "CellTravel");
+				}
+
 				// Go to jail state for further processing
 				return KDSetPrisonState(player, "Jail");
 			},

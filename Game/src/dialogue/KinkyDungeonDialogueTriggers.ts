@@ -21,6 +21,7 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 				&& (KDHostile(enemy)
 					|| KDFactionFavorable(KDGetFaction(enemy), KDGetMainFaction()))
 				&& KDRandom() < 0.25
+				&& !KinkyDungeonFlags.get("noWeaponStop")
 				&& !KinkyDungeonFlags.has("demand"));
 		},
 		weight: (enemy, _dist) => {

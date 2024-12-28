@@ -3070,6 +3070,40 @@ function KinkyDungeonTrackSneak(enemy: entity, delta: number, player: any, darkm
 	return (enemy.vp/data.sneakThreshold);
 }
 
+
+function KinkyDungeonCalcVisibility(player: any, darkmult?: number): number {
+	if (!player.player) return 1;
+
+	let data = {
+		sneakThreshold: 2,
+		deltaMult: 0.7/Math.max(1, (1 + KinkyDungeonSubmissiveMult)),
+		visibility: 1.0,
+		darkmult: darkmult * (KinkyDungeonStatsChoice.get("Stalker") ? 2.5: 1.25),
+		player: player,
+	};
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak"))
+		data.sneakThreshold = Math.max(0.51, data.sneakThreshold + KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "Sneak"));
+
+	if (KDGameData.Outfit) {
+		let outfit = KinkyDungeonGetOutfit(KDGameData.Outfit);
+		if (outfit && outfit.visibility)
+			data.visibility *= outfit.visibility;
+	}
+
+	if (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowDetection"))
+		data.visibility *= KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "SlowDetection"));
+
+	if (KinkyDungeonStatsChoice.get("Conspicuous")) data.visibility *= KDConspicuousMult;
+	else if (KinkyDungeonStatsChoice.get("Stealthy")) data.visibility *= KDStealthyMult;
+
+	KinkyDungeonSendEvent('calcVisibility', data);
+
+	if (data.darkmult) {
+		data.deltaMult *= KDPlayerLight/(data.darkmult + KDPlayerLight);
+	}
+	return data.visibility / Math.max(0.5, data.sneakThreshold);
+}
+
 function KinkyDungeonMultiplicativeStat(Stat: number): number {
 	if (Stat > 0) {
 		return 1 / (1 + Stat);
@@ -9176,6 +9210,8 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 		npc.visual_y = npc.y;
 		if (KDIsNPCPersistent(data.enemy.id) && !KDGetAltType(MiniGameKinkyDungeonLevel)?.keepPrisoners)
 			KDGetPersistentNPC(data.enemy.id).collect = false;
+		if (KDIsNPCPersistent(data.enemy.id))
+			KDGetPersistentNPC(data.enemy.id).spawned = true;
 
 		if (data.enemy.hp <= 0.5) data.enemy.hp = 0.51;
 
@@ -9204,6 +9240,8 @@ function KDAddEntity(entity: entity, makepersistent?: boolean, dontteleportpersi
 			npc.entity.y = data.y;
 
 			KDUpdateEnemyCache = true;
+			if (KDIsNPCPersistent(data.enemy.id))
+				KDGetPersistentNPC(data.enemy.id).spawned = true;
 
 		} else {
 			createpersistent = true;

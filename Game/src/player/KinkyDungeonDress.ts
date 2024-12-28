@@ -196,6 +196,8 @@ function KinkyDungeonDressPlayer (
 	}
 
 	try {
+
+		if (!KDGameData.NPCRestraints) KDGameData.NPCRestraints = {};
 		let data = {
 			updateRestraints: false,
 			updateDress: false,
@@ -208,7 +210,7 @@ function KinkyDungeonDressPlayer (
 					.map((rest) => {return rest.id;})
 			: [],
 			NPCRestraintEvents: KDGetCharacterID(Character) ?
-				KDGameData.NPCRestraints[KDGetCharacterID(Character)]
+			KDGameData.NPCRestraints[KDGetCharacterID(Character)]
 				: undefined,
 		};
 

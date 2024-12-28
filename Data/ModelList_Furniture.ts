@@ -229,7 +229,7 @@ AddModel({
 	Categories: ["Restraints","Furniture", "Stands"],
 	AddPose: ["SuspendedHogtie", "ForceStand"],
 	Layers: ToLayerMap([
-		{ Name: "OneBarTop", Layer: "DollStandTop", Pri: -50,
+		{ Name: "OneBarTop", Layer: "WrappingTorsoUnder", Pri: -249,
 			Poses: ToMap(["Closed", "Spread"]),
 			RequirePoses: ToMap(["ChastityBelts"]),
 			AppendPose: {Ballet: "Heels"},
@@ -257,7 +257,7 @@ AddModel({
 	AddPose: ["SuspendedHogtie", "ForceStand"],
 	Filters: {"OneBarTop":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.3333333333333333,"green":0.7450980392156863,"blue":1.6666666666666667,"alpha":1},"OneBarFront":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.3333333333333333,"green":0.7450980392156863,"blue":1.6666666666666667,"alpha":1},"OneBarBack":{"gamma":1,"saturation":0,"contrast":1,"brightness":1,"red":0.3333333333333333,"green":0.7450980392156863,"blue":1.6666666666666667,"alpha":1}},
 	Layers: ToLayerMap([
-		{ Name: "OneBarTop", Layer: "DollStandTop", Pri: -49,
+		{ Name: "OneBarTop", Layer: "WrappingTorsoUnder", Pri: -249,
 			Poses: ToMap(["Closed", "Spread"]),
 			AppendPose: {Ballet: "Heels"},
 			NoOverride: true,

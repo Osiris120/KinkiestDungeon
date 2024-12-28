@@ -115,6 +115,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 		options: {
 			"Accept": {gag: true, playertext: "WeaponFoundAccept", response: "GoodGirl", personalities: ["Dom", "Sub", "Robot"],
 				clickFunction: (_gagged, _player) => {
+					if ((KinkyDungeonFlags.get("jailStripSearched") || 0) < KDJailStripSearchTempTime) {
+						KinkyDungeonSetFlag("jailStripSearched", 0);
+					}
+
 					KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), "#ff5277", 2);
 					if (!isUnarmed(KinkyDungeonPlayerDamage)) {
 						KinkyDungeonChangeRep("Ghost", 3);
