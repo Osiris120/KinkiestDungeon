@@ -336,6 +336,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 											"End": {gag: false, response: "Default", personalities: ["Sub"], playertext: "Continue",
 												clickFunction: (_gagged, _player) => {
 													let e = KDGetSpeaker();
+													KDApplyJailOutfit();
+
 													if (e) {
 														KDTryToLeash(e, _player, 1, true);
 														KDTryToLeash(e, _player, 1, true);

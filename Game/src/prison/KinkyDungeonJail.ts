@@ -1562,30 +1562,6 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
 	KDGameData.KinkyDungeonSpawnJailers = KDGameData.KinkyDungeonSpawnJailersMax;
 
-	if (!PutInJail) {
-		let defeat_outfit = params.defeat_outfit;
-		// Handle special cases
-		let collar = KinkyDungeonGetRestraintItem("ItemNeck");
-		if (collar && KDRestraint(collar) && KinkyDungeonPlayerTags.get("Collars")) {
-			if (KDRestraint(collar).name == "DragonCollar") defeat_outfit = "Dragon";
-			if (KDRestraint(collar).name == "MaidCollar") defeat_outfit = "Maid";
-			if (KDRestraint(collar).name == "ExpCollar") defeat_outfit = "BlueSuitPrison";
-			if (KDRestraint(collar).name == "WolfCollar") defeat_outfit = "Wolfgirl";
-			if (KDRestraint(collar).name == "MithrilCollar") defeat_outfit = "Elven";
-			if (KDRestraint(collar).name == "ObsidianCollar") defeat_outfit = "Obsidian";
-		}
-		if (KDGetMainFaction() && KDFactionProperties[KDGetMainFaction()]?.jailOutfit) defeat_outfit = KDFactionProperties[KDGetMainFaction()]?.jailOutfit;
-		if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
-
-		KinkyDungeonSetDress(defeat_outfit, "JailUniform");
-		KinkyDungeonStripInventory(true);
-
-		if (defeat_outfit != params.defeat_outfit) {
-			if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit, id: KinkyDungeonGetItemID()});
-		} else if (!KinkyDungeonInventoryGet("JailUniform")) KinkyDungeonInventoryAdd({name: "JailUniform", type: Outfit, id: KinkyDungeonGetItemID()});
-
-	}
-
 	//KinkyDungeonChangeRep("Ghost", 1 + Math.round(KinkyDungeonSpawnJailers/2));
 	//KinkyDungeonChangeRep("Prisoner", securityBoost); // Each time you get caught, security increases...
 
@@ -1743,6 +1719,7 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 				KinkyDungeonAddRestraintIfWeaker(restraint, KDGetEffLevel(),false, undefined);
 		}
 	}
+
 
 	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
 	KDFixPlayerClothes(outfit?.palette || KinkyDungeonPlayer.Palette || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
@@ -2370,4 +2347,35 @@ function KDGetEntranceToJailRoom(jailRoom: string, map: WorldCoord,): KDPoint {
 	if (!slot) return null;
 	let entrances = KDGetEntrancePoints(map, true, true, true);
 	return entrances[jailRoom];
+}
+
+function KDApplyJailOutfit() {
+	let params = KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
+
+	let defeat_outfit = params.defeat_outfit;
+	// Handle special cases
+	let collar = KinkyDungeonGetRestraintItem("ItemNeck");
+	if (collar && KDRestraint(collar) && KinkyDungeonPlayerTags.get("Collars")) {
+		if (KDRestraint(collar).name == "DragonCollar") defeat_outfit = "Dragon";
+		if (KDRestraint(collar).name == "MaidCollar") defeat_outfit = "Maid";
+		if (KDRestraint(collar).name == "ExpCollar") defeat_outfit = "BlueSuitPrison";
+		if (KDRestraint(collar).name == "WolfCollar") defeat_outfit = "Wolfgirl";
+		if (KDRestraint(collar).name == "MithrilCollar") defeat_outfit = "Elven";
+		if (KDRestraint(collar).name == "ObsidianCollar") defeat_outfit = "Obsidian";
+	}
+	if (KDGetMainFaction() && KDFactionProperties[KDGetMainFaction()]?.jailOutfit) defeat_outfit = KDFactionProperties[KDGetMainFaction()]?.jailOutfit;
+	if (KinkyDungeonStatsChoice.has("KeepOutfit")) defeat_outfit = "Default";
+
+	KinkyDungeonSetDress(defeat_outfit, "JailUniform");
+	KinkyDungeonStripInventory(true);
+
+	if (defeat_outfit != params.defeat_outfit) {
+		if (!KinkyDungeonInventoryGet(defeat_outfit)) KinkyDungeonInventoryAdd({name: defeat_outfit, type: Outfit, id: KinkyDungeonGetItemID()});
+	} else if (!KinkyDungeonInventoryGet("JailUniform")) KinkyDungeonInventoryAdd({name: "JailUniform", type: Outfit, id: KinkyDungeonGetItemID()});
+
+
+
+	let outfit = KDOutfit({name: KinkyDungeonCurrentDress});
+	KDFixPlayerClothes(outfit?.palette || KinkyDungeonPlayer.Palette || KDGetMainFaction() || (KDToggles.ForcePalette ? KDDefaultPalette : "Jail"));
+	KinkyDungeonDressPlayer();
 }
