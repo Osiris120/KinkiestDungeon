@@ -12,8 +12,8 @@ function KDGetMapData(coord: WorldCoord): KDMapDataType {
 
 function KDCoordToPoint(coord: {mapX: number, mapY: number}): KDPoint {
 	return {
-		x: coord.mapX,
-		y: coord.mapY,
+		x: coord.mapX != undefined ? coord.mapX : 0,
+		y: coord.mapY != undefined ? coord.mapY : MiniGameKinkyDungeonLevel,
 	}
 }
 
