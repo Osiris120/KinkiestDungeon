@@ -127,6 +127,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 		noShrine: true,
 		activatecurse: true,
 		level: 30,
+		customIcon_hud: "StarCurse",
 		weight: (_item) => {
 			return 1;
 		},
