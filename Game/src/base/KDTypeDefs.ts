@@ -3049,6 +3049,8 @@ interface KDAIData extends KDAITriggerData {
 	/** The enemy actually aggros the target and will make attacks */
 	wantsToAttack?: boolean,
 	wantsToTease?: boolean,
+	canTease?: boolean,
+	canAttack?: boolean,
 	/** The enemy actually aggros the target and will cast spells */
 	wantsToCast?: boolean,
 	/** The enemy wants to pull the player instead of just attacking */

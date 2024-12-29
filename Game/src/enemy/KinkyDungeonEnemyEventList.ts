@@ -66,7 +66,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = player.y;
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.aggressive);
+					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -159,7 +159,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.aggressive);
+					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -229,7 +229,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.aggressive);
+					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -311,7 +311,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.aggressive);
+					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -472,7 +472,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gx = KinkyDungeonPlayerEntity.x;
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.aggressive);
+					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -1279,7 +1279,6 @@ function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0,
 					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				"yellow", 2, true);
 			} else {
-				KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true);
 				KinkyDungeonSetEnemyFlag(enemy, "applyItem", 0);
 				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonAddRestraints")
 					.replace("NewRestraintName", TextGet("Restraint" + newRestraint.name))
@@ -1287,13 +1286,22 @@ function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0,
 				"yellow", 2, true);
 			}
 		} else {
-			if (!KDEnemyHasFlag(enemy, "applyItemAtk") && KinkyDungeonFlags.get("playerTouched")) {
-				KinkyDungeonSetEnemyFlag(enemy, "applyItemAtk", 4);
-				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
-					.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
+			if (!KDEnemyHasFlag(enemy, "applyItemAtk")) {
+				if (KinkyDungeonFlags.get("playerTouched")) {
+					KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true);
+					KinkyDungeonSetEnemyFlag(enemy, "applyItemAtk", 4);
+					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonAddRestraints")
+					.replace("NewRestraintName", TextGet("Restraint" + newRestraint.name))
 					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				"yellow", 2, true);
-				// TODO add spell
+				} else {
+					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
+					.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
+					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+						"yellow", 2, true);
+				}
+
+
 			}
 		}
 	}

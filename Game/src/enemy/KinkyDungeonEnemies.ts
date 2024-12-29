@@ -5798,7 +5798,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 
 	// Attack loop
 	AIData.playerDist = Math.sqrt((enemy.x - player.x)*(enemy.x - player.x) + (enemy.y - player.y)*(enemy.y - player.y));
-	let canAttack = !(enemy.disarm > 0)
+	AIData.canAttack = !(enemy.disarm > 0)
 		&& AIData.wantsToAttack
 		&& (!player?.player || !enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy()?.id == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
 		&& (enemy.warningTiles.length > 0 || (enemy.aware && (!player.player || enemy.vp > 0.25) && KDCanDetect(enemy, player)) || (!KDAllied(enemy) && !AIData.hostile))
@@ -5809,7 +5809,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		&& AIType.attack(enemy, player, AIData)
 		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.range, !enemy.Enemy.projectileAttack, !enemy.Enemy.projectileAttack);
 	let first = true;
-	let canTease = !canAttack
+	AIData.canTease = !AIData.canAttack
 		&& !(enemy.disarm > 0)
 		&& AIData.wantsToTease
 		&& (!player?.player || !enemy.Enemy.followLeashedOnly || KDPlayerDeservesPunishment(enemy, player) || KDGameData.KinkyDungeonLeashedPlayer < 1 || KinkyDungeonLeashingEnemy()?.id == enemy.id || KinkyDungeonFlags.get("overrideleashprotection"))
@@ -5821,10 +5821,10 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 		&& AIType.attack(enemy, player, AIData)
 		&& KinkyDungeonCheckLOS(enemy, player, AIData.playerDist, AIData.range, !enemy.Enemy.projectileAttack, !enemy.Enemy.projectileAttack);
 
-	if (player.player && !canAttack && canTease && enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)) {
+	if (player.player && !AIData.canAttack && AIData.canTease && enemy.playWithPlayer && !KinkyDungeonAggressive(enemy)) {
 		KDOperateTease();
 	}
-	while (canAttack && (first || enemy.attackBonus > 0)) {//Player is adjacent
+	while (AIData.canAttack && (first || enemy.attackBonus > 0)) {//Player is adjacent
 		AIData.idle = false;
 		enemy.revealed = true;
 		if (!first) {
