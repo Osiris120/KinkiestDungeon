@@ -84,6 +84,10 @@ interface consumable extends NamedAndTyped {
 	/** 1 - (Rarity * sub value) = sub threshold */
 	sub?: number,
 	rarity: number,
+	/** Wont be confiscated in prison */
+	isSubby?: boolean,
+	/** Base chance to sneak thru strip search */
+	sneakChance?: number,
 	type: string,
 	/** used solely for shop */
 	uniqueTags?: string[],
@@ -2372,6 +2376,7 @@ interface KinkyDialogue {
 	prerequisiteFunction?: (gagged: boolean, player: entity) => boolean;
 	/** Will appear greyed out unless true */
 	greyoutFunction?: (gagged: boolean, player: entity) => boolean;
+	greyoutCustomTooltip?: (gagged: boolean, player: entity) => string;
 	greyoutTooltip?: string;
 	/** List of personalities supported by this dialogue */
 	personalities?: string[];

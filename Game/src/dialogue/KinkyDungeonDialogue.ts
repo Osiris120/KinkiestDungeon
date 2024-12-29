@@ -130,7 +130,10 @@ function KDDrawDialogue(delta: number): void {
 								}
 								return true;
 							}, KinkyDungeonDialogueTimer < CommonTime(), 700, 450 + II * 60, 600, 50,
-							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? "#ffffff" : "#888888", undefined,
+							(notGrey || KDDialogueData.CurrentDialogueIndex != II) ? tt : TextGet(
+								entries[i][1].greyoutCustomTooltip
+								? entries[i][1].greyoutCustomTooltip(gagged, KDPlayer())
+								: entries[i][1].greyoutTooltip), (notGrey && KinkyDungeonDialogueTimer < CommonTime()) ? "#ffffff" : "#888888", undefined,
 							undefined, undefined, undefined,
 							KDDialogueData.CurrentDialogueIndex == II ? KDTextGray3 : undefined, undefined, undefined, {
 								zIndex: 122,

@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.27"
+KDVersionStr,"5.4.28"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -10655,7 +10655,7 @@ KinkyDungeonRemindJailChaseWitchSpellItem,"Put that toy away~"
 KinkyDungeonRemindJailChaseWitchShrine,"You'll be praying for freedom soon, my dear~"
 KinkyDungeonRemindJailChaseWitchChest,"Oh, breaking into my collection, are you?"
 KinkyDungeonRemindJailChaseWitchOrb,"Even I wouldn't do such a thing!"
-KinkyDungeonRemindJailChaseWitchJailbreak,"Witch way to the jail cell, you say?"
+KinkyDungeonRemindJailChaseWitchJailbreak,"Witch way to the jail, you say?"
 KinkyDungeonRemindJailWitchGrab,"Hold still~"
 KinkyDungeonRemindJailWitchDisarm,"Try that again!"
 KinkyDungeonRemindJailWitchHit,"Hands off!"
@@ -10976,11 +10976,15 @@ rGoodGirlRobot,"(The SPEAKER beeps)|Thank you for complying."
 rPunishment,"(The SPEAKER frowns)|Looks like you'll need to be punished. Get her!"
 rPunishmentSub,"(The SPEAKER looks Embarrassed)|Then... then... uh... someone stop her!"
 rPunishmentDom,"(The SPEAKER grins)|Then allow me to personally show you the rules."
+rPunishmentBrat,"(The SPEAKER cracks her knuckles)|Finally, I get to have some fun~"
 rPunishmentRobot,"(The SPEAKER beeps)|Subject is resisting. Begin capture protocol."
 
 
 rWeaponFound,"(The SPEAKER calls at you)|You're not supposed to be carrying a weapon.|Hand it over."
 rWeaponFoundRobot,"(The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply."
+rWeaponFoundSub,"(The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?"
+rWeaponFoundDom,"(The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?"
+rWeaponFoundBrat,"(The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?"
 dWeaponFoundAccept,"Yes, miss... (Currently held weapon will be lost)"
 dWeaponFoundAcceptGag,"Mmph... (Nod politely) (Currently held weapon will be lost)"
 dWeaponFoundDeny,"No, I refuse!"
@@ -26241,3 +26245,28 @@ KDLatexSolvent,solvent
 RestraintLatexDollStand,Latex Doll Stand
 RestraintLatexDollStandDesc,"A stand for your latex dolls, coated in a smooth rubber coating."
 RestraintLatexDollStandDesc2,"Has a flange for propping up even dolls wearing chastity belts."
+
+
+rStripSearch,"(The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~"
+rStripSearchSub,"(The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now."
+rStripSearchDom,"(The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?"
+rStripSearchBrat,"(The SPEAKER smiles)|Let's see, what loot do we have here...|(SPEAKER is going to search you)"
+rStripSearchRobot,"(The SPEAKER scans you with a red light)|Enumerating contraband...|Please comply for removal."
+dStripSearch_Accept,"Yes, miss... (Begin search and confiscation)"
+dStripSearch_AcceptGag,"Mmph... (Nod politely) (Begin search and confiscation)"
+dStripSearchDeny,"No, I refuse! (Fight)"
+dStripSearchDenyGag,"Mmph! (Shake your head and fight)"
+
+KDTextGrayNeedWP,Option not available at 0 WP
+
+rStripSearchAccept_1,"(The SPEAKER starts by removing most of your clothes...)"
+rStripSearchAccept_1_2,"(Next, the SPEAKER looks through your weapons)"
+rStripSearchAccept_1_2_3,"(Finally, the SPEAKER opens the rest of your bag)"
+rStripSearchAccept_1_2_3_End,"(The search is complete)|There! Now let's get you situated~"
+rStripSearchAccept_1_2_3_EndSub,"(The search is complete)|Alright miss, please behave, okay?"
+
+
+
+KDItemConfiscated,Confiscated AMNTx ITMN!
+KDItemNotConfiscated,Kept AMNTx ITMN.
+KDItemNotConfiscatedSneak,Sneaked in AMNTx ITMN!

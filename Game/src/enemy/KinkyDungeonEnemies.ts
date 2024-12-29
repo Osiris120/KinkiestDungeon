@@ -6471,6 +6471,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							KinkyDungeonSetFlag("NPCCombat",  3);
 						happened = data.happened;
 						dmgString = dmg.string || TextGet("KDNoDamage");
+						KinkyDungeonSetFlag("playerTouched",  2);
 						replace.push({keyword:"DamageTaken", value: dmgString});
 					} else { // if (KDRandom() <= playerEvasion)
 						if (AIData.attack.includes("Slow")) {

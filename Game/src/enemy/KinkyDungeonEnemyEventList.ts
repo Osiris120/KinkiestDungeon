@@ -472,7 +472,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gx = KinkyDungeonPlayerEntity.x;
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta);
+					KDTryToLeash(enemy, player, delta, false, true);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -1244,33 +1244,58 @@ function KDSettlePlayerInFurniture(enemy: entity, _aiData: KDAIData, tags?: stri
  * @param enemy
  * @param player
  * @param delta
+ * @param slow uses the spell
  */
-function KDTryToLeash(enemy: entity, player: entity, delta: number, instant?: boolean) {
+function KDTryToLeash(enemy: entity, player: entity, delta: number, instant?: boolean, slow?: boolean) {
 	if (delta > 0 && KDistChebyshev(enemy.x - player.x, enemy.y - player.y) < 1.5) {
-		KDAttachLeashOrCollar(enemy, player, delta, instant);
+		KDAttachLeashOrCollar(enemy, player, delta, instant, slow);
 	}
 }
 
 
-function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0, instant?: boolean) {
+/**
+ *
+ * @param enemy
+ * @param player
+ * @param delta
+ * @param instant
+ * @param slow uses the spell
+ */
+function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0, instant?: boolean, atkOnly?: boolean) {
 	let newRestraint = KinkyDungeonGetRestraintByName(KDPlayerLeashable(player) ? "BasicLeash" : "BasicCollar");
 	if (newRestraint) {
-		// Attach a leash or collar
-		if (!instant && !KDEnemyHasFlag(enemy, "applyItem")) {
-			KinkyDungeonSetEnemyFlag(enemy, "applyItem", 1 + delta);
-			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
-				.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
-				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
-			"yellow", 2, true);
+		if (!atkOnly) {
+			// Attach a leash or collar
+			if (!instant && (!KDEnemyHasFlag(enemy, "applyItem"))) {
+				KinkyDungeonSetEnemyFlag(enemy, "applyItem", 2 + delta);
+				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
+					.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
+					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				"yellow", 2, true);
+			} else if (!instant && !KDEnemyHasFlag(enemy, "applyItem2")) {
+				KinkyDungeonSetEnemyFlag(enemy, "applyItem2", 1 + delta);
+				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
+					.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
+					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				"yellow", 2, true);
+			} else {
+				KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true);
+				KinkyDungeonSetEnemyFlag(enemy, "applyItem", 0);
+				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonAddRestraints")
+					.replace("NewRestraintName", TextGet("Restraint" + newRestraint.name))
+					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				"yellow", 2, true);
+			}
 		} else {
-			KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true);
-			KinkyDungeonSetEnemyFlag(enemy, "applyItem", 0);
-			KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonAddRestraints")
-				.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
-				.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
-			"yellow", 2, true);
+			if (!KDEnemyHasFlag(enemy, "applyItemAtk") && KinkyDungeonFlags.get("playerTouched")) {
+				KinkyDungeonSetEnemyFlag(enemy, "applyItemAtk", 4);
+				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
+					.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
+					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
+				"yellow", 2, true);
+				// TODO add spell
+			}
 		}
-
 	}
 }
 

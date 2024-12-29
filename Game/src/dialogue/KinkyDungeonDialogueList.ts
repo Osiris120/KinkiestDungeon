@@ -111,7 +111,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 	},
 	"WeaponFound": {
 		response: "WeaponFound",
-		personalities: ["Robot"],
+		personalities: ["Robot", "Brat", "Sub", "Dom"],
 		options: {
 			"Accept": {gag: true, playertext: "WeaponFoundAccept", response: "GoodGirl", personalities: ["Dom", "Sub", "Robot"],
 				clickFunction: (_gagged, _player) => {
@@ -137,7 +137,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 			"Bluff": {playertext: "", response: "",
 				prerequisiteFunction: (_gagged, _player) => {return false;},
 				options: {"Leave": {playertext: "Leave", exitDialogue: true}}},
-			"Deny": {gag: true, playertext: "WeaponFoundDeny", response: "Punishment", personalities: ["Dom", "Sub", "Robot"],
+			"Deny": {gag: true, playertext: "WeaponFoundDeny", response: "Punishment", personalities: ["Dom", "Sub", "Robot", "Brat"],
 				clickFunction: (_gagged, _player) => {
 					KinkyDungeonStartChase(undefined, "Refusal");
 					KDAggroSpeaker();
@@ -216,6 +216,156 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					return false;
 				},
 				options: {"Back": {playertext: "Pause", leadsToStage: ""}}},
+		}
+	},
+	"StripSearch": {
+		response: "StripSearch",
+		personalities: ["Robot", "Brat", "Sub", "Dom"],
+		options: {
+			"Accept": {gag: true, playertext: "Default", response: "GoodGirl", personalities: ["Dom", "Sub", "Robot"],
+				clickFunction: (_gagged, _player) => {
+					if ((KinkyDungeonFlags.get("jailStripSearched") || 0) < KDJailStripSearchTempTime) {
+						KinkyDungeonSetFlag("jailStripSearched", 0);
+					}
+
+					KDRemovePrisonRestraints();
+
+					//KinkyDungeonSendTextMessage(10, TextGet("KDWeaponConfiscated"), "#ff5277", 2);
+					if (!isUnarmed(KinkyDungeonPlayerDamage)) {
+						KinkyDungeonChangeRep("Ghost", 3);
+						let item = KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon);
+						KDSetWeapon(null);
+						if (item) {
+							KinkyDungeonAddLostItems([item], false);
+							KinkyDungeonInventoryRemove(item);
+						}
+
+						KinkyDungeonSetFlag("demand", 4);
+					}
+					return false;
+				},
+				options: {
+					"1": {playertext: "Continue", response: "Default", gag: false,
+						clickFunction: (_gagged, _player) => {
+							let CurrentDress = KinkyDungeonCurrentDress;
+							let dressList = KDGetDressList()[CurrentDress];
+							for (let d of dressList) {
+								if (d.Item && (
+									ModelDefs[d.Item]?.Categories.includes("Bras")
+									|| ModelDefs[d.Item]?.Categories.includes("Panties")
+								)) continue;
+								d.Lost = true;
+							}
+							KinkyDungeonCheckClothesLoss = true;
+							KinkyDungeonDressPlayer();
+
+							return false;
+						},
+						options: {
+							"2": {playertext: "Continue", response: "Default", gag: false,
+								clickFunction: (_gagged, _player) => {
+									for (let w of KinkyDungeonAllWeapon()) {
+										KinkyDungeonSendTextMessage(10, TextGet("KDItemConfiscated")
+													.replace("ITMN", KDGetItemName(w))
+													.replace("AMNT", "1")
+													, "#ff5277", 2);
+										KDAddLostItemSingle(w.inventoryVariant || w.name, 1);
+										KinkyDungeonInventoryRemoveSafe(w);
+									}
+									return false;
+								},
+								options: {
+									"3": {playertext: "Continue", response: "Default", gag: false,
+										clickFunction: (_gagged, _player) => {
+											for (let c of [...KinkyDungeonAllConsumable(), ...KinkyDungeonAllLooseRestraint()]) {
+												let quantity = c.quantity || 1;
+												if (KDConsumable(c)?.isSubby) {
+													KinkyDungeonSendTextMessage(10, TextGet("KDItemNotConfiscated")
+													.replace("ITMN", KDGetItemName(c))
+													.replace("AMNT", quantity + "")
+													, "#aaaaaa", 2);
+
+													continue;
+												}
+												let confiscated = quantity;
+												if (KDConsumable(c)?.sneakChance) {
+													for (let i = 0; i < confiscated; i++) {
+														if (KDRandom() < KDConsumable(c)?.sneakChance) {
+															confiscated--;
+														}
+													}
+													if (confiscated > 1 + Math.floor(quantity * KDConsumable(c)?.sneakChance))
+														confiscated = 1 + Math.floor(
+															KDConsumable(c)?.sneakChance * quantity
+													);
+													confiscated = Math.floor(confiscated);
+													if (confiscated > quantity) confiscated = quantity;
+												}
+
+												if (confiscated > 0) {
+													KinkyDungeonSendTextMessage(10, TextGet("KDItemConfiscated")
+													.replace("ITMN", KDGetItemName(c))
+													.replace("AMNT", confiscated + "")
+													, "#ff5277", 2);
+													if (KDConsumable(c)) {
+														KDAddConsumable(c.inventoryVariant || c.name, -confiscated);
+														KDAddLostItemSingle(c.inventoryVariant || c.name, confiscated);
+													} else if (KDRestraint(c)) {
+														let item = KinkyDungeonInventoryGetSafe(c.inventoryVariant || c.name);
+														if (item.quantity) {
+															item.quantity = Math.max(0, item.quantity - confiscated);
+														} else {
+															item.quantity = 0;
+														}
+														if (item.quantity == 0) KinkyDungeonInventoryRemoveSafe(c);
+
+														KDAddLostItemSingle(c.inventoryVariant || c.name, confiscated);
+													}
+												}
+												if (confiscated < quantity) {
+													KinkyDungeonSendTextMessage(10, TextGet("KDItemNotConfiscatedSneak")
+													.replace("ITMN", KDGetItemName(c))
+													.replace("AMNT", (quantity - confiscated) + "")
+													, "#88ff88", 2);
+												}
+
+											}
+											return false;
+										},
+										options: {
+											"End": {gag: false, response: "Default", personalities: ["Sub"], playertext: "Continue",
+												clickFunction: (_gagged, _player) => {
+													let e = KDGetSpeaker();
+													if (e) {
+														KDTryToLeash(e, _player, 1, true);
+														KDTryToLeash(e, _player, 1, true);
+														KinkyDungeonAttachTetherToEntity(2.5, e, _player);
+													}
+													return false;
+												},
+												options: {
+													"Leave": {playertext: "Leave", exitDialogue: true}
+												}
+											},
+										}
+									},
+								}
+							},
+						}
+					},
+				}
+			},
+			"Deny": {gag: true, playertext: "StripSearchDeny", response: "Punishment", personalities: ["Dom", "Sub", "Robot", "Brat"],
+				greyoutFunction: (_gagged, _player) => {
+					return KinkyDungeonHasWill(0.1);
+				},
+				greyoutTooltip: "KDTextGrayNeedWP",
+				clickFunction: (_gagged, _player) => {
+					KinkyDungeonStartChase(undefined, "Refusal");
+					KDAggroSpeaker();
+					return false;
+				},
+				options: {"Leave": {playertext: "Leave", exitDialogue: true}}},
 		}
 	},
 	"PrisonIntro": {
