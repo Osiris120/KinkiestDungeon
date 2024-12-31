@@ -636,6 +636,40 @@ function KDApplyAlpha(id: string, alpha: number, fade: string, delta: number) {
 let KDTileModes: Record<string, boolean> = {};
 
 
+/**
+ * Current alpha vs fade type
+ * @param id
+ * @param x
+ * @param y
+ * @param tx
+ * @param ty
+ * @param ease
+ * @param delta
+ */
+function KDEasePosition(x: number, y: number, tx: number, ty: number, speed: number, delta: number, ease: string): KDPoint {
+	switch (ease) {
+		default: {
+			let dd = KDistEuclidean(tx - x, ty - y);
+			if (dd > 0) {
+				let dx = speed * delta * (tx - x) / dd;
+				let dy = speed * delta * (ty - y) / dd;
+				if (tx > x)
+					x = Math.min(tx, x + dx);
+				else if (tx < x)
+					x = Math.max(tx, x + dx);
+
+				if (ty > y)
+					y = Math.min(ty, y + dy);
+				else if (ty < y)
+					y = Math.max(ty, y + dy);
+			}
+			return {x: x, y: y};
+		}
+	}
+}
+
+
+
 let KDLastEffTileUpdate = 0;
 function KDDrawEffectTiles(_canvasOffsetX: number, _canvasOffsetY: number, CamX: number, CamY: number) {
 	let delta = CommonTime() - KDLastEffTileUpdate;
@@ -791,6 +825,7 @@ function KDMoveEntity(enemy: entity, x: number, y: number, willing: boolean, das
 		if (mapData == KDMapData && (enemy.x != enemy.lastx || enemy.y != enemy.lasty)) KDUpdateEnemyCache = true;
 		enemy.lastx = enemy.x;
 		enemy.lasty = enemy.y;
+		enemy.lastmove = KinkyDungeonCurrentTick;
 		return false;
 	}
 	enemy.lastx = enemy.x;
@@ -844,6 +879,7 @@ function KDStaggerEnemy(enemy: entity) {
 function KDMovePlayer(moveX: number, moveY: number, willing: boolean, sprint?: boolean, forceHitBullets?: boolean, suppressNoise?: boolean, noEvent?: boolean): boolean {
 	KinkyDungeonPlayerEntity.lastx = KinkyDungeonPlayerEntity.x;
 	KinkyDungeonPlayerEntity.lasty = KinkyDungeonPlayerEntity.y;
+	KinkyDungeonPlayerEntity.lastmove = KinkyDungeonCurrentTick;
 	let cancel = {cancelmove: false, returnvalue: false};
 	for (let newTile of Object.values(KDGetEffectTiles(moveX, moveY))) {
 		if (newTile.duration > 0 && KDEffectTileMoveOnFunctions[newTile.name]) {

@@ -3808,6 +3808,31 @@ let KinkyDungeonEnemies: enemy[] = [
 			{trigger: "miss", type: "castSpell", time: 3, spell: "FlameKeeperBlade", color: "#ff8933"},
 		],
 	},*/
+
+	//region MaidKnight
+
+	{name: "MaidKnightLight", nameList: "maid", outfit: "AdventurerSub", style: "DarkElf", clusterWith: "adventurer",
+		bound: "MaidKnightLight", color: "#ffffff",
+		playLine: "Adventurer_Sub_Fighter",
+		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human",
+			"melee", "leatherRestraints", "leatherRestraintsHeavy", "painweakness", "jail", "jailer", "sub", "search"]),
+			cohesion: 0.9, stunTime: 2,
+		evasion: -0.1,
+		stamina: 4,
+		preferBlock: true, maxdodge: 1,
+		castWhileMoving: true,
+		spells: ["Aim_MaidKnightLight"], spellCooldownMult: 1, spellCooldownMod: 0,
+		followLeashedOnly: true, ignorechance: 0, armor: 1.2, followRange: 1, AI: "hunt", guardChance: 0.0,
+		visionRadius: 11, maxhp: 40, minLevel:0, weight: -100, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeWillBindLock",
+		attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
+		terrainTags: {}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
+		dropTable: []},
+
+
+	// endregion
+
+
+
 	{name: "ElementalIce", nameList: "elemental", outfit: "ElementalIce", style: "IceElemental", faction: "Elemental", playLine: "Elemental", clusterWith: "ice", bound: "ElementalIce", color: "#aaaaff", tags: KDMapInit(["opendoors", "flying", "antiMagic", "imprisonable", "elemental", "guardCall", "ice", "ranged", "firesevereweakness", "crushweakness", "coldresist", "iceimmune", "iceRestraints", "leashing", "jail", "jailer", "search"]),
 		armor: 1.5, kite: 1.5, followRange: 3, AI: "hunt",
 		spells: ["IceSlowPrepare"], spellCooldownMult: 1, spellCooldownMod: 1, followLeashedOnly: true, noSpellLeashing: true, spellRdy: true, projectileTargeting: true,

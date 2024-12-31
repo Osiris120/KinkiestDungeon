@@ -947,6 +947,7 @@ function KinkyDungeonCreateMap (
 	forceEscape?:    string
 ): void
 {
+	KDTileModes = {};
 	KDUpdateOptionGame();
 	KDBreakTether(KDPlayer());
 
@@ -979,6 +980,7 @@ function KinkyDungeonCreateMap (
 	for (let item of lostItems) {
 		KDAddLostItemSingle(item.name, item.amount || 1);
 	}
+
 
 	// Setup
 	// Remove enemies if the room isnt main and wont regen
@@ -5708,8 +5710,6 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	}
 
 	// Updates the character's stats
-	KinkyDungeonCurrentTick += delta;
-	if (KinkyDungeonCurrentTick > 100000) KinkyDungeonCurrentTick = 0;
 	KinkyDungeonItemCheck(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, MiniGameKinkyDungeonLevel); //console.log("Item Check " + (performance.now() - now));
 	if (pauseTime && delta > 0) {
 		delta = 0;
@@ -5858,6 +5858,8 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 			true
 		);
 	}
+	KinkyDungeonCurrentTick += delta;
+	if (KinkyDungeonCurrentTick > 100000) KinkyDungeonCurrentTick = 0;
 
 	KinkyDungeonSendEvent("tickAfter", {delta: delta});
 

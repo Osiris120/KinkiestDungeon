@@ -7619,6 +7619,64 @@ KDAddHardSlimeVariants(
 );
 
 
+KDAddHardSlimeVariants(
+	"Slime",
+	"CaptureFoam",
+	"",
+	"captureFoam",
+	["CaptureFoam"],
+	[],
+	2,
+	{
+		Color: ["#404973", "#404973", "#404973"],
+		Filters: {
+			Slime: {"gamma":1.2833333333333332,"saturation":0.016666666666666666,"contrast":2.96,"brightness":0.5,"red":0.97058823529411764,"green":0.97058823529411764,"blue":0.97058823529411764,"alpha":1},
+		},
+		factionColor: [],
+		factionFilters: {
+			Slime: {color: "DarkNeutral", override: false},
+		},
+	},
+	[
+	],
+	{
+		Struggle: -0.1,
+		Cut: -0.1,
+		Remove: 0,
+	},
+	{
+	}, undefined, undefined, "CaptureFoam"
+);
+KDAddHardSlimeVariants(
+	"HardSlime",
+	"HardCaptureFoam",
+	"",
+	"hardCaptureFoam",
+	["CaptureFoam"],
+	[],
+	2,
+	{
+		Color: ["#404973", "#404973", "#404973"],
+		Filters: {
+			Rubber: {"gamma":1.2833333333333332,"saturation":0.016666666666666666,"contrast":2.96,"brightness":0.5,"red":0.97058823529411764,"green":0.97058823529411764,"blue":0.97058823529411764,"alpha":1},
+		},
+		factionColor: [],
+		factionFilters: {
+			Rubber: {color: "DarkNeutral", override: false},
+		},
+	},
+	[
+	],
+	{
+		Struggle: -0.1,
+		Cut: -.075,
+		Remove: -0.05,
+	},
+	{
+	}
+);
+
+
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Breastplate",
 	Group: "ItemBreast",
@@ -7933,6 +7991,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	protection: 1,
 	debris: "Belts",
 	protectionCursed: true,
+	addPose: ["PelvisArmor"],
 	inventory: true,
 	displayPower: 5,
 	removePrison: true,
@@ -7960,6 +8019,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 0.35,
 	},
 	shrine: ["Armor", "PelvisArmor", "MetalArmor", "Heavy"],
+	addPose: ["PelvisArmor"],
 	armor: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	protection: 2,
@@ -8058,6 +8118,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 10
 	},
 	shrine: ["Armor", "ArmArmor", "Heavy"],
+	addPose: ["ArmArmor"],
 	armor: true,
 	displayPower: 3,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -8092,6 +8153,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 10
 	},
 	shrine: ["Armor", "ArmArmor", "Light"],
+	addPose: ["ArmArmor"],
 	armor: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
@@ -8122,6 +8184,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 10
 	},
 	shrine: ["Armor", "ArmArmor", "MagicArmor", "Mage"],
+	addPose: ["ArmArmor"],
 	armor: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Chains",

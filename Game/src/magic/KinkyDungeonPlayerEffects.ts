@@ -1007,13 +1007,33 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			let dmg = spell.power ? KinkyDungeonDealDamage({damage: playerEffect.power || spell.power, type: playerEffect.damage || spell.damage}, bullet) : {happened: 0, string: "null"};
 			if (spell.power && !dmg) return {sfx: "Shield", effect: false};
 			if (KDRandom() < 0.25 && KinkyDungeonStatWill < KinkyDungeonStatWillMax/2) {
-				let restraintAdd = KinkyDungeonGetRestraint({tags: ["slimeRestraintsRandom"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+				let restraintAdd = KinkyDungeonGetRestraint({tags: ["captureFoamRandom"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
 				if (restraintAdd) {
-					KDPlayerEffectRestrain(spell, 1, ["slimeRestraintsRandom"], faction, false, false, false, false);
+					KDPlayerEffectRestrain(spell, 1, ["captureFoamRandom"], faction, false, false, false, false);
 					KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
 					KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonRubberBulletsAttach").KDReplaceOrAddDmg( dmg.string), "#ff5277", 2);
 				}
 			} else KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonRubberBullets").KDReplaceOrAddDmg( dmg.string), "#ff5277", 2);
+
+			effect = true;
+			return {sfx: "RubberBolt", effect: effect};
+		}
+		return {sfx: "Miss", effect: effect};
+	},
+	"RubberSniper": (_target, _damage, playerEffect, spell, faction, bullet, _entity) => {
+		let effect = false;
+		if (KDTestSpellHits(spell, 0.5, 0.2)) {
+			let dmg = spell.power ? KinkyDungeonDealDamage({damage: playerEffect.power || spell.power, type: playerEffect.damage || spell.damage}, bullet) : {happened: 0, string: "null"};
+			if (spell.power && !dmg) return {sfx: "Shield", effect: false};
+			let restraintAdd = KinkyDungeonGetRestraint({tags: ["captureFoamRandom"]}, KDGetEffLevel() + spell.power, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint));
+			if (restraintAdd) {
+				KDPlayerEffectRestrain(spell, 1, ["captureFoamRandom"], faction, false, false, false, false);
+				KDSendStatus('bound', restraintAdd.name, "spell_" + spell.name);
+				KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonRubberSniperAttach").KDReplaceOrAddDmg( dmg.string), "#ff5277", 2);
+			} else KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonRubberSniper").KDReplaceOrAddDmg( dmg.string), "#ff5277", 2);
+
+			KDGameData.MovePoints = Math.max(-1, KDGameData.MovePoints-1); // This is to prevent stunlock while slowed heavily
+			KDGameData.KneelTurns = Math.max(KDGameData.KneelTurns || 0, KDGameData.SlowMoveTurns + 2);
 
 			effect = true;
 			return {sfx: "RubberBolt", effect: effect};

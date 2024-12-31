@@ -1086,6 +1086,43 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		} else if (!found) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
 		return "Fail";
 	},
+	"Aim_MaidKnightLight": (spell, data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
+		// Spell that can ONLY be cast by NPCs
+		let aimBuff = KDEntityGetBuff(entity, "Aim");
+		if (aimBuff) {
+			let aimMode = KDEntityBuffedStat(entity, "Aim");
+			if (aimMode > 1.5) {
+				// FIRE!!!
+				KinkyDungeonCastSpell(
+					aimBuff.x,
+					aimBuff.y,
+					KinkyDungeonFindSpell("RubberSniper",
+						true),
+						entity, undefined, undefined);
+
+				KinkyDungeonExpireBuff(entity, "Aim");
+				KinkyDungeonExpireBuff(entity, "Aim2");
+			} else {
+				// Do nothing. Aim buff handles the subroutine just fine
+				KinkyDungeonApplyBuffToEntity(entity, KDAim, {
+						x: aimBuff.x, y: aimBuff.y,
+						vx: aimBuff.vx,
+						vy: aimBuff.vy,
+				});
+			}
+			return "Cast";
+		} else {
+			// Start aiming
+			KinkyDungeonApplyBuffToEntity(entity, KDAim, {
+				x: entity.x, y: entity.y,
+				vx: entity.x, vy: entity.y,
+				delay: 1
+			});
+			return "Cast";
+		}
+
+		return "Fail";
+	},
 	"TelekineticSlash": (spell, data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		let tilesHit = [];
 		for (let xx = -spell.aoe; xx <= spell.aoe; xx++) {

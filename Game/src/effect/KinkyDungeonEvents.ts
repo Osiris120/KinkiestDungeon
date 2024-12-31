@@ -3226,6 +3226,7 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		},
 	},
 	"tick": {
+
 		"EssenceMote": (_e, _buff, entity, _data) => {
 			if (entity == KDPlayer()) {
 				_buff.power = (_buff.duration) * _e.mult;
@@ -3626,6 +3627,35 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 			}
 		},
 	},
+	"draw": {
+		"EnemyAim": (_e, _buff, entity, data) => {
+			if (entity == KDPlayer()) {
+				// Do nothing
+			} else {
+				// Do aim subroutine
+				let x = _buff.x;
+				let y = _buff.y;
+				let vx = _buff.vx;
+				let vy = _buff.vy;
+				if (x != undefined && y != undefined) {
+					let ease = KDEasePosition(
+						vx, vy, x, y, 0.01, KinkyDungeonDrawDelta, ""
+					);
+					_buff.vx = ease.x;
+					_buff.vy = ease.y;
+
+					KDDraw(kdenemystatusboard, kdpixisprites, entity.id + "_aimtarg",
+						KinkyDungeonRootDirectory + _e.sprite + ".png",
+						(_buff.vx - data.CamX) * KinkyDungeonGridSizeDisplay,
+						(_buff.vy - data.CamY) * KinkyDungeonGridSizeDisplay,
+						KinkyDungeonSpriteSize, KinkyDungeonSpriteSize, undefined, {
+						zIndex: -5,
+						tint: 0xffe583,
+					});
+				}
+			}
+		},
+	},
 
 	"afterEnemyTick": {
 
@@ -3819,6 +3849,61 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 	},
 
 	"tickAfter": {
+		"EnemyAim": (_e, _buff, entity, _data) => {
+			if (entity == KDPlayer()) {
+				// Do nothing
+			} else {
+				KinkyDungeonApplyBuffToEntity(entity, KDAim2);
+				KinkyDungeonApplyBuffToEntity(entity, KDAim3);
+				if (KDEntityBuffedStat(entity, "Aim") <= 1.5 && _data.delta > 0) {
+					// Do aim subroutine
+					let x = _buff.x;
+					let y = _buff.y;
+					if (x != undefined && y != undefined && entity.target && entity.tx && entity.ty) {
+						if (x != entity.tx || y != entity.ty) {
+							// move cursor
+							let dist = Math.max(0, KDistChebyshev(x - entity.tx, y - entity.ty));
+							let target = KDLookupID(entity.target, true);
+							let vx = target ? (target.lastmove == KinkyDungeonCurrentTick ? target.x - target.lastx : 0) : 0;
+							let vy = target ? (target.lastmove == KinkyDungeonCurrentTick ? target.y - target.lasty : 0) : 0;
+							let tx = entity.tx + vx*dist/_e.dist;
+							let ty = entity.ty + vy*dist/_e.dist;
+							for (let i = 0; i < _e.dist; i++) {
+								if (_buff.delay > 0) {
+									_buff.delay--;
+								} else {
+									let dir = KinkyDungeonGetDirection(tx - _buff.x, ty - _buff.y);
+									if (dir.delta > 0) {
+										_buff.x += dir.x;
+										_buff.y += dir.y;
+									}
+								}
+
+							}
+							if (_buff.x == tx && _buff.y == ty) {
+								KinkyDungeonApplyBuffToEntity(entity, KDAim, {
+									power: 2,
+									x: _buff.x,
+									y: _buff.y,
+									vx: _buff.vx,
+									vy: _buff.vy,
+								});
+							}
+						} else {
+							// progress to aim 2
+							KinkyDungeonApplyBuffToEntity(entity, KDAim, {
+								power: 2,
+								x: _buff.x,
+								y: _buff.y,
+								vx: _buff.vx,
+								vy: _buff.vy,
+							});
+						}
+					}
+				}
+
+			}
+		},
 		"ApplyConduction": (e, buff, entity, _data) => {
 			if (!buff.duration) return;
 			let bb = Object.assign({}, KDConduction);

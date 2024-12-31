@@ -3002,6 +3002,17 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		level:1, type:"inert", onhit:"aoe", delay: 6, power: 0, range: 10, size: 3, lifetime: 1, damage: "inert"
 	},
 
+	{enemySpell: true, name: "Aim_MaidKnightLight", color: "#ffffff",
+		manacost: 1, components: ["Arms"],
+		pierceEnemies: true,
+		hideWarnings: true,
+		projectileTargeting: true,
+		meleeOrigin: true,
+		minRange: 1.5,
+		special: "Aim_MaidKnightLight",
+		level:1, type:"special", onhit:"", delay: 0, power: 0, range: 9, size: 3, lifetime: 1, damage: "inert"
+	},
+
 
 	{enemySpell: true, name: "MagicMissile", bindType: "Magic", color: "#ffaa77", sfx: "MagicSlash", landsfx: "MagicSlash", manacost: 4, components: ["Arms"],
 		faction: "Warden",
@@ -3101,6 +3112,10 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "MummyBolt", color: "#88ff88", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 3, playerEffect: {name: "MysticShock", time: 3}},
 	{enemySpell: true, name: "RobotBolt", color: "#ff5277", sfx: "Laser", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "electric", speed: 2, playerEffect: {name: "RobotShock", time: 2}},
 	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#e7cf1a", minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
+	{enemySpell: true, name: "RubberSniper",  bindType: "Slime", color: "#e7cf1a", minRange: 1.5,
+		sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt",
+		projectileTargeting:true, onhit:"", power: 8, time: 0, delay: 0, range: 50,
+		damage: "glue", speed: 5, playerEffect: {name: "RubberSniper", power: 8, count: 1, damage: "glue"}},
 
 	{enemySpell: true, name: "Minigun", castCondition: "Windup_Ready", bindType: "Slime", color: "#e7cf1a", minRange: 1.5, sfx: "MiniFire", manacost: 0, components: ["Arms"],
 		fastStart: true,

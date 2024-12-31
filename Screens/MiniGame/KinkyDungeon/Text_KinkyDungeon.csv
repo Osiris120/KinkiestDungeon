@@ -26270,3 +26270,72 @@ rStripSearchAccept_1_2_3_EndSub,"(The search is complete)|Alright miss, please b
 KDItemConfiscated,Confiscated AMNTx ITMN!
 KDItemNotConfiscated,Kept AMNTx ITMN.
 KDItemNotConfiscatedSneak,Sneaked in AMNTx ITMN!
+
+KinkyDungeonSpellAim_MaidKnightLight,GUN
+KinkyDungeonSpellCastAim_MaidKnightLight,The room echoes with the sound of a rubber bullet being fired!
+
+KinkyDungeonSpellRubberSniper,Tactical Rubber Bullet
+KinkyDungeonRubberSniper,A powerful rubber bullet bounces you to the ground!
+KinkyDungeonRubberSniperAttach,The powerful rubber bullet knocks you down and congeals into Capture Foam!
+
+
+
+RestraintCaptureFoamBoots,Capture Foam (Feet)
+RestraintCaptureFoamBootsDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamBootsDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamFeet,Capture Foam (Ankles)
+RestraintCaptureFoamFeetDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamFeetDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamLegs,Capture Foam (Legs)
+RestraintCaptureFoamLegsDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamLegsDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamArms,Capture Foam (Arms)
+RestraintCaptureFoamArmsDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamArmsDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamHands,Capture Foam (Hands)
+RestraintCaptureFoamHandsDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamHandsDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamMouth,Capture Foam (Mouth)
+RestraintCaptureFoamMouthDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamMouthDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamHead,Capture Foam (Head)
+RestraintCaptureFoamHeadDesc,"A sticky foam that spreads quickly and hardens into a tight rubbery layer."
+RestraintCaptureFoamHeadDesc2,"A knife won't cut it, it simply reforms around the cut."
+RestraintCaptureFoamCollar,Capture Foam Dispenser
+RestraintCaptureFoamCollarDesc,"This collar is designed to make sure its wearer does not escape at all costs."
+RestraintCaptureFoamCollarDesc2,"It will occasionally cause Capture Foam to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of Capture Foam you have on you."
+
+
+RestraintHardCaptureFoamRaw,Tactical Rubber
+RestraintHardCaptureFoamRawDesc,"An alchemical substance made to be stretchy and more resilient than natural rubber."
+RestraintHardCaptureFoamRawDesc2,"Developed by kinky alchemists and marketed to PMCs across the islands."
+
+RestraintCaptureFoamRaw,Capture Foam
+RestraintCaptureFoamRawDesc,"A restraining weapon used to apprehend difficult targets."
+RestraintCaptureFoamRawDesc2,"Developed by kinky alchemists and marketed to PMCs across the islands."
+
+RestraintHardCaptureFoamBoots,Tactical Rubber (Feet)
+RestraintHardCaptureFoamBootsDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamBootsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamFeet,Tactical Rubber (Ankles)
+RestraintHardCaptureFoamFeetDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamFeetDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamLegs,Tactical Rubber (Legs)
+RestraintHardCaptureFoamLegsDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamLegsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamArms,Tactical Rubber (Arms)
+RestraintHardCaptureFoamArmsDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamArmsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamHands,Tactical Rubber (Hands)
+RestraintHardCaptureFoamHandsDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamHandsDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamMouth,Tactical Rubber (Mouth)
+RestraintHardCaptureFoamMouthDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamMouthDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamHead,Tactical Rubber (Head)
+RestraintHardCaptureFoamHeadDesc,"The end result of capture foam. Strict. Sustainable. Affordable."
+RestraintHardCaptureFoamHeadDesc2,"There's no struggling out now, but since it's solid it may be cuttable."
+RestraintHardCaptureFoamCollar,Tactical Rubber Collar
+RestraintHardCaptureFoamCollarDesc,"This collar is designed to make sure its wearer does not escape their rubber."
+RestraintHardCaptureFoamCollarDesc2,"It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you."
+

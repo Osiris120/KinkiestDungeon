@@ -690,6 +690,9 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 								} else if (b?.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
 									buffSpritePower = b.replacePower || b.power;
 									buffSprite = b.replaceSprite;
+								} else if (b?.replaceSpriteSuff && (b.replacePower || b.power > buffSpritePower)) {
+									buffSpritePower = b.replacePower || b.power;
+									buffSprite = sp + b.replaceSpriteSuff;
 								}
 							}
 						}
@@ -802,6 +805,9 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 			} else if (b.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
 				buffSpritePower = b.replacePower || b.power;
 				buffSprite = b.replaceSprite;
+			} else if (b.replaceSpriteSuff && (b.replacePower || b.power > buffSpritePower)) {
+				buffSpritePower = b.replacePower || b.power;
+				buffSprite = sprite + b.replaceSpriteSuff;
 			}
 		}
 	}
@@ -4042,12 +4048,21 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 
 				let player = (!KinkyDungeonAngel()) ? KinkyDungeonNearestPlayer(enemy, false, true, enemy.Enemy.visionRadius ? (KDEnemyVisionRadius(enemy) + ((enemy.lifetime > 0 && enemy.Enemy.visionSummoned) ? enemy.Enemy.visionSummoned : 0)) : 0, AIData) : KinkyDungeonPlayerEntity;
 				if (player) {
+
+					enemy.tx = player.x;
+					enemy.ty = player.y;
+					enemy.target = player.id;
+
 					if (player.player) KinkyDungeonSetEnemyFlag(enemy, "targ_player", 1);
 					else if (KDGetFaction(player) == "Player") KinkyDungeonSetEnemyFlag(enemy, "targ_ally", 1);
 					else KinkyDungeonSetEnemyFlag(enemy, "targ_npc", 1);
 					if (KinkyDungeonAggressive(enemy, player)) {
 						KinkyDungeonSetEnemyFlag(enemy, "aggression", 1);
 					}
+				} else {
+					delete enemy.tx;
+					delete enemy.ty;
+					delete enemy.target;
 				}
 
 

@@ -1496,9 +1496,8 @@ interface weapon extends damageInfo, NamedAndTyped {
 
 
 interface KinkyDungeonEvent {
-	/** This is an integer. if an event has this the game skips it and comes back after executing everything else.
-	 * Best to keep it low for performance reasons, if in a draw loop.
-	 */
+	sprite?: string,
+
 
 
 	cloneTags?: string[],
@@ -1507,6 +1506,9 @@ interface KinkyDungeonEvent {
 	frequencyStep?: number,
 	frequencyTag?: string,
 
+	/** This is an integer. if an event has this the game skips it and comes back after executing everything else.
+	 * Best to keep it low for performance reasons, if in a draw loop.
+	 */
 	delayedOrder?: number;
 	/** A dynamic event is specified as 'dynamic' and is specified under ItemMap.dynamic
 	 * (replace ItemMap with the event map you need)
@@ -1658,8 +1660,17 @@ interface String {
 }
 
 interface entity {
+	/** Tick of last move */
+	lastmove?: number,
 	/** If true, immediately run the spawn AI for this once loading the map */
 	runSpawnAI?: boolean,
+
+	/** Targeted entity x */
+	tx?: number,
+	/** Targeted entity y */
+	ty?: number,
+	/** Targeted entity id */
+	target?: number,
 
 	refreshSprite?: boolean,
 	FacilityAction?: string,

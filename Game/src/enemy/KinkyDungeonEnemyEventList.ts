@@ -66,7 +66,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = player.y;
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
+					KDTryToLeash(enemy, player, delta, false,
+						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -159,7 +160,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
+					KDTryToLeash(enemy, player, delta, false,
+						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -229,7 +231,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
+					KDTryToLeash(enemy, player, delta, false,
+						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -311,7 +314,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 12);
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
+					KDTryToLeash(enemy, player, delta, false,
+						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -472,7 +476,8 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 					enemy.gx = KinkyDungeonPlayerEntity.x;
 					enemy.gy = KinkyDungeonPlayerEntity.y;
 					KinkyDungeonSetEnemyFlag(enemy, "noResetIntent", 2);
-					KDTryToLeash(enemy, player, delta, false, aiData.canAttack);
+					KDTryToLeash(enemy, player, delta, false,
+						(KDBoundPowerLevel < 0.5 || !KinkyDungeonHasWill(0.1)) && aiData.canAttack);
 				}
 			} else if (tethered && KDIsPlayerTetheredToEntity(KinkyDungeonPlayerEntity, enemy)) {
 				enemy.aware = true;
@@ -1273,6 +1278,10 @@ function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0,
 					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				"yellow", 2, true);
 			} else if (!instant && !KDEnemyHasFlag(enemy, "applyItem2")) {
+				if (KinkyDungeonLastAction == "Move") {
+					KinkyDungeonSetEnemyFlag(enemy, "applyItem", 0);
+					KinkyDungeonSetEnemyFlag(enemy, "applyItem2", 0);
+				}
 				KinkyDungeonSetEnemyFlag(enemy, "applyItem2", 1 + delta);
 				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
 					.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
