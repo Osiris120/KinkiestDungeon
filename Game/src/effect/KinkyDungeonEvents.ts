@@ -10799,6 +10799,10 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 
 			}
 		},
+
+		"Watchpersistent": () => {
+			KDPersistentWatch();
+		}
 	},
 	"hit": {
 		"StunBondage": (_e, data) => {

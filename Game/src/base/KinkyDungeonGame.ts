@@ -355,7 +355,7 @@ function KinkyDungeonSetCheckPoint(Checkpoint?: string, _AutoSave?: any, _suppre
 function KinkyDungeonNewGamePlus(): void {
 	KDSetWorldSlot(0, 0);
 
-	KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
+	//KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
 	// Remove all chests and add to lost items
 	let lostItems: item[] = [];
 	for (let entry of Object.entries(KDGameData.Containers)) {
@@ -391,7 +391,7 @@ function KinkyDungeonNewGamePlus(): void {
 
 	KinkyDungeonSetCheckPoint("grv", true);
 	KDGameData.HighestLevelCurrent = 0;
-	KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, "ShopStart", "", 1);
+	KinkyDungeonCreateMap(KinkyDungeonMapParams.grv, "JourneyFloor", "", 0);
 	KinkyDungeonNewGame += 1;
 
 
@@ -412,10 +412,15 @@ function KDResetData(Data?: KDGameDataBase): void {
 	KDDeletedIDs = {};
 	KDPersonalAlt = {};
 
+
 	for (let control of Object.keys(KDFocusControlButtons)) {
 		KDInitFocusControl(control);
 	}
 	InitFacilities();
+}
+
+function InitPersistentGen() {
+	KDGameData.MaidKnightFloor = Math.floor(1 + KDRandom() * 2);
 }
 function KDResetEventData(Data?: any) {
 	if (!Data) Data = KDEventDataBase;

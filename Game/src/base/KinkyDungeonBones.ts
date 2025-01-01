@@ -1272,11 +1272,7 @@ function KDProcessCustomPatron(Enemy: enemy, e: entity, chanceBoost: number, mak
 				e.intro = custom.customIntro;
 			}
 			if (makePersistent) {
-				let npc = KDGetPersistentNPC(e.id, e);
-				KDSetSpawnAndWanderAI(npc, custom.spawnAI, custom.wanderAI);
-				KDSetSpecialScript(npc, custom.specialScript);
-				npc.special = true;
-				KDGameData.NamesGenerated[custom.name] = e.id;
+				KDMakePersistent(e, custom);
 			}
 			return custom;
 		}

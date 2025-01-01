@@ -255,6 +255,66 @@ function KDPurgeParty(partyid: number) {
 	}
 }
 
+function KDPersistentWatch() {
+	let slot = KDGetWorldMapLocation(KDCoordToPoint(KDGetCurrentLocation()));
+	if ((!slot.main && !KDMapData.RoomType) || KDMapData.RoomType == slot.main) {
+		KDWatchMainPersistent();
+	}
+
+}
+
+function KDWatchMainPersistent() {
+	// Maid knight
+	if (KDGameData.MaidKnightFloor == undefined || KDGameData.MaidKnightFloor == MiniGameKinkyDungeonLevel) {
+		let point = KinkyDungeonGetRandomEnemyPoint(true);
+		if (!point) {
+			KDGameData.MaidKnightFloor++;
+			if (KDGameData.MaidKnightFloor % KDLevelsPerCheckpoint == 0) KDGameData.MaidKnightFloor++;
+			return;
+		}
+		let nearpoint = KinkyDungeonGetNearbyPoint(point.x, point.y, true, undefined, true);
+		if (!nearpoint) {
+			KDGameData.MaidKnightFloor++;
+			if (KDGameData.MaidKnightFloor % KDLevelsPerCheckpoint == 0) KDGameData.MaidKnightFloor++;
+			return;
+		}
+		let en = DialogueCreateEnemy(point.x, point.y,"MaidKnightHeavy");
+		if (en) {
+			KinkyDungeonSetEnemyFlag(en, "leader", -1);
+			if (!KDProcessCustomPatron(en.Enemy, en, 0.2, true))
+				KDMakePersistent(en, undefined, true);
+			KDRunCreationScript(en, KDGetCurrentLocation());
+		}
+		let en2 = DialogueCreateEnemy(point.x, point.y,"MaidKnightLight");
+		if (en2) {
+			KinkyDungeonSetEnemyFlag(en2, "led", -1);
+			if (!KDProcessCustomPatron(en2.Enemy, en2, 0.2, true))
+				KDMakePersistent(en2, undefined, true);
+			KDRunCreationScript(en2, KDGetCurrentLocation());
+		}
+		if (en && en2) {
+			let npc = KDGetPersistentNPC(en.id);
+			let npc2 = KDGetPersistentNPC(en2.id);
+			if (!npc.data) npc.data = {};
+			if (!npc2.data) npc2.data = {};
+			npc.data.MaidKnightHeavyID = npc.id;
+			npc2.data.MaidKnightHeavyID = npc.id;
+			npc.data.MaidKnightLightID = npc2.id;
+			npc2.data.MaidKnightLightID = npc2.id;
+		}
+	}
+}
+
+
+function KDMakePersistent(e: entity, custom: any, special: boolean = true) {
+	let npc = KDGetPersistentNPC(e.id, e, true);
+	KDSetSpawnAndWanderAI(npc, custom?.spawnAI, custom?.wanderAI);
+	KDSetSpecialScript(npc, custom?.specialScript);
+	if (special)
+		npc.special = true;
+	if (custom?.name)
+		KDGameData.NamesGenerated[custom.name] = e.id;
+}
 function KDPurgePartyGlobal(pid: number) {
 	for (let v of Object.values(KDWorldMap)) {
 		if (v.data) {

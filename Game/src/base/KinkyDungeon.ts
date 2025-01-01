@@ -664,9 +664,12 @@ interface KDGameDataBase {
 	/** 1 = seen it, 2 = worn it */
 	IdentifiedObj?: Record<string, number>,
 
+	MaidKnightFloor: number,
+
 };
 
 let KDGameDataBase: KDGameDataBase = {
+	MaidKnightFloor: 0,
 	SealErasedQuota: 0,
 	SawFlags: {},
 	NamesGenerated: {},
@@ -3880,9 +3883,14 @@ function KinkyDungeonLoadStats() {
 let KinkyDungeonGameFlag = false;
 
 
+
+
 function KDInitializeJourney(Journey: string, Level: number = 0) {
 	KDCurrentWorldSlot = {x: 0, y: Level || 0};
 	KDWorldMap = {};
+
+	InitPersistentGen();
+
 	let newIndex: string[] = [];
 
 	if (Journey)
