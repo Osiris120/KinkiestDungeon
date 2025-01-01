@@ -1791,6 +1791,7 @@ function KinkyDungeonHandleHUD() {
 				}
 				KDMapData.TrapQuota=0;
 				KDMapData.QuestQuota=0;
+				KDGameData.DragonCaptured = true;
 				KinkyDungeonSetFlag("BossUnlocked", -1);
 				KinkyDungeonUpdateLightGrid = true;
 				return true;

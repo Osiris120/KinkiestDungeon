@@ -1352,7 +1352,8 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {"rubble": 100, "adjChest": 15, "passage": 14, "illusionRage": 2, "illusionAnger": 2}, allFloors: true, shrines: ["Illusion"],
 		dropTable: [{name: "RedKey", weight: 1}, {name: "Gold", amountMin: 10, amountMax: 40, weight: 6}, {name: "ScrollArms", weight: 1}, {name: "ScrollVerbal", weight: 1}, {name: "ScrollLegs", weight: 1}]},
 
-	{name: "VineSpitter", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true, tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "melee", "glueresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+	{name: "VineSpitter", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true,
+		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "nosignalothers", "ignoreharmless", "plant", "melee", "glueresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 4, AI: "ambush", guardChance: 0,
 		evasion: -0.5,
 		GFX: {
@@ -1367,7 +1368,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		visionRadius: 5, ambushRadius: 2.5, blindSight: 5, maxhp: 10, minLevel:0, weight:25, movePoints: 1.8, attackPoints: 2, attack: "SpellMeleeBind", attackWidth: 1, attackRange: 1, power: 2, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
 	{name: "DragonVinePlant", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true,
-		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "elite", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "nosignalothers", "plant", "elite", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 4, AI: "ambush", guardChance: 0,
 		ondeath: [{type: "spellOnSelf", spell: "Entangle"}],
 		evasion: -0.5,
@@ -1383,7 +1384,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		attackWidth: 3, attackRange: 1, power: 3, dmgType: "crush", fullBoundBonus: 3,
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
 	{name: "DragonFlower", faction: "Plant", clusterWith: "plant", color: "#4fd658",
-		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "melee", "minor", "scenery", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "nosignalothers", "plant", "melee", "minor", "scenery", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 1.5, AI: "guard", guardChance: 1,
 		ondeath: [{type: "spellOnSelf", spell: "DragonFlowerSpores"}],
 		evasion: -2,
@@ -1396,7 +1397,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {"passage": -50, "adjChest": 8, "door": 12, "elf": 5, "nature": 5}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
 
 	{name: "VinePlant", faction: "Plant", clusterWith: "plant", color: "#4fd658", blockVisionWhileStationary: true,
-		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "plant", "minor", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
+		tags: KDMapInit(["nature", "blindresist", "removeDoorSpawn", "ignoreharmless", "nosignalothers", "plant", "minor", "melee", "chainresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist", "vineRestraints"]),
 		ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", specialCD: 99, specialAttack: "Stun", specialAttackPoints: 1, specialRemove: "Bind", difficulty: 0.05, guardChance: 0,
 		evasion: -0.5,
 		GFX: {
@@ -1427,7 +1428,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			moveAmount: 0,
 			attackAmount: 1,
 		},
-		tags: KDMapInit(["removeDoorSpawn", "immobile", "blindresist", "nature", "plant", "minor", "melee", "glueresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist"]),
+		tags: KDMapInit(["removeDoorSpawn", "immobile", "blindresist", "nature", "nosignalothers", "plant", "minor", "melee", "glueresist", "slashweakness", "coldweakness", "firesevereweakness", "unarmedresist", "crushresist"]),
 		evasion: -9, ignorechance: 1.0, armor: 1.5, followRange: 1, AI: "wander", specialCD: 2, specialAttack: "Slow", specialAttackPoints: 1,
 		visionRadius: 1.5, blindSight: 1.5, maxhp: 16, minLevel:0, weight:-80, movePoints: 99999, attackPoints: 1, attack: "MeleeWill", attackWidth: 8, attackRange: 1, power: 1, dmgType: "pain",
 		terrainTags: {"passage": -50, "adjChest": -50, "door": -50, "open": 140, "elf": 10}, floors:KDMapInit(["jng"]), shrines: ["Rope", "Will"]},
@@ -1511,6 +1512,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxdodge: 0,
 		nonDirectional: true,
 		nopickpocket: true,
+		Reputation: {
+			noRepLoss: true,
+		},
 		stamina: 2,
 		visionRadius: 4.5, maxhp: 3.2, minLevel: 5, weight:10, movePoints: 2, attackPoints: 3, attack: "SpellMeleeSlowBindSuicide", suicideOnSpell: true, suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "crush",
 		terrainTags: {}, floors:KDMapInit(["tmp"]), shrines: ["Latex"]},

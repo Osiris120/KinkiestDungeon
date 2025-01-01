@@ -18,6 +18,7 @@ let KDDialogueTriggers: Record<string, KinkyDialogueTrigger> = {
 				&& !KinkyDungeonPlayerDamage.unarmed
 				&& KinkyDungeonPlayerDamage.name
 				&& dist < 3.9
+				&& KDGetMainFaction() != "Player"
 				&& (KDHostile(enemy)
 					|| KDFactionFavorable(KDGetFaction(enemy), KDGetMainFaction()))
 				&& KDRandom() < 0.25

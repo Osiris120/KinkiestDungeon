@@ -2992,7 +2992,8 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 						}
 					}
 					if (KinkyDungeonPlayerBuffs.Conduction && KDistEuclidean(data.enemy.x - KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y - data.enemy.y) <= e.aoe) {
-						KinkyDungeonSendTextMessage(6, TextGet("KDConductionDamageTaken").replace("DAMAGEDEALT", "" + data.dmg * e.power), "#ff5277", 2);
+						KinkyDungeonSendTextMessage(6, TextGet("KDConductionDamageTaken")
+							.replace("DAMAGEDEALT", "" + Math.round(data.dmg * e.power)), "#ff5277", 2);
 						KinkyDungeonDealDamage({
 							type: e.damage,
 							damage: data.dmg * e.power,
