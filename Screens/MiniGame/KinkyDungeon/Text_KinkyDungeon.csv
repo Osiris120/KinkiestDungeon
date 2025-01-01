@@ -26339,3 +26339,20 @@ RestraintHardCaptureFoamCollar,Tactical Rubber Collar
 RestraintHardCaptureFoamCollarDesc,"This collar is designed to make sure its wearer does not escape their rubber."
 RestraintHardCaptureFoamCollarDesc2,"It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you."
 
+
+KinkyDungeonSpellHeavySlash,Sweeping Strike
+KinkyDungeonSpellSelfCharge,Headlong Rush
+
+
+NameMaidKnightLight,Maid Squire
+NameMaidKnightHeavy,Maid Knight
+KillMaidKnightLight,You humiliate the Maid Squire!
+KillMaidKnightHeavy,You defeat the Maid Knight! For now... she swears revenge.
+AttackMaidKnightLightBind,The Squire zips you up in comfy leather gear!
+AttackMaidKnightHeavyBind,The Maid Knight places you in strict bondage!
+AttackMaidKnightLightLock,The Squire secures your restraints!
+AttackMaidKnightHeavyLock,The Maid Knight secures your restraints!
+AttackMaidKnightLight,The Squire dusts you with her duster plug.
+AttackMaidKnightHeavy,The Maid Knight bonks you with her cleaning halberd!
+
+

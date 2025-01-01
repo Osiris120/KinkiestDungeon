@@ -100,6 +100,34 @@ let KDModelStyles: Record<string, Record<string, string[]>> = {
 			"Amber3",
 		],
 	},
+	MaidKnightLight: {
+		Hairstyle: [
+			"MaidKnightLight",
+		],
+		Bodystyle: [
+			"Maid",
+		],
+		Facestyle: [
+			"MaidKnightLight",
+		],
+		Cosplay: [
+			"MaidKnightLight",
+		],
+	},
+	MaidKnightHeavy: {
+		Hairstyle: [
+			"MaidKnightHeavy",
+		],
+		Bodystyle: [
+			"Maid",
+		],
+		Facestyle: [
+			"MaidKnightHeavy",
+		],
+		Cosplay: [
+			"MaidKnightHeavy",
+		],
+	},
 	DarkElf: {
 		Cosplay: [
 			"Elf1",

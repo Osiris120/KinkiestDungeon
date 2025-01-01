@@ -2932,6 +2932,15 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		},
 	},
 	"expireBuff": {
+		"TeleportHost": (_e, buff, entity, data) => {
+			if (buff.x && buff.y) {
+				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(buff.x, buff.y))
+					&& !KinkyDungeonEntityAt(buff.x, buff.y)
+					&& !KDIsImmobile(entity)) {
+						KDMoveEntity(entity, buff.x, buff.y, true, true, true)
+					}
+			}
+		},
 		"ChaoticOverflow": (e, buff, _entity, data) => {
 			if (buff == data.buff) {
 				let restraintToAdd = KinkyDungeonGetRestraint({ tags: ["crystalRestraints", "crystalRestraintsHeavy"] }, KDGetEffLevel() + 10, (KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint),
@@ -9085,6 +9094,24 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 				}
 			}
 		},
+		"DelayedJump": (e, enemy, data) => {
+			if (data.enemy == enemy) {
+				let point = {x: data.tx, y: data.ty};
+				if (point.x && point.y) {
+					KinkyDungeonApplyBuffToEntity(enemy, {
+						type: "Event",
+						id: "DelayedJump",
+						duration: 0,
+						x: point.x,
+						y: point.y,
+						events: [
+							{trigger: "expireBuff", type: "TeleportHost"}
+						]
+					})
+				}
+			}
+		},
+
 	},
 	"calcManaPool": {
 		"PetManaRegen": (e, enemy, data) => {
@@ -9251,6 +9278,11 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 		},
 	},
 	"tickAfter": {
+		"WeaponEquip":  (_e, enemy, _data) => {
+			if (enemy.aware && KinkyDungeonAggressive(enemy, KDPlayer())) {
+				KinkyDungeonApplyBuffToEntity(enemy, KDEquip);
+			}
+		},
 		"EpicenterAssignHP": (_e, enemy, _data) => {
 			if (!KDEnemyHasFlag(enemy, "assignedHP")) {
 				let factor = 0.1 + 0.1 * Math.round(19 * (KDGameData.EpicenterLevel || 1) ** 0.75) / (KinkyDungeonMaxLevel - 1);

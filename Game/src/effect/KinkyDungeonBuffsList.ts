@@ -6,6 +6,9 @@ let KDAim = {
 		{type: "EnemyAim", trigger: "tickAfter", dist: 2},
 		{type: "EnemyAim", sprite: "UI/Crosshair", trigger: "draw"},
 	]};
+let KDEquip = {
+	id: "Equip", replaceSpriteSuff: "_Equip", replacePower: 0.25,
+	type: "Equip", power: 1, duration: 3};
 let KDAim2 = {
 	id: "Aim2",
 	type: "MoveSpeed", power: -2, duration: 1};

@@ -1080,11 +1080,11 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "Fissure", tags: ["fire", "denial", "dot", "aoe", "offense"], noUniqueHits: true, prerequisite: "Ignite", noise: 7, sfx: "FireSpell", school: "Elements", manacost: 8, components: ["Legs"], level:1, type:"bolt", piercing: true, projectileTargeting:true, nonVolatile: true, onhit:"", power: 5.5, delay: 0, range: 4, speed: 4, size: 1, damage: "fire",
 			trailPower: 1.5, trailLifetime: 6, piercingTrail: true, trailDamage:"fire", trail:"lingering", trailChance: 1, playerEffect: {name: "DamageNoMsg", hitTag: "Fissure", time: 1, damage:"fire", power: 3}},
 		//{name: "Shield", sfx: "MagicSlash", school: "Elements", manacost: 1, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, level:1, type:"inert", block: 10, onhit:"", power: 0,delay: 2, range: 1.5, size: 1, damage: ""}, // Creates a shield that blocks projectiles for 1 turn
-		{name: "Shield", tags: ["shield", "defense"], prerequisite: "ApprenticeEarth", sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
+		{name: "Shield", tags: ["shield", "defense", "earth"], prerequisite: "ApprenticeEarth", sfx: "MagicSlash", school: "Elements", manacost: 4, components: ["Verbal"], mustTarget: true, level:1, type:"buff",
 			buffs: [
 				{id: "Shield", type: "SpellResist", aura: "#73efe8", duration: 50, power: 3.0, player: true, enemies: true, tags: ["defense", "damageTaken"]},
 			], onhit:"", time:50, power: 0, range: 2, size: 1, damage: ""},
-		{name: "GreaterShield", tags: ["shield", "defense", "utility"], prerequisite: "Shield", spellPointCost: 1, sfx: "MagicSlash", school: "Elements", manacost: 1, components: ["Verbal"],
+		{name: "GreaterShield", tags: ["shield", "defense", "utility", "earth"], prerequisite: "Shield", spellPointCost: 1, sfx: "MagicSlash", school: "Elements", manacost: 1, components: ["Verbal"],
 			noTargetEnemies: true, noTargetPlayer: true, level:1, type:"inert", block: 20, onhit:"", power: 0, delay: 5, range: 2.99, size: 1, damage: ""}, // Creates a shield that blocks projectiles for 5 turns
 		{name: "IceBreath", tags: ["ice", "denial", "offense", "utility", "aoe"], prerequisite: "Hailstorm", sfx: "MagicSlash", hitsfx: "Freeze", school: "Elements", manacost: 8,
 			upcastFrom: "Hailstorm", upcastLevel: 1,
@@ -3113,7 +3113,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "RobotBolt", color: "#ff5277", sfx: "Laser", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "electric", speed: 2, playerEffect: {name: "RobotShock", time: 2}},
 	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#e7cf1a", minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
 	{enemySpell: true, name: "RubberSniper",  bindType: "Slime", color: "#e7cf1a", minRange: 1.5,
-		sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt",
+		sfx: "Sniper2", manacost: 2, components: ["Arms"], level:1, type:"bolt",
 		projectileTargeting:true, onhit:"", power: 8, time: 0, delay: 0, range: 50,
 		damage: "glue", speed: 5, playerEffect: {name: "RubberSniper", power: 8, count: 1, damage: "glue"}},
 
@@ -3185,7 +3185,15 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		color: "#92e8c0",
 		projectileTargeting:true, piercing: true, noTerrainHit: true, noEnemyCollision: true, onhit:"aoe", power: 4, delay: 0, range: 1.5, aoe: 1.5, size: 3, lifetime:1, damage: "soul", speed: 1, time: 2,
 		playerEffect: {name: "CrystalBind", time: 1, count: 2},
-
+	},
+	{name: "HeavySlash", tags: ["aoe", "offense", "physical"], landsfx: "HeavySwing", school: "Any",
+		manacost: 2.5, components: ["Arms"], level:1, type:"bolt",
+		minRange: 0,
+		color: "#aaaaaa",
+		projectileTargeting:true, piercing: true, noTerrainHit: true,
+		noEnemyCollision: true, onhit:"aoe", power: 5.5, delay: 0, range: 1.5, aoe: 1.5, size: 3, castRange: 2.5,
+		lifetime:1, damage: "crush", speed: 1, time: 2,
+		playerEffect: {name: "Damage"},
 	},
 
 	{enemySpell: true, name: "CrystalShock", hideWarnings: true, color: "#ff5277", minRange: 0,
@@ -3410,6 +3418,21 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "SummonBookSlime", noSprite: true, minRange: 0, sfx: "MagicSlash", manacost: 8, components: ["Verbal"], level:4, projectileTargeting:true, castRange: 50, type:"bolt", onhit:"summon", summon: [{name: "BookSlime", teleportTime: 1, aware: true,bound: true, count: 2, time: 13, strict: true, weakBinding: true}], power: 0, time: 12, delay: 1, range: 0.5, size: 3, aoe: 3, lifetime: 1, speed: 1},
 
 	{enemySpell: true, selfcast: true, buff: true, minRange: 0, name: "ArmorUp", sfx: "Bones", school: "Elements", manacost: 8, components: ["Arms"], mustTarget: true, level:1, type:"buff", buffs: [{id: "ArmorUp", type: "Armor", duration: 6, power: 1.0, player: true, enemies: true, tags: ["defense", "armor"]}], onhit:"", time:6, power: 0, range: 2, size: 1, damage: ""},
+	{enemySpell: true, selfcast: true, buff: true, name: "SelfCharge", sfx: "HexOrb",
+		school: "Elements", manacost: 1, components: ["Arms"], mustTarget: true, level:1, type:"buff",
+		specialCD: 12,
+		noCastMsg: true,
+		minRange: 3.5,
+		castRange: 14,
+		buffs: [
+			{id: "SelfCharge", type: "MoveSpeed", aura: "#ffff00", duration: 6, power: 0.5, player: true, enemies: true, tags: ["offense", "speed"]},
+			{
+				id: "Eager", type: "MoveSpeed", power: 0.5, duration: 3, events: [
+					{type: "ApplyVuln", duration: 1, trigger: "tick"},
+					{type: "ApplyVuln", duration: 1, power: -1.0, trigger: "tickAfter"},
+				]
+			}
+		], onhit:"", time:6, power: 0, range: 2, size: 1, damage: ""},
 	{enemySpell: true, selfcast: true, buff: true, minRange: 0, name: "ArmorUpArea", sfx: "MagicSlash", school: "Elements", manacost: 8, components: ["Arms"], mustTarget: true, level:1,
 		type:"buff", buffs: [{id: "ArmorUpArea", type: "Armor", duration: 6, power: 2.0, player: false, enemies: true, tags: ["defense", "armor"]}], onhit:"", time:6, power: 0, range: 2.9, aoe: 2.9, size: 1, damage: ""},
 

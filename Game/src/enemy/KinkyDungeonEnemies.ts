@@ -6789,7 +6789,12 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/" + spell.sfx + ".ogg", enemy);
 				}
 
-				KinkyDungeonSendEvent("enemyCast", {spell: spell, spelltarget: spelltarget, enemy: enemy, player: player, AIData: AIData});
+				KinkyDungeonSendEvent("enemyCast", {
+					spell: spell, spelltarget: spelltarget, enemy: enemy,
+					player: player, AIData: AIData,
+					tx: xx,
+					ty: yy,
+				});
 
 				if (KDRandom() < actionDialogueChanceIntense)
 					KinkyDungeonSendDialogue(enemy, TextGet("KinkyDungeonRemindJailCast" + (KDGetEnemyPlayLine(enemy) ? KDGetEnemyPlayLine(enemy) : ""))

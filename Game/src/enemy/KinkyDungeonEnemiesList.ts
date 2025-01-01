@@ -3811,21 +3811,54 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	//region MaidKnight
 
-	{name: "MaidKnightLight", nameList: "maid", outfit: "AdventurerSub", style: "DarkElf", clusterWith: "adventurer",
+	{name: "MaidKnightHeavy", nameList: "maid",
+		outfit: "MaidKnightHeavy", style: "MaidKnightHeavy",
+		clusterWith: "adventurer",
+		bound: "MaidKnightHeavy",
+		color: "#ffffff",
+		faction: "Adventurer",
+		playLine: "Adventurer_Dom_Fighter",
+		preferDodge: true, maxdodge: 1, maxblock: 2,
+		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee",
+			"leatherRestraintsHeavy", "maidRestraints", "soulweakness", "jail", "jailer", "dom", "search"]),
+		cohesion: 0.5,
+		bindOnDisable: true,
+		smartBind: true,
+		block: 0.2,
+		spells: ["HeavySlash", "SelfCharge"], spellCooldownMult: 1, spellCooldownMod: 0,
+		evasion: 0.25, disarm: 0.35,
+		followLeashedOnly: true, ignorechance: 0, armor: 2.5, followRange: 1, AI: "hunt", guardChance: 0.0,
+		visionRadius: 11, maxhp: 50, minLevel:0, weight: -100, movePoints: 1.4, attackPoints: 2, attack: "SpellMeleeWillBindLock",
+		attackWidth: 2.5, attackRange: 1.5, power: 3, dmgType: "slash", fullBoundBonus: 3,
+		stamina: 7,
+		events: [
+			{trigger: "enemyCast", type: "DelayedJump"},
+			{trigger: "tickAfter", type: "WeaponEquip"}
+		],
+		terrainTags: {}, shrines: ["Leather"], floors: {}, // Adventurers don't appear in lairs
+		dropTable: []},
+
+	{name: "MaidKnightLight", nameList: "maid",
+		outfit: "MaidKnightLight", style: "MaidKnightLight",
+		clusterWith: "adventurer",
 		bound: "MaidKnightLight", color: "#ffffff",
+		faction: "Adventurer",
 		playLine: "Adventurer_Sub_Fighter",
 		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human",
-			"melee", "leatherRestraints", "leatherRestraintsHeavy", "painweakness", "jail", "jailer", "sub", "search"]),
+			"melee", "leatherRestraints", "trap", "painweakness", "jail", "jailer", "sub", "search"]),
 			cohesion: 0.9, stunTime: 2,
 		evasion: -0.1,
 		stamina: 4,
 		preferBlock: true, maxdodge: 1,
 		castWhileMoving: true,
+		events: [
+			{trigger: "tickAfter", type: "WeaponEquip"}
+		],
 		spells: ["Aim_MaidKnightLight"], spellCooldownMult: 1, spellCooldownMod: 0,
-		followLeashedOnly: true, ignorechance: 0, armor: 1.2, followRange: 1, AI: "hunt", guardChance: 0.0,
+		followLeashedOnly: true, ignorechance: 0, armor: 0.8, followRange: 1, AI: "hunt", guardChance: 0.0,
 		visionRadius: 11, maxhp: 40, minLevel:0, weight: -100, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeWillBindLock",
-		attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 3, dmgType: "grope", fullBoundBonus: 1,
-		terrainTags: {}, shrines: ["Leather"], allFloors: true, // Adventurers don't appear in lairs
+		attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 2.5, dmgType: "tickle", fullBoundBonus: 1.5,
+		terrainTags: {}, shrines: ["Leather"], floors: {}, // Adventurers don't appear in lairs
 		dropTable: []},
 
 
