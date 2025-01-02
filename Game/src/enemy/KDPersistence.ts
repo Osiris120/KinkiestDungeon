@@ -795,7 +795,7 @@ function KDSetSpecialScript(npc: KDPersistentNPC, specialScript: string) {
 	let script = specialScript || "";
 	if (!script && enemy.specialScript) script = enemy.specialScript;
 
-	if (SpecialPersistentScriptSettingList[script]) npc.wanderAI = SpecialPersistentScriptSettingList[script](npc, enemy);
+	if (SpecialPersistentScriptSettingList[script]) npc.specialScript = SpecialPersistentScriptSettingList[script](npc, enemy);
 }
 
 function KDNPCCanWander(id: number): boolean {

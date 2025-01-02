@@ -596,7 +596,7 @@ function KDRefreshPoseOptions(Character: Character) {
 		KDCurrentModels.get(Character).TempPoses.NippleToysOption = true;
 		KDCurrentModels.get(Character).Poses.NippleToysOption = true;
 	}
-	if (KDToggles.DynamicArmor && KinkyDungeonState == "Game") {
+	if (KDToggles.DynamicArmor && (KinkyDungeonState == "Game" || KinkyDungeonState == "GenMap")) {
 		KDCurrentModels.get(Character).TempPoses.DynamicArmor = true;
 		KDCurrentModels.get(Character).Poses.DynamicArmor = true;
 	}
@@ -629,7 +629,7 @@ function KDRefreshPoseOptionsMC(MC: ModelContainer) {
 	if (KDToggles.NippleToysOption) {
 		MC.Poses.NippleToysOption = true;
 	}
-	if (KDToggles.DynamicArmor && KinkyDungeonState == "Game") {
+	if (KDToggles.DynamicArmor && (KinkyDungeonState == "Game" || KinkyDungeonState == "GenMap")) {
 		MC.Poses.DynamicArmor = true;
 	}
 	if (KDToggles.ChastityBraOption) {

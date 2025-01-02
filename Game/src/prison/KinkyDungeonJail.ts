@@ -1299,6 +1299,34 @@ function KDCreateDragonLair(dragon: entity, lairType: string, slot: KDWorldSlot)
 
 function KDAddDefeatRestraints(enemy: entity, allowFurniture: boolean) {
 	let packed = KDUnPackEnemy(enemy);
+
+	if (enemy.Enemy?.Defeat?.specificRestraints) {
+		for (let tagGroup of enemy.Enemy.Defeat.specificRestraints) {
+			if (tagGroup.minlevel && KDGetEffLevel() < tagGroup.minlevel) {
+				continue;
+			}
+			if (tagGroup.maxlevel && KDGetEffLevel() >= tagGroup.maxlevel) {
+				continue;
+			}
+			let restraint = KDRestraint(tagGroup);
+			let variant = tagGroup.applyVariant;
+			let lock = restraint?.DefaultLock || enemy.Enemy.useLock || enemy.Enemy.attackLock;
+			if (KDCanAddRestraint(
+				restraint, KinkyDungeonStatsChoice.get("MagicHands"),
+				lock, false, undefined, true, false, enemy, true,
+				undefined, undefined, variant ? KDApplyVariants[variant]?.powerBonus : undefined
+			))
+				KinkyDungeonAddRestraintIfWeaker(restraint,
+					10, KinkyDungeonStatsChoice.get("MagicHands"),
+					lock,
+					false, false, undefined,
+					KDGetFaction(enemy), true, undefined,
+					enemy, true, undefined,
+					undefined, undefined,
+					variant ? KDApplyVariants[variant] : undefined
+				)
+		}
+	}
 	if (enemy.Enemy?.Defeat?.furnitureTags) {
 		for (let tagGroup of enemy.Enemy.Defeat.furnitureTags) {
 			for (let i = 0; i < tagGroup.count; i++) {
@@ -1312,8 +1340,10 @@ function KDAddDefeatRestraints(enemy: entity, allowFurniture: boolean) {
 					} : undefined, enemy, undefined, true
 				);
 				if (restraintAdd) {
+
+					let lock = restraintAdd.r.DefaultLock || enemy.Enemy.useLock || enemy.Enemy.attackLock;
 					KinkyDungeonAddRestraintIfWeaker(restraintAdd.r,
-						10, KinkyDungeonStatsChoice.get("MagicHands"), undefined,
+						10, KinkyDungeonStatsChoice.get("MagicHands"), lock,
 						false, false, undefined, KDGetFaction(enemy), true, undefined,
 						enemy, true, undefined, undefined, undefined,
 						restraintAdd.v
@@ -1709,6 +1739,18 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 
 		if (nearestJail.direction) {
 			KinkyDungeonSetFlag("conveyed", 1);
+		} else {
+			if (leasher && KDIsHumanoid(leasher) && KDEnemyCanTalk(leasher)
+				&& KDShouldStripSearchPlayer(KDPlayer())) {
+				if (!KDGameData.CurrentDialog) {
+					KinkyDungeonSetFlag("jailStripSearched", KDJailStripSearchTempTime);
+					KDStartDialog("StripSearch",
+						leasher.Enemy.name,
+						true,
+						KDGetPersonality(leasher),
+						leasher)
+				}
+			}
 		}
 		if (nearestJail.restraint) {
 			KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(nearestJail.restraint), KDGetEffLevel(),false, undefined);
@@ -2131,6 +2173,11 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 		KinkyDungeonPassOut(false);
 		KDCustomDefeatUniforms.RopeDojo();
 	},
+	Adventurer: (_enemy) => {
+		KinkyDungeonPassOut(false);
+		KDCustomDefeatUniforms.Adventurer();
+		KDAddDefeatRestraints(_enemy, false);
+	},
 };
 
 let KDCustomDefeatUniforms = {
@@ -2219,6 +2266,18 @@ let KDCustomDefeatUniforms = {
 				}
 			}
 		}
+	},
+
+
+	Adventurer: () => {
+		KinkyDungeonAddRestraintIfWeaker("SturdyLeatherBeltsArms", 8, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("SturdyLeatherBeltsLegs", 8, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("SturdyLeatherBeltsFeet", 8, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("TrapMittens", 5, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("Stuffing", 5, true, undefined, false, undefined, undefined, undefined, true);
+		KinkyDungeonAddRestraintIfWeaker("HarnessPanelGag", 5, true, undefined, false, undefined, undefined, undefined, true);
+		if (!KinkyDungeonStatsChoice.get("NoBlindfolds"))
+			KinkyDungeonAddRestraintIfWeaker("TrapBlindfold", 5, true, undefined, false, undefined, undefined, undefined, true);
 	},
 
 	ElementalSlave: () => {

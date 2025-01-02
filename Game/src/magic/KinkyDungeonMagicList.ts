@@ -1271,7 +1271,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			onhit:"aoe", delay: 3, power: 5.5, range: 2.99, size: 1, lifetime: 1, damage: "inert",
 			spellcast: {spell: "RopeRuneStrike", target: "onhit", directional:false, offset: false}, channel: 2},
 
-		{name: "LeatherBurst", prerequisite: "ApprenticeLeather", tags: ["buff", "offense", "binding"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: [], level:1, passive: true, type:"",
+		{name: "LeatherBurst", prerequisite: "ApprenticeLeather", tags: ["buff", "offense", "binding", "leather"], sfx: "MagicSlash", school: "Conjure", manacost: 0, components: [], level:1, passive: true, type:"",
 			events: [{type: "LeatherBurst", trigger: "playerCast", power: 3}]},
 
 		{name: "SummonGag", prerequisite: "ApprenticeLeather", tags: ["leather", "bolt", "binding", "burst", "gag", "utility", "offense"], components: ["Arms"], noise: 1,
@@ -1481,8 +1481,8 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 
 		{name: "Golem", prerequisite: "Ally", tags: ["summon", "offense"], sfx: "MagicSlash", school: "Conjure", manacost: 24, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:3, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "Golem", count: 1, time: 9999, bound: true}], power: 0, time: 9999, delay: -1, range: 2.5, size: 1, aoe: 0.5, lifetime: 1, damage: "fire"},
 		{name: "StormCrystal", prerequisite: "ApprenticeSummon", tags: ["summon", "denial", "offense"], noise: 7, sfx: "MagicSlash", school: "Conjure", manacost: 10, components: ["Legs"], noTargetEnemies: true, noTargetPlayer: true, piercing: true, level:1, type:"hit", noSprite: true, onhit:"summon", summon: [{name: "StormCrystal", count: 1, time: 9999, bound: true}], power: 0, time: 30, delay: -1, range: 2.5, size: 1, aoe: 0.5, lifetime: 1, damage: "fire"},
-		{noAggro: true, name: "Heal", prerequisite: "ApprenticeLight",  bulletSpin: 0.1, hitSpin: 0.4, noise: 3, sfx: "FireSpell", school: "Conjure", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 1.5, range: 4.5, size: 5, aoe: 2.9, lifetime: 4, time: 2, damage: "heal", channel: 4},
-		{noAggro: true, buff: true, heal: true, name: "Heal2", prerequisite: "ApprenticeLight", sfx: "MagicSlash", school: "Conjure", manacost: 3, components: ["Verbal"], noTargetPlayer: true, mustTarget: true, level:1, type:"hit",
+		{noAggro: true, tags: ["heal", "light"], name: "Heal", prerequisite: "ApprenticeLight",  bulletSpin: 0.1, hitSpin: 0.4, noise: 3, sfx: "FireSpell", school: "Conjure", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", delay: 1, power: 1.5, range: 4.5, size: 5, aoe: 2.9, lifetime: 4, time: 2, damage: "heal", channel: 4},
+		{noAggro: true, tags: ["heal", "light"], buff: true, heal: true, name: "Heal2", prerequisite: "ApprenticeLight", sfx: "MagicSlash", school: "Conjure", manacost: 3, components: ["Verbal"], noTargetPlayer: true, mustTarget: true, level:1, type:"hit",
 			events: [
 				{type: "Buff", trigger: "tick", power: 1.0, buffType: "blindResist"},
 			],
@@ -1551,7 +1551,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 			type:"special", special: "NegateRune",
 			onhit:"", time:0, power: 3.0, range: 1.5, size: 1, aoe: 0.5, damage: "inert"},
 
-		{name: "CommandSlime", prerequisite: "ApprenticeLatex", tags: ["slime", "defense"], sfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Verbal"], level:1,
+		{name: "CommandSlime", prerequisite: "ApprenticeLatex", tags: ["slime", "defense", "latex"], sfx: "MagicSlash", school: "Conjure", manacost: 9, components: ["Verbal"], level:1,
 			type:"special", special: "CommandSlime",
 			onhit:"", time:0, power: 9.9, range: 2.5, size: 1, aoe: 1.5, damage: "inert"},
 
@@ -1711,7 +1711,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 				{type: "BlindAll", trigger: "bulletHitEnemy", time: 8},
 			],
 			school: "Illusion", manacost: 4, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 0, delay: 1, power: 1, range: 2.5, size: 3, aoe: 1.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 4}},
-		{name: "Ring", prerequisite: "ApprenticeLight", tags: ["aoe", "utility", "stealth"],
+		{name: "Ring", prerequisite: "ApprenticeLight", tags: ["aoe", "utility", "light"],
 			noise: 10, sfx: "MagicSlash", school: "Illusion",
 			manacost: 1, components: ["Arms"], level:1, type:"inert", onhit:"aoe",
 			time: 2, delay: 4, power: 1, range: 6.5, size: 3, aoe: 1.5, lifetime: 1, damage: "stun"},
@@ -1729,7 +1729,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 				{type: "BlindAll", trigger: "bulletHitEnemy", time: 31},
 			],
 			noise: 10, sfx: "FireSpell", school: "Illusion", manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 2, power: 1, range: 2.5, size: 5, aoe: 2.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 10}}, // Longer delay, but the stun lasts much longer.
-		{name: "Shroud", prerequisite: "ApprenticeShadow", tags: ["aoe", "buff", "utility", "stealth", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert",
+		{name: "Shroud", prerequisite: "ApprenticeShadow", tags: ["aoe", "buff", "utility", "shroud", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert",
 			noise: 3.5,// Attracts some enemies
 			buffs: [
 				{id: "Shroud", type: "Evasion", power: 7.0, player: true, enemies: true, tags: ["darkness"], range: 1.5},
@@ -3111,11 +3111,23 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 
 	{enemySpell: true, name: "MummyBolt", color: "#88ff88", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 3, playerEffect: {name: "MysticShock", time: 3}},
 	{enemySpell: true, name: "RobotBolt", color: "#ff5277", sfx: "Laser", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "electric", speed: 2, playerEffect: {name: "RobotShock", time: 2}},
-	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#e7cf1a", minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
+	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#e7cf1a",
+		bindTags: ["captureFoamRandom"],
+		minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
 	{enemySpell: true, name: "RubberSniper",  bindType: "Slime", color: "#e7cf1a", minRange: 1.5,
 		sfx: "Sniper2", manacost: 2, components: ["Arms"], level:1, type:"bolt",
+		bindTags: ["captureFoamRandom"],
 		projectileTargeting:true, onhit:"", power: 8, time: 0, delay: 0, range: 50,
-		damage: "glue", speed: 5, playerEffect: {name: "RubberSniper", power: 8, count: 1, damage: "glue"}},
+		damage: "glue", speed: 5, playerEffect: {name: "RubberSniper", power: 8, count: 3, damage: "glue"}},
+	{name: "PlayerRubberSniper",  bindType: "Slime", color: "#e7cf1a", minRange: 1.5,
+		sfx: "Sniper2", manacost: 2, components: ["Arms"], level:1, type:"bolt",
+		projectileTargeting:true, onhit:"", power: 8, time: 0, delay: 0, range: 50,
+		noMiscast: true,
+		bindTags: ["captureFoamRandom"],
+		events: [
+			{trigger: "bulletHitEnemy", type: "Blaster"},
+		],
+		damage: "glue", speed: 5, playerEffect: {name: "RubberSniper", power: 8, count: 3, damage: "glue"}},
 
 	{enemySpell: true, name: "Minigun", castCondition: "Windup_Ready", bindType: "Slime", color: "#e7cf1a", minRange: 1.5, sfx: "MiniFire", manacost: 0, components: ["Arms"],
 		fastStart: true,
@@ -3791,7 +3803,8 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{nonmagical: true, enemySpell: true, name: "TrapSleepDart", hideWarnings: true, sfx: "Gunfire", manacost: 1, components: [], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "poison", speed: 2, playerEffect: {name: "TrapSleepDart", realBind: true, power: 5}},
 	{enemySpell: true, faction: "Trap", distract: 20, name: "TrapLustCloud", sfx: "Freeze", manacost: 1, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "happygas", playerEffect: {name: "TrapLustCloud", realBind: true, damage: "happygas", power: 8 }},
 	{enemySpell: true, faction: "Trap", name: "TrapSCloud", sfx: "Freeze", manacost: 1, components: [], level:1, type:"inert", onhit:"aoe", passthrough: true, noTerrainHit: true, time: 5, delay: 1, power: 3, range: 2, size: 3, aoe: 1.5, lifetime: 1, damage: "poison", playerEffect: {name: "TrapSPCloud", realBind: true, damage: "poison", power: 5.0 }},
-	{nonmagical: true, enemySpell: true, name: "SleepDart", sfx: "SpikeTrapTrigger", manacost: 1, components: [], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "poison", speed: 1, playerEffect: {name: "TrapSleepDart", realBind: true, power: 5}},
+	{nonmagical: true, enemySpell: true,
+		noDirectionOffset: true, name: "SleepDart", sfx: "SpikeTrapTrigger", manacost: 1, components: [], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "poison", speed: 1, playerEffect: {name: "TrapSleepDart", realBind: true, power: 5}},
 ];
 
 KDDefineSpellPage("Command", [

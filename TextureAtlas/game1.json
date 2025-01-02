@@ -256,14 +256,6 @@
 	"spriteSourceSize": {"x":6,"y":24,"w":60,"h":26},
 	"sourceSize": {"w":72,"h":72}
 },
-"Game/Bullets/MagicBelt.png":
-{
-	"frame": {"x":1220,"y":1682,"w":57,"h":18},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":7,"y":27,"w":57,"h":18},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Bullets/MiniCable.png":
 {
 	"frame": {"x":1908,"y":1343,"w":62,"h":19},
@@ -304,17 +296,9 @@
 	"spriteSourceSize": {"x":67,"y":69,"w":83,"h":79},
 	"sourceSize": {"w":216,"h":216}
 },
-"Game/Bullets/RobotBolt.png":
-{
-	"frame": {"x":1149,"y":2018,"w":58,"h":28},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":5,"y":22,"w":58,"h":28},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Bullets/RubberMissile.png":
 {
-	"frame": {"x":1879,"y":2023,"w":55,"h":22},
+	"frame": {"x":1882,"y":2023,"w":55,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":25,"w":55,"h":22},
@@ -554,7 +538,7 @@
 },
 "Game/Enemies/Bat.png":
 {
-	"frame": {"x":1699,"y":2023,"w":58,"h":23},
+	"frame": {"x":1762,"y":2023,"w":58,"h":23},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":15,"w":58,"h":23},
@@ -850,7 +834,7 @@
 },
 "Game/Items/BoltCutters.png":
 {
-	"frame": {"x":1819,"y":2023,"w":58,"h":18},
+	"frame": {"x":1220,"y":1682,"w":58,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":6,"y":26,"w":58,"h":18},
@@ -890,10 +874,18 @@
 },
 "Game/Items/MistressKey.png":
 {
-	"frame": {"x":1759,"y":2023,"w":58,"h":19},
+	"frame": {"x":1822,"y":2023,"w":58,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":24,"w":58,"h":19},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Items/Persuader.png":
+{
+	"frame": {"x":1149,"y":2018,"w":59,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":29,"w":59,"h":26},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Items/Rapier.png":
@@ -1008,14 +1000,6 @@
 	"spriteSourceSize": {"x":25,"y":73,"w":153,"h":85},
 	"sourceSize": {"w":200,"h":200}
 },
-"Game/Items/Restraint/MagicBelts.png":
-{
-	"frame": {"x":1220,"y":1682,"w":57,"h":18},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":7,"y":27,"w":57,"h":18},
-	"sourceSize": {"w":72,"h":72}
-},
 "Game/Items/Restraint/Maid.png":
 {
 	"frame": {"x":1784,"y":356,"w":183,"h":95},
@@ -1086,6 +1070,14 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":27,"y":0,"w":23,"h":63},
+	"sourceSize": {"w":72,"h":72}
+},
+"Game/Items/Sweeper.png":
+{
+	"frame": {"x":1699,"y":2023,"w":61,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":26,"w":61,"h":19},
 	"sourceSize": {"w":72,"h":72}
 },
 "Game/Light.png":
@@ -1536,6 +1528,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:96379c0173488e9aa6fb021d17076892:785bd877ae5595d417bbe5ec014d9915:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:37cd360a288035e487584dd1375ecc7a:f7c7dc40f0df806135c91a99898006df:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

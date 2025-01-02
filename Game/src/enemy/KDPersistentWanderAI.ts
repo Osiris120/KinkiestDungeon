@@ -57,8 +57,7 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 				let halt = false;
 				if (entity) {
 					if (KDEnemyCanDespawn(id, mapData)) {
-						KDDespawnParty(entity.id, mapData);
-						KDRemoveEntity(entity, false, false, true, undefined, mapData);
+						KDDespawnEnemy(entity, undefined, mapData);
 					} else {
 						let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
 							entity.x, entity.y, mapData, true
@@ -119,14 +118,14 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 	},
 	/** regular wander, but visits lair every 600 turns*/
 	Dragon: {
-		cooldown: 200,
+		cooldown: 175,
 		filter: (id, mapData) => {
 			let npc = KDGetPersistentNPC(id);
 			return KinkyDungeonCurrentTick > (npc.nextWanderTick || 0) && !npc.captured && KDNPCCanWander(npc.id);
 		},
 		chance: (id, mapData) => {
 			if (!KDIDHasFlag(id, "LairCheck")) return 1.0;
-			return mapData == KDMapData ? 0.33 : 0.8;
+			return mapData == KDMapData ? 0.25 : 0.75;
 		},
 		doWander: (id, mapData, entity) => {
 			let forceLair = false;
@@ -152,14 +151,14 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 	},
 	/** regular wander unless targeted*/
 	Targeted: {
-		cooldown: 200,
+		cooldown: 90,
 		filter: (id, mapData) => {
 			let npc = KDGetPersistentNPC(id);
 			return KinkyDungeonCurrentTick > (npc.nextWanderTick || 0) && !npc.captured && KDNPCCanWander(npc.id);
 		},
 		chance: (id, mapData) => {
 			if (KDGetPersistentNPC(id)?.data?.wanderTarget) return 1.0;
-			return mapData == KDMapData ? 0.33 : 0.8;
+			return mapData == KDMapData ? 0.25 : 0.8;
 		},
 		doWander: (id, mapData, entity) => {
 			let forceTarget = false;
@@ -254,8 +253,7 @@ function KDStandardWander(id: number, mapData: KDMapDataType, entity: entity, AI
 		let halt = false;
 		if (entity) {
 			if (KDEnemyCanDespawn(id, mapData)){
-				KDDespawnParty(entity.id, mapData);
-				KDRemoveEntity(entity, false, false, true, undefined, mapData);
+				KDDespawnEnemy(entity, undefined, mapData);
 			} else {
 				let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
 					entity.x, entity.y, mapData, true
@@ -393,8 +391,7 @@ function KDStandardLairWander(id: number, mapData: KDMapDataType, entity: entity
 		let halt = false;
 		if (entity) {
 			if (KDEnemyCanDespawn(id, mapData)){
-				KDDespawnParty(entity.id, mapData);
-				KDRemoveEntity(entity, false, false, true, undefined, mapData);
+				KDDespawnEnemy(entity, undefined, mapData);
 			} else {
 				let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
 					entity.x, entity.y, mapData, true
@@ -524,8 +521,7 @@ function KDStandardTargetedWander(id: number, mapData: KDMapDataType, entity: en
 		let halt = false;
 		if (entity) {
 			if (KDEnemyCanDespawn(id, mapData)){
-				KDDespawnParty(entity.id, mapData);
-				KDRemoveEntity(entity, false, false, true, undefined, mapData);
+				KDDespawnEnemy(entity, undefined, mapData);
 			} else {
 				let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
 					entity.x, entity.y, mapData, true

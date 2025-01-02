@@ -1336,7 +1336,7 @@ function KinkyDungeonCastSpell(targetX: number, targetY: number, spell: spell, e
 
 	if (spell.extraCast) {
 		for (let extraCast of spell.extraCast)
-			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell(extraCast.spell, true), undefined, undefined, undefined);
+			KinkyDungeonCastSpell(targetX, targetY, KinkyDungeonFindSpell(extraCast.spell, true), undefined, undefined, undefined, forceFaction);
 	}
 
 	/*if (spell.noise && !(spell.delay > 0)) {

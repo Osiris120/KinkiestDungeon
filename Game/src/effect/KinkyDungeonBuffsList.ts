@@ -80,6 +80,13 @@ let KDTaunted = {id: "Taunted", type: "Taunt", power: 1, player: true, duration:
 	{type: "Taunted", count: 2, trigger: "tick", power: 3, damage: "soul"},
 ]};
 
+let KDPoisonSleep = {
+	id: "poisonSleep", type: "Event", power: 0.1, duration: 10, events: [
+		{type: "poisonSleep", trigger: "tick"},
+		{type: "poisonSleep", trigger: "expireBuff"},
+	]
+}
+
 let KDEager = {
 	id: "Eager", type: "MoveSpeed", power: 0.1, duration: 1, events: [
 		{type: "ApplyVuln", duration: 1, trigger: "tick"},

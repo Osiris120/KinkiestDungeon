@@ -7,6 +7,7 @@ let KDFocusableTextFields = [
 	"CollFilter",
 	"QInvFilter",
 	"MagicFilter",
+	"RenameNPC",
 ];
 
 let KDMAXGODDESSQUESTS = 3;
@@ -4595,6 +4596,15 @@ function KinkyDungeonListenKeyMove() {
 }
 
 let KDShopBuyConfirm = false;
+
+function KDEnter() {
+	if (KDRenameNPC) {
+		KDRenameNPC = false;
+		if (KDSoundEnabled())
+			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
+
+	}
+}
 function KinkyDungeonGameKeyDown() {
 	let moveDirection = null;
 
@@ -4602,6 +4612,7 @@ function KinkyDungeonGameKeyDown() {
 		&& document.activeElement && KDFocusableTextFields.includes(document.activeElement.id)) {
 		// @ts-ignore
 		document.activeElement.blur();
+		KDEnter();
 	}
 	if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) return true;
 
@@ -4744,6 +4755,7 @@ function KinkyDungeonGameKeyDown() {
 				}
 				if (index > -1 && KDGameData.CollectionSorted[index]) {
 					KDCollectionSelected = KDGameData.CollectionSorted[index].id;
+					KDResetCollectionUI();
 					index = KDGameData.CollectionSorted.findIndex((entry) => {return entry.id == (KDCollectionSelected || -1);});
 					while (index >= KDCollectionIndex + KDCollectionColumns*KDCollectionRows) {
 						KDCollectionIndex += KDCollectionColumns;

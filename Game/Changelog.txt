@@ -37,9 +37,12 @@ TODO Add Cuddle play type
 
 Note to Modders: if your mod alters the function KDFreeNPC you will have to reimplement some new functionality added, to avoid bugs!
 5.4.29
-- TODO Strip search now triggers when thrown in jail on regular floors
+- Strip search now triggers when thrown in jail on regular floors
 - Many bug fixes
-- TODO Added wandering maid knight & squire
+- Added wandering maid knight & squire
+- added the Sweeper and the Persuader
+- maid knights rescue each other if they defeat you
+- added rename NPC
 
 5.4.28
 - Fixed a few bugs
@@ -214,7 +217,7 @@ Note to Modders: if your mod alters the function KDFreeNPC you will have to reim
 - Fix misleading message when NPCs try to escape even if they made no progress
 - Show sprint cost when sprint icon shows on map
 - Sprint cost now 20 base, 25 heeled, 15 hop, 20 hop (slowed), 25 hop (super slowed). Overall buff while bound, nerf while free
-- Added quick faccility assigning
+- Added quick facility assigning
 
 5.3.45
 - Summit warden now knows how to use generic bondage like rope

@@ -177,7 +177,7 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 			rID++;
 		}
 
-		if (KDMapData.RoomType == "Summit") {
+		if (KDMapData.RoomType == "Summit" || KDMapData.RoomType == "PerkRoom") {
 			DrawButtonKDEx(
 				"recycleButton",
 				() => {
@@ -195,11 +195,9 @@ function KDDrawRecycler(x: number, y: number, width: number): number {
 			//yy += 150;
 			yy += 180;
 			KDDrawRecyclerBlueprints(cats, x, yy, width);
-
-
 		} else {
 			yy += 240;
-			DrawTextFitKD(TextGet("KDFacilityLocal"), x + 560, y + 280, 1050 - 160, "#ffffff", KDTextGray0, 32, "center");
+			DrawTextFitKD(TextGet("KDFacilityLocal2"), x + 560, y + 280, 1050 - 160, "#ffffff", KDTextGray0, 32, "center");
 		}
 
 	}

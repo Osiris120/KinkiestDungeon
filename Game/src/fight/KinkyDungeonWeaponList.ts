@@ -479,6 +479,28 @@ let KinkyDungeonWeapons: Record<string, weapon> = {
 		tags: ["blaster", "ranged"], noDamagePenalty: true,
 		special: {type: "spell", spell: "BlasterBlast", requiresEnergy: true, energyCost: 0.01, range: 8}},
 
+	"Persuader": {name: "Persuader", damage: 2.5, chance: 1.0, crit: 1.5,
+		staminacost: 1.4, type: "tickle", unarmed: false, rarity: 7, shop: false, sfx: "Tickle",
+		tags: ["gun", "ranged", "duster"], noDamagePenalty: true,
+		events: [
+			{type: "Reload", trigger: "tick", requireEnergy: true, energyCost: 0.02, power: 3, color: "#ffffff", prereq: "LightLoad"},
+			{type: "Unload", trigger: "playerCastSpecial", power: 0, mult: 0},
+		],
+		special: {type: "spell", spell: "PlayerRubberSniper", prereq: "Loaded", requiresEnergy: true, energyCost: 0.02, range: 12}},
+
+	"Sweeper": {name: "Sweeper", damage: 4, chance: 1.0,
+		staminacost: 3.8, type: "slash", unarmed: false, rarity: 7,
+		magic: false, shop: false, cutBonus: 0.15, sfx: "HeavySwing",
+		tags: ["halberd"],
+		stam50mult: 1.5,
+		crit: 1.75,
+		distract: 5,
+		special: {type: "attack", range: 1.99},
+		events: [
+			{type: "Cleave", trigger: "playerAttack", power: 3, damage: "tickle", time: 3},
+		]},
+
+
 	// Bows
 	"Bow": {name: "Bow", damage: 1.0, chance: 0.8, staminacost: 1, type: "crush", unarmed: false, rarity: 2, shop: true, sfx: "Miss",
 		clumsy: true,

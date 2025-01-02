@@ -3,7 +3,7 @@
 let KDEnemyStruggleHPExp = 0.8;
 
 let KDOpinionThreshold = 12;
-let KDDespawnDistance = 16;
+let KDDespawnDistance = 1.5;
 
 let KDDebugOverlay2 = false;
 
@@ -365,7 +365,7 @@ function KDEnemyCanDespawn(id: number, mapData: KDMapDataType, PMDist?: number):
 	return !KDEnemyHasFlag(entity, "no_pers_wander")
 		&& (mapData != KDMapData ||
 		(KinkyDungeonVisionGet(entity.x, entity.y) < 0.1
-		&& KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) >= KDDespawnDistance)
+		|| KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) >= KDDespawnDistance)
 		|| (PMDist ? PMDist < KDDespawnPartyDist : KDEnemyNearTargetExit(entity, mapData)));
 }
 
@@ -2165,6 +2165,9 @@ function KDFreeNPC(en: entity) {
 	if (KDGameData.Collection[en.id + ""] && KDIsNPCPersistent(en.id)) {
 		KDGetPersistentNPC(en.id).collect = true; // Collect them)
 		//KDTPToSummit(en.id);
+	}
+	if (KDIsNPCPersistent(en.id)) {
+		delete KDGetPersistentNPC(en.id).captured;
 	}
 	if (en.hp < 0.52) en.hp = 0.52;
 	KDSetToExpectedBondage(en, 0);
@@ -4122,6 +4125,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 					if (ret.defeat) {
 						defeat = true;
 						AIData.defeat = false;
+
 						KDCustomDefeatEnemy = enemy;
 						let fac = KDGetFaction(enemy);
 						if (!KDFactionProperties[fac]) {
@@ -4135,6 +4139,18 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 						} else if (KDFactionProperties[fac]?.customDefeat) {
 							KDCustomDefeat = KDFactionProperties[fac]?.customDefeat;
 						}
+
+
+						let CDdata = {
+							enemy: enemy,
+							player: player,
+							KDCustomDefeatEnemy: KDCustomDefeatEnemy,
+							KDCustomDefeat: KDCustomDefeat,
+						};
+
+						KinkyDungeonSendEvent("getCustomDefeat", CDdata)
+						KDCustomDefeatEnemy = CDdata.KDCustomDefeatEnemy;
+						KDCustomDefeat = CDdata.KDCustomDefeat;
 					} else {
 						KDMaintainEnemyAction(enemy, delta);
 					}
@@ -9335,6 +9351,7 @@ function KDSpliceIndex(index: number, num: number = 1, mapData?: KDMapDataType) 
 function KDDespawnEnemy(enemy: entity, E: number,  mapData?: KDMapDataType, moveThruExit?: string, moveToX?: number, moveToY?: number): boolean {
 	KinkyDungeonSendEvent("despawn", {enemy: enemy, mapData: mapData});
 
+	KDDespawnParty(enemy.id, mapData);
 	KDRemoveEntity(enemy, false, false, false, E, mapData);
 
 	delete enemy.despawnX;

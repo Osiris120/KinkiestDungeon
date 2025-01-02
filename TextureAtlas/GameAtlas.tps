@@ -507,6 +507,8 @@
             <key type="filename">../Game/Bullets/OrgasmStrikeHit.png</key>
             <key type="filename">../Game/Bullets/PlayerBola.png</key>
             <key type="filename">../Game/Bullets/PlayerBolaHit.png</key>
+            <key type="filename">../Game/Bullets/PlayerRubberSniper.png</key>
+            <key type="filename">../Game/Bullets/PlayerRubberSniperHit.png</key>
             <key type="filename">../Game/Bullets/PoisonDagger.png</key>
             <key type="filename">../Game/Bullets/PoisonDaggerHit.png</key>
             <key type="filename">../Game/Bullets/PoisonDragonBlast.png</key>
@@ -539,6 +541,8 @@
             <key type="filename">../Game/Bullets/RubberNuke.png</key>
             <key type="filename">../Game/Bullets/RubberNukeHit.png</key>
             <key type="filename">../Game/Bullets/RubberSlimeHit.png</key>
+            <key type="filename">../Game/Bullets/RubberSniper.png</key>
+            <key type="filename">../Game/Bullets/RubberSniperHit.png</key>
             <key type="filename">../Game/Bullets/SagittaBolt.png</key>
             <key type="filename">../Game/Bullets/SagittaBoltHit.png</key>
             <key type="filename">../Game/Bullets/SealingBolt.png</key>
@@ -1163,7 +1167,10 @@
             <key type="filename">../Game/Enemies/MageZombie.png</key>
             <key type="filename">../Game/Enemies/Magician_Sparkle.png</key>
             <key type="filename">../Game/Enemies/MaidKnightHeavy.png</key>
+            <key type="filename">../Game/Enemies/MaidKnightHeavy_Equip.png</key>
             <key type="filename">../Game/Enemies/MaidKnightLight.png</key>
+            <key type="filename">../Game/Enemies/MaidKnightLight_Aim.png</key>
+            <key type="filename">../Game/Enemies/MaidKnightLight_Equip.png</key>
             <key type="filename">../Game/Enemies/Maidforce.png</key>
             <key type="filename">../Game/Enemies/MaidforceHead.png</key>
             <key type="filename">../Game/Enemies/MaidforceMafia.png</key>
@@ -2264,6 +2271,7 @@
             <key type="filename">../Game/Items/MessengerOfLove.png</key>
             <key type="filename">../Game/Items/MistressKey.png</key>
             <key type="filename">../Game/Items/MoiraiScissors.png</key>
+            <key type="filename">../Game/Items/Persuader.png</key>
             <key type="filename">../Game/Items/Pick.png</key>
             <key type="filename">../Game/Items/Pickaxe.png</key>
             <key type="filename">../Game/Items/Pike.png</key>
@@ -2349,6 +2357,7 @@
             <key type="filename">../Game/Items/StaffStorm.png</key>
             <key type="filename">../Game/Items/StaffTape.png</key>
             <key type="filename">../Game/Items/StormBreaker.png</key>
+            <key type="filename">../Game/Items/Sweeper.png</key>
             <key type="filename">../Game/Items/Sword.png</key>
             <key type="filename">../Game/Items/TheEncaser.png</key>
             <key type="filename">../Game/Items/Torch.png</key>
@@ -2646,6 +2655,7 @@
             <key type="filename">../Game/UI/CollectionTab/AutoBind.png</key>
             <key type="filename">../Game/UI/CollectionTab/FacilityQuick.png</key>
             <key type="filename">../Game/UI/CollectionTab/Release.png</key>
+            <key type="filename">../Game/UI/Crosshair.png</key>
             <key type="filename">../Game/UI/Cycle.png</key>
             <key type="filename">../Game/UI/Facility/AlchemyLab.png</key>
             <key type="filename">../Game/UI/Facility/CuddleLounge.png</key>
@@ -3002,6 +3012,7 @@
             <key type="filename">../Game/Buffs/dmgPlus/dmgplush.png</key>
             <key type="filename">../Game/Buffs/dmgPlus/dmgpoison.png</key>
             <key type="filename">../Game/Buffs/dmgPlus/dmgslash.png</key>
+            <key type="filename">../Game/Buffs/dmgPlus/dmgsoap.png</key>
             <key type="filename">../Game/Buffs/dmgPlus/dmgsoul.png</key>
             <key type="filename">../Game/Buffs/dmgPlus/dmgspell.png</key>
             <key type="filename">../Game/Buffs/dmgPlus/dmgstun.png</key>
@@ -3177,6 +3188,8 @@
             <key type="filename">../Game/Bullets/GravityPullHit.png</key>
             <key type="filename">../Game/Bullets/GreaterFlash.png</key>
             <key type="filename">../Game/Bullets/GreaterFlashHit.png</key>
+            <key type="filename">../Game/Bullets/HeavySlash.png</key>
+            <key type="filename">../Game/Bullets/HeavySlashHit.png</key>
             <key type="filename">../Game/Bullets/HexLatexExplosion.png</key>
             <key type="filename">../Game/Bullets/HexLatexExplosionHit.png</key>
             <key type="filename">../Game/Bullets/IceBreath.png</key>
@@ -3654,6 +3667,7 @@
             <key type="filename">../Game/UI/Facility_X.png</key>
             <key type="filename">../Game/UI/Imprison.png</key>
             <key type="filename">../Game/UI/Promote.png</key>
+            <key type="filename">../Game/UI/Rename.png</key>
             <key type="filename">../Game/UI/Restrain.png</key>
             <key type="filename">../Game/UI/RestrainBack.png</key>
             <key type="filename">../Game/UI/RestrainFree.png</key>

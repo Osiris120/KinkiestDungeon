@@ -1295,7 +1295,12 @@ interface enemy extends KDHasTags {
 	 * No effect atm unless a custom defeat uses it
 	 */
 	Defeat?: {
-		furnitureTags: {tags: string[], count: number}[],
+		furnitureTags?: {tags: string[], count: number}[],
+		specificRestraints?: {
+			name: string,
+			minlevel: number,
+			maxlevel?: number,
+			applyVariant?: string}[],
 	},
 	attackBonus?: number,
 	/** */
@@ -1972,6 +1977,7 @@ type KDPerk = {
 }
 
 interface spell {
+	nocrit?: boolean,
 
 	/** bind tags for the spell/bullet */
 	bindTags?: string[],
@@ -3765,6 +3771,7 @@ type KDCollectionTabDrawDef = (value: KDCollectionEntry, buttonSpacing: number, 
 
 interface KDCollectionEntry {
 	name: string,
+	origname?: string,
 	color: string,
 	type: string,
 	sprite: string,

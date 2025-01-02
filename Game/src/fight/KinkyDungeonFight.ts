@@ -753,7 +753,7 @@ function KDArmorFormula(DamageAmount: number, Armor: number): number {
  * @param [Critical]
  * @param [Attack]
  */
-function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg: boolean, Spell?: any, bullet?: any, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean): number {
+function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: boolean, NoMsg: boolean, Spell?: spell, bullet?: any, attacker?: entity, Delay?: any, noAlreadyHit?: boolean, noVuln?: boolean, Critical?: any, Attack?: boolean): number {
 	if (bullet && !noAlreadyHit) {
 		if (!bullet.alreadyHit) bullet.alreadyHit = [];
 		// A bullet can only damage an enemy once per turn
@@ -823,7 +823,8 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 		else if (bullet.bullet.spell && bullet.bullet.spell.enemySpell) predata.faction = "Enemy";
 		else predata.faction = "Player";
 	} else if (Spell) {
-		if (Spell.enemySpell) predata.faction = "Enemy";
+		if (Spell.faction) predata.faction = Spell.faction
+		else if (Spell.enemySpell) predata.faction = "Enemy";
 		else predata.faction = "Player";
 	}
 
@@ -895,7 +896,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 	}
 
 
-	let miss = !(!Damage || !Damage.evadeable || KinkyDungeonEvasion(Enemy, (true && Spell), !KinkyDungeonMeleeDamageTypes.includes(predata.type), attacker));
+	let miss = !(!Damage || !Damage.evadeable || KinkyDungeonEvasion(Enemy, !!Spell, !KinkyDungeonMeleeDamageTypes.includes(predata.type), attacker));
 	if (Damage && !miss) {
 		if (predata.faction == "Player") {
 			if (!predata.tease && KinkyDungeonStatsChoice.get("Pacifist") && Enemy.Enemy.bound && !Enemy.Enemy.nonHumanoid && !KinkyDungeonPacifistDamageTypes.includes(predata.type)) {
@@ -908,7 +909,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 		}
 		let DamageAmpBonusPerks = KDDamageAmpPerks
 			+ (KinkyDungeonMeleeDamageTypes.includes(predata.type) ? KDDamageAmpPerksMelee : KDDamageAmpPerksMagic)
-			+ (Spell && !Spell.allySpell && !Spell.enemySpell ? KDDamageAmpPerksSpell : 0);
+			+ (Spell && (Spell.faction == "Player" || (!Spell.allySpell && !Spell.enemySpell)) ? KDDamageAmpPerksSpell : 0);
 		let damageAmp = KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(Enemy.buffs, "DamageAmp") - (KDHostile(Enemy) && (!attacker || attacker.player) ? (DamageAmpBonusPerks) : 0));
 		let buffreduction = KinkyDungeonGetBuffedStat(Enemy.buffs, "DamageReduction");
 		let buffresist = KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(Enemy.buffs, predata.bufftype + "DamageResist"));
@@ -1369,7 +1370,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 			|| !Spell.allySpell)
 		&& (!bullet
 			|| !bullet.spell
-			|| (!bullet.spell.allySpell && !bullet.spell.enemySpell));
+			|| (!bullet.spell.allySpell && !(bullet.spell.enemyspell && bullet.faction != "Player")));
 
 	KinkyDungeonSendEvent("afterDamageEnemy", predata);
 
@@ -1673,7 +1674,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 		if (Allied) KDUniqueBulletHits = new Map();
 
 		for (let b of KDMapData.Bullets) {
-			if ((Allied && b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell) || (!Allied && !(b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell))) {
+			if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemyspell && b.bullet.faction != "Player")) || (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemyspell && b.bullet.faction != "Player")))) {
 				if (b.bullet.followPlayer) {
 					b.x = KinkyDungeonPlayerEntity.x;
 					b.y = KinkyDungeonPlayerEntity.y;
@@ -1748,7 +1749,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 	for (let E = 0; E < KDMapData.Bullets.length; E++) {
 		let b = KDMapData.Bullets[E];
 
-		if ((Allied && b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell) || (!Allied && !(b.bullet && b.bullet.spell && !b.bullet.spell.enemySpell))) {
+		if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemyspell && b.bullet.faction != "Player")) || (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemyspell && b.bullet.faction != "Player")))) {
 			let d = delta;
 			let first = true;
 			let justBorn = false;
@@ -1756,7 +1757,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 			let startx = b.x;
 			let starty = b.y;
 			let end = false;
-			let mod = (b.bullet.spell && !b.bullet.spell.slowStart && (b.bullet.spell.fastStart || (b.bullet.spell.speed > (KDGetSpellRange(b.bullet.spell) || b.bullet.spell.range) * 0.8 && b.bullet.spell.speed > 1) || (!b.bullet.spell.enemySpell && !b.bullet.spell.allySpell && (b.vx != 0 || b.vy != 0)))) ? 1 : 0;
+			let mod = (b.bullet.spell && !b.bullet.spell.slowStart && (b.bullet.spell.fastStart || (b.bullet.spell.speed > (KDGetSpellRange(b.bullet.spell) || b.bullet.spell.range) * 0.8 && b.bullet.spell.speed > 1) || (!(b.bullet.spell.enemyspell && b.bullet.faction != "Player") && !b.bullet.spell.allySpell && (b.vx != 0 || b.vy != 0)))) ? 1 : 0;
 
 			KDBulletEffectTiles(b);
 			KDUpdateBulletEffects(b, 0);
@@ -2606,13 +2607,13 @@ function KinkyDungeonBulletsCheckCollision(bullet: any, AoE: boolean, force: boo
 	if (bullet.bullet.damage && (bullet.time > 0 || force)) {
 		if ((AoE || (bullet.vx != 0 || bullet.vy != 0))) { // Moving bullets always have a chance to hit, while AoE only has a chance to hit when AoE is explicitly being checked
 			if (bullet.bullet.aoe ? KDBulletAoECanHitEntity(bullet, KinkyDungeonPlayerEntity) : KDBulletCanHitEntity(bullet, KinkyDungeonPlayerEntity, inWarningOnly)) {
-				if (!bullet.bullet.spell || bullet.born < 1 || (bullet.vx == 0 && bullet.vy == 0) || bullet.bullet.spell.enemySpell) { // Projectiles just born cant hurt you, unless they're enemy projectiles
+				if (!bullet.bullet.spell || bullet.born < 1 || (bullet.vx == 0 && bullet.vy == 0) || (bullet.bullet.spell.enemySpell && bullet.bullet.faction != "Player")) { // Projectiles just born cant hurt you, unless they're enemy projectiles
 					//if (!(!bullet.secondary && bullet.bullet.spell && bullet.bullet.spell.noDirectDamage))
 					KDBulletHitPlayer(bullet, KinkyDungeonPlayerEntity);
 					hitEnemy = true;
 				}
 			}
-			let nomsg = bullet.bullet && bullet.bullet.spell && bullet.bullet.spell.enemyspell && !bullet.reflected;
+			let nomsg = bullet.bullet && bullet.bullet.spell && (bullet.bullet.spell.enemyspell && bullet.bullet.faction != "Player") && !bullet.reflected;
 			for (let enemy of KDMapData.Entities) {
 				let overrideCollide = !bullet.bullet.aoe ? false : (bullet.bullet.spell && bullet.bullet.alwaysCollideTags && bullet.bullet.alwaysCollideTags.some((tag: string) => {return enemy.Enemy.tags[tag];}));
 				if (bullet.bullet.aoe ? KDBulletAoECanHitEntity(bullet, enemy) : KDBulletCanHitEntity(bullet, enemy, inWarningOnly, overrideCollide)) {
@@ -2761,7 +2762,11 @@ function KDBulletHitEnemy(bullet: any, enemy: entity, d: number, nomsg: boolean)
 					|| KDGetBulletBindingTags(bullet.bullet.damage.bindType
 						|| bullet.bullet.spell.bindType, pf, false);
 				if (tags) {
-					KDBindEnemyWithTags(enemy.id, tags, bullet.bullet.damage.bind || bullet.bullet.damage.power, (bullet.bullet.spell?.power || 0), !pf?.realBind, undefined, true, true, pf?.count);
+					KDBindEnemyWithTags(enemy.id, tags,
+						bullet.bullet.damage.bind || bullet.bullet.damage.power,
+						(bullet.bullet.spell?.power || 0),
+						!pf?.realBind, undefined,
+						true, true, pf?.count);
 				}
 			}
 	}

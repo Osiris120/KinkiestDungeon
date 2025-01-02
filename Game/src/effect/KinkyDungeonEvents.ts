@@ -2932,8 +2932,14 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		},
 	},
 	"expireBuff": {
+		"poisonSleep": (_e, buff, entity, data) => {
+			if (buff == data.buff && entity.player) {
+				KDStunTurns(Math.round(12 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
+				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, Math.round(12 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
+			}
+		},
 		"TeleportHost": (_e, buff, entity, data) => {
-			if (buff.x && buff.y) {
+			if (buff == data.buff && buff.x && buff.y) {
 				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(buff.x, buff.y))
 					&& !KinkyDungeonEntityAt(buff.x, buff.y)
 					&& !KDIsImmobile(entity)) {
@@ -3236,7 +3242,13 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 		},
 	},
 	"tick": {
-
+		"poisonSleep": (_e, buff, entity, data) => {
+			if (entity.player) {
+				KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness,
+					Math.min(8* KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist")),
+					KinkyDungeonSleepiness + 1.7*data.delta));
+			}
+		},
 		"EssenceMote": (_e, _buff, entity, _data) => {
 			if (entity == KDPlayer()) {
 				_buff.power = (_buff.duration) * _e.mult;
@@ -8030,6 +8042,24 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(1, KinkyDungeonGetEvasion(undefined, false, true, false)), b);
 			}
 		},
+		"RubberBullet": (e, b, data) => {
+			if (b && data.enemy && !KDHelpless(data.enemy) && data.enemy.hp > 0 && b.bullet?.damage) {
+				let scaling = (e.mult || 1) * (KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "GunDamage")));
+				let dd = {
+					target: data.enemy,
+					attackCost: 0.0, // Important
+					attackCostOrig: 0.0,
+					skipTurn: false,
+					spellAttack: true,
+					attackData: Object.assign({}, b.bullet.damage),
+				};
+				dd.attackData.damage *= scaling;
+				dd.attackData.nodisarm = true;
+				KinkyDungeonSendEvent("beforePlayerLaunchAttack", dd);
+
+				KinkyDungeonAttackEnemy(data.enemy, dd.attackData, Math.max(1, KinkyDungeonGetEvasion(undefined, false, true, false)), b);
+			}
+		},
 		"ShadowSlash": (_e, b, data) => {
 			if (b && !b.shadowBuff && data.enemy && KinkyDungeonBrightnessGet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y) < KDShadowThreshold) {
 				b.shadowBuff = true;
@@ -9386,6 +9416,32 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 				color: string2hex(e.color || "#ffffff")
 			});
 		},
+	},
+	"getCustomDefeat": {
+		MaidKnights: (_e, enemy, data) => {
+			if (enemy == data.enemy) {
+				// Frees the other one if they defeat you
+				let npc = KDGetPersistentNPC(enemy.id);
+				if (data.enemy.id == npc?.data?.MaidKnightLightID
+					|| data.enemy.id == npc?.data?.MaidKnightHeavyID
+				) {
+					let id = 0;
+					if (KDGameData.Collection[npc.data.MaidKnightLightID]) {
+						id = npc.data.MaidKnightLightID;
+					} else if (KDGameData.Collection[npc.data.MaidKnightHeavyID]) {
+						id = npc.data.MaidKnightHeavyID;
+					}
+
+					if (id) {
+						delete KDGameData.Collection[id];
+						KDGetPersistentNPC(id).collect = false;
+						KDGetPersistentNPC(id).captured = false;
+						KDMovePersistentNPC(id, KDGetCurrentLocation());
+						KDFreeNPCID(id);
+					}
+				}
+			}
+		}
 	},
 	"beforeDamage": {
 

@@ -1442,6 +1442,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		Resistance: {
 			profile: ["alchemist"],
 		},
+		Sound: {
+			idleSoundName: "Rubber",
+		},
 		maxblock: 0,
 		maxdodge: 2,
 		stamina: 4,
@@ -1457,6 +1460,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		Resistance: {
 			profile: ["alchemist"],
 		},
+		Sound: {
+			idleSoundName: "Rubber",
+		},
 		maxblock: 2,
 		maxdodge: 3,
 		visionRadius: 6, maxhp: 16, minLevel:4, weight:-1, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLock", attackWidth: 1, attackRange: 1, power: 1.5, dmgType: "grope", fullBoundBonus: 2.5,
@@ -1468,6 +1474,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 6,
 		maxblock: 2,
 		maxdodge: 0,
+		Sound: {
+			idleSoundName: "Rubber",
+		},
 		events: [
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThinBlue", time: 4, power: 1, chance: 0.5, aoe: 0.5},
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "LatexThinBlue", aoe: 1.5, power: 1, chance: 1.0},
@@ -1485,6 +1494,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxdodge: 1,
 		Resistance: {
 			profile: ["alchemist"],
+		},
+		Sound: {
+			idleSoundName: "Rubber",
 		},
 		visionRadius: 7.5, maxhp: 12, minLevel:2, weight:0, movePoints: 2, attackPoints: 3, attack: "SpellMeleeBindLockSlow", attackWidth: 2.5, attackRange: 1, power: 2, dmgType: "tickle", fullBoundBonus: 2,
 		terrainTags: {"secondhalf":0.5, "thirdhalf":1, "latexAnger": 5, "latexRage": 5, "latexPleased": 2, "latexFriendly": 2, "alchemist": 10}, shrines: ["Latex"], allFloors: true,
@@ -1510,6 +1522,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		regen: 0.3,
 		maxblock: 0,
 		maxdodge: 0,
+		Sound: {
+			idleSoundName: "Slime",
+		},
 		nonDirectional: true,
 		nopickpocket: true,
 		Reputation: {
@@ -1529,6 +1544,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		maxdodge: 2,
 		Resistance: {
 			profile: ["alchemist"],
+		},
+		Sound: {
+			idleSoundName: "Rubber",
 		},
 		visionRadius: 6, maxhp: 6, minLevel:0, weight:1, movePoints: 2.5, attackPoints: 3, attack: "SpellMeleeBlindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1, blindTime: 3,
 		terrainTags: {"secondhalf":2, "thirdhalf":-4, "latexAnger": 4, "latexRage": 4, "latexPleased": 2, "latexFriendly": 2, "alchemist": 40}, shrines: ["Latex"], allFloors: true,
@@ -2377,6 +2395,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true,
 		maxblock: 0,
 		maxdodge: 0,
+		Sound: {
+			baseAmount: 0,
+			idleSoundName: "Slime",
+		},
 		visionRadius: 5, maxhp: 1, minLevel: 0, weight:-15, movePoints: 1.5, attackPoints: 2, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 1,
 		terrainTags: {"increasingWeight":-2, "mold": 25}, allFloors: true, shrines: ["Latex"]},
 	{name: "SlimeMoldLeaper", clusterWith: "mold", faction: "Mold", color: "#FF00FF", tags: KDMapInit(["ignoretiedup", "disarmimmune", "doortrap", "mold", "minor", "melee", "moldRestraints", "fireweakness", "glueresist", "acidweakness"]),
@@ -2384,6 +2406,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true,
 		maxblock: 0,
 		maxdodge: 2,
+		Sound: {
+			baseAmount: 0,
+			idleSoundName: "Slime",
+		},
 		specialCD: 5, specialAttack: "DashBonus", specialRemove: "Bind", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 3, specialMinRange: 1.5, specialsfx: "Miss",
 		visionRadius: 9, maxhp: 1, minLevel: 3, weight:-5, movePoints: 1, attackPoints: 2, attack: "MeleeBindSuicide", suicideOnAdd: true, attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 2,
 		terrainTags: {"increasingWeight":-1, "mold": 25}, allFloors: true, shrines: ["Latex"]},
@@ -2394,6 +2420,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 10,
 			moveAmount: 10,
+			idleSoundName: "SlimeLarge2",
 		},
 		spells: ["SummonSlimeMold"], spellCooldownMult: 1, spellCooldownMod: 0, castWhileMoving: true,
 		visionRadius: 30, blindSight: 30, maxhp: 12, minLevel: 0, weight:-15, movePoints: 1000, attackPoints: 0, attack: "Spell", attackRange: 0, attackWidth: 1, power: 1, dmgType: "acid", fullBoundBonus: 5,
@@ -2411,6 +2438,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 4,
 			moveAmount: 4,
+			idleSoundName: "Rubber",
 		},
 		nopickpocket: true,
 		maxblock: 0,
@@ -2433,6 +2461,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Animations: ["squishy"],
 		Sound: {
 			baseAmount: 0,
+			idleSoundName: "Slime",
 		},
 		nopickpocket: true,
 		terrainTags: {"water": 4, "bubbleOptout": -3, "bubblePref": 6, "jungle": 20, "temple": 4, "elements": 4}, allFloors: true, shrines: ["Elements"],
@@ -2445,6 +2474,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Animations: ["squishy"],
 		Sound: {
 			baseAmount: 0,
+			idleSoundName: "Slime",
 		},
 		nopickpocket: true,
 		dropTable: [{name: "SlimeRaw", amount: 1, weight: 10}],
@@ -2458,6 +2488,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 7,
+			idleSoundName: "Slime",
 		},
 		nopickpocket: true,
 		dropTable: [{name: "SlimeRaw", amount: 1, weight: 10}],
@@ -2471,6 +2502,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Animations: ["squishy"],
 		Sound: {
 			baseAmount: 0,
+			idleSoundName: "Slime",
 		},
 		nopickpocket: true,
 		maxblock: 0,
@@ -2485,6 +2517,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Animations: ["squishy"],
 		Sound: {
 			baseAmount: 0,
+			idleSoundName: "SlimeLarge",
 		},
 		maxblock: 0,
 		maxdodge: 0,
@@ -2511,6 +2544,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 3,
+			idleSoundName: "SlimeLarge",
 		},
 		nopickpocket: true,
 		maxblock: 0,
@@ -2542,6 +2576,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 2,
+			idleSoundName: "SlimeLarge",
 		},
 		difficulty: 0.3,
 		squeeze: true, evasion: -0.5, followRange: 1, AI: "ambush", sneakThreshold: 3, ambushRadius: 1.5,
@@ -2566,6 +2601,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 5,
+			idleSoundName: "SlimeLarge",
 		},
 		nopickpocket: true,
 		maxblock: 3,
@@ -2594,6 +2630,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			moveAmount: 4,
+			idleSoundName: "SlimeLarge",
 		},
 		nopickpocket: true,
 		maxblock: 1,
@@ -3833,18 +3870,29 @@ let KinkyDungeonEnemies: enemy[] = [
 		evasion: 0.25, disarm: 0.35,
 		followLeashedOnly: true, ignorechance: 0, armor: 2.5, followRange: 1, AI: "hunt", guardChance: 0.0,
 		visionRadius: 11, maxhp: 50, minLevel:0, weight: -100, movePoints: 1.4, attackPoints: 2, attack: "SpellMeleeWillBindLock",
-		attackWidth: 2.5, attackRange: 1.5, power: 3, dmgType: "slash", fullBoundBonus: 3,
+		attackWidth: 2.5, attackRange: 1.5, power: 3, dmgType: "tickle", fullBoundBonus: 3,
 		stamina: 7,
 		events: [
 			{trigger: "enemyCast", type: "DelayedJump"},
 			{trigger: "tickAfter", type: "WeaponEquip"},
 			{trigger: "enemyKnockdown", type: "MaidKnights"},
 			{trigger: "kill", type: "MaidKnights"},
+			{trigger: "getCustomDefeat", type: "MaidKnights"},
 		],
-		terrainTags: {}, shrines: ["Leather"], floors: {}, // Adventurers don't appear in lairs
+		Defeat: {
+			specificRestraints: [
+				{name: "MaidDress", minlevel: 0},
+				{name: "MaidGag", minlevel: 4},
+				{name: "MaidMuzzle", minlevel: 8},
+				{name: "TrapBoots", minlevel: 2},
+				{name: "TrapHarness", minlevel: 6},
+			],
+		},
 		specialScript: "MaidKnightAndSquire",
 		wanderAISetting: "Targeted",
-		dropTable: []},
+		terrainTags: {}, shrines: ["Leather"], floors: {}, // Adventurers don't appear in lairs
+		dropTable: [{name: "Gold", amountMin: 699, amountMax: 799, weight: 10},
+			{name: "Sweeper", weight: 100, ignoreInInventory: true},]},
 
 	{name: "MaidKnightLight", nameList: "maid",
 		outfit: "MaidKnightLight", style: "MaidKnightLight",
@@ -3859,18 +3907,33 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 4,
 		preferBlock: true, maxdodge: 1,
 		castWhileMoving: true,
+		Defeat: {
+			specificRestraints: [
+				{name: "MaidDress", minlevel: 0},
+				{name: "MaidGag", minlevel: 4, maxlevel: 12},
+				{name: "MaidGag", minlevel: 12, applyVariant: "AntiMagic"},
+				{name: "MaidMuzzle", minlevel: 8},
+				{name: "TrapBoots", minlevel: 2},
+				{name: "TrapHarness", minlevel: 6},
+			],
+		},
 		events: [
 			{trigger: "tickAfter", type: "WeaponEquip"},
 			{trigger: "enemyKnockdown", type: "MaidKnights"},
 			{trigger: "kill", type: "MaidKnights"},
 			{trigger: "tickAfter", type: "MaidKnightFollow"},
+			{trigger: "getCustomDefeat", type: "MaidKnights"},
+
 		],
+		specialScript: "MaidKnightAndSquire",
+		wanderAISetting: "Targeted",
 		spells: ["Aim_MaidKnightLight"], spellCooldownMult: 1, spellCooldownMod: 0,
 		followLeashedOnly: true, ignorechance: 0, armor: 0.8, followRange: 1, AI: "hunt", guardChance: 0.0,
 		visionRadius: 11, maxhp: 40, minLevel:0, weight: -100, movePoints: 1.5, attackPoints: 2, attack: "SpellMeleeWillBindLock",
 		attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 2.5, dmgType: "tickle", fullBoundBonus: 1.5,
 		terrainTags: {}, shrines: ["Leather"], floors: {}, // Adventurers don't appear in lairs
-		dropTable: []},
+		dropTable: [{name: "Gold", amountMin: 399, amountMax: 499, weight: 10},
+			{name: "Persuader", weight: 100, ignoreInInventory: true},]},
 
 
 	// endregion
@@ -4113,9 +4176,11 @@ let KinkyDungeonEnemies: enemy[] = [
 	{name: "StatueDart",
 		tags: KDMapInit(["mimicBlock", "statue", "minor", "melee", "unflinching", "crushweakness",
 			"pierceweakness", "chainresist", "soulimmune"]),
-		immobile: true, spellResist: 0.33, sneakthreshold: 0.6,
-		spells: ["SleepDart"], spellCooldownMult: 1, spellCooldownMod: 20, stopToCast: true, castWhileMoving: true, projectileAttack: true,
-		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush", ambushRadius: 1.5, difficulty: 0.1,
+		immobile: true, spellResist: 0.33, sneakthreshold: 0.3,
+		spells: ["SleepDart"], spellCooldownMult: 1, spellCooldownMod: 30,
+		stopToCast: true, castWhileMoving: true, projectileAttack: true,
+		evasion: -9, ignorechance: 1.0, armor: 2, followRange: 1, AI: "ambush",
+		ambushRadius: 2.1, difficulty: 0.1,
 		nonDirectional: true,
 		GFX: {
 			lighting: true,
@@ -4126,7 +4191,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		nopickpocket: true,
 		noOverrideFloor: true,
 		visionRadius: 8, maxhp: 8, minLevel:5, weight:0, movePoints: 99999, attackPoints: 4, attack: "Spell", attackWidth: 8, attackRange: 3, power: 4, dmgType: "souldrain",
-		terrainTags: {"passage": -999, "temple": 50, "open": 90}, floors:KDMapInit(["tmp"]), shrines: []},
+		terrainTags: {"passage": -999, "temple": 50, "open": 90, increasingWeight: 5}, floors:KDMapInit(["tmp"]), shrines: []},
 
 	// region ancientworship
 	{name: "CuffedGirl", clusterWith: "chaos", bound: "CuffedGirl", playLine: "Gagged", color: "#9564b8",
@@ -4936,6 +5001,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		effect: {
 			effect: {name: "SlimeEngulf", power: 4},
+		},
+		Sound: {
+			idleSoundName: "SlimeLarge2",
 		},
 		maxblock: 0,
 		maxdodge: 0,

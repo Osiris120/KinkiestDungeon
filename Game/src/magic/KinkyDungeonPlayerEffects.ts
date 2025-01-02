@@ -1970,9 +1970,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 	"TrapSleepDart": (_target, _damage, _playerEffect, _spell, _faction, _bullet, _entity) => {
 		let effect = false;
 		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeonTrapSleepDart"), "#ff5277", 8);
-		KDStunTurns(Math.round(8 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
-		KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, Math.round(8 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
-		KinkyDungeonSleepiness = Math.max(KinkyDungeonSleepiness, Math.round(8 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
+		KinkyDungeonApplyBuffToEntity(KDPlayer(), KDPoisonSleep);
 		KinkyDungeonAlert = 5;
 		effect = true;
 		return {sfx: "Damage", effect: effect};

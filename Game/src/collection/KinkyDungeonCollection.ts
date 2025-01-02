@@ -435,6 +435,8 @@ function KDGetCharacterEntity(C: Character): entity {
 	return undefined;
 }
 
+let KDRenameNPC = false;
+
 let KDToggleBigView = false;
 
 /**
@@ -539,6 +541,19 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		DrawTextFitKD(TextGet("KDDressNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 	}
 
+	if (KDGameData.Collection[value.id + ""] && DrawButtonKDEx("renameNPC", () => {
+		if (KDSoundEnabled())
+			AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "Unlock" + ".ogg");
+		KDRenameNPC = !KDRenameNPC;
+		return true;
+	}, true, x - 90, y + 180, 80, 80, "", "#ffffff",
+		KinkyDungeonRootDirectory + "UI/Rename.png", undefined, undefined,
+		!KDRenameNPC, KDButtonColorIntense, undefined, undefined, {
+			centered: true
+		})) {
+		DrawTextFitKD(TextGet("KDRenameNPC"), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
+	}
+
 
 	let sp = (value.sprite || value.type);
 	let dir = "Enemies/";
@@ -561,13 +576,40 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 		dir = value.customSprite ? "Enemies/CustomSprite/" : "Enemies/";
 	}
 
-	DrawTextFitKD(value.name, x + 220, y + 50, 500, "#ffffff", (value.color && value.color != "#ffffff") ? value.color : KDTextGray05, 36);
-
 	if (tab) {
 		DrawTextFitKD(TextGet("KDDrawSelectedTab_" + tab).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
 	} else
 	if (index)
 		DrawTextFitKD(TextGet("KDPrisonerNum_" + KDCollectionTabStatus).replace("NUMR", "" + index).replace("TTL", "" + Object.values(KDGameData.Collection).length), x + 220, y + 15, 500, "#ffffff", KDTextGray05, 18);
+
+
+	if (KDRenameNPC) {
+		let TF = KDTextField("RenameNPC", x + 220 - 150, y + 50 - 36, 300,
+			36, "text", "", "45");
+		if (TF.Created) {
+			TF.Element.oninput = (_event: any) => {
+				KDSendInput("renamenpc", {
+					id: value.id,
+					newName: ElementValue("RenameNPC"),
+				});
+			};
+		}
+		if (value.origname)
+			DrawButtonKDEx("resetname", () => {
+				KDRenameNPC = false;
+				KDSendInput("renamenpc", {
+					id: value.id,
+					newName: value.origname,
+				});
+				return true;
+			}, true, x + 220 - 130, y + 50 + 18, 260, 24, TextGet("KDRenameOrigNPC")
+				.replace("NME", value.origname), "#ffffff");
+	}
+	else DrawTextFitKD(value.name, x + 220, y + 50 + ((tab || index) ? 0 : -12), 500,
+		"#ffffff",
+		(value.color && value.color != "#ffffff") ? value.color : KDTextGray05,
+		36);
+
 
 	if (!KDToggleBigView) {
 		let II = 0;
@@ -882,6 +924,10 @@ let KDCollectionSpacing = 80;
 
 let KDDrawnCollectionInventory: KDCollectionEntry[] = [];
 
+function KDResetCollectionUI() {
+	KDRenameNPC = false;
+}
+
 function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: KDCollectionEntry, X: number, Y: number) => void) {
 	if (!KDGameData.CollectionSorted) KDSortCollection();
 
@@ -1016,6 +1062,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 		if (DrawButtonKDEx(value.name + "_coll," + value.id, (_data) => {
 			KDCollectionSelected = value.id;
+			KDResetCollectionUI();
 			return true;
 		}, true,
 		XX,
@@ -1097,6 +1144,7 @@ function KDDrawCollectionInventory(x: number, y: number, drawCallback?: (value: 
 
 			if (DrawButtonKDEx(value.name + "_guest," + value.id, (_data) => {
 				KDCollectionSelected = value.id;
+				KDResetCollectionUI();
 				return true;
 			}, true,
 			XX,
@@ -1292,7 +1340,9 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Imprison.png",
 		undefined, undefined, entity != undefined,
-			KDNPCUnavailable(value.id, value.status) ? "#ff5555" : KDButtonColor)) {
+			KDNPCUnavailable(value.id, value.status) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+				centered: true,
+			})) {
 			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, "#ffffff",
 				KDTextGray0);
 		}
@@ -1353,7 +1403,9 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Imprison.png",
 		undefined, undefined, entity != undefined,
-			KDNPCUnavailable(value.id, value.status) ? "#ff5555" : KDButtonColor)) {
+			KDNPCUnavailable(value.id, value.status) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+				centered: true,
+			})) {
 			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, "#ffffff",
 				KDTextGray0);
 		}

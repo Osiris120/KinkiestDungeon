@@ -653,6 +653,40 @@ function KDProcessInput(type: string, data: any): string {
 			KinkyDungeonSendEvent("afterShrineBottle", {x: data.x, y: data.y, tile: data.tile});
 			break;
 		}
+		case "renamenpc":
+			{
+				let origname = KDGameData.Collection[data.id]?.origname;
+				if (KDGameData.Collection[data.id]
+					&& KDGameData.Collection[data.id].name != data.newName) {
+					if (!origname) origname = KDGameData.Collection[data.id].name;
+					KDGameData.Collection[data.id].name = data.newName;
+				}
+				if (KDPersistentNPCs[data.id]
+					&& KDPersistentNPCs[data.id].Name != data.newName) {
+					if (!origname) origname = KDPersistentNPCs[data.id].Name;
+					KDPersistentNPCs[data.id].Name = data.newName;
+				}
+				if (KDPersistentNPCs[data.id]?.entity
+					&& KDPersistentNPCs[data.id].entity.CustomName != data.newName) {
+					if (!origname) origname = KDPersistentNPCs[data.id].entity.CustomName;
+					KDPersistentNPCs[data.id].entity.CustomName = data.newName;
+				}
+				if (KDPersistentNPCs[data.id]?.trueEntity
+					&& KDPersistentNPCs[data.id].trueEntity.CustomName != data.newName) {
+					if (!origname) origname = KDPersistentNPCs[data.id].trueEntity.CustomName;
+					KDPersistentNPCs[data.id].trueEntity.CustomName = data.newName;
+				}
+
+				if (origname) {
+					if (KDGameData.Collection[data.id]) {
+						KDGameData.Collection[data.id].origname = origname;
+					}
+					//if (!KDGameData.NamesGenerated) KDGameData.NamesGenerated = {};
+					//delete KDGameData.NamesGenerated[origname];
+					//KDGameData.NamesGenerated[data.newName] = data.id;
+				}
+			}
+			break;
 		case "defeat":
 			KDDelayedActionPrune(["Action", "World"]);
 			KinkyDungeonDefeat(!(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)

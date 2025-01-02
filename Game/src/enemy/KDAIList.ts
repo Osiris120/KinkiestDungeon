@@ -241,7 +241,7 @@ let KDAIType: Record<string, AIType> = {
 		ambushtile: 'X',
 		init: (_enemy, _player, _aiData) => {},
 		beforemove: (enemy, _player, aiData) => {
-			if (aiData.playerDist < 1.5) enemy.ambushtrigger = true;
+			if (aiData.playerDist < (enemy.Enemy?.ambushRadius || 1.5)) enemy.ambushtrigger = true;
 			return false;
 		},
 		chase: (enemy, _player, _aiData) => {return enemy.ambushtrigger;},

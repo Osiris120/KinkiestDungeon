@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.28"
+KDVersionStr,"5.4.29"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -23298,8 +23298,6 @@ KDEscapeMethodDesc_WolfServer,Destroy Nevermere servers to unlock the door.
 KDEscapeDoor_WolfServer,Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
 NameWolfServer,Nevermere Server
 KillWolfServer,Server smashed!
-KDAmbSound_ServerHum,servers humming...
-KDAmbSound_ServerAlarm,blaring siren
 
 KDEscapeMinimap_Fail_DroneNode,Exits locked!|Destroy NUMBER Servers!
 KDEscapeMinimap_Pass_DroneNode,Security System Compromised!
@@ -24048,6 +24046,8 @@ KDToughArmor,"Tough Armor (1/2 crit mult while aware)"
 KDAbsoluteArmor,"Absolute Armor (1/2 crit mult)"
 
 KDDressNPC,Change Outfit
+KDRenameNPC,Rename
+KDRenameOrigNPC,Reset to NME
 KDZoomNPC,Enlarged View
 KDBackToGame,Back to Game
 
@@ -25219,6 +25219,7 @@ KinkyDungeonStatDescFreeBoob2,"Chastity bras are much rarer."
 
 KDFacilitiesLocked,Find an elevator to the Summit in order to access facilities.
 KDFacilityLocal,Visit the Summit to allow additional interactions with this facility.
+KDFacilityLocal2,Must visit the Summit or be in a perk shrine to recycle restraints.
 
 KDFacilityInfo_Training,"+AMNT% Training/Tick"
 KDFacilityInfo_Opinion,"+AMNT% Opinion/Tick"
@@ -26353,6 +26354,29 @@ AttackMaidKnightHeavyBind,The Maid Knight places you in strict bondage!
 AttackMaidKnightLightLock,The Squire secures your restraints!
 AttackMaidKnightHeavyLock,The Maid Knight secures your restraints!
 AttackMaidKnightLight,The Squire dusts you with her duster plug.
-AttackMaidKnightHeavy,The Maid Knight bonks you with her cleaning halberd!
+AttackMaidKnightHeavy,The Maid Knight sweeps you with her cleaning halberd!
 
 KDMaidKnightRetreat,The EnemyName retreats!
+
+
+KDAmbSound_ServerHum,servers humming...
+KDAmbSound_Slime,bouncy noises
+KDAmbSound_SlimeLarge,goopy noises
+KDAmbSound_SlimeLarge2,bubbling noise
+KDAmbSound_Rubber,rubber squeaking
+KDAmbSound_ServerAlarm,blaring siren
+
+ItemPickupSweeper,"You claim the Sweeper."
+KinkyDungeonInventoryItemSweeper,The Sweeper
+KinkyDungeonInventoryItemSweeperDesc,"Foe of the unclean. Bringer of neat and tidy workspaces."
+KinkyDungeonInventoryItemSweeperDesc2,"Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack which deals pierce damage."
+KinkyDungeonSpecialSweeper,Make a ranged attack with the Sweeper.
+
+ItemPickupPersuader,"You claim the Persuader."
+KinkyDungeonInventoryItemPersuader,The Persuader
+KinkyDungeonInventoryItemPersuaderDesc,"Military forces sought a solution with higher stopping power after the Great Work made brute force obsolete. Capture Foam rounds are now the standard."
+KinkyDungeonInventoryItemPersuaderDesc2,"Equipped with a duster plug, it deals tickle damage on melee. Can fire a high caliber rubber bullet to deal 80 glue damage from a distance. Takes 3 turns to reload."
+KinkyDungeonSpecialPersuader,Make a ranged attack with the Persuader for 25 charge. Deals 80 glue damage.
+
+KinkyDungeonSpellPlayerRubberSniper,Persuader Round
+KinkyDungeonSpellCastPlayerRubberSniper,You fire the Persuader!

@@ -476,6 +476,18 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		},
 		jailOutfit: "Bikini",
 	},
+	Adventurer: {
+		customDefeat: "Adventurer",
+		jailAlliedFaction: "Bountyhunter",
+		jailBackupFaction: "Dragonheart",
+		honor: 1,
+		honor_specific: {
+		},
+		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
+			return 0;
+		},
+		jailOutfit: "Bikini",
+	},
 	DollShoppe: {
 		customDefeat: "DollShoppe",
 		jailAlliedFaction: "Dressmaker",

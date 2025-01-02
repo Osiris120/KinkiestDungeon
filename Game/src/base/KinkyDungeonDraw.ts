@@ -3410,8 +3410,11 @@ function DrawButtonVisTo (
 				filters: options?.filters,
 			};
 			if (options?.tint) o['tint'] = options.tint;
+			let centered = options?.centered
+				|| img.orig.width > Width
+				|| img.orig.height > Height
 			KDDraw(Container || kdcanvas, kdpixisprites, Left + "," + Top + Image + "w" + Width + "h" + Height,
-				Image, (options?.centered ? Width/2 - img.orig.width/2 : 2) + Left,
+				Image, (centered ? Width/2 - img.orig.width/2 : 2) + Left,
 				Top + Height/2 - img.orig.height/2, img.orig.width, img.orig.height, undefined, o);
 		}
 		textPush = img.orig.width;
