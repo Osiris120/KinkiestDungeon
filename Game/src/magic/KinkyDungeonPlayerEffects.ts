@@ -2380,7 +2380,7 @@ function KDAdvanceSlime(resetSlimeLevel: boolean, restraint: string = ""): boole
 				}
 				if (!slime2 && (!KinkyDungeonStatsChoice.has("Unmasked") || !KinkyDungeonSlimeParts[index - 1].noUnmasked)) potentialSlimeParts.push({
 					group: KinkyDungeonSlimeParts[index - 1].group,
-					restraint: (restraint ? restraint : "") + KinkyDungeonSlimeParts[index - 1].restraint,
+					restraint: (restraint ? restraint : "Slime") + KinkyDungeonSlimeParts[index - 1].restraint,
 					level: slime.level
 				});
 			}
@@ -2391,7 +2391,7 @@ function KDAdvanceSlime(resetSlimeLevel: boolean, restraint: string = ""): boole
 				}
 				if (!slime3 && (!KinkyDungeonStatsChoice.has("Unmasked") || !KinkyDungeonSlimeParts[index + 1].noUnmasked)) potentialSlimeParts.push({
 					group: KinkyDungeonSlimeParts[index + 1].group,
-					restraint: (restraint ? restraint : "") + KinkyDungeonSlimeParts[index + 1].restraint,
+					restraint: (restraint ? restraint : "Slime") + KinkyDungeonSlimeParts[index + 1].restraint,
 					level: slime.level
 				});
 			}

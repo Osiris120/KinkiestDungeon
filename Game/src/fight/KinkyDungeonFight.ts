@@ -1370,7 +1370,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 			|| !Spell.allySpell)
 		&& (!bullet
 			|| !bullet.spell
-			|| (!bullet.spell.allySpell && !(bullet.spell.enemyspell && bullet.faction != "Player")));
+			|| (!bullet.spell.allySpell && !(bullet.spell.enemySpell && bullet.faction != "Player")));
 
 	KinkyDungeonSendEvent("afterDamageEnemy", predata);
 
@@ -1674,7 +1674,8 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 		if (Allied) KDUniqueBulletHits = new Map();
 
 		for (let b of KDMapData.Bullets) {
-			if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemyspell && b.bullet.faction != "Player")) || (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemyspell && b.bullet.faction != "Player")))) {
+			if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player"))
+				|| (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player")))) {
 				if (b.bullet.followPlayer) {
 					b.x = KinkyDungeonPlayerEntity.x;
 					b.y = KinkyDungeonPlayerEntity.y;
@@ -1749,7 +1750,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 	for (let E = 0; E < KDMapData.Bullets.length; E++) {
 		let b = KDMapData.Bullets[E];
 
-		if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemyspell && b.bullet.faction != "Player")) || (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemyspell && b.bullet.faction != "Player")))) {
+		if ((Allied && b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player")) || (!Allied && !(b.bullet && b.bullet.spell && !(b.bullet.spell.enemySpell && b.bullet.faction != "Player")))) {
 			let d = delta;
 			let first = true;
 			let justBorn = false;
@@ -1757,7 +1758,7 @@ function KinkyDungeonUpdateBullets(delta: number, Allied?: boolean): void {
 			let startx = b.x;
 			let starty = b.y;
 			let end = false;
-			let mod = (b.bullet.spell && !b.bullet.spell.slowStart && (b.bullet.spell.fastStart || (b.bullet.spell.speed > (KDGetSpellRange(b.bullet.spell) || b.bullet.spell.range) * 0.8 && b.bullet.spell.speed > 1) || (!(b.bullet.spell.enemyspell && b.bullet.faction != "Player") && !b.bullet.spell.allySpell && (b.vx != 0 || b.vy != 0)))) ? 1 : 0;
+			let mod = (b.bullet.spell && !b.bullet.spell.slowStart && (b.bullet.spell.fastStart || (b.bullet.spell.speed > (KDGetSpellRange(b.bullet.spell) || b.bullet.spell.range) * 0.8 && b.bullet.spell.speed > 1) || (!(b.bullet.spell.enemySpell && b.bullet.faction != "Player") && !b.bullet.spell.allySpell && (b.vx != 0 || b.vy != 0)))) ? 1 : 0;
 
 			KDBulletEffectTiles(b);
 			KDUpdateBulletEffects(b, 0);
@@ -2613,7 +2614,7 @@ function KinkyDungeonBulletsCheckCollision(bullet: any, AoE: boolean, force: boo
 					hitEnemy = true;
 				}
 			}
-			let nomsg = bullet.bullet && bullet.bullet.spell && (bullet.bullet.spell.enemyspell && bullet.bullet.faction != "Player") && !bullet.reflected;
+			let nomsg = bullet.bullet && bullet.bullet.spell && (bullet.bullet.spell.enemySpell && bullet.bullet.faction != "Player") && !bullet.reflected;
 			for (let enemy of KDMapData.Entities) {
 				let overrideCollide = !bullet.bullet.aoe ? false : (bullet.bullet.spell && bullet.bullet.alwaysCollideTags && bullet.bullet.alwaysCollideTags.some((tag: string) => {return enemy.Enemy.tags[tag];}));
 				if (bullet.bullet.aoe ? KDBulletAoECanHitEntity(bullet, enemy) : KDBulletCanHitEntity(bullet, enemy, inWarningOnly, overrideCollide)) {

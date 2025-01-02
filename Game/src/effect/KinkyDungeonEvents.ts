@@ -3,13 +3,13 @@
 
 let KinkyDungeonAttackTwiceFlag = false;
 let KinkyDungeonSlimeParts = [
-	{ group: "ItemHead", restraint: "SlimeHead", noUnmasked: true },
-	{ group: "ItemMouth", restraint: "SlimeMouth" },
-	{ group: "ItemArms", restraint: "SlimeArms" },
-	{ group: "ItemHands", restraint: "SlimeHands" },
-	{ group: "ItemLegs", restraint: "SlimeLegs" },
-	{ group: "ItemFeet", restraint: "SlimeFeet" },
-	{ group: "ItemBoots", restraint: "SlimeBoots" },
+	{ group: "ItemHead", restraint: "Head", noUnmasked: true },
+	{ group: "ItemMouth", restraint: "Mouth" },
+	{ group: "ItemArms", restraint: "Arms" },
+	{ group: "ItemHands", restraint: "Hands" },
+	{ group: "ItemLegs", restraint: "Legs" },
+	{ group: "ItemFeet", restraint: "Feet" },
+	{ group: "ItemBoots", restraint: "Boots" },
 ];
 let KDAlertCD = 5;
 

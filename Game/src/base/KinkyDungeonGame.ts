@@ -421,7 +421,7 @@ function KDResetData(Data?: KDGameDataBase): void {
 }
 
 function InitPersistentGen() {
-	KDGameData.MaidKnightFloor = Math.floor(1 + KDRandom() * 2);
+	KDGameData.MaidKnightFloor = Math.floor(1 + KDRandom() * 3);
 }
 function KDResetEventData(Data?: any) {
 	if (!Data) Data = KDEventDataBase;

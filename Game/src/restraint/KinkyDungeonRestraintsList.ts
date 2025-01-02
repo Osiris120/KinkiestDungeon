@@ -7587,7 +7587,7 @@ KDAddHardSlimeVariants(
 		Remove: 0.1,
 	},
 	{
-	}, undefined, undefined, "Proto"
+	}, undefined, undefined, "ProtoSlime"
 );
 KDAddHardSlimeVariants(
 	"HardSlime",
