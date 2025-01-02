@@ -186,7 +186,8 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	{name: "DroneNode", faction: "AncientRobot", clusterWith: "robot", color: "#00EFAB", playLine: "Robot",
 		SFX: {death: "SciFiExplode"},
-		tags: KDMapInit(["ignoreharmless", "disarmimmune", "doortrap", "robot", "flying", "drone", "server", "robotServer",
+		tags: KDMapInit(["ignoreharmless",
+			"stunweakness", "disarmimmune", "doortrap", "robot", "flying", "drone", "server", "robotServer",
 			"acidweakness", "soapweakness", "soulresist", "miniboss", "melee", "electricsevereweakness", "coldresist", "iceresist",
 			"slashresist", "crushsevereweakness", "pierceweakness"]),
 		followRange: 4.9, kite: 3.5, difficulty: 0.2,
@@ -209,7 +210,8 @@ let KinkyDungeonEnemies: enemy[] = [
 	},
 	{name: "OldDroneNode", faction: "Enemy", clusterWith: "oldrobot", color: "#ff5277", playLine: "Robot",
 		SFX: {death: "SciFiExplode"},
-		tags: KDMapInit(["ignoreharmless", "disarmimmune", "doortrap", "robot", "oldrobot", "flying", "drone", "server", "robotServer",
+		tags: KDMapInit(["ignoreharmless",
+			"stunweakness", "disarmimmune", "doortrap", "robot", "oldrobot", "flying", "drone", "server", "robotServer",
 			"acidweakness", "soapweakness", "soulresist", "miniboss", "melee", "electricsevereweakness", "coldresist", "iceresist",
 			"slashresist", "crushsevereweakness", "pierceweakness"]),
 		followRange: 4.9, kite: 3.5, difficulty: 0.2,
@@ -232,6 +234,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			"server", "immobile", "wolfServer",
 			"noknockback", "melee",
 			"nofidget", "notalk",
+			"stunweakness",
 			"nonvulnerable", "nobrain",
 			"passivesignal",
 			"acidweakness", "soapsevereweakness"]),
@@ -3852,7 +3855,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	//region MaidKnight
 
-	{name: "MaidKnightHeavy", nameList: "maid",
+	{name: "MaidKnightHeavy", nameList: "MaidKnightHeavy",
 		outfit: "MaidKnightHeavy", style: "MaidKnightHeavy",
 		clusterWith: "adventurer",
 		bound: "MaidKnightHeavy",
@@ -3894,7 +3897,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		dropTable: [{name: "Gold", amountMin: 699, amountMax: 799, weight: 10},
 			{name: "Sweeper", weight: 100, ignoreInInventory: true},]},
 
-	{name: "MaidKnightLight", nameList: "maid",
+	{name: "MaidKnightLight", nameList: "MaidKnightLight",
 		outfit: "MaidKnightLight", style: "MaidKnightLight",
 		clusterWith: "adventurer",
 		bound: "MaidKnightLight", color: "#ffffff",

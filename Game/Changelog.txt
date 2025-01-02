@@ -43,6 +43,7 @@ Note to Modders: if your mod alters the function KDFreeNPC you will have to reim
 - added the Sweeper and the Persuader
 - maid knights rescue each other if they defeat you
 - added rename NPC
+- Added santa hat, festive harness fashion restraint
 
 5.4.28
 - Fixed a few bugs

@@ -1321,6 +1321,40 @@ AddModel({
 	])
 });
 
+
+AddModel({
+	Name: "SantaHat",
+	Folder: "Festive",
+	Parent: "SantaHat",
+	TopLevel: true,
+	Categories: ["Hats"],
+	Layers: ToLayerMap([
+		{ Name: "Hat", Layer: "Hat", Pri: 85,
+			HideWhenOverridden: true,
+			Invariant: true,
+			MorphPoses: {Hogtie: "Hogtie"},
+		},
+		{ Name: "HatBack", Layer: "HatBack", Pri: 85,
+			HideWhenOverridden: true,
+			Invariant: true,
+			Poses: {Hogtie: true},
+		},
+		{ Name: "Fluff", Layer: "Hat", Pri: 84.9,
+			NoOverride: true,
+			Invariant: true,
+			TieToLayer: "Hat",
+			MorphPoses: {Hogtie: "Hogtie"},
+		},
+		{ Name: "Orb", Layer: "Hat", Pri: 84.9,
+			NoOverride: true,
+			Invariant: true,
+			TieToLayer: "Hat",
+			MorphPoses: {Hogtie: "Hogtie"},
+			SwapLayerPose: {Hogtie: "HatBack"},
+		},
+	])
+});
+
 AddModel({
 	Name: "WitchHat",
 	Folder: "Witch",
