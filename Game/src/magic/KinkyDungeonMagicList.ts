@@ -3186,7 +3186,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		projectileTargeting:true, piercing: true, noTerrainHit: true, noEnemyCollision: true, onhit:"aoe", power: 4, delay: 0, range: 1.5, aoe: 1.5, size: 3, lifetime:1, damage: "soul", speed: 1, time: 2,
 		playerEffect: {name: "CrystalBind", time: 1, count: 2},
 	},
-	{name: "HeavySlash", tags: ["aoe", "offense", "physical"], landsfx: "HeavySwing", school: "Any",
+	{name: "HeavySlash", tags: ["aoe", "offense", "physical"], landsfx: "HeavySwing2", school: "Any",
 		manacost: 2.5, components: ["Arms"], level:1, type:"bolt",
 		minRange: 0,
 		color: "#aaaaaa",

@@ -6383,7 +6383,8 @@ function KDCanPassEnemy(_player: entity, Enemy: entity): boolean {
 				(KDGameData.FocusControlToggle.AutoPassAllies || !(KDAllied(Enemy))) &&
 				(KDGameData.FocusControlToggle.AutoPassNeutral || !(!KDAllied(Enemy) && !KDAllied(Enemy))) &&
 				(KDGameData.FocusControlToggle.AutoPassShop || !(KDEnemyHasFlag(Enemy, "Shop"))) &&
-				(KDGameData.FocusControlToggle.AutoPassSpecial || !(Enemy.specialdialogue || Enemy.Enemy.specialdialogue)) &&
+				(KDGameData.FocusControlToggle.AutoPassSpecial || !(Enemy.specialdialogue ||
+					(Enemy.prisondialogue && KDIsImprisoned(Enemy)) || Enemy.Enemy.specialdialogue)) &&
 				(KDGameData.FocusControlToggle.AutoPassSummons || !(Enemy.Enemy.allied))
 			)
 		))

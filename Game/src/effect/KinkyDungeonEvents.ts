@@ -9278,7 +9278,83 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 			}
 		},
 	},
+
+	"kill": {
+		MaidKnights:  (_e, enemy, data) => {
+			if (enemy != data.enemy) {
+				let npc = KDGetPersistentNPC(enemy.id);
+				if (data.enemy.id == npc?.data?.MaidKnightLightID
+					|| data.enemy.id == npc?.data?.MaidKnightHeavyID
+				) {
+					// Retreat!
+					if (KinkyDungeonVisionGet(enemy.x, enemy.y) > 0.1) {
+						KinkyDungeonSendTextMessage(10, TextGet("KDMaidKnightRetreat")
+							.replace("EnemyName", TextGet("Name" + data.enemy)),
+							"#ffffff", 7);
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg", undefined);
+
+					}
+					KDFreeNPC(enemy);
+					let enType = KinkyDungeonGetEnemyByName(enemy.Enemy?.name);
+					enemy.hp = enType.maxhp;
+					enemy.specialBoundLevel = {};
+					enemy.boundLevel = 0;
+					KDDespawnEnemy(enemy, undefined);
+				}
+			}
+		},
+	},
+	"enemyKnockdown": {
+		MaidKnights:  (_e, enemy, data) => {
+			if (enemy != data.enemy) {
+				let npc = KDGetPersistentNPC(enemy.id);
+				if (data.enemy.id == npc?.data?.MaidKnightLightID
+					|| data.enemy.id == npc?.data?.MaidKnightHeavyID
+				) {
+					// Retreat!
+					if (KinkyDungeonVisionGet(enemy.x, enemy.y) > 0.1) {
+						KinkyDungeonSendTextMessage(10, TextGet("KDMaidKnightRetreat")
+							.replace("EnemyName", TextGet("Name" + data.enemy)),
+							"#ffffff", 7);
+						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg", undefined);
+
+					}
+					KDFreeNPC(enemy);
+					let enType = KinkyDungeonGetEnemyByName(enemy.Enemy?.name);
+					enemy.hp = enType.maxhp;
+					enemy.specialBoundLevel = {};
+					enemy.boundLevel = 0;
+					KDDespawnEnemy(enemy, undefined);
+				}
+			}
+		},
+	},
 	"tickAfter": {
+		"MaidKnightFollow":  (_e, enemy, _data) => {
+			if (!KDEnemyHasFlag(enemy, "followMK") && !KDEnemyHasFlag(enemy, "overrideMove")
+				&& !KDIsInPartyID(enemy.id)) {
+				KinkyDungeonSetEnemyFlag(enemy, "followMK", 10);
+				let npc = KDGetPersistentNPC(enemy.id);
+				if (npc.data?.MaidKnightHeavyID) {
+					let target = KinkyDungeonFindID(npc.data.MaidKnightHeavyID);
+					if (target) {
+						if (!enemy.partyLeader) {
+							// Add to party if not already
+							KDChangeParty(enemy.id, target.id);
+						}
+						let point = KinkyDungeonGetNearbyPoint(target.x, target.y, true);
+						if (point) {
+							enemy.gx = point.x;
+							enemy.gy = point.y;
+						} else {
+							enemy.gx = target.x;
+							enemy.gy = target.y;
+						}
+					}
+				}
+
+			}
+		},
 		"WeaponEquip":  (_e, enemy, _data) => {
 			if (enemy.aware && KinkyDungeonAggressive(enemy, KDPlayer())) {
 				KinkyDungeonApplyBuffToEntity(enemy, KDEquip);

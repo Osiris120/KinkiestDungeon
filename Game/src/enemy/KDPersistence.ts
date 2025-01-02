@@ -54,7 +54,13 @@ interface KDPersistentNPC {
 	nextSpawnTick?: number,
 	nextScriptTick?: number,
 
-	data?: Record<string, any>
+	data?: PersistentNPCData,
+}
+
+interface PersistentNPCData {
+	wanderTarget?: WorldCoord,
+	MaidKnightHeavyID?: number,
+	MaidKnightLightID?: number,
 }
 
 /** Returns whether or not the NPC was found and data was successfully pushed */
@@ -197,8 +203,10 @@ function KDPopEnemyPartyMember(pmid: number, partyid: number, freeFromParty?: bo
 
 /** Despawns all party members belonging to the party ID */
 function KDDespawnParty(partyid: number, mapData: KDMapDataType) {
+	let pleader = KinkyDungeonFindID(partyid, mapData);
 	for (let en of mapData.Entities) {
-		if (en.partyLeader == partyid && KDEnemyCanDespawn(en.id, mapData)) {
+		if (en.partyLeader == partyid && KDEnemyCanDespawn(en.id, mapData,
+			pleader ? KDistChebyshev(en.x - pleader.x, en.y - pleader.y) : undefined)) {
 			KDRemoveEntity(en, false, false, true, undefined, mapData);
 		}
 	}
@@ -285,12 +293,18 @@ function KDWatchMainPersistent() {
 				KDMakePersistent(en, undefined, true);
 			KDRunCreationScript(en, KDGetCurrentLocation());
 		}
-		let en2 = DialogueCreateEnemy(point.x, point.y,"MaidKnightLight");
+		let en2 = DialogueCreateEnemy(nearpoint.x, nearpoint.y,"MaidKnightLight");
 		if (en2) {
 			KinkyDungeonSetEnemyFlag(en2, "led", -1);
 			if (!KDProcessCustomPatron(en2.Enemy, en2, 0.2, true))
 				KDMakePersistent(en2, undefined, true);
 			KDRunCreationScript(en2, KDGetCurrentLocation());
+			en2.master = {
+				range: 4.5,
+				loose: true,
+				type: "MaidKnightHeavy",
+				aggressive: true,
+			};
 		}
 		if (en && en2) {
 			let npc = KDGetPersistentNPC(en.id);
@@ -690,7 +704,8 @@ function KDWanderPersistentNPCs(coord: WorldCoord, searchEntities: boolean): num
 		// only spawn NPCs that are in the level
 		for (let id of cache) {
 			let PNPC = KDGetPersistentNPC(id, undefined, false);
-			if (PNPC) { //  && !PNPC.spawned
+			// Only wander if the party leader isnt on the floor
+			if (PNPC && (!PNPC.partyLeader || !cache.includes(PNPC.partyLeader))) { //  && !PNPC.spawned
 				let wanderAI = PNPC.wanderAI || "GoToMain";
 				let AI = KDPersistentWanderAIList[wanderAI];
 				if (AI && AI.filter(id, data)) {

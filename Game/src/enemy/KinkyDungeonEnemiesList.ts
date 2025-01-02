@@ -133,7 +133,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		events: [
 			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "LatexThin", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 		],
-		visionRadius: 6, maxhp: 6, minLevel:0, weight:-1000, movePoints: 2.5, attackPoints: 3, attack: "SpellMeleeBlindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "acid", fullBoundBonus: 1, blindTime: 3,
+		visionRadius: 6, maxhp: 6, minLevel:0, weight:-1000, movePoints: 2.5, attackPoints: 3, attack: "SpellMeleeBlindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "glue", fullBoundBonus: 1, blindTime: 3,
 		terrainTags: {pink: 1100}, shrines: ["Latex"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "SlimeRaw", amount: 3, weight: 10}]},
 
@@ -1530,7 +1530,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Resistance: {
 			profile: ["alchemist"],
 		},
-		visionRadius: 6, maxhp: 6, minLevel:0, weight:1, movePoints: 2.5, attackPoints: 3, attack: "SpellMeleeBlindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "acid", fullBoundBonus: 1, blindTime: 3,
+		visionRadius: 6, maxhp: 6, minLevel:0, weight:1, movePoints: 2.5, attackPoints: 3, attack: "SpellMeleeBlindLock", attackWidth: 1, attackRange: 1, power: 1, dmgType: "grope", fullBoundBonus: 1, blindTime: 3,
 		terrainTags: {"secondhalf":2, "thirdhalf":-4, "latexAnger": 4, "latexRage": 4, "latexPleased": 2, "latexFriendly": 2, "alchemist": 40}, shrines: ["Latex"], allFloors: true,
 		dropTable: [{name: "Gold", amountMin: 5, amountMax: 10, weight: 10}, {name: "Gunpowder", amount: 1, weight: 7}]},
 
@@ -3837,9 +3837,13 @@ let KinkyDungeonEnemies: enemy[] = [
 		stamina: 7,
 		events: [
 			{trigger: "enemyCast", type: "DelayedJump"},
-			{trigger: "tickAfter", type: "WeaponEquip"}
+			{trigger: "tickAfter", type: "WeaponEquip"},
+			{trigger: "enemyKnockdown", type: "MaidKnights"},
+			{trigger: "kill", type: "MaidKnights"},
 		],
 		terrainTags: {}, shrines: ["Leather"], floors: {}, // Adventurers don't appear in lairs
+		specialScript: "MaidKnightAndSquire",
+		wanderAISetting: "Targeted",
 		dropTable: []},
 
 	{name: "MaidKnightLight", nameList: "maid",
@@ -3856,7 +3860,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		preferBlock: true, maxdodge: 1,
 		castWhileMoving: true,
 		events: [
-			{trigger: "tickAfter", type: "WeaponEquip"}
+			{trigger: "tickAfter", type: "WeaponEquip"},
+			{trigger: "enemyKnockdown", type: "MaidKnights"},
+			{trigger: "kill", type: "MaidKnights"},
+			{trigger: "tickAfter", type: "MaidKnightFollow"},
 		],
 		spells: ["Aim_MaidKnightLight"], spellCooldownMult: 1, spellCooldownMod: 0,
 		followLeashedOnly: true, ignorechance: 0, armor: 0.8, followRange: 1, AI: "hunt", guardChance: 0.0,
@@ -6398,6 +6405,9 @@ let SpecialPersistentScriptSettingList: Record<string, (npc: KDPersistentNPC, en
 	Dragon: (npc: KDPersistentNPC, enemy: enemy) => {
 		return "Dragon";
 	},
+	MaidKnightAndSquire: (npc: KDPersistentNPC, enemy: enemy) => {
+		return "MaidKnightAndSquire";
+	},
 }
 let SpawnAISettingList: Record<string, (npc: KDPersistentNPC, enemy: enemy) => string> = {
 	Default: (npc: KDPersistentNPC, enemy: enemy) => {
@@ -6423,5 +6433,8 @@ let WanderAISettingList: Record<string, (npc: KDPersistentNPC, enemy: enemy) => 
 	},
 	Dragon: (npc: KDPersistentNPC, enemy: enemy) => {
 		return "Dragon";
+	},
+	Targeted: (npc: KDPersistentNPC, enemy: enemy) => {
+		return "Targeted";
 	},
 }

@@ -56,9 +56,10 @@ let KDPersistentWanderAIList: Record<string, PersistentWanderAI> = {
 
 				let halt = false;
 				if (entity) {
-					if (KDEnemyCanDespawn(id, mapData))
+					if (KDEnemyCanDespawn(id, mapData)) {
+						KDDespawnParty(entity.id, mapData);
 						KDRemoveEntity(entity, false, false, true, undefined, mapData);
-					else {
+					} else {
 						let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
 							entity.x, entity.y, mapData, true
 						);
@@ -252,9 +253,10 @@ function KDStandardWander(id: number, mapData: KDMapDataType, entity: entity, AI
 		// Despawn first
 		let halt = false;
 		if (entity) {
-			if (KDEnemyCanDespawn(id, mapData))
+			if (KDEnemyCanDespawn(id, mapData)){
+				KDDespawnParty(entity.id, mapData);
 				KDRemoveEntity(entity, false, false, true, undefined, mapData);
-			else {
+			} else {
 				let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
 					entity.x, entity.y, mapData, true
 				);
@@ -390,9 +392,10 @@ function KDStandardLairWander(id: number, mapData: KDMapDataType, entity: entity
 
 		let halt = false;
 		if (entity) {
-			if (KDEnemyCanDespawn(id, mapData))
+			if (KDEnemyCanDespawn(id, mapData)){
+				KDDespawnParty(entity.id, mapData);
 				KDRemoveEntity(entity, false, false, true, undefined, mapData);
-			else {
+			} else {
 				let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
 					entity.x, entity.y, mapData, true
 				);
@@ -520,9 +523,10 @@ function KDStandardTargetedWander(id: number, mapData: KDMapDataType, entity: en
 
 		let halt = false;
 		if (entity) {
-			if (KDEnemyCanDespawn(id, mapData))
+			if (KDEnemyCanDespawn(id, mapData)){
+				KDDespawnParty(entity.id, mapData);
 				KDRemoveEntity(entity, false, false, true, undefined, mapData);
-			else {
+			} else {
 				let exit = KDGetNearestExitTo(targetPosition.room, targetPosition.mapX, targetPosition.mapY,
 					entity.x, entity.y, mapData, true
 				);

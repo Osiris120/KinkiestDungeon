@@ -35,6 +35,12 @@ TODO Add Cuddle play type
 - Mana cost of spells
 - decay per faction
 
+Note to Modders: if your mod alters the function KDFreeNPC you will have to reimplement some new functionality added, to avoid bugs!
+5.4.29
+- TODO Strip search now triggers when thrown in jail on regular floors
+- Many bug fixes
+- TODO Added wandering maid knight & squire
+
 5.4.28
 - Fixed a few bugs
 - Added strip search dialogue

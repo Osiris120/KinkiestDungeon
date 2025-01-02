@@ -354,7 +354,9 @@ function KDEnemyHidden(enemy: entity): boolean {
 	return KDEnemyHasFlag(enemy, "hidden");
 }
 
-function KDEnemyCanDespawn(id: number, mapData: KDMapDataType): boolean {
+let KDDespawnPartyDist = 6;
+
+function KDEnemyCanDespawn(id: number, mapData: KDMapDataType, PMDist?: number): boolean {
 	let en = KDGetGlobalEntity(id)
 	if (en && KDIsImprisoned(en)) return false;
 	if (mapData != KDMapData) return !en || !KDEnemyHasFlag(en, "no_pers_wander"); // TODO make this a bit more complex
@@ -364,7 +366,7 @@ function KDEnemyCanDespawn(id: number, mapData: KDMapDataType): boolean {
 		&& (mapData != KDMapData ||
 		(KinkyDungeonVisionGet(entity.x, entity.y) < 0.1
 		&& KDistChebyshev(entity.x - KDPlayer().x, entity.y - KDPlayer().y) >= KDDespawnDistance)
-		|| KDEnemyNearTargetExit(entity, mapData));
+		|| (PMDist ? PMDist < KDDespawnPartyDist : KDEnemyNearTargetExit(entity, mapData)));
 }
 
 function KDEnemyNearTargetExit(entity: entity, mapData: KDMapDataType): boolean {
@@ -2150,9 +2152,9 @@ function KDSetToExpectedBondage(en: entity, mode: number = 0) {
  * @param en
  */
 function KDFreeNPC(en: entity) {
-	if (en.prisondialogue)
+	if (en.prisondialogue) {
 		en.prisondialogue = undefined;
-	else if (en.specialdialogue && KDEnemyHasFlag(en, "imprisoned")) {
+	} else if (en.specialdialogue && KDEnemyHasFlag(en, "imprisoned")) {
 		en.specialdialogue = undefined;
 	}
 	KinkyDungeonSetEnemyFlag(en, "imprisoned", 0);
@@ -5686,26 +5688,31 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							if (!KDEnemyHasFlag(enemy, "wander")) {
 								if (!AIData.master && wanderfar) {
 									if (!AIType.wanderfar_func || !AIType.wanderfar_func(enemy, player, AIData)) {
-										// long distance hunt
-										let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((X, Y) => {
-											return KDistChebyshev(enemy.x - X, enemy.y - Y) < 24;
-										}, false,
-										enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
-										if (newPoint) {
-											// Gravitate toward interesting stuff
-											let np =
-												(['guard', 'ambush', 'looseguard'].includes(KDGetAI(enemy)))
-												? KDGetNearestGuardLabel(newPoint.x, newPoint.y, enemy, undefined, false, "Patrol", 8)
-												: KDGetNearestInterestingLabel(newPoint.x, newPoint.y, enemy, undefined, false, "Patrol", 8);
-											if (np) {
-												newPoint.x = np.x;
-												newPoint.y = np.y;
-												np.assigned = enemy.id;
+										if (enemy.partyLeader && KDWanderFarEnemyParty(enemy)) {
+											// Nothing!
+										} else {
+											// long distance hunt
+											let newPoint = KinkyDungeonGetRandomEnemyPointCriteria((X, Y) => {
+												return KDistChebyshev(enemy.x - X, enemy.y - Y) < 24;
+											}, false,
+											enemy.tracking && KinkyDungeonHuntDownPlayer && KDGameData.PrisonerState != "parole" && KDGameData.PrisonerState != "jail");
+											if (newPoint) {
+												// Gravitate toward interesting stuff
+												let np =
+													(['guard', 'ambush', 'looseguard'].includes(KDGetAI(enemy)))
+													? KDGetNearestGuardLabel(newPoint.x, newPoint.y, enemy, undefined, false, "Patrol", 8)
+													: KDGetNearestInterestingLabel(newPoint.x, newPoint.y, enemy, undefined, false, "Patrol", 8);
+												if (np) {
+													newPoint.x = np.x;
+													newPoint.y = np.y;
+													np.assigned = enemy.id;
+												}
+												enemy.gx = newPoint.x;
+												enemy.gy = newPoint.y;
+												KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 											}
-											enemy.gx = newPoint.x;
-											enemy.gy = newPoint.y;
-											KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
 										}
+
 									}
 									KinkyDungeonSetEnemyFlag(enemy, "wander", AIType.wanderDelay_long(enemy) || 50);
 								} else if (wandernear) {
@@ -10250,4 +10257,20 @@ function KDIsNearbyFurniture(enemy: entity, dist: number) {
 	let furn = KinkyDungeonNearestJailPoint(enemy.x, enemy.y, ["furniture"], undefined, undefined, true);
 
 	return furn && KDistChebyshev(enemy.x - furn.x, enemy.y - furn.y) <= dist;
+}
+
+/** Wanders toward party leader */
+function KDWanderFarEnemyParty(enemy: entity) {
+	// long distance hunt
+	let pm = KinkyDungeonFindID(enemy.partyLeader);
+	if (pm) {
+		let newPoint = KinkyDungeonGetNearbyPoint(pm.x, pm.y, true);
+		if (newPoint) {
+			enemy.gx = newPoint.x;
+			enemy.gy = newPoint.y;
+			KinkyDungeonSetEnemyFlag(enemy, "genpath", 0);
+			return true;
+		}
+	}
+	return false;
 }

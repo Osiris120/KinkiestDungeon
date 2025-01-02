@@ -1307,6 +1307,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 				else if (KDLoosePersonalities.includes(Enemy.personality)) Thought = "Play";
 				if (!(Enemy.boundLevel > 0)) KDAddThought(Enemy.id, Thought, 6, 3);
 				KDAddThought(Enemy.id, Thought, 6, 3);
+				KinkyDungeonSendEvent("enemyKnockdown", predata);
 				KDDamageQueue.push({floater: TextGet("KDHelpless"), Entity: Enemy, Color: "#ff5555", Time: 2, Delay: Delay});
 			}
 			if (killed)

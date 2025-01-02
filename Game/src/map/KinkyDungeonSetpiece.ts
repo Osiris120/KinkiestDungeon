@@ -952,7 +952,7 @@ function SetpieceSpawnPrisoner(x: number, y: number, persistentOnly?: boolean, l
 				lock: lock,
 				id: KinkyDungeonGetItemID(),
 				faction: KDGetMainFaction() || "Jail",
-			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction())) {
+			} : undefined, furn?.restraintSetTags, faction || furn?.forceFaction || KDGetMainFaction(), true)) {
 				e.faction = "Prisoner";
 				e.boundLevel = e.hp * 11;
 				//e.prisondialogue = "PrisonerJail";
@@ -1161,8 +1161,8 @@ function KDGetNPCRestraintJailDialogueType(restraint: NPCRestraint) {
  * @param [restraint]
  */
 function KDImprisonEnemy(e: entity, noJam: boolean, dialogue: string = "auto",
-	restraint?: NPCRestraint, restraintSet?: Record<string, number>, faction: string = ""): boolean {
-	if (!e || !KDCapturable(e)) return false;
+	restraint?: NPCRestraint, restraintSet?: Record<string, number>, faction: string = "", force?: boolean): boolean {
+	if (!e || (!force && !KDCapturable(e))) return false;
 	if (dialogue == 'auto') {
 		if (restraint) {
 			dialogue = KDGetNPCRestraintJailDialogueType(restraint);
