@@ -1117,7 +1117,7 @@ function KinkyDungeonLoad(): void {
 			KDrandomizeSeed(false);
 			if (KDPatched) {
 				// Default player character for legacy reasons
-				KinkyDungeonPlayer = suppressCanvasUpdate(() => CharacterLoadNPC(0, localStorage.getItem("PlayerName") || "Ada"));
+				KinkyDungeonPlayer = CharacterLoadNPC(0, localStorage.getItem("PlayerName") || "Ada");
 			}
 
 			KDLoadToggles();
@@ -1249,10 +1249,7 @@ function KinkyDungeonLoad(): void {
 
 			CharacterAppearanceRestore(KinkyDungeonPlayer, appearance, false, true);
 
-			if (KDPatched)
-				suppressCanvasUpdate(() => CharacterReleaseTotal(KinkyDungeonPlayer));
-			else
-				CharacterReleaseTotal(KinkyDungeonPlayer);
+			CharacterReleaseTotal(KinkyDungeonPlayer);
 
 
 			CharacterRefresh(KinkyDungeonPlayer);
@@ -1261,10 +1258,7 @@ function KinkyDungeonLoad(): void {
 			KinkyDungeonInitializeDresses();
 			KinkyDungeonDressSet();
 
-			if (KDPatched)
-				suppressCanvasUpdate(() => CharacterNaked(KinkyDungeonPlayer));
-			else
-				CharacterNaked(KinkyDungeonPlayer);
+			CharacterNaked(KinkyDungeonPlayer);
 
 			KDRefreshCharacter.set(KinkyDungeonPlayer, true);
 			KinkyDungeonDressPlayer();

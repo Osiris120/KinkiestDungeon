@@ -1404,11 +1404,12 @@ function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Pos
 		return (
 			!entry[2]
 			|| !Model.Properties
-			|| (!Model.Properties[KDLayerPropName(Layer, Poses)] && !Model.Properties[Layer.InheritColor || Layer.Name])
-			|| ((Model.Properties[KDLayerPropName(Layer, Poses)]
-					&&!Model.Properties[KDLayerPropName(Layer, Poses)][entry[2]])
-				&& (Model.Properties[Layer.InheritColor || Layer.Name]
-					&& !Model.Properties[Layer.InheritColor || Layer.Name][entry[2]])
+			|| (!Model.Properties[KDLayerPropName(Layer, Poses)]
+				&& !Model.Properties[Layer.InheritColor || Layer.Name])
+			|| ((!Model.Properties[KDLayerPropName(Layer, Poses)]
+					|| !Model.Properties[KDLayerPropName(Layer, Poses)][entry[2]])
+				&& (!Model.Properties[Layer.InheritColor || Layer.Name]
+					|| !Model.Properties[Layer.InheritColor || Layer.Name][entry[2]])
 				)
 				)
 			&& (

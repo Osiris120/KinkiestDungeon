@@ -828,9 +828,6 @@ function KDCharacterAppearanceNaked(C: Character): void {
 		}
 	}
 
-
-	// Loads the new character canvas
-	CharacterLoadCanvas(C);
 }
 
 /**

@@ -50,14 +50,20 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			HiddenRooms: {},
 		};
 
-		// We make it so basically map mods cant repeat for the same 3 generated tiles in a row
-		// Helps shake things up randomly
-		if (KDMapModRefreshList.length == 0) {
-			KDMapModRefreshList = KDGetMapGenList(3, KDMapMods, slot);
+		let MapMod = "";
+
+		if (y > 1 || KinkyDungeonNewGame > 0) {
+			// We make it so basically map mods cant repeat for the same 3 generated tiles in a row
+			// Helps shake things up randomly
+			if (KDMapModRefreshList.length == 0) {
+				KDMapModRefreshList = KDGetMapGenList(3, KDMapMods, slot);
+			}
+			let index = Math.floor(KDRandom() * KDMapModRefreshList.length);
+			MapMod = KDMapModRefreshList[index]?.name;
+			KDMapModRefreshList.splice(index, 1);
 		}
-		let index = Math.floor(KDRandom() * KDMapModRefreshList.length);
-		let MapMod = KDMapModRefreshList[index]?.name;
-		KDMapModRefreshList.splice(index, 1);
+
+
 
 
 		slot.MapMod = MapMod;
@@ -77,16 +83,25 @@ let KDJourneySlotTypes : Record<string, (Predecessor: KDJourneySlot, x: number, 
 			let sideTop = KDGetSideRoom(slot, true, slot.SideRooms);
 			if (sideTop) {
 				slot.SideRooms.push(sideTop.name);
+				let side = sideTop;
+				if (side.hidden)
+					slot.HiddenRooms[side.name] = true;
 			}
 			let sideBot = KDGetSideRoom(slot, false, slot.SideRooms);
 			if (sideBot) {
 				slot.SideRooms.push(sideBot.name);
+				let side = sideBot;
+				if (side.hidden)
+					slot.HiddenRooms[side.name] = true;
 			}
 		} else if (y == 1) {
 			let sideTop = KDGetSideRoom(slot, true, slot.SideRooms, "elevatorstart");
 			if (!sideTop) sideTop = KDSideRooms.ElevatorEgyptian;
 			if (sideTop) {
 				slot.SideRooms.push(sideTop.name);
+				let side = sideTop;
+				if (side.hidden)
+					slot.HiddenRooms[side.name] = true;
 			}
 		}
 
@@ -338,6 +353,9 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 				if (!KDSideRooms[slot.SideRooms[i]]) continue;
 				if (iter >= 4) continue;
 				let sprite = "UI/SideRoom/" + slot.SideRooms[i];
+				if (slot.HiddenRooms && slot.HiddenRooms[KDSideRooms[slot.SideRooms[i]].name]) {
+					sprite = "UI/SideRoom/Unknown";
+				}
 				KDDraw(kdcanvas, kdpixisprites, "navsideroom" + i + "_" + slot.x + ',' + slot.y,
 					KinkyDungeonRootDirectory + sprite + '.png',
 					xOffset + ScaleX*(slot.x - X) - spriteSize/2,
@@ -489,7 +507,8 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 		if (selectedJourney.SideRooms && selectedJourney.SideRooms.length > 0) {
 			DrawTextFitKD(TextGet("KDNavMap_SideRooms"), x + 220, y + off + spacing*II++, 500, "#ffffff", KDTextGray05, fontsize);
 			for (let sr of selectedJourney.SideRooms) {
-				let str = TextGet("KDSideRoom_" + (sr || ""));
+				let str = selectedJourney.HiddenRooms && selectedJourney.HiddenRooms[sr] ? TextGet("KDUnknown")
+					: TextGet("KDSideRoom_" + (sr || ""));
 				if (KDPersonalAlt[sr]) {
 					str = KDGetLairName(sr);
 

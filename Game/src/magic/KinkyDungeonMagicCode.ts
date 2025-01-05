@@ -193,7 +193,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 		return "Fail";
 	},
 	"Charge": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
-		let cost = KDAttackCost() + KDSprintCost();
+		let cost = KDAttackCost().attackCost + KDSprintCost();
 		let en = KinkyDungeonEntityAt(targetX, targetY);
 		let space = false;
 		let dash_x = targetX;
@@ -234,6 +234,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							let yy = en.y;
 							KDMoveEntity(en, push_x, push_y, false);
 							KDMovePlayer(xx, yy, true, true);
+							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
+							KinkyDungeonRemoveBuffsWithTag(KDPlayer(), ["displaceend"]);
 							failPush = false;
 						} else if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
 							KDMovePlayer(dash_x, dash_y, true, true);
@@ -986,6 +988,8 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 								KDCreateParticle(en.x, en.y, "ElasticGripHit");
 							}
 							KinkyDungeonSetEnemyFlag(en, "takeFF", 2);
+
+							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
 						}
 					} else break;
 				}
@@ -1234,6 +1238,10 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 					KDMovePlayer(en.x, en.y, true, false, false, true);
 					KDMoveEntity(en, newX, newY, false, false, KDHostile(en));
+
+					KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
+					KinkyDungeonRemoveBuffsWithTag(KDPlayer(), ["displaceend"]);
+
 
 					KinkyDungeonSetEnemyFlag(en, "takeFF", 3);
 					KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
@@ -1486,7 +1494,12 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 					}, false, true, undefined, undefined, entity);
 					// Get a point near the target point
 					let point = KinkyDungeonEntityAt(tX, tY) ? KinkyDungeonGetNearbyPoint(tX, tY, true, undefined, true) : {x:tX, y:tY};
-					if (point) KDMoveEntity(en, point.x, point.y, false, true);
+					if (point) {
+						KDMoveEntity(en, point.x, point.y, false, true);
+
+						KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
+						KinkyDungeonRemoveBuffsWithTag(KDPlayer(), ["displaceend"]);
+					}
 				}
 			}
 			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell)/2);

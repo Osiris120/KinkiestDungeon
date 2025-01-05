@@ -1729,7 +1729,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 				{type: "BlindAll", trigger: "bulletHitEnemy", time: 31},
 			],
 			noise: 10, sfx: "FireSpell", school: "Illusion", manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 2, power: 1, range: 2.5, size: 5, aoe: 2.5, lifetime: 1, damage: "stun", playerEffect: {name: "Blind", time: 10}}, // Longer delay, but the stun lasts much longer.
-		{name: "Shroud", prerequisite: "ApprenticeShadow", tags: ["aoe", "buff", "utility", "shroud", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert",
+		{name: "Shroud", prerequisite: "ApprenticeShadow", tags: ["aoe", "buff", "utility", "shadow", "defense"], sfx: "Fwoosh", school: "Illusion", manacost: 5, components: ["Verbal"], level:1, type:"inert",
 			noise: 3.5,// Attracts some enemies
 			buffs: [
 				{id: "Shroud", type: "Evasion", power: 7.0, player: true, enemies: true, tags: ["darkness"], range: 1.5},
@@ -3112,15 +3112,18 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 	{enemySpell: true, name: "MummyBolt", color: "#88ff88", sfx: "FireSpell", manacost: 5, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "soul", speed: 3, playerEffect: {name: "MysticShock", time: 3}},
 	{enemySpell: true, name: "RobotBolt", color: "#ff5277", sfx: "Laser", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, delay: 0, range: 50, damage: "electric", speed: 2, playerEffect: {name: "RobotShock", time: 2}},
 	{enemySpell: true, name: "RubberBullets",  bindType: "Slime", color: "#e7cf1a",
+		noise: 8,
 		bindTags: ["captureFoamRandom"],
 		minRange: 2.9, sfx: "Gunfire", manacost: 2, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, onhit:"", power: 4, time: 0, delay: 0, range: 50, damage: "glue", speed: 3, playerEffect: {name: "RubberBullets", power: 4, count: 1, damage: "glue"}},
 	{enemySpell: true, name: "RubberSniper",  bindType: "Slime", color: "#e7cf1a", minRange: 1.5,
+		noise: 9,
 		sfx: "Sniper2", manacost: 2, components: ["Arms"], level:1, type:"bolt",
 		bindTags: ["captureFoamRandom"],
 		projectileTargeting:true, onhit:"", power: 8, time: 0, delay: 0, range: 50,
 		damage: "glue", speed: 5, playerEffect: {name: "RubberSniper", power: 8, count: 3, damage: "glue"}},
 	{name: "PlayerRubberSniper",  bindType: "Slime", color: "#e7cf1a", minRange: 1.5,
-		sfx: "Sniper2", manacost: 2, components: ["Arms"], level:1, type:"bolt",
+		noise: 9,
+		sfx: "Sniper2", manacost: 0, components: ["Arms"], level:1, type:"bolt",
 		projectileTargeting:true, onhit:"", power: 8, time: 0, delay: 0, range: 50,
 		noMiscast: true,
 		bindTags: ["captureFoamRandom"],
@@ -3198,12 +3201,14 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		projectileTargeting:true, piercing: true, noTerrainHit: true, noEnemyCollision: true, onhit:"aoe", power: 4, delay: 0, range: 1.5, aoe: 1.5, size: 3, lifetime:1, damage: "soul", speed: 1, time: 2,
 		playerEffect: {name: "CrystalBind", time: 1, count: 2},
 	},
-	{name: "HeavySlash", tags: ["aoe", "offense", "physical"], landsfx: "HeavySwing2", school: "Any",
+	{name: "HeavySlash", tags: ["aoe", "offense", "physical"],
+		landsfx: "HeavySwing2", school: "Any",
 		manacost: 2.5, components: ["Arms"], level:1, type:"bolt",
 		minRange: 0,
 		color: "#aaaaaa",
 		projectileTargeting:true, piercing: true, noTerrainHit: true,
-		noEnemyCollision: true, onhit:"aoe", power: 5.5, delay: 0, range: 1.5, aoe: 1.5, size: 3, castRange: 2.5,
+		noEnemyCollision: true, onhit:"aoe", power: 5.5, delay: 0,
+		range: 1.5, aoe: 1.5, size: 3, castRange: 2.5,
 		lifetime:1, damage: "crush", speed: 1, time: 2,
 		playerEffect: {name: "Damage"},
 	},
@@ -4138,7 +4143,7 @@ let KDPlayerCastConditions: Record<string, (player: entity, x: number, y: number
 
 let KDCustomCost: Record<string, (data: any) => void> = {
 	"SprintPlusAttack": (data) => {
-		data.cost = Math.round(10 * -(KDAttackCost() + KDSprintCost())) + "SP";
+		data.cost = Math.round(10 * -(KDAttackCost().attackCost + KDSprintCost())) + "SP";
 		data.color = "#88ff88";
 	},
 	"LimitSurge": (data) => {

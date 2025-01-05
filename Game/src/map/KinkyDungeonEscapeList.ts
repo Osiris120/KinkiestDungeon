@@ -4,7 +4,7 @@ interface KinkyDungeonEscapeType {
 	selectValid: boolean,
 	requireMaxQuests?: boolean,
 	filterRandom?: (roomType: string, mapMod: string, level: number, faction: string) => number,
-	filter?: (roomType: string, mapMod: string, level: number, faction: string) => number,
+	//filter?: (roomType: string, mapMod: string, level: number, faction: string) => number,
 	check: ()=>boolean,
 	minimaptext: ()=>string,
 	doortext: ()=>string,
@@ -59,6 +59,9 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	},
 	"Kill": {
 		selectValid: true,
+		filterRandom: (r, m, l, f) => {
+			return l > 2 ? 1 : 0;
+		},
 		worldgenstart: () => {
 			let enemytype = KinkyDungeonGetEnemy([], KDGetEffLevel(),(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint), '0',
 				undefined, undefined, undefined, ["nokillescape"]);
@@ -106,11 +109,8 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"WolfServer": {
 		selectValid: true,
 
-		filter: (roomType, mapMod, level, faction) => {
-			return faction == "Nevermere" ? 10 : 0;
-		},
 		filterRandom: (roomType, mapMod, level, faction) => {
-			return faction == "Nevermere" ? 10 : 0;
+			return (level > 2 && faction == "Nevermere") ? 10 : 0;
 		},
 
 		worldgenstart: () => {
@@ -194,10 +194,8 @@ let KinkyDungeonEscapeTypes: Record<string, KinkyDungeonEscapeType> = {
 	"DroneNode": {
 		selectValid: true,
 
-		filter: (roomType, mapMod, level, faction) => {
-			return (faction == "AncientRobot" || faction == "Dollsmith" || faction == "Virus") ? 10 : 0;
-		},
 		filterRandom: (roomType, mapMod, level, faction) => {
+			if (level < 5) return 0;
 			return (faction == "AncientRobot" || faction == "Dollsmith" || faction == "Virus") ? 10 : 0;
 		},
 

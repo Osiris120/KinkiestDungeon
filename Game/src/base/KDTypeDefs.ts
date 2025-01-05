@@ -2857,6 +2857,7 @@ type KDSideRoom = {
 	faction?: string,
 	weight: number,
 	tags?: string[],
+	hidden?: boolean,
 	/** Rolled once each time it gets a map mod */
 	chance: number,
 	/**

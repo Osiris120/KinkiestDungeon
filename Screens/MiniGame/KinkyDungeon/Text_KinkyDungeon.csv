@@ -1565,7 +1565,7 @@ ItemPickupDarkKatana,"You pick up Shadow's Edge."
 
 KinkyDungeonInventoryItemStormBreaker,Stormbreaker
 KinkyDungeonInventoryItemStormBreakerDesc,"I have the power! Taking electric damage charges you (1 turn/10dmg)."
-KinkyDungeonInventoryItemStormBreakerDesc2,"Deals crush damage. Deals bonus electric damage in an area when charged, up to +40."
+KinkyDungeonInventoryItemStormBreakerDesc2,"Deals crush damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)"
 ItemPickupStormBreaker,"You pick up Stormbreaker."
 
 
@@ -9411,7 +9411,7 @@ KinkyDungeonRemindJailPlayHelplessAdventurer_Dom_Fighter2,"I can't get free!"
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter0,"Be nice!"
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter1,"No! Be gentle!"
 KinkyDungeonRemindJailPlayBratAdventurer_Dom_Fighter2,"Ahhhh!"
-KinkyDungeonRemindJailPlaySubAdventurer_Dom_Fighter0,"Heatpats please..."
+KinkyDungeonRemindJailPlaySubAdventurer_Dom_Fighter0,"Headpats please..."
 KinkyDungeonRemindJailPlaySubAdventurer_Dom_Fighter1,"*purrs*"
 KinkyDungeonRemindJailPlaySubAdventurer_Dom_Fighter2,"Nyah, I've been a bad kitty..."
 KinkyDungeonRemindJailPlayAdventurer_Dom_Fighter0,"You're a cute one~"
@@ -10042,7 +10042,7 @@ KinkyDungeonRemindJailChaseMyrtriceHonor0,"THE CURTAINS OF MY REVENGE DRAW OPEN 
 KinkyDungeonRemindJailChaseMyrtriceHonor1,"What an excellent oppertunity to expand my alters in the dark!"
 KinkyDungeonRemindJailChaseMyrtriceHonor2,"I see a chalice before me... it drips with shadow and overflows with darkness!"
 KinkyDungeonRemindJailChaseMyrtriceCommandDefend,"My late sister Myrtle was a much more proficent defender than I... Oh how I long for her *sob*"
-KinkyDungeonRemindJailChaseMyrtriceCommandAssault,"THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!"
+KinkyDungeonRemindJailChaseMyrtriceCommandAssault,"THE PATH OF MY RETRIBUTION IS PAVED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!"
 KinkyDungeonRemindJailChaseMyrtriceCommandBlock,"I, Myrtrice, will resist their insolent fusilades!"
 
 KinkyDungeonRemindJailCastFungal,"SPL."
@@ -22751,7 +22751,7 @@ ItemPickupGunpowder,"You pick up a sack of gunpowder."
 KinkyDungeonSpellCastGunpowder,You toss some gunpowder on the floor!
 
 KinkyDungeonSpellRogueOffhand,"Dual Wield (Rogue)"
-KinkyDungeonSpellDescriptionRogueOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)"
+KinkyDungeonSpellDescriptionRogueOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|(Equip Dual Wield spell to equip an offhand weapon, or use the Items menu)"
 
 KinkyDungeonSpellWizardOffhand,"Dual Wield (Wizard)"
 KinkyDungeonSpellDescriptionWizardOffhand,"Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or spell damage bonuses.|Wizards can only wield magic weapons in the offhand unless they are multiclass, and receive +1 slow level if they wield a 2-handed, heavy, or massive magical weapon in the offhand.|(Must equip Dual Wield spell to equip an offhand weapon)"
@@ -26357,6 +26357,7 @@ AttackMaidKnightLight,The Squire dusts you with her duster plug.
 AttackMaidKnightHeavy,The Maid Knight sweeps you with her cleaning halberd!
 
 KDMaidKnightRetreat,The EnemyName retreats!
+KDMaidKnightRetreatBound,The EnemyName manages to squirm out of sight!
 
 
 KDAmbSound_ServerHum,servers humming...
@@ -26369,7 +26370,7 @@ KDAmbSound_ServerAlarm,blaring siren
 ItemPickupSweeper,"You claim the Sweeper."
 KinkyDungeonInventoryItemSweeper,The Sweeper
 KinkyDungeonInventoryItemSweeperDesc,"Foe of the unclean. Bringer of neat and tidy workspaces."
-KinkyDungeonInventoryItemSweeperDesc2,"Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack which deals pierce damage."
+KinkyDungeonInventoryItemSweeperDesc2,"Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack."
 KinkyDungeonSpecialSweeper,Make a ranged attack with the Sweeper.
 
 ItemPickupPersuader,"You claim the Persuader."
@@ -26380,3 +26381,5 @@ KinkyDungeonSpecialPersuader,Make a ranged attack with the Persuader for 25 char
 
 KinkyDungeonSpellPlayerRubberSniper,Persuader Round
 KinkyDungeonSpellCastPlayerRubberSniper,You fire the Persuader!
+
+KDUnknown,???

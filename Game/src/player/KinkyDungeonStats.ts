@@ -148,7 +148,7 @@ function KDInitInventory() {
 }
 
 let KinkyDungeonPlayerTags = new Map();
-let NPCTags = new Map();
+let NPCTags: Map<Character, Map<string, boolean>> = new Map();
 
 let KinkyDungeonCurrentDress = "Default";
 let KinkyDungeonUndress = 0; // Level of undressedness
@@ -496,6 +496,7 @@ function KinkyDungeonDealDamage(Damage: damageInfoMinor, bullet?: any, noAlready
 	}
 
 	let data = {
+		dmgOrig: Damage.damage,
 		dmg: Damage.damage,
 		type: Damage.type,
 		flags: Damage.flags,

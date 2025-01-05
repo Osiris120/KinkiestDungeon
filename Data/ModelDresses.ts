@@ -79,6 +79,12 @@ let KDModelDresses: {[_: string]: KinkyDungeonDress} = {
 			TorsoLower: {"gamma":0.8333333333333333,"saturation":1,"contrast":0.75,"brightness":0.5333333333333334,"blue":3.7166666666666663,"red":1,"green":3.283333333333333,"alpha":1},
 		}},
 	],
+	"CaptureFoamSuit" : [
+		{Item: "Catsuit", Group: "Catsuit", Color: "#7F3C9B", Lost: false, Filters: {
+			TorsoUpper: {"gamma":0.8333333333333333,"saturation":1,"contrast":0.75,"brightness":0.5333333333333334,"blue":3.7166666666666663,"red":1,"green":3.283333333333333,"alpha":1},
+			TorsoLower: {"gamma":0.8333333333333333,"saturation":1,"contrast":0.75,"brightness":0.5333333333333334,"blue":3.7166666666666663,"red":1,"green":3.283333333333333,"alpha":1},
+		}},
+	],
 	"BlueSuit" : [
 		{Item: "Catsuit", Group: "Catsuit", Color: "#7F3C9B", Lost: false, Filters: {
 			TorsoUpper: {"gamma":0.8333333333333333,"saturation":1,"contrast":0.75,"brightness":1.2333333333333334,"blue":3.7166666666666663,"red":1,"green":3.283333333333333,"alpha":1},

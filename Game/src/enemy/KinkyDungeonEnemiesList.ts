@@ -201,9 +201,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			idleSoundName: "NodeHum",
 		},
 		shield: 5,
-		AI: "hunt",  visionRadius: 9, maxhp: 4, minLevel:0, weight:0, movePoints: 2.5, cohesion: 1.0, armor: 0, spellResist: 1.5,
+		AI: "hunt",  visionRadius: 9, maxhp: 4, minLevel:0, weight:-100, movePoints: 2.5, cohesion: 1.0, armor: 0, spellResist: 1.5,
 		attackPoints: 3, attack: "", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "grope",
-		terrainTags: {"robotServer": 100}, floors:KDMapInit([]), shrines: ["Metal"],
+		terrainTags: {"robotServer": 200}, floors:KDMapInit([]), shrines: ["Metal"],
 		events: [
 			{trigger: "afterEnemyTick", type: "DroneNodeAura", power: 10, mult: 0.04, dist: 4.5},
 		],
@@ -224,9 +224,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			alertAmount: 12,
 			idleSoundName: "NodeHum",
 		},
-		AI: "hunt",  visionRadius: 9, maxhp: 16, minLevel:0, weight:0, movePoints: 2.5, cohesion: 1.0, armor: 0, spellResist: 0,
+		AI: "hunt",  visionRadius: 9, maxhp: 16, minLevel:0, weight:-100, movePoints: 2.5, cohesion: 1.0, armor: 0, spellResist: 0,
 		attackPoints: 3, attack: "", attackWidth: 1, attackRange: 1, tilesMinRange: 1, power: 1, dmgType: "grope",
-		terrainTags: {"robotServer": 100}, floors:KDMapInit([]), shrines: ["Metal"],
+		terrainTags: {"robotServer": 200}, floors:KDMapInit([]), shrines: ["Metal"],
 
 	},
 	{name: "WolfServer", tags: KDMapInit(["poisonmmune",
@@ -240,7 +240,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			"acidweakness", "soapsevereweakness"]),
 		SFX: {death: "SciFiExplode"},
 		faction: "Nevermere", lowpriority: true, evasion: -100, armor: -1, followRange: 100, AI: "wander",
-		visionRadius: 0, maxhp: 20, minLevel:0, weight:0, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
+		visionRadius: 0, maxhp: 20, minLevel:0, weight:-100, movePoints: 1000, attackPoints: 0, attack: "", attackRange: 0,
 		ondeath: [
 			{type: "WolfServer"}
 		],
@@ -249,7 +249,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			moveAmount: 0,
 			idleSoundName: "ServerHum",
 		},
-		terrainTags: {"wolfServer": 100}, floors:KDMapInit([])},
+		terrainTags: {"wolfServer": 200}, floors:KDMapInit([])},
 
 
 	// End Quest NPC
@@ -2559,7 +2559,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {"slime": 2.5, "plant": 2, "passage": 20, "open": -10, "slimeOptOut": -0.9, "slimePref": 1},
 		allFloors: true, shrines: ["Latex"],
 		events: [
-			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "LatexThin", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
 		],
 		dropTable: [{name: "Gold", amountMin: 20, amountMax: 30, weight: 1}, {name: "HardSlimeRaw", amount: 10, weight: 10}, {name: "StaffGlue", weight: 130, ignoreInInventory: true}],
@@ -2587,7 +2587,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		suicideOnAdd: true, focusPlayer: true, multiBind: 3,
 		terrainTags: {"slime": 3.5, "plant": 3, "passage": 30, "open": -10, "slimeOptOut": -1, "slimePref": 1}, allFloors: true, shrines: ["Latex"],
 		events: [
-			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "Slime", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
+			{trigger: "afterDamageEnemy", type: "bleedEffectTile", kind: "LatexThin", aoe: 1.5, power: 3, chance: 1.0, duration: 20},
 			{trigger: "afterEnemyTick", type: "createEffectTile", kind: "LatexThin", time: 25, power: 2, chance: 0.5, aoe: 0.5},
 		],
 		dropTable: [{name: "HardSlimeRaw", amount: 3, weight: 14}, {name: "StaffGlue", weight: 3, ignoreInInventory: true}],
@@ -3863,8 +3863,10 @@ let KinkyDungeonEnemies: enemy[] = [
 		faction: "Adventurer",
 		playLine: "Adventurer_Dom_Fighter",
 		preferDodge: true, maxdodge: 1, maxblock: 2,
-		tags: KDMapInit(["opendoors", "elite", "imprisonable", "leashing", "adventurer", "human", "melee",
-			"leatherRestraintsHeavy", "maidRestraints", "soulweakness", "jail", "jailer", "dom", "search"]),
+		tags: KDMapInit(["opendoors", "elite", "imprisonable",
+			"leashing", "adventurer", "human", "melee",
+			"leatherRestraintsHeavy", "maidRestraints",
+			"soulweakness", "jail", "jailer", "dom", "search"]),
 		cohesion: 0.5,
 		bindOnDisable: true,
 		smartBind: true,

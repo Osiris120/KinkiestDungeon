@@ -311,8 +311,9 @@ function KinkyDungeonExpireBuff(entity: entity, key: string): void {
 			entity: entity,
 			buff: list[key],
 		};
+		let tt = list[key].type;
 		KinkyDungeonSendEvent("expireBuff", data);
-		KDUpdateBuffStatMemo(list, list[key].type);
+		KDUpdateBuffStatMemo(list, tt);
 		delete list[key];
 	}
 }

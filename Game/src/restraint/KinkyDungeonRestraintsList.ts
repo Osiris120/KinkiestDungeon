@@ -2267,7 +2267,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, name: "DressBra", debris: "Fabric", inaccessible: true, Asset: "FuturisticBra2", Color: ['#6B48E0', '#F8BD01', '#6B48E0', '#6B48E0', '#F8BD01', '#6B48E0'], Group: "ItemBreast", LinkableBy: ["Ornate"], chastitybra: true, power: 8, weight: -2,
 		Model: "LaceBraDeco",
 		factionFilters: {
-			BraCuts: {color: "DarkNeutral", override: true},
+			BraCups: {color: "DarkNeutral", override: true},
 			BraBase: {color: "LightNeutral", override: true},
 			BraStripes: {color: "Highlight", override: true},
 			DecoBase: {color: "LightNeutral", override: true},

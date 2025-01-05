@@ -4955,6 +4955,7 @@ function KDAttackCost(weapon?: weapon, noEvent?: boolean) {
 	let data = {
 		attackCost: KinkyDungeonStatStaminaCostAttack,
 		stamPenType: KDWeaponStamPenType(KinkyDungeonPlayerDamage),
+		orig: KinkyDungeonStatStaminaCostAttack,
 		bonus: KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStaminaBonus"),
 		mult: KinkyDungeonMultiplicativeStat(KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackStamina")),
 	};
@@ -4970,7 +4971,7 @@ function KDAttackCost(weapon?: weapon, noEvent?: boolean) {
 	}
 
 	data.attackCost = Math.min(0, (data.attackCost + data.bonus) * data.mult);
-	return data.attackCost;
+	return data;
 }
 
 /**
@@ -4978,7 +4979,8 @@ function KDAttackCost(weapon?: weapon, noEvent?: boolean) {
  * @param [skip]
  */
 function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
-	let attackCost = KDAttackCost();
+	let ac = KDAttackCost();
+	let attackCost = ac.attackCost;
 	let capture = false;
 	let result = "fail";
 	if (!Enemy.Enemy) return result;
@@ -5074,7 +5076,7 @@ function KinkyDungeonLaunchAttack(Enemy: entity, skip?: number): string {
 					origbinding: Enemy.boundLevel,
 					target: Enemy,
 					attackCost: attackCost,
-					attackCostOrig: KinkyDungeonPlayerDamage.staminacost ? KinkyDungeonPlayerDamage.staminacost : 0,
+					attackCostOrig: KinkyDungeonPlayerDamage.staminacost ? -KinkyDungeonPlayerDamage.staminacost : 0,
 					skipTurn: false,
 					attackData: damageInfo
 				};
@@ -6384,10 +6386,10 @@ function KDGetAltType(Floor: number, MapMod?: string, RoomType?: string): AltTyp
  * @param player
  * @param Enemy
  */
-function KDCanPassEnemy(_player: entity, Enemy: entity): boolean {
+function KDCanPassEnemy(_player: entity, Enemy: entity, force?: boolean): boolean {
 	return !KDIsImmobile(Enemy)
 	&& ((!KinkyDungeonAggressive(Enemy) && !Enemy.playWithPlayer) || (KDHelpless(Enemy)))
-	&& ((KinkyDungeonToggleAutoPass
+	&& ((force || (KinkyDungeonToggleAutoPass
 		&& (
 			!KDGameData.FocusControlToggle || (
 				(KDGameData.FocusControlToggle.AutoPassHelplessEnemies || !(KDHostile(Enemy) && KDHelpless(Enemy))) &&
@@ -6399,7 +6401,7 @@ function KDCanPassEnemy(_player: entity, Enemy: entity): boolean {
 					(Enemy.prisondialogue && KDIsImprisoned(Enemy)) || Enemy.Enemy.specialdialogue)) &&
 				(KDGameData.FocusControlToggle.AutoPassSummons || !(Enemy.Enemy.allied))
 			)
-		))
+		)))
 		|| KDEnemyHasFlag(Enemy, "passthrough")
 		|| (KinkyDungeonFlags.has("Passthrough"))
 		|| Enemy.Enemy.noblockplayer);

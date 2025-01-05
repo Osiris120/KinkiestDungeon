@@ -810,7 +810,7 @@ function KDDrawStatusBars(x: number, y: number, width: number = 125) {
 			suff = "";
 	}
 	let distRate = KDGetDistractionRate(0);
-	let attackCost = Math.min(-0.5, KDAttackCost());
+	let attackCost = Math.min(-0.5, KDAttackCost().attackCost);
 
 
 	let barWidthOffset2ndSet = 0;
@@ -2624,7 +2624,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 		Damage: KinkyDungeonPlayerDamage,
 	};
 	KinkyDungeonSendEvent("calcDisplayDamage", adata);
-	let stamDiff = (KDAttackCost(undefined, true) != KDAttackCost());
+	let stamDiff = (KDAttackCost(undefined, true).orig != KDAttackCost().attackCost);
 	if ((KDToggleShowAllBuffs
 		|| stamDiff
 		|| (KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "AttackDmg") + adata.buffdmg)
@@ -2633,9 +2633,9 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 		statsDraw.meleeDamage = {
 			text: TextGet("KinkyDungeonPlayerDamage")
 				.replace("DAMAGEDEALT", "" + Math.round(meleeDamage*10))
-				.replace("STMNA", Math.round(-10 * KDAttackCost()) + "")
+				.replace("STMNA", Math.round(-10 * KDAttackCost().attackCost) + "")
 				.replace("DAMAGETYPE", TextGet("KinkyDungeonDamageType" + KinkyDungeonPlayerDamage.type)),
-			count: Math.round(meleeDamage*10) + (stamDiff ? "/" + Math.round(-10 * KDAttackCost()) : ""),
+			count: Math.round(meleeDamage*10) + (stamDiff ? "/" + Math.round(-10 * KDAttackCost().attackCost) : ""),
 			category: "info", color: "#ffffff", bgcolor: "#333333", icon: "infoDamageMelee", priority: 10.1
 		};
 	}

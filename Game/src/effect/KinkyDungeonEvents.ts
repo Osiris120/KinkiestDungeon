@@ -2938,12 +2938,14 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 				KinkyDungeonStatBlind = Math.max(KinkyDungeonStatBlind, Math.round(12 * KinkyDungeonMultiplicativeStat(KDEntityBuffedStat(KinkyDungeonPlayerEntity, "poisonDamageResist"))));
 			}
 		},
-		"TeleportHost": (_e, buff, entity, data) => {
-			if (buff == data.buff && buff.x && buff.y) {
+		"TeleportHostUnlessStunned": (_e, buff, entity, data) => {
+			if (buff == data.buff && buff.x && buff.y && !KinkyDungeonIsDisabled(entity)) {
 				if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(buff.x, buff.y))
 					&& !KinkyDungeonEntityAt(buff.x, buff.y)
 					&& !KDIsImmobile(entity)) {
 						KDMoveEntity(entity, buff.x, buff.y, true, true, true)
+
+						KinkyDungeonRemoveBuffsWithTag(entity, ["displaceend"]);
 					}
 			}
 		},
@@ -4246,7 +4248,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 	"canOffhand": {
 		"RogueOffhand": (_e, _spell, data) => {
 			if (!data.canOffhand && KDHasSpell("RogueOffhand")) {
-				if (!(KDWeapon(data.item)?.clumsy || KDWeapon(data.item)?.heavy || KDWeapon(data.item)?.massive)
+				if (!(KDWeapon(data.item)?.heavy || KDWeapon(data.item)?.massive)
 					|| KDWeapon(data.item)?.tags?.includes("illum")) {
 					data.canOffhand = true;
 				}
@@ -4955,7 +4957,7 @@ let KDEventMapSpell: Record<string, Record<string, (e: KinkyDungeonEvent, spell:
 			if (!KDHasSpell("FighterOffhand")) {
 				if (KDGameData.Offhand && KinkyDungeonInventoryGetWeapon(KDGameData.Offhand)) {
 					let weapon = KDWeapon(KinkyDungeonInventoryGetWeapon(KDGameData.Offhand));
-					if (weapon?.clumsy || weapon?.heavy || weapon?.massive)
+					if ((!KDHasSpell("RogueOffhand") && weapon?.clumsy) || weapon?.heavy || weapon?.massive)
 						KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, {
 							id: "WizardOffhand",
 							type: "SlowLevel",
@@ -6730,8 +6732,9 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 	},
 	"beforePlayerDamage": {
 		"StormBreakerCharge": (e, _weapon, data) => {
-			if (data.dmg > 0 && (!e.damageTrigger || e.damageTrigger == data.type)) {
-				let turns = data.dmg * e.power;
+			let dmg = Math.max(data.dmg, data.dmgOrig);
+			if (dmg > 0 && (!e.damageTrigger || e.damageTrigger == data.type)) {
+				let turns = dmg * e.power;
 				if (KinkyDungeonPlayerBuffs.StormCharge) {
 					turns += KinkyDungeonPlayerBuffs.StormCharge.duration;
 				}
@@ -6800,9 +6803,9 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 			if (data.enemy && !data.disarm) {
 				let nearby = KDNearbyEnemies(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, 1.5);
 				for (let enemy of nearby) {
-					if (enemy != data.enemy && KDHostile(enemy) && !KDHelpless(data.enemy)) {
+					if (KDHostile(enemy) && !KDHelpless(data.enemy)) {
 						if (KinkyDungeonEvasion(enemy)) {
-							KinkyDungeonApplyBuffToEntity(data.enemy, {
+							KinkyDungeonApplyBuffToEntity(enemy, {
 								aura: "#aa00ff",
 								power: e.power,
 								type: "ShadowBleed",
@@ -7638,8 +7641,8 @@ let KDEventMapWeapon: Record<string, Record<string, (e: KinkyDungeonEvent, weapo
 					if (KinkyDungeonMovableTilesEnemy.includes(KinkyDungeonMapGet(newX, newY)) && KinkyDungeonNoEnemy(newX, newY, true)
 						&& (e.dist == 1 || KinkyDungeonCheckProjectileClearance(data.enemy.x, data.enemy.y, newX, newY, false))) {
 						KDMoveEntity(data.enemy, newX, newY, false);
-
 						KinkyDungeonSetEnemyFlag(data.enemy, "takeFF", 1);
+						KinkyDungeonRemoveBuffsWithTag(data.enemy, ["displaceend"]);
 					}
 				}
 			}
@@ -8087,6 +8090,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 							&& (e.dist == 1 || KinkyDungeonCheckProjectileClearance(data.enemy.x, data.enemy.y, newX, newY, false))) {
 							KDMoveEntity(data.enemy, newX, newY, false);
 							KinkyDungeonSetEnemyFlag(data.enemy, "takeFF", 1);
+							KinkyDungeonRemoveBuffsWithTag(data.enemy, ["displaceend"]);
 						}
 					}
 
@@ -8330,20 +8334,20 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 
 		"EnchantRope": (_e, b, data) => {
 			if (b && data.enemy) {
-				KDQuickGenNPC(data.enemy, true);
-				let npcSprite = KDNPCChar.get(data.enemy.id);
-				if (npcSprite) {
-					NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, data.enemy.id, 0));
-				}
-
-				if (npcSprite) {
-					let enemyTags = NPCTags.get(npcSprite);
+				if (data.enemy.Enemy?.style && KDGetNPCRestraints(data.enemy.id)) {
+					KDQuickGenNPC(data.enemy, true);
+					let npcSprite = KDNPCChar.get(data.enemy.id);
+					let enemyTags: Map<string, boolean> = null;
+					if (npcSprite) {
+						NPCTags.set(npcSprite, KinkyDungeonUpdateRestraints(npcSprite, data.enemy.id, 0));
+						enemyTags = NPCTags.get(npcSprite);
+					}
 
 					let transmuteLevel = 0;
-					if (enemyTags.get("RopeSnake")) {
+					if (enemyTags?.get("RopeSnake")) {
 						transmuteLevel = 1;
 					}
-					if (_e.power > 1 && enemyTags.get("WeakMagicRopes")) {
+					if (_e.power > 1 && enemyTags?.get("WeakMagicRopes")) {
 						transmuteLevel = 2;
 					}
 					if (_e.power > 2) {
@@ -8380,7 +8384,11 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 							}
 						}
 					}
+
 				}
+
+
+
 
 
 				if (data.enemy.specialBoundLevel?.Rope) {
@@ -8672,6 +8680,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				KinkyDungeonSendEvent("beforeTeleport", tdata);
 				if (tdata.cancel) {
 					KDMoveEntity(enemy, nearest.x, nearest.y, true);
+					KinkyDungeonRemoveBuffsWithTag(enemy, ["displaceend"]);
 				}
 				KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
 				KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Teleport.ogg", enemy);
@@ -8731,6 +8740,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 				KinkyDungeonSendEvent("beforeTeleport", tdata);
 				if (tdata.cancel) {
 					KDMoveEntity(enemy, point.x, point.y, true);
+					KinkyDungeonRemoveBuffsWithTag(enemy, ["displaceend"]);
 					//KinkyDungeonSendTextMessage(5, TextGet("KDDragonTeleport"), "#814fb8", 1);
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Teleport.ogg", enemy);
 					if (KDRandom() < 0.4)
@@ -8915,6 +8925,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 
 						if (!tdata.cancel) {
 							KDMoveEntity(en, point.x, point.y, false, false, true);
+							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
 						}
 					}
 					enemies.splice(enemies.indexOf(en), 1);
@@ -8944,6 +8955,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 							KDMoveEntity(en, point.x, point.y, false, false, true);
 							en.teleporting = Math.max(en.teleporting || 0, 4);
 							en.teleportingmax = Math.max(en.teleportingmax || 0, 4);
+							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
 						}
 					}
 					enemies.splice(enemies.indexOf(en), 1);
@@ -8973,6 +8985,7 @@ let KDEventMapBullet: Record<string, Record<string, (e: KinkyDungeonEvent, b: an
 							KDMoveEntity(en, point.x, point.y, false, false, true);
 							en.teleporting = Math.max(en.teleporting || 0, 1);
 							en.teleportingmax = Math.max(en.teleportingmax || 0, 1);
+							KinkyDungeonRemoveBuffsWithTag(en, ["displaceend"]);
 						}
 					}
 					enemies.splice(enemies.indexOf(en), 1);
@@ -9135,8 +9148,9 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 						duration: 0,
 						x: point.x,
 						y: point.y,
+						tags: ["displaceend"],
 						events: [
-							{trigger: "expireBuff", type: "TeleportHost"}
+							{trigger: "expireBuff", type: "TeleportHostUnlessStunned"}
 						]
 					})
 				}
@@ -9319,7 +9333,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 					// Retreat!
 					if (KinkyDungeonVisionGet(enemy.x, enemy.y) > 0.1) {
 						KinkyDungeonSendTextMessage(10, TextGet("KDMaidKnightRetreat")
-							.replace("EnemyName", TextGet("Name" + data.enemy)),
+							.replace("EnemyName", TextGet("Name" + data.enemy.Enemy?.name)),
 							"#ffffff", 7);
 						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg", undefined);
 
@@ -9329,7 +9343,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 					enemy.hp = enType.maxhp;
 					enemy.specialBoundLevel = {};
 					enemy.boundLevel = 0;
-					KDDespawnEnemy(enemy, undefined);
+					KDDespawnEnemy(enemy, undefined, KDMapData);
 				}
 			}
 		},
@@ -9343,8 +9357,10 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 				) {
 					// Retreat!
 					if (KinkyDungeonVisionGet(enemy.x, enemy.y) > 0.1) {
-						KinkyDungeonSendTextMessage(10, TextGet("KDMaidKnightRetreat")
-							.replace("EnemyName", TextGet("Name" + data.enemy)),
+						KinkyDungeonSendTextMessage(10, TextGet(
+							KDBoundEffects(enemy) > 3 ? "KDMaidKnightRetreatBound"
+							: "KDMaidKnightRetreat")
+							.replace("EnemyName", TextGet("Name" + data.enemy.Enemy?.name)),
 							"#ffffff", 7);
 						KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg", undefined);
 
@@ -9354,7 +9370,7 @@ let KDEventMapEnemy: Record<string, Record<string, (e: KinkyDungeonEvent, enemy:
 					enemy.hp = enType.maxhp;
 					enemy.specialBoundLevel = {};
 					enemy.boundLevel = 0;
-					KDDespawnEnemy(enemy, undefined);
+					KDDespawnEnemy(enemy, undefined, KDMapData);
 				}
 			}
 		},
@@ -10802,7 +10818,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 			let regbuffchance = 1 - (0.95 ** KinkyDungeonNewGame);
 
 
-			let entities = Object.assign([], KDMapData.Entities);
+			let entities: entity[] = Object.assign([], KDMapData.Entities);
 			for (let e of entities) {
 				if (!KDIsHumanoid(e)) continue;
 				if (KDEnemyHasFlag(e, "NGPrep")) continue;
@@ -10871,7 +10887,7 @@ let KDEventMapGeneric: Record<string, Record<string, (e: string, data: any) => v
 				reg.push("ExtremeReg", "Extreme");
 			}
 
-			let entities = Object.assign([], KDMapData.Entities);
+			let entities: entity[] = Object.assign([], KDMapData.Entities);
 			for (let e of entities) {
 				if (!KDIsHumanoid(e)) continue;
 				if (KDEnemyHasFlag(e, "HMrep")) continue;

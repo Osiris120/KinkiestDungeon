@@ -383,9 +383,13 @@ function KDUpdatePersistentNPCFlags(delta: number) {
 	KDGetEntityFlagCache();
 	let curpos = KDGetCurrentLocation();
 	for (let npc of KDEntityFlagCache.keys()) {
-		if (!KDCompareLocation(KDGetNPCLocation(npc.id), curpos)) {
-			if (KinkyDungeonTickFlagsEnemy(npc.entity, delta))
-				KDUpdateEntityFlagCache = true;
+		if (KDPersistentNPCs[npc]) {
+			if (!KDCompareLocation(KDGetNPCLocation(npc.id), curpos)) {
+				if (KinkyDungeonTickFlagsEnemy(npc.entity, delta))
+					KDUpdateEntityFlagCache = true;
+			}
+		} else {
+			KDEntityFlagCache.delete(npc);
 		}
 	}
 }
@@ -662,7 +666,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 
 
 	if (!KDNPCChar.get(value.id)) {
-		KDSpeakerNPC = suppressCanvasUpdate(() => CharacterLoadNPC(value.id, value.name, value.Palette));
+		KDSpeakerNPC = CharacterLoadNPC(value.id, value.name, value.Palette);
 		KDNPCChar.set(value.id, KDSpeakerNPC);
 		KDNPCChar_ID.set(KDSpeakerNPC, value.id);
 		let oldstyle = KDNPCStyle.get(KDSpeakerNPC);
@@ -832,6 +836,7 @@ function KDGetVirtualCollectionEntry(id: number): KDCollectionEntry {
 	if (KDGameData.Collection["" + id]) return KDGameData.Collection["" + id];
 
 	let enemy = KDGetGlobalEntity(id);
+	if (!enemy) return null;
 	let entry: KDCollectionEntry = {
 		id: enemy.id,
 		name: KDIsNPCPersistent(id) ?

@@ -14,6 +14,7 @@ let KDSideRooms: Record<string, KDSideRoom> = {
 		},
 		altRoom: "DemonTransition",
 		mapMod: "None",
+		hidden: true,
 		escapeMethod: "None",
 		faction: "Observer",
 		stairCreation: (tile, x, y) => {
@@ -33,6 +34,7 @@ let KDSideRooms: Record<string, KDSideRoom> = {
 		name: "BanditFort",
 		weight: 150,
 		chance: 0.5,
+		hidden: true,
 		filter: (slot, top) => {
 			// Top reserved for lairs
 			if (top) return 0;

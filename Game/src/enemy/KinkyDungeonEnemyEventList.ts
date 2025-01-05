@@ -1288,6 +1288,7 @@ function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0,
 					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				"yellow", 2, true);
 			} else {
+				KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true);
 				KinkyDungeonSetEnemyFlag(enemy, "applyItem", 0);
 				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonAddRestraints")
 					.replace("NewRestraintName", TextGet("Restraint" + newRestraint.name))

@@ -334,14 +334,15 @@ function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, f
 			KDGameData.PrisonerState = "chase";
 	} else if (KDLocalChaseTypes.includes(Type) && (enemy || faction)) {
 		for (let e of KDMapData.Entities) {
+			let cansignal = KDEnemyCanSignalOthers(enemy);
 			if ((KDHostile(e, undefined)
 				|| (KDSevereTypes.includes(Type)
-					&& KDFactionAllied(faction ? faction : KDGetFaction(enemy), e, undefined,
+					&& (e == enemy || (KDFactionAllied(faction ? faction : KDGetFaction(enemy), e, undefined,
 						-KDOpinionRepMod(e, KDPlayer())) // We lower the strength of faction alliances based on opinion
-					&& KDGetHonor(KDGetFaction(e), faction ? faction : KDGetFaction(enemy)) < 0.1))
+					&& KDGetHonor(KDGetFaction(e), faction ? faction : KDGetFaction(enemy)) < 0.1))))
 				&& (!enemy || !enemy.Enemy.tags.peaceful)
-				&& KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, 7, 8, false, false)) {
-				if (!enemy || e == enemy || KDEnemyCanSignalOthers(enemy)) {
+				&& (e == enemy || KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, 7, 8, false, false))) {
+				if (!enemy || e == enemy || cansignal) {
 					if (!(e.hostile > 0) &&
 						(e.Enemy.tags.jail || e.Enemy.tags.jailer || KDGetEnemyPlayLine(e))) {
 						let h = KDGetFaction(e) == (faction ? faction : KDGetFaction(enemy)) ? "Defend" : "DefendHonor";
@@ -1524,6 +1525,11 @@ function KinkyDungeonDefeat(PutInJail?: boolean, leashEnemy?: entity) {
 	if (PutInJail && jailroom == KDMapData.RoomType && forceFaction == KDMapData.MapFaction) {
 		PutInJail = false;
 		// Cancel if we are already in the target room!
+	}
+	if (PutInJail && leashEnemy && !KDSelfishLeash(leashEnemy) &&
+		(KinkyDungeonAltFloor(KDGameData.RoomType)?.isPrison)) {
+		PutInJail = false;
+		// Cancel if we are already in a prison
 	}
 
 	let leasher = KinkyDungeonLeashingEnemy();

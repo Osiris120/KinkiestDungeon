@@ -205,7 +205,10 @@ function KDPopEnemyPartyMember(pmid: number, partyid: number, freeFromParty?: bo
 function KDDespawnParty(partyid: number, mapData: KDMapDataType) {
 	let pleader = KinkyDungeonFindID(partyid, mapData);
 	for (let en of mapData.Entities) {
-		if (en.partyLeader == partyid && KDEnemyCanDespawn(en.id, mapData,
+		if (en.partyLeader == partyid
+			&& (!KDHelpless(en)
+				|| KDistChebyshev(en.x - KDPlayer().x, en.y - KDPlayer().y) > 16)
+			&& KDEnemyCanDespawn(en.id, mapData,
 			pleader ? KDistChebyshev(en.x - pleader.x, en.y - pleader.y) : undefined)) {
 			KDRemoveEntity(en, false, false, true, undefined, mapData);
 		}
@@ -274,6 +277,7 @@ function KDPersistentWatch() {
 function KDWatchMainPersistent() {
 	// Maid knight
 	if (KDGameData.MaidKnightFloor == undefined || KDGameData.MaidKnightFloor == MiniGameKinkyDungeonLevel) {
+		KDGameData.MaidKnightFloor = MiniGameKinkyDungeonLevel;
 		let point = KinkyDungeonGetRandomEnemyPoint(true);
 		if (!point) {
 			KDGameData.MaidKnightFloor++;

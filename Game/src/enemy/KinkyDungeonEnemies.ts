@@ -256,7 +256,10 @@ function KDGetBindAmp(enemy: entity, override?: number): number {
  * @param enemy
  */
 function KDHelpless(enemy: entity): boolean {
-	return enemy && !enemy.player && (enemy.hp <= 0.52 || enemy.boundLevel > KDNPCStruggleThreshMult(enemy) * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
+	let packed = KDUnPackEnemy(enemy);
+	let res = enemy && !enemy.player && (enemy.hp <= 0.52 || enemy.boundLevel > KDNPCStruggleThreshMult(enemy) * enemy.Enemy.maxhp) && KDBoundEffects(enemy) > 3;
+	if (packed) KDPackEnemy(enemy);
+	return res;
 }
 
 /**
@@ -534,11 +537,11 @@ function KinkyDungeonInDanger() {
 			if (((enemy.revealed && !enemy.Enemy.noReveal) || !enemy.Enemy.stealth || KinkyDungeonSeeAll || playerDist <= enemy.Enemy.stealth + 0.1) && !KDEnemyHidden(enemy) && !(KinkyDungeonGetBuffedStat(enemy.buffs, "Sneak") > 0 && playerDist > 1.5)) {
 				if (((!KDHelpless(enemy) && KinkyDungeonAggressive(enemy)) || (playerDist < 1.5 && !KDIsImprisoned(enemy)))) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 &&
-					(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
+						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						return true;
 					}
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 &&
-					(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
+						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						return true;
 					}
 				}
@@ -631,8 +634,10 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 				enemy.revealed = true;
 				if (((KinkyDungeonAggressive(enemy) && playerDist <= 6.9) || (playerDist < 1.5 && enemy.playWithPlayer))) {
 					if ((KDHostile(enemy) || enemy.rage) && KinkyDungeonVisionGet(enemy.x, enemy.y) > 0 && KinkyDungeonFastMove &&
-						!enemy.Enemy.tags.harmless &&
-						(!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
+						!enemy.Enemy.tags.harmless
+						&& !KDIsImprisoned(enemy) && !(KDHelpless(enemy)
+							&& KDCanPassEnemy(KDPlayer(), enemy))
+						&& (!KDAmbushAI(enemy) || enemy.ambushtrigger)) {
 						if ((!wasInDanger && KDGameData.FocusControlToggle?.AutoPathSuppressBeforeCombat)
 							|| (KDGameData.FocusControlToggle?.AutoPathStepDuringCombat && !KinkyDungeonFlags.get("startPath"))) {
 							if (KinkyDungeonFastMove && !KinkyDungeonFastMoveSuppress && !reenabled)
@@ -685,16 +690,22 @@ function KinkyDungeonDrawEnemies(_canvasOffsetX: number, _canvasOffsetY: number,
 						let buffSpritePower = 0;
 						//let sprite = enemy.Enemy.name;
 						if (enemy.buffs) {
+							let bound = KDBoundEffects(enemy) > 3;
 							for (let b of Object.values(enemy.buffs)) {
-								if (b?.replaceSpriteBound && KDBoundEffects(enemy) > 3 && (b.replacePower || b.power > buffSpritePower)) {
+								if (b?.replaceSpriteBound && bound && (b.replacePower || b.power > buffSpritePower)) {
 									buffSpritePower = b.replacePower || b.power;
 									buffSprite = b.replaceSpriteBound;
-								} else if (b?.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
+								} else if (!bound && b?.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
 									buffSpritePower = b.replacePower || b.power;
 									buffSprite = b.replaceSprite;
-								} else if (b?.replaceSpriteSuff && (b.replacePower || b.power > buffSpritePower)) {
+								} else if (!bound && b?.replaceSpriteSuff
+									&& (b.replacePower || b.power > buffSpritePower)) {
 									buffSpritePower = b.replacePower || b.power;
 									buffSprite = sp + b.replaceSpriteSuff;
+								} else if (bound && b?.replaceSpriteSuffBound
+									&& (b.replacePower || b.power > buffSpritePower)) {
+									buffSpritePower = b.replacePower || b.power;
+									buffSprite = sp + b.replaceSpriteSuffBound;
 								}
 							}
 						}
@@ -800,16 +811,22 @@ function KDDrawEnemySprite(board: PIXIContainer, enemy: entity, tx: number, ty: 
 	let buffSpritePower = 0;
 	let sprite = enemy.Enemy.name;
 	if (enemy.buffs) {
+		let bound = KDBoundEffects(enemy) > 3;
 		for (let b of Object.values(enemy.buffs)) {
-			if (b.replaceSpriteBound && KDBoundEffects(enemy) > 3 && (b.replacePower || b.power > buffSpritePower)) {
+			if (b?.replaceSpriteBound && bound && (b.replacePower || b.power > buffSpritePower)) {
 				buffSpritePower = b.replacePower || b.power;
 				buffSprite = b.replaceSpriteBound;
-			} else if (b.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
+			} else if (!bound && b?.replaceSprite && (b.replacePower || b.power > buffSpritePower)) {
 				buffSpritePower = b.replacePower || b.power;
 				buffSprite = b.replaceSprite;
-			} else if (b.replaceSpriteSuff && (b.replacePower || b.power > buffSpritePower)) {
+			} else if (!bound && b?.replaceSpriteSuff
+				&& (b.replacePower || b.power > buffSpritePower)) {
 				buffSpritePower = b.replacePower || b.power;
 				buffSprite = sprite + b.replaceSpriteSuff;
+			} else if (bound && b?.replaceSpriteSuffBound
+				&& (b.replacePower || b.power > buffSpritePower)) {
+				buffSpritePower = b.replacePower || b.power;
+				buffSprite = sprite + b.replaceSpriteSuffBound;
 			}
 		}
 	}
@@ -2195,7 +2212,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 	let analyze = KDGameData.Collection[enemy.id + ""] || KinkyDungeonFlags.get("AdvTooltips") || KDHasSpell("ApprenticeKnowledge");
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
-	if (KDEnemyName(enemy))
+	if (KDEnemyName(enemy) != TextGet("Name" + enemy.Enemy.name))
 		TooltipList.push({
 			str: KDEnemyName(enemy),
 			fg: KDEnemyNameColor(enemy),
@@ -2677,7 +2694,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 function KDDrawEnemyDialogue(enemy: entity, offset: number): number {
 	// Previously this was dependent on using a spell called Analyze. Now it is enabled by default if you have Knowledge
 	let TooltipList = [];
-	if (KDEnemyName(enemy))
+	if (KDEnemyName(enemy) != TextGet("Name" + enemy.Enemy.name))
 		TooltipList.push({
 			str: KDEnemyName(enemy),
 			fg: KDEnemyNameColor(enemy),
@@ -5221,7 +5238,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 				&& player.player
 				&& KDHostile(enemy)
 				&& AIData.aggressive
-				&& KDEnemyCanSignalOthers(enemy) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
+				&& KDEnemyCanSignalOthers(enemy)
+				&& !(enemy.silence > 0) && !enemy.Enemy.tags.minor && (!(enemy.silence > 0 || enemy.Enemy.tags.gagged) || enemy.Enemy.tags.alwaysAlert)) {
 
 				if (!KDEntityHasFlag(enemy, "shoutforhelp")) {
 					KinkyDungeonMakeNoiseSignal(enemy, 1, wasAware);
@@ -6492,6 +6510,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							target: player,
 							happened: happened,
 							player: player,
+							eventable: eventable || (dash && enemy.Enemy.Dash?.EventOnDashMiss) || (dash && enemy.Enemy.Dash?.EventOnDashMiss),
+
 						};
 						KinkyDungeonSendEvent("beforeDamage", data);
 						KDDelayedActionPrune(["Hit"]);
@@ -8758,20 +8778,22 @@ function KDIsFlying(enemy: entity): boolean {
  * @param enemy
  */
 function KDEnemyCanSignal(enemy: entity): boolean {
-	return !enemy.Enemy.tags?.nosignal && !(enemy.silence > 0);
+	return !enemy.Enemy.tags?.nosignal;
 }
 
 /**
  * @param enemy
  */
 function KDEnemyCanSignalMap(enemy: entity): boolean {
-	return !enemy.Enemy.tags?.passivesignal && KDEnemyCanSignal(enemy) && !KDEnemyHasFlag(enemy, "passivesignal");
+	return !enemy.Enemy.tags?.passivesignal && !(enemy.silence > 0)
+		&& KDEnemyCanSignal(enemy) && !KDEnemyHasFlag(enemy, "passivesignal");
 }
 /**
  * @param enemy
  */
 function KDEnemyCanSignalOthers(enemy: entity): boolean {
-	return !enemy.Enemy.tags?.nosignalothers && KDEnemyCanSignal(enemy) && !KDEnemyHasFlag(enemy, "nosignalothers");
+	return !enemy.Enemy.tags?.nosignalothers
+		&& KDEnemyCanSignal(enemy) && !KDEnemyHasFlag(enemy, "nosignalothers");
 }
 
 
@@ -9348,7 +9370,7 @@ function KDSpliceIndex(index: number, num: number = 1, mapData?: KDMapDataType) 
  * @param [noEvent]
  * @param [forceIndex]
  */
-function KDDespawnEnemy(enemy: entity, E: number,  mapData?: KDMapDataType, moveThruExit?: string, moveToX?: number, moveToY?: number): boolean {
+function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveThruExit?: string, moveToX?: number, moveToY?: number): boolean {
 	KinkyDungeonSendEvent("despawn", {enemy: enemy, mapData: mapData});
 
 	KDDespawnParty(enemy.id, mapData);
@@ -10115,16 +10137,19 @@ function KDGetEnemyTypeRep(enemy: enemy, faction: string): number {
 function KDQuickGenNPC(enemy: entity, force: boolean) {
 	let value: KDCollectionEntry | KDPersistentNPC = KDGameData.Collection[enemy.id + ""];
 	if (force && !value && !KDIsNPCPersistent(enemy.id)) {
+		let enemyType = enemy.Enemy;
+		if (!enemyType.style) return; // Dont make one for enemies without styles
 		value = KDGetVirtualCollectionEntry(enemy.id);
+		if (!value) return;
 	}
 	if ((value || KDIsNPCPersistent(enemy.id))) {
-		let id = value?.id || KDGetPersistentNPC(enemy.id).id;
+		let id = value ? value.id : KDGetPersistentNPC(enemy.id).id;
 
 		let enemyType = enemy.Enemy;
 		if (!enemyType.style) return; // Dont make one for enemies without styles
 		let NPC = null;
 		if (!KDNPCChar.get(id)) {
-			NPC = suppressCanvasUpdate(() => CharacterLoadNPC(id, KDEnemyName(enemy), value?.Palette));
+			NPC = CharacterLoadNPC(id, KDEnemyName(enemy), value?.Palette);
 			KDNPCChar.set(id, NPC);
 			KDNPCChar_ID.set(NPC, id);
 			value = value || KDGetPersistentNPC(enemy.id);

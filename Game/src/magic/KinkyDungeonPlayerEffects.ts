@@ -123,6 +123,8 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 10, 10);
 		if (point) {
 			KDMoveEntity(entity, point.x, point.y, false);
+
+			KinkyDungeonRemoveBuffsWithTag(entity, ["displaceend"]);
 		}
 
 		return {sfx: "Evil", effect: true};
@@ -2422,7 +2424,7 @@ function KDAdvanceSlime(resetSlimeLevel: boolean, restraint: string = ""): boole
 		KinkyDungeonRemoveRestraintsWithName(slime.name);
 		if (KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName("Hard" + slime.name), 0, true, undefined,  undefined,  undefined,  undefined,  undefined,  true)) {
 			KinkyDungeonSendTextMessage(5, TextGet("KinkyDungeonSlimeHarden"), "#ff44ff", 3);
-			let slimesuit = (restraint ? restraint : "") + "SlimeSuit";
+			let slimesuit = (restraint ? restraint : "Slime") + "Suit";
 
 			if (KinkyDungeonCurrentDress !== slimesuit) {
 				KinkyDungeonSetDress(slimesuit, "");
