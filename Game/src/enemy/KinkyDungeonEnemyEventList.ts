@@ -711,7 +711,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 300);
 								if ((furn && KDistChebyshev(enemy.x - furn.x, enemy.y - furn.y) < 1.5)
 									|| (jail && KDistChebyshev(enemy.x - jail.x, enemy.y - jail.y) < 1.5)) {
-									if (newPoint.x == furn.x && newPoint.y == furn.y) {
+									if (newPoint && newPoint.x == furn?.x && newPoint.y == furn?.y) {
 										KDSettlePlayerInFurniture(enemy, aiData);
 										KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 									} else {
@@ -940,7 +940,7 @@ let KDIntentEvents: Record<string, EnemyEvent> = {
 								KinkyDungeonSetEnemyFlag(enemy, "overrideMove", 300);
 								if ((furn && KDistChebyshev(enemy.x - furn.x, enemy.y - furn.y) < 1.5)
 									|| (jail && KDistChebyshev(enemy.x - jail.x, enemy.y - jail.y) < 1.5)) {
-									if (newPoint.x == furn.x && newPoint.y == furn.y) {
+									if (newPoint && newPoint.x == furn?.x && newPoint.y == furn?.y) {
 										KDSettlePlayerInFurniture(enemy, aiData);
 										KinkyDungeonSetEnemyFlag(enemy, "wander", 0);
 									} else {
