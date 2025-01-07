@@ -28536,7 +28536,7 @@ Show Quick Inventory
 显示快速背包
 Skip Tutorial
 跳过教程
-Mod Compatibility Mode
+Mod Compat Mode (requires reload)
 模组兼容模式
 
 

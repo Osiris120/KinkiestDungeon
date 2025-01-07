@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.29"
+KDVersionStr,"5.4.30"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -518,7 +518,7 @@ KinkyDungeonSpellDescriptionSecondWind0,"Regenerate WP when you are unimpaired, 
 KinkyDungeonSpellSecondWind1,Triumphant Wind
 KinkyDungeonSpellDescriptionSecondWind1,"Second Wind now regenerates up to 25% of your max WP"
 KinkyDungeonSpellFirstWind,Mental Defiance
-KinkyDungeonSpellDescriptionFirstWind,"Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP. Exclusive with Mental Fortitude."
+KinkyDungeonSpellDescriptionFirstWind,"Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP."
 KinkyDungeonSpellFirstWindHigher,Mental Fortitude
 KinkyDungeonSpellDescriptionFirstWindHigher,"Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While above 75% WP but below 100%, quickly convert 'Defiance' into WP. Exclusive with Mental Defiance."
 
@@ -7785,7 +7785,7 @@ RestraintEnchantedHeelsDesc,"'Shoes of the graceful'"
 KinkyDungeonCurseStruggleMistressKeyEnchantedHeels,"You can barely stand in these heels. They are rigid, metallic, and unbreakable, yet padded on the inside."
 
 RestraintEnchantedBlindfold,Ancient Blindfold
-LootChestEnchantedBlindfold,"You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
+LootChestEnchantedBlindfold,"You find a padded metal blindfold, glowing magnificently, along with a strange crystal next to it."
 RestraintEnchantedBlindfoldDesc2,"A full-blackout mask. When powered, it negates accuracy penalties due to vision, boosts accuracy by +100%, and boosts melee damage by +10."
 RestraintEnchantedBlindfoldDesc,"'Mask of the Warrior'"
 KinkyDungeonCurseStruggleMistressKeyEnchantedBlindfold,"You tug at the mask but it won't come off. It's molded so close to your face that no light shines through!"
@@ -23099,7 +23099,7 @@ KDBulletTransparency,Make Bullets Transparent
 KDXRay,X-Ray Vision
 KDQuickInv,Show Quick Inventory
 KDToggleSkipTutorial,Skip Tutorial
-KDToggleModCompat,Mod Compatibility Mode
+KDToggleModCompat,Mod Compat Mode (requires reload)
 
 rTutorial,"Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?"
 dTutorial_LeaveAndDisable,(Leave and Disable Tutorial)
@@ -26383,3 +26383,6 @@ KinkyDungeonSpellPlayerRubberSniper,Persuader Round
 KinkyDungeonSpellCastPlayerRubberSniper,You fire the Persuader!
 
 KDUnknown,???
+KDSaveBusy,Wait for current save to finish...
+
+KDSaveBusyMenu,"Please wait for save to finish..."

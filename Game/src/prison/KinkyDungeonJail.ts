@@ -2145,6 +2145,8 @@ let KDCustomDefeats: Record<string, (enemy: entity) => void> = {
 	},
 	MaidSweeper: (enemy) => {
 		if (KDRunRegularJailDefeatAttempt(enemy)) {
+			/** She puts on a happy face */
+			enemy.faction = "Maidforce";
 			KinkyDungeonDefeat(true, enemy);
 		}
 		KDCustomDefeatUniforms.MaidSweeper();
@@ -2363,11 +2365,22 @@ function KDGetLeashFaction(leashEnemy: entity): string {
 	if (leashEnemy && (KDFactionProperties[KDGetFaction(leashEnemy)]
 		|| KDFactionProperties[KDGetFactionOriginal(leashEnemy)])) {
 		if (KDFactionProperties[KDGetFaction(leashEnemy)])
-			forceFaction = KDGetFaction(leashEnemy);
-		else
-			forceFaction = KDGetFactionOriginal(leashEnemy);
+			forceFaction = KDFactionProperties[KDGetFaction(leashEnemy)].jailFaction
+				|| KDGetFaction(leashEnemy);
+		else {
+			if (KDFactionProperties[KDGetFactionOriginal(leashEnemy)]) {
+				forceFaction = KDFactionProperties[KDGetFactionOriginal(leashEnemy)].jailFaction
+					|| KDGetFactionOriginal(leashEnemy);
+			} else {
+				forceFaction = KDGetFactionOriginal(leashEnemy);
+			}
+
+		}
 	}
 	if (!forceFaction) forceFaction = KDGetMainFaction();
+	if (KDFactionProperties[KDGetFactionOriginal(leashEnemy)]?.jailFaction) {
+		forceFaction = KDFactionProperties[KDGetFactionOriginal(leashEnemy)]?.jailFaction;
+	}
 	return forceFaction;
 }
 

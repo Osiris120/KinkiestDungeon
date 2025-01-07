@@ -211,7 +211,7 @@ function KinkyDungeonShrineCost(type: string): number {
 		return Math.round(KinkyDungeonItemCost(item));
 	} else if (KinkyDungeonShrineTypeRemove.includes(type)) {
 		let rest = KinkyDungeonGetRestraintsWithShrine(type, undefined, undefined, undefined,
-			KinkyDungeonStatsChoice.get("ExclusionsApply"));
+			KinkyDungeonStatsChoice.get("ExclusionsApply"), true);
 		let maxPower = 1;
 		for (let r of rest) {
 			if (KDRestraint(r).power > maxPower) maxPower = KDRestraint(r).power;

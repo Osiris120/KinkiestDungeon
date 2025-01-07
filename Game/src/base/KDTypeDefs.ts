@@ -3810,6 +3810,8 @@ interface KDCollectionEntry {
 }
 
 interface KDFactionProps {
+	/** Faction for hisec */
+	jailFaction?: string,
 	/** Name of the room type this faction jails you in. Default is Jail */
 	jailRoom?: string,
 	/** Name of the lair type this faction jails you in. */

@@ -2051,7 +2051,9 @@ function KinkyDungeonDrawGame() {
 
 			DrawTextFitKD(TextGet("KinkyDungeonRestartConfirm"), 1250, 400, 1000, "#ffffff", "#333333");
 			DrawButtonVis(975, 550, 550, 64, TextGet("KinkyDungeonRestartNo"), "#ffffff", "");
-			DrawButtonVis(975, 650, 550, 64, TextGet("KinkyDungeonRestartQuitNoErase"), "#ffffff", "");
+			DrawButtonVis(975, 650, 550, 64, TextGet(KDSaveBusy ? "KDSaveBusy"
+				: "KinkyDungeonRestartQuitNoErase"
+			), "#ffffff", "");
 			DrawButtonVis(975, 800, 550, 64, TextGet("KinkyDungeonRestartCapture" + (KDConfirmDeleteSave ? "Confirm" : "")),  (KDGameData.PrisonerState == 'jail' || !KinkyDungeonNearestJailPoint(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y)) ? "Pink" : "#ffffff", "");
 			//DrawButtonVis(975, 900, 550, 64, TextGet("KinkyDungeonRestartYes" + (KDConfirmDeleteSave ? "Confirm" : "")), "#ffffff", "");
 			DrawButtonVis(1650, 900, 300, 64, TextGet("KinkyDungeonCheckPerks"), "#ffffff", "");
@@ -2866,7 +2868,7 @@ function DrawTextFitKDTo (
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
-	DrawTextVisKD(Container || kdcanvas, kdpixisprites, Text + (!unique ? "," + X + "," + Y : "_unique"), {
+	DrawTextVisKD(Container || kdcanvas, kdpixisprites, "text->" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -2920,7 +2922,7 @@ function DrawTextFitKDTo2 (
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
-	DrawTextVisKD(Container || kdcanvas, Map, Text + (!unique ? "," + X + "," + Y : "_unique"), {
+	DrawTextVisKD(Container || kdcanvas, Map, "text->" + Text + (!unique ? "," + X + "," + Y : "_unique"), {
 		Text: Text,
 		X: X,
 		Y: Y,
@@ -2963,7 +2965,7 @@ function DrawTextKD (
 	if (!Text) return;
 	let alignment = Align ? Align : "center";
 
-	DrawTextVisKD(kdcanvas, kdpixisprites, Text + "," + X + "," + Y, {
+	DrawTextVisKD(kdcanvas, kdpixisprites, "text->" + Text + "," + X + "," + Y, {
 		Text: Text,
 		X: X,
 		Y: Y,

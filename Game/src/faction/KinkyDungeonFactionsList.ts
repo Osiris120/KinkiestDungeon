@@ -433,6 +433,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		jailAlliedFaction: "Elemental",
 		jailBackupFaction: "Witch",
 		honor: 1,
+		jailFaction: "Elemental",
 		honor_specific: {
 		},
 		weight: (_Floor, _Checkpoint, _tags, _bonustags, _X, _Y) => {
@@ -444,6 +445,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		customDefeat: "WolfgirlHunters",
 		jailAlliedFaction: "Nevermere",
 		jailBackupFaction: "Bandit",
+		jailFaction: "Bandit",
 		honor: 1,
 		honor_specific: {
 		},
@@ -456,6 +458,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		customDefeat: "MaidSweeper",
 		jailAlliedFaction: "Maidforce",
 		jailBackupFaction: "Bountyhunter",
+		jailFaction: "Maidforce",
 		honor: 1,
 		honor_specific: {
 		},
@@ -492,6 +495,7 @@ let KDFactionProperties: Record<string, KDFactionProps> = {
 		customDefeat: "DollShoppe",
 		jailAlliedFaction: "Dressmaker",
 		jailBackupFaction: "Apprentice",
+		jailFaction: "Dressmaker",
 		honor: -1,
 		honor_specific: {
 		},

@@ -433,7 +433,7 @@ function KDGetDragonType(): KDMapEnemyList {
 	let lair = KDPersonalAlt[KDGameData.RoomType];
 	if (lair?.OwnerNPC) {
 		let NPC = KDGetPersistentNPC(lair.OwnerNPC);
-		if (NPC.entity) {
+		if (NPC?.entity) {
 			let type = (NPC?.trueEntity ? KinkyDungeonGetEnemyByName(NPC.trueEntity?.Enemy)
 			: undefined) || KinkyDungeonGetEnemyByName(NPC.entity?.Enemy)
 			if (type?.name) {

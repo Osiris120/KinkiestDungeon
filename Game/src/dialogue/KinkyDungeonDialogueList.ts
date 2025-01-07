@@ -265,12 +265,15 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							"2": {playertext: "Continue", response: "Default", gag: false,
 								clickFunction: (_gagged, _player) => {
 									for (let w of KinkyDungeonAllWeapon()) {
-										KinkyDungeonSendTextMessage(10, TextGet("KDItemConfiscated")
-													.replace("ITMN", KDGetItemName(w))
-													.replace("AMNT", "1")
-													, "#ff5277", 2);
-										KDAddLostItemSingle(w.inventoryVariant || w.name, 1);
-										KinkyDungeonInventoryRemoveSafe(w);
+										if (!KDWeapon(w) || isUnarmed(KDWeapon(w))) {
+											KinkyDungeonSendTextMessage(10, TextGet("KDItemConfiscated")
+												.replace("ITMN", KDGetItemName(w))
+												.replace("AMNT", "1")
+												, "#ff5277", 2);
+											KDAddLostItemSingle(w.inventoryVariant || w.name, 1);
+											KinkyDungeonInventoryRemoveSafe(w);
+										}
+
 									}
 									return false;
 								},

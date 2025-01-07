@@ -1562,6 +1562,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		},
 		factionFilters: {
 			Chest: {color: "DarkNeutral", override: true},
+			Lower: {color: "DarkNeutral", override: true},
 			Arms: {color: "DarkNeutral", override: true},
 			LatexLower: {color: "DarkNeutral", override: false},
 			LatexUpper: {color: "DarkNeutral", override: false},

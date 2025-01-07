@@ -25670,7 +25670,7 @@
 
 ### Skip Tutorial
 
-### Mod Compatibility Mode
+### Mod Compat Mode (requires reload)
 
 ### Welcome to Kinky Dungeon! It looks like this is your first time,|Would you like a brief walkthrough of the interface?
 

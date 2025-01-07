@@ -1833,8 +1833,13 @@ function KinkyDungeonHandleHUD() {
 			KinkyDungeonDressPlayer();
 			return true;
 		} else if (KinkyDungeonIsPlayer() && MouseIn(975, 650, 550, 64)) {
-			KinkyDungeonSaveGame();
-			KinkyDungeonState = "Menu";
+			if (KDSaveBusy) {
+				if (KDSoundEnabled())
+					AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/" + "LockLight" + ".ogg");
+			} else {
+				KinkyDungeonSaveGame();
+				KinkyDungeonState = "Menu";
+			}
 			//KinkyDungeonAutoWait = true;
 			//KinkyDungeonTempWait = false;
 			//KinkyDungeonAutoWaitSuppress = true;

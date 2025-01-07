@@ -28544,7 +28544,7 @@ Show Quick Inventory
 クイックインベントリ
 Skip Tutorial
 チュートリアルをスキップ
-Mod Compatibility Mode
+Mod Compat Mode (requires reload)
 MOD互換モード
 
 

@@ -9426,12 +9426,15 @@ function KDDespawnEnemy(enemy: entity, E: number,  mapData: KDMapDataType, moveT
 					enemy = KDAddEntity(enemy, false, false, true,
 						mdata
 					);
-					failPlaceThru = false;
-					let pp = KinkyDungeonGetNearbyPoint(
-						nextExit.x, nextExit.y, undefined, undefined, undefined, undefined, undefined, undefined,
-						undefined, mdata
-					) || nextExit;
-					KDMoveEntity(enemy, pp.x, pp.y, true, false, false, true, true, mdata);
+					if (enemy) {
+						failPlaceThru = false;
+						let pp = KinkyDungeonGetNearbyPoint(
+							nextExit.x, nextExit.y, undefined, undefined, undefined, undefined, undefined, undefined,
+							undefined, mdata
+						) || nextExit;
+						KDMoveEntity(enemy, pp.x, pp.y, true, false, false, true, true, mdata);
+
+					}
 				}
 			}
 		}
