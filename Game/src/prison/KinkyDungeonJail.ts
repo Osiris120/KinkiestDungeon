@@ -2378,7 +2378,7 @@ function KDGetLeashFaction(leashEnemy: entity): string {
 		}
 	}
 	if (!forceFaction) forceFaction = KDGetMainFaction();
-	if (KDFactionProperties[KDGetFactionOriginal(leashEnemy)]?.jailFaction) {
+	if (leashEnemy && KDFactionProperties[KDGetFactionOriginal(leashEnemy)]?.jailFaction) {
 		forceFaction = KDFactionProperties[KDGetFactionOriginal(leashEnemy)]?.jailFaction;
 	}
 	return forceFaction;

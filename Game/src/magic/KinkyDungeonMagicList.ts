@@ -762,7 +762,7 @@ let KinkyDungeonSpellList: Record<string, spell[]> = { // List of spells you can
 		{name: "ManaBurst", tags: ["will", "utility"], school: "Special",
 			passive: true,
 			manacost: 0, components: [], classSpecific: "Trainee", prerequisite: "DistractionCast",
-			hideUnlearnable: true, decreaseCost:true, level:1, type:"", onhit:"", time: 0,
+			hideUnlearnable: true, level:1, type:"", onhit:"", time: 0,
 			delay: 0, range: 2.5, lifetime: 0, aoe: 1.5, power: 0, damage: "inert", events: [
 			{type: "ManaBurst", trigger: "calcMiscast"},
 			{type: "ManaBurst", trigger: "tick"},
