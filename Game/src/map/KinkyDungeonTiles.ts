@@ -6,6 +6,7 @@ let KDCancelEvents = {
 		if (data.force) return "";
 		KinkyDungeonState = "JourneyMap";
 		KDGameData.JourneyTarget = null;
+		KDGameData.UseJourneyTarget = true;
 	},
 };
 let KDCancelFilters = {
@@ -13,8 +14,9 @@ let KDCancelFilters = {
 		// This one is set by event
 		if (data.force) return "";
 		if (!KDGameData.JourneyTarget && data.AdvanceAmount > 0) {
-			if (KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Connections.length > 0)
+			if (KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY]?.Connections.length > 0) {
 				return "JourneyChoice";
+			}
 		}
 		return "";
 	},
@@ -1060,14 +1062,16 @@ function KDAdvanceLevel(data: any, closeConnections: boolean = true, query: bool
 		MiniGameKinkyDungeonLevel += data.AdvanceAmount;
 		let currentSlot = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 
-		if (KDGameData.JourneyTarget) {
+		if (KDGameData.JourneyTarget && KDGameData.UseJourneyTarget) {
 			KDGameData.JourneyX = KDGameData.JourneyTarget.x;
 			KDGameData.JourneyY = KDGameData.JourneyTarget.y;
 			KDGameData.JourneyTarget = null;
+			KDGameData.UseJourneyTarget = false;
 		} else {
 			// TODO When adding open world feature, have this track better...
 			KDGameData.JourneyX = KDGetWorldMapLocation({x: KDCurrentWorldSlot.x, y: MiniGameKinkyDungeonLevel})?.jx || 0;
 			KDGameData.JourneyY = MiniGameKinkyDungeonLevel;
+			KDGameData.JourneyTarget = null;
 		}
 		if (currentSlot && closeConnections) {
 			for (let c of (currentSlot.Connections)) {

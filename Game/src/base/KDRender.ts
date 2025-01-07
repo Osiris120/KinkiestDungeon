@@ -5,7 +5,8 @@ let KDRender = {
 
 			let X = KDGameData.JourneyX;
 			let Y = KDGameData.JourneyY;
-			KDRenderJourneyMap(X, Math.floor(Y / KDLevelsPerCheckpoint) * KDLevelsPerCheckpoint, undefined, KDLevelsPerCheckpoint);
+			KDRenderJourneyMap(X, Math.floor(Y / KDLevelsPerCheckpoint) * KDLevelsPerCheckpoint,
+			undefined, KDLevelsPerCheckpoint);
 		}
 	},
 };

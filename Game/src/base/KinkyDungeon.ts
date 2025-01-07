@@ -665,6 +665,7 @@ interface KDGameDataBase {
 	IdentifiedObj?: Record<string, number>,
 
 	MaidKnightFloor: number,
+	UseJourneyTarget?: boolean,
 
 };
 
@@ -918,6 +919,7 @@ let KDGameDataBase: KDGameDataBase = {
 	LastSave: 50,
 	SigilsErased: 0,
 	IdentifiedObj: {},
+	UseJourneyTarget: false,
 };
 
 let KDGameData: KDGameDataBase = Object.assign({}, KDGameDataBase);

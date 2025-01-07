@@ -382,7 +382,7 @@ function KDRenderJourneyMap(X: number, Y: number, Width: number = 5, Height: num
 				let current = KDGameData.JourneyMap[KDGameData.JourneyX + ',' + KDGameData.JourneyY];
 				if (current && current.Connections.some((c) => {return c.x == slot.x && c.y == slot.y;}))
 					conn = true;
-				if (conn || allowChoose) {
+				if (conn || !allowChoose) {
 					KDGameData.JourneyTarget = {
 						x: slot.x,
 						y: slot.y,
