@@ -13438,11 +13438,11 @@ Much Less
 非常少
 No pain, no gain.
 一分耕耘，一分收获
-Gain 20 extra perks, to give you a false sense of security.
+Gain 20 extra perk points, to give you a false sense of security.
 获得 10 项额外点数，给你一种虚假的安全感
-Lose 10 perk points, just to keep things interesting.
+Lose 20 perk points, just to keep things interesting.
 失去 20 个点数，只是为了增加趣味性
-Lose 25 perk points, making things very interesting.
+Lose 50 perk points, making things very interesting.
 失去 50 个点数，让事情变得更有趣点吧
 
 
