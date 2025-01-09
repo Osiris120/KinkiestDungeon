@@ -852,7 +852,9 @@ function KDPlacePlayerBasedOnDirection(direction: number = 0, sideRoomIndex: str
 		KDUpdateEnemyCache = true;
 		if (KinkyDungeonEnemyAt(KDPlayer().x, KDPlayer().y)) {
 			let en = KinkyDungeonEnemyAt(KDPlayer().x, KDPlayer().y);
-			let pp = KinkyDungeonGetNearbyPoint(en.x, en.y, true);
+			let pp = KinkyDungeonGetNearbyPoint(en.x, en.y, true, undefined,
+				undefined, true
+			);
 			if (pp) {
 				en.aware = true;
 				KDMoveEntity(en, pp.x, pp.y, false);
