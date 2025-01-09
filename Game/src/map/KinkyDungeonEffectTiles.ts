@@ -74,14 +74,14 @@ let KDEffectTiles: Record<string, effectTile> = {
 		duration: 80,
 		priority: -2,
 		affinities: ["Sticky", "Latex"],
-		tags: ["latex", "insulator", "terrain", "gluedanger"],
+		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
 	},
 	"LiquidMetal": {
 		name: "LiquidMetal",
 		duration: 300,
 		priority: -2,
 		affinities: ["Slippery"],
-		tags: ["slippery", "metal", "conductive", "conductcold", "liquidmetal", "terrain", "gluedanger"],
+		tags: ["slippery", "metal", "conductive", "conductcold", "liquidmetal", "terrain", "gluedanger", "nomapgen"],
 	},
 	"LatexThin": {
 		name: "LatexThin",
@@ -89,7 +89,7 @@ let KDEffectTiles: Record<string, effectTile> = {
 		duration: 30,
 		priority: -2.01,
 		affinities: ["Sticky", "Latex"],
-		tags: ["latex", "insulator", "terrain", "gluedanger"],
+		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
 	},
 	"LatexBlue": {
 		name: "LatexBlue",
@@ -97,7 +97,7 @@ let KDEffectTiles: Record<string, effectTile> = {
 		duration: 80,
 		priority: -2.01,
 		affinities: ["Sticky", "Latex"],
-		tags: ["latex", "insulator", "terrain", "gluedanger"],
+		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
 	},
 	"LatexThinBlue": {
 		name: "LatexThinBlue",
@@ -105,7 +105,7 @@ let KDEffectTiles: Record<string, effectTile> = {
 		duration: 30,
 		priority: -2.01,
 		affinities: ["Sticky", "Latex"],
-		tags: ["latex", "insulator", "terrain", "gluedanger"],
+		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
 	},
 	"LatexGreen": {
 		name: "LatexBlue",
@@ -113,7 +113,7 @@ let KDEffectTiles: Record<string, effectTile> = {
 		duration: 80,
 		priority: -2.01,
 		affinities: ["Sticky", "Latex"],
-		tags: ["latex", "insulator", "terrain", "gluedanger"],
+		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
 	},
 	"LatexThinGreen": {
 		name: "LatexThinGreen",
@@ -121,7 +121,7 @@ let KDEffectTiles: Record<string, effectTile> = {
 		duration: 30,
 		priority: -2.01,
 		affinities: ["Sticky", "Latex"],
-		tags: ["latex", "insulator", "terrain", "gluedanger"],
+		tags: ["latex", "insulator", "terrain", "gluedanger", "nomapgen"],
 	},
 	"Ropes": {
 		name: "Ropes",

@@ -2977,6 +2977,7 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
  * @param E
  */
 function KDCheckDespawn(enemy: entity, E: number, mapData: KDMapDataType): boolean {
+	if (enemy == KinkyDungeonLeashingEnemy()) return false;
 	if (enemy.despawnX && enemy.despawnY && KDEnemyCanDespawn(enemy.id, mapData)) {
 		if (KDistChebyshev(enemy.despawnX - enemy.x, enemy.despawnY - enemy.y) < 1.5) {
 			KDDespawnEnemy(enemy, E, mapData);

@@ -1344,6 +1344,7 @@ function KinkyDungeonCreateMap (
 
 		KinkyDungeonGenNavMap();
 
+
 		if (altType && !altType.noFurniture)
 			KinkyDungeonPlaceFurniture(barrelChance, cageChance, width, height, altType); // Replace random internal walls with doodads
 
@@ -1356,6 +1357,7 @@ function KinkyDungeonCreateMap (
 		}
 		// Recreate boringness
 		KDCreateBoringness(noBoring);
+
 
 		if (!testPlacement) {
 			//if (!altType || altType.shortcut)
@@ -1450,8 +1452,12 @@ function KinkyDungeonCreateMap (
 				console.log(`${performance.now() - startTime} ms for special tile creation`);
 				startTime = performance.now();
 			}
+
+
+
 			KinkyDungeonGenNavMap();
 			KDLowPriorityNavMesh();
+			KDPruneEntrances(width, height);
 			if (KDDebug) {
 				console.log(`${performance.now() - startTime} ms for navmap creation`);
 				startTime = performance.now();
@@ -6611,4 +6617,40 @@ function KDCheckMainPath() {
 		false, false, false, KinkyDungeonMovableTilesSmartEnemy,
 		false, false, false, undefined, false,
 		undefined, false, true)?.length > 0;
+}
+
+function KDPruneEntrances
+	// Prunes existing entrances on the map, making sure they are accessible
+	(width: number, height: number) {
+	let successfulEntrances: LairEntrance[] = [];
+	for (let entrance of KDMapData.PotentialEntrances) {
+		let X = entrance.x;
+		let Y = entrance.y;
+		let checkTiles: KDPoint[] = [
+			{x: X, y: Y},
+		];
+		if (entrance.Excavate?.length > 0) {
+			checkTiles.push(...entrance.Excavate);
+		}
+		let pass = false;
+		for (let tile of checkTiles) {
+			let u = (KinkyDungeonIsAccessible(tile.x, tile.y - 1)
+				&& !KDEffectTileTags(tile.x, tile.y - 1).nomapgen);
+			let d = (KinkyDungeonIsAccessible(tile.x, tile.y + 1)
+				&& !KDEffectTileTags(tile.x, tile.y + 1).nomapgen);
+			let r = (KinkyDungeonIsAccessible(tile.x + 1, tile.y)
+				&& !KDEffectTileTags(tile.x + 1, tile.y).nomapgen);
+			let l = (KinkyDungeonIsAccessible(tile.x - 1, tile.y)
+				&& !KDEffectTileTags(tile.x - 1, tile.y).nomapgen);
+			if (u || d || r || l) {
+				pass = true;
+				break;
+			}
+		}
+		if (pass) {
+			successfulEntrances.push(entrance);
+		}
+	}
+	KDMapData.PotentialEntrances = successfulEntrances;
+
 }

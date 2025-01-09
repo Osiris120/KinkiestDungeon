@@ -310,7 +310,7 @@ let KDGuiltMult = 0.1;
  */
 function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, force?: boolean) {
 	if (!force && enemy && (!enemy.aware && !(enemy.vp > 0.5))) return;
-	if (KDGetFaction(enemy) == "player") return;
+	if (KDGetFaction(enemy) == "Player") return;
 	if ((!enemy && !KDLocalChaseTypes.includes(Type))) {
 		if (KDGameData.PrisonerState == 'jail' || KDGameData.PrisonerState == 'parole') {
 
@@ -337,9 +337,13 @@ function KinkyDungeonStartChase(enemy: entity, Type: string, faction?: string, f
 			let cansignal = KDEnemyCanSignalOthers(enemy);
 			if ((KDHostile(e, undefined)
 				|| (KDSevereTypes.includes(Type)
-					&& (e == enemy || (KDFactionAllied(faction ? faction : KDGetFaction(enemy), e, undefined,
-						-KDOpinionRepMod(e, KDPlayer())) // We lower the strength of faction alliances based on opinion
-					&& KDGetHonor(KDGetFaction(e), faction ? faction : KDGetFaction(enemy)) < 0.1))))
+					&& (e == enemy
+						|| (KDFactionAllied(faction ? faction : KDGetFaction(enemy),
+							e, undefined,
+							-KDOpinionRepMod(e, KDPlayer())) // We lower the strength of faction alliances based on opinion
+							&& KDGetHonor(
+								KDGetFaction(e),
+								faction ? faction : KDGetFaction(enemy)) < 0.1))))
 				&& (!enemy || !enemy.Enemy.tags.peaceful)
 				&& (e == enemy || KinkyDungeonCheckLOS(e, KinkyDungeonPlayerEntity, 7, 8, false, false))) {
 				if (!enemy || e == enemy || cansignal) {

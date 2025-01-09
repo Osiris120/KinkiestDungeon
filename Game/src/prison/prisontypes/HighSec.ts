@@ -114,7 +114,9 @@ KDPrisonTypes.HighSec = {
 
 				let Enemy = KDGetJailEnemy();
 
-				if (Enemy && !KinkyDungeonEnemyAt(KDMapData.EndPosition.x, KDMapData.EndPosition.y)) {
+				if (Enemy && !KinkyDungeonEnemyAt(KDMapData.EndPosition.x, KDMapData.EndPosition.y)
+					&& KDistChebyshev(KDPlayer().x - KDMapData.EndPosition.x, KDPlayer().y - KDMapData.EndPosition.y)
+						> 7) {
 					let en = DialogueCreateEnemy(KDMapData.EndPosition.x, KDMapData.EndPosition.y, Enemy.name);
 					//KDProcessCustomPatron(Enemy, en, 0.5, false);
 					en.AI = "looseguard";

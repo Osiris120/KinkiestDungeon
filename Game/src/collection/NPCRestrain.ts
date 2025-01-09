@@ -929,7 +929,7 @@ function KDReturnNPCItem(item: item, container?: Record<string, item>) {
 }
 
 function KDGetRestraintBondageStats(item: Named, target: entity): KDBondageStats {
-	let level = Math.max(KDRestraint(item).power || 0, 1);
+	let level = Math.max(KDRestraint(item)?.power || 0, 1);
 	let type = KDRestraintBondageType(item) || "Leather";
 	let mult = KDRestraintBondageMult(item, target) || 0;
 	let conditions = KDRestraintBondageConditions(item);

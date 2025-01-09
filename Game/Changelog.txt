@@ -37,6 +37,9 @@ TODO Add Cuddle play type
 
 Note to Modders: if your mod alters the function KDFreeNPC you will have to reimplement some new functionality added, to avoid bugs!
 
+5.4.31
+- Just bugfixes
+
 5.4.30
 - Fixed crash when an enemy should be deleted but the game tries to place them somewhere when they despawn
 - Fixed bug where shrines still remove favorite restraints
