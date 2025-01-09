@@ -33281,3 +33281,24 @@ You need to equip your magic cutting weapon to cut magic items.
 
 You can surrender in the menu if you want to be treated more gently.
 如果你希望得到更温和的待遇，你可以在菜单中投降。
+
+You flanked the enemy! Now attack its weak point for massive damage!
+你从侧翼进攻了敌人！现在攻击敌人的弱点即可造成巨大的伤害！
+Enemies that miss an attack become vulnerable for a turn.
+错过攻击的敌人会在一个回合内变得脆弱。
+Attack them for a guaranteed critical hit!
+攻击他们以确保造成致命一击！
+before the attack lands! You can tell the difference by the border of the tiles.
+在攻击到来之前！你可以通过瓷砖的边界来区分。
+Enemy attacks take time to hit. Make sure to step out of the warning tiles,
+敌人的攻击需要时间才能击中目标。确保走出警示牌，
+You can dodge out of the way of most projectiles. Avoid the marked tiles.
+你可以躲开大多数投射物。避开被标记的方块。
+Defeating enemies recovers some willpower.
+击败敌人可以恢复一些意志力。
+"Temporary enemies and summons don't restore anything, however."
+“然而，临时敌人和召唤物并不能恢复任何东西。”
+"Attacking a helpless enemy captures her and sends her to your Collection."
+“攻击一个无助的敌人，抓住她并将她送到你的收藏中。”
+"You can access the Collection in the Items screen, 2nd tab."
+“你可以在物品屏幕的第二个选项卡中访问你的收藏品。”
