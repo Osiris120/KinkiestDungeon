@@ -5278,11 +5278,11 @@ The guard shocks you with her taser!!!
 
 
 The EnemyName applies a NewRestraintName over your OldRestraintName
-EnemyName 在你的旧RestraintName 上束缚了新的RestraintName
+EnemyName 在你的 OldRestraintName 上束缚了 NewRestraintName
 The EnemyName removes your OldRestraintName
-EnemyName 移除了你身上旧的RestraintName
+EnemyName 移除了你身上的 OldRestraintName
 The EnemyName restrains you with a NewRestraintName
-EnemyName 用新的RestraintName 拘束你
+EnemyName 用 NewRestraintName 拘束你
 
 
 Master Conjurer
