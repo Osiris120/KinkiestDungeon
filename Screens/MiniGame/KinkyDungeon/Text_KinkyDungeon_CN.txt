@@ -439,6 +439,14 @@ Unfocused
 Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distraction.
 当性奋值超过10%时，命中率将降低至0.9倍，随性奋值的升高命中率将持续降低，最高在性奋值达到90%时降低至0.6倍。
 
+Focused Strikes
+专注打击
+90% less accuracy penalty on swung weapons due to distraction.
+减少 90% 由于分心而导致挥舞武器的准确度损失。
+Focused Power
+专注力量
+90% less stamina cost penalty on staves and similar weapons distraction.
+减少 90% 法杖和类似武器分心时所消耗的体力惩罚。
 
 Pristine
 质朴
@@ -462,8 +470,8 @@ Metal restraints are harder to escape from.
 
 Forgetful
 健忘
-You don't remember where you've been in the level.
-你不记得你在地牢中的位置。
+You don't remember where you've been in the level. 30 turn timer.
+你不记得你在地牢中的位置。持续30回合。
 
 
 Cursed Locks
@@ -1098,8 +1106,8 @@ In most cases you will not get blindfolded, except for cloth blindfolds which ca
 
 Total Blackout
 阴影护目
-Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
-眼罩变得非常令人痛苦，当佩戴眼罩时，你看不到已探索区域。
+Blindfolds are extremely punishing.
+眼罩变得非常令人痛苦。
 Poor Vision
 视力障碍
 Vision radius is significantly reduced.
@@ -1325,6 +1333,10 @@ Clearheaded
 Magic puts you in a clear state of mind. Casting spells successfully reduces your distraction.
 魔法可以让你头脑清醒，成功施法时可以减少性奋值。
 
+Unidentified Wear
+身份不明的装备
+Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
+被附魔（和诅咒）的拘束具和武器在使用之前无法被识别出。
 
 Copy (clipboard)
 复制 ( 到剪贴板 )
@@ -1801,19 +1813,19 @@ Crouch
 ### ~oh~
 
 (Heavy breathing)
-( 沉重喘息 )
+(沉重喘息)
 (Soft moaning)
-( 轻声呻吟 )
+(轻声呻吟)
 (Incoherent mumbling)
-( 含糊不清的咕哝 )
+(含糊不清的咕哝)
 (Loud moans)
-( 大声呻吟 )
+(大声呻吟)
 (Deep breaths)
-( 深呼吸 )
+(深呼吸)
 (Uncontrollable moaning)
-( 无法自控地呻吟 )
+(无法自控地呻吟)
 (Horny noises)
-( 淫荡的声音 )
+(淫荡的声音)
 
 
 ### ~mm~
@@ -2968,7 +2980,8 @@ Deals fire damage. Provides light.
 造成火焰伤害。可以提供光亮。
 Unarmed
 徒手
-### Fight with your hands and feet. Counts as teasing if arms are free. 50% chance to stun target if the target is disarmed.
+Fight with your hands and feet. Counts as teasing if arms are free. 50% chance to stun target if the target is disarmed.
+用手脚战斗。如果手臂自由，则算作挑逗。如果目标处于缴械状态，则有 50% 的几率击晕目标。
 
 Deals unarmed damage.
 造成徒手伤害。
@@ -4468,26 +4481,26 @@ The Bast Warrior pulls out a lock and slips it on! (DamageTaken)
 
 
 
-### Bast High Cleric
-
-### The Bast High Cleric vanishes into a puff of ribbons.
-
+Bast High Cleric
+猫女神高阶牧师
+The Bast High Cleric vanishes into a puff of ribbons.
+猫女神高阶牧师消失在一片丝带之中。
 A ray of light shoots out and paralyzes you! (DamageTaken)
-一道光芒射出，让你麻痹！ ( DamageTaken )
-### The Bast Cleric conjures wrappings upon you! (+RestraintAdded)
-
-### The Bast Cleric conjures a lock and slips it onto you! (DamageTaken)
-
+一道光芒射出，让你麻痹！ (DamageTaken)
+The Bast Cleric conjures wrappings upon you! (+RestraintAdded)
+猫女神牧师将包裹物施展于你身上！(+RestraintAdded)
+The Bast Cleric conjures a lock and slips it onto you! (DamageTaken)
+猫女神牧师变出一把锁，然后把它锁在你的身上！(DamageTaken)
 
 
 Bast Cleric
-猫女神牧师牧师
+猫女神牧师
 The Bast Cleric collapses and meows softly.
-猫女神牧师牧师倒下，轻轻地喵喵叫。
+猫女神牧师倒下，轻轻地喵喵叫。
 The Bast Cleric restrains you! (+RestraintAdded)
-猫女神牧师牧师拘束了你！ ( +RestraintAdded )
+猫女神牧师拘束了你！ ( +RestraintAdded )
 The Bast Cleric pulls out a lock and slips it on! (DamageTaken)
-猫女神牧师牧师拔出一把锁并把它锁上！ ( DamageTaken )
+猫女神牧师拔出一把锁并把它锁上！ ( DamageTaken )
 
 
 High Cleric
@@ -6204,8 +6217,8 @@ You run!
 你正在跑！
 You hop desperately!
 你正在拼命地跳！
-### Close Door
-
+Close Door
+关门
 Unlock
 开锁
 Command
@@ -6638,11 +6651,10 @@ A devious way to immobilize people.
 一种使人动弹不得的狡猾方法。
 
 
-### Metal Stand
-
-### As long as it's locked around you, you won't be going anywhere!
-
-
+Metal Stand
+金属支架
+As long as it's locked around you, you won't be going anywhere!
+只要它被锁在你周围，你就哪儿也去不了！
 
 As long as it's attached, you won't be going anywhere!
 只要它附在身上，你就哪儿也去不了！
@@ -7642,14 +7654,15 @@ It is charged by residual magic from your spells. Type: Teasing, Edging
 它由你的法术残留的魔力充电。类型 : ‎戏弄、寸止
 
 
-### Stainless Plug (F)
+Stainless Plug (F)
+不锈钢塞子 (F)
 
 A weighty plug that doesn't vibrate, but you'll certainly notice it walking around...
 一个不会振动的沉重塞子，但你肯定会注意到它在你体内四处活动......
 This one goes in the front.
 这个塞在前面。
-### Stainless Plug (R)
-
+Stainless Plug (R)
+不锈钢塞子 (R)
 This one goes in the back.
 这个塞在后面。
 
@@ -9524,13 +9537,12 @@ You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total
 
 Mental Resistance
 心理抵抗
-### +100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is less than 25% (click the buff to toggle), and willpower drains 70% slower while edged.
-
-### Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle.
-
-### Mental Resistance: You are allowing yourself to let go. Click to toggle.
-
-
++100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is less than 25% (click the buff to toggle), and willpower drains 70% slower while edged.
++100 灵能和魅惑抗性。除非你的意志力低于 25%（点击增益效果切换），否则你无法再不由自主地高潮，并且意志力在被边缘化时消耗速度会降低 70%。
+Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle.
+精神抵抗：除非自愿或意志力低于 25%，否则您无法达到性高潮。点击切换。
+Mental Resistance: You are allowing yourself to let go. Click to toggle.
+精神抵抗：你允许自己高潮。点击切换。
 
 Way of Discipline
 戒律之路
@@ -10136,8 +10148,8 @@ Chaos Beam
 混沌光束
 Mystic Beam
 神秘光束
-### Mystic Barrage
-
+Mystic Barrage
+神秘弹幕
 A beam of light that channels for 2 turns (stunning you briefly) then instantly deals DamageDealt holy damage to the first target hit. Blinds for 12 turns. 150% crit multiplier.
 引导一束光束 2 回合 ( 让你短暂眩晕 ) ，然后立即对第一个击中的目标造成 DamageDealt 点神圣伤害。致盲 12 回合。150% 暴击倍数。
 You charge a powerful beam attack!!!
@@ -11928,8 +11940,8 @@ You hear the sound of glass breaking, and a cloud of green gas rises around you!
 你听到玻璃破碎的声音，一团绿色的气体在你周围升起！
 The charms stick themselves all over your body!
 绷带遍布全身！
-### A metal pole catches you from below!
-
+A metal pole catches you from below!
+一根金属杆从下面抓住你！
 The ribbons tie themselves tightly around your body and won't let go!
 丝带紧紧地系在你的身体上，不会松开！
 Shackles close themselves over your limbs!
@@ -11970,8 +11982,8 @@ You breathe in the gas, and a wave of pleasure hits your whole body.
 你吸入了气体，一阵快感袭上你的全身。
 You breathe in the gas, and feel lethargic...
 你吸入了气体，你开始感到昏昏欲睡……
-### You hear a mechanism trip...
-
+You hear a mechanism trip...
+你听到了机械装置跳闸的声音……
 Items
 物品
 Rep
@@ -13268,8 +13280,8 @@ Arcane
 奥术
 Poison
 毒素
-### Poison Gas
-
+Poison Gas
+毒气
 Charm
 魅惑
 Tickle
@@ -13426,12 +13438,12 @@ Much Less
 非常少
 No pain, no gain.
 一分耕耘，一分收获
-Gain 10 extra perks, to give you a false sense of security.
+Gain 20 extra perks, to give you a false sense of security.
 获得 10 项额外点数，给你一种虚假的安全感
 Lose 10 perk points, just to keep things interesting.
-失去 10 个点数，只是为了增加趣味性
+失去 20 个点数，只是为了增加趣味性
 Lose 25 perk points, making things very interesting.
-失去 25 个点数，让事情变得更有趣点吧
+失去 50 个点数，让事情变得更有趣点吧
 
 
 Perk Progression Mode:
@@ -13471,7 +13483,7 @@ Perk shrines are always accompanied by bondage.
 
 
 Perk Shrine Bondage Info:
-技能神泉束缚信息 : ‎
+技能神泉束缚信息: ‎
 Hidden
 隐藏
 Partial
@@ -13486,14 +13498,15 @@ You know the exact restraints a perk shrine will apply.
 你知道技能神泉会施加什么拘束具
 
 
-### Difficulty:
+Difficulty:
+难度:
 
 Normal Mode
 正常模式
 Hard Mode
 困难模式
-### Extreme Mode
-
+Extreme Mode
+极限模式
 A supposedly reasonable difficulty curve.
 合理的难度曲线
 Play the game the way it was intended. Cruel and restrictive.
@@ -19152,7 +19165,8 @@ Okay fine... I won't hurt the kitties. (Join them)
 ( SPEAKER 把你绑在紧身织物上…)|(你听到几把锁的咔嗒声…)|天哪...太漂亮了|你会成为一名出色的助手！
 (The SPEAKER frowns)|Aw...
 ( SPEAKER 皱着眉头)|噢...
-### (The SPEAKER clenches her fist to the ceiling)|Nooooo!!!
+(The SPEAKER clenches her fist to the ceiling)|Nooooo!!!
+(SPEAKER 握紧拳头对着天花板)|不！！！
 
 (The SPEAKER grins and pulls out a frilly dress)|Don't knock it till you try it!|Trust me, it'll be fun!
 ( SPEAKER 咧嘴一笑，拿出一件褶边连衣裙)|除非你试穿，否则别碰它|相信我，这会很有趣的！
@@ -19715,13 +19729,13 @@ This is unethical! I refuse! (PERCENT chance to avoid)
 
 
 (Select an item to buy from the SPEAKER)
-( 选择你要从 SPEAKER 购买的商品 )
+(选择你要从 SPEAKER 购买的商品)
 (Attack the SPEAKER?)
-( 攻击 SPEAKER？ )
-### (Buy ITM# for IC# gp) (Owned: AMNT#)
-
+(攻击 SPEAKER？)
+(Buy ITM# for IC# gp) (Owned: AMNT#)
+(花费 IC# 金币购买 ITM#) (拥有: AMNT#)
 (The SPEAKER sells you the item)
-( SPEAKER 向你出售该物品 )
+(SPEAKER 向你出售该物品)
 (The SPEAKER shakes her head)|I think you'd be better off without that~
 ( SPEAKER 摇头 ) |我认为没有那个你会更好~
 (The SPEAKER looks embarassed)|I can't sell you that, miss...
@@ -20074,16 +20088,14 @@ There is no valid space next to you!
 ( SPEAKER 拒绝听从你的命令 )
 
 
-### (Remove BINDAMNT binding from her)
-
-### (You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)
-
+(Remove BINDAMNT binding from her)
+（解除她的 BINDAMNT 束缚）
+(You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)
+（你从 SPEAKER 中解开了 BINDANTPREV 束缚，不包括实际束缚）|（使用“束缚术”技能删除绑定）
 (Give her a restoration item)
-( 给她一个恢复物品 )
+(给她一个恢复物品)
 (The SPEAKER appreciates the thought!)
-( SPEAKER 很欣赏这个想法！ )
-
-
+(SPEAKER 很欣赏这个想法！)
 
 
 (Follow me)
@@ -21954,8 +21966,8 @@ ShouldersHogtie
 肩部捆绑
 Coat
 外套
-### CoatHogtieFree
-
+CoatHogtieFree
+无束缚外套
 Cape
 披肩
 Pauldrons
@@ -28118,8 +28130,8 @@ Elven Ancestry
 精灵血统
 You were blessed with immortality by Ninril, Goddess of Restoration, granting -50% sprint cost and -30 Physical Resist. While your WP is above 0, you regenerate WP and heal nearby allies.
 恢复女神 Ninril 祝福你永生，给予 -50% 冲刺消耗和 -30 物理防御。当你的意志力高于 0 时，你会恢复意志力并治疗附近的盟友。
-### Bast's Blessing
-
+Bast's Blessing
+猫女神的祝福
 You were granted undead immortality by Bast, granting a bite, claws, catlike senses, and stamina regen scaling with your current WP. Your WP gain is halved and you get -100 Fire Resist.
 猫女神赋予你不死不朽的能力，赋予你咬、爪、猫之感官，并根据你当前的意志力调整体力恢复。 你的意志力增益减半并且你获得 -100 火焰抗性。
 
@@ -28238,8 +28250,8 @@ Fiery Greatsword
 
 Tangling Vines
 缠结藤蔓
-### Enchanted Bubble
-
+Enchanted Bubble
+魔法泡泡
 A bubble of magic water starts forming around you!
 一团神奇的水开始在你周围形成！
 The gap in the bubble closes, and you are fully sealed within the bubble!
@@ -28690,8 +28702,8 @@ The Goddess calls you a good girl.
 女神夸你是个好女孩。
 Rescue some alchemists from their own experiment.
 从他们自己的实验中拯救一些炼金术士。
-### Stop rebels from making a pact with primordial beings.
-
+Stop rebels from making a pact with primordial beings.
+阻止叛乱分子与原始生物签订契约。
 Decommission some malfunctioning drones.
 停用一些出现故障的无人机。
 
@@ -30074,10 +30086,10 @@ Promote to Servant
 晋升为仆人
 Demote
 降职
-### Delete Guest
-
-### Really Delete Guest?
-
+Delete Guest
+删除客人
+Really Delete Guest?
+确定要删除客人吗？
 The ENMY tries to grab you!
 ENMY 试图抓住你！
 
@@ -30488,8 +30500,8 @@ Tell me about your collection.
 告诉我你的收藏。
 I'm in charge of my own path.
 我负责自己的道路。
-### (SPEAKER grins)|Let's see how long you can keep up that attitude~
-
+(SPEAKER grins)|Let's see how long you can keep up that attitude~
+(SPEAKER 笑了)|让我们看看你能保持这种态度多久~
 That won't be necessary, miss.
 没必要，小姐。
 (SPEAKER smiles)|Oh, it's quite necessary~|Why don't I show you?
@@ -31003,11 +31015,11 @@ The poison dragon takes flight and slams into you! (Stunned!)
 Poison Dragon Girl
 毒龙娘
 The dragon girl slashes you with her venomous nails! (DamageTaken)
-龙娘用她有毒的指甲砍你！ ( DamageTaken )
+龙娘用她有毒的指甲砍你！ (DamageTaken)
 The dragon girl raises vines out of the ground to bind you! (+RestraintAdded)
-龙娘从地面伸出藤蔓来束缚你！ ( +RestraintAdded )
-### The dragon girl holds you in place and locks your restraints! (+RestraintAdded)
-
+龙娘从地面伸出藤蔓来束缚你！ (+RestraintAdded)
+The dragon girl holds you in place and locks your restraints! (+RestraintAdded)
+龙娘将你牢牢地固定在原地，并锁住你的束缚！(+RestraintAdded)
 
 
 Ice Dragon Queen
@@ -31024,8 +31036,8 @@ The dragon girl slams you with several chunks of ice! (DamageTaken)
 龙娘用几块冰砸向你！ ( DamageTaken )
 The dragon girl splashes you with instantly freezing ice! (+RestraintAdded)
 龙娘瞬间将冰冷的冰泼向你！ ( +RestraintAdded )
-### The dragon girl conjures magical locks on you! (+RestraintAdded)
-
+The dragon girl conjures magical locks on you! (+RestraintAdded)
+龙娘对你施展魔法锁！(+RestraintAdded)
 
 
 Shadow Dragon Queen
@@ -31042,8 +31054,8 @@ The dragon girl stares into your eyes! (DamageTaken)
 龙娘凝视着你的眼睛！ ( DamageTaken )
 The dragon girl reaches out with a shadowy grip! (+RestraintAdded)
 龙娘伸出阴影般的手！ ( +RestraintAdded )
-### The dragon girl reaches out and locks your restraints! (+RestraintAdded)
-
+The dragon girl reaches out and locks your restraints! (+RestraintAdded)
+龙女伸出手来锁住了你的束缚！(+RestraintAdded)
 
 
 A cage falls from the ceiling on top of you!
@@ -32272,8 +32284,8 @@ OVERWRITE All!
 
 Need Positive Opinion to Promote
 需要更正面的评价来擢升
-### Remove From Party Before Promoting?
-
+Remove From Party Before Promoting?
+晋升前先退出队伍？
 Servant Cuddle Points: AMNT (+OPN opinion/cycle)
 仆人拥抱点： AMNT (+OPN 观点/周期)
 Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
@@ -32612,8 +32624,8 @@ Magical disenchantment suspends your living collar for AMNT turns
 魔法解除魔咒会在 AMNT 回合内让你的活体项圈无效化
 
 
-### (will add AMNT TPE binding)
-
+(will add AMNT TPE binding)
+(将添加 AMNT TPE 束缚)
 Hardlight
 强光
 Knocked Out
@@ -32750,8 +32762,8 @@ Entangle
 缠绕
 Blessed Orb
 祝福宝珠
-### Slimy Sphere
-
+Slimy Sphere
+粘液球
 Rubberization Protocol
 橡胶化协议
 Latex Encapsulation
@@ -32782,8 +32794,8 @@ Capture Device
 捕捉设备
 Sedative
 镇静剂
-### Slime Barrage
-
+Slime Barrage
+粘液弹幕
 Seal of the 5th Era
 第五纪元封印
 
@@ -33137,29 +33149,29 @@ Talisman Z.
 Danger Level: Annoying|A playful spirit residing in the dungeon, taking advantage of any adventurers they come across. They can pass through walls, and most physical weapons go right through them. Using a magical weapon seems to banish them for some time, at least.||-Denizens of the Dungeon by Catherine Willows
 危险等级： 令人讨厌|居住在地牢中的嬉戏精灵，会利用遇到的冒险者。它们可以穿墙而过，大多数物理武器都能直接穿过它们。使用魔法武器似乎能驱逐它们一段时间。||《地下城居民》————凯瑟琳·韦罗斯
 Danger Level: Very Annoying|It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows
-危险等级： 非常令人讨厌|据说鬼魂是伟大成就之前人类的灵魂，他们的灵魂被未完成的梦想和抱负束缚在这个世界上。但我一点也不相信。这些小家伙除了羞辱人，什么都不在乎。问问我是怎么知道的||《地下城居民》————凯瑟琳·韦罗斯
-### Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: Low|The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows
-
-### Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows
-
-### The Witches' Coven
-
-### Witches
-
-### Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows
-
+危险等级：非常令人讨厌|据说鬼魂是伟大成就之前人类的灵魂，他们的灵魂被未完成的梦想和抱负束缚在这个世界上。但我一点也不相信。这些小家伙除了羞辱人，什么都不在乎。问问我是怎么知道的||《地下城居民》————凯瑟琳·韦罗斯
+Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows
+危险等级：中|非常顽皮的幽灵，喜欢戏弄。它甚至携带自己的幽灵束缚装置，用于“游戏”，这些游戏往往包括挠被绑女孩的痒痒。||《地下城居民》————凯瑟琳·韦罗斯
+Danger Level: Low|The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows
+危险等级：低|一个渴望生活财富的人的感受。虽然它无法为自己索取任何物质财富，但如果有机会，它还是会翻你的口袋和财物。||《地下城居民》————凯瑟琳·韦罗斯
+Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows
+危险等级：高|一堆令人压抑的负面想法。根据当地神话，其他鬼魂试图通过拥抱它来使它高兴起来，但它的哀嚎最终将它们吸引到了你的位置。准备好将其击倒，否则你会发现自己成了来世的玩物。||《地下城居民》————凯瑟琳·韦罗斯
+Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows
+危险等级：高|虽然大多数法师花了几个世纪的时间掌握魔法艺术，但有些人缺乏耐心或纪律，无法以传统方式学习魔法。在对权力的渴望驱使下，这些人与超自然生物签订契约并成为女巫。||《地下城居民》————凯瑟琳·韦罗斯
+The Witches' Coven
+女巫聚会
+Witches
+女巫
+Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows
+危险等级：极度危险|擅长魔法的女巫。这种女巫拥有一群幽灵之手和邪恶书籍的支持，极其危险。她的近距离攻击缓慢而笨拙，但要小心不要被包围。||《地下城居民》————凯瑟琳·韦罗斯
 Danger Level: High|They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows
 危险等级：高|他们似乎是古代Bast邪教中颇具影响力的人物。他们不仅能施展爆炸魔法，还能在近距离变出魔法包裹。||《地下城居民》————凯瑟琳·韦罗斯
 Bast Mummy
 猫女神木乃伊
-### Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows
-
-### Bast Clerics
-
+Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows
+危险等级：中|猫女神的信徒。他们致力于保护坟墓免受外来者的侵扰，很少愿意谈判。有些人保持着巅峰的身体力量，而其他人甚至可以施展法术。||《地下城居民》————凯瑟琳·韦罗斯
+Bast Clerics
+猫女神牧师
 Rock-solid and form-fitting.
 坚如磐石，贴身舒适。
 Provides minor protection against enemy attacks. Decreases stealth.
@@ -33246,18 +33258,26 @@ For stepping into all kinds of trouble!
 用于躲避各种麻烦！
 
 
-### Generating Map...
+Generating Map...
+生成地图中...
 
-### Mystic wrappings constrict around your body!
+Mystic wrappings constrict around your body!
+神秘的包裹物紧紧包裹着你的身体！
 
-### You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
+You'll need a sharp object to cut items. Look for a knife or a piece of scrap on the floor.
+你需要一个锋利的物体来切割物品。在地板上寻找一把刀或一块废料。
 
-### If you can't get your knife into place, try sitting next to a crack on the wall.
+If you can't get your knife into place, try sitting next to a crack on the wall.
+如果你无法将刀放到位，请尝试坐在墙壁裂缝旁边。
 
-### Your character will automatically try to lodge the knife into the wall.
+Your character will automatically try to lodge the knife into the wall.
+你的角色会自动尝试将刀插入墙壁。
 
-### You'll need to find a cutting weapon with the magic tag to cut magic items.
+You'll need to find a cutting weapon with the magic tag to cut magic items.
+你需要找到带有魔法标签的切割武器来切割魔法物品。
 
-### You need to equip your magic cutting weapon to cut magic items.
+You need to equip your magic cutting weapon to cut magic items.
+你需要装备魔法切割武器来切割魔法物品。
 
-### You can surrender in the menu if you want to be treated more gently.
+You can surrender in the menu if you want to be treated more gently.
+如果你希望得到更温和的待遇，你可以在菜单中投降。
