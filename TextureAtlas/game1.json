@@ -1234,7 +1234,7 @@
 },
 "Game/Poses/EyesNeutral.png":
 {
-	"frame": {"x":1624,"y":1904,"w":11,"h":15},
+	"frame": {"x":1624,"y":1922,"w":11,"h":15},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":7,"y":14,"w":11,"h":15},
@@ -1480,6 +1480,14 @@
 	"spriteSourceSize": {"x":4,"y":11,"w":28,"h":12},
 	"sourceSize": {"w":36,"h":36}
 },
+"Game/UI/SideRoom/Unknown.png":
+{
+	"frame": {"x":1624,"y":1904,"w":11,"h":16},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":11,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
 "Game/UI/TickPerk.png":
 {
 	"frame": {"x":2034,"y":878,"w":13,"h":25},
@@ -1528,6 +1536,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game0.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:37cd360a288035e487584dd1375ecc7a:f7c7dc40f0df806135c91a99898006df:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f07da9b342c84b61d95da68c4b58dfc3:2a5d4a03a8be87ea4bb318123a458029:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

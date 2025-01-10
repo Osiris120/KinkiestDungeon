@@ -1057,8 +1057,8 @@ function KinkyDungeonDrawGame() {
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;
 				KDInteracting = false;
-			} else if (KDConfigHotbar) {
-				KDConfigHotbar = false;
+			} else if (KDAlternateInventoryRender()) {
+				KDResetAlternateInventoryRender();
 				KinkyDungeonGameKey.keyPressed[9] = false;
 				KinkyDungeonKeybindingCurrentKey = '';
 				KinkyDungeonInspect = false;

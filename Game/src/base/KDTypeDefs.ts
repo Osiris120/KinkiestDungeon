@@ -31,6 +31,8 @@ interface item extends NamedAndTyped {
 	type?: string,
 	/** Faction of the applied item */
 	faction?: string,
+	/** Faction of the applied item, impossible to override */
+	forceFaction?: string,
 	/** When added to the inventory, is added as a different item instead. Good for cursed items! */
 	inventoryVariant?: string,
 	/** Events associated with the item*/
@@ -2555,7 +2557,7 @@ interface KDStruggleData {
 
 interface KDFilteredInventoryItem {
     name: any;
-    item: any;
+    item: item;
     preview: string;
     preview2?: string;
     previewcolor?: string;

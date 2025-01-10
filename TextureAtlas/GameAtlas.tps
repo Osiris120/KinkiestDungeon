@@ -2162,6 +2162,7 @@
             <key type="filename">../Game/InventoryAction/Offhand.png</key>
             <key type="filename">../Game/InventoryAction/Pick.png</key>
             <key type="filename">../Game/InventoryAction/Quickslot.png</key>
+            <key type="filename">../Game/InventoryAction/Recolor.png</key>
             <key type="filename">../Game/InventoryAction/Recycle.png</key>
             <key type="filename">../Game/InventoryAction/RecycleBulk.png</key>
             <key type="filename">../Game/InventoryAction/RecycleExcess.png</key>
@@ -2299,6 +2300,7 @@
             <key type="filename">../Game/Items/Restraint/HolyRope.png</key>
             <key type="filename">../Game/Items/Restraint/Ice.png</key>
             <key type="filename">../Game/Items/Restraint/Latex.png</key>
+            <key type="filename">../Game/Items/Restraint/Leashes.png</key>
             <key type="filename">../Game/Items/Restraint/LeatherCuffs.png</key>
             <key type="filename">../Game/Items/Restraint/Legbinders.png</key>
             <key type="filename">../Game/Items/Restraint/MagicBelts.png</key>
@@ -4439,6 +4441,7 @@
             <key type="filename">../Game/UI/SideRoom/ElevatorEgyptian2.png</key>
             <key type="filename">../Game/UI/SideRoom/ElevatorRoom.png</key>
             <key type="filename">../Game/UI/SideRoom/GoldVault.png</key>
+            <key type="filename">../Game/UI/SideRoom/Unknown.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>

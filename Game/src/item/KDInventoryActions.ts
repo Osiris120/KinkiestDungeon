@@ -155,6 +155,22 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 			return false; // NA for default actions
 		},
 	},
+	"Recolor": {
+		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[8]);},
+		hotkeyPress: () => {return KinkyDungeonKeySpell[8];},
+		icon: (_player, _item) => {
+			return "InventoryAction/Recolor";
+		},
+		valid: (_player, _item) => {
+			return true;
+		},
+		click: (_player, _item) => {
+			KDConfigRestraintColor = !KDConfigRestraintColor;
+		},
+		cancel: (_player, _delta) => {
+			return false; // NA for default actions
+		},
+	},
 	"Remove": {
 		hotkey: () => {return KDHotkeyToText(KinkyDungeonKeySpell[6]);},
 		hotkeyPress: () => {return KinkyDungeonKeySpell[6];},

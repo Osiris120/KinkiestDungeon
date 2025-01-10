@@ -584,6 +584,14 @@
 	"spriteSourceSize": {"x":16,"y":39,"w":167,"h":44},
 	"sourceSize": {"w":200,"h":200}
 },
+"Game/Items/Restraint/Leashes.png":
+{
+	"frame": {"x":955,"y":1725,"w":24,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":2,"w":24,"h":68},
+	"sourceSize": {"w":72,"h":72}
+},
 "Game/Items/Restraint/Legirons.png":
 {
 	"frame": {"x":975,"y":1996,"w":168,"h":32},
@@ -1081,6 +1089,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
 	"related_multi_packs": [ "game1.json", "game2.json", "game3.json", "game4.json", "game5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:37cd360a288035e487584dd1375ecc7a:f7c7dc40f0df806135c91a99898006df:54a7432a0665349a58c0c74f51e75c65$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f07da9b342c84b61d95da68c4b58dfc3:2a5d4a03a8be87ea4bb318123a458029:54a7432a0665349a58c0c74f51e75c65$"
 }
 }

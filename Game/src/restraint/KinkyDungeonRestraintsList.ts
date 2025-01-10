@@ -2157,6 +2157,10 @@ const KinkyDungeonRestraints: restraint[] = [
 		Filters: {
 			Leash: {"gamma":1,"saturation":1,"contrast":1.6,"brightness":0.6666666666666666,"red":1,"green":2.0833333333333335,"blue":1,"alpha":1},
 		},
+		factionFilters: {
+			Leash: {color: "Highlight", override: false},
+			Hardware: {color: "DarkNeutral", override: true},
+		},
 		unlimited: true,
 		events: [
 			{trigger: "postRemoval", type: "RequireCollar"},
@@ -4020,7 +4024,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTagsMult: {Metal: 2},
 		playerTagsMissing: {Metal: -13},
 		playerTagsMissingMult: {Metal: 0.2},
-		minLevel: 8, allFloors: true, shrine: ["Cuffs", "Metal",  "Thumbcuffs", "HandsFrontAllowed"]},
+		minLevel: 8, allFloors: true, shrine: ["Thumbcuffs", "Cuffs", "Metal",  "HandsFrontAllowed"]},
 
 	{inventory: true, trappable: true, name: "ThumbCuffsNew", debris: "Chains", Asset: "MetalCuffs", accessible: true,
 		Model: "Thumbcuffs",
@@ -4046,7 +4050,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		playerTagsMult: {Metal: 2},
 		playerTagsMissing: {Metal: -13},
 		playerTagsMissingMult: {Metal: 0.2},
-		minLevel: 8, allFloors: true, shrine: ["Cuffs", "Metal",  "Thumbcuffs", "HandsFrontAllowed"]},
+		minLevel: 8, allFloors: true, shrine: ["Thumbcuffs", "Cuffs", "Metal", "HandsFrontAllowed"]},
 
 
 	{inventory: true, name: "WolfCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true, linkCategory: "SmartCuffs", linkSize: 0.55, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable],
@@ -6772,6 +6776,11 @@ const KinkyDungeonRestraints: restraint[] = [
 		affinity: {
 			Cut: ["SharpTug", "SharpHookOrFoot"],
 			Struggle: ["Tug", "HookOrFoot"],
+		},
+
+		factionFilters: {
+			Leash: {color: "DarkNeutral", override: true},
+			Hardware: {color: "LightNeutral", override: true},
 		},
 		events: [
 			{trigger: "postRemoval", type: "RequireCollar"}

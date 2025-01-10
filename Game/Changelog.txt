@@ -40,9 +40,13 @@ Note to Modders: if your mod alters the function KDFreeNPC you will have to reim
 TODO add ability to recolor own restraints via palette
 
 5.4.32
-- Add fangmouth, and fanglessmouth version
-- Added fang overbite for ball gag
-- New option: Use palette regardless of outfit
+- Add fangmouth, fangmouth_double, and fanglessmouth version
+- Added fang overbite for ball gags
+- New character option: Use palette regardless of outfit
+- New inventory action for restraints: set palette
+- Added option in wardrobe to render with/without armor
+- Added more expressions for prisoners in the collection
+- Fixed some bugs with armor pieces hidden by dynamic armor rules still overriding shoes and boots underneath.
 
 5.4.31
 - Just bugfixes
