@@ -1286,6 +1286,18 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 		ElementValue("KDOutfitName", KDOutfitInfo[KDCurrentOutfit]);
 	}
 	if (KDShowCharacterPalette) {
+		DrawCheckboxKDEx("", () => {
+			KDToggles.HideArmorWardrobe = !KDToggles.HideArmorWardrobe;
+			KDSaveToggles();
+			KinkyDungeonDressPlayer(C);
+			return true;
+		}, true, 800, 250, 64, 64,
+		TextGet("KDVisualOpt_HideArmorWardrobe"), KDToggles.HideArmorWardrobe, false, "#ffffff", undefined, {
+			maxWidth: 350,
+			fontSize: 24,
+			scaleImage: true,
+		});
+
 		KDDrawPalettes(1300, 250, KDPaletteWidth, 72, C.Palette || "", (pal) => {
 			C.Palette = pal;
 

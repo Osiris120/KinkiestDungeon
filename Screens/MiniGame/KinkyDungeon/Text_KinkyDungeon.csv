@@ -25647,7 +25647,8 @@ KDCallForHelpHint,"Looks like you might be stuck. Try calling for help (bottom r
 
 KDBackupOutfits,Backup
 KDLoadOutfits,Restore
-KDSetPalette,Set Palette
+KDSetPalette,Extra Options
+KDVisualOpt_HideArmorWardrobe,Preview without Armor
 
 KinkyDungeonStatMC_Mage,"Wizard"
 
@@ -26463,3 +26464,6 @@ KinkyDungeonSpelldebugDefeat,"Debug Defeat"
 KinkyDungeonSpellCastdebugDefeat,"You cast devastating ASCII glyphs!"
 KinkyDungeonSpelldebugBind,"Debug Bind"
 KinkyDungeonSpellCastdebugBind,"You cast bondage ASCII glyphs!"
+
+KDEmpty,Empty Slot
+KDFloor,", Floor AMNT"

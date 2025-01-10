@@ -272,6 +272,8 @@ let KDToggles = {
 	OScreenFilter: true,
 	DistractScreenFilter: true,
 	MMLabels: true,
+
+	HideArmorWardrobe: false,
 };
 
 let KDToggleCategories = {
@@ -346,6 +348,7 @@ let KDToggleCategories = {
 	AlwaysApplyCharPalette: "none",
 	DefaultApplyCharPalette: "none",
 	Autoloot: "UI",
+	HideArmorWardrobe: "none",
 };
 
 let KDDefaultKB = {
@@ -2583,10 +2586,10 @@ function KinkyDungeonRun() {
 
 	} if (KinkyDungeonState == "Name") {
 
-		DrawTextFitKD(TextGet("KDName"), 975 + 550/2, 300, 550, "#ffffff", KDTextGray1, 32, "center");
+		DrawTextFitKD(TextGet("KDName"), 975 + 550/2, 150, 550, "#ffffff", KDTextGray1, 32, "center");
 
 		let NF = KDTextField("PlayerNameField",
-			975, 450, 550, 64
+			975, 250, 550, 64
 		);
 		if (NF.Created) {
 			ElementValue("PlayerNameField",
@@ -2606,7 +2609,7 @@ function KinkyDungeonRun() {
 			}
 			ElementValue("PlayerNameField", name);
 			return true;
-		}, true, 1550, 450, 200, 64, TextGet("KDRandom"), "#ffffff", "");
+		}, true, 1550, 250, 200, 64, TextGet("KDRandom"), "#ffffff", "");
 
 		// Left to decrement
 		DrawButtonKDEx(`SaveButtonL`, (_bdata) => {
@@ -2615,10 +2618,10 @@ function KinkyDungeonRun() {
 			}
 			KDConfirmDeleteSave = false;
 			return true;
-		}, true, 1350, 550, 64, 64, '<', "#ffffff");
+		}, true, 1350, 350, 64, 64, '<', "#ffffff");
 		// Label for the button
-		DrawTextFitKD(TextGet("KDChooseSlot"), 1150, 585, 360, "#ffffff", undefined, 30);
-		DrawTextFitKD(`${KDSaveSlot}`, 1430, 585, 360, "#ffffff", undefined, 30);
+		DrawTextFitKD(TextGet("KDChooseSlot"), 1150, 385, 360, "#ffffff", undefined, 30);
+		DrawTextFitKD(`${KDSaveSlot}`, 1430, 385, 360, "#ffffff", undefined, 30);
 		// Right to increment
 		DrawButtonKDEx(`SaveButton4`, (_bdata) => {
 			if (KDSaveSlot < maxSaveSlots) {
@@ -2626,7 +2629,7 @@ function KinkyDungeonRun() {
 			}
 			KDConfirmDeleteSave = false;
 			return true;
-		}, true, 1450, 550, 64, 64, '>', "#ffffff");
+		}, true, 1450, 350, 64, 64, '>', "#ffffff");
 
 		// If the save slot is occupied, warn the player!
 		let danger = false;
@@ -2634,9 +2637,28 @@ function KinkyDungeonRun() {
 			danger = true;
 			DrawTextFitKD(TextGet("KDWillOverride").replace("NME",
 				loadedsaveNames[KDSaveSlot-1] ? loadedsaveNames[KDSaveSlot-1] : ""
-			), 1550, 585, 440, "#ff5555", undefined, 36, "left");
+			), 1550, 385, 440, "#ff5555", undefined, 36, "left");
 		} else {
 			KDConfirmDeleteSave = false;
+		}
+
+		let offsets = [
+			{slot: 1, x: 1250 - 225 - 200, y: 650},
+			{slot: 2, x: 1250 - 225 - 200, y: 720},
+			{slot: 3, x: 1250 + 225 - 200, y: 650},
+			{slot: 4, x: 1250 + 225 - 200, y: 720},
+		]
+		for (let slt of offsets) {
+			let slot = slt.slot;
+			DrawButtonKDEx("slot_" + slot + "prev", () => {
+				KDSaveSlot = slot;
+				return true;
+			}, true,
+			((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + slt.x,
+			((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + slt.y,
+			400, 50, loadedsaveNames[slot - 1] || (TextGet("KDEmpty")),
+			(danger && (slot == KDSaveSlot)) ? "#ff5555" : "#ffffff", "", undefined, undefined,
+			true, KDButtonColor);
 		}
 
 		DrawButtonKDEx("selectName", () => {
@@ -2657,7 +2679,7 @@ function KinkyDungeonRun() {
 
 			return true;
 		}, true, (KDConfirmDeleteSave ? (Math.random() > 0.5 ? -1 : 1) : 0) + 875, KDConfirmDeleteSave ?
-			(Math.random() > 0.5 ? -1 : 1) + 750 : 650, 750, 64, TextGet(KDConfirmDeleteSave ?
+			(Math.random() > 0.5 ? -1 : 1) + 550 : 450, 750, 64, TextGet(KDConfirmDeleteSave ?
 			"KDConfirmREALLY" : "KDConfirm"), KDConfirmDeleteSave ? "#ff5555" : "#ffffff", "");
 
 		DrawButtonKDEx("backButton", (_b) => {
