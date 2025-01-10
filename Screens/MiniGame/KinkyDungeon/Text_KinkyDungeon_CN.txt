@@ -20088,8 +20088,8 @@ There is no valid space next to you!
 ( SPEAKER 拒绝听从你的命令 )
 
 
-(Remove BINDAMNT binding from her)
-（解除她的 BINDAMNT 束缚）
+(Remove BINDAMNT binding from her) UNTIETURNS
+（解除她的 BINDAMNT 束缚）UNTIETURNS
 (You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)
 （你从 SPEAKER 中解开了 BINDANTPREV 束缚，不包括实际束缚）|（使用“束缚术”技能删除绑定）
 (Give her a restoration item)
