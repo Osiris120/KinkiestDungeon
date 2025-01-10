@@ -33306,3 +33306,61 @@ Defeating enemies recovers some willpower.
 “攻击一个无助的敌人，抓住她并将她送到你的收藏中。”
 "You can access the Collection in the Items screen, 2nd tab."
 “你可以在物品屏幕的第二个选项卡中访问你的收藏品。”
+
+Conjure Essence Mote
+召唤精华微粒
+Spend 50 DP to conjure a mote of pure spell essence. The mana cost of this spell is decreased based on your maximum DP.|Can only be cast while you have less than 100% DP.
+花费 50 性奋值召唤一粒纯净的法术精华。此法术的法力消耗会根据你的最大性奋值而减少。|仅当你的性奋值低于 100% 时才可施放。
+You channel your distraction into a tangible orb!
+你将分心集中到有形的球体上！
+You don't have enough distraction!
+你还不够分心！
+Choose an open space.
+选择一处开阔的空间。
+Choose a tile with no existing mote.
+选择没有微粒的地方。
+You're too distracted to concentrate your distraction!
+你太分心了，无法集中注意力！
+
+The burst of desire overwhelms you!
+欲望的爆发将你淹没！
+
+Psychic Link
+心灵链接
+"Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain between the two of you. Requires that you and the target be able to see each other."
+“造成 20 点心灵伤害，然后在你和单个目标之间建立持续 50 回合的心灵联系，将分心收益分摊给你们两人。要求你和目标能够互相看到对方。”
+Target a non-blinded enemy.
+瞄准未失明的敌人。
+"You briefly lock eyes with the target, forming a psychic link!"
+“你短暂地与目标四目相对，形成心灵链接！”
+"The psychic link ends between you and the ENMY."
+“你和 ENMY 之间的心灵链接终止了。”
+
+Shock Collar
+电击项圈
+"Condense your aroused thoughts into stimulating electricity, consuming 30 DP to zap anyone that's currently holding your leash for 40 e-stim damage. 25% chance to stun for a long time, otherwise stuns briefly. Subsequent uses cost 2x the DP."
+“将你唤起的想法浓缩成刺激电流，消耗 30 性奋值，对当前牵着你的皮带的任何人造成 40 点电击伤害。有 25% 的几率造成长时间眩晕，否则造成短暂眩晕。后续使用消耗 2 倍性奋值。”
+You must be leashed by someone to use this.
+你必须被某人牵着才能使用此功能。
+You don't have enough distraction.
+你的分心值还不够。
+You zap your leasher!
+你挣脱了牵引者！
+
+You are psychically connected!
+你们有心灵感应！
+You've used Shock Collar recently and it costs more DP.
+你最近使用了电击项圈，它现在将会消耗更多的性奋值。
+
+Essence Crystal
+精华水晶
+"When you miscast, 50% chance to emit a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time."
+“当你施法失误时，有 50% 的几率会出现一个微粒，你可以走过去吸收它。这会在短时间内大大降低你施法失误的几率。”
+"A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast."
+“专为新手或容易分心的法师设计的项链。它有助于恢复因施法失误而丢失的魔法精华。”
+Potion Absorber
+药水吸收器
+"When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time."
+“当你施法失误时，项链会出现一个微粒，你可以走过去吸收它。这会在短时间内大大降低你施法失误的几率。”
+"A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast."
+“专为新手或容易分心的法师设计的项链。它有助于恢复因施法失误而丢失的魔法精华。”
