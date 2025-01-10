@@ -3848,19 +3848,35 @@
             <key type="filename">../Models/GagLatex/OTNFlat.png</key>
             <key type="filename">../Models/GagLatex/SideStrap.png</key>
             <key type="filename">../Models/GagLeather/Ball.png</key>
+            <key type="filename">../Models/GagLeather/Ball2Fang.png</key>
+            <key type="filename">../Models/GagLeather/BallFang.png</key>
             <key type="filename">../Models/GagLeather/BallHarness.png</key>
             <key type="filename">../Models/GagLeather/BallHarnessLarge.png</key>
             <key type="filename">../Models/GagLeather/BallSideStrap.png</key>
             <key type="filename">../Models/GagLeather/BallStrap.png</key>
             <key type="filename">../Models/GagLeather/BallTeeth_Teeth.png</key>
+            <key type="filename">../Models/GagLeather/BallTeeth_Teeth2Fang.png</key>
             <key type="filename">../Models/GagLeather/BallTeeth_TeethDeep.png</key>
+            <key type="filename">../Models/GagLeather/BallTeeth_TeethDeep2Fang.png</key>
+            <key type="filename">../Models/GagLeather/BallTeeth_TeethDeepFang.png</key>
+            <key type="filename">../Models/GagLeather/BallTeeth_TeethFang.png</key>
             <key type="filename">../Models/GagLeather/Ball_Teeth.png</key>
+            <key type="filename">../Models/GagLeather/Ball_Teeth2Fang.png</key>
             <key type="filename">../Models/GagLeather/Ball_TeethDeep.png</key>
+            <key type="filename">../Models/GagLeather/Ball_TeethDeep2Fang.png</key>
+            <key type="filename">../Models/GagLeather/Ball_TeethDeepFang.png</key>
+            <key type="filename">../Models/GagLeather/Ball_TeethFang.png</key>
             <key type="filename">../Models/GagLeather/BigBall.png</key>
+            <key type="filename">../Models/GagLeather/BigBall2Fang.png</key>
+            <key type="filename">../Models/GagLeather/BigBallFang.png</key>
             <key type="filename">../Models/GagLeather/BigBallStrap.png</key>
+            <key type="filename">../Models/GagLeather/BigBallTeethFang.png</key>
+            <key type="filename">../Models/GagLeather/BigBallTeethFang2.png</key>
             <key type="filename">../Models/GagLeather/CrystalBall.png</key>
             <key type="filename">../Models/GagLeather/FabricMuzzle.png</key>
             <key type="filename">../Models/GagLeather/GhostBall.png</key>
+            <key type="filename">../Models/GagLeather/GhostBall2Fang.png</key>
+            <key type="filename">../Models/GagLeather/GhostBallFang.png</key>
             <key type="filename">../Models/GagLeather/GhostBallStrap.png</key>
             <key type="filename">../Models/GagLeather/KittyMouth.png</key>
             <key type="filename">../Models/GagLeather/LargeBallHarness.png</key>
@@ -3875,6 +3891,8 @@
             <key type="filename">../Models/GagLeather/Plug.png</key>
             <key type="filename">../Models/GagLeather/Whiskers.png</key>
             <key type="filename">../Models/GagMetal/Ball.png</key>
+            <key type="filename">../Models/GagMetal/Ball2Fang.png</key>
+            <key type="filename">../Models/GagMetal/BallFang.png</key>
             <key type="filename">../Models/GagMetal/BallHarness.png</key>
             <key type="filename">../Models/GagMetal/BallHarnessLarge.png</key>
             <key type="filename">../Models/GagMetal/BallHarnessSegmented.png</key>
@@ -3882,12 +3900,24 @@
             <key type="filename">../Models/GagMetal/BallSideStrap.png</key>
             <key type="filename">../Models/GagMetal/BallStrap.png</key>
             <key type="filename">../Models/GagMetal/BallTeeth_Teeth.png</key>
+            <key type="filename">../Models/GagMetal/BallTeeth_Teeth2Fang.png</key>
             <key type="filename">../Models/GagMetal/BallTeeth_TeethDeep.png</key>
+            <key type="filename">../Models/GagMetal/BallTeeth_TeethDeep2Fang.png</key>
+            <key type="filename">../Models/GagMetal/BallTeeth_TeethDeepFang.png</key>
+            <key type="filename">../Models/GagMetal/BallTeeth_TeethFang.png</key>
             <key type="filename">../Models/GagMetal/Ball_Teeth.png</key>
+            <key type="filename">../Models/GagMetal/Ball_Teeth2Fang.png</key>
             <key type="filename">../Models/GagMetal/Ball_TeethDeep.png</key>
+            <key type="filename">../Models/GagMetal/Ball_TeethDeep2Fang.png</key>
+            <key type="filename">../Models/GagMetal/Ball_TeethDeepFang.png</key>
+            <key type="filename">../Models/GagMetal/Ball_TeethFang.png</key>
             <key type="filename">../Models/GagMetal/BigBall.png</key>
+            <key type="filename">../Models/GagMetal/BigBall2Fang.png</key>
+            <key type="filename">../Models/GagMetal/BigBallFang.png</key>
             <key type="filename">../Models/GagMetal/BigBallStrap.png</key>
             <key type="filename">../Models/GagMetal/BigBallStrapSegmented.png</key>
+            <key type="filename">../Models/GagMetal/BigBallTeethFang.png</key>
+            <key type="filename">../Models/GagMetal/BigBallTeethFang2.png</key>
             <key type="filename">../Models/GagMetal/Display.png</key>
             <key type="filename">../Models/GagMetal/HarnessDisplay.png</key>
             <key type="filename">../Models/GagMetal/HarnessMask.png</key>
@@ -4598,6 +4628,136 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../Models/FaceFang/MouthDazed.png</key>
+            <key type="filename">../Models/FaceFang2/MouthDazed.png</key>
+            <key type="filename">../Models/FaceFangless/MouthDazed.png</key>
+            <key type="filename">../Models/FaceKjus/MouthDazed.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>353,227,705,455</rect>
+                <key>scale9Paddings</key>
+                <rect>353,227,705,455</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/FaceFang/MouthDistracted.png</key>
+            <key type="filename">../Models/FaceFang2/MouthDistracted.png</key>
+            <key type="filename">../Models/FaceFangless/MouthDistracted.png</key>
+            <key type="filename">../Models/FaceKjus/MouthDistracted.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>373,237,745,474</rect>
+                <key>scale9Paddings</key>
+                <rect>373,237,745,474</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/FaceFang/MouthEmbarrassed.png</key>
+            <key type="filename">../Models/FaceFang/MouthFrown.png</key>
+            <key type="filename">../Models/FaceFang2/MouthEmbarrassed.png</key>
+            <key type="filename">../Models/FaceFang2/MouthFrown.png</key>
+            <key type="filename">../Models/FaceFangless/MouthEmbarrassed.png</key>
+            <key type="filename">../Models/FaceFangless/MouthFrown.png</key>
+            <key type="filename">../Models/FaceKjus/MouthEmbarrassed.png</key>
+            <key type="filename">../Models/FaceKjus/MouthFrown.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>377,230,754,461</rect>
+                <key>scale9Paddings</key>
+                <rect>377,230,754,461</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/FaceFang/MouthNeutral.png</key>
+            <key type="filename">../Models/FaceFang2/MouthNeutral.png</key>
+            <key type="filename">../Models/FaceFangless/MouthNeutral.png</key>
+            <key type="filename">../Models/FaceKjus/MouthNeutral.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>382,230,763,461</rect>
+                <key>scale9Paddings</key>
+                <rect>382,230,763,461</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/FaceFang/MouthPout.png</key>
+            <key type="filename">../Models/FaceFang2/MouthPout.png</key>
+            <key type="filename">../Models/FaceFangless/MouthPout.png</key>
+            <key type="filename">../Models/FaceKjus/MouthPout.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>375,229,749,457</rect>
+                <key>scale9Paddings</key>
+                <rect>375,229,749,457</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/FaceFang/MouthSmile.png</key>
+            <key type="filename">../Models/FaceFang2/MouthSmile.png</key>
+            <key type="filename">../Models/FaceFangless/MouthSmile.png</key>
+            <key type="filename">../Models/FaceKjus/MouthSmile.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>350,218,699,435</rect>
+                <key>scale9Paddings</key>
+                <rect>350,218,699,435</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../Models/FaceFang/MouthSurprised.png</key>
+            <key type="filename">../Models/FaceFang2/MouthSurprised.png</key>
+            <key type="filename">../Models/FaceFangless/MouthSurprised.png</key>
+            <key type="filename">../Models/FaceKjus/MouthSurprised.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>377,225,754,450</rect>
+                <key>scale9Paddings</key>
+                <rect>377,225,754,450</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../Models/FaceKjus/BlushHigh.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -4690,112 +4850,6 @@
                 <rect>373,230,745,461</rect>
                 <key>scale9Paddings</key>
                 <rect>373,230,745,461</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/MouthDazed.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>353,227,705,455</rect>
-                <key>scale9Paddings</key>
-                <rect>353,227,705,455</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/MouthDistracted.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>373,237,745,474</rect>
-                <key>scale9Paddings</key>
-                <rect>373,237,745,474</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/MouthEmbarrassed.png</key>
-            <key type="filename">../Models/FaceKjus/MouthFrown.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>377,230,754,461</rect>
-                <key>scale9Paddings</key>
-                <rect>377,230,754,461</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/MouthNeutral.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>382,230,763,461</rect>
-                <key>scale9Paddings</key>
-                <rect>382,230,763,461</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/MouthPout.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>375,229,749,457</rect>
-                <key>scale9Paddings</key>
-                <rect>375,229,749,457</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/MouthSmile.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>350,218,699,435</rect>
-                <key>scale9Paddings</key>
-                <rect>350,218,699,435</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../Models/FaceKjus/MouthSurprised.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0,0</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>377,225,754,450</rect>
-                <key>scale9Paddings</key>
-                <rect>377,225,754,450</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

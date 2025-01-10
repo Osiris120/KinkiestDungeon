@@ -3329,7 +3329,8 @@ function KinkyDungeonUpdateRestraints(C?: Character, id?: number, _delta?: numbe
 
 			if ((!inv.faction || KDToggles.ForcePalette || outfit?.palette || KinkyDungeonPlayer.Palette)
 				&& (KDToggles.ApplyPaletteRestraint && (outfit?.palette || KinkyDungeonPlayer.Palette || !KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette]))) {
-				inv.faction = outfit?.palette || KinkyDungeonPlayer.Palette || KDDefaultPalette;
+				inv.faction = (KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
+					|| KinkyDungeonPlayer.Palette || KDDefaultPalette;
 			}
 
 			if (KDRestraint(inv).Link)

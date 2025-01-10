@@ -262,6 +262,7 @@ let KDToggles = {
 	ApplyPaletteRestraint: true,
 	//ApplyPaletteOutfit: true,
 	ApplyPaletteTransform: true,
+	NoOutfitPalette: false,
 
 	IgnoreApplyCharPalette: true,
 	AlwaysApplyCharPalette: true,
@@ -339,6 +340,7 @@ let KDToggleCategories = {
 	ApplyPaletteRestraint: "none",
 	//ApplyPaletteOutfit: "none",
 	ApplyPaletteTransform: "none",
+	NoOutfitPalette: "none",
 
 	IgnoreApplyCharPalette: "none",
 	AlwaysApplyCharPalette: "none",
@@ -3145,7 +3147,7 @@ function KinkyDungeonRun() {
 				let options = [
 					{name: "ApplyPaletteRestraint"},
 					{name: "ApplyPaletteTransform"},
-					{},
+					{name: "NoOutfitPalette"},
 				];
 
 				let ii = 0;

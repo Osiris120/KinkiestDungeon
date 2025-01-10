@@ -3224,7 +3224,8 @@ const KDEventMapBuff: Record<string, Record<string, (e: KinkyDungeonEvent, buff:
 					if ((KDToggles.ForcePalette || outfit?.palette || KinkyDungeonPlayer.Palette)
 						&& (KDToggles.ApplyPaletteTransform
 							&& (outfit?.palette || KinkyDungeonPlayer.Palette || !KDDefaultPalette || KinkyDungeonFactionFilters[KDDefaultPalette]))) {
-						palette = outfit?.palette || KinkyDungeonPlayer.Palette || KDDefaultPalette;
+						palette = (KDToggles.NoOutfitPalette ? undefined : outfit?.palette)
+							|| KinkyDungeonPlayer.Palette || KDDefaultPalette;
 					}
 					let efd: alwaysDressModel = {
 						Model: "Catsuit",

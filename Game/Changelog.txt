@@ -37,6 +37,13 @@ TODO Add Cuddle play type
 
 Note to Modders: if your mod alters the function KDFreeNPC you will have to reimplement some new functionality added, to avoid bugs!
 
+TODO add ability to recolor own restraints via palette
+
+5.4.32
+- Add fangmouth, and fanglessmouth version
+- Added fang overbite for ball gag
+- New option: Use palette regardless of outfit
+
 5.4.31
 - Just bugfixes
 

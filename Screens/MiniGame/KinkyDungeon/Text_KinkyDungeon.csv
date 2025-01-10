@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.30"
+KDVersionStr,"5.4.32"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -48,6 +48,7 @@ KDToggleTabKeybindings,Keybindings
 
 KDToggleMMLabels,Show Minimap Labels
 KDToggle,Auto loot all from chests
+KDToggleNoOutfitPalette,Use Palette regardless of Outfit
 
 KDToggleApplyPaletteRestraint,Apply palettes to Restraints
 KDToggleApplyPaletteTransform,Apply palettes to transforms
@@ -21497,6 +21498,77 @@ m_OneBarPrisonLatex_l_OneBarFront,OneBarFront
 m_OneBarPrisonLatex_l_OneBarBack,OneBarBack
 
 
+m_FangMouth,FangMouth
+m_FangMouth_l_Mouth,Mouth
+m_FanglessMouth,FanglessMouth
+m_FanglessMouth_l_Mouth,Mouth
+m_SantaHat,SantaHat
+m_SantaHat_l_Hat,Hat
+m_SantaHat_l_HatBack,HatBack
+m_SantaHat_l_Fluff,Fluff
+m_SantaHat_l_Orb,Orb
+m_FestiveArmbinder,FestiveArmbinder
+m_FestiveArmbinder_l_BinderLeft,BinderLeft
+m_FestiveArmbinder_l_BinderRight,BinderRight
+m_FestiveArmbinder_l_BinderStrapLeft,BinderStrapLeft
+m_FestiveArmbinder_l_BinderFluffLeft,BinderFluffLeft
+m_FestiveHarnessTop,FestiveHarnessTop
+m_FestiveHarnessTop_l_StrapTop,StrapTop
+m_FestiveHarnessTop_l_ButtonsTop,ButtonsTop
+m_FestiveHarnessTop_l_FuzzTop,FuzzTop
+m_FestiveHarnessMid,FestiveHarnessMid
+m_FestiveHarnessMid_l_StrapMid,StrapMid
+m_FestiveHarnessMid_l_ButtonsMid,ButtonsMid
+m_FestiveHarnessMid_l_FuzzMid,FuzzMid
+m_FestiveHarnessStrap,FestiveHarnessStrap
+m_FestiveHarnessStrap_l_StrapBot,StrapBot
+m_FestiveHarnessStrap_l_ButtonsBot,ButtonsBot
+m_FestiveHarnessStrap_l_FuzzBot,FuzzBot
+m_FestiveHarness,FestiveHarness
+m_FestiveHarness_l_StrapTop,StrapTop
+m_FestiveHarness_l_ButtonsTop,ButtonsTop
+m_FestiveHarness_l_FuzzTop,FuzzTop
+m_FestiveHarness_l_StrapOverbust,StrapOverbust
+m_FestiveHarness_l_StrapUnderbust,StrapUnderbust
+m_FestiveHarness_l_ButtonsUnderbustOver,ButtonsUnderbustOver
+m_FestiveHarness_l_ButtonsUnderbust,ButtonsUnderbust
+m_FestiveHarness_l_FuzzUnderbustOver,FuzzUnderbustOver
+m_FestiveHarness_l_FuzzUnderbust,FuzzUnderbust
+m_FestiveHarness_l_StrapMid,StrapMid
+m_FestiveHarness_l_ButtonsMid,ButtonsMid
+m_FestiveHarness_l_FuzzMid,FuzzMid
+m_FestiveHarness_l_StrapBot,StrapBot
+m_FestiveHarness_l_ButtonsBot,ButtonsBot
+m_FestiveHarness_l_FuzzBot,FuzzBot
+m_FashionFestiveHarnessTop,FashionFestiveHarnessTop
+m_FashionFestiveHarnessTop_l_StrapTop,StrapTop
+m_FashionFestiveHarnessTop_l_ButtonsTop,ButtonsTop
+m_FashionFestiveHarnessTop_l_FuzzTop,FuzzTop
+m_FashionFestiveHarnessMid,FashionFestiveHarnessMid
+m_FashionFestiveHarnessMid_l_StrapMid,StrapMid
+m_FashionFestiveHarnessMid_l_ButtonsMid,ButtonsMid
+m_FashionFestiveHarnessMid_l_FuzzMid,FuzzMid
+m_FashionFestiveHarnessStrap,FashionFestiveHarnessStrap
+m_FashionFestiveHarnessStrap_l_StrapBot,StrapBot
+m_FashionFestiveHarnessStrap_l_ButtonsBot,ButtonsBot
+m_FashionFestiveHarnessStrap_l_FuzzBot,FuzzBot
+m_FashionFestiveHarness,FashionFestiveHarness
+m_FashionFestiveHarness_l_StrapTop,StrapTop
+m_FashionFestiveHarness_l_ButtonsTop,ButtonsTop
+m_FashionFestiveHarness_l_FuzzTop,FuzzTop
+m_FashionFestiveHarness_l_StrapOverbust,StrapOverbust
+m_FashionFestiveHarness_l_StrapUnderbust,StrapUnderbust
+m_FashionFestiveHarness_l_ButtonsUnderbustOver,ButtonsUnderbustOver
+m_FashionFestiveHarness_l_ButtonsUnderbust,ButtonsUnderbust
+m_FashionFestiveHarness_l_FuzzUnderbustOver,FuzzUnderbustOver
+m_FashionFestiveHarness_l_FuzzUnderbust,FuzzUnderbust
+m_FashionFestiveHarness_l_StrapMid,StrapMid
+m_FashionFestiveHarness_l_ButtonsMid,ButtonsMid
+m_FashionFestiveHarness_l_FuzzMid,FuzzMid
+m_FashionFestiveHarness_l_StrapBot,StrapBot
+m_FashionFestiveHarness_l_ButtonsBot,ButtonsBot
+m_FashionFestiveHarness_l_FuzzBot,FuzzBot
+
 KDHideItems,Hide Items
 KDSortItems,Sort Items
 KDDropItems,Drop Items
@@ -26386,3 +26458,4 @@ KDUnknown,???
 KDSaveBusy,Wait for current save to finish...
 
 KDSaveBusyMenu,"Please wait for save to finish..."
+

@@ -48,6 +48,14 @@
 	"spriteSourceSize": {"x":578,"y":396,"w":93,"h":26},
 	"sourceSize": {"w":1240,"h":1754}
 },
+"Models/CyberHeels/GlowBalletRightSpread.png":
+{
+	"frame": {"x":1549,"y":1786,"w":42,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":472,"y":1431,"w":42,"h":212},
+	"sourceSize": {"w":1240,"h":1754}
+},
 "Models/CyberMitts/MittenLeftBoxtie.png":
 {
 	"frame": {"x":323,"y":3,"w":290,"h":1220},
@@ -120,6 +128,14 @@
 	"spriteSourceSize": {"x":65,"y":231,"w":177,"h":40},
 	"sourceSize": {"w":321,"h":332}
 },
+"Models/GagLeather/MuzzleSideStrap.png":
+{
+	"frame": {"x":1549,"y":1601,"w":50,"h":181},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":191,"y":46,"w":50,"h":181},
+	"sourceSize": {"w":321,"h":332}
+},
 "Models/GagMetal/BigBallStrapSegmented.png":
 {
 	"frame": {"x":1581,"y":1367,"w":149,"h":31},
@@ -134,22 +150,6 @@
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":601,"y":93,"w":164,"h":596},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Heels/LeatherLeftHogtie.png":
-{
-	"frame": {"x":1549,"y":1752,"w":50,"h":145},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":730,"y":797,"w":50,"h":145},
-	"sourceSize": {"w":1240,"h":1754}
-},
-"Models/Heels/TallLeftHogtie.png":
-{
-	"frame": {"x":1549,"y":1601,"w":50,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":730,"y":797,"w":50,"h":147},
 	"sourceSize": {"w":1240,"h":1754}
 },
 "Models/Heels/TallLeftSpread.png":
@@ -280,14 +280,6 @@
 	"spriteSourceSize": {"x":462,"y":657,"w":250,"h":195},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Sailor/SleeveRightYoked.png":
-{
-	"frame": {"x":1549,"y":1901,"w":50,"h":92},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":449,"y":434,"w":50,"h":92},
-	"sourceSize": {"w":1240,"h":1754}
-},
 "Models/Skirts/ApronSkirtOverKneel.png":
 {
 	"frame": {"x":1831,"y":612,"w":214,"h":154},
@@ -344,6 +336,6 @@
 	"size": {"w":2048,"h":2048},
 	"scale": "0.5",
 	"related_multi_packs": [ "atlas0.json", "atlas1.json", "atlas2.json", "atlas3.json", "atlas4.json", "atlas5.json", "atlas6.json", "atlas7.json", "atlas8.json", "atlas9.json", "atlas10.json", "atlas11.json", "atlas12.json", "atlas14.json", "atlas15.json", "atlas16.json", "atlas17.json", "atlas18.json", "atlas19.json", "atlas20.json", "atlas21.json", "atlas22.json", "atlas23.json", "atlas24.json", "atlas25.json", "atlas26.json", "atlas27.json", "atlas28.json", "atlas29.json", "atlas30.json", "atlas31.json", "atlas32.json", "atlas33.json", "atlas34.json", "atlas35.json", "atlas36.json", "atlas37.json", "atlas38.json", "atlas39.json", "atlas40.json", "atlas41.json", "atlas42.json", "atlas43.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:0478aa6e7df4cf25aa9642283abd5931:60b634e6cf8cfefd17f1f5e44d3fd7fe:db6e5740ce99a4639cfdab15087d64cb$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0c7536d9eed857aed37f5317d491aa70:f459e5ce8465ab3c07c3272676c50685:db6e5740ce99a4639cfdab15087d64cb$"
 }
 }

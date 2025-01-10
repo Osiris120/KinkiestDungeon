@@ -407,6 +407,57 @@ AddModel({
 		},
 	])
 });
+
+AddModel({
+	Name: "FangMouth",
+	Folder: "FaceFang",
+	TopLevel: true,
+	Protected: true,
+	Group: "Mouth",
+	Categories: ["Mouth","Face"],
+	AddPose: ["Fang"],
+	Layers: ToLayerMap([
+		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
+			Sprite: "", // Because pose is called MouthNeutral lol
+			Poses: ToMap(MOUTHPOSES),
+			HidePoses: ToMap(["HideMouth"]),
+		},
+	])
+});
+
+
+AddModel({
+	Name: "FangMouth_Double",
+	Folder: "FaceFang2",
+	TopLevel: true,
+	Protected: true,
+	Group: "Mouth",
+	Categories: ["Mouth","Face"],
+	AddPose: ["2Fang"],
+	Layers: ToLayerMap([
+		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
+			Sprite: "", // Because pose is called MouthNeutral lol
+			Poses: ToMap(MOUTHPOSES),
+			HidePoses: ToMap(["HideMouth"]),
+		},
+	])
+});
+
+AddModel({
+	Name: "FanglessMouth",
+	Folder: "FaceFangless",
+	TopLevel: true,
+	Protected: true,
+	Group: "Mouth",
+	Categories: ["Mouth","Face"],
+	Layers: ToLayerMap([
+		{ Name: "Mouth", Layer: "Mouth", Pri: 0,
+			Sprite: "", // Because pose is called MouthNeutral lol
+			Poses: ToMap(MOUTHPOSES),
+			HidePoses: ToMap(["HideMouth"]),
+		},
+	])
+});
 AddModel({
 	Name: "KjusBlush",
 	Folder: "FaceKjus",
