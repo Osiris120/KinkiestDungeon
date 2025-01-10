@@ -27802,6 +27802,10 @@ Offhand: This weapon can be dual-wielded by some classes.
 双手
 2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied.
 双手 : ‎当你使用它作为你的主要武器时，你不能使用副手武器。此外，当手臂被绑住时，该武器无法使用。
+Magical Focus
+魔法专注
+Magical Focus: Instead of losing accuracy, the stamina cost is increased when distracted.
+魔法专注：当分心时，将会消耗更多的体力，而不是降低精准度。
 Precision
 精确
 Precision: Your arms need to be free to use this weapon.
