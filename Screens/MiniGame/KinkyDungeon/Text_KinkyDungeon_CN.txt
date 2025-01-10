@@ -33300,8 +33300,8 @@ Attack them for a guaranteed critical hit!
 攻击他们以确保造成致命一击！
 before the attack lands! You can tell the difference by the border of the tiles.
 在攻击到来之前！你可以通过瓷砖的边界来区分。
-Enemy attacks take time to hit. Make sure to step out of the warning tiles,
-敌人的攻击需要时间才能击中目标。确保走出警示牌，
+Enemy attacks take time to hit. Make sure to step out of the warning tiles
+敌人的攻击需要时间才能击中目标。确保走出警示区
 You can dodge out of the way of most projectiles. Avoid the marked tiles.
 你可以躲开大多数投射物。避开被标记的方块。
 Defeating enemies recovers some willpower.
