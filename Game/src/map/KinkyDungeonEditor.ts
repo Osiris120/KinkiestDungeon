@@ -313,6 +313,7 @@ function KDDrawTileEditor() {
 				sprite[1].parent.removeChild(sprite[1]);
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 				kdpixisprites.delete(sprite[0]);
+				delete sprite[1].filters;
 				sprite[1].destroy();
 			}
 		}

@@ -5,6 +5,7 @@ let RenderCharacterQueue = new Map();
 let RenderCharacterLock = new Map();
 
 let KDFilterCacheToDestroy: PIXIFilter[] = [];
+let KDFilterDrawn: Map<PIXIFilter, boolean> = new Map();
 let KDRenderTexToDestroy: PIXITexture[] = [];
 let KDMeshToDestroy: PIXIMesh[] = [];
 let KDSpritesToCull: PIXISprite[] = [];
@@ -475,10 +476,12 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			KDGlobalFilterCacheRefresh = false;
 			for (let fc of KDAdjustmentFilterCache.values()) {
 				for (let f of fc) {
-					KDFilterCacheToDestroy.push(f);
+					if (!KDFilterDrawn.get(f))
+						KDFilterCacheToDestroy.push(f);
 				}
 			}
 			KDAdjustmentFilterCache.clear();
+			KDFilterDrawn = new Map();
 		}
 
 	}
@@ -611,6 +614,25 @@ let DrawModel = DrawCharacter;
 function LayerIsHidden(MC: ModelContainer, l: ModelLayer, m: Model, Mods) : boolean {
 	if (l.LockLayer && !m.LockType) return true;
 	if (MC.HiddenLayers && MC.HiddenLayers[LayerLayer(MC, l, m, Mods)]) return true;
+
+	if (l.HidePoseConditional?.some((entry) => {
+		return (
+			!entry[2]
+			|| !m.Properties
+			|| (!m.Properties[KDLayerPropName(l, MC.Poses)]
+				&& !m.Properties[l.InheritColor || l.Name])
+			|| ((!m.Properties[KDLayerPropName(l, MC.Poses)]
+					|| !m.Properties[KDLayerPropName(l, MC.Poses)][entry[2]])
+				&& (!m.Properties[l.InheritColor || l.Name]
+					|| !m.Properties[l.InheritColor || l.Name][entry[2]])
+				)
+				)
+			&& (
+				MC.Poses[entry[0]])
+				&& !(MC.Poses[entry[1]]
+				);
+	})) return true;
+
 	return false;
 }
 
@@ -1243,6 +1265,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				if (!modified && !ContainerContainer.SpriteList.has(id)) modified = true;
 				let filters = filter;
 				if (extrafilter) filters = [...(filter || []), ...extrafilter];
+
+				for (let filter of filters) {
+					KDFilterDrawn.set(filter, true);
+				}
 				KDDraw(
 					ContainerContainer.Container,
 					ContainerContainer.SpriteList,

@@ -1657,6 +1657,7 @@ function KinkyDungeonDrawGame() {
 						sprite[1].parent.removeChild(sprite[1]);
 						if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 						kdpixisprites.delete(sprite[0]);
+						delete sprite[1].filters;
 						sprite[1].destroy();
 					}
 				}
@@ -1987,13 +1988,13 @@ function KinkyDungeonDrawGame() {
 					DrawButtonVis(1100, 370, 300, 64, "Enter parole mode", "#ffffff", "");
 					DrawButtonKDEx("debugDefeat", (_bdata) => {
                         console.log("Defeat Enemy...");
-                        KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast({ name: "debugDefeat", 
-                            tags: ["metal", "binding", "utility"], 
-                            sfx: "MagicSlash", 
-                            school: "Conjure", 
-                            manacost: 0, 
-                            components: [], 
-                            mustTarget: true, 
+                        KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast({ name: "debugDefeat",
+                            tags: ["metal", "binding", "utility"],
+                            sfx: "MagicSlash",
+                            school: "Conjure",
+                            manacost: 0,
+                            components: [],
+                            mustTarget: true,
                             level: 1,
                             type: "special", special: "debugDefeat",
                             onhit: "", time: 1, power: 3.5, range: 15, size: 1, damage: "" }
@@ -2005,13 +2006,13 @@ function KinkyDungeonDrawGame() {
                     }, true, 600, 96, 145, 48, "Defeat", "#ffffff", "");
                     DrawButtonKDEx("debugBind", (_bdata) => {
                         console.log("Bind Enemy...");
-                        KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast({ name: "debugBind", 
-                            tags: ["metal", "binding", "utility"], 
-                            sfx: "MagicSlash", 
-                            school: "Conjure", 
-                            manacost: 0, 
-                            components: [], 
-                            mustTarget: true, 
+                        KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast({ name: "debugBind",
+                            tags: ["metal", "binding", "utility"],
+                            sfx: "MagicSlash",
+                            school: "Conjure",
+                            manacost: 0,
+                            components: [],
+                            mustTarget: true,
                             level: 1,
                             type: "special", special: "debugBind",
                             onhit: "", time: 1, power: 3.5, range: 15, size: 1, damage: "" }

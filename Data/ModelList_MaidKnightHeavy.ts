@@ -630,21 +630,12 @@ AddModel({
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
 			TieToLayer: "BootLeft", NoOverride: true,
 
-			HidePoseConditional: [
-				["DynamicArmor", "BootsArmor", "SuppressDynamic"],
-			],
-
 			InheritColor: "ShoeLeft",
 		},
 		{ Name: "BootShoeRight", Layer: "ShoeRight", Pri: 130.9,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel", "KneelClosed"]),
 			TieToLayer: "BootRight", NoOverride: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Feet"],
-
-
-			HidePoseConditional: [
-				["DynamicArmor", "BootsArmor", "SuppressDynamic"],
-			],
 
 			InheritColor: "ShoeRight",
 		},

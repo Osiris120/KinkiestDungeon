@@ -719,7 +719,7 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
-			TieToLayer: "Skirt2",
+			NoOverride: true,
 			InheritColor: "Belt",
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
@@ -729,7 +729,7 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
-			TieToLayer: "Skirt2",
+			TieToLayer: "SkirtBelt",
 			InheritColor: "Insignia",
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
@@ -739,7 +739,7 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
-			TieToLayer: "Skirt2",
+			TieToLayer: "SkirtBelt",
 			InheritColor: "Rivets",
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
@@ -777,7 +777,7 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
-			TieToLayer: "Skirt2",
+			NoOverride: true,
 			InheritColor: "Belt",
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
@@ -787,7 +787,7 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
-			TieToLayer: "Skirt2",
+			TieToLayer: "SkirtBelt",
 			InheritColor: "Insignia",
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
@@ -797,7 +797,7 @@ AddModel({
 			Poses: ToMap([...LEGPOSES]),
 			MorphPoses: {Hogtie: "", Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
-			TieToLayer: "Skirt2",
+			TieToLayer: "SkirtBelt",
 			InheritColor: "Rivets",
 			HidePoseConditional: [
 				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
