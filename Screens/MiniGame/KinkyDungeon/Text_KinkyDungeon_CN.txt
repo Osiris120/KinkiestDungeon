@@ -17711,6 +17711,12 @@ You hand over your weapon reluctantly...
 ( SPEAKER 向你喊话 ) |你不应该带着武器。|把它交出来。
 (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
 ( SPEAKER 靠近你 ) |检测到违禁品。开始没收。|请遵守。
+(The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
+(SPEAKER 脸红了)|嗯，小姐，我看见你那里有武器，|你能把它交出来吗？
+(The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
+(SPEAKER 对你微笑)|做个好女孩，把武器交出来，|好吗？
+(The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
+(SPEAKER 咧嘴笑着，掰着指关节)|你打算用它和别人打架吗？|或者你要把它交出去？
 Yes, miss... (Currently held weapon will be lost)
 是的，小姐…… ( 目前持有的武器将会丢失 )
 Mmph... (Nod politely) (Currently held weapon will be lost)
@@ -20088,8 +20094,8 @@ There is no valid space next to you!
 ( SPEAKER 拒绝听从你的命令 )
 
 
-(Remove BINDAMNT binding from her)
-（解除她的 BINDAMNT 束缚）
+(Remove BINDAMNT binding from her) UNTIETURNS
+（解除她的 BINDAMNT 束缚）UNTIETURNS
 (You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)
 （你从 SPEAKER 中解开了 BINDANTPREV 束缚，不包括实际束缚）|（使用“束缚术”技能删除绑定）
 (Give her a restoration item)
@@ -33294,8 +33300,8 @@ Attack them for a guaranteed critical hit!
 攻击他们以确保造成致命一击！
 before the attack lands! You can tell the difference by the border of the tiles.
 在攻击到来之前！你可以通过瓷砖的边界来区分。
-Enemy attacks take time to hit. Make sure to step out of the warning tiles,
-敌人的攻击需要时间才能击中目标。确保走出警示牌，
+Enemy attacks take time to hit. Make sure to step out of the warning tiles
+敌人的攻击需要时间才能击中目标。确保走出警示区
 You can dodge out of the way of most projectiles. Avoid the marked tiles.
 你可以躲开大多数投射物。避开被标记的方块。
 Defeating enemies recovers some willpower.
