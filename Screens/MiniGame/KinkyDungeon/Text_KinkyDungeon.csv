@@ -26459,3 +26459,7 @@ KDSaveBusy,Wait for current save to finish...
 
 KDSaveBusyMenu,"Please wait for save to finish..."
 
+KinkyDungeonSpelldebugDefeat,"Debug Defeat"
+KinkyDungeonSpellCastdebugDefeat,"You cast devastating ASCII glyphs!"
+KinkyDungeonSpelldebugBind,"Debug Bind"
+KinkyDungeonSpellCastdebugBind,"You cast bondage ASCII glyphs!"

@@ -2205,6 +2205,48 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (_miscast) return "Miscast";
 			return KinkyDungeonActivateWeaponSpell(true) ? "Cast" : "Fail";
 		}
+	},
+	"debugBind": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		try {
+			let e = KDNearbyEnemies(tX, tY, 1)
+			let debugDamage = {
+				type: "chain",
+				damage: 999.9,
+				time: 0,
+				bind: 1000,
+				distract: 0,
+			}
+			if (e) {
+				console.log(e);
+				if (e[0]) {
+					KinkyDungeonDamageEnemy(e[0], debugDamage, false, true, undefined, undefined, KinkyDungeonPlayerEntity, 0.1);
+				}
+			} 
+		}
+		catch (err) {
+			console.log(err);
+		}
+	},
+	"debugDefeat": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, moveDirection, bullet, miscast, faction, cast, selfCast) => {
+		try {
+			let e = KDNearbyEnemies(tX, tY, 1)
+			let debugDamage = {
+				type: "pain",
+				damage: 999.9,
+				time: 0,
+				bind: 0,
+				distract: 0,
+			}
+			if (e) {
+				console.log(e);
+				if (e[0]) {
+					KinkyDungeonDamageEnemy(e[0], debugDamage, false, true, undefined, undefined, KinkyDungeonPlayerEntity, 0.1);
+				}
+			} 
+		}
+		catch (err) {
+			console.log(err);
+		}
 	}
 };
 

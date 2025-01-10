@@ -352,6 +352,17 @@ function KinkyDungeonDrawReputation() {
 			if (suff) {
 				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + 275 + XX + 240, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
+			// Draw between the % and bar and suffix if debug mode is active. 
+            if (KDDebugMode) {
+                DrawButtonKDEx("minusrep" + rep, (_bdata) => {
+                    KinkyDungeonChangeRep(rep, -5)
+                    return true;
+                }, true, canvasOffsetX_ui + xOffset + 275 + XX - 30, yPad + canvasOffsetY_ui + spacing * i - 15, 30, 30, "-", "#ffffff");
+                DrawButtonKDEx("plusrep" + rep, (_bdata) => {
+                    KinkyDungeonChangeRep(rep, 5)
+                    return true;
+                }, true, canvasOffsetX_ui + xOffset + 275 + XX + 203, yPad + canvasOffsetY_ui + spacing * i - 15, 30, 30, "+", "#ffffff");
+            }
 			DrawProgressBar(canvasOffsetX_ui + xOffset + 275 + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 +
 				(rep == "Prisoner" ? KDGetEffSecurityLevel(undefined, true) :
 				value), color, KDTextGray2);
@@ -560,6 +571,17 @@ function KinkyDungeonDrawFactionRep() {
 			if (suff) {
 				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + barSpacing + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
+			// Draw between the % and bar and suffix if debug mode is active. 
+            if (KDDebugMode) {
+                DrawButtonKDEx("minusfactionrep" + rep, (_bdata) => {
+                    KinkyDungeonChangeFactionRep(rep, -0.1)
+                    return true;
+                }, true, canvasOffsetX_ui + xOffset + barSpacing + XX - 30, yPad + canvasOffsetY_ui + spacing * i - 15, 30, 30, "-", "#ffffff");
+                DrawButtonKDEx("plusfactionrep" + rep, (_bdata) => {
+                    KinkyDungeonChangeFactionRep(rep, 0.1)
+                    return true;
+                }, true, canvasOffsetX_ui + xOffset + barSpacing + XX + 203, yPad + canvasOffsetY_ui + spacing * i - 15, 30, 30, "+", "#ffffff");
+            }
 			DrawProgressBar(canvasOffsetX_ui + xOffset + barSpacing + XX, yPad + canvasOffsetY_ui + spacing * i - spacing/4, 200, spacing/2, 50 + value * 50, color, KDTextGray2);
 
 			DrawTextKD(" " + (Math.round(value * 50)+50) + " ", canvasOffsetX_ui + xOffset + barSpacing + XX + 100,  1+yPad + canvasOffsetY_ui + spacing * i, "white", "black");

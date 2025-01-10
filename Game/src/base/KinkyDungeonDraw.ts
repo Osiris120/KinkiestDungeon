@@ -1985,7 +1985,42 @@ function KinkyDungeonDrawGame() {
 					DrawButtonVis(1100, 300, 300, 64, "Teleport to stairs", "#ffffff", "");
 					DrawButtonVis(1500, 320, 300, 64, "Get save code", "#ffffff", "");
 					DrawButtonVis(1100, 370, 300, 64, "Enter parole mode", "#ffffff", "");
-
+					DrawButtonKDEx("debugDefeat", (_bdata) => {
+                        console.log("Defeat Enemy...");
+                        KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast({ name: "debugDefeat", 
+                            tags: ["metal", "binding", "utility"], 
+                            sfx: "MagicSlash", 
+                            school: "Conjure", 
+                            manacost: 0, 
+                            components: [], 
+                            mustTarget: true, 
+                            level: 1,
+                            type: "special", special: "debugDefeat",
+                            onhit: "", time: 1, power: 3.5, range: 15, size: 1, damage: "" }
+                        )
+                        KinkyDungeonTargetingSpellItem = null;
+                        KinkyDungeonTargetingSpellWeapon = null;
+                        KinkyDungeonDrawState = "Game"
+                        return true;
+                    }, true, 600, 96, 145, 48, "Defeat", "#ffffff", "");
+                    DrawButtonKDEx("debugBind", (_bdata) => {
+                        console.log("Bind Enemy...");
+                        KinkyDungeonTargetingSpell = KinkyDungeonHandleSpellCast({ name: "debugBind", 
+                            tags: ["metal", "binding", "utility"], 
+                            sfx: "MagicSlash", 
+                            school: "Conjure", 
+                            manacost: 0, 
+                            components: [], 
+                            mustTarget: true, 
+                            level: 1,
+                            type: "special", special: "debugBind",
+                            onhit: "", time: 1, power: 3.5, range: 15, size: 1, damage: "" }
+                        )
+                        KinkyDungeonTargetingSpellItem = null;
+                        KinkyDungeonTargetingSpellWeapon = null;
+                        KinkyDungeonDrawState = "Game"
+                        return true;
+                    }, true, 755, 96, 145, 48, "Bind", "#ffffff", "");
 					DrawButtonKDEx("debugAddKey", (_bdata) => {
 						KDAddConsumable("Pick", 10);
 						KDAddConsumable("RedKey", 10);
@@ -2026,22 +2061,39 @@ function KinkyDungeonDrawGame() {
 						KDTickSpecialStats();
 						return true;
 					}, true, 600, 640, 300, 64, "Increment Floor", "#ffffff", "");
-					DrawButtonKDEx("+maxAP", (_bdata) => {
-						KDGameData.StatMaxBonus.AP += 10;
-						return true;
-					}, true, 600, 720, 150, 64, "+Max DP", "#ffaaaa", "");
-					DrawButtonKDEx("+maxMP", (_bdata) => {
-						KDGameData.StatMaxBonus.MP += 10;
-						return true;
-					}, true, 750, 720, 150, 64, "+Max MP", "#0088ff", "");
-					DrawButtonKDEx("+maxSP", (_bdata) => {
-						KDGameData.StatMaxBonus.SP += 10;
-						return true;
-					}, true, 600, 800, 150, 64, "+Max SP", "#44ff00", "");
-					DrawButtonKDEx("+maxWP", (_bdata) => {
-						KDGameData.StatMaxBonus.WP += 10;
-						return true;
-					}, true, 750, 800, 150, 64, "+Max WP", "#ff5555", "");
+					DrawButtonKDEx("RestSP", (_bdata) => {
+                        KDChangeStamina("","","",100)
+                        return true;
+                    }, true, 600, 720, 145, 48, "Rest SP", "#ffffff", "")
+                    DrawButtonKDEx("+maxSP", (_bdata) => {
+                        KDGameData.StatMaxBonus.SP += 10;
+                        return true;
+                    }, true, 755, 720, 145, 48, "+Max SP", "#44ff00", "")
+                    DrawButtonKDEx("RestMP", (_bdata) => {
+                        KDChangeMana("","","",100)
+                        return true;
+                    }, true, 600, 780, 145, 48, "Rest MP", "#ffffff", "")
+                    DrawButtonKDEx("+maxMP", (_bdata) => {
+                        KDGameData.StatMaxBonus.MP += 10;
+                        return true;
+                    }, true, 755, 780, 145, 48, "+Max MP", "#0088ff", "")
+                    DrawButtonKDEx("RestWP", (_bdata) => {
+                        KDChangeWill("","","",100)
+                        return true;
+                    }, true, 600, 840, 145, 48, "Rest WP", "#ffffff", "")
+                    DrawButtonKDEx("+maxWP", (_bdata) => {
+                        KDGameData.StatMaxBonus.WP += 10;
+                        return true;
+                    }, true, 755, 840, 145, 48, "+Max WP", "#ff5555", "")
+                    DrawButtonKDEx("RestDP", (_bdata) => {
+                        KDChangeDistraction("","","",-100)
+                        KDChangeDesire("","","",-100,true)
+                        return true;
+                    }, true, 600, 900, 145, 48, "Rest DP", "#ffffff", "")
+                    DrawButtonKDEx("+maxDP", (_bdata) => {
+                        KDGameData.StatMaxBonus.DP += 10;
+                        return true;
+                    }, true, 755, 900, 145, 48, "+Max DP", "#ffaaaa", "")
 
 
 
