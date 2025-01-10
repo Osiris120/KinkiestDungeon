@@ -32143,3 +32143,5 @@ Te has perdido deambulando por las ruinas. ¡El orden de los mosaicos está inve
 ### You cast bondage ASCII glyphs!
 
 ### , Floor AMNT
+
+### Recolor
