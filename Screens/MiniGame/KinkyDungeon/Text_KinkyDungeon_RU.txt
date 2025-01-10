@@ -70,7 +70,11 @@ Keybindings
 Управление
 
 
+### Show Minimap Labels
+
 ### Auto loot all from chests
+
+### Use Palette regardless of Outfit
 
 ### Apply palettes to Restraints
 
@@ -230,6 +234,8 @@ Grayscale when Blind
 
 ### Hide floating weapon display
 
+### Automatically Take All from Chests
+
 Helpless!
 Беспомощность!
 Evaded!
@@ -261,6 +267,8 @@ Map Brightness:
 ### Game Font:
 
 ### Button Font:
+
+### Journey
 
 Select a journey. This will determine the ordering of game areas.
 Выберите путешествие. Это определит порядок расположения игровых зон.
@@ -420,6 +428,14 @@ Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distracti
 Точность умножается в 0,9 раза при 10%-ном возбуждении и множитель снижается до 0,6 раза при 90%-ном возбуждении.
 
 
+### Focused Strikes
+
+### 90% less accuracy penalty on swung weapons due to distraction.
+
+### Focused Power
+
+### 90% less stamina cost penalty on staves and similar weapons distraction.
+
 Pristine
 После уборки
 There are significantly less shiny loot objects in the dungeon.
@@ -442,9 +458,7 @@ Metal restraints are harder to escape from.
 
 Forgetful
 Забывчивая
-You don't remember where you've been in the level.
-Вы не помните, какие места на уровне уже посещали.
-
+### You don't remember where you've been in the level. 30 turn timer.
 
 Cursed Locks
 Проклятые замки
@@ -932,6 +946,14 @@ Triumphant Wind
 Торжествующий ветер
 Second Wind now regenerates up to 25% of your max WP
 Второе дыхание теперь восстанавливает до 25% вашего максимального WP
+### Mental Defiance
+
+### Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP.
+
+### Mental Fortitude
+
+### Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While above 75% WP but below 100%, quickly convert 'Defiance' into WP. Exclusive with Mental Defiance.
+
 
 
 Locked Up
@@ -1062,8 +1084,8 @@ In most cases you will not get blindfolded, except for cloth blindfolds which ca
 
 Total Blackout
 Полный блэкаут
-Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
-Повязки на глаза теперь экстремальное наказание, и вы не можете видеть исследованные области с завязанными глазами.
+### Blindfolds are extremely punishing.
+
 Poor Vision
 Плохое зрение
 Vision radius is significantly reduced.
@@ -1290,6 +1312,12 @@ Magic puts you in a clear state of mind. Casting spells successfully reduces you
 Сосредоточившись на магии, вы возвращаете себе здравомыслие. Применение заклинаний уменьшает возбуждение.
 
 
+### Unidentified Wear
+
+### Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
+
+### Unknown 
+
 Copy (clipboard)
 Копировать в буфер
 Paste (clipboard)
@@ -1368,9 +1396,9 @@ Everywhere!
 Везде!
 
 
-### Physical Armor:
+### Physical Armor: 
 
-### Magic Armor:
+### Magic Armor: 
 
 In the Shadows: You are harder to see.
 В тенях: Вас труднее увидеть.
@@ -1378,7 +1406,7 @@ Invisible: You are very difficult to see.
 Невидимость: Вас очень трудно увидеть.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 Ускорение: Ваше следующее движение будет очень быстрым и не потратит ход.
-### All Damage Reduction:
+### All Damage Reduction: 
 
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 Вы получаете PERCENT1 DAMAGETYPE урона, основываясь на PERCENT2 DAMAGETYPE сопротивлении и PERCENT3 DAMAGECATEGORY модификаторе.
@@ -1562,9 +1590,13 @@ You can launch another Sagitta instantly!
 Вы можете мгновенно запустить еще одну Сагитту!
 
 
-Your motivation is powerful enough your spells cannot be stopped!
-Ваше стремление достаточно сильно, ваши заклинания невозможно остановить!
+### You have stored willpower.
 
+### You have consumed a mote of essence, granting miscast chance reduction.
+
+### You recapture an essence mote and concentrate on its essence!
+
+### Choose an essence mote to absorb.
 
 Locked Down: Struggling power is greatly reduced.
 Заблокировано: Эффективность борьбы значительно снижена.
@@ -1672,7 +1704,7 @@ Missing key
 Отсутствует ключ
 You are protected from damage and can't be bound until the shield is broken!
 Вы защищены от урона и не можете быть связаны до тех пор, пока щит не будет сломан!
-### Chance for a spell to fizzle:
+### Chance for a spell to fizzle: 
 
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 Шанс уклонения: Percent%, основываясь на EVASIONSUM Уклонения и EVASIONPENALTY% штрафа.
@@ -1842,7 +1874,7 @@ Delete Mod
 Удалить модификацию
 Clear Perks
 Очистить перки
-### Config
+### Config 
 
 Cancel
 Отмена
@@ -1958,6 +1990,8 @@ Inventory
 Инвентарь
 Reputation
 Репутация
+### Journey Map
+
 Quests
 Задания
 Spell List
@@ -1976,15 +2010,15 @@ Floor FLOORNUMBER: DUNGEONNAME
 Этаж FLOORNUMBER: DUNGEONNAME
 
 
-### Lockpicks:
+### Lockpicks: 
 
-### Keys:
+### Keys: 
 
-### Magic Keys:
+### Magic Keys: 
 
-### Knife:
+### Knife: 
 
-### Mag. Knife:
+### Mag. Knife: 
 
 You climb down the stairs. The passage closes behind you.
 Вы спускаетесь по лестнице, а проход закрывается за вами.
@@ -2030,6 +2064,8 @@ Magic Library
 Магическая библиотека
 Crystal Cave
 Кристальная пещера
+### Cavern
+
 Orrery
 Планетарий
 Training Center
@@ -2076,7 +2112,7 @@ The Edge of Reality
 Грань реальности
 Dark Dimension
 Темное измерение
-
+### Lair
 
 You search through the debris but find nothing of note
 Вы роетесь в мусоре, но не находите ничего примечательного
@@ -2166,7 +2202,7 @@ The pearly chest contains a divine gift! (+ITEMGET)
 Блестящий сундучок хранит в себе божественный дар! (+ITEMGET)
 Smoke fills the air around you!
 Вокруг вас распространяется дым!
-
+### You find a magical necklace that seems to concentrate magic.
 
 
 
@@ -2194,7 +2230,7 @@ You find a medley of potions.
 Вы находите смесь зелий.
 
 
-### Rarity:
+### Rarity: 
 
 Lesser
 Мусор
@@ -2830,8 +2866,8 @@ Stormbreaker
 Разрушитель Бурь
 I have the power! Taking electric damage charges you (1 turn/10dmg).
 У меня есть сила! Получение электрического урона Заряжает вас (1 ход/10 урона).
-Deals crush damage. Deals bonus electric damage in an area when charged, up to +40.
-Наносит дробящий урон. Наносит дополнительный урон от электрического тока в небольшой зоне при Зарядке, до +40.
+### Deals crush damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)
+
 You pick up Stormbreaker.
 Вы подбираете Разрушитель Бурь.
 
@@ -3034,8 +3070,8 @@ Magic Axe
 Магический топор
 Sick and vile, like the hearts of your enemies.
 Мерзкий и гнусный, как сердца твоих врагов.
-Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns.
-Наносит урон тьмой цели и 20 урона тьмой врагам рядом с вами. Замедляет их на 3 хода.
+### Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you.
+
 Pickaxe
 Кирка
 Used for drilling holes in rock and armor.
@@ -3046,8 +3082,8 @@ Magic Flail
 Магический цеп
 A blessed censer that distributes pain equally.
 Благословенная кадильница, которое распределяет боль между всеми.
-Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target.
-Наносит дробящий урон. Наносит 20 дополнительного урона тьмой цели и врагам вблизи неё.
+### Deals crush damage. Deals 20 bonus holy damage to the target and enemies near the target.
+
 Magic Spear
 Магическое копье
 Seeks and pierces hearts with ease.
@@ -3070,7 +3106,7 @@ Dreamcatcher
 Ловец снов
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Выкованный в кошмарах, сотканный из стали. Призывает Теневого воина на не подозревающие цели за 2% древней энергии.
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
 
 Axe
 Топор
@@ -3078,11 +3114,11 @@ Great for cutting trees that happen to be underground.
 Отлично подходит для рубки деревьев, которые встречаются в подземелье.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 Наносит рубящий урон. Также наносит 20 единиц урона врагам рядом с вами.
-### Accuracy:
+### Accuracy: 
 
-### Crit Multiplier:
+### Crit Multiplier: 
 
-### Bind Crit Multiplier:
+### Bind Crit Multiplier: 
 
 Find the keys..
 Нужно найти ключи...
@@ -3100,9 +3136,9 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 Вы нашли трещину и, возможно, могли бы воткнуть в нее нож или другой инструмент, чтобы неподвижно его закрепить.
 You found something sticky and might be able to pull off fabrics.
 Вы нашли что-то липкое и, возможно, сможете стянуть ткань.
-### Evasion:
+### Evasion: 
 
-### Visibility:
+### Visibility: 
 
 
 
@@ -3148,13 +3184,13 @@ Satisfied. Miscast chance is reduced.
 Удовлетворение. Шанс осечки в заклинаниях снижен.
 
 
-### Damage:
+### Damage: 
 
-### Bind:
+### Bind: 
 
-### Crit:
+### Crit: 
 
-### SP Cost:
+### SP Cost: 
 
 Cut PWR: AMNT%
 Эф.Разрез: AMNT%
@@ -3170,8 +3206,8 @@ You place the crystal into the receptacle and it lights up!
 Вы помещаете кристалл в сокет, и он загорается!
 You take the crystal from the receptacle and all goes dark.
 Вы достаете кристалл из сосуда, и всё вокруг погружается во тьму.
-You try to take the crystal but the cage around it is secured with a purple lock.
-Вы пытаетесь забрать кристалл, но клетка вокруг него заперта фиолетовым замком.
+### You try to take the crystal but the cage around it is secured with a magic purple lock.
+
 Place spent crystal
 Поместить разряж. кристалл
 VALUE gold vanishes from your satchel as the receptacle explodes and your crystal is recharged!
@@ -4332,7 +4368,7 @@ The girl nervously restrains you! (+RestraintAdded)
 Девушка с волнением надевает на вас ограничители! (+RestraintAdded)
 The bandit tickles you nervously! (DamageTaken)
 Бандитка с волнением щекочет вас! (DamageTaken)
-
+### The bandit pet applies a lock! (DamageTaken)
 
 Bandit Hunter
 Бандитка-охотница
@@ -4940,8 +4976,8 @@ The witch's lightning causes your body to tingle! (DamageTaken)
 Молния ведьмы вызывает покалывание в вашем теле! (DamageTaken)
 
 
-Witch's Apprentice
-Ученица ведьмы
+### Mage's Apprentice
+
 The apprentice runs off and cries in a corner.
 Ученица убегает и плачет в углу.
 The apprentice animates restraints to wrap around you! (+RestraintAdded)
@@ -4959,6 +4995,16 @@ The apprentice summons a restraint onto you! (+RestraintAdded)
 The apprentice tickles you playfully! (DamageTaken)
 Ученица игриво вас щекочет! (DamageTaken)
 
+
+Witch's Apprentice
+Ученица ведьмы
+### The witch's apprentice confidently admits defeat.
+
+### The witch's apprentice conjures magic bindings on you! (+RestraintAdded)
+
+### The witch's apprentice smiles and summons a lock onto you! (DamageTaken)
+
+### The witch's apprentice smiles as she squeezes your chest! (DamageTaken)
 
 Latex Apprentice
 Латексная ученица
@@ -6084,8 +6130,8 @@ Divine Lock
 
 Runic Lock
 Рунический замок
-Purple Lock
-Фиолетовый замок
+### Magic Lock
+
 ### Cyber Lock
 
 ### Integrated Cyber Lock
@@ -6108,7 +6154,7 @@ You drop the key due to your bound hands!
 Вы роняете ключ из-за своих связанных рук!
 You drop the magic key due to your bound hands!
 Вы роняете волшебный ключ из-за своих связанных рук!
-
+### You insert the card the wrong way and the reader ejects it onto the floor!
 
 Journal (N)
 Журнал (+)
@@ -6204,8 +6250,6 @@ It's a pile of slag emitting a strange magic smoke...
 Это груда шлака, испускающая странный волшебный дым...
 That object is locked with a LKTP.
 Этот объект заперт при помощи LKTP.
-A shrine to the goddess of TYPE. A pool of mana glimmers below.
-Божественное святилище: TYPE. Внизу мерцает лужица маны.
 A shrine to the goddess of TYPE.
 Божественное святилище: TYPE.
 That door is open. Do you want to close it?
@@ -6242,17 +6286,17 @@ Commerce
 Коммерция
 Shrine of SHRINETYPE
 Святилище: SHRINETYPE
-### Tablet of
+### Tablet of 
 
-### Goddess:
+### Goddess: 
 
-### Goddess Blessing:
+### Goddess Blessing: 
 
-### Goddess Curse:
+### Goddess Curse: 
 
-### Mana Bonus:
+### Mana Bonus: 
 
-### Lack of Mana Penalty:
+### Lack of Mana Penalty: 
 
 Your excess mana helps you suppress the enchantment!
 Избыток маны помогает вам подавить магические чары!
@@ -6278,11 +6322,11 @@ You try to read the runes but cannot understand them.
 Вы пытаетесь прочитать руины, но не можете их понять.
 
 
-### Allies:
+### Allies: 
 
-### Enemies:
+### Enemies: 
 
-### Favorable:
+### Favorable: 
 
 None
 Нет
@@ -6882,7 +6926,7 @@ Press RIGHT to confirm buy!
 
 
 
-### You find
+### You find 
 
 
 
@@ -8034,13 +8078,15 @@ Reinforced and secured with a disc lock to ensure unruly maids don't skip their 
 
 Suspicious Mask
 Подозрительная маска
-You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
-Вы находите величественно сияющую металлическую повязку с подкладкой, а рядом с ней странный кристалл.
 A well-fitted mask, covering your entire head neatly and locking in place.
 Хорошо подогнанная маска, аккуратно закрывающая всю голову и надёжно на ней фиксирующаяся.
 It has eyeholes for you to somewhat see out of, but blocks access to the face.
 В ней есть прорези для глаз, через которые вы можете что-то видеть, но она блокирует доступ к лицу.
 
+
+### Happy Face
+
+### Just put on a happy face and enjoy it.
 
 ### Sensory Hood
 
@@ -9086,6 +9132,12 @@ Doll Supply
 Кукольная станция
 Bondage Machine
 Бондаж-машина
+### Empty Fixture
+
+### Filled Fixture
+
+### Tablet
+
 
 
 
@@ -9106,9 +9158,9 @@ A book of manipulative spells
 
 Verbal
 Слова
+### Vision
 
-
-### Components:
+### Components: 
 
 Arm Movements
 Жесты рук
@@ -9120,7 +9172,7 @@ You wiggle uselessly trying to cast the spell...
 Вы бесполезно извиваетесь, пытаясь применить заклинание...
 Your feet are too clumsy to perform the magic gesture...
 Ваши ноги слишком неповоротливы, чтобы выполнить требуемые движения...
-
+### You are unable to see, so you can't target this spell...
 
 Next Page
 Следующая страница
@@ -9244,6 +9296,8 @@ Your gag causes you to mispronounce the magic words!
 Из-за кляпа вы не можете правильно произнести слова заклинания!
 You are too clumsy to perform the leg movements!
 Ваши ноги слишком неповоротливы, чтобы вы могли выполнять ими движения!
+### You can't get a good look at the target!
+
 You trip up while casting the spell!
 Вы споткнулись во время произнесения заклинания!
 You miscast the spell because of a bug. Please report.
@@ -9320,9 +9374,7 @@ Battle Rhythm
 
 Limit Surge
 Слом лимита
-Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
-Потратьте 50 WP, чтобы полностью восстановить Выносливость, также прирост Выносливости увеличивается на 30% на 20 ходов. Если из-за этого ваша сила воли окажется равной 0, вы будете оглушены на 2 хода.
-
+### Spend 40 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
 
 Battle Trance
 Боевой транс
@@ -9348,9 +9400,9 @@ Trap-type spells and consumables no longer require you to channel them, but stil
 
 
 
-As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus...
-Будучи стажером, вы изучили технику возвращения ясности мысли с помощью состояния, подобного трансу, при 100% возбуждения. Однако это состояние ненадежно, и произнесение заклинаний может привести к потере концентрации...
+### Essence Motes
 
+### When you miscast a spell, you gain an Essence Mote which appears in a random space next to you. You can consume this mote to gain -100% miscast chance decaying over 10 turns. Walking over the mote also consumes it.
 
 Inner Power
 Внутренняя сила
@@ -9398,7 +9450,7 @@ You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total
 
 Mental Resistance
 Ментальное сопротивление
-### +100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is less than 25% (click the buff to toggle), and willpower drains 70% slower while edged.
+### +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
 
 ### Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle.
 
@@ -11064,6 +11116,10 @@ The EnemyName creates a zone of increased defense!
 EnemyName создает зону повышенной защиты!
 EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!
 EnemyName использует амулет для усиления магической брони и уклонения противников!
+### EnemyName supports a witch with a magical shield!
+
+### Shield the Witch!
+
 EnemyName uses a glowing talisman to buff an undead's physical armor and speed!
 EnemyName использует светящийся талисман, чтобы усилить физическую броню и скорость нежити!
 You create a zone of increased defense!
@@ -11270,16 +11326,16 @@ You conjure a small amount of slime!
 
 Water Ball
 Водяной шар
-Fast projectile. Deals DamageDealt acid damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
-Быстрый снаряд. Наносит DamageDealt урона Кислотой. Залитые цели получают +35% урона от электричества/льда, -42% от огня, и конденсируют 50% электрического урона.
+### Fast projectile. Deals DamageDealt soap damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
+
 You hurl a ball of water!
 Вы швыряете водный шар!
 
 
 Tidal Sphere
 Приливная сфера
-Slow moving projectile, deals DamageDealt acid damage to enemies it passes thru. Leaves a large amount of water in its wake.
-Медленно движущийся снаряд, наносит DamageDealt урона кислотой врагам, через которых он проходит. Оставляет за собой большое количество воды.
+### Slow moving projectile, deals DamageDealt soap damage to enemies it passes thru. Leaves a large amount of water in its wake.
+
 You raise a huge mass of water!
 Вы поднимаете огромную массу воды!
 
@@ -11898,7 +11954,7 @@ You need more spell points.
 Вам нужно больше очков способностей.
 You don't have enough maximum mana to cast this spell!
 У вас недостаточно максимальной маны, чтобы произнести это заклинание!
-### School:
+### School: 
 
 Generic
 Общее
@@ -11908,15 +11964,15 @@ Special
 Особое
 Learn Spell
 Выучить заклинание
-### Spell Points:
+### Spell Points: 
 
 
 
-### Level:
+### Level: 
 
-### Spell Point Cost:
+### Spell Point Cost: 
 
-### Mana Cost:
+### Mana Cost: 
 
 
 
@@ -11948,19 +12004,19 @@ Replace Spell 6
 Заменить закл. 6
 Replace Spell 7
 Заменить закл. 7
-### Current Spell 1:
+### Current Spell 1: 
 
-### Current Spell 2:
+### Current Spell 2: 
 
-### Current Spell 3:
+### Current Spell 3: 
 
-### Current Spell 4:
+### Current Spell 4: 
 
-### Current Spell 5:
+### Current Spell 5: 
 
-### Current Spell 6:
+### Current Spell 6: 
 
-### Current Spell 7:
+### Current Spell 7: 
 
 ### ???
 
@@ -11996,7 +12052,7 @@ Bellows
 (Страница из Книги Вечности)|Некоторые говорят, что 'Катакомбы' старше самого времени. Когда Древняя цивилизация начала изучать бессмертие, никто не знал, возможно ли будет вернуть тех, кто уже умер. Таким образом, катакомбы использовались для хранения всех останков бывших людей, чтобы их тоже можно было оживить, когда архимаг, наконец, совершит свой прорыв.
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Страница из Книги Вечности)|Говорят, что архимаг Сариэль Винлага училась в этой самой библиотеке. Собрав воедино все человеческие знания, магические, духовные, технологические, она поручила своим двенадцати младшим магам работу по сортировке и сопоставлению богатства приобретенных ею знаний. Никто не знает, почему она вдруг отказалась от библиотеки и почему сегодня она находится в таком плачевном состоянии.
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
 
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Страница из Книги Вечности)|Проблема Энергии преследовала цивилизацию на протяжении тысячелетий. До того, как были открыты лейлинии, человечество полагалось на естественные источники энергии, такие как реки и дрова. Когда были обнаружены Хрустальные пещеры, произошла великая революция. Больше не полагаясь на природные источники, цивилизации могли использовать подземные источники хаотической энергии для приведения в действие невиданных ранее механизмов.
@@ -12620,6 +12676,8 @@ Oh! Looks like I've made a mistake...
 404 заключенный не найден. Разрыв связи.
 
 
+### A EnemyName approaches you in your cell.
+
 A EnemyName appears to check on you.
 Появляется EnemyName, чтобы проверить вас.
 The EnemyName leaves and locks the cell behind her.
@@ -12664,11 +12722,11 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 За 3 репутации богиня дарует вам 'скользкость', усиливая вашу борьбу.
 For 3 rep the goddess will grant you a key.
 За 3 репутации богиня дарует вам ключ.
-### For 3 rep the goddess will grant you
+### For 3 rep the goddess will grant you 
 
 For 3 rep the goddess
 За 3 репутации богиня
-For 3 rep the goddess
+For 3 rep the goddess 
 За 3 репутации богиня
 
 
@@ -12830,8 +12888,8 @@ Your RestraintName lets out an alert!
 
 A golden lock fades into a blue lock on one of your restraints!
 Золотой замок превращается в синий на одном из ваших ограничителей!
-Your command word is heard and the purple lock(s) click and fall off!
-Звучит ваше командное слово, и фиолетовые замки щелкают и отпираются!
+### Your command word is heard and the magic lock(s) click and fall off!
+
 Your command word is heard and the charger unlocks!
 Звучит ваше командное слово, и зарядное устройство разблокируется!
 
@@ -12896,6 +12954,8 @@ You can barely stand in these heels. They are rigid, metallic, and unbreakable, 
 
 Ancient Blindfold
 Древняя повязка на глаза
+### You find a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
+
 A full-blackout mask. When powered, it negates accuracy penalties due to vision, boosts accuracy by +100%, and boosts melee damage by +10.
 Маска с полным затемнением. Когда заряжена, она сводит на нет потери точности из-за зрения, повышает точность на +100% и увеличивает урон в ближнем бою на +10.
 'Mask of the Warrior'
@@ -13044,9 +13104,9 @@ Can disarm (chance: DISARMCHANCE%)
 Может разоружить (шанс: DISARMCHANCE%)
 Resistances:
 Сопротивления:
-### HP:
+### HP: 
 
-### Binding:
+### Binding: 
 
 Ambivalent
 Двойственное
@@ -13164,6 +13224,8 @@ Mana Draining
 Истощение маны
 Electric
 Электричество
+### E-Stim
+
 Shock
 Шок
 Plush
@@ -13298,12 +13360,12 @@ Much Less
 Гораздо меньше
 No pain, no gain.
 Не плохо, но и не хорошо.
-Gain 10 extra perks, to give you a false sense of security.
-Получите 10 дополнительных привилегий, которые дадут вам ложное чувство безопасности.
-Lose 10 perk points, just to keep things interesting.
-Потеряйте 10 очков привилегий, просто чтобы сделать приключение интереснее.
-Lose 25 perk points, making things very interesting.
-Потеряйте 25 очков привилегий, чтобы сделать ситуацию очень интересной.
+### Gain 20 extra perk points, to give you a false sense of security.
+
+### Lose 20 perk points, just to keep things interesting.
+
+### Lose 50 perk points, making things very interesting.
+
 
 
 Perk Progression Mode:
@@ -13368,7 +13430,7 @@ Hard Mode
 
 A supposedly reasonable difficulty curve.
 Предположительно разумная кривая сложности.
-### Play the game the way it was intended. Cruel and restrictive.
+### Play the game the way it was intended. Cruel and restrictive. 
 
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 Играйте на свой страх и риск. Разблокируется двойным щелчком по кнопке 'Сложного' режима.
@@ -13572,7 +13634,7 @@ Leave them alone!
 Оставь их в покое!
 Hey, stop that!
 Эй, остановись!
-
+### Why do I hire these people...
 
 
 
@@ -13668,7 +13730,7 @@ Fine, then.
 Ла-а-адно.
 Know your place!
 Знай свое место!
-
+### *sighs*
 
 
 
@@ -15392,8 +15454,8 @@ No! Be gentle!
 Нет! Будь нежнее!
 Ahhhh!
 Аааах!
-Heatpats please...
-Больше тепла, пожалуйста...
+### Headpats please...
+
 *purrs*
 *мурлычет*
 Nyah, I've been a bad kitty...
@@ -16192,7 +16254,7 @@ Rawr!
 
 ### My late sister Myrtle was a much more proficent defender than I... Oh how I long for her *sob*
 
-### THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
+### THE PATH OF MY RETRIBUTION IS PAVED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
 
 ### I, Myrtrice, will resist their insolent fusilades!
 
@@ -16531,8 +16593,6 @@ I shall take you for myself~
 ### Nice party trick!
 
 ### Oh, shiny!
-
-### *sighs*
 
 ### You won't get away!
 
@@ -17554,6 +17614,8 @@ You hand over your weapon reluctantly...
 (SPEAKER выглядит смущенной)|Тогда... тогда... э-э-э... кто-нибудь, остановите ее!
 (The SPEAKER grins)|Then allow me to personally show you the rules.
 (SPEAKER ухмыляется)|Тогда позволь мне лично ознакомить тебя с правилами.
+### (The SPEAKER cracks her knuckles)|Finally, I get to have some fun~
+
 (The SPEAKER beeps)|Subject is resisting. Begin capture protocol.
 (SPEAKER издаёт звуки)|Объект сопротивляется. Запустить протокол захвата.
 
@@ -17562,6 +17624,12 @@ You hand over your weapon reluctantly...
 (SPEAKER обращается к вам)|Тебе не положено носить оружие.|Отдай это мне.
 (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
 (SPEAKER подходит к вам)|Обнаружена контрабанда. Инициирование конфискации.|Пожалуйста, подчинитесь.
+### (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
+
+### (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
+
+### (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
+
 Yes, miss... (Currently held weapon will be lost)
 Да, мисс... (Экипированное в данный момент оружие будет утеряно)
 Mmph... (Nod politely) (Currently held weapon will be lost)
@@ -19264,7 +19332,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER прочищает горло)|Что ж, мы сейчас вновь набираем персонал!|Ты можешь присоединиться к нам, если согласишься бороться за справедливость!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER крепко пожимает вам руку)|Добро пожаловать в сестричество, искательница приключений!
-### (The SPEAKER tilts her head and shrugs)|Ah well.
+### (The SPEAKER tilts her head and shrugs)|Ah well. 
 
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (SPEAKER хмурится)|Что это?|Ты ведь не враг правосудия, я надеюсь?
@@ -19916,7 +19984,7 @@ There is no valid space next to you!
 (SPEAKER отказывается выполнять ваши указания)
 
 
-### (Remove BINDAMNT binding from her)
+### (Remove BINDAMNT binding from her) UNTIETURNS
 
 ### (You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)
 
@@ -19924,9 +19992,11 @@ There is no valid space next to you!
 (Дайте ей предмет для восстановления)
 (The SPEAKER appreciates the thought!)
 (SPEAKER очень признательна!)
+### Must have HP to untie.
 
+### (AMNT turns)
 
-
+### (AMNT turn)
 
 (Follow me)
 (Следуй за мной)
@@ -20918,7 +20988,7 @@ Give her a Scroll of Purity
 
 ### Hmmmph? Mmmm! (Act worried and whimper)
 
-### (The SPEAKER folds her arms)|Mistress Oriel's orders
+### (The SPEAKER folds her arms)|Mistress Oriel's orders 
 
 ### Not in the 'System'?
 
@@ -20988,13 +21058,15 @@ Use a key to unlock her
 Используйте ключ, чтобы отпереть ее
 Try to pick her restraints (JAMPERCENT jam chance)
 Попробовать взломать её ограничители (JAMPERCENT шанс неудачи)
-Use a command word
-Использовать командное слово
+### Use CMD: Unlock
+
 Apologize profusely!
 Приношу свои глубочайшие извинения!
 
 
+### (The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
 
+### (Unlock her and file a bug report to Ada)
 
 ### (The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
 
@@ -21002,6 +21074,8 @@ Apologize profusely!
 
 ### Return her to your collection
 
+Use a command word
+Использовать командное слово
 ### Flip her around
 
 ### You spin her right round!
@@ -21079,6 +21153,8 @@ An enemy found you while you were busy!
 ### (You close the furniture around your unfortunate victim!)
 
 ### Stun or disable her first.
+
+### Area isn't clear.
 
 ### (Secure NME into the furniture)
 
@@ -21168,7 +21244,7 @@ Upcast Level LEVEL
 Уровень усиления LEVEL
 Prerequisite
 Предусловие
-### Unlocks:
+### Unlocks: 
 
 You need to learn REQUIREDSPELL before you can learn this one.
 Вам нужно выучить REQUIREDSPELL, прежде чем вы сможете выучить это заклинание.
@@ -21224,7 +21300,7 @@ Initiating prisoner lockdown protocol
 
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count:
+### Turn Count: 
 
 The Shopkeeper leashes you!
 Владелица магазина вешает на вас поводок!
@@ -21668,7 +21744,7 @@ Items on Ground:
 Предметы на земле:
 
 
-### Preloading Character Assets:
+### Preloading Character Assets: 
 
 Uniforms
 Униформа
@@ -25842,9 +25918,145 @@ Mage
 
 ### HeavyMaidKnight
 
+### RubyNecklace
+
+### RubyChain
+
+### RubyRing
+
+### RubyGem
+
+### RubyNecklaceRestraint
+
+### SigilNecklace
+
+### SigilChain
+
+### SigilDisc
+
+### SigilNecklaceRestraint
+
+### MetalNecklace
+
+### MetalChain
+
+### MetalDisc
+
+### MetalNecklaceRestraint
+
+### NecklaceCharm
+
+### DragonNecklaceRestraint
+
+### BallTeeth
+
+### CrystalBallGag
+
+### CrystalBallGagSmooth
+
+### GagMetalRivetedStrap
+
+### OTNStrap
+
+### OTNStrapRivets
+
+### FashionGagMetalRivetedStrap
+
+### CrystalGagNecklace
+
+### CrystalGagNecklaceBall
+
+### FashionCrystalGagNecklace
+
+### LeashCollar
+
+### LeashCollarHardware
+
+### BootShoeLeft
+
+### BootShoeRight
+
+### Fear
+
+### RubyHardware
+
+### KiguMaskSmile
+
+### MouthSmile
+
+### FashionKiguMaskSmile
+
+### OneBarTop
+
+### OneBarPrisonLatex
 
 
 
+### FangMouth
+
+### FanglessMouth
+
+### SantaHat
+
+### Hat
+
+### HatBack
+
+### Fluff
+
+### Orb
+
+### FestiveArmbinder
+
+### BinderStrapLeft
+
+### BinderFluffLeft
+
+### FestiveHarnessTop
+
+### StrapTop
+
+### ButtonsTop
+
+### FuzzTop
+
+### FestiveHarnessMid
+
+### StrapMid
+
+### ButtonsMid
+
+### FuzzMid
+
+### FestiveHarnessStrap
+
+### StrapBot
+
+### ButtonsBot
+
+### FuzzBot
+
+### FestiveHarness
+
+### StrapOverbust
+
+### StrapUnderbust
+
+### ButtonsUnderbustOver
+
+### ButtonsUnderbust
+
+### FuzzUnderbustOver
+
+### FuzzUnderbust
+
+### FashionFestiveHarnessTop
+
+### FashionFestiveHarnessMid
+
+### FashionFestiveHarnessStrap
+
+### FashionFestiveHarness
 
 Hide Items
 Скрыть предметы
@@ -26526,6 +26738,16 @@ They are trying to take you somewhere!
 Они пытаются куда-то вас утащить!
 
 
+### Essence Mote
+
+### A trainee can use this to focus.
+
+### Pick this up to gain decaying miscast reduction.
+
+### Seal Sigil
+
+### Walk over it to erase it and unlock the next floor.
+
 The Shadow
 Тень
 The Shadow is exorcised... for now.
@@ -26668,7 +26890,7 @@ Rubber Stick
 Резиновая палка
 A rubber cylinder without any lewd intentions whatsoever.
 Резиновый цилиндр без какого-либо непристойного предназначения.
-### Deals grope damage.
+### Deals grope damage. 
 
 You pick up a flexible rubber stick.
 Вы находите гибкую резиновую палку.
@@ -27322,8 +27544,8 @@ You don't have enough Arcane Energy. You need AMNT.
 
 Chaotic Overflow
 Хаотическое переполнение
-Draw upon 25% of your max Willpower to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
-Пожертвуйте 25% своей максимальной силы воли, чтобы игнорировать активаторы заклинаний в течение Duration ходов и полностью восстановить свою ману. Энергия неконтролируема, поэтому будут последствия...
+### Draw upon 35 WP to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
+
 Chaotic energy flows through you!!!
 Хаотическая энергия течет через вас!!!
 You try to call forth the chaotic energy, but it isn't interested in you anymore...
@@ -27578,6 +27800,10 @@ Offhand: This weapon can be dual-wielded by some classes.
 Двуручное
 2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied.
 Двуручное: Используя это в качестве основного оружия, вы не можете взять оружие в левую руку. Также этим оружием нельзя пользоваться, пока руки связаны.
+### Magical Focus
+
+### Magical Focus: Instead of losing accuracy, the stamina cost is increased when distracted.
+
 Precision
 Прицельное
 Precision: Your arms need to be free to use this weapon.
@@ -27704,9 +27930,7 @@ You toss some gunpowder on the floor!
 
 Dual Wield (Rogue)
 Бой двумя оружиями (Ассасин)
-Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)
-Добавьте на быструю панель и используйте, чтобы назначить оружие в левую руку и получить пассивные эффекты, такие как источник света, защита или дополнительный критический урон.|Разбойники не могут носить двуручное, тяжелое или массивное оружие в левой руке, если только они не мультиклассовые.|(Необходимо экипировать способность 'Бой двумя оружиями', чтобы использовать оружие в левой руке)
-
+### Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|(Equip Dual Wield spell to equip an offhand weapon, or use the Items menu)
 
 Dual Wield (Wizard)
 Бой двумя оружиями (Маг)
@@ -27756,9 +27980,9 @@ Your RestraintName shatters and falls off!
 Ваше RestraintName раскалывается на части, которые падают на землю!
 
 
-### Load Hotbar
+### Load Hotbar 
 
-### Save Hotbar
+### Save Hotbar 
 
 Clear Hotbar
 Очистить быструю панель
@@ -27939,6 +28163,14 @@ Stop when enemies are first sighted
 Suppress during combat
 Отключать во время боя
 ### Step during combat
+
+### 0.1s/turn
+
+### 1.5s/turn
+
+### 0.5s/turn
+
+### 0.01s/turn
 
 Shadowy Grasp
 Призрачная хватка
@@ -28604,6 +28836,50 @@ This door failed to load and cannot be opened.  Please report this bug to Ada wi
 Эта дверь не загрузилась и не может быть открыта. Пожалуйста, сообщите об этой ошибке Ada, предоставив сейв-код.
 
 
+### Exit sealed!|Find the lair!
+
+### Sigils erased!
+
+### Dragon defeated!
+
+### Draconic Seal
+
+### A dragon has sealed the entrance. Defeat the dragon, or erase the sigil from her lair.
+
+### A draconic spell keeps the door sealed. You will have to confront its owner.
+
+
+
+### Exits locked!|Destroy NUMBER Servers!
+
+### Security System Compromised!
+
+### Clearance Granted!
+
+### Destroy Nevermere Servers
+
+### Destroy Nevermere servers to unlock the door.
+
+### Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
+
+### Nevermere Server
+
+### Server smashed!
+
+### Destroy Drone Servers
+
+### Destroy Drone Node Servers to unlock the door.
+
+### The path forward is controlled by several ancient Drone Servers. Destroy them.
+
+### Drone Server Node
+
+### Drone node destroyed!
+
+### Rusty Server Node
+
+### loud beeping...
+
 (Cursed)
 (Проклято)
 (Purified)
@@ -29092,7 +29368,7 @@ Experience a comprehensive rope bondage experience.
 
 
 
-### Receive the following restraints:
+### Receive the following restraints: 
 
 You will be bound with some form of restraint.
 Вы будете скованы с помощью неизвестных ограничителей.
@@ -29216,12 +29492,16 @@ You have formed a mental barrier...
 
 Desire Burst
 Взрыв желания
-### Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+### Overload Essence motes in an area, costing 10% max DP worth of Desire each. They explode, dealing (10 + 20% max DP) charm damage to enemies hit. If you don't have enough desire, the damage is reduced proportionally.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
 
-You channel your distraction into a powerful explosion!
-Вы превращаете свое возбуждение в мощный взрыв!
+### You channel your distraction into the mote, overloading it!
+
+### You channel your distraction into the motes, overloading them!
+
 You don't have enough of a desire to do that.
 У вас недостаточно желания, чтобы сделать это.
+### You must target at least one Essence Mote.
+
 You have the desire but not the mana!
 У вас есть желание, но нет маны!
 
@@ -29772,7 +30052,7 @@ Prisoner #NUMR/TTL
 
 Select a character to examine
 Выберите персонажа для осмотра
-### Former Faction:
+### Former Faction: 
 
 
 
@@ -29831,6 +30111,10 @@ Tough Armor (1/2 crit mult while aware)
 Absolute Armor (1/2 crit mult)
 Абсолютная броня (1/2 множитель крита)
 
+
+### Rename
+
+### Reset to NME
 
 ### Enlarged View
 
@@ -29978,7 +30262,7 @@ You crouch and move slowly.
 Вы приседаете и двигаетесь медленнее.
 
 
-### Owned by:
+### Owned by: 
 
 Warden's Belt
 Пояс надзирательницы
@@ -30618,7 +30902,7 @@ Dimensional Rift
 Межпространственный разлом
 Hoard
 Тайное хранилище
-
+### Dragon's Lair
 
 Witch's Lair
 Логово ведьм
@@ -30626,8 +30910,8 @@ Mold Infestation
 Заражение плесенью
 Bandit Raid
 Бандитский налет
-Elemental Energy
-Стихийные энергии
+### Dragon Sighting
+
 Slime Infestation
 Заражение слизью
 Wolfgirl Training
@@ -30710,13 +30994,15 @@ You find a ceremonial leotard.
 
 ### The Robe of Chastity
 
-### A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+### A magical leotard whose power infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
 
 ### It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 
+### A magical leotard infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took
+### Took 
 
 (As you slay the dragon, it begins shapeshifting into human form!)
 (Когда вы сражаете дракона, он начинает принимать человеческий облик!)
@@ -30810,6 +31096,8 @@ Crystals grow across your body and encase you!
 Кристаллы покрывают ваше тело и заключают в Оболочку!
 You are encased in a solid block of ice!
 Вы заключены в Оболочку в виде твердой глыбы льда!
+### A shadowy sphere rises from the ground and wraps over you tightly!
+
 Shadows coalesce themselves around you in spherical form!
 Тени сгущаются вокруг вас в сферическую форму!
 
@@ -31554,6 +31842,8 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Visit the Summit to allow additional interactions with this facility.
 
+### Must visit the Summit or be in a perk shrine to recycle restraints.
+
 ### +AMNT% Training/Tick
 
 ### +AMNT% Opinion/Tick
@@ -31674,9 +31964,9 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Runes
 
-### Stock:
+### Stock: 
 
-### Inputs:
+### Inputs: 
 
 ### You slip off the conveyor!
 
@@ -31742,17 +32032,17 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Heels
 
-### Equipped:
+### Equipped: 
 
-### Click to Add
+### Click to Add 
 
-### Apply
+### Apply 
 
-### Raw Material:
+### Raw Material: 
 
 ### Free Prisoner
 
-### Perk Unlocked:
+### Perk Unlocked: 
 
 ### Latex Solvent
 
@@ -31782,21 +32072,23 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Choose Restraint
 
-### Def. Palette:
+### Def. Palette: 
 
 ### Set All Palette
 
 ### Guests
 
-### Assign to
+### Assign to 
 
-### Remove from
+### Remove from 
 
-### Can't assign to
+### Can't assign to 
+
+### Remove from party to assign 
 
 ### Imprison
 
-### Opinion:
+### Opinion: 
 
 ### Last Seen on Floor FLR, LOC
 
@@ -31822,17 +32114,17 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Any
 
-### NPC Opinion:
+### NPC Opinion: 
 
-### NPC Escape Status:
+### NPC Escape Status: 
 
-### NPC Binding:
+### NPC Binding: 
 
-### NPC Availability:
+### NPC Availability: 
 
-### Favorited:
+### Favorited: 
 
-### Rank:
+### Rank: 
 
 ### Minor
 
@@ -31892,6 +32184,16 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Release
 
+### Summon
+
+### Already present in summit
+
+### NPC is unavailable
+
+### Only available in the Summit
+
+
+
 ### Mark
 
 ### Unmark
@@ -31934,7 +32236,7 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Select a Binding Slot
 
-### Cost:
+### Cost: 
 
 ### Zoom set to PCNT%
 
@@ -31958,7 +32260,7 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 
-### Save Slot
+### Save Slot 
 
 ### Load Game
 
@@ -32016,11 +32318,11 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Chaos Route
 
-### Map Seed:
+### Map Seed: 
 
 ### Will Overwrite NME!
 
-### Play Slot
+### Play Slot 
 
 ### Play (NO SLOT!)
 
@@ -32030,7 +32332,9 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Restore
 
-### Set Palette
+### Extra Options
+
+### Preview without Armor
 
 
 
@@ -32061,6 +32365,8 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### You strike the earth, but it is nothing but solid wall on the other side.
 
 ### You strike the earth! It crumbles before you!
+
+### Click again to automatically mine the wall with your pickaxe.
 
 ### The planar focus resonates with the teleportation magic!
 
@@ -32176,8 +32482,6 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### You have no restraints in storage. Go to the Summit to deposit restraints.
 
-
-
 ### Back to Facilities
 
 ### Your Inventory
@@ -32204,7 +32508,7 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Deposit All
 
-### Auto-loot found
+### Auto-loot found 
 
 ###  (not picked up)
 
@@ -32313,6 +32617,8 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### Rope Ambush
 
 ### Defensive Charm
+
+### Shield the Witch
 
 ### Tracer Rounds
 
@@ -32690,6 +32996,8 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Robe of Chastity
 
+### A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+
 ### Chainmail Tank Top
 
 ### Cumbersome, but effective!
@@ -32773,3 +33081,361 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### You need to equip your magic cutting weapon to cut magic items.
 
 ### You can surrender in the menu if you want to be treated more gently.
+
+### You flanked the enemy! Now attack its weak point for massive damage!
+
+### Enemies that miss an attack become vulnerable for a turn.
+
+### Attack them for a guaranteed critical hit!
+
+### before the attack lands! You can tell the difference by the border of the tiles.
+
+### You can dodge out of the way of most projectiles. Avoid the marked tiles.
+
+### Defeating enemies recovers some willpower.
+
+### Temporary enemies and summons don't restore anything, however.
+
+### Attacking a helpless enemy captures her and sends her to your Collection.
+
+### You can access the Collection in the Items screen, 2nd tab.
+
+### Conjure Essence Mote
+
+### Spend 50 DP to conjure a mote of pure spell essence. The mana cost of this spell is decreased based on your maximum DP.|Can only be cast while you have less than 100% DP.
+
+### You channel your distraction into a tangible orb!
+
+### You don't have enough distraction!
+
+### Choose an open space.
+
+### Choose a tile with no existing mote.
+
+### You're too distracted to concentrate your distraction!
+
+### The burst of desire overwhelms you!
+
+### Psychic Link
+
+### Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain between the two of you. Requires that you and the target be able to see each other.
+
+### Target a non-blinded enemy.
+
+### You briefly lock eyes with the target, forming a psychic link!
+
+### The psychic link ends between you and the ENMY.
+
+### Shock Collar
+
+### Condense your aroused thoughts into stimulating electricity, consuming 30 DP to zap anyone that's currently holding your leash for 40 e-stim damage. 25% chance to stun for a long time, otherwise stuns briefly. Subsequent uses cost 2x the DP.
+
+### You must be leashed by someone to use this.
+
+### You don't have enough distraction.
+
+### You zap your leasher!
+
+### You are psychically connected!
+
+### You've used Shock Collar recently and it costs more DP.
+
+
+
+### Essence Crystal
+
+### When you miscast, 50% chance to emit a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+
+### A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast.
+
+### When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+
+### You erase the seal sigil.
+
+### You absorb the mote, granting miscast reduction.
+
+### Your necklace emits a mote as a result of miscasting.
+
+### Your distraction reaches a critical point! -100% miscast chance.
+
+### While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
+
+### -100% miscast chance, but casting spells can send you over the edge.
+
+### The psychic link conducts away some of the intensity...
+
+### Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
+
+### FCTN RMTPE
+
+### PTRN's RMTPE
+
+### Leads to PLCE
+
+### (You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'
+
+### It becomes hard to resist the dragon's fury...
+
+### The dragon overwhelms you with sheer force...
+
+### Your strength begins to fade...
+
+### >Entrance
+
+### >Exit
+
+### >Stairs
+
+### Quest(GDSNM)
+
+### [GDSNM]
+
+
+
+### Bed!
+
+### Silver
+
+### Mecha
+
+### chest
+
+### Lost Items
+
+### Cache
+
+### Toy Chest
+
+### (L)
+
+
+
+### (The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+
+### (You don't have any solvents that work on latex)
+
+### (You dissolve her restraints, fumbling around for a while with your bound hands)
+
+### (You rescue the SPEAKER)|Thank you!|Let's get out of here!
+
+### (You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+
+### (You are not holding a cutting tool)
+
+### (You cut her restraints, fumbling around for a while with your bound hands)
+
+### (You don't have enough mana for Remove Slime)
+
+### (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
+
+### (You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+
+### Dissolve the latex with a SLVNT
+
+### Cut her out with a sharp tool
+
+### Use Remove Slime to unlock her
+
+### Local Saves
+
+### Cloud Saves
+
+### solvent
+
+### Latex Doll Stand
+
+### A stand for your latex dolls, coated in a smooth rubber coating.
+
+### Has a flange for propping up even dolls wearing chastity belts.
+
+
+
+### (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
+
+### (The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+
+### (The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
+
+### (The SPEAKER smiles)|Let's see, what loot do we have here...|(SPEAKER is going to search you)
+
+### (The SPEAKER scans you with a red light)|Enumerating contraband...|Please comply for removal.
+
+### Yes, miss... (Begin search and confiscation)
+
+### Mmph... (Nod politely) (Begin search and confiscation)
+
+### No, I refuse! (Fight)
+
+### Mmph! (Shake your head and fight)
+
+### Option not available at 0 WP
+
+### (The SPEAKER starts by removing most of your clothes...)
+
+### (Next, the SPEAKER looks through your weapons)
+
+### (Finally, the SPEAKER opens the rest of your bag)
+
+### (The search is complete)|There! Now let's get you situated~
+
+### (The search is complete)|Alright miss, please behave, okay?
+
+
+
+### Confiscated AMNTx ITMN!
+
+### Kept AMNTx ITMN.
+
+### Sneaked in AMNTx ITMN!
+
+### GUN
+
+### The room echoes with the sound of a rubber bullet being fired!
+
+### Tactical Rubber Bullet
+
+### A powerful rubber bullet bounces you to the ground!
+
+### The powerful rubber bullet knocks you down and congeals into Capture Foam!
+
+
+
+### Capture Foam (Feet)
+
+### A sticky foam that spreads quickly and hardens into a tight rubbery layer.
+
+### A knife won't cut it, it simply reforms around the cut.
+
+### Capture Foam (Ankles)
+
+### Capture Foam (Legs)
+
+### Capture Foam (Arms)
+
+### Capture Foam (Hands)
+
+### Capture Foam (Mouth)
+
+### Capture Foam (Head)
+
+### Capture Foam Dispenser
+
+### This collar is designed to make sure its wearer does not escape at all costs.
+
+### It will occasionally cause Capture Foam to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of Capture Foam you have on you.
+
+
+
+### Tactical Rubber
+
+### An alchemical substance made to be stretchy and more resilient than natural rubber.
+
+### Developed by kinky alchemists and marketed to PMCs across the islands.
+
+### Capture Foam
+
+### A restraining weapon used to apprehend difficult targets.
+
+### Tactical Rubber (Feet)
+
+### The end result of capture foam. Strict. Sustainable. Affordable.
+
+### Tactical Rubber (Ankles)
+
+### Tactical Rubber (Legs)
+
+### Tactical Rubber (Arms)
+
+### Tactical Rubber (Hands)
+
+### Tactical Rubber (Mouth)
+
+### Tactical Rubber (Head)
+
+### Tactical Rubber Collar
+
+### It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you.
+
+
+
+### Sweeping Strike
+
+### Headlong Rush
+
+
+
+### Maid Squire
+
+### Maid Knight
+
+### You humiliate the Maid Squire!
+
+### You defeat the Maid Knight! For now... she swears revenge.
+
+### The Squire zips you up in comfy leather gear!
+
+### The Maid Knight places you in strict bondage!
+
+### The Squire secures your restraints!
+
+### The Maid Knight secures your restraints!
+
+### The Squire dusts you with her duster plug.
+
+### The Maid Knight sweeps you with her cleaning halberd!
+
+### The EnemyName retreats!
+
+### The EnemyName manages to squirm out of sight!
+
+
+
+### servers humming...
+
+### bouncy noises
+
+### goopy noises
+
+### bubbling noise
+
+### rubber squeaking
+
+### blaring siren
+
+### You claim the Sweeper.
+
+### The Sweeper
+
+### Foe of the unclean. Bringer of neat and tidy workspaces.
+
+### Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack.
+
+### Make a ranged attack with the Sweeper.
+
+### You claim the Persuader.
+
+### The Persuader
+
+### Military forces sought a solution with higher stopping power after the Great Work made brute force obsolete. Capture Foam rounds are now the standard.
+
+### Equipped with a duster plug, it deals tickle damage on melee. Can fire a high caliber rubber bullet to deal 80 glue damage from a distance. Takes 3 turns to reload.
+
+### Make a ranged attack with the Persuader for 25 charge. Deals 80 glue damage.
+
+### Persuader Round
+
+### You fire the Persuader!
+
+### Wait for current save to finish...
+
+### Please wait for save to finish...
+
+### Debug Defeat
+
+### You cast devastating ASCII glyphs!
+
+### Debug Bind
+
+### You cast bondage ASCII glyphs!
+
+### , Floor AMNT

@@ -70,9 +70,11 @@ Keybindings
 キー設定
 
 
+### Show Minimap Labels
+
 Auto loot all from chests
 宝箱の中身を自動で収集
-
+### Use Palette regardless of Outfit
 
 Apply palettes to Restraints
 拘束具にﾊﾟﾚｯﾄで設定した色を使用
@@ -238,7 +240,7 @@ Dynamic Armor (must hide armor)
 ダイナミックアーマー(「鎧を描写する」をオフにする必要あり)
 Hide floating weapon display
 浮遊させている武器を非表示
-
+### Automatically Take All from Chests
 
 Helpless!
 逃げられない！
@@ -272,7 +274,7 @@ Game Font:
 ゲームのフォント：
 Button Font:
 ボタンのフォント：
-
+### Journey
 
 Select a journey. This will determine the ordering of game areas.
 モードを選択してください。エリアの順番が変わります。
@@ -438,6 +440,14 @@ Accuracy multiplied by 0.9x above 10% distraction, down to 0.6x at 90% distracti
 興奮値に応じて、命中率が低下する。興奮値が10%の時には命中率が0.9倍になり、興奮値が90%の時には命中率が0.6倍になる
 
 
+### Focused Strikes
+
+### 90% less accuracy penalty on swung weapons due to distraction.
+
+### Focused Power
+
+### 90% less stamina cost penalty on staves and similar weapons distraction.
+
 Pristine
 原始的
 There are significantly less shiny loot objects in the dungeon.
@@ -460,9 +470,7 @@ Metal restraints are harder to escape from.
 
 Forgetful
 忘れっぽい
-You don't remember where you've been in the level.
-ミニマップが記憶されなくなる
-
+### You don't remember where you've been in the level. 30 turn timer.
 
 Cursed Locks
 呪われた錠前
@@ -966,6 +974,14 @@ Triumphant Wind
 勝利の風
 Second Wind now regenerates up to 25% of your max WP
 パーク「セカンドウィンド」の回復量が気力最大値の25%までになる
+### Mental Defiance
+
+### Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP.
+
+### Mental Fortitude
+
+### Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While above 75% WP but below 100%, quickly convert 'Defiance' into WP. Exclusive with Mental Defiance.
+
 
 
 Locked Up
@@ -1096,8 +1112,8 @@ In most cases you will not get blindfolded, except for cloth blindfolds which ca
 
 Total Blackout
 完全ブラックアウト
-Blindfolds are extremely punishing and you can't see explored areas while blindfolded.
-目隠し装備時、「ブラックアウト」効果に加え、マップが自身の周囲以外表示されなくなる
+### Blindfolds are extremely punishing.
+
 Poor Vision
 目が悪い
 Vision radius is significantly reduced.
@@ -1324,6 +1340,12 @@ Magic puts you in a clear state of mind. Casting spells successfully reduces you
 魔法を唱えた際、興奮値が低下する
 
 
+### Unidentified Wear
+
+### Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
+
+### Unknown 
+
 Copy (clipboard)
 クリップボードにコピー
 Paste (clipboard)
@@ -1402,9 +1424,9 @@ Everywhere!
 どこにでも！
 
 
-Physical Armor:
+Physical Armor: 
 物理アーマー:
-Magic Armor:
+Magic Armor: 
 マジックアーマー:
 In the Shadows: You are harder to see.
 影の中にいる:見つかりにくい
@@ -1412,7 +1434,7 @@ Invisible: You are very difficult to see.
 透明：とても見つかりにくい
 Quickness: Your next movement is so fast it doesn't advance a turn.
 加速：次の移動にターンを消費しない
-All Damage Reduction:
+All Damage Reduction: 
 全ダメージ軽減:
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 PERCENT2 DAMAGETYPE 属性耐性と PERCENT3 DAMAGECATEGORY 修正値に基づいて、PERCENT1 DAMAGETYPE 属性ダメージを受ける
@@ -1596,9 +1618,13 @@ You can launch another Sagitta instantly!
 「サジッタ」を再度使用可能
 
 
-Your motivation is powerful enough your spells cannot be stopped!
-モチベーションは十分。いくらでも魔法を唱えられる
+### You have stored willpower.
 
+### You have consumed a mote of essence, granting miscast chance reduction.
+
+### You recapture an essence mote and concentrate on its essence!
+
+### Choose an essence mote to absorb.
 
 Locked Down: Struggling power is greatly reduced.
 ロックダウン：「もがく」選択時に大幅なペナルティ
@@ -1708,7 +1734,7 @@ Missing key
 鍵がない
 You are protected from damage and can't be bound until the shield is broken!
 ダメージを受けず、拘束を受け付けない。
-Chance for a spell to fizzle:
+Chance for a spell to fizzle: 
 魔法が効力を失う可能性:
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 回避率: Percent%。基礎回避率 EVASIONSUM に EVASIONPENALTY% のペナルティを受けている。
@@ -1880,7 +1906,7 @@ Delete Mod
 MODを削除
 Clear Perks
 スキルをリセットする
-Config
+Config 
 コンフィグ
 Cancel
 キャンセル
@@ -1996,6 +2022,8 @@ Inventory
 インベントリ
 Reputation
 評判
+### Journey Map
+
 Quests
 クエスト
 Spell List
@@ -2016,15 +2044,15 @@ Floor FLOORNUMBER: DUNGEONNAME
 フロア FLOORNUMBER: DUNGEONNAME
 
 
-Lockpicks:
+Lockpicks: 
 ﾛｯｸﾋﾟｯｸ:
-Keys:
+Keys: 
 鍵:
-Magic Keys:
+Magic Keys: 
 魔法の鍵:
-Knife:
+Knife: 
 ナイフ：
-Mag. Knife:
+Mag. Knife: 
 魔法のナイフ:
 
 
@@ -2074,6 +2102,8 @@ Magic Library
 魔法図書館
 Crystal Cave
 水晶の洞窟
+### Cavern
+
 Orrery
 オーラリー
 Training Center
@@ -2120,7 +2150,7 @@ The Edge of Reality
 果ての境界
 Dark Dimension
 闇の次元
-
+### Lair
 
 You search through the debris but find nothing of note
 瓦礫をかき分けて役に立ちそうなものを探したが、何も見つからなかった。
@@ -2210,7 +2240,7 @@ The pearly chest contains a divine gift! (+ITEMGET)
 純白の宝箱から神々の贈り物を見つけた (+ITEMGET)
 Smoke fills the air around you!
 煙が辺り一面を取り巻く！
-
+### You find a magical necklace that seems to concentrate magic.
 
 
 
@@ -2238,7 +2268,7 @@ You find a medley of potions.
 ポーションのセットを見つけた。
 
 
-Rarity:
+Rarity: 
 レアリティ:
 Lesser
 レッサー
@@ -2880,8 +2910,8 @@ Stormbreaker
 ストームブレイカー
 I have the power! Taking electric damage charges you (1 turn/10dmg).
 これが力だ！電気属性のダメージを受けた場合、1ターンに10ダメージ分チャージをする。
-Deals crush damage. Deals bonus electric damage in an area when charged, up to +40.
-打撃属性。チャージしていた場合、電気属性範囲ダメージを与える。最大40ダメージ。
+### Deals crush damage. Deals bonus electric damage in an area when charged, up to +40. Gives +100 Electric Resist when held. (can be wielded offhand to apply the Electric Resist)
+
 You pick up Stormbreaker.
 ストームブレイカーを手に入れた。
 
@@ -3086,8 +3116,8 @@ Magic Axe
 魔法の斧
 Sick and vile, like the hearts of your enemies.
 病的で卑劣な刃。
-Deals shadow damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns.
-影属性。攻撃時、隣の敵に20の影属性ダメージを与える。命中した敵に3ターンの間減速状態を付与する。
+### Deals slash damage to the target and 20 shadow damage to enemies next to you. Slows for 3 turns and applies 60 shadow damage bleed over time to enemies around you.
+
 Pickaxe
 つるはし
 Used for drilling holes in rock and armor.
@@ -3098,8 +3128,8 @@ Magic Flail
 魔法のフレイル
 A blessed censer that distributes pain equally.
 群がる者共を平等に痛めつけるフレイル。
-Deals crush damage. Deals 20 bonus shadow damage to the target and enemies near the target.
-打撃属性。攻撃時、ターゲットと近くの敵に追加で20の影属性ダメージを与える。
+### Deals crush damage. Deals 20 bonus holy damage to the target and enemies near the target.
+
 Magic Spear
 魔法の槍
 Seeks and pierces hearts with ease.
@@ -3122,7 +3152,7 @@ Dreamcatcher
 ドリームキャッチャー
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 悪夢の中で鋼と共に鍛えられた武器。エネルギーを2%消費し、プレイヤーに気づいていないターゲットの周囲にシャドウウォリアーを召喚する。
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
 影属性。こちらに気付いていない敵に30、弱体化状態の敵に15の精神属性の追加ダメージを与える。
 Axe
 斧
@@ -3130,11 +3160,11 @@ Great for cutting trees that happen to be underground.
 地下に生えている木を切るのに最適。
 Also deals 20 damage to enemies next to you. Deals slash damage.
 斬撃属性。隣の敵にも20ダメージ。
-Accuracy:
+Accuracy: 
 命中:
-Crit Multiplier:
+Crit Multiplier: 
 会心ダメージ:
-Bind Crit Multiplier:
+Bind Crit Multiplier: 
 拘束会心ダメージ:
 Find the keys..
 鍵を見つける……
@@ -3152,9 +3182,9 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 ひび割れた場所がある。ナイフや道具を挟めば上手く拘束を切れるかもしれない。
 You found something sticky and might be able to pull off fabrics.
 ねばついた場所がある。上手く使えば拘束を引きはがせるかも。
-Evasion:
+Evasion: 
 回避:
-Visibility:
+Visibility: 
 視認性:
 
 
@@ -3200,13 +3230,13 @@ Satisfied. Miscast chance is reduced.
 満足した……。詠唱失敗率が減少する。
 
 
-Damage:
+Damage: 
 ダメージ:
-Bind:
+Bind: 
 拘束:
-Crit:
+Crit: 
 会心:
-SP Cost:
+SP Cost: 
 SPコスト:
 Cut PWR: AMNT%
 切断力： AMNT%
@@ -3222,8 +3252,8 @@ You place the crystal into the receptacle and it lights up!
 クリスタルを設置すると、松明のように辺りを照らし出した！
 You take the crystal from the receptacle and all goes dark.
 クリスタルを取ると、辺りが暗くなっていった。
-You try to take the crystal but the cage around it is secured with a purple lock.
-クリスタルは紫の錠でロックされている。
+### You try to take the crystal but the cage around it is secured with a magic purple lock.
+
 Place spent crystal
 使用済みクリスタルを置く
 VALUE gold vanishes from your satchel as the receptacle explodes and your crystal is recharged!
@@ -4384,7 +4414,7 @@ The girl nervously restrains you! (+RestraintAdded)
 盗賊のペットが慎重に拘束してきた！ (+RestraintAdded)
 The bandit tickles you nervously! (DamageTaken)
 盗賊のペットはくすぐってきた！ (DamageTaken)
-
+### The bandit pet applies a lock! (DamageTaken)
 
 Bandit Hunter
 盗賊のハンター
@@ -4994,8 +5024,8 @@ The witch's lightning causes your body to tingle! (DamageTaken)
 魔女は電気の力で攻撃してきた！（DamageTaken）
 
 
-Witch's Apprentice
-見習い魔女
+### Mage's Apprentice
+
 The apprentice runs off and cries in a corner.
 見習い魔女は走り去り、隅で泣き出した。
 The apprentice animates restraints to wrap around you! (+RestraintAdded)
@@ -5013,6 +5043,16 @@ The apprentice summons a restraint onto you! (+RestraintAdded)
 The apprentice tickles you playfully! (DamageTaken)
 見習い召喚士がくすぐってきた！ (DamageTaken)
 
+
+Witch's Apprentice
+見習い魔女
+### The witch's apprentice confidently admits defeat.
+
+### The witch's apprentice conjures magic bindings on you! (+RestraintAdded)
+
+### The witch's apprentice smiles and summons a lock onto you! (DamageTaken)
+
+### The witch's apprentice smiles as she squeezes your chest! (DamageTaken)
 
 Latex Apprentice
 見習いラテックスの魔女
@@ -6156,8 +6196,8 @@ Crystal Lock
 クリスタルの錠
 Runic Lock
 ルーンの錠
-Purple Lock
-紫の錠
+### Magic Lock
+
 Cyber Lock
 電子錠
 Integrated Cyber Lock
@@ -6182,7 +6222,7 @@ You drop the key due to your bound hands!
 縛られた手で持とうとしたら、鍵を落としてしまった！
 You drop the magic key due to your bound hands!
 縛られた手で持とうとしたら、魔法のナイフを落としてしまった！
-
+### You insert the card the wrong way and the reader ejects it onto the floor!
 
 Journal (N)
 記録 (N)
@@ -6278,8 +6318,6 @@ It's a pile of slag emitting a strange magic smoke...
 灰の山が魔力のこもった煙を上げている……
 That object is locked with a LKTP.
 LKTP の鍵がかかっている。
-A shrine to the goddess of TYPE. A pool of mana glimmers below.
-TYPE の女神を祀る祭壇。足元に溢れる泉には魔力が満ち溢れている。
 A shrine to the goddess of TYPE.
 TYPE の女神を祀る祭壇。
 That door is open. Do you want to close it?
@@ -6316,19 +6354,19 @@ Commerce
 商業
 Shrine of SHRINETYPE
 SHRINETYPE の祠
-Tablet of
+Tablet of 
 石版の種類:
 
 
-Goddess:
+Goddess: 
 女神:
-Goddess Blessing:
+Goddess Blessing: 
 女神の祝福:
-Goddess Curse:
+Goddess Curse: 
 女神の呪い:
-Mana Bonus:
+Mana Bonus: 
 マナボーナス:
-Lack of Mana Penalty:
+Lack of Mana Penalty: 
 マナ不足のペナルティ:
 Your excess mana helps you suppress the enchantment!
 自身のマナが拘束具の魔法を弱めた！
@@ -6354,11 +6392,11 @@ You try to read the runes but cannot understand them.
 ルーン文字を読もうとするも、解読できない。
 
 
-Allies:
+Allies: 
 味方:
-Enemies:
+Enemies: 
 敵:
-Favorable:
+Favorable: 
 お気に入り:
 
 
@@ -6968,7 +7006,7 @@ Press RIGHT to confirm buy!
 
 
 
-You find
+You find 
 発見:
 
 
@@ -8134,13 +8172,15 @@ Reinforced and secured with a disc lock to ensure unruly maids don't skip their 
 
 Suspicious Mask
 怪しいマスク
-You a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
-黄金に光る金属製の目隠しと、奇妙なクリスタルを見つけた。
 A well-fitted mask, covering your entire head neatly and locking in place.
 顔全体を包み込み、しっかりとフィットするマスク。
 It has eyeholes for you to somewhat see out of, but blocks access to the face.
 外を見るための穴はあるが、顔の拘束具に触れることはできなくなる。
 
+
+### Happy Face
+
+### Just put on a happy face and enjoy it.
 
 Sensory Hood
 感覚遮断フード
@@ -9206,6 +9246,12 @@ Doll Supply
 ドール搬入口
 Bondage Machine
 ボンデージマシン
+### Empty Fixture
+
+### Filled Fixture
+
+### Tablet
+
 
 
 
@@ -9226,9 +9272,9 @@ A book of manipulative spells
 
 Verbal
 口
+### Vision
 
-
-Components:
+Components: 
 使用部位：
 Arm Movements
 腕
@@ -9240,7 +9286,7 @@ You wiggle uselessly trying to cast the spell...
 魔法を使おうとしたが、腕の動きを忘れてしまった……
 Your feet are too clumsy to perform the magic gesture...
 足が不器用なため、詠唱の動作に失敗した……
-
+### You are unable to see, so you can't target this spell...
 
 Next Page
 次のページ
@@ -9364,6 +9410,8 @@ Your gag causes you to mispronounce the magic words!
 猿轡のせいで上手く発音できなかった！
 You are too clumsy to perform the leg movements!
 不器用な足ではうまく魔法の動きが行えない！
+### You can't get a good look at the target!
+
 You trip up while casting the spell!
 魔法のジェスチャー中に転んでしまった！
 You miscast the spell because of a bug. Please report.
@@ -9442,9 +9490,7 @@ Stores 10% of the stamina cost of attacks as Rhythm, up to a total of 40. While 
 
 Limit Surge
 応急処置
-Spend 50 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
-WPを50消費してスタミナを全回復し、20ターンの間スタミナ回復量が30%増加する。このスキルの効果でWPが0になった場合、2ターンの間気絶する。
-
+### Spend 40 WP to fully restore Stamina, also stamina gain is increased by 30% for 20 turns. If your Willpower ends up 0 because of this, you are stunned for 2 turns.
 
 Battle Trance
 バトルトランス
@@ -9472,9 +9518,9 @@ Trap-type spells and consumables no longer require you to channel them, but stil
 
 
 
-As a trainee, you have learned the technique of inducing clarity via a trance-like state at 100% distraction. However, this state is precarious, and casting spells may cause you to lose focus...
-ペットとして、興奮値が100%のときに集中力を得る力を学んだ。この状態は不安定で、魔法を詠唱した際に集中力を失う可能性がある……
+### Essence Motes
 
+### When you miscast a spell, you gain an Essence Mote which appears in a random space next to you. You can consume this mote to gain -100% miscast chance decaying over 10 turns. Walking over the mote also consumes it.
 
 Inner Power
 秘めたる力
@@ -9524,8 +9570,8 @@ You are quite difficult to satisfy. Letting go costs 50% less stamina (75% total
 
 Mental Resistance
 不屈の精神
-+100 Psychic and Charm Resist. You can no longer let go involuntarily unless your willpower is less than 25% (click the buff to toggle), and willpower drains 70% slower while edged.
-精神、魅了耐性+100。気力が25%以上の時、勝手に絶頂することがなくなり(切替可能)、絶頂中の気力減少-70%。
+### +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
+
 Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle.
 不屈の精神：気力が25%以上の時、勝手に絶頂しなくなる。クリックで切り替え。
 Mental Resistance: You are allowing yourself to let go. Click to toggle.
@@ -11194,6 +11240,10 @@ The EnemyName creates a zone of increased defense!
 EnemyName は、守護の方陣を生成した！
 EnemyName uses a charm to buff an enemy's Magic Armor and Evasion!
 EnemyName は護符を使用して、マジックアーマーと回避力を強化した！
+### EnemyName supports a witch with a magical shield!
+
+### Shield the Witch!
+
 EnemyName uses a glowing talisman to buff an undead's physical armor and speed!
 EnemyName は、光る護符を使用して、アンデッドの物理アーマーと速度を強化した!
 You create a zone of increased defense!
@@ -11400,16 +11450,16 @@ You conjure a small amount of slime!
 
 Water Ball
 ウォーターボール
-Fast projectile. Deals DamageDealt acid damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
-高速の水弾。命中した敵に DamageDealt 酸ダメージを与え、水濡れ状態にする。水濡れ状態のとき、電気、氷ダメージ35%上昇、火ダメージ-42%、導電性になる。
+### Fast projectile. Deals DamageDealt soap damage. Drenched targets take +35% electric/ice, -42% fire, & conduct 50% of electric damage.
+
 You hurl a ball of water!
 水弾を発射した！
 
 
 Tidal Sphere
 タイダルスフィア
-Slow moving projectile, deals DamageDealt acid damage to enemies it passes thru. Leaves a large amount of water in its wake.
-動きの遅い水泡。通過した対象に DamageDealt 酸ダメージを与え、地面に大きな水たまりを生成する。
+### Slow moving projectile, deals DamageDealt soap damage to enemies it passes thru. Leaves a large amount of water in its wake.
+
 You raise a huge mass of water!
 水を魔力で押し固めて発射した！
 
@@ -12028,7 +12078,7 @@ You need more spell points.
 スキルポイントが足りない。
 You don't have enough maximum mana to cast this spell!
 最大マナを超える魔法は覚えられない。
-School:
+School: 
 分野:
 Generic
 共通スキル
@@ -12038,15 +12088,15 @@ Special
 スペシャル
 Learn Spell
 スキルを覚える
-Spell Points:
+Spell Points: 
 スキルポイント:
 
 
-Level:
+Level: 
 レベル:
-Spell Point Cost:
+Spell Point Cost: 
 スキルポイントコスト:
-Mana Cost:
+Mana Cost: 
 マナコスト:
 
 
@@ -12078,19 +12128,19 @@ Replace Spell 6
 スキル6を置き換える
 Replace Spell 7
 スキル7を置き換える
-Current Spell 1:
+Current Spell 1: 
 現在のスキル 1:
-Current Spell 2:
+Current Spell 2: 
 現在のスキル 2:
-Current Spell 3:
+Current Spell 3: 
 現在のスキル 3:
-Current Spell 4:
+Current Spell 4: 
 現在のスキル 4:
-Current Spell 5:
+Current Spell 5: 
 現在のスキル 5:
-Current Spell 6:
+Current Spell 6: 
 現在のスキル 6:
-Current Spell 7:
+Current Spell 7: 
 現在のスキル 7:
 
 
@@ -12130,7 +12180,7 @@ Ejahl
 アイオーンの書の1ページ|このカタコンベは時間の概念がないと言われている。旧文明が不死の研究を始めたとき、すでに死んだ人々を生き返らせられるかどうかは分からなかった。この場所は、不死の魔術が完成したときに備えて遺体を保存するために作られたと言われている。
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 アイオーンの書の1ページ|この大図書館は、大魔術師サリエル・ヴィンラーガの学んだ場所と言われている。人間の知識、魔法、精神、技術のすべてを集めた彼女は、12人の高弟達に司書の仕事を託し、去っていったと言われている。彼女がなぜ去ったのか、なぜ図書館が荒れ果てているのかは、未だ解明されていない。
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
 
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 アイオーンの書の1ページ|エネルギー問題は何千年にもわたって人類を悩ませてきた。レイラインが発見される前、人類は自然の力に頼って暮らしてきた。クリスタルの洞窟が発見された時、革命が起こった。無尽蔵に湧く地下のエネルギー源を利用して、見たこともない機械を動かせるようになった。
@@ -12754,6 +12804,8 @@ Oh! Looks like I've made a mistake...
 404囚人が見つかりません。解放します。
 
 
+### A EnemyName approaches you in your cell.
+
 A EnemyName appears to check on you.
 EnemyName が見回りに来た。
 The EnemyName leaves and locks the cell behind her.
@@ -12798,11 +12850,11 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 女神に関係性3を捧げ、拘束から抜け出しやすくなる。
 For 3 rep the goddess will grant you a key.
 女神に関係性3を捧げ、鍵を授かる。
-For 3 rep the goddess will grant you
+For 3 rep the goddess will grant you 
 女神に関係性3を捧げ、祝福を授かる。
 For 3 rep the goddess
 女神に関係性3を捧げる。
-For 3 rep the goddess
+For 3 rep the goddess 
 女神に関係性3を捧げる。
 
 
@@ -12966,8 +13018,8 @@ RestraintName は突如警報音を出しながら震えだした！
 
 A golden lock fades into a blue lock on one of your restraints!
 拘束具についている金色のロックは、青いロックへと変わった。
-Your command word is heard and the purple lock(s) click and fall off!
-コマンドワードを唱えると、紫色のロックが外れた。
+### Your command word is heard and the magic lock(s) click and fall off!
+
 Your command word is heard and the charger unlocks!
 コマンドワードを唱えると、充電式ロックが外れた。
 
@@ -13032,6 +13084,8 @@ You can barely stand in these heels. They are rigid, metallic, and unbreakable, 
 
 Ancient Blindfold
 古代の目隠し
+### You find a padded metal blindfold, glowing magnificently, along with a strange crystal next to it.
+
 A full-blackout mask. When powered, it negates accuracy penalties due to vision, boosts accuracy by +100%, and boosts melee damage by +10.
 洗練された古風なデザインの目隠し。エネルギーがある間は、目隠しの命中率低下を受けず、命中率+100%、近接攻撃のダメージ+10
 'Mask of the Warrior'
@@ -13180,9 +13234,9 @@ Can disarm (chance: DISARMCHANCE%)
 武装解除可能 (確率: DISARMCHANCE%)
 Resistances:
 耐性:
-### HP:
+### HP: 
 
-Binding:
+Binding: 
 拘束:
 Ambivalent
 関係
@@ -13302,6 +13356,8 @@ Mana Draining
 マナ吸収
 Electric
 電気
+### E-Stim
+
 Shock
 衝撃
 Plush
@@ -13436,12 +13492,12 @@ Much Less
 とても少ない
 No pain, no gain.
 痛みなくして得るものなし
-Gain 10 extra perks, to give you a false sense of security.
-追加で10のパークポイントと偽りの安心感を得る。
-Lose 10 perk points, just to keep things interesting.
-パークポイントが10減る。ゲームを面白くするためにね。
-Lose 25 perk points, making things very interesting.
-パークポイントが25減る。ゲームをさらに面白くするためにね。
+### Gain 20 extra perk points, to give you a false sense of security.
+
+### Lose 20 perk points, just to keep things interesting.
+
+### Lose 50 perk points, making things very interesting.
+
 
 
 Perk Progression Mode:
@@ -13506,7 +13562,7 @@ Hard Mode
 
 A supposedly reasonable difficulty curve.
 普通の難易度。サクサクプレイ用
-Play the game the way it was intended. Cruel and restrictive.
+Play the game the way it was intended. Cruel and restrictive. 
 意図された本来の難易度。適度にもがきたい人向け。
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 自己責任。ハードモードをダブルクリックで解除。
@@ -13710,7 +13766,7 @@ Leave them alone!
 何処か行って！
 Hey, stop that!
 ねぇ、それはやめて！
-
+### Why do I hire these people...
 
 
 
@@ -13806,8 +13862,8 @@ Fine, then.
 結構です。
 Know your place!
 立場をわきまえなさい。
-
-
+*sighs*
+はぁ……
 
 
 
@@ -15534,8 +15590,8 @@ No! Be gentle!
 やめて、優しくして！
 Ahhhh!
 あんっ！
-Heatpats please...
-頭撫でてもらっていい……？
+### Headpats please...
+
 *purrs*
 (プルプル)
 Nyah, I've been a bad kitty...
@@ -16336,8 +16392,8 @@ I see a chalice before me... it drips with shadow and overflows with darkness!
 見えているぞ……聖杯から溢れる闇で世界が満ちていく……。
 My late sister Myrtle was a much more proficent defender than I... Oh how I long for her *sob*
 Myrtleは私よりも守護に長けていた……妹に会いたいのだ……。
-THE PATH OF MY RETRIBUTION IS PATHED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
-我が報復の道は硫黄と地獄の業火で舗装されているのだ！　燃えるがいい！
+### THE PATH OF MY RETRIBUTION IS PAVED WITH BRIMSTONE AND BATHED IN BLAZING HELLFIRE! BURN!
+
 I, Myrtrice, will resist their insolent fusilades!
 この私、Mytriceが降りかかる火の粉を払ってやろう！
 
@@ -16678,8 +16734,6 @@ Nice party trick!
 面白い手品だ！
 Oh, shiny!
 うおっまぶし！
-*sighs*
-はぁ……
 You won't get away!
 逃げられないぞ！
 You can't get away!
@@ -17704,6 +17758,8 @@ You hand over your weapon reluctantly...
 (SPEAKER は恥ずかしがっている)|えっと……だ、誰か彼女を止めてください！
 (The SPEAKER grins)|Then allow me to personally show you the rules.
 (SPEAKER はニヤリと笑った)|じゃあ私がルールを教えてあげる。
+### (The SPEAKER cracks her knuckles)|Finally, I get to have some fun~
+
 (The SPEAKER beeps)|Subject is resisting. Begin capture protocol.
 (SPEAKER はビープ音を発した)|対象ノ抵抗ヲ確認。拘束プロトコル発動。
 
@@ -17712,6 +17768,12 @@ You hand over your weapon reluctantly...
 (SPEAKER に呼び止められた)|奴隷が武器を持つのは許可されてないわ。|それを渡しなさい。
 (The SPEAKER approaches you)|Contraband detected. Initiating confiscation.|Please comply.
 (SPEAKER が接近してきた)|武器ノ所持ハ認可サレテイマセン。|オ渡シ下サイ。
+### (The SPEAKER blushes)|Umm, miss, I see that you have a weapon there,|could you maybe hand it over?
+
+### (The SPEAKER smiles at you)|Be a good girl and hand that weapon over,|would you?
+
+### (The SPEAKER grins and cracks her knuckles)|Are you planning to fight anybody with that?|Or are you gonna hand it over?
+
 Yes, miss... (Currently held weapon will be lost)
 わかりました、ご主人様……(武器を渡す)
 Mmph... (Nod politely) (Currently held weapon will be lost)
@@ -19428,7 +19490,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER は軽く咳払いをする)|ああ、私達は新人を募集しているんだ。|正義のために戦う意志があるなら、いつでも大歓迎だ！
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER と固い握手を交わした)|ようこそドラゴンハートへ！
-(The SPEAKER tilts her head and shrugs)|Ah well.
+(The SPEAKER tilts her head and shrugs)|Ah well. 
 (SPEAKER は首を傾げ、肩をすくめている)|あっそ。
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (SPEAKER は眉をひそめた)|なんだと？|キミは正義の味方だろう？
@@ -20088,7 +20150,7 @@ There is no valid space next to you!
 (SPEAKER は命令に従わなかった)
 
 
-### (Remove BINDAMNT binding from her)
+### (Remove BINDAMNT binding from her) UNTIETURNS
 
 ### (You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)
 
@@ -20096,9 +20158,11 @@ There is no valid space next to you!
 (回復アイテムを渡す)
 (The SPEAKER appreciates the thought!)
 (SPEAKER は感謝している！)
+### Must have HP to untie.
 
+### (AMNT turns)
 
-
+### (AMNT turn)
 
 (Follow me)
 (ついてきて)
@@ -21098,7 +21162,7 @@ W-what does that entail?
 (SPEAKER は酷薄な笑みを浮かべている)|つまり、あなたを包装して|そのあとどうするかを決める、ということです。
 Hmmmph? Mmmm! (Act worried and whimper)
 んぅぅ？ うぅぅ(不安な素振りを見せる)
-(The SPEAKER folds her arms)|Mistress Oriel's orders
+(The SPEAKER folds her arms)|Mistress Oriel's orders 
 (SPEAKER は腕を組み答える)|我らが主"オーリエル"の命令です。
 Not in the 'System'?
 それは誰の命令なの？
@@ -21170,13 +21234,15 @@ Use a key to unlock her
 鍵を使う
 Try to pick her restraints (JAMPERCENT jam chance)
 ロックピックを使う(JAMPERCENT の確率で失敗)
-Use a command word
-コマンドワードを使う
+### Use CMD: Unlock
+
 Apologize profusely!
 謝罪する
 
 
+### (The SPEAKER sits bound in mysterious ASCII glyphs)|(She is bugged and needs your help to get out)
 
+### (Unlock her and file a bug report to Ada)
 
 (The SPEAKER sits restrained by your own hand.|Only someone with keys can let her out.)
 (SPEAKER が捕まっている。|拘束を解けば、彼女を連れ出せるだろう。)
@@ -21186,6 +21252,8 @@ Try to pick her restraints
 ロックピックを使う
 Return her to your collection
 コレクションに移動
+Use a command word
+コマンドワードを使う
 Flip her around
 移動させる
 You spin her right round!
@@ -21268,6 +21336,8 @@ An enemy found you while you were busy!
 (無理やり拘束具に押し込めた！)
 Stun or disable her first.
 まずはスタンさせるか武装解除させる必要がある。
+### Area isn't clear.
+
 (Secure NME into the furniture)
 (NME を拘束用インテリアに閉じ込めて完全拘束する)
 (You lock her into the furniture so that she stays in place)
@@ -21358,7 +21428,7 @@ Upcast Level LEVEL
 強化レベル LEVEL
 Prerequisite
 前提：
-Unlocks:
+Unlocks: 
 解放済み:
 You need to learn REQUIREDSPELL before you can learn this one.
 このスキルを学ぶには REQUIREDSPELL を先に習得する必要がある。
@@ -21418,7 +21488,7 @@ Your harness projects energy tethers between your cuffs EnemyName activates it!
 EnemyName がハーネスをコントロールし、枷のエネルギーリンクをアクティブにした！
 
 
-Turn Count:
+Turn Count: 
 経過ターン:
 
 
@@ -21868,7 +21938,7 @@ Items on Ground:
 アイテムが落ちている：
 
 
-Preloading Character Assets:
+Preloading Character Assets: 
 アセットのプリローディング中:
 
 
@@ -26046,9 +26116,145 @@ Gag
 
 ### HeavyMaidKnight
 
+### RubyNecklace
+
+### RubyChain
+
+### RubyRing
+
+### RubyGem
+
+### RubyNecklaceRestraint
+
+### SigilNecklace
+
+### SigilChain
+
+### SigilDisc
+
+### SigilNecklaceRestraint
+
+### MetalNecklace
+
+### MetalChain
+
+### MetalDisc
+
+### MetalNecklaceRestraint
+
+### NecklaceCharm
+
+### DragonNecklaceRestraint
+
+### BallTeeth
+
+### CrystalBallGag
+
+### CrystalBallGagSmooth
+
+### GagMetalRivetedStrap
+
+### OTNStrap
+
+### OTNStrapRivets
+
+### FashionGagMetalRivetedStrap
+
+### CrystalGagNecklace
+
+### CrystalGagNecklaceBall
+
+### FashionCrystalGagNecklace
+
+### LeashCollar
+
+### LeashCollarHardware
+
+### BootShoeLeft
+
+### BootShoeRight
+
+### Fear
+
+### RubyHardware
+
+### KiguMaskSmile
+
+### MouthSmile
+
+### FashionKiguMaskSmile
+
+### OneBarTop
+
+### OneBarPrisonLatex
 
 
 
+### FangMouth
+
+### FanglessMouth
+
+### SantaHat
+
+### Hat
+
+### HatBack
+
+### Fluff
+
+### Orb
+
+### FestiveArmbinder
+
+### BinderStrapLeft
+
+### BinderFluffLeft
+
+### FestiveHarnessTop
+
+### StrapTop
+
+### ButtonsTop
+
+### FuzzTop
+
+### FestiveHarnessMid
+
+### StrapMid
+
+### ButtonsMid
+
+### FuzzMid
+
+### FestiveHarnessStrap
+
+### StrapBot
+
+### ButtonsBot
+
+### FuzzBot
+
+### FestiveHarness
+
+### StrapOverbust
+
+### StrapUnderbust
+
+### ButtonsUnderbustOver
+
+### ButtonsUnderbust
+
+### FuzzUnderbustOver
+
+### FuzzUnderbust
+
+### FashionFestiveHarnessTop
+
+### FashionFestiveHarnessMid
+
+### FashionFestiveHarnessStrap
+
+### FashionFestiveHarness
 
 Hide Items
 アイテムを非表示
@@ -26740,6 +26946,16 @@ They are trying to take you somewhere!
 どこかに連れて行かれてしまう！
 
 
+### Essence Mote
+
+### A trainee can use this to focus.
+
+### Pick this up to gain decaying miscast reduction.
+
+### Seal Sigil
+
+### Walk over it to erase it and unlock the next floor.
+
 The Shadow
 影の悪魔
 The Shadow is exorcised... for now.
@@ -26884,7 +27100,7 @@ Rubber Stick
 ラバースティック
 A rubber cylinder without any lewd intentions whatsoever.
 ゴムの棒。卑猥が一切ない。
-Deals grope damage.
+Deals grope damage. 
 愛撫属性。
 You pick up a flexible rubber stick.
 ぐにゃぐにゃしたゴムの棒を拾った。
@@ -27544,8 +27760,8 @@ You don't have enough Arcane Energy. You need AMNT.
 
 Chaotic Overflow
 カオス・オーバーフロー
-Draw upon 25% of your max Willpower to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
-最大気力の25%を使用して、マナを完全に回復させ、 Duration ターンの間必要部位を無視できるようになる。しかし、このエネルギーは制御不能だ……
+### Draw upon 35 WP to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
+
 Chaotic energy flows through you!!!
 混沌の力が身体を貫いた！
 You try to call forth the chaotic energy, but it isn't interested in you anymore...
@@ -27800,6 +28016,10 @@ Offhand: This weapon can be dual-wielded by some classes.
 両手持ち
 2 Handed: While wielding this as your primary weapon, you cannot wield an offhand weapon. Also this weapon can't be used while arms are tied.
 両手持ち：他の武器との二刀流が不可能。腕を縛られている時、この武器は使用できない。
+### Magical Focus
+
+### Magical Focus: Instead of losing accuracy, the stamina cost is increased when distracted.
+
 Precision
 精密
 Precision: Your arms need to be free to use this weapon.
@@ -27928,9 +28148,7 @@ You toss some gunpowder on the floor!
 
 Dual Wield (Rogue)
 二刀流(盗賊)
-Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield 2-handed, heavy, or massive weapons in the offhand unless they are multiclass.|(Must equip Dual Wield spell to equip an offhand weapon)
-空いている手にもう一本の武器を持ち、武器に応じた様々な効果を得る。|盗賊はマルチクラスでない限り、両手持ち、重い、大きな武器をサブウェポンに装備できない。|(このスキルを使用し、装備する武器を選択する必要がある)
-
+### Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|(Equip Dual Wield spell to equip an offhand weapon, or use the Items menu)
 
 Dual Wield (Wizard)
 二刀流(魔術師)
@@ -27980,9 +28198,9 @@ Your RestraintName shatters and falls off!
 RestraintName は粉々に砕け落ちた！
 
 
-Load Hotbar
+Load Hotbar 
 ホットバーをロード
-Save Hotbar
+Save Hotbar 
 ホットバーをセーブ
 Clear Hotbar
 ホットバーをクリア
@@ -28165,6 +28383,14 @@ Suppress during combat
 Step during combat
 戦闘中にステップする
 
+
+### 0.1s/turn
+
+### 1.5s/turn
+
+### 0.5s/turn
+
+### 0.01s/turn
 
 Shadowy Grasp
 影の掌握
@@ -28836,6 +29062,50 @@ This door failed to load and cannot be opened.  Please report this bug to Ada wi
 不具合によりドアが開かない。セーブコードを記録し、ご報告お願いします。
 
 
+### Exit sealed!|Find the lair!
+
+### Sigils erased!
+
+### Dragon defeated!
+
+### Draconic Seal
+
+### A dragon has sealed the entrance. Defeat the dragon, or erase the sigil from her lair.
+
+### A draconic spell keeps the door sealed. You will have to confront its owner.
+
+
+
+### Exits locked!|Destroy NUMBER Servers!
+
+### Security System Compromised!
+
+### Clearance Granted!
+
+### Destroy Nevermere Servers
+
+### Destroy Nevermere servers to unlock the door.
+
+### Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
+
+### Nevermere Server
+
+### Server smashed!
+
+### Destroy Drone Servers
+
+### Destroy Drone Node Servers to unlock the door.
+
+### The path forward is controlled by several ancient Drone Servers. Destroy them.
+
+### Drone Server Node
+
+### Drone node destroyed!
+
+### Rusty Server Node
+
+### loud beeping...
+
 (Cursed)
 (呪われている)
 (Purified)
@@ -29324,7 +29594,7 @@ Experience a comprehensive rope bondage experience.
 
 
 
-Receive the following restraints:
+Receive the following restraints: 
 次の拘束を受ける:
 You will be bound with some form of restraint.
 何らかの拘束具で縛られることになる。
@@ -29448,12 +29718,16 @@ You have formed a mental barrier...
 
 Desire Burst
 デザイアバースト
-Reduce your Desire by up to 30% of max DP, and convert the amount into a powerful explosion dealing (30 + 25% max DP) charm damage to nearby enemies (200% crit multiplier). If you don't have at least 50% Desire, the damage is reduced based on the amount.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
-欲情値を最大DPの30%まで減少させ、近くの敵に30+最大DPの25%分の魅了ダメージを与える強力な爆風を起こす。この攻撃の会心ダメージ率は200%。欲情値が50%以下の場合、不足分のダメージが減少する。||(欲情値はDPバーの下にあるハート型のメーターで、一定の行動で蓄積していく)
-You channel your distraction into a powerful explosion!
-自身の欲望を強力な爆発に変換した！
+### Overload Essence motes in an area, costing 10% max DP worth of Desire each. They explode, dealing (10 + 20% max DP) charm damage to enemies hit. If you don't have enough desire, the damage is reduced proportionally.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+
+### You channel your distraction into the mote, overloading it!
+
+### You channel your distraction into the motes, overloading them!
+
 You don't have enough of a desire to do that.
 欲情値が足りない。
+### You must target at least one Essence Mote.
+
 You have the desire but not the mana!
 欲望は十分だが、マナが足りない。
 
@@ -30004,7 +30278,7 @@ Guest #NUMR/TTL
 
 Select a character to examine
 詳細を見るキャラクターを選択
-Former Faction:
+Former Faction: 
 元派閥:
 
 
@@ -30065,6 +30339,10 @@ Tough Armor (1/2 crit mult while aware)
 Absolute Armor (1/2 crit mult)
 絶対的な鎧(会心ダメージが半分になる)
 
+
+### Rename
+
+### Reset to NME
 
 Enlarged View
 拡大表示
@@ -30212,7 +30490,7 @@ You crouch and move slowly.
 ゆっくりと這いつくばる。
 
 
-Owned by:
+Owned by: 
 所有者:
 
 
@@ -30864,7 +31142,7 @@ Dimensional Rift
 次元の裂け目
 Hoard
 宝物庫
-
+### Dragon's Lair
 
 Witch's Lair
 魔女のお茶会
@@ -30872,8 +31150,8 @@ Mold Infestation
 粘菌の増殖
 Bandit Raid
 盗賊の襲撃
-Elemental Energy
-精霊の坩堝
+### Dragon Sighting
+
 Slime Infestation
 スライムの繁殖
 Wolfgirl Training
@@ -30956,15 +31234,17 @@ You find a ceremonial leotard.
 
 The Robe of Chastity
 貞操の衣
-A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
-神々から力を授かるためのレオタード。この上に服を着ない限り、着用者の内に秘めた力を引き出す特性を持つ。
+### A magical leotard whose power infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+
 It is said that whomever follows the chaste principles of the Paladins shall receive -1% Desire decay/ 40 turns and 2 (+3% missing DP) Holy damage/turn aura. Affects only enemies who enter melee range. In addition, the magically conductive fabric is quite stimulating, resulting in 50% increased distraction gain from all sources, and 8% of mana spent converted into Desire.
 パラディンの貞節を守っている場合、40ターンの間、ターン毎に欲情値-1%、攻撃を受けたときに2(消費したDPの3%)の聖属性ダメージを相手に与えるオーラを得る。魔力の伝導する生地により、DPの獲得値が50%増加し、消費したマナの8%が欲情値に変換される。
+### A magical leotard infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+
 You retrieve an interesting article dubbed 'the Robe of Chastity.
 "貞操の衣"と名付けられた布を見つけた。
 
 
-Took
+Took 
 ﾀﾞﾒｰｼﾞ
 
 
@@ -31060,6 +31340,8 @@ Crystals grow across your body and encase you!
 突如体中のクリスタルが成長し、全身を包み込まれてしまった！
 You are encased in a solid block of ice!
 氷の中に閉じ込められた！
+### A shadowy sphere rises from the ground and wraps over you tightly!
+
 Shadows coalesce themselves around you in spherical form!
 影が全身にまとわりつき、球体に変化した！
 
@@ -31888,7 +32170,7 @@ Find an elevator to the Summit in order to access facilities.
 施設を使うためには、エレベーターでセーフゾーンを訪れる必要がある。まずはエレベーターを探そう。
 Visit the Summit to allow additional interactions with this facility.
 セーフゾーン訪れて施設を見てみよう。
-
+### Must visit the Summit or be in a perk shrine to recycle restraints.
 
 +AMNT% Training/Tick
 調教度/ティック +AMNT%
@@ -32030,9 +32312,9 @@ Runes
 ルーン
 
 
-Stock:
+Stock: 
 ストック:
-Inputs:
+Inputs: 
 投入:
 
 
@@ -32108,13 +32390,13 @@ Heels
 ヒール
 
 
-Equipped:
+Equipped: 
 装備:
-Click to Add
+Click to Add 
 クリックして追加
-Apply
+Apply 
 決定
-Raw Material:
+Raw Material: 
 素材:
 
 
@@ -32122,7 +32404,7 @@ Free Prisoner
 開放する
 
 
-Perk Unlocked:
+Perk Unlocked: 
 開放済みスキル:
 
 
@@ -32158,7 +32440,7 @@ Choose Restraint
 拘束を選択
 
 
-Def. Palette:
+Def. Palette: 
 デフォルトのパレット:
 Set All Palette
 全て選択
@@ -32168,17 +32450,19 @@ Guests
 ゲスト
 
 
-Assign to
+Assign to 
 配置場所
-Remove from
+Remove from 
 配置をやめる
-Can't assign to
+Can't assign to 
 配置不可
+### Remove from party to assign 
+
 Imprison
 投獄
 
 
-Opinion:
+Opinion: 
 好感度:
 Last Seen on Floor FLR, LOC
 最後に見かけたのは FLR 階層の LOC 。
@@ -32208,17 +32492,17 @@ NPC は拘束を緩めている。
 
 Any
 全員
-NPC Opinion:
+NPC Opinion: 
 好感度:
-NPC Escape Status:
+NPC Escape Status: 
 逃走状況:
-NPC Binding:
+NPC Binding: 
 拘束:
-NPC Availability:
+NPC Availability: 
 使用状況:
-Favorited:
+Favorited: 
 お気に入り:
-Rank:
+Rank: 
 ランク:
 Minor
 通常
@@ -32292,6 +32576,16 @@ Release
 解放
 
 
+### Summon
+
+### Already present in summit
+
+### NPC is unavailable
+
+### Only available in the Summit
+
+
+
 Mark
 マークを付ける
 Unmark
@@ -32346,7 +32640,7 @@ Select a Binding Slot
 スロットを選択
 
 
-Cost:
+Cost: 
 コスト：
 
 
@@ -32382,7 +32676,7 @@ If arm components are unavailable, you can now apply bindings with verbal compon
 腕を使用できない場合でも、口を使用することによって拘束が可能になる。スキル「ぐるぐるまき！」の射程が2増加し、全てのコマンド系スペルの射程が1増加する。
 
 
-Save Slot
+Save Slot 
 スロット
 Load Game
 ロード
@@ -32446,13 +32740,13 @@ Reverse Route
 逆さ道ルート
 Chaos Route
 ランダムルート
-Map Seed:
+Map Seed: 
 Seed値:
 Will Overwrite NME!
 NME を上書きする？
 
 
-Play Slot
+Play Slot 
 プレイ スロット
 Play (NO SLOT!)
 セーブを選択してください
@@ -32466,8 +32760,10 @@ Backup
 バックアップ
 Restore
 復元
-Set Palette
-パレットを設定
+### Extra Options
+
+### Preview without Armor
+
 
 
 ### FLR-DGN
@@ -32500,7 +32796,7 @@ You strike the earth, but it is nothing but solid wall on the other side.
 壁にツルハシを突き立てるも、硬い岩盤に突き当たった。
 You strike the earth! It crumbles before you!
 ツルハシを突き立てると、壁が崩れ去った！
-
+### Click again to automatically mine the wall with your pickaxe.
 
 The planar focus resonates with the teleportation magic!
 テレポーターがテレポート魔法と共鳴した！
@@ -32682,7 +32978,7 @@ Deposit All
 全て預ける
 
 
-Auto-loot found
+Auto-loot found 
 取得(自動ルート)
  (not picked up)
 (何も取得しなかった)
@@ -32804,6 +33100,8 @@ Rope Ambush
 ロープ・アンブッシュ
 Defensive Charm
 守護符
+### Shield the Witch
+
 Tracer Rounds
 トレース弾
 The Spookening
@@ -33182,6 +33480,8 @@ Hex Binding
 
 ### Robe of Chastity
 
+A magical leotard whose power stems directly from the divine. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+神々から力を授かるためのレオタード。この上に服を着ない限り、着用者の内に秘めた力を引き出す特性を持つ。
 ### Chainmail Tank Top
 
 ### Cumbersome, but effective!
@@ -33265,3 +33565,361 @@ Hex Binding
 ### You need to equip your magic cutting weapon to cut magic items.
 
 ### You can surrender in the menu if you want to be treated more gently.
+
+### You flanked the enemy! Now attack its weak point for massive damage!
+
+### Enemies that miss an attack become vulnerable for a turn.
+
+### Attack them for a guaranteed critical hit!
+
+### before the attack lands! You can tell the difference by the border of the tiles.
+
+### You can dodge out of the way of most projectiles. Avoid the marked tiles.
+
+### Defeating enemies recovers some willpower.
+
+### Temporary enemies and summons don't restore anything, however.
+
+### Attacking a helpless enemy captures her and sends her to your Collection.
+
+### You can access the Collection in the Items screen, 2nd tab.
+
+### Conjure Essence Mote
+
+### Spend 50 DP to conjure a mote of pure spell essence. The mana cost of this spell is decreased based on your maximum DP.|Can only be cast while you have less than 100% DP.
+
+### You channel your distraction into a tangible orb!
+
+### You don't have enough distraction!
+
+### Choose an open space.
+
+### Choose a tile with no existing mote.
+
+### You're too distracted to concentrate your distraction!
+
+### The burst of desire overwhelms you!
+
+### Psychic Link
+
+### Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain between the two of you. Requires that you and the target be able to see each other.
+
+### Target a non-blinded enemy.
+
+### You briefly lock eyes with the target, forming a psychic link!
+
+### The psychic link ends between you and the ENMY.
+
+### Shock Collar
+
+### Condense your aroused thoughts into stimulating electricity, consuming 30 DP to zap anyone that's currently holding your leash for 40 e-stim damage. 25% chance to stun for a long time, otherwise stuns briefly. Subsequent uses cost 2x the DP.
+
+### You must be leashed by someone to use this.
+
+### You don't have enough distraction.
+
+### You zap your leasher!
+
+### You are psychically connected!
+
+### You've used Shock Collar recently and it costs more DP.
+
+
+
+### Essence Crystal
+
+### When you miscast, 50% chance to emit a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+
+### A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast.
+
+### When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+
+### You erase the seal sigil.
+
+### You absorb the mote, granting miscast reduction.
+
+### Your necklace emits a mote as a result of miscasting.
+
+### Your distraction reaches a critical point! -100% miscast chance.
+
+### While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
+
+### -100% miscast chance, but casting spells can send you over the edge.
+
+### The psychic link conducts away some of the intensity...
+
+### Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
+
+### FCTN RMTPE
+
+### PTRN's RMTPE
+
+### Leads to PLCE
+
+### (You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'
+
+### It becomes hard to resist the dragon's fury...
+
+### The dragon overwhelms you with sheer force...
+
+### Your strength begins to fade...
+
+### >Entrance
+
+### >Exit
+
+### >Stairs
+
+### Quest(GDSNM)
+
+### [GDSNM]
+
+
+
+### Bed!
+
+### Silver
+
+### Mecha
+
+### chest
+
+### Lost Items
+
+### Cache
+
+### Toy Chest
+
+### (L)
+
+
+
+### (The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+
+### (You don't have any solvents that work on latex)
+
+### (You dissolve her restraints, fumbling around for a while with your bound hands)
+
+### (You rescue the SPEAKER)|Thank you!|Let's get out of here!
+
+### (You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+
+### (You are not holding a cutting tool)
+
+### (You cut her restraints, fumbling around for a while with your bound hands)
+
+### (You don't have enough mana for Remove Slime)
+
+### (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
+
+### (You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+
+### Dissolve the latex with a SLVNT
+
+### Cut her out with a sharp tool
+
+### Use Remove Slime to unlock her
+
+### Local Saves
+
+### Cloud Saves
+
+### solvent
+
+### Latex Doll Stand
+
+### A stand for your latex dolls, coated in a smooth rubber coating.
+
+### Has a flange for propping up even dolls wearing chastity belts.
+
+
+
+### (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
+
+### (The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+
+### (The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
+
+### (The SPEAKER smiles)|Let's see, what loot do we have here...|(SPEAKER is going to search you)
+
+### (The SPEAKER scans you with a red light)|Enumerating contraband...|Please comply for removal.
+
+### Yes, miss... (Begin search and confiscation)
+
+### Mmph... (Nod politely) (Begin search and confiscation)
+
+### No, I refuse! (Fight)
+
+### Mmph! (Shake your head and fight)
+
+### Option not available at 0 WP
+
+### (The SPEAKER starts by removing most of your clothes...)
+
+### (Next, the SPEAKER looks through your weapons)
+
+### (Finally, the SPEAKER opens the rest of your bag)
+
+### (The search is complete)|There! Now let's get you situated~
+
+### (The search is complete)|Alright miss, please behave, okay?
+
+
+
+### Confiscated AMNTx ITMN!
+
+### Kept AMNTx ITMN.
+
+### Sneaked in AMNTx ITMN!
+
+### GUN
+
+### The room echoes with the sound of a rubber bullet being fired!
+
+### Tactical Rubber Bullet
+
+### A powerful rubber bullet bounces you to the ground!
+
+### The powerful rubber bullet knocks you down and congeals into Capture Foam!
+
+
+
+### Capture Foam (Feet)
+
+### A sticky foam that spreads quickly and hardens into a tight rubbery layer.
+
+### A knife won't cut it, it simply reforms around the cut.
+
+### Capture Foam (Ankles)
+
+### Capture Foam (Legs)
+
+### Capture Foam (Arms)
+
+### Capture Foam (Hands)
+
+### Capture Foam (Mouth)
+
+### Capture Foam (Head)
+
+### Capture Foam Dispenser
+
+### This collar is designed to make sure its wearer does not escape at all costs.
+
+### It will occasionally cause Capture Foam to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of Capture Foam you have on you.
+
+
+
+### Tactical Rubber
+
+### An alchemical substance made to be stretchy and more resilient than natural rubber.
+
+### Developed by kinky alchemists and marketed to PMCs across the islands.
+
+### Capture Foam
+
+### A restraining weapon used to apprehend difficult targets.
+
+### Tactical Rubber (Feet)
+
+### The end result of capture foam. Strict. Sustainable. Affordable.
+
+### Tactical Rubber (Ankles)
+
+### Tactical Rubber (Legs)
+
+### Tactical Rubber (Arms)
+
+### Tactical Rubber (Hands)
+
+### Tactical Rubber (Mouth)
+
+### Tactical Rubber (Head)
+
+### Tactical Rubber Collar
+
+### It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you.
+
+
+
+### Sweeping Strike
+
+### Headlong Rush
+
+
+
+### Maid Squire
+
+### Maid Knight
+
+### You humiliate the Maid Squire!
+
+### You defeat the Maid Knight! For now... she swears revenge.
+
+### The Squire zips you up in comfy leather gear!
+
+### The Maid Knight places you in strict bondage!
+
+### The Squire secures your restraints!
+
+### The Maid Knight secures your restraints!
+
+### The Squire dusts you with her duster plug.
+
+### The Maid Knight sweeps you with her cleaning halberd!
+
+### The EnemyName retreats!
+
+### The EnemyName manages to squirm out of sight!
+
+
+
+### servers humming...
+
+### bouncy noises
+
+### goopy noises
+
+### bubbling noise
+
+### rubber squeaking
+
+### blaring siren
+
+### You claim the Sweeper.
+
+### The Sweeper
+
+### Foe of the unclean. Bringer of neat and tidy workspaces.
+
+### Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack.
+
+### Make a ranged attack with the Sweeper.
+
+### You claim the Persuader.
+
+### The Persuader
+
+### Military forces sought a solution with higher stopping power after the Great Work made brute force obsolete. Capture Foam rounds are now the standard.
+
+### Equipped with a duster plug, it deals tickle damage on melee. Can fire a high caliber rubber bullet to deal 80 glue damage from a distance. Takes 3 turns to reload.
+
+### Make a ranged attack with the Persuader for 25 charge. Deals 80 glue damage.
+
+### Persuader Round
+
+### You fire the Persuader!
+
+### Wait for current save to finish...
+
+### Please wait for save to finish...
+
+### Debug Defeat
+
+### You cast devastating ASCII glyphs!
+
+### Debug Bind
+
+### You cast bondage ASCII glyphs!
+
+### , Floor AMNT
