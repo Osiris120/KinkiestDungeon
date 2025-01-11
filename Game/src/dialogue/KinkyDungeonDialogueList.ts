@@ -3319,6 +3319,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								KDFreeNPC(e);
+								if (e.specialdialogue == "PrisonerJail") delete e.specialdialogue;
 								e.allied = 9999;
 								KDAggroMapFaction();
 								let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
@@ -3377,6 +3378,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 									KinkyDungeonSetFlag("LockJamPity", 0);
 									let e = KDDialogueEnemy();
 									KDFreeNPC(e);
+									if (e.specialdialogue == "PrisonerJail") delete e.specialdialogue;
 									e.allied = 9999;
 									KDAggroMapFaction();
 
@@ -3447,6 +3449,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								KDFreeNPC(e);
+								if (e.specialdialogue == "PrisonerLatex") delete e.specialdialogue;
 								e.allied = 9999;
 								KDAggroMapFaction();
 								let faction = e.Enemy.faction ? e.Enemy.faction : "Enemy";
@@ -3497,6 +3500,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								KDFreeNPC(e);
+								if (e.specialdialogue == "PrisonerLatex") delete e.specialdialogue;
 								e.allied = 9999;
 								KDAggroMapFaction();
 
@@ -3555,6 +3559,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				clickFunction: (_gagged, player) => {
 					let e = KDDialogueEnemy();
 					KDFreeNPC(e);
+					if (e.specialdialogue == "PrisonerJailBug") delete e.specialdialogue;
 					return false;
 				},
 				exitDialogue: true,
@@ -3586,6 +3591,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								KDFreeNPC(e);
+								if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockSlow";
@@ -3688,6 +3694,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								if (KDDialogueEnemy()) {
 									let e = KDDialogueEnemy();
 									KDFreeNPC(e);
+									if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
 									KDGameData.CurrentDialogMsg = "PrisonerJailPick";
 									if (e.Enemy.tags.gagged) {
 										KDGameData.CurrentDialogMsg = KDGameData.CurrentDialogMsg + "Gagged";
