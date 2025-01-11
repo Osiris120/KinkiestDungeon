@@ -1233,6 +1233,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 	{
 		inventory: true, name: "DollmakerVisor", accessible: true, Asset: "InteractiveVisor",
+		UnderlinkedAlwaysRender: true,
 		sfx: "FutureLock",
 		sfxRemove: "SciFiConfigure",
 		Model: "Goggles",
@@ -1256,6 +1257,7 @@ const KinkyDungeonRestraints: restraint[] = [
 	},
 	{
 		inventory: true, name: "DollmakerMask", inaccessible: true,
+		UnderlinkedAlwaysRender: true,
 		sfx: "FutureLock",
 		sfxRemove: "SciFiConfigure",
 		Model: "FullVisorRim",

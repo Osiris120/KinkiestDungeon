@@ -257,7 +257,7 @@ AddModel({
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: 2,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
-			SwapLayerPose: {Hogtie: "SockLeftHogtie", KneelClosed: "StockingLeftKneel"},
+			SwapLayerPose: {KneelClosed: "StockingLeftKneel"},
 			NoOverride: true,
 		},
 	])

@@ -226,7 +226,7 @@ AddModel({
 	TopLevel: false,
 	Protected: true,
 	Categories: ["Ears", "Face", "Cosplay"],
-	AddPose: ["AnimalEars", "Demon", "Cosplay"],
+	AddPose: ["Demon", "Cosplay"],
 	Layers: ToLayerMap([{
 				Name: "SuccubusHornRight",
 				Layer: "AnimalEars",
