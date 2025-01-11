@@ -537,7 +537,7 @@ function KDCreateBoringness(noBoring: boolean) {
 		false, false, true, KinkyDungeonMovableTilesSmartEnemy, false, false, false,
 		undefined, false, undefined, false, true);
 
-	let pathLength = path ? path.length : 100;
+	let pathLength = path ? path.length : 200;
 
 	// Now we find the path to the start/end of every INDIVIDUAL tile
 	// Boringness = delta between (startLength + endLength) and (pathLength)

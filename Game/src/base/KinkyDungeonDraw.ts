@@ -1688,15 +1688,12 @@ function KinkyDungeonDrawGame() {
 			// Draw the player no matter what
 
 			let PlayerModel = StandalonePatched ? KDCurrentModels.get(KinkyDungeonPlayer) : null;
-			let zoom = PlayerModel ? KinkyDungeonGridSizeDisplay/1100
-				: KinkyDungeonGridSizeDisplay/250;
+			let zoom = KDPlayerZoom(PlayerModel);
 
 			if (KDDrawPlayer)
-				DrawCharacter(KinkyDungeonPlayer,
-					canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - CamX-CamX_offsetVis)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/4),
-					canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - CamY-CamY_offsetVis)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/6),
-					zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, CHIBIMOD, undefined, KDFlipPlayer, ["Sprite"]);
-
+				KDDrawChibi(PlayerModel.Character,
+				CamX-CamX_offsetVis,
+				CamY-CamY_offsetVis, zoom);
 
 			if (KDToggles.ShowFacing && (KinkyDungeonPlayerEntity.facing_y || KinkyDungeonPlayerEntity.facing_x)) {
 				KDDraw(kdstatusboard, kdpixisprites, "ui_playerfacing", KinkyDungeonRootDirectory + "UI/PlayerFacing.png",
@@ -5042,3 +5039,18 @@ let KDCustomDrawInvColorFilter = {
 		};
 	},
 };
+
+
+function KDPlayerZoom(PlayerModel: ModelContainer): number {
+	return PlayerModel ? KinkyDungeonGridSizeDisplay/1100
+		: KinkyDungeonGridSizeDisplay/250;
+}
+
+function KDDrawChibi(Character: Character, camx: number, camy: number, zoom: number) {
+	DrawCharacter(Character,
+		canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - camx)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/4),
+		canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - camy)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/6),
+		zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, CHIBIMOD, undefined, KDFlipPlayer, ["Sprite"]);
+
+
+}
