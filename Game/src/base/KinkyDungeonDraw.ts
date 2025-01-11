@@ -1692,8 +1692,13 @@ function KinkyDungeonDrawGame() {
 
 			if (KDDrawPlayer)
 				KDDrawChibi(PlayerModel.Character,
-				CamX-CamX_offsetVis,
-				CamY-CamY_offsetVis, zoom);
+					canvasOffsetX
+						+ (KinkyDungeonPlayerEntity.visual_x - CamX - CamX_offsetVis)*KinkyDungeonGridSizeDisplay
+						+ (KinkyDungeonGridSizeDisplay/4),
+					canvasOffsetY
+						+ (KinkyDungeonPlayerEntity.visual_y - CamY - CamY_offsetVis)*KinkyDungeonGridSizeDisplay
+						+ (KinkyDungeonGridSizeDisplay/6),
+						zoom);
 
 			if (KDToggles.ShowFacing && (KinkyDungeonPlayerEntity.facing_y || KinkyDungeonPlayerEntity.facing_x)) {
 				KDDraw(kdstatusboard, kdpixisprites, "ui_playerfacing", KinkyDungeonRootDirectory + "UI/PlayerFacing.png",
@@ -5046,10 +5051,9 @@ function KDPlayerZoom(PlayerModel: ModelContainer): number {
 		: KinkyDungeonGridSizeDisplay/250;
 }
 
-function KDDrawChibi(Character: Character, camx: number, camy: number, zoom: number) {
+function KDDrawChibi(Character: Character, x: number, y: number, zoom: number) {
 	DrawCharacter(Character,
-		canvasOffsetX + (KinkyDungeonPlayerEntity.visual_x - camx)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/4),
-		canvasOffsetY + (KinkyDungeonPlayerEntity.visual_y - camy)*KinkyDungeonGridSizeDisplay + (KinkyDungeonGridSizeDisplay/6),
+		x, y,
 		zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, CHIBIMOD, undefined, KDFlipPlayer, ["Sprite"]);
 
 
