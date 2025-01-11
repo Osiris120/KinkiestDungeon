@@ -313,6 +313,7 @@
             <key type="filename">../Models/Body/ArmRightWristtie.png</key>
             <key type="filename">../Models/Body/ArmRightYoked.png</key>
             <key type="filename">../Models/Body/ButtKneel.png</key>
+            <key type="filename">../Models/Body/CalfLeftHogtie.png</key>
             <key type="filename">../Models/Body/Chest.png</key>
             <key type="filename">../Models/Body/Eyes.png</key>
             <key type="filename">../Models/Body/FootLeftHogtie.png</key>
@@ -1793,6 +1794,7 @@
             <key type="filename">../Models/Kigu/EyesWhites.png</key>
             <key type="filename">../Models/Kigu/Lock.png</key>
             <key type="filename">../Models/Kigu/Mask.png</key>
+            <key type="filename">../Models/Kigu/MaskGag.png</key>
             <key type="filename">../Models/Kigu/Mouth.png</key>
             <key type="filename">../Models/KittyLatex/KittyLatexEar.png</key>
             <key type="filename">../Models/KittyLatex/KittyLatexEarLight.png</key>
@@ -4905,6 +4907,7 @@
                 <false/>
             </struct>
             <key type="filename">../Models/Hood/Hood.png</key>
+            <key type="filename">../Models/Hood/HoodCollar.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
