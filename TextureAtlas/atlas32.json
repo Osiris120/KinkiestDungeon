@@ -768,7 +768,7 @@
 	"spriteSourceSize": {"x":323,"y":821,"w":179,"h":238},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/TallSmoothHeels/TallLegleftKneelClosed.png":
+"Models/TallSmoothHeels/TallLegLeftKneelClosed.png":
 {
 	"frame": {"x":1370,"y":1081,"w":334,"h":273},
 	"rotated": false,
