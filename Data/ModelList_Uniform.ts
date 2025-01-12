@@ -14,29 +14,25 @@ AddModel({
 	Categories: ["Tops", "Jackets"],
 	//RemovePoses: ["EncaseTorsoUpper"],
 	Layers: ToLayerMap([
-		{ Name: "Dress", Layer: "Shirt", Pri: 1,
-			InheritColor: "Dress",
+		{ Name: "Dress", Layer: "Shirt", Pri: 30,
+			InheritColor: "JacketBottom",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			HidePoses: ToMap(["EncaseTorsoUpper"]),
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
-			DisplaceAmount: 125,
-			DisplaceLayers: ToMap(["CorsetTorso"]),
-			DisplacementSprite: "TightUpperSquish",
-			DisplacementInvariant: true,
 			Invariant: true,
 		},
-		{ Name: "DressChest", Layer: "ShirtChest", Pri: 1,
+		{ Name: "DressChest", Layer: "ShirtChest", Pri: 30,
 			Poses: ToMap([...ARMPOSES]),
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
 			HidePoses: ToMap(["EncaseTorsoUpper"]),
-			InheritColor: "Dress",
+			InheritColor: "Jacket",
 		},
-		{ Name: "DressSkirt", Layer: "SkirtOver", Pri: 2,
+		{ Name: "DressSkirt", Layer: "SkirtOver", Pri: 31,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel", Hogtie: "Hogtie"},
 			HidePoses: ToMap(["EncaseTorsoLower"]),
-			InheritColor: "Skirt",
+			InheritColor: "JacketBottom",
 		},
 	])
 });
@@ -53,28 +49,22 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "SleeveLeft", Layer: "SleeveLeft", Pri: 60,
 			Poses: ToMap([...ARMPOSES]),
-			InheritColor: "SleeveLeft",
+			InheritColor: "JacketSleeveLeft",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
 		},
-		{ Name: "SleeveLeftStripe", Layer: "SleeveLeft", Pri: 60.1,
+		{ Name: "ArmLeft", Layer: "SleeveLeft", Pri: 50,
 			Poses: ToMap([...ARMPOSES]),
-			InheritColor: "SleeveLeftStripe",
+			InheritColor: "JacketSleeveLeft",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
-			NoOverride: true,
 			TieToLayer: "SleeveLeft",
-		},
-		{ Name: "ArmLeft", Layer: "TightSleeveLeft", Pri: 50,
-			Poses: ToMap([...ARMPOSES]),
-			InheritColor: "ArmLeft",
-			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
-			HideWhenOverridden: true,
+			NoOverride: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
 		},
 		{ Name: "ForeArmLeft", Layer: "ForeSleeveLeft", Pri: 60,
 			Poses: ToMap([...FOREARMPOSES]),
-			InheritColor: "ArmLeft",
+			InheritColor: "JacketSleeveLeft",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Crossed: "CrossSleeveLeft"},
 			HideWhenOverridden: true,
@@ -94,34 +84,23 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "SleeveRight", Layer: "SleeveRight", Pri: 60,
 			Poses: ToMap([...ARMPOSES]),
-			InheritColor: "SleeveRight",
+			InheritColor: "JacketSleeveRight",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			HideWhenOverridden: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
-			EraseSprite: "LightMaidRightArmErase",
-			EraseLayers: {MaidArmPoofRight: true},
-			EraseAmount: 100,
-			EraseZBonus: 8600,
-			EraseInvariant: true,
 		},
-		{ Name: "SleeveRightStripe", Layer: "SleeveRight", Pri: 60.1,
+		{ Name: "ArmRight", Layer: "SleeveRight", Pri: 50,
 			Poses: ToMap([...ARMPOSES]),
-			InheritColor: "SleeveRightStripe",
+			InheritColor: "JacketSleeveRight",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
-			NoOverride: true,
 			TieToLayer: "SleeveRight",
-		},
-		{ Name: "ArmRight", Layer: "TightSleeveRight", Pri: 60,
-			Poses: ToMap([...ARMPOSES]),
-			InheritColor: "ArmRight",
-			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
-			HideWhenOverridden: true,
+			NoOverride: true,
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
 
 		},
 		{ Name: "ForeArmRight", Layer: "ForeSleeveRight", Pri: 60,
 			Poses: ToMap([...FOREARMPOSES]),
-			InheritColor: "ArmRight",
+			InheritColor: "JacketSleeveRight",
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			SwapLayerPose: {Crossed: "CrossSleeveRight"},
 			HideWhenOverridden: true,
@@ -129,7 +108,7 @@ AddModel({
 		},
 		{ Name: "ShoulderRight", Layer: "UpSleeveRight", Pri: 60,
 			HideWhenOverridden: true,
-			InheritColor: "SleeveRight",
+			InheritColor: "JacketSleeveRight",
 			Poses: ToMap([...SHOULDERPOSES]),
 		},
 	])
@@ -162,6 +141,171 @@ AddModel({
 });
 
 
+
+
+AddModel({
+	Name: "WhiteGloveLeft",
+	Folder: "UniformShirt",
+	Parent: "WhiteGloves",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveLeft", Layer: "GloveLeft", Pri: 3,
+			Poses: ToMap([...ARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeGloveLeft", Layer: "ForeGloveLeft", Pri: 3,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveLeft",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+		},
+	])
+});
+
+AddModel({
+	Name: "WhiteGloveRight",
+	Folder: "UniformShirt",
+	Parent: "WhiteGloves",
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		{ Name: "GloveRight", Layer: "GloveRight", Pri: 3,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "ForeGloveRight", Layer: "ForeGloveRight", Pri: 3,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
+		},
+	])
+});
+
+
+AddModel({
+	Name: "WhiteGloves",
+	Folder: "UniformShirt",
+	Parent: "MilitaryUniform",
+	TopLevel: true,
+	Categories: ["Gloves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("WhiteGloveLeft"),
+		...GetModelLayers("WhiteGloveRight"),
+	])
+});
+
+
+
+AddModel({
+	Name: "UniformShirt_Sleeveless",
+	Folder: "UniformShirt",
+	Parent: "UniformShirt",
+	TopLevel: false,
+	Categories: ["Tops", "Jackets"],
+	//RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "Dress", Layer: "Shirt", Pri: -5,
+			InheritColor: "ShirtBottom",
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
+			HidePoses: ToMap(["EncaseTorsoUpper"]),
+			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+		},
+		{ Name: "DressChest", Layer: "ShirtChest", Pri: -5,
+			Poses: ToMap([...ARMPOSES]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["Chest"],
+			HidePoses: ToMap(["EncaseTorsoUpper"]),
+			InheritColor: "Shirt",
+		},
+	])
+});
+
+
+
+AddModel({
+	Name: "UniformShirt_SleeveLeft",
+	Folder: "UniformShirt",
+	Parent: "UniformShirt",
+	TopLevel: false,
+	Categories: ["Sleeves"],
+	RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "SleeveLeft", Layer: "SleeveLeft", Pri: 10,
+			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "SleeveLeft",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
+		},
+		{ Name: "ForeArmLeft", Layer: "ForeSleeveLeft", Pri: 10,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "SleeveLeft",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossSleeveLeft"},
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmLeft"],
+		},
+
+	])
+});
+
+AddModel({
+	Name: "UniformShirt_SleeveRight",
+	Folder: "UniformShirt",
+	Parent: "UniformShirt",
+	TopLevel: false,
+	Categories: ["Sleeves"],
+	RemovePoses: ["EncaseTorsoUpper"],
+	Layers: ToLayerMap([
+		{ Name: "SleeveRight", Layer: "SleeveRight", Pri: 10,
+			Poses: ToMap([...ARMPOSES]),
+			InheritColor: "SleeveRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
+		},
+		{ Name: "ForeArmRight", Layer: "ForeSleeveRight", Pri: 10,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "SleeveRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossSleeveRight"},
+			HideWhenOverridden: true,
+			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["ArmRight"],
+		},
+		{ Name: "ShoulderRight", Layer: "UpSleeveRight", Pri: 10,
+			HideWhenOverridden: true,
+			InheritColor: "SleeveRight",
+			Poses: ToMap([...SHOULDERPOSES]),
+		},
+	])
+});
+
+
+AddModel({
+	Name: "UniformShirt_Sleeves",
+	Folder: "UniformShirt",
+	Parent: "UniformShirt",
+	TopLevel: false,
+	Categories: ["Sleeves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("UniformShirt_SleeveLeft"),
+		...GetModelLayers("UniformShirt_SleeveRight"),
+	])
+});
+
+
+AddModel({
+	Name: "UniformShirt",
+	Folder: "UniformShirt",
+	Parent: "MilitaryUniform",
+	TopLevel: true,
+	Categories: ["Tops", "Shirts", "Sleeves"],
+	Layers: ToLayerMap([
+		...GetModelLayers("UniformShirt_Sleeves"),
+		...GetModelLayers("UniformShirt_Sleeveless"),
+	])
+});
 
 AddModel({
 	Name: "MilitaryUniform_Hat",
@@ -501,6 +645,12 @@ AddModel({
 	Categories: ["Uniforms"],
 	Layers: ToLayerMap([
 		...GetModelLayers("MilitaryJacket"),
+		...GetModelLayers("UniformShirt", "Shirt", undefined, undefined, undefined, undefined,
+			"UniformShirt"
+		),
+		...GetModelLayers("WhiteGloves", undefined, undefined, undefined, undefined, undefined,
+			"UniformShirt"
+		),
 		...GetModelLayers("Tights"),
 		...GetModelLayers("MilitaryUniform_Shoes"),
 		...GetModelLayers("MilitaryUniform_Skirt"),
@@ -510,5 +660,6 @@ AddModel({
 		...GetModelLayers("MilitaryUniform_Hat"),
 		...GetModelLayers("MilitaryUniform_Earphones"),
 		...GetModelLayers("MilitaryUniform_Webbing"),
+
 	])
 });

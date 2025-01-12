@@ -1567,6 +1567,7 @@ let LayerGroups = {
 	EarsHelmet: ToMap(
 		[
 			"AnimalEars",
+			"Circlet",
 		]
 	),
 	// region Xray
