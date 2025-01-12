@@ -140,6 +140,7 @@ let KDOptimizeDisplacementMapInfo: Record<string, {xPad: number, yPad: number}> 
 };
 
 let DisplacementMaps = [
+'SovietHatErase.png',
 'SlimeLeftClosed.png',
 'SlimeRightClosed.png',
 'HideBoxtieHand.png',

@@ -268,6 +268,9 @@ function KDHandleGame() {
 
 
 function KDGetDungeonName(coord: WorldCoord) {
+	if (coord.room == undefined) {
+		return TextGet("KDUnknown");
+	}
 	let mapData = KDGetMapData(coord);
 	if (mapData) {
 

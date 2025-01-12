@@ -34,6 +34,7 @@ let LAYERS_BASE = [
 	"Gag",
 	"GagUnder",
 	// Hair mid
+	"ChestOverHair",
 	"Hair",
 	"AnimalEars",
 	"GagStrapsUnder",
@@ -1561,6 +1562,11 @@ let LayerGroups = {
 			"Hood",
 			"Hair",
 			"Head",
+		]
+	),
+	EarsHelmet: ToMap(
+		[
+			"AnimalEars",
 		]
 	),
 	// region Xray

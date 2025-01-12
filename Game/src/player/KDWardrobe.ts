@@ -364,6 +364,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 			"ExtraRequirePoses": ",",
 			ExtraHidePrefixPose: ",",
 			ExtraHidePrefixPoseSuffix: ",",
+			AddPose: ",",
 		};
 
 		if (KDRefreshProps) {

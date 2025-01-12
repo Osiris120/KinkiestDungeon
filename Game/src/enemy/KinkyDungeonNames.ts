@@ -1070,6 +1070,7 @@ let KDNameList = {
 
 
 	space: [
+		"Kepler",
 		"Hubble",
 		"Webb",
 		"Schwarzschild",
@@ -2523,6 +2524,7 @@ let KDNameList = {
 		// The demon that answers when you call its name
 		"Chara",
 
+		"Babylon",
 		"Akhkhazu",
 		"Alara",
 		"Artemis",

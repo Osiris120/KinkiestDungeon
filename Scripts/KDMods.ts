@@ -21,6 +21,9 @@ let KDModCompat = {
 	"KinkyDungeonChangeDistraction(": "KDChangeDistraction('','','',",
 };
 
+/** For mod compat */
+function CharacterLoadCanvas() {}
+
 let KDModToggleTab = "None";
 let KDModListPage = 0;
 let KDModPage = 0;

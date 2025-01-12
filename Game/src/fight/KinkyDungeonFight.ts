@@ -1299,7 +1299,9 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 				}
 
 		if (!forceKill && (KDBoundEffects(Enemy) > 3 || KDIsInParty(Enemy) || Damage.nokill) && (Enemy.hp <= 0 || (KDBoundEffects(Enemy) > 3 && Enemy.hp <= Enemy.Enemy.maxhp * 0.1))) {
-			if (!(Enemy.boundLevel > 0) && KDIsInParty(Enemy) && KDCanBind(Enemy)) {
+			if (!(Enemy.boundLevel > 0) && (
+				KDIsInParty(Enemy)
+			) && KDCanBind(Enemy)) {
 				KDTieUpEnemy(Enemy, 2*Enemy.Enemy.maxhp, "Null");
 			}
 			if ((predata.faction == "Player" || KinkyDungeonVisionGet(Enemy.x, Enemy.y) > 0) && Enemy.hp > 0.001) {

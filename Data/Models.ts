@@ -1585,6 +1585,18 @@ function GetTrimmedAppearance(C: Character) {
 				}
 			}
 		}
+
+		if (A.Model && A.Model.Properties) {
+			for (let entry of Object.values(A.Model.Properties)) {
+				if (entry.AddPose) {
+					for (let pose of entry.AddPose) {
+						if (!poses[pose]) {
+							poses[pose] = true;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	for (let A of appearance) {
@@ -1666,6 +1678,19 @@ function UpdateModels(C: Character, Xray?: string[]) {
 				}
 			}
 		}
+		if (A.Model && A.Model.Properties) {
+			for (let entry of Object.values(A.Model.Properties)) {
+				if (entry.AddPose) {
+					for (let pose of entry.AddPose) {
+						if (!poses[pose]) {
+							poses[pose] = true;
+						}
+					}
+				}
+			}
+		}
+
+
 	}
 
 
@@ -1957,6 +1982,18 @@ function DrawModelProcessPoses(MC: ModelContainer, extraPoses: string[]) {
 				if (MC.Poses[entry[0]] || MC.TempPoses[entry[0]]) {
 					for (let pose of entry[1]) {
 						MC.Poses[pose] = true;
+					}
+				}
+			}
+		}
+
+		if (m.Properties) {
+			for (let entry of Object.values(m.Properties)) {
+				if (entry.AddPose) {
+					for (let pose of entry.AddPose) {
+						if (!MC.Poses[pose]) {
+							MC.Poses[pose] = true;
+						}
 					}
 				}
 			}

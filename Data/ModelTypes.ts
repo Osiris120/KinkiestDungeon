@@ -248,6 +248,7 @@ type LayerProperties = {
     ExtraRequirePoses?: string[],
     ExtraHidePrefixPose?: string[],
     ExtraHidePrefixPoseSuffix?: string[],
+	AddPose?: string[],
 }
 
 interface Namable {

@@ -4182,7 +4182,7 @@ let KDTileTooltips: Record<string, (x: number, y: number) => {color: string, tex
 			TextGet("KDLeadsTo").replace("PLCE", KDGetDungeonName({
 				mapX: KDGetCurrentLocation().mapX,
 				mapY: KDGetCurrentLocation().mapY,
-				room: tile.RoomType
+				room: tile?.RoomType
 			}))};
 		},
 	'G': () => {return {color: "#69bf3e", noInspect: true, text: "G"};},

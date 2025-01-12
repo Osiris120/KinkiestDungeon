@@ -24,6 +24,38 @@ AddModel({
 });
 
 
+AddModel({
+	Name: "BlondeFront",
+	Folder: "Hair2",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "FrontHair"],
+	AddPose: ["Hair"],
+	Layers: ToLayerMap([
+		{ Name: "BlondeFront", Layer: "Hair", Pri: 3,
+			SwapLayerPose: {HoodMask: "HairOver"},
+			InheritColor: "Hair",
+		},
+		{ Name: "BlondeBangs", Layer: "HairFront", Pri: 3,
+			InheritColor: "Bangs",
+		},
+	])
+});
+AddModel({
+	Name: "BlondeBack",
+	Folder: "Hair2",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "BackHair"],
+	AddPose: ["Hair"],
+	Layers: ToLayerMap([
+		{ Name: "BlondeBack", Layer: "HairBack", Pri: -3,
+			InheritColor: "Back",
+		},
+	])
+});
+
+
 
 AddModel({
 	Name: "AuraBang_Left",
