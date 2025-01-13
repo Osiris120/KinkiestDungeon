@@ -211,6 +211,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 	// Prune inventory
 	KDPruneInventoryVariants(true, true, true);
 
+	KDTickAutorelease();
 
 	KDExploreStairs(x, y);
 	let toTile = KinkyDungeonMapGet(x, y);

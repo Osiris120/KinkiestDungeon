@@ -5667,6 +5667,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			unlimitedRestraints: true,
 			requiredItems: ["MikoGag", "MikoDress"],
 		},
+		special: true,
 		events: [
 			{trigger: "getLights", type: "enemyTorch", power: 3.5, color: "#ff7777"},
 			{trigger: "tick", type: "BossAssignFaction", kind: "Fuuka"},
@@ -5844,6 +5845,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
+		special: true,
 		preferDodge: true,
 		stamina: 4,
 		maxblock: 1,
@@ -5927,6 +5929,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		RestraintFilter: {
 			unlimitedRestraints: true,
 		},
+		special: true,
 		unlockCommandLevel: 3, unlockCommandCD: 14,
 		spells: ["DollConvertMany", "DollBoost", "EnemyCM_self", "ManyCables"],
 		spellCooldownMult: 0.2, spellCooldownMod: 0, castWhileMoving: true, buffallies: true, projectileAttack: true, accuracy: 1.15, noChannel: true,
