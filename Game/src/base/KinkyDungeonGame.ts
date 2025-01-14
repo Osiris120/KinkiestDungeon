@@ -5771,7 +5771,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 	KinkyDungeonUpdateBullets(delta); //console.log("Bullets Check " + (performance.now() - now));
 	KinkyDungeonUpdateBulletsCollisions(delta, true); //"catchup" phase for explosions!
 
-	KinkyDungeonParseExtraWarningTiles() // Add custom warning indicators!
+	KinkyDungeonParseExtraWarningTiles(delta); // Add custom warning indicators!
 
 	KDUpdateEffectTiles(delta);
 	KinkyDungeonUpdateTileEffects(delta);

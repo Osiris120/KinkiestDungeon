@@ -1967,15 +1967,15 @@ function KinkyDungeonCreateWarningTile(x: number, y: number, color: string = "#f
 	})
 }
 
-function KinkyDungeonParseExtraWarningTiles() {
+function KinkyDungeonParseExtraWarningTiles(delta: number) {
 	for (let i = 0; i < KinkyDungeonExtraWarningTiles.length; i++) {
 		if (KinkyDungeonExtraWarningTiles[i].delay > 0) {
-			KinkyDungeonExtraWarningTiles[i].delay--;
+			KinkyDungeonExtraWarningTiles[i].delay -= delta;
 		}
 		else {
 			KDBulletWarnings.push(Object.assign({}, KinkyDungeonExtraWarningTiles[i].warning));
 		}
-		KinkyDungeonExtraWarningTiles[i].duration--;
+		KinkyDungeonExtraWarningTiles[i].duration -= delta;
 		if (KinkyDungeonExtraWarningTiles[i].duration <= 0) {
 			KinkyDungeonExtraWarningTiles.splice(i, 1);
 			i--;
