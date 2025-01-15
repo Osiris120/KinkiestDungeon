@@ -7866,6 +7866,7 @@ KinkyDungeonTooltipDealsAccuracy,"AMNT% chance to hit you"
 KDTooltipDisarm,"Can disarm (chance: DISARMCHANCE%)"
 KDTooltipDamageResists,Resistances:
 KDTooltipHP,"HP: "
+KDTooltipShield,"Shield: "
 KDTooltipBinding,"Binding: "
 KDTooltipOpinion0,"Ambivalent"
 KDTooltipOpinion1,"Likes you"
