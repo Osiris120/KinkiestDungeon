@@ -234,7 +234,7 @@ KDPrisonTypes.HighSec = {
 
 
 
-				if (KDPrisonTick(player)) {
+				if (KDPrisonTick(player) && !KinkyDungeonFlags.get("suspendJailTick")) {
 					if (KDShouldStripSearchPlayer(player, true)) {
 						return "Strip";
 					}

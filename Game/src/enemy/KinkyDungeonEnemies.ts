@@ -472,9 +472,11 @@ function KDGetNearestExitTo(roomTo: string, mapX: number, mapY: number, x: numbe
 	}
 
 	let possible: KDPoint[] = [...sp];
-	if (mapY > mapData.mapY) {
+	let noStart = KDGetAltType(mapData.mapY, mapData.MapMod, mapData.RoomType)?.nostartstairs;
+	let noEnd = KDGetAltType(mapData.mapY, mapData.MapMod, mapData.RoomType)?.startatstartpos;
+	if (mapY > mapData.mapY && (!noEnd || noStart)) {
 		possible.unshift(mapData.EndPosition);
-	} else if (mapY < mapData.mapY) {
+	} else if (mapY < mapData.mapY && (!noStart || noEnd)) {
 		possible.unshift(mapData.StartPosition);
 	} else if (mapY == mapData.mapY) {
 		let slot = KDGetWorldMapLocation({x: mapData.mapX, y: mapData.mapY});

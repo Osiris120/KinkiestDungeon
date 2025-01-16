@@ -342,6 +342,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 						let msg = TextGet("KinkyDungeonRemoveRestraints")
 							.replace("EnemyName", TextGet("Name" + guard.Enemy.name));
 						//let msg = TextGet("Attack" + guard.Enemy.name + "RemoveRestraints");
+						KinkyDungeonSetFlag("suspendJailTick", 2);
 						if (oldRestraintItem) msg = msg.replace("OldRestraintName", TextGet("Restraint"+oldRestraintItem.name));
 						KinkyDungeonSendTextMessage(5, msg, "yellow", 1);
 					}
@@ -350,6 +351,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				} else if (oldRestraintItem) {
+					KinkyDungeonSetFlag("suspendJailTick", 2);
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartRemoving")
 						.replace("EnemyName", TextGet("Name" + guard.Enemy.name))
 						.replace("RestraintName", TextGet("Restraint" + oldRestraintItem.name)), "yellow", 2, true);
@@ -387,6 +389,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 				let newRestraint = jrest.restraint;
 				if (KDGameData.GuardApplyTime > applyTime) {
 					if (newRestraint) {
+						KinkyDungeonSetFlag("suspendJailTick", 2);
 						let oldRestraintItem = KinkyDungeonGetRestraintItem(guard.CurrentRestraintSwapGroup);
 						let added = KinkyDungeonAddRestraintIfWeaker(newRestraint, Math.floor(KDGetEffLevel() * 0.5),
 							true, undefined, undefined, undefined, undefined, KDGetFaction(KinkyDungeonJailGuard()),
@@ -405,6 +408,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				} else if (newRestraint) {
+					KinkyDungeonSetFlag("suspendJailTick", 2);
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
 						.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
 						.replace("EnemyName", TextGet("Name" + guard.Enemy.name)),
@@ -441,6 +445,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					if (oldRestraintItem && !oldRestraintItem.lock && KinkyDungeonIsLockable(KDRestraint(oldRestraintItem))) {
 						let lock = KinkyDungeonGenerateLock(true, KDGetEffLevel(),false, undefined, {enemy: KinkyDungeonJailGuard()});
 						KinkyDungeonLock(oldRestraintItem, lock);
+						KinkyDungeonSetFlag("suspendJailTick", 2);
 						let msg = TextGet("KinkyDungeonJailerFinishLocking")
 							.replace("EnemyName", TextGet("Name" + guard.Enemy.name))
 							.replace("RestraintName", TextGet("Restraint"+oldRestraintItem.name))
@@ -452,6 +457,7 @@ let KDGuardActions: Record<string, guardActionEntry> = {
 					guard.gy = KinkyDungeonPlayerEntity.y;
 					KDGameData.GuardApplyTime = 0;
 				} else if (oldRestraintItem) {
+					KinkyDungeonSetFlag("suspendJailTick", 2);
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartLocking")
 						.replace("EnemyName", TextGet("Name" + guard.Enemy.name))
 						.replace("RestraintName", TextGet("Restraint" + oldRestraintItem.name)), "yellow", 2, true);
