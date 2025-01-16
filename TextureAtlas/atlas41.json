@@ -56,7 +56,7 @@
 	"spriteSourceSize": {"x":465,"y":430,"w":134,"h":204},
 	"sourceSize": {"w":1240,"h":1754}
 },
-"Models/Body/LegLeftHogtie.png":
+"Models/Body/CalfLeftHogtie.png":
 {
 	"frame": {"x":165,"y":1093,"w":89,"h":257},
 	"rotated": false,
