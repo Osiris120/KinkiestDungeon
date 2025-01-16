@@ -2258,7 +2258,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		});
 	}
 	TooltipList.push({
-		str: TextGet("KDTooltipHP") + Math.round(enemy.hp*10) + "/" + Math.round(enemy.Enemy.maxhp * 10),
+		str: TextGet("KDTooltipHP") + Math.round(enemy.hp*10) + " / " + Math.round(enemy.Enemy.maxhp * 10),
 		fg: "#ffffff",
 		bg: "#000000",
 		size: 20,
@@ -2266,7 +2266,8 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 	});
 	if (enemy.boundLevel) {
 		TooltipList.push({
-			str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel/enemy.Enemy.maxhp*100) + "%",
+			str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel*10) + " / "
+				+ Math.round(KDNPCStruggleThreshMult(enemy) * enemy.Enemy.maxhp*10),
 			fg: "#ffae70",
 			bg: "#000000",
 			size: 20,
@@ -2749,7 +2750,7 @@ function KDDrawEnemyDialogue(enemy: entity, offset: number): number {
 		});
 	}
 	TooltipList.push({
-		str: TextGet("KDTooltipHP") + Math.round(enemy.hp*10) + "/" + Math.round(enemy.Enemy.maxhp * 10),
+		str: TextGet("KDTooltipHP") + Math.round(enemy.hp*10) + " / " + Math.round(enemy.Enemy.maxhp * 10),
 		fg: "#ffffff",
 		bg: "#000000",
 		size: 20,
@@ -2757,7 +2758,8 @@ function KDDrawEnemyDialogue(enemy: entity, offset: number): number {
 	});
 	if (enemy.boundLevel) {
 		TooltipList.push({
-			str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel/enemy.Enemy.maxhp*100) + "%",
+			str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel*10) + " / "
+				+ Math.round(KDNPCStruggleThreshMult(enemy) * enemy.Enemy.maxhp*10),
 			fg: "#ffae70",
 			bg: "#000000",
 			size: 20,

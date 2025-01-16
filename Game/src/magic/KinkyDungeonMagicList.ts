@@ -2142,10 +2142,16 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		trailcast: {spell: "SingleBelt", target: "onhit", directional:true, offset: false}},
 
 	{allySpell: true, name: "SingleBelt", sfx: "Struggle", manacost: 4, components: [], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, bind: 4, range: 2, size: 1, lifetime: 1, damage: "chain", playerEffect: {name: "TrapBindings",  text: "KinkyDungeonTrapBindingsLeatherWeak", tags: ["leatherRestraints", "leatherRestraintsHeavy"], power: 3, damage: "chain", count: 2, noGuard: true}},
-	{allySpell: true, name: "Slimethrower",
-		bindTags: ["slimeRestraintsRandom"], landsfx: "FireSpell", noMiscast: true, manacost: 0, components: ["Legs"], level:1, type:"hit", onhit:"lingering", time: 3, range: 3.9, power: 3.5, size: 1, aoe: 1, lifetime: 1, lifetimeHitBonus: 9, damage: "glue", playerEffect: {name: "SlimeTrap", time: 3}}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
+	{name: "Slimethrower",
+		bindTags: ["slimeRestraintsRandom"], landsfx: "FireSpell",
+		noMiscast: true, manacost: 0, components: ["Legs"], level:1, type:"hit",
+		onhit:"lingering", time: 3, range: 3.9, power: 3.5, size: 1, aoe: 1, lifetime:
+		1, lifetimeHitBonus: 9, damage: "glue", playerEffect: {name: "SlimeTrap", time: 3}}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
 	{allySpell: true, name: "Slimethrower2",
-		bindTags: ["slimeRestraintsRandom"], landsfx: "FireSpell", manacost: 0, components: [], level:1, type:"hit", onhit:"lingering", time: 3, range: 3.9, power: 2.5, size: 1, aoe: 1, lifetime: 1, lifetimeHitBonus: 9, damage: "glue"}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
+		bindTags: ["slimeRestraintsRandom"], landsfx: "FireSpell",
+		manacost: 0, components: [], level:1, type:"hit", onhit:"lingering",
+		time: 3, range: 3.9, power: 2.5, size: 1, aoe: 1, lifetime: 1,
+		lifetimeHitBonus: 9, damage: "glue"}, // Creates a huge pool of slime, slowing enemies that try to enter. If you step in it, you have a chance of getting trapped!
 	{name: "SlimeSuit", sfx: "MagicSlash", school: "Illusion", manacost: 5, components: [], level:1, type:"special", special: "dress", outfit: "SlimeSuit", noMiscast: true,
 		onhit:"", time:25, power: 0, range: 1.5, size: 1, damage: ""},
 
