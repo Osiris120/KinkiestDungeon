@@ -381,9 +381,9 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			}
 			if (playerEffect.power) {
 				let dmg = KinkyDungeonDealDamage({damage: playerEffect.power, type: playerEffect.damage});
-				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonGravityPull2").KDReplaceOrAddDmg( dmg.string), "#8800ff", 2);
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonGravityPull").KDReplaceOrAddDmg( dmg.string), "#8800ff", 2);
 			} else {
-				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonGravityPull"), "#8800ff", 2);
+				KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonGravityPull2"), "#8800ff", 2);
 			}
 			KDStunTurns(1);
 		}

@@ -26391,6 +26391,10 @@ KDTut_Vulnerable,Attack them for a guaranteed critical hit!
 KDTut_Dodge,before the attack lands! You can tell the difference by the border of the tiles.
 KDTut_Dodge2,Enemy attacks take time to hit. Make sure to step out of the warning tiles,
 KDTut_Projec,You can dodge out of the way of most projectiles. Avoid the marked tiles.
+KDTut_Charge,'Charge' is a unified ammunition for all of your weapons. Recharge it with ancient crystals.
+KDTut_Charge2,"Spent crystals can slot into some light fixtures to recharge them, but it requires 100 gold."
+KDTut_Elevator,"There is an elevator in this room, but it won't function until you defeat major enemies on this level."
+KDTut_Bondage,"If you can't escape from a restraint, try offering gold at a shrine devoted to its goddess."
 
 KDTut_WPOnKill2,Defeating enemies recovers some willpower.
 KDTut_WPOnKill,"Temporary enemies and summons don't restore anything, however."

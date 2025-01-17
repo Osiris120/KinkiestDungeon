@@ -2045,6 +2045,10 @@ function KDGetStruggleData(data: KDStruggleData): string {
 						struggleType: data.struggleType,
 						result: "Impossible",
 					});
+					if (!KinkyDungeonFlags.get("tut_shrinebondage")) {
+						KinkyDungeonSetFlag("tut_shrinebondage", -1);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), "#ffffff", 10);
+					}
 
 					KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
 					KDChangeWill(data.struggleGroup, data.struggleType, "struggle", data.wcost);
@@ -2123,6 +2127,10 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				struggleType: data.struggleType,
 				result: "Strict",
 			});
+			if (!KinkyDungeonFlags.get("tut_shrinebondage")) {
+				KinkyDungeonSetFlag("tut_shrinebondage", -1);
+				KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), "#ffffff", 10);
+			}
 			return "Strict";
 		}
 	}
@@ -2206,6 +2214,10 @@ function KDGetStruggleData(data: KDStruggleData): string {
 						struggleType: data.struggleType,
 						result: "Impossible",
 					});
+					if (!KinkyDungeonFlags.get("tut_shrinebondage")) {
+						KinkyDungeonSetFlag("tut_shrinebondage", -1);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), "#ffffff", 10);
+					}
 					KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
 					KDChangeWill(data.struggleGroup, data.struggleType, "struggle", data.wcost);
 					if (KinkyDungeonStatsChoice.get("BondageLover"))

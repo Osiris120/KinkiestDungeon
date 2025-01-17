@@ -2059,7 +2059,6 @@ function KinkyDungeonCreateSummit(_POI: any, VisitedRooms: any[], _width: number
 		Type: "Elevator",
 		Overlay: "Elevator",
 	});
-
 }
 
 function KinkyDungeonCreateDollRoom(_POI: any, _VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, _data: any) {
@@ -2939,6 +2938,10 @@ function KinkyDungeonCreateElevatorRoom(_POI: any, VisitedRooms: any[], _width: 
 		Type: "Elevator",
 		Overlay: "ElevatorDisabled",
 	});
+	if (!KinkyDungeonFlags.get("tut_elevator")) {
+		KinkyDungeonSetFlag("tut_elevator", -1);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), "#ffffff", 10);
+	}
 }
 
 
@@ -2975,6 +2978,10 @@ function KinkyDungeonCreateElevatorEgyptian(_POI: any, VisitedRooms: any[], _wid
 		Type: "Elevator",
 		Overlay: "ElevatorDisabled",
 	});
+	if (!KinkyDungeonFlags.get("tut_elevator")) {
+		KinkyDungeonSetFlag("tut_elevator", -1);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), "#ffffff", 10);
+	}
 }
 
 
@@ -3011,6 +3018,10 @@ function KinkyDungeonCreateElevatorEgyptian2(_POI: any, VisitedRooms: any[], _wi
 		Type: "Elevator",
 		Overlay: "ElevatorDisabled",
 	});
+	if (!KinkyDungeonFlags.get("tut_elevator")) {
+		KinkyDungeonSetFlag("tut_elevator", -1);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), "#ffffff", 10);
+	}
 }
 
 function KinkyDungeonCreateTestTile(_POI: any, VisitedRooms: any[], width: number, height: number, _openness: number, _density: number, _hallopenness: number, data: any) {

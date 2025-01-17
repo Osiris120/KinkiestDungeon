@@ -1571,6 +1571,14 @@ function KinkyDungeonUpdateStats(delta: number): void {
 		stamRegen *= 2;
 	}
 
+	if (KDGameData.AncientEnergyLevel > 0.01) {
+		if (!KinkyDungeonFlags.get("tut_charge")) {
+			KinkyDungeonSetFlag("tut_charge", -1);
+			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Charge2"), "#ffffff", 10);
+			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Charge"), "#ffffff", 10);
+		}
+	}
+
 	KinkyDungeonStaminaRate = KDGameData.SleepTurns > 0 && KDGameData.SleepTurns < KinkyDungeonSleepTurnsMax - 1? sleepRegen : stamRegen;
 
 	let statData = {

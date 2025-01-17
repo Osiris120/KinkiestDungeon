@@ -2675,7 +2675,8 @@ function KinkyDungeonRun() {
 			}, true,
 			((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + slt.x,
 			((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + slt.y,
-			400, 50, loadedsaveNames[slot - 1] || (TextGet("KDEmpty")),
+			400, 50, (loadedsaveslots[KDSaveSlot-1] ? loadedsaveNames[slot - 1] : "")
+				|| (TextGet("KDEmpty")),
 			(danger && (slot == KDSaveSlot)) ? "#ff5555" : "#ffffff", "", undefined, undefined,
 			true, KDButtonColor);
 		}
