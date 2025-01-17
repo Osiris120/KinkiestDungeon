@@ -140,6 +140,9 @@ let KDMusicBusy = false;
 
 function KDPlayMusic(Sound: string, Volume?: number) {
 	if (KDMusicBusy) return;
+	if (Volume == undefined) {
+		Volume = KDSoundEnabled() && KDToggles.Music ? KDMusicVolume * KDMusicVolumeMult : 0;
+	}
 	KDMusicBusy = true;
 	// Start the new sound
 	let addNewListener = !KDCurrentMusicSound;

@@ -39,6 +39,11 @@ AddModel({
 		{ Name: "BlondeBangs", Layer: "HairFront", Pri: 3,
 			InheritColor: "Bangs",
 		},
+		{ Name: "Hairpin", Layer: "HairFront", Pri: 30,
+			NoOverride: true,
+			Folder: "Uniform",
+			RequirePoses: {"Marhntha": true},
+		},
 	])
 });
 AddModel({

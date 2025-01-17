@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.33"
+KDVersionStr,"5.4.34"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -25066,7 +25066,10 @@ Ada18980_SmokingIsBadForYou.ogg,Ada18980 - Smoking is bad for you
 AREA1-GRAVEYARD.ogg,Kocaeli - Graveyard
 AREA2-ANCIENTTOMBS.ogg,Kocaeli - Ancient Tombs
 AREA4-MAGICLIBRARY.ogg,Kocaeli - Magic Library
+black_cat.ogg,Kocaeli - Black Cat
+black_cat_angry.ogg,Kocaeli - Black Cat
 AREA5-UNDERGROUNDJUNGLE.ogg,Kocaeli - Underground Jungle
+UntitledRobot.ogg,Kocaeli - Robot
 AREA7-LOSTTEMPLE.ogg,Kocaeli - Lost Temple
 AREA8-ORRERY.ogg,Kocaeli - Orrery
 AREA9-BELLOWS.ogg,Kocaeli - Bellows

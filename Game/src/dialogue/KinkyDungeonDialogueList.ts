@@ -4682,6 +4682,10 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 			"Fight": {
 				prerequisiteFunction: (_gagged, _player) => {return false;},
+				clickFunction: () => {
+					KDPlayMusic("slimy_science_1.ogg");
+					return false;
+				},
 				playertext: "Default", response: "Default",
 				options: {
 					"Wait": {gagDisabled: true,

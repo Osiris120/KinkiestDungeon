@@ -2305,6 +2305,8 @@ function KinkyDungeonCreateDollmaker(_POI: any, _VisitedRooms: any[], _width: nu
 	// Variable setup
 	KinkyDungeonSetFlag("NoDollRoomBypass", -1, 1);
 
+	KDPlayMusic("UntitledRobot.ogg");
+
 	// Now we STRETCH the map
 	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
 	KDMapData.GridHeight = Math.floor(KDMapData.GridHeight*2);
