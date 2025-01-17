@@ -45,6 +45,7 @@ KDToggleTabUI,UI
 KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
+KDToggleBindPercent,Show Enemy Binding as %
 
 KDToggleMMLabels,Show Minimap Labels
 KDToggle,Auto loot all from chests

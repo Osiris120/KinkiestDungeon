@@ -2267,14 +2267,25 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		center: true,
 	});
 	if (enemy.boundLevel) {
-		TooltipList.push({
-			str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel*10) + " / "
-				+ Math.round(KDNPCStruggleThreshMult(enemy) * enemy.Enemy.maxhp*10),
-			fg: "#ffae70",
-			bg: "#000000",
-			size: 20,
-			center: true,
-		});
+
+		if (KDToggles.BindPercent) {
+			TooltipList.push({
+				str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel/enemy.Enemy.maxhp*100/KDGetBindEffectMult(enemy)) + "%",
+				fg: "#ffae70",
+				bg: "#000000",
+				size: 20,
+				center: true,
+			});
+		} else {
+			TooltipList.push({
+				str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel*10) + " / "
+					+ Math.round(KDGetBindEffectMult(enemy) * enemy.Enemy.maxhp *10) + "",
+				fg: "#ffae70",
+				bg: "#000000",
+				size: 20,
+				center: true,
+			});
+		}
 	}
 	if (enemy.boundTo) {
 		TooltipList.push({
@@ -2759,14 +2770,27 @@ function KDDrawEnemyDialogue(enemy: entity, offset: number): number {
 		center: true,
 	});
 	if (enemy.boundLevel) {
-		TooltipList.push({
-			str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel*10) + " / "
-				+ Math.round(KDNPCStruggleThreshMult(enemy) * enemy.Enemy.maxhp*10),
-			fg: "#ffae70",
-			bg: "#000000",
-			size: 20,
-			center: true,
-		});
+		if (KDToggles.BindPercent) {
+			TooltipList.push({
+				str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel/enemy.Enemy.maxhp*100/KDGetBindEffectMult(enemy)) + "%",
+				fg: "#ffae70",
+				bg: "#000000",
+				size: 20,
+				center: true,
+			});
+		} else {
+			TooltipList.push({
+				str: TextGet("KDTooltipBinding") + Math.round(enemy.boundLevel*10) + " / "
+					+ Math.round(KDGetBindEffectMult(enemy) * enemy.Enemy.maxhp *10) + "",
+				fg: "#ffae70",
+				bg: "#000000",
+				size: 20,
+				center: true,
+			});
+		}
+
+
+
 	}
 
 	return KDDrawTooltip(TooltipList, offset, true);
@@ -3679,14 +3703,19 @@ function KDBoundEffects(enemy: entity): number {
 	let boundLevel = enemy.boundLevel ? enemy.boundLevel : 0;
 	let bindAmp = 1;//KDGetBindAmp(enemy); //KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(KinkyDungeonPlayerBuffs, "BindAmp"));
 	boundLevel *= bindAmp;
-	let mult = 1;
-	if (enemy.Enemy.tags.unstoppable) mult = 3;
-	else if (enemy.Enemy.tags.unflinching) mult = 2;
+	let mult = KDGetBindEffectMult(enemy);
 	if (boundLevel >= enemy.Enemy.maxhp * mult || (enemy.hp <= 0.1*enemy.Enemy.maxhp && Math.max(boundLevel, 0.1) > enemy.hp)) return 4; // Totally tied
 	if (boundLevel > enemy.Enemy.maxhp*0.75 * mult) return 3;
 	if (boundLevel > enemy.Enemy.maxhp*0.5 * mult) return 2;
 	if (boundLevel > enemy.Enemy.maxhp*0.25 * mult) return 1;
 	return 0;
+}
+
+function KDGetBindEffectMult(enemy: entity) {
+	let mult = 1;
+	if (enemy.Enemy.tags.unstoppable) mult = 3;
+	else if (enemy.Enemy.tags.unflinching) mult = 2;
+	return mult;
 }
 
 

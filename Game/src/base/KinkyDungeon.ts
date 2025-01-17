@@ -275,6 +275,8 @@ let KDToggles = {
 	MMLabels: true,
 
 	HideArmorWardrobe: false,
+
+	BindPercent: true,
 };
 
 let KDToggleCategories = {
@@ -350,6 +352,7 @@ let KDToggleCategories = {
 	DefaultApplyCharPalette: "none",
 	Autoloot: "UI",
 	HideArmorWardrobe: "none",
+	BindPercent: "UI",
 };
 
 // endregion
