@@ -1244,11 +1244,12 @@ function KDDefeatedPlayerTick(nodefeat?: boolean) {
 		let faction = KDGetFaction(en);
 		if (!seenFlags[faction]) seenFlags[faction] = {};
 
-		for (let f of Object.keys(en.flags)) {
-			if (f.startsWith("saw_")) {
-				seenFlags[faction][f] = KDGetSawFlag(f, faction) + 1;
+		if (en.flags)
+			for (let f of Object.keys(en.flags)) {
+				if (f.startsWith("saw_")) {
+					seenFlags[faction][f] = KDGetSawFlag(f, faction) + 1;
+				}
 			}
-		}
 	}
 
 	KinkyDungeonSetFlag("refusedShopkeeperRescue", 5); // To prevent spawning instantly

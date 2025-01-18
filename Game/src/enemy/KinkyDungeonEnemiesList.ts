@@ -2445,7 +2445,7 @@ let KinkyDungeonEnemies: enemy[] = [
 	{name: "SlimeAdv", faction: "Slime", clusterWith: "slime", bound: "SlimeAdv", playLine: "Gagged", color: "#FF00FF",
 		tags: KDMapInit([
 			"ignoretiedup", "nocapture", "latexTrap", "slime", "disarmresist", "blindimmune", "melee", "slimeRestraints", "electricweakness", "acidresist", "iceweakness", "ticklesevereweakness", "charmweakness",
-			"submissive", "noshop", "gagged", "imprisonable", "rescueslime", "nocapture", "noarms"
+			"submissive", "noshop", "gagged", "imprisonable", "rescueslime", "nocapture", "noarms", "arcaneweakness"
 		]),
 		Sound: {
 			baseAmount: 4,
@@ -2488,6 +2488,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 0,
 			idleSoundName: "Slime",
 		},
+		Resistance: {
+			profile: ["slime"],
+		},
 		nopickpocket: true,
 		dropTable: [{name: "SlimeRaw", amount: 1, weight: 10}],
 		terrainTags: {"increasingWeight":-1, "slime": 4, "slimeOptOut": -2, "slimePref": 2, "jungle": 20, "alchemist": 4}, allFloors: true, shrines: ["Latex"],
@@ -2501,6 +2504,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 0,
 			moveAmount: 7,
 			idleSoundName: "Slime",
+		},
+		Resistance: {
+			profile: ["slime"],
 		},
 		nopickpocket: true,
 		dropTable: [{name: "SlimeRaw", amount: 1, weight: 10}],
@@ -2516,6 +2522,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			baseAmount: 0,
 			idleSoundName: "Slime",
 		},
+		Resistance: {
+			profile: ["slime"],
+		},
 		nopickpocket: true,
 		maxblock: 0,
 		maxdodge: 2,
@@ -2530,6 +2539,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 			idleSoundName: "SlimeLarge",
+		},
+		Resistance: {
+			profile: ["slime"],
 		},
 		maxblock: 0,
 		maxdodge: 0,
@@ -2558,6 +2570,9 @@ let KinkyDungeonEnemies: enemy[] = [
 			moveAmount: 3,
 			idleSoundName: "SlimeLarge",
 		},
+		Resistance: {
+			profile: ["slime"],
+		},
 		nopickpocket: true,
 		maxblock: 0,
 		maxdodge: 0,
@@ -2583,6 +2598,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		nonDirectional: true,
 		RestraintFilter: {
 			unlimitedRestraints: true,
+		},
+		Resistance: {
+			profile: ["slime"],
 		},
 		nopickpocket: true,
 		Sound: {
@@ -5019,6 +5037,9 @@ let KinkyDungeonEnemies: enemy[] = [
 		},
 		Sound: {
 			idleSoundName: "SlimeLarge2",
+		},
+		Resistance: {
+			profile: ["slime"],
 		},
 		maxblock: 0,
 		maxdodge: 0,

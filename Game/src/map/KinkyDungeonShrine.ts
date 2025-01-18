@@ -833,7 +833,7 @@ function KinkyDungeonDrawPerkOrb() {
 			Top: 200 + count * pspacing - 30,
 			Width: Twidth + 20,
 			Height: 70 + 20,
-			Color: KDTextGray0,
+			Color: KinkyDungeonStatsPresets[p].cost < 0 ? KDTextRed1 : KDTextGray0,
 			LineWidth: 1,
 			zIndex: 60,
 			alpha: 0.7,

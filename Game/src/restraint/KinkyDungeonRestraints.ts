@@ -1845,7 +1845,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 		)) {
 			if (!KinkyDungeonPlayerDamage || !KinkyDungeonPlayerDamage.cutBonus) {
 				if (!KinkyDungeonFlags.get("tut_cut")) {
-					KinkyDungeonSendTextMessage(10, TextGet("KDTut_Cut"), "#ffffff", 10);
+					KinkyDungeonSendTextMessage(10, TextGet("KDTut_Cut"), KDTutorialColor, 10);
 				}
 			} else if (data.handsBound || data.armsBound || (!data.canCutMagic && KDRestraint(data.restraint)?.magic)) {
 				if (!KinkyDungeonFlags.get("tut_cutcrack") || !KinkyDungeonFlags.get("tut_cutmagic")) {
@@ -1858,16 +1858,16 @@ function KDGetStruggleData(data: KDStruggleData): string {
 					}
 					if (!KinkyDungeonFlags.get("tut_cutmagic") && !data.canCutMagic && KDRestraint(data.restraint)?.magic) {
 						if (!canCutMagic) {
-							KinkyDungeonSendTextMessage(10, TextGet("KDTut_CutMagic"), "#ffffff", 10);
+							KinkyDungeonSendTextMessage(10, TextGet("KDTut_CutMagic"), KDTutorialColor, 10);
 							KinkyDungeonSetFlag("tut_cutmagic", -1);
 						} else {
-							KinkyDungeonSendTextMessage(10, TextGet("KDTut_CutMagicHas"), "#ffffff", 10);
+							KinkyDungeonSendTextMessage(10, TextGet("KDTut_CutMagicHas"), KDTutorialColor, 10);
 							KinkyDungeonSetFlag("tut_cutmagic", -1);
 						}
 					} else if (!KinkyDungeonFlags.get("tut_cutcrack") && maxBonus && !(!data.canCutMagic && KDRestraint(data.restraint)?.magic)) {
 						KinkyDungeonSetFlag("tut_cutcrack", -1);
-						KinkyDungeonSendTextMessage(10, TextGet("KDTut_CutCrack2"), "#ffffff", 10);
-						KinkyDungeonSendTextMessage(10, TextGet("KDTut_CutCrack"), "#ffffff", 10);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_CutCrack2"), KDTutorialColor, 10);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_CutCrack"), KDTutorialColor, 10);
 					}
 				}
 			}
@@ -2047,7 +2047,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 					});
 					if (!KinkyDungeonFlags.get("tut_shrinebondage")) {
 						KinkyDungeonSetFlag("tut_shrinebondage", -1);
-						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), "#ffffff", 10);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), KDTutorialColor, 10);
 					}
 
 					KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
@@ -2129,7 +2129,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 			});
 			if (!KinkyDungeonFlags.get("tut_shrinebondage")) {
 				KinkyDungeonSetFlag("tut_shrinebondage", -1);
-				KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), "#ffffff", 10);
+				KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), KDTutorialColor, 10);
 			}
 			return "Strict";
 		}
@@ -2216,7 +2216,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 					});
 					if (!KinkyDungeonFlags.get("tut_shrinebondage")) {
 						KinkyDungeonSetFlag("tut_shrinebondage", -1);
-						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), "#ffffff", 10);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Bondage"), KDTutorialColor, 10);
 					}
 					KDChangeStamina(data.struggleGroup, data.struggleType, "struggle", data.cost, true, 1);
 					KDChangeWill(data.struggleGroup, data.struggleType, "struggle", data.wcost);

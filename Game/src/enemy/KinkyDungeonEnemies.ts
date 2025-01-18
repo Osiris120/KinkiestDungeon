@@ -527,7 +527,7 @@ function KinkyDungeonInDanger() {
 		if (KinkyDungeonVisionGet(Math.round(b.x), Math.round(b.y)) > 0 && Math.max(Math.abs(b.x - KinkyDungeonPlayerEntity.x), Math.abs(b.y - KinkyDungeonPlayerEntity.y)) < bdist) {
 			if (!KinkyDungeonFlags.get("tut_projec")) {
 				KinkyDungeonSetFlag("tut_projec", -1);
-				KinkyDungeonSendTextMessage(10, TextGet("KDTut_Projec"), "#ffffff", 10);
+				KinkyDungeonSendTextMessage(10, TextGet("KDTut_Projec"), KDTutorialColor, 10);
 			}
 			return true;
 		}
@@ -2816,8 +2816,8 @@ function KinkyDungeonCapture(enemy: entity): boolean {
 	msg = "KinkyDungeonCaptureBasic";
 	if (!KinkyDungeonFlags.get("tut_capture")) {
 		KinkyDungeonSetFlag("tut_capture", -1);
-		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Capture"), "#ffffff", 10);
-		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Capture2"), "#ffffff", 10);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Capture"), KDTutorialColor, 10);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Capture2"), KDTutorialColor, 10);
 	}
 	KDDropStolenItems(enemy, KDMapData);
 	KinkyDungeonSetEnemyFlag(enemy, "questtarget", 0);
@@ -2948,8 +2948,8 @@ function KinkyDungeonEnemyCheckHP(enemy: entity, E: number, mapData: KDMapDataTy
 						if (will > 0) {
 							if (!KinkyDungeonFlags.get("tut_kill")) {
 								KinkyDungeonSetFlag("tut_kill", -1);
-								KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill"), "#ffffff", 10);
-								KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill2"), "#ffffff", 10);
+								KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill"), KDTutorialColor, 10);
+								KinkyDungeonSendTextMessage(10, TextGet("KDTut_WPOnKill2"), KDTutorialColor, 10);
 							}
 							KDChangeWill("enemy" + enemy.id, "reward", "kill", will, false);
 						}
@@ -4655,7 +4655,7 @@ function KDCheckVulnerableBackstab(enemy: entity): boolean {
 
 					if (!KinkyDungeonFlags.get("tut_nothingpersonnel")) {
 						KinkyDungeonSetFlag("tut_nothingpersonnel", -1);
-						KinkyDungeonSendTextMessage(10, TextGet("KDTut_TeleCrit"), "#ffffff", 10);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_TeleCrit"), KDTutorialColor, 10);
 					}
 					return true;
 				}
@@ -5629,7 +5629,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							enemy.gy = enemy.IntentLeashPoint.y;
 							if (!KinkyDungeonFlags.get("tut_surr")) {
 								KinkyDungeonSetFlag("tut_surr", -1);
-								KinkyDungeonSendTextMessage(10, TextGet("KDTut_Surr"), "#ffffff", 10);
+								KinkyDungeonSendTextMessage(10, TextGet("KDTut_Surr"), KDTutorialColor, 10);
 							}
 						}
 					}
@@ -6091,8 +6091,8 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 					enemy.vulnerable = Math.max(enemy.vulnerable, 1);
 					if (!KinkyDungeonFlags.get("tut_dodge")) {
 						KinkyDungeonSetFlag("tut_dodge", -1);
-						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Dodge"), "#ffffff", 10);
-						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Dodge2"), "#ffffff", 10);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Dodge"), KDTutorialColor, 10);
+						KinkyDungeonSendTextMessage(10, TextGet("KDTut_Dodge2"), KDTutorialColor, 10);
 					}
 					if (dash && !enemy.Enemy.Dash?.noDashOnMiss) {
 						KDDash(enemy, player, AIData.MovableTiles);
@@ -7298,8 +7298,8 @@ function KinkyDungeonEnemyTryAttack (
 
 	if (player?.player && !KinkyDungeonFlags.get("tut_dodge")) {
 		KinkyDungeonSetFlag("tut_dodge", -1);
-		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Dodge"), "#ffffff", 10);
-		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Dodge2"), "#ffffff", 10);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Dodge"), KDTutorialColor, 10);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Dodge2"), KDTutorialColor, 10);
 	}
 
 	enemy.attackPoints += delta * KinkyDungeonMultiplicativeStat(-KinkyDungeonGetBuffedStat(enemy.buffs, "AttackSpeed"));

@@ -261,6 +261,8 @@ let KDTextRed1 = "#110000";
 let KDCurseColor = "#ff55aa";
 let KDGoodColor = "#77ff99";
 
+let KDTutorialColor = "#00ffff";
+
 let kdSpritesDrawn: Map<string, boolean> = new Map();
 
 let kdlightsprites: Map<string, any> = new Map();

@@ -4118,9 +4118,19 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 				}
 			},
-			"Attack": {playertext: "Default", exitDialogue: true},
+			"Attack": {
+
+				clickFunction: () => {
+					KDPlayMusic("black_cat.ogg", undefined, true);
+					return false;
+				},
+				playertext: "Default", exitDialogue: true},
 
 			"PostIntro": {
+				enterFunction: () => {
+					KDPlayMusic("black_cat.ogg", undefined, true);
+					return false;
+				},
 				prerequisiteFunction: (_gagged, _player) => {return false;},
 				playertext: "Default", response: "Default",
 				options: {
@@ -4564,9 +4574,18 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 				}
 			},
-			"Attack": {playertext: "Default", exitDialogue: true},
+			"Attack": {
+				clickFunction: () => {
+					KDPlayMusic("factory_ambient.ogg", undefined, true);
+					return false;
+				},
+				playertext: "Default", exitDialogue: true},
 
 			"PostIntro": {
+				enterFunction: () => {
+					KDPlayMusic("factory_ambient.ogg", undefined, true);
+					return false;
+				},
 				prerequisiteFunction: (_gagged, _player) => {return false;},
 				playertext: "Default", response: "Default",
 				options: {
@@ -4682,8 +4701,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 
 			"Fight": {
 				prerequisiteFunction: (_gagged, _player) => {return false;},
-				clickFunction: () => {
-					KDPlayMusic("slimy_science_1.ogg");
+				enterFunction: () => {
+					KDPlayMusic("slimy_science_1.ogg", undefined, true);
 					return false;
 				},
 				playertext: "Default", response: "Default",
@@ -4731,7 +4750,12 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 				}
 			},
-			"Attack": {playertext: "Default", exitDialogue: true},
+			"Attack": {
+				clickFunction: () => {
+					KDPlayMusic("slimy_science_1.ogg", undefined, true);
+					return false;
+				},
+				playertext: "Default", exitDialogue: true},
 		}
 	},
 	"DollmakerStage2": {

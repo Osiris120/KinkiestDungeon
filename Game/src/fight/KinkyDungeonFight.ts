@@ -111,10 +111,16 @@ let KDSpellTagBinds = {
 };
 
 let KDResistanceProfiles = {
+	// Its rope. what do you expect.
 	rope: KDMapInit(["poisonresist", "fireweakness", "slashweakness", "acidweakness", "chainresist", ]),
+	// Generic resistances for constructs
 	construct: KDMapInit(["soulimmune", "charmimmune", "poisonimmune"]),
-	catgirl: KDMapInit(["acidweakness", "stunweakness", "coldresist", "plushweakness"]),
-	alchemist: KDMapInit(["electricresist", "iceweakness", "glueresist", "acidresist", "gropeweakness"]),
+	// Catgirls dont like water. And are snuggly
+	catgirl: KDMapInit(["acidweakness", "soapweakness", "stunweakness", "coldresist", "plushweakness"]),
+	// Catsuits dont do much for the insulation, but resist chemicals
+	alchemist: KDMapInit(["electricresist", "iceweakness", "glueresist", "acidresist", "soapresist", "gropeweakness"]),
+	// Slimes are weak to concentrated mana
+	slime: KDMapInit(["arcaneweakness"]),
 };
 
 /**

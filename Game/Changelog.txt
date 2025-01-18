@@ -41,7 +41,7 @@ TODO add ability to recolor own restraints via palette
 
 5.4.34
 - Had to make some tweaks to the military uniform, sorry for inconvenience
-
+- Added some additional music for the bosses
 
 5.4.33
 - Added military uniform

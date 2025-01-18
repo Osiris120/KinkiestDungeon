@@ -2255,7 +2255,7 @@ const KinkyDungeonRestraints: restraint[] = [
 
 
 	{alwaysRender: true, inventory: true, name: "DressCorset", debris: "Fabric", linkCategory: "Corset", linkSize: 0.55, inaccessible: true, factionColor: [[0]], OverridePriority: 26, Asset: "HeavyLatexCorset",
-		Model: "LaceCorset",
+		Model: "LaceCorsetRestraint",
 		factionFilters: {
 			Base: {color: "DarkNeutral", override: true},
 			Stripes: {color: "LightNeutral", override: true},

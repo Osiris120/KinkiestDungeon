@@ -2,6 +2,7 @@
 /** Player entity */
 let KinkyDungeonPlayerEntity: any = {id: -1, Enemy: undefined, hp: 10, x: 0, y:0, player:true}; // The current player entity
 
+
 let KDBaseBalanceDmgLevel = 5; // Decides how much heels affect balance loss from attacks. higher = less loss
 let KDShadowThreshold = 1.5;
 
@@ -1574,8 +1575,8 @@ function KinkyDungeonUpdateStats(delta: number): void {
 	if (KDGameData.AncientEnergyLevel > 0.01) {
 		if (!KinkyDungeonFlags.get("tut_charge")) {
 			KinkyDungeonSetFlag("tut_charge", -1);
-			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Charge2"), "#ffffff", 10);
-			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Charge"), "#ffffff", 10);
+			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Charge2"), KDTutorialColor, 10);
+			KinkyDungeonSendTextMessage(10, TextGet("KDTut_Charge"), KDTutorialColor, 10);
 		}
 	}
 

@@ -420,6 +420,7 @@ function KDDoDialogue(data: any) {
 			KDGameData.CurrentDialog = "";
 			KDGameData.CurrentDialogStage = "";
 		} else {
+			let currentStage = KDGameData.CurrentDialogStage;
 			let modded = false;
 			if (dialogue.leadsTo != undefined) {
 				KDGameData.CurrentDialog = dialogue.leadsTo;
@@ -429,6 +430,10 @@ function KDDoDialogue(data: any) {
 			if (dialogue.leadsToStage != undefined) {
 				KDGameData.CurrentDialogStage = dialogue.leadsToStage;
 				modded = true;
+			}
+			let Dialogue2 = KDGetDialogue();
+			if (Dialogue2?.enterFunction) {
+				Dialogue2.enterFunction(gagged, KinkyDungeonPlayerEntity, currentStage);
 			}
 			if (modded && !dialogue.dontTouchText) {
 				dialogue = KDGetDialogue();

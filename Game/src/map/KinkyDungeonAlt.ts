@@ -2305,7 +2305,7 @@ function KinkyDungeonCreateDollmaker(_POI: any, _VisitedRooms: any[], _width: nu
 	// Variable setup
 	KinkyDungeonSetFlag("NoDollRoomBypass", -1, 1);
 
-	KDPlayMusic("UntitledRobot.ogg");
+	KDPlayMusic("UntitledRobot.ogg", undefined, true);
 
 	// Now we STRETCH the map
 	KDMapData.GridWidth = Math.floor(KDMapData.GridWidth*2);
@@ -2942,7 +2942,7 @@ function KinkyDungeonCreateElevatorRoom(_POI: any, VisitedRooms: any[], _width: 
 	});
 	if (!KinkyDungeonFlags.get("tut_elevator")) {
 		KinkyDungeonSetFlag("tut_elevator", -1);
-		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), "#ffffff", 10);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), KDTutorialColor, 10);
 	}
 }
 
@@ -2982,7 +2982,7 @@ function KinkyDungeonCreateElevatorEgyptian(_POI: any, VisitedRooms: any[], _wid
 	});
 	if (!KinkyDungeonFlags.get("tut_elevator")) {
 		KinkyDungeonSetFlag("tut_elevator", -1);
-		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), "#ffffff", 10);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), KDTutorialColor, 10);
 	}
 }
 
@@ -3022,7 +3022,7 @@ function KinkyDungeonCreateElevatorEgyptian2(_POI: any, VisitedRooms: any[], _wi
 	});
 	if (!KinkyDungeonFlags.get("tut_elevator")) {
 		KinkyDungeonSetFlag("tut_elevator", -1);
-		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), "#ffffff", 10);
+		KinkyDungeonSendTextMessage(10, TextGet("KDTut_Elevator"), KDTutorialColor, 10);
 	}
 }
 

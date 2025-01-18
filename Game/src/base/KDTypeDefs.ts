@@ -2391,6 +2391,9 @@ interface KinkyDialogue {
 	inventory?: boolean;
 	/** Function to play when clicked. If not specified, nothing happens.  Bool is whether or not to abort current click*/
 	clickFunction?: (gagged: boolean, player: entity) => boolean | undefined;
+	/** Function to play when entered from a diff stage*/
+	enterFunction?: (gagged: boolean, player: entity, fromstage: string) => void;
+
 	/** Draw function. Fires each frame. Good for highlighting things, drawing extra buttons, etc. Boolean = true will prevent the rest of dialogue from being drawn, use with caution*/
 	drawFunction?: (gagged: boolean, player: entity, delta: number) => boolean;
 	/** Function to play when clicked, if considered gagged. If not specified, will use the default function. */

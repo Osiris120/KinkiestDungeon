@@ -1732,15 +1732,20 @@ function KinkyDungeonRun() {
 
 
 			DrawButtonKDEx("GameContinue", () => {
+				let origSaveSlot = KDSaveSlot;
 				if (!localStorage.getItem('KinkyDungeonSave')) {
 					// Set the save slot - if the player last loaded a save from slot 2, this will continue saving to slot 2.
 					KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 0;
+
 				}
 
 				KDExecuteModsAndStart();
 				// Set the save slot - if the player last loaded a save from slot 2, this will continue saving to slot 2.
 				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 0;
 
+				if (KDSaveSlot != origSaveSlot && KDCurrentModels.get(KDPreviewModel)) {
+					KDCurrentModels.delete(KDPreviewModel);
+				}
 				return true;
 			}, localStorage.getItem('KinkyDungeonSave') != ''
 				|| !!(localStorage.getItem('KDLastSaveSlot') !== null && loadedsaveslots[parseInt(localStorage.getItem('KDLastSaveSlot'))-1]),
@@ -4331,12 +4336,18 @@ function KDDrawLoadMenu() {
 			LoadMenuCurrentSlot = 0;
 			loadedSaveforPreview = null;
 			KDSaveSlot = null;
+			if (KDCurrentModels.get(KDPreviewModel)) {
+				KDCurrentModels.delete(KDPreviewModel);
+			}
 		}, true, CombarXX + 50, YYstart - 5, 150, 45, TextGet("KDLocalSaves"), "#ffffff", undefined, "")
 		DrawButtonKDEx(TextGet("KDCloudSaves"), () => {
 			KDLoadCloudGames = true;
 			LoadMenuCurrentSlot = 0;
 			loadedSaveforPreview = null;
 			KDSaveSlot = null;
+			if (KDCurrentModels.get(KDPreviewModel)) {
+				KDCurrentModels.delete(KDPreviewModel);
+			}
 		}, true, CombarXX + 210, YYstart - 5, 150, 45, TextGet("KDCloudSaves"), "#ffffff", undefined, "")
 	}
 
@@ -4360,7 +4371,11 @@ function KDDrawLoadMenu() {
 
 				KDConfirmDeleteSave = false;
 
+				let origSaveSlot = KDSaveSlot;
 				KDSaveSlot = num;
+				if (KDSaveSlot != origSaveSlot && KDCurrentModels.get(KDPreviewModel)) {
+					KDCurrentModels.delete(KDPreviewModel);
+				}
 
 				return true;
 			}, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
@@ -4447,7 +4462,11 @@ function KDDrawLoadMenu() {
                 }
                 KDConfirmDeleteSave = false;
                 KDConfirmUpload = false;
-                KDSaveSlot = num;
+				let origSaveSlot = KDSaveSlot;
+				KDSaveSlot = num;
+				if (KDSaveSlot != origSaveSlot && KDCurrentModels.get(KDPreviewModel)) {
+					KDCurrentModels.delete(KDPreviewModel);
+				}
                 return true;
             }, true, CombarXX + 160, YY, 240, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
 			// Selected arrow if the currently selected slot matches
@@ -4553,7 +4572,11 @@ function KDDrawLoadMenu() {
 				KinkyDungeonDressModelPreview();
 			}
 
+			let origSaveSlot = KDSaveSlot;
 			KDSaveSlot = 0;
+			if (KDSaveSlot != origSaveSlot && KDCurrentModels.get(KDPreviewModel)) {
+				KDCurrentModels.delete(KDPreviewModel);
+			}
 		}
 		return true;
 	}, true, CombarXX + 220, 880, 180, 64,

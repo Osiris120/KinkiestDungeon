@@ -121,7 +121,7 @@ function KDUpdateMusic() {
 		if (globalVolume > 0 && (!KDCurrentMusicSound || KDCurrentMusicSound.ended || KDCurrentMusicSound.paused || (!KDCurrentSong && KDCurrentFade == 0))) {
 			KDPlayMusic(KDNewSong, globalVolume);
 		}
-		else if (KDCurrentMusicSound && KDCurrentSong && !Object.keys(KDMusic).includes(KDCurrentSong)) {
+		else if (!KDMusicForce && KDCurrentMusicSound && KDCurrentSong && !Object.keys(KDMusic).includes(KDCurrentSong)) {
 			if (!KDCurrentMusicSoundUpdate)
 				KDEndMusic();
 		}
@@ -137,13 +137,15 @@ function KDUpdateMusic() {
 }
 
 let KDMusicBusy = false;
+let KDMusicForce = false;
 
-function KDPlayMusic(Sound: string, Volume?: number) {
+function KDPlayMusic(Sound: string, Volume?: number, force?: boolean) {
 	if (KDMusicBusy) return;
 	if (Volume == undefined) {
 		Volume = KDSoundEnabled() && KDToggles.Music ? KDMusicVolume * KDMusicVolumeMult : 0;
 	}
 	KDMusicBusy = true;
+
 	// Start the new sound
 	let addNewListener = !KDCurrentMusicSound;
 	let audio = KDCurrentMusicSound || new Audio();
@@ -157,6 +159,13 @@ function KDPlayMusic(Sound: string, Volume?: number) {
 		audio.src = "Music/" + (KDModFiles[Sound] || Sound);
 	audio.volume = Math.min(vol, 1);
 	audio.loop = false;
+
+	if (force) {
+		let KDMusic = KinkyDungeonMapParams[KDGetMusicCheckpoint()].music;
+		if (!KDMusic || !KDMusic[Sound]) KDMusicForce = true;
+	}
+
+
 	if (addNewListener)
 		audio.addEventListener('ended', function () {
 			this.currentTime = 0;
@@ -166,6 +175,7 @@ function KDPlayMusic(Sound: string, Volume?: number) {
 			if (KDRandom() < KDMusicLoopTracksChance[KDCurrentSong]) {
 				KDCurrentLoops += 1;
 			} else {
+				KDMusicForce = false;
 				KDCurrentSong = "";
 				KDNewSong = "";
 			}
