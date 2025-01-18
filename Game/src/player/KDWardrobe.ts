@@ -96,7 +96,7 @@ let KDColorSliders: LayerFilter = {
 let KDProps: LayerProperties = {
 };
 let KDColorSliderColor = {
-	red: "#ff5555",
+	red: "#ff5277",
 	green: "#55ff55",
 	blue: "#5555ff",
 };
@@ -906,7 +906,7 @@ function KDDrawPoseButtons(C: Character, X: number = 960, Y: number = 750, allow
 			X + i*buttonSpacing, Y + 120, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseArms[i] + ".png",
-			undefined, false, KDNPCPoses.get(C).CurrentPoseArms != KDWardrobe_PoseArms[i], !AvailableArms.includes(KDWardrobe_PoseArms[i]) ? "#ff5555" : KDButtonColor);
+			undefined, false, KDNPCPoses.get(C).CurrentPoseArms != KDWardrobe_PoseArms[i], !AvailableArms.includes(KDWardrobe_PoseArms[i]) ? "#ff5277" : KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseLegs.length; i++) {
 		DrawButtonKDEx("PoseLegs" + i,
@@ -915,7 +915,7 @@ function KDDrawPoseButtons(C: Character, X: number = 960, Y: number = 750, allow
 			X + xoff + i*buttonSpacing, Y + 180, buttonWidth, buttonWidth,
 			"",
 			"#ffffff", KinkyDungeonRootDirectory + "Poses/"+KDWardrobe_PoseLegs[i] + ".png",
-			undefined, false, KDNPCPoses.get(C).CurrentPoseLegs != KDWardrobe_PoseLegs[i], !AvailableLegs.includes(KDWardrobe_PoseLegs[i]) ? "#ff5555" : KDButtonColor);
+			undefined, false, KDNPCPoses.get(C).CurrentPoseLegs != KDWardrobe_PoseLegs[i], !AvailableLegs.includes(KDWardrobe_PoseLegs[i]) ? "#ff5277" : KDButtonColor);
 	}
 	for (let i = 0; i < KDWardrobe_PoseEyes.length; i++) {
 		DrawButtonKDEx("PoseEyes" + i, buttonClick("", "", KDWardrobe_PoseEyes[i]), true, X + i*buttonSpacing, Y, buttonWidth, buttonWidth,

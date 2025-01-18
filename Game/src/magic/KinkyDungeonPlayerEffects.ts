@@ -89,7 +89,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 						aurasprite: "Null",
 						duration: 9999, infinite: true,});
 
-				KinkyDungeonSendTextMessage(3, TextGet("KDObserverCurseApply").KDReplaceOrAddDmg(dmg.string), "#ff5555", 1);
+				KinkyDungeonSendTextMessage(3, TextGet("KDObserverCurseApply").KDReplaceOrAddDmg(dmg.string), "#ff5277", 1);
 				return {sfx: "Evil", effect: true};
 			}
 		}
@@ -118,7 +118,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		}
 
 		KinkyDungeonSendTextMessage(3, TextGet("KDObserverVanish" + (applied ? "Succeed" : "Fail")).replace("RNAME",
-			TextGet("Restraint" + applied)), "#ff5555", 1);
+			TextGet("Restraint" + applied)), "#ff5277", 1);
 
 		let point = KinkyDungeonGetRandomEnemyPoint(true, false, undefined, 10, 10);
 		if (point) {
@@ -138,7 +138,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 
 			KDAddSpecialStat("Corruption", KDPlayer(), Math.floor(2 + 6 * KDRandom()), false); // Add a significant amount of corruption
 
-			KinkyDungeonSendTextMessage(3, TextGet("KDEpicenterCurseDamage").KDReplaceOrAddDmg(dmg.string), "#ff5555", 2);
+			KinkyDungeonSendTextMessage(3, TextGet("KDEpicenterCurseDamage").KDReplaceOrAddDmg(dmg.string), "#ff5277", 2);
 
 			if (applyCurse) {
 				if (!KinkyDungeonPlayerBuffs.CursingCircle && corruption < 100) {
@@ -190,7 +190,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 					}
 				}
 				if (restrained)
-					KinkyDungeonSendTextMessage(8, TextGet("KDMaidforceHeadBelting"), "#ff5555", 2, false, true);
+					KinkyDungeonSendTextMessage(8, TextGet("KDMaidforceHeadBelting"), "#ff5277", 2, false, true);
 
 				return {sfx: "LockHeavy", effect: restrained};
 			}
@@ -599,7 +599,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 		if (dmg.happened) {
 			KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
-			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonStarBondage").KDReplaceOrAddDmg( dmg.string), "#ff5555", 4);
+			KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonStarBondage").KDReplaceOrAddDmg( dmg.string), "#ff5277", 4);
 		} else return {sfx: "Shield", effect: false};
 
 		return {sfx: "Evil", effect: true};
@@ -624,7 +624,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 	"TauntShame": (_target, damage, playerEffect, spell, _faction, bullet, _entity) => {
 		let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 
-		KinkyDungeonSendTextMessage(7, TextGet("KDTauntPunishment").KDReplaceOrAddDmg( dmg.string), "#ff5555", 1);
+		KinkyDungeonSendTextMessage(7, TextGet("KDTauntPunishment").KDReplaceOrAddDmg( dmg.string), "#ff5277", 1);
 		KDStunTurns(KinkyDungeonFlags.get("sprint") ? 5 : 4);
 		if (!dmg.happened) return{sfx: "Shield", effect: true};
 		//KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Warden");
@@ -636,7 +636,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 			let dmg = KinkyDungeonDealDamage({damage: playerEffect?.power || spell?.power || 1, type: playerEffect?.damage || spell?.damage || damage}, bullet);
 			if (!dmg.happened) return{sfx: "Shield", effect: false};
 
-			KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonMoonBondage").KDReplaceOrAddDmg( dmg.string), "#ff5555", 1);
+			KinkyDungeonSendTextMessage(7, TextGet("KinkyDungeonMoonBondage").KDReplaceOrAddDmg( dmg.string), "#ff5277", 1);
 			KDPlayerEffectRestrain(spell, playerEffect.count, [playerEffect.kind], "Demon");
 		}
 		return {sfx: "Evil", effect: true};
@@ -1328,7 +1328,7 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 				}
 
 				if (effect && transmuteLevel > 0) {
-					KinkyDungeonSendTextMessage(7, TextGet("KDEnchantRope" + transmuteLevel), "#ff5555", 1);
+					KinkyDungeonSendTextMessage(7, TextGet("KDEnchantRope" + transmuteLevel), "#ff5277", 1);
 
 				}
 			}
@@ -2332,18 +2332,18 @@ function KDTripleBuffKill (
 	if (KinkyDungeonPlayerBuffs[buff3.id]) {
 		FinalEffect(Target);
 	} else if (KinkyDungeonPlayerBuffs[buff2.id]) {
-		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "3"), "#ff5555", time + 1);
+		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "3"), "#ff5277", time + 1);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff3);
 		ThirdEffect(Target);
 	}  else if (KinkyDungeonPlayerBuffs[buff1.id]) {
-		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "2"), "#ff5555", time);
+		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "2"), "#ff5277", time);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff2);
 		SecondEffect(Target);
 	} else {
-		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "1"), "#ff5555", time);
+		KinkyDungeonSendTextMessage(10, TextGet("KinkyDungeon" + Name + "1"), "#ff5277", time);
 		KinkyDungeonApplyBuffToEntity(KinkyDungeonPlayerEntity, buff1);
 		FirstEffect(Target);
 	}

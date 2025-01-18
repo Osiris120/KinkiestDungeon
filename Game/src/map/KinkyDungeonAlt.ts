@@ -2660,7 +2660,7 @@ function KinkyDungeonCreateJourneyFloor(_POI: any, VisitedRooms: any[], width: n
 	// Normal end stairs
 	KinkyDungeonMapSet(b1*2 + 2, VisitedRooms[0].y*2, 's');
 	KinkyDungeonMapSet(b1*2 + 2, VisitedRooms[0].y*2 + 1, 'G');
-	KinkyDungeonTilesSet("" + (b1*2 + 2) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart", Skin: "TabletSpent", Journey: undefined});
+	KinkyDungeonTilesSet("" + (b1*2 + 2) + "," + (VisitedRooms[0].y*2), {RoomType: "ShopStart", Skin: "TabletSpent", Journey: ""});
 	KinkyDungeonTilesSet("" + (b1*2 + 2) + "," + (VisitedRooms[0].y*2 + 1), {Type: "Ghost", Msg: "JourneyNone"});
 	KDCreateEffectTile(b1*2 + 2, VisitedRooms[0].y*2, {
 		name: "Portals/Portal",
@@ -2670,7 +2670,7 @@ function KinkyDungeonCreateJourneyFloor(_POI: any, VisitedRooms: any[], width: n
 	// Tutorial end stairs
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, 'H');
 	KinkyDungeonMapSet(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 1, 'G');
-	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 2), {RoomType: "Tutorial", Journey: undefined, Skin: "TabletSpent"});
+	KinkyDungeonTilesSet("" + (VisitedRooms[0].x*2 + 3) + "," + (VisitedRooms[0].y*2 - 2), {RoomType: "Tutorial", Journey: "", Skin: "TabletSpent"});
 	KDCreateEffectTile(VisitedRooms[0].x*2 + 3, VisitedRooms[0].y*2 - 2, {
 		name: "Portals/Portal",
 		duration: 9999, infinite: true,

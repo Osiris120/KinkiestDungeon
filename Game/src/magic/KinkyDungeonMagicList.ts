@@ -2274,7 +2274,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		minRange: 0, sfx: "MagicSlash", school: "Illusion", manacost: 7, components: ["Arms"], projectileTargeting: true, noTargetPlayer: true, CastInWalls: true, level:1, type:"inert", onhit:"aoe", time: 5, delay: 2, power: 12, range: 8, meleeOrigin: true, size: 1, lifetime: 1, damage: "inert", noMiscast: false,
 		spellcast: {spell: "MonolithBeamBeam", target: "target", directional:true, offset: false}, channel: 2},
 	{enemySpell: true, name: "MonolithBeamBeam",
-		trailColor: 0xff5555, trailLight: 3, slowStart: true, color: "#ff5555", noise: 1,
+		trailColor: 0xff5555, trailLight: 3, slowStart: true, color: "#ff5277", noise: 1,
 		sfx: "MagicSlash", school: "Elements", manacost: 0, components: ["Arms"], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 6, delay: 0, range: 8, speed: 50, size: 1, damage: "soul",
 		trailHit: "", trailPower: 0, trailLifetime: 1.1, trailTime: 4, trailDamage:"inert", trail:"lingering", trailChance: 1, playerEffect: {name: "CrystalBind", time: 3}},
 
@@ -2700,7 +2700,7 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 4, delay: 6, power: 5, range: 7, size: 5, aoe: 2.5, lifetime: 1, damage: "crush", playerEffect: {name: "MoonBondage", count: 2, kind: "mithrilRestraints"}},
 	{enemySpell: true, name: "BoundByFate", color: "#dddddd", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
 		manacost: 7, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 4, range: 7, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "BoundByFate", time: 6}},
-	{enemySpell: true, name: "Taunt", color: "#ff5555", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
+	{enemySpell: true, name: "Taunt", color: "#ff5277", minRange: 0, sfx: "MagicSlash", bulletSpin: -0.25,
 		manacost: 6, components: ["Verbal"], level:1, type:"inert", onhit:"aoe", time: 5, delay: 1, power: 5.5, range: 5.5, size: 3, aoe: 1.5, lifetime: 1, damage: "soul", playerEffect: {name: "Taunted", time: 6}},
 
 
@@ -3869,7 +3869,7 @@ let KDSpecialBondage: Record<string, KDBondage> = {
 	},
 	"Null": {
 		priority: 100,
-		color: "#ff5555",
+		color: "#ff5277",
 		struggleRate: 1,
 		powerStruggleBoost: 0.5,
 		healthStruggleBoost: 0.8,
@@ -4159,11 +4159,11 @@ let KDCustomCost: Record<string, (data: any) => void> = {
 	},
 	"LimitSurge": (data) => {
 		data.cost = "50WP";
-		data.color = "#ff5555";
+		data.color = "#ff5277";
 	},
 	"DesperateStruggle": (data) => {
 		data.cost = "20WP";
-		data.color = "#ff5555";
+		data.color = "#ff5277";
 	},
 	"stamina": (data) => {
 		data.cost = Math.round(10 * KinkyDungeonGetStaminaCost(data.spell)) + "SP";

@@ -200,7 +200,7 @@ function KinkyDungeonDrawDoor() {
 			return true;
 		}, true, KDModalArea_x + 450, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonPickDoor"),
 		(KDLocks[KinkyDungeonTargetTile.Lock].pickable)
-			? (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}) ? "#ffffff" : "#ff5555")
+			? (KDLocks[KinkyDungeonTargetTile.Lock].canPick({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}) ? "#ffffff" : "#ff5277")
 			: "#888888", "", "");
 
 		DrawButtonKDEx("ModalDoorUnlock", () => {
@@ -213,7 +213,7 @@ function KinkyDungeonDrawDoor() {
 			return true;
 		}, true, KDModalArea_x + 175, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonUnlockDoor"),
 		(KDLocks[KinkyDungeonTargetTile.Lock].unlockable) ?
-			(KDLocks[KinkyDungeonTargetTile.Lock].canUnlock({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}) ? "#ffffff" : "#ff5555")
+			(KDLocks[KinkyDungeonTargetTile.Lock].canUnlock({target: KinkyDungeonTargetTile, location: KinkyDungeonTargetTileLocation}) ? "#ffffff" : "#ff5277")
 			: "#888888", "", "");
 		let spell = KinkyDungeonFindSpell("CommandWord", true);
 		DrawButtonKDEx("ModalDoorCmd", () => {
@@ -226,7 +226,7 @@ function KinkyDungeonDrawDoor() {
 			return true;
 		}, true, KDModalArea_x + 725, KDModalArea_y + 100, 250, 60, TextGet("KinkyDungeonUnlockDoorPurple"),
 		KDLocks[KinkyDungeonTargetTile.Lock].commandable
-			? ((KinkyDungeonStatMana >= KinkyDungeonGetManaCost(spell)) ? "#ffffff" : "#ff5555")
+			? ((KinkyDungeonStatMana >= KinkyDungeonGetManaCost(spell)) ? "#ffffff" : "#ff5277")
 			: "#888888",
 		"", "");
 

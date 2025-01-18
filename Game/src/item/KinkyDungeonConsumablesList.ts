@@ -121,7 +121,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 				return;
 			}
 		}
-		KinkyDungeonSendTextMessage(10, TextGet("KDNotSnuffable"), "#ff5555", 3);
+		KinkyDungeonSendTextMessage(10, TextGet("KDNotSnuffable"), "#ff5277", 3);
 	},
 	"SackOfSacks": (_Consumable, entity) => {
 		let tiles = KDGetEffectTiles(entity.x, entity.y);
@@ -129,7 +129,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			if (tile?.tags?.includes("unsackable")) {
 				tile.duration = 0;
 				KinkyDungeonAdvanceTime(1);
-				KinkyDungeonSendTextMessage(10, TextGet("KDUnbag"), "#ff5555", 3);
+				KinkyDungeonSendTextMessage(10, TextGet("KDUnbag"), "#ff5277", 3);
 				return;
 			}
 			if (tile?.tags?.includes("sackable")) {
@@ -141,7 +141,7 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 				return;
 			}
 		}
-		KinkyDungeonSendTextMessage(10, TextGet("KDNotBaggable"), "#ff5555", 3);
+		KinkyDungeonSendTextMessage(10, TextGet("KDNotBaggable"), "#ff5277", 3);
 	},
 	"RemoveCurseOrHex": (Consumable, entity) => {
 		if (!entity?.player) return;
@@ -151,9 +151,9 @@ let KDConsumableEffects: Record<string, (Consumable: consumable, entity: entity)
 			KDGameData.UsingConsumable = Consumable.name;
 			KinkyDungeonDrawState = "Inventory";
 			KinkyDungeonCurrentFilter = Restraint;
-			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHex"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHex"), "#ff5277", 1, true);
 		} else {
-			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHexFail"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDRemoveCurseOrHexFail"), "#ff5277", 1, true);
 		}
 	},
 	"subAdd": (Consumable, entity) => {

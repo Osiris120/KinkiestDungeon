@@ -395,7 +395,7 @@ function KDGoThruTile(x: number, y: number, suppressCheckPoint: boolean, force: 
 
 			if (!data.overrideJourney) {
 				let Journey = KinkyDungeonTilesGet(x + "," + y)?.Journey;
-				if (Journey) {
+				if (Journey != undefined) {
 					KDGameData.Journey = Journey;
 					KDInitializeJourney(KDGameData.Journey, MiniGameKinkyDungeonLevel);
 				}

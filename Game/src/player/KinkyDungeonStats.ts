@@ -1675,7 +1675,7 @@ function KinkyDungeonUpdateStats(delta: number): void {
 			id: "NoWP",
 			duration: 1,
 			buffSprite: true,
-			aura: "#ff5555",
+			aura: "#ff5277",
 			aurasprite: "NoWP",
 			type: "EvasionPenalty",
 			power: 1,

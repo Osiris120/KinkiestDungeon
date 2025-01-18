@@ -1170,7 +1170,7 @@ function KDTE_UpdateUI(Load: boolean): void {
 	ElementPosition("MapTileWeight", 1000 + 550, 70, 200);
 
 	if (KDTE_Inaccessible)
-		DrawTextFitKD("Some entrances are inaccessible. This tile will occur more rarely in worldgen", 1000, 800, 1000, "#ff5555");
+		DrawTextFitKD("Some entrances are inaccessible. This tile will occur more rarely in worldgen", 1000, 800, 1000, "#ff5277");
 }
 
 function KDTESetIndexToTile(propTile: string): void {

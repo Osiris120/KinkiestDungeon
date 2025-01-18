@@ -1044,7 +1044,7 @@ function KDDrawWeaponSwap(x: number, y: number): boolean {
 				return true;
 			}, KDGameData.PreviousWeapon != undefined, x + 10 + 0.45*width + (ii*0.35*width), y-0.35*width, 0.35*width, 0.35*width, "", "#ffffff",
 			KinkyDungeonRootDirectory + "Items/" + KDWeapon({name: wep})?.name + ".png",
-			undefined, undefined, KDWeaponSwitchPref != ii, !KinkyDungeonInventoryGet(wep) ? "#ff5555" : undefined, undefined, undefined, {
+			undefined, undefined, KDWeaponSwitchPref != ii, !KinkyDungeonInventoryGet(wep) ? "#ff5277" : undefined, undefined, undefined, {
 				hotkey: KDHotkeyToText(KinkyDungeonKeySwitchWeapon[ii]),
 				scaleImage: true,
 			})) {
@@ -1560,7 +1560,7 @@ function KinkyDungeonActivateWeaponSpell(instant = false) {
 			return true;
 		}
 		if (KinkyDungeonPlayerDamage.special.prereq && KDPrereqs[KinkyDungeonPlayerDamage.special.prereq] && !KDPrereqs[KinkyDungeonPlayerDamage.special.prereq](KinkyDungeonPlayerEntity, undefined, {})) {
-			KinkyDungeonSendActionMessage(8, TextGet("KDPrereqFail" + KinkyDungeonPlayerDamage.special.prereq), "#ff5555", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KDPrereqFail" + KinkyDungeonPlayerDamage.special.prereq), "#ff5277", 1);
 			return true;
 		}
 		if (KinkyDungeonPlayerDamage.special.selfCast) {
@@ -2223,7 +2223,7 @@ function KDDrawMinimap(MinimapX: number, MinimapY: number) {
 			let II = -(escapeText.length - 1);
 			for (let s of escapeText) {
 				DrawTextFitKD(s, kdminimap.x + KDMinimapWCurrent/2, kdminimap.y + KDMinimapHCurrent - 12 + II++ * spacing, 0.75 * KDMinimapWCurrent,
-				escape ? "#88ff88" : "#ff5555", KDTextGray0, 16, "center", zIndex + 1);
+				escape ? "#88ff88" : "#ff5277", KDTextGray0, 16, "center", zIndex + 1);
 			}
 		}
 
@@ -2248,7 +2248,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 			if (PM) {
 				KDDrawEnemySprite(kdstatusboard, PM, PartyX/KinkyDungeonGridSizeDisplay, PartyY/KinkyDungeonGridSizeDisplay, 0, 0, true, zIndex, "PM");
 				KinkyDungeonBarTo(kdstatusboard, PartyX, PartyY,
-					PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, "#88ff88", "#ff5555", undefined, undefined, undefined, undefined, undefined, zIndex + 0.05);
+					PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, "#88ff88", "#ff5277", undefined, undefined, undefined, undefined, undefined, zIndex + 0.05);
 
 				let selected = (PM.buffs?.AllySelect?.duration > 0);
 
@@ -2292,7 +2292,7 @@ function KDDrawPartyMembers(PartyX: number, PartyY: number, tooltips: object[]) 
 						},
 					);
 					KinkyDungeonBarTo(kdstatusboard, PartyX, PartyY,
-						PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, "#88ff88", "#ff5555", undefined, undefined, undefined, undefined, undefined, zIndex + 0.05);
+						PartyDy, 10, PM.visual_hp / PM.Enemy.maxhp * 100, "#88ff88", "#ff5277", undefined, undefined, undefined, undefined, undefined, zIndex + 0.05);
 
 					let selected = (PM.buffs?.AllySelect?.duration > 0);
 
@@ -2354,7 +2354,7 @@ function KDGetStatsWeaponCast() {
 			text: TextGet("KinkyDungeonAccuracy") + Math.round(accuracy * 100) + "%, " + TextGet("KinkyDungeonCrit") + Math.round(crit * 100) + "%, " + TextGet("KinkyDungeonBindCrit") + Math.round(bindcrit * 100) + "%",
 			count: Math.round(accuracy * 100) + "%",
 			icon: "infoAccuracy",//accuracy > weapon.chance * 1.01 ? "infoAccuracyBuff" : (accuracy < weapon.chance * 0.99 ? "infoAccuracyDebuff" : "infoAccuracy"),
-			countcolor: accuracy > weapon.chance * 1.01 ? "#c4efaa" : (accuracy < weapon.chance * 0.99 ? "#ff5555" : "#ffffff"),
+			countcolor: accuracy > weapon.chance * 1.01 ? "#c4efaa" : (accuracy < weapon.chance * 0.99 ? "#ff5277" : "#ffffff"),
 			category: "info", color: "#ffffff", bgcolor: "#000000", priority: 10
 		};
 		//}
@@ -2364,7 +2364,7 @@ function KDGetStatsWeaponCast() {
 		text: TextGet("StatMiscastChance") + Math.round(KinkyDungeonMiscastChance * 100) + "%",
 		count: Math.round(KinkyDungeonMiscastChance * 100) + "%",
 		icon: "infoMiscast",
-		countcolor: KinkyDungeonMiscastChance > 0 ? "#ff5555" : "#ffffff",
+		countcolor: KinkyDungeonMiscastChance > 0 ? "#ff5277" : "#ffffff",
 		category: "info", color: "#ffffff", bgcolor: "#000000", priority: 9
 	};
 	return statsDraw;
@@ -2384,7 +2384,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				text: TextGet("KinkyDungeonAccuracy") + Math.round(accuracy * 100) + "%, " + TextGet("KinkyDungeonCrit") + Math.round(crit * 100) + "%, " + TextGet("KinkyDungeonBindCrit") + Math.round(bindcrit * 100) + "%",
 				count: Math.round(accuracy * 100) + "%",
 				icon: "infoAccuracy",//accuracy > weapon.chance * 1.01 ? "infoAccuracyBuff" : (accuracy < weapon.chance * 0.99 ? "infoAccuracyDebuff" : "infoAccuracy"),
-				countcolor: accuracy > weapon.chance * 1.01 ? "#c4efaa" : (accuracy < weapon.chance * 0.99 ? "#ff5555" : "#ffffff"),
+				countcolor: accuracy > weapon.chance * 1.01 ? "#c4efaa" : (accuracy < weapon.chance * 0.99 ? "#ff5277" : "#ffffff"),
 				category: "info", color: "#ffffff", bgcolor: "#000000", priority: 10
 			};
 			//}
@@ -2396,7 +2396,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 			text: TextGet("StatMiscastChance") + Math.round(KinkyDungeonMiscastChance * 100) + "%",
 			count: Math.round(KinkyDungeonMiscastChance * 100) + "%",
 			icon: "infoMiscast",
-			countcolor: KinkyDungeonMiscastChance > 0 ? "#ff5555" : "#ffffff",
+			countcolor: KinkyDungeonMiscastChance > 0 ? "#ff5277" : "#ffffff",
 			category: "info", color: "#ffffff", bgcolor: "#000000", priority: 9
 		};
 	}
@@ -2416,7 +2416,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				.replace("EVASIONPENALTY", ("") + Math.round(KDPlayerEvasionPenalty() * -100)),
 			count: ("") + Math.round((1 - evasion) * 100) + "%",
 			icon: "infoEvasion",
-			countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5555"),
+			countcolor: evasion < 1 ? "#65d45d" : (evasion == 1 ? "#ffffff" : "#ff5277"),
 			category: "info", color: "#ffffff", bgcolor: "#000000", priority: 8
 		};
 		statsDraw.block = {
@@ -2426,7 +2426,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				.replace("BLOCKPENALTY", ("") + Math.round(KDPlayerBlockPenalty() * -100)),
 			count: ("") + Math.round((1 - block) * 100) + "%",
 			icon: "infoBlock",
-			countcolor: block < 1 ? "#65d45d" : (block == 1 ? "#ffffff" : "#ff5555"),
+			countcolor: block < 1 ? "#65d45d" : (block == 1 ? "#ffffff" : "#ff5277"),
 			category: "info", color: "#ffffff", bgcolor: "#000000", priority: 8
 		};
 		//}
@@ -2477,41 +2477,41 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 
 
 	if (KinkyDungeonIsHandsBound(false, true)) {
-		statsDraw.b_hands = {text: TextGet("KDStatHands"), category: "status", icon: "boundHands", color: "#ff5555", bgcolor: "#333333", priority: 10};
+		statsDraw.b_hands = {text: TextGet("KDStatHands"), category: "status", icon: "boundHands", color: "#ff5277", bgcolor: "#333333", priority: 10};
 	} else {
 		if (KDHandBondageTotal() > 0)
-			statsDraw.b_hands = {text: TextGet("KDStatHandsPartial"), category: "status", icon: "boundHandsPartial", color: "#ff5555", bgcolor: "#333333", priority: 10};
+			statsDraw.b_hands = {text: TextGet("KDStatHandsPartial"), category: "status", icon: "boundHandsPartial", color: "#ff5277", bgcolor: "#333333", priority: 10};
 		else if (KDToggleShowAllBuffs)
 			statsDraw.b_hands = {text: TextGet("KDStatFreeHands"), category: "status", icon: "status/freeHands", color: "#55ff55", bgcolor: "#333333", priority: 10};
 	}
 	if (KinkyDungeonIsArmsBound(false, false)) {
-		statsDraw.b_arms = {text: TextGet("KDStatArms"), category: "status", icon: "boundArms", color: "#ff5555", bgcolor: "#333333", priority: 11};
+		statsDraw.b_arms = {text: TextGet("KDStatArms"), category: "status", icon: "boundArms", color: "#ff5277", bgcolor: "#333333", priority: 11};
 	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_arms = {text: TextGet("KDStatFreeArms"), category: "status", icon: "status/freeArms", color: "#55ff55", bgcolor: "#333333", priority: 11};
 	}
 	let gag = KinkyDungeonGagTotal(false);
 	if (gag >= 0.99) {
-		statsDraw.b_gag = {text: TextGet("KDStatGagFull"), category: "status", icon: "boundGagFull", color: "#ff5555", bgcolor: "#333333", priority: 7};
+		statsDraw.b_gag = {text: TextGet("KDStatGagFull"), category: "status", icon: "boundGagFull", color: "#ff5277", bgcolor: "#333333", priority: 7};
 	} else if (gag > 0) {
-		statsDraw.b_gag = {text: TextGet("KDStatGag"), category: "status", icon: "boundGag", color: "#ff5555", bgcolor: "#333333", priority: 7};
+		statsDraw.b_gag = {text: TextGet("KDStatGag"), category: "status", icon: "boundGag", color: "#ff5277", bgcolor: "#333333", priority: 7};
 	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_gag = {text: TextGet("KDStatFreeMouth"), category: "status", icon: "status/freeMouth", color: "#55ff55", bgcolor: "#333333", priority: 7};
 	}
 	if (KinkyDungeonBlindLevel > 0 || KinkyDungeonStatBlind > 0) {
-		statsDraw.b_blind = {text: TextGet("KDStatBlind"), category: "status", icon: "boundBlind", color: "#ff5555", bgcolor: "#333333", priority: 8};
+		statsDraw.b_blind = {text: TextGet("KDStatBlind"), category: "status", icon: "boundBlind", color: "#ff5277", bgcolor: "#333333", priority: 8};
 	} else if (KDToggleShowAllBuffs) {
 		statsDraw.b_blind = {text: TextGet("KDStatFreeEyes"), category: "status", icon: "status/freeEyes", color: "#55ff55", bgcolor: "#333333", priority: 8};
 	}
 	if (KDGameData.MovePoints < 0) {
-		statsDraw.b_speed = {text: TextGet("KDStatStun"), category: "status", icon: "boundStun", color: "#ff5555", bgcolor: "#333333", priority: 9};
+		statsDraw.b_speed = {text: TextGet("KDStatStun"), category: "status", icon: "boundStun", color: "#ff5277", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel > 9) {
-		statsDraw.b_speed = {text: TextGet("KDStatSpeedImmobile"), category: "status", icon: "boundImmobile", color: "#ff5555", bgcolor: "#333333", priority: 9};
+		statsDraw.b_speed = {text: TextGet("KDStatSpeedImmobile"), category: "status", icon: "boundImmobile", color: "#ff5277", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel > 3) {
-		statsDraw.b_speed = {text: TextGet("KDStatSpeedNoSprint"), category: "status", icon: "boundSlow4", color: "#ff5555", bgcolor: "#333333", priority: 9};
+		statsDraw.b_speed = {text: TextGet("KDStatSpeedNoSprint"), category: "status", icon: "boundSlow4", color: "#ff5277", bgcolor: "#333333", priority: 9};
 	}  else if (KinkyDungeonSlowLevel > 2) {
-		statsDraw.b_speed = {text: TextGet("KDStatSpeedVerySlow"), category: "status", icon: "boundSlow3", color: "#ff5555", bgcolor: "#333333", priority: 9};
+		statsDraw.b_speed = {text: TextGet("KDStatSpeedVerySlow"), category: "status", icon: "boundSlow3", color: "#ff5277", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel == 2) {
-		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlow"), category: "status", icon: "boundSlow2", color: "#ff5555", bgcolor: "#333333", priority: 9};
+		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlow"), category: "status", icon: "boundSlow2", color: "#ff5277", bgcolor: "#333333", priority: 9};
 	} else if (KinkyDungeonSlowLevel > 0) {
 		statsDraw.b_speed = {text: TextGet("KDStatSpeedSlightlySlow"), category: "status", icon: "boundSlow1", color: "#e7cf1a", bgcolor: "#333333", priority: 9};
 	} else if (KDToggleShowAllBuffs) {
@@ -2519,9 +2519,9 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 	}
 
 	if (KDGameData.Restriction) {
-		statsDraw.b_restriction = {text: TextGet("KDStatRestriction"), category: "status", icon: "restriction", color: "#ff5555", bgcolor: "#333333", priority: 9,
+		statsDraw.b_restriction = {text: TextGet("KDStatRestriction"), category: "status", icon: "restriction", color: "#ff5277", bgcolor: "#333333", priority: 9,
 			count: Math.round(KDGameData.Restriction) + "",
-			countcolor: "#ff5555",
+			countcolor: "#ff5277",
 		};
 	}
 
@@ -2576,7 +2576,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 				text: TextGet("KinkyDungeonPlayerVisibility") + Math.round(visibility * 100) + "%",
 				count: Math.round(visibility * 100) + "%",
 				icon: "visibility",
-				countcolor: visibility < 1 ? "#c4efaa" : "#ff5555",
+				countcolor: visibility < 1 ? "#c4efaa" : "#ff5277",
 				category: "info", color: "#ceaaed", bgcolor: KDTextGray0, priority: 2
 			};
 			//DrawTextFitKD(TextGet("KinkyDungeonPlayerVisibility") + Math.round(visibility * 100) + "%", X1, 900 - i * 35, 200, KDTextGray0, "#ceaaed"); i++;
@@ -2715,7 +2715,7 @@ function KDProcessBuffIcons(minXX: number, minYY: number, side: boolean = false)
 						.replace("PERCENT3", Math.round((melee ? meleeResist : magicResist) * 100) + "%")
 						.replace("COUNTPERCENT", (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%"),
 					count: (resist > 1 ? '+' : "") + Math.round(resist * 100 - 100) + "%",
-					countcolor: resist < 1 ? "#c4efaa" : "#ff5555",
+					countcolor: resist < 1 ? "#c4efaa" : "#ff5277",
 					icon: "dmg" + type,
 					category: "resist", color: color, bgcolor: "#333333", priority: resist * 10
 				};
@@ -3168,7 +3168,7 @@ function KDDrawStruggleGroups() {
 									Top: MY - lineSize/2 + O * lineSize + 1 + lineSize - 5,
 									Width: 250 * d.cutProgress,
 									Height: 4,
-									Color: "#ff5555",
+									Color: "#ff5277",
 									zIndex: 162,
 									alpha: 0.7,
 								});
@@ -3378,7 +3378,7 @@ function KDDrawStruggleGroups() {
 						Top: y + 37,
 						Width: 250 * item.cutProgress,
 						Height: 9,
-						Color: "#ff5555",
+						Color: "#ff5277",
 						zIndex: 42,
 						alpha: 0.7,
 					});

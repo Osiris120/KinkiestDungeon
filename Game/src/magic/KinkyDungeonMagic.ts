@@ -2145,7 +2145,7 @@ function KinkyDungeonListSpells(Mode: string): spell {
 					DrawTextFitKD(suff,
 						xx + w - 8,
 						yy + h/2,
-						h, KinkyDungeonSpellPoints >= cost ? color : "#ff5555", undefined, 20, "right", undefined, undefined, undefined);
+						h, KinkyDungeonSpellPoints >= cost ? color : "#ff5277", undefined, 20, "right", undefined, undefined, undefined);
 				} else if (Mode == "Click") {
 					if (MouseIn(xx,
 						yy,

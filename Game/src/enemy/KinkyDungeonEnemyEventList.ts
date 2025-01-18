@@ -1291,17 +1291,30 @@ function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0,
 	if (newRestraint) {
 		if (!atkOnly) {
 			// Attach a leash or collar
+			if (KDEnemyHasFlag(enemy, "applyItem2") || KDEnemyHasFlag(enemy, "applyItem")){
+				if (enemy.targetingX != player.x || enemy.targetingY != player.y) {
+					delete enemy.targetingX;
+					delete enemy.targetingY;
+					KinkyDungeonSetEnemyFlag(enemy, "applyItem", 0);
+					KinkyDungeonSetEnemyFlag(enemy, "applyItem2", 0);
+				}
+			}
+
 			if (!instant && (!KDEnemyHasFlag(enemy, "applyItem"))) {
+				enemy.targetingX = player.x;
+				enemy.targetingY = player.y;
+				KinkyDungeonCreateWarningTile(player.x, player.y, enemy.Enemy.color || "#ff5277",
+					1 + delta, 2
+				);
 				KinkyDungeonSetEnemyFlag(enemy, "applyItem", 2 + delta);
 				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
 					.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
 					.replace("EnemyName", TextGet("Name" + enemy.Enemy.name)),
 				"yellow", 2, true);
 			} else if (!instant && !KDEnemyHasFlag(enemy, "applyItem2")) {
-				if (KinkyDungeonLastAction == "Move") {
-					KinkyDungeonSetEnemyFlag(enemy, "applyItem", 0);
-					KinkyDungeonSetEnemyFlag(enemy, "applyItem2", 0);
-				}
+				KinkyDungeonCreateWarningTile(player.x, player.y, enemy.Enemy.color || "#ff5277",
+					1 + delta,
+				);
 				KinkyDungeonSetEnemyFlag(enemy, "applyItem2", 1 + delta);
 				KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonJailerStartAdding")
 					.replace("RestraintName", TextGet("Restraint" + newRestraint.name))
@@ -1317,7 +1330,7 @@ function KDAttachLeashOrCollar(enemy: entity, player: entity, delta: number = 0,
 			}
 		} else {
 			if (!KDEnemyHasFlag(enemy, "applyItemAtk")) {
-				if (KinkyDungeonFlags.get("playerTouched")) {
+				if (KDEnemyHasFlag(enemy, "touchedPlayer")) {
 					KinkyDungeonAddRestraintIfWeaker(newRestraint, 0, true);
 					KinkyDungeonSetEnemyFlag(enemy, "applyItemAtk", 4);
 					KinkyDungeonSendActionMessage(4, TextGet("KinkyDungeonAddRestraints")

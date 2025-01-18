@@ -7363,7 +7363,7 @@ KDAddCuffVariants(
 	["Metal"],
 	-2,
 	{
-		Color: ["#92e8c0", "#171222", "#ff5555"],
+		Color: ["#92e8c0", "#171222", "#ff5277"],
 		factionFilters: {
 			Band: {color: "Highlight", override: true},
 		},

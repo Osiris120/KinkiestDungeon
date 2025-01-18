@@ -271,7 +271,7 @@ function KinkyDungeonGetPlayerWeaponDamage(HandsFree?: boolean, NoOverride?: boo
 		if (!NoOverride) {
 			if (weapon && KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))
 				KinkyDungeonSendTextMessage(10, TextGet("KDCantWield").replace("WPN", KDGetItemName(KinkyDungeonInventoryGetWeapon(KinkyDungeonPlayerWeapon))),
-					"#ff5555", 1, false, true, undefined, "Action");
+					"#ff5277", 1, false, true, undefined, "Action");
 			KDSetWeapon('Unarmed', true);
 		}
 	} else if (KinkyDungeonPlayerWeapon && weapon) {
@@ -1317,7 +1317,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 				if (!(Enemy.boundLevel > 0)) KDAddThought(Enemy.id, Thought, 6, 3);
 				KDAddThought(Enemy.id, Thought, 6, 3);
 				KinkyDungeonSendEvent("enemyKnockdown", predata);
-				KDDamageQueue.push({floater: TextGet("KDHelpless"), Entity: Enemy, Color: "#ff5555", Time: 2, Delay: Delay});
+				KDDamageQueue.push({floater: TextGet("KDHelpless"), Entity: Enemy, Color: "#ff5277", Time: 2, Delay: Delay});
 			}
 			if (killed)
 				Enemy.hp = 0.001;
@@ -1418,7 +1418,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 		KDAddThought(Enemy.id, "Laugh", 4, 1);
 
 		if (Enemy.playerdmg || KinkyDungeonVisionGet(Enemy.x, Enemy.y)) {
-			KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: Enemy, Color: "#ff5555", Time: 0.5, Delay: Delay});
+			KDDamageQueue.push({floater: TextGet("KDMissed"), Entity: Enemy, Color: "#ff5277", Time: 0.5, Delay: Delay});
 			if (KDRandom() < actionDialogueChanceIntense)
 				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "MissedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
 		}
@@ -1434,7 +1434,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 			KDAddThought(Enemy.id, "Laugh", 5, 3);
 			if (KDRandom() < actionDialogueChanceIntense)
 				KinkyDungeonSendDialogue(Enemy, TextGet("KinkyDungeonRemindJail" + (KDGetEnemyPlayLine(Enemy) ? KDGetEnemyPlayLine(Enemy) : "") + "BlockedMe").replace("EnemyName", TextGet("Name" + Enemy.Enemy.name)), KDGetColor(Enemy), 4, 5, false, true);
-			KDDamageQueue.push({floater: TextGet("KDBlocked"), Entity: Enemy, Color: "#ff5555", Time: 0.5, Delay: Delay});
+			KDDamageQueue.push({floater: TextGet("KDBlocked"), Entity: Enemy, Color: "#ff5277", Time: 0.5, Delay: Delay});
 		}
 
 		let type = KinkyDungeonMeleeDamageTypes.includes(predata.type) ? "Block" : "Resist";
@@ -1508,7 +1508,7 @@ function KinkyDungeonDisarm(Enemy: entity, suff?: string): boolean {
 
 			let dropped = {x:foundslot.x, y:foundslot.y, name: weapon};
 
-			KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, TextGet("KDDisarmed"), "#ff5555", KDToggles.FastFloaters ? 1.5 : 3);
+			KinkyDungeonSendFloater(KinkyDungeonPlayerEntity, TextGet("KDDisarmed"), "#ff5277", KDToggles.FastFloaters ? 1.5 : 3);
 
 			KDSetWeapon('Unarmed', true);
 			KinkyDungeonGetPlayerWeaponDamage(KinkyDungeonCanUseWeapon());
@@ -1958,7 +1958,8 @@ function KinkyDungeonUpdateBulletVisuals(delta: number) {
 
 let KinkyDungeonExtraWarningTiles = [];
 
-function KinkyDungeonCreateWarningTile(x: number, y: number, color: string = "#ffffff", duration: number = 1, delay: number = 0, x_orig?: number, y_orig?: number) {
+function KinkyDungeonCreateWarningTile(x: number, y: number, color: string = "#ffffff",
+		duration: number = 1, delay: number = 0, x_orig?: number, y_orig?: number) {
 	KinkyDungeonExtraWarningTiles.push({
 		duration: duration,
 		delay: delay,
@@ -2873,14 +2874,14 @@ function KinkyDungeonDrawFight(_canvasOffsetX: number, _canvasOffsetY: number, C
 				KDDraw(kdwarningboardOver, kdpixisprites, tx + "," + ty + "_w" + t.color, KinkyDungeonRootDirectory + "WarningColorSpell.png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale, undefined, {
-						tint: string2hex(t.color || "#ff5555"),
+						tint: string2hex(t.color || "#ff5277"),
 						zIndex: -0.1,
 						alpha: 0.5,
 					});
 				KDDraw(kdwarningboard, kdpixisprites, tx + "," + ty + "_w_b" + t.color, KinkyDungeonRootDirectory + "WarningBacking.png",
 					(txvis - CamX+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay, (tyvis - CamY+0.5-0.5*scale)*KinkyDungeonGridSizeDisplay,
 					KinkyDungeonGridSizeDisplay*scale, KinkyDungeonGridSizeDisplay*scale, undefined, {
-						tint: string2hex(t.color || "#ff5555"),
+						tint: string2hex(t.color || "#ff5277"),
 						zIndex: -0.2,
 						alpha: 0.5,
 					});

@@ -8,7 +8,7 @@ const KDFRIENDLY = 35;
 let KDStatRep = ["Ghost", "Prisoner", "Passion", "Frustration"];
 
 let KDRepColor = {
-	Passion: "#ff5555",
+	Passion: "#ff5277",
 	Frustration: "#ff9999",
 };
 let KDRepNameColor = {
@@ -337,7 +337,7 @@ function KinkyDungeonDrawReputation() {
 			if (tooltip) {
 				goddessColor = "#888888";
 				if (KDFactionGoddess[rep] && KDFactionGoddess[rep][tooltip] != 0) {
-					goddessColor = KDFactionGoddess[rep][tooltip] > 0 ? "#ffffff" : (KDFactionGoddess[rep][tooltip] < 0 ? "#ff5555" : "#999999");
+					goddessColor = KDFactionGoddess[rep][tooltip] > 0 ? "#ffffff" : (KDFactionGoddess[rep][tooltip] < 0 ? "#ff5277" : "#999999");
 					if (KDFactionGoddess[rep][tooltip] >= 0.006) goddessSuff = "+++";
 					else if (KDFactionGoddess[rep][tooltip] >= 0.003) goddessSuff = "++";
 					else if (KDFactionGoddess[rep][tooltip] >= 0.00001) goddessSuff = "+";
@@ -352,7 +352,7 @@ function KinkyDungeonDrawReputation() {
 			if (suff) {
 				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + 275 + XX + 240, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
-			// Draw between the % and bar and suffix if debug mode is active. 
+			// Draw between the % and bar and suffix if debug mode is active.
             if (KDDebugMode) {
                 DrawButtonKDEx("minusrep" + rep, (_bdata) => {
                     KinkyDungeonChangeRep(rep, -5)
@@ -571,7 +571,7 @@ function KinkyDungeonDrawFactionRep() {
 			if (suff) {
 				DrawTextFitKD(suff, canvasOffsetX_ui + xOffset + barSpacing + XX + 250, yPad + canvasOffsetY_ui + spacing * i, 100, "white", "black", undefined, "left");
 			}
-			// Draw between the % and bar and suffix if debug mode is active. 
+			// Draw between the % and bar and suffix if debug mode is active.
             if (KDDebugMode) {
                 DrawButtonKDEx("minusfactionrep" + rep, (_bdata) => {
                     KinkyDungeonChangeFactionRep(rep, -0.1)

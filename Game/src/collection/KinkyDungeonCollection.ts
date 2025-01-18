@@ -794,7 +794,7 @@ function KDDrawSelectedCollectionMember(value: KDCollectionEntry, x: number, y: 
 						return true;
 					}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff",
 					KinkyDungeonRootDirectory + `UI/Facility/${value.Facility || KDCurrentFacilityTarget}.png`,
-					undefined, undefined, !valid, (!valid) ? "#ff5555" : undefined)) {
+					undefined, undefined, !valid, (!valid) ? "#ff5277" : undefined)) {
 						DrawTextFitKD(TextGet(`KDCollection${assigned ? "Remove" : "Assign"}`) + TextGet("KDFacility_" + (assigned ? value.Facility : KDCurrentFacilityTarget)),
 							x + 220, y + 750, 500, "#ffffff", KDTextGray0);
 					}
@@ -1379,7 +1379,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Imprison.png",
 		undefined, undefined, entity != undefined,
-			KDNPCUnavailable(value.id, value.status) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+			KDNPCUnavailable(value.id, value.status) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 				centered: true,
 			})) {
 			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, "#ffffff",
@@ -1442,7 +1442,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 		"", "#ffffff", KinkyDungeonRootDirectory + "UI/Imprison.png",
 		undefined, undefined, entity != undefined,
-			KDNPCUnavailable(value.id, value.status) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+			KDNPCUnavailable(value.id, value.status) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 				centered: true,
 			})) {
 			DrawTextFitKD(TextGet("KDImprison"), x + 220, y + 750, 500, "#ffffff",
@@ -1466,7 +1466,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 		"", "#ffffff", KinkyDungeonRootDirectory + "UI/RestrainFree.png",
 		undefined, undefined, false, (!KDIsNPCPersistent(value.id) || KDGetPersistentNPC(value.id).collect) ?
-		KDButtonColor : "#ff5555")) {
+		KDButtonColor : "#ff5277")) {
 			DrawTextFitKD(TextGet("KDFreePrisoner"), x + 220, y + 750, 500, "#ffffff",
 				KDTextGray0);
 		}
@@ -1501,7 +1501,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			}
 			return true;
 		}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80, "", "#ffffff", KinkyDungeonRootDirectory + "UI/Promote.png",
-		undefined, undefined, false, (!KDCanPromote(value) || KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns) ? "#ff5555" : "")) {
+		undefined, undefined, false, (!KDCanPromote(value) || KDGameData.CollectionGuests >= KDCollectionGuestRows*KDCollectionColumns) ? "#ff5277" : "")) {
 			DrawTextFitKD(TextGet(KDCanPromote(value) ? "KDPromoteNPC" :
 			(KDIsInPartyID(value.id) ? "KDPromoteRemoveFromParty" : "KDPromoteNotEnough")
 		), x + 220, y + 750, 500, "#ffffff", KDTextGray0);
@@ -1585,7 +1585,7 @@ let KDCollectionTabDraw: Record<string, KDCollectionTabDrawDef> = {
 			|| !KDIsInSummit()
 			|| KinkyDungeonFindID(value.id)
 		)
-		? "#ff5555" : "")) {
+		? "#ff5277" : "")) {
 			let tt = "KDSummonServant";
 			if (KDNPCUnavailable(value.id, value.status)) tt = "KDSummonServantUnavailable";
 			else if (!KDIsInSummit()) tt = "KDSummonServantSummit";

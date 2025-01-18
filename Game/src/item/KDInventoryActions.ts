@@ -599,7 +599,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");
 
 				if (KDGameData.UsingConsumable) {
-					KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonInventoryItem" + KDGameData.UsingConsumable + "Use"), "#ff5555", 1, true);
+					KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonInventoryItem" + KDGameData.UsingConsumable + "Use"), "#ff5277", 1, true);
 					let con = KinkyDungeonInventoryGetConsumable(KDGameData.UsingConsumable);
 					if (con) {
 						if (con.quantity > 1) con.quantity -= 1;

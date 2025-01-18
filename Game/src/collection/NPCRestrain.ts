@@ -240,7 +240,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 								if (condition) {
 									KinkyDungeonSendTextMessage(8,
 										TextGet("KDBondageCondition_" + condition),
-										"#ff5555", 1, true);
+										"#ff5277", 1, true);
 								} else {
 									KDSendInput("addNPCRestraint", {
 										slot: slot.id,
@@ -267,9 +267,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 								if (condition) {
 									KinkyDungeonSendTextMessage(8,
 										TextGet("KDBondageCondition_" + condition),
-										"#ff5555", 1, true);
+										"#ff5277", 1, true);
 								} else {
-									KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), "#ff5555", 1, true);
+									KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), "#ff5277", 1, true);
 								}
 							}
 
@@ -318,7 +318,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						if (condition) {
 							KinkyDungeonSendTextMessage(8,
 								TextGet("KDBondageCondition_" + condition),
-								"#ff5555", 1, true);
+								"#ff5277", 1, true);
 						} else {
 							KDSendInput("addNPCRestraint", {
 								slot: slot.id,
@@ -339,9 +339,9 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 						if (condition) {
 							KinkyDungeonSendTextMessage(8,
 								TextGet("KDBondageCondition_" + condition),
-								"#ff5555", 1, true);
+								"#ff5277", 1, true);
 						} else {
-							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), "#ff5555", 1, true);
+							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget" + (restraint.quickBindCondition || "")), "#ff5277", 1, true);
 						}
 					}
 
@@ -417,7 +417,7 @@ function KDDrawNPCRestrain(npcID: number, restraints: Record<string, NPCRestrain
 			"", "#ffffff", KinkyDungeonRootDirectory + "UI/Tighten.png",
 			undefined, undefined, false,
 			(!KDIsNPCPersistent(npcID) || KDGetPersistentNPC(npcID).collect) ?
-				KDButtonColor : "#ff5555")) {
+				KDButtonColor : "#ff5277")) {
 					DrawTextFitKD(TextGet("KDTightenRestraint"), x + 0, y + 720, 500, "#ffffff",
 					KDTextGray0, 18, "left");
 
@@ -746,7 +746,7 @@ function KDInputSetNPCRestraint(data, container?: Record<string, item>): boolean
 			if (condition) {
 				KinkyDungeonSendTextMessage(8,
 					TextGet("KDBondageCondition_" + condition),
-					"#ff5555", 1, true);
+					"#ff5277", 1, true);
 				return false;
 			}
 		}
@@ -956,7 +956,7 @@ function KDGetExpectedBondageAmount(id: number, target: entity, allowConjured: b
 				already[item.id] = true;
 				result[stats.type] = (result[stats.type] || 0) + stats.amount;
 			} else if (item) {
-				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5555", 2, true);
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5277", 2, true);
 			}
 		}
 	}
@@ -1013,7 +1013,7 @@ function KDGetNPCEscapableRestraints(id: number, target: entity, bypass: boolean
 					retval.push({slot: entry[0], inv: entry[1], points: strugglePoints[stats.type], target: stats.amount});
 				}
 			} else if (entry[1]) {
-				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5555", 2, true);
+				KinkyDungeonSendTextMessage(12, TextGet("KDErrorMods"), "#ff5277", 2, true);
 			}
 
 		}
@@ -1115,14 +1115,14 @@ function KDCollectionNPCEscapeTicks(ticks: number = 10) {
 					KinkyDungeonSendTextMessage(10, TextGet("KDNPCEscaped").replace(
 						"NPC",
 						value.name
-					), "#ff5555", 1);
+					), "#ff5277", 1);
 				} else {
 					KDSetCollFlag(value.id, "escapegrace", -1);
 					value.escapegrace = true;
 					KinkyDungeonSendTextMessage(10, TextGet("KDNPCEscapeGrace").replace(
 						"NPC",
 						value.name
-					), "#ff5555", 1);
+					), "#ff5277", 1);
 				}
 
 			} else {

@@ -489,7 +489,7 @@ function KDProcessInput(type: string, data: any): string {
 			KDDelayedActionPrune(["Action", "World"]);
 			if (KinkyDungeonGoddessRep[data.type] <= -45) {
 				//Cursed
-				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2);
+				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5277", 2);
 				return "Fail";
 			}
 			tile = KinkyDungeonTilesGet(data.targetTile);
@@ -499,7 +499,7 @@ function KDProcessInput(type: string, data: any): string {
 			let mult = 1;
 			if (tile.mult != undefined) mult = tile.mult;
 			if (tile.Quest) {
-				KinkyDungeonSendActionMessage(9, TextGet("KDNeedQuestFirst"), "#ff5555", 1);
+				KinkyDungeonSendActionMessage(9, TextGet("KDNeedQuestFirst"), "#ff5277", 1);
 
 			} else {
 				if (KinkyDungeonGold >= data.cost * mult) {
@@ -516,9 +516,9 @@ function KDProcessInput(type: string, data: any): string {
 					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				} else {
 					if (KinkyDungeonShrineTypeRemove.includes(type))
-						KinkyDungeonSendActionMessage(9, TextGet("KDNoRestraints"), "#ff5555", 1, true);
+						KinkyDungeonSendActionMessage(9, TextGet("KDNoRestraints"), "#ff5277", 1, true);
 					else
-						KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonPayShrineFail"), "#ff5555", 1, true);
+						KinkyDungeonSendActionMessage(9, TextGet("KinkyDungeonPayShrineFail"), "#ff5277", 1, true);
 					if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Damage.ogg");
 				}
 				KinkyDungeonAdvanceTime(1, true);
@@ -544,7 +544,7 @@ function KDProcessInput(type: string, data: any): string {
 			KDDelayedActionPrune(["Action", "World"]);
 			if (KinkyDungeonGoddessRep[data.type] <= -45 && KDGameData.Champion != data.type) {
 				//Cursed
-				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2, false, false, undefined, "Self");
+				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5277", 2, false, false, undefined, "Self");
 				return "Fail";
 			}
 
@@ -555,7 +555,7 @@ function KDProcessInput(type: string, data: any): string {
 			KDDelayedActionPrune(["Action", "World"]);
 			if (KinkyDungeonGoddessRep[data.type] <= -45) {
 				//Cursed
-				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5555", 2, false, false, undefined, "Self");
+				KinkyDungeonSendActionMessage(10, TextGet("KDCursedGoddess"), "#ff5277", 2, false, false, undefined, "Self");
 				return "Fail";
 			}
 
@@ -584,7 +584,7 @@ function KDProcessInput(type: string, data: any): string {
 		}
 		case "shrineDrink": {
 			if (!KDCanDrinkShrine(false)) {
-				KinkyDungeonSendActionMessage(9, TextGet("KDNoMana"), "#ff5555", 2, true);
+				KinkyDungeonSendActionMessage(9, TextGet("KDNoMana"), "#ff5277", 2, true);
 				break;
 			}
 			KDDelayedActionPrune(["Action", "World"]);
@@ -629,7 +629,7 @@ function KDProcessInput(type: string, data: any): string {
 		}
 		case "shrineBottle": {
 			if (!KDCanDrinkShrine(true)) {
-				KinkyDungeonSendTextMessage(9, TextGet("KDNoMana"), "#ff5555", 2, true);
+				KinkyDungeonSendTextMessage(9, TextGet("KDNoMana"), "#ff5277", 2, true);
 				break;
 			}
 			KDDelayedActionPrune(["Action", "World"]);

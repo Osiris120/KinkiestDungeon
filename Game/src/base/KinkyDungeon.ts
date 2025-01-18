@@ -1248,22 +1248,7 @@ function KinkyDungeonLoad(): void {
 			}
 
 
-			KinkyDungeonSexyMode = localStorage.getItem("KinkyDungeonSexyMode") != undefined ? localStorage.getItem("KinkyDungeonSexyMode") == "True" : true;
-			KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
-			KinkyDungeonSexyPiercing = localStorage.getItem("KinkyDungeonSexyPiercing") != undefined ? localStorage.getItem("KinkyDungeonSexyPiercing") == "True" : false;
-			KinkyDungeonSexyPlug = localStorage.getItem("KinkyDungeonSexyPlug") != undefined ? localStorage.getItem("KinkyDungeonSexyPlug") == "True" : false;
-			KinkyDungeonSexyPlugFront = localStorage.getItem("KinkyDungeonSexyPlugFront") != undefined ? localStorage.getItem("KinkyDungeonSexyPlugFront") == "True" : false;
-			KinkyDungeonProgressionMode = localStorage.getItem("KinkyDungeonProgressionMode") != undefined ? localStorage.getItem("KinkyDungeonProgressionMode") : "Key";
-			KinkyDungeonSaveMode = localStorage.getItem("KinkyDungeonSaveMode") != undefined ? localStorage.getItem("KinkyDungeonSaveMode") == "True" : false;
-			KinkyDungeonHardMode = localStorage.getItem("KinkyDungeonHardMode") != undefined ? localStorage.getItem("KinkyDungeonHardMode") == "True" : false;
-			KinkyDungeonExtremeMode = localStorage.getItem("KinkyDungeonExtremeMode") != undefined ? localStorage.getItem("KinkyDungeonExtremeMode") == "True" : false;
-			KinkyDungeonPerksMode = localStorage.getItem("KinkyDungeonPerksMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerksMode")) || 0 : 0;
-			KinkyDungeonPerkProgressionMode = localStorage.getItem("KinkyDungeonPerkProgressionMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkProgressionMode")) || 0 : 1;
-			KinkyDungeonPerkBondageMode = localStorage.getItem("KinkyDungeonPerkBondageMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkBondageMode")) || 0 : 1;
-			KinkyDungeonPerkBondageVisMode = localStorage.getItem("KinkyDungeonPerkBondageVisMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkBondageVisMode")) || 0 : 2;
-			KinkyDungeonRandomMode = localStorage.getItem("KinkyDungeonRandomMode") != undefined ? localStorage.getItem("KinkyDungeonRandomMode") == "True" : false;
-			KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
-			KinkyDungeonItemMode = localStorage.getItem("KinkyDungeonItemMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonItemMode")) || 0 : 0;
+			KDReloadChallenge();
 
 			KinkyDungeonNewDress = true;
 			KDCurrentOutfit = parseInt(localStorage.getItem("kdcurrentoutfit") || 0);
@@ -1527,8 +1512,13 @@ function KinkyDungeonRun() {
 					Container[1].Mesh.parent.removeChild(Container[1].Container);
 					MC.Containers.delete(Container[0]);
 					KDContainerClear(Container[1]);
-				} else if (refresh && (ent[0] == KinkyDungeonPlayer || ent[0] == KDSpeakerNPC))
-					// We only refresh NPCs that are front and center, for optimization reasons
+				} else if (refresh && (
+					ent[0] == KinkyDungeonPlayer
+					|| ent[0] == KDSpeakerNPC
+					|| ent[0] == KDPreviewModel
+					|| Math.random() < 0.01
+				))
+					// We only always refresh NPCs that are front and center, for optimization reasons
 					MC.Update.delete(Container[0]);
 			}
 
@@ -1743,9 +1733,6 @@ function KinkyDungeonRun() {
 				// Set the save slot - if the player last loaded a save from slot 2, this will continue saving to slot 2.
 				KDSaveSlot = (localStorage.getItem('KDLastSaveSlot') !== null) ? parseInt(localStorage.getItem('KDLastSaveSlot')) : 0;
 
-				if (KDSaveSlot != origSaveSlot && KDCurrentModels.get(KDPreviewModel)) {
-					KDCurrentModels.delete(KDPreviewModel);
-				}
 				return true;
 			}, localStorage.getItem('KinkyDungeonSave') != ''
 				|| !!(localStorage.getItem('KDLastSaveSlot') !== null && loadedsaveslots[parseInt(localStorage.getItem('KDLastSaveSlot'))-1]),
@@ -2466,6 +2453,7 @@ function KinkyDungeonRun() {
 		}, true, 875, 720, 750, 64, TextGet("KinkyDungeonStartGameKinky"), "#ffffff", "");
 		DrawButtonKDEx("startGame", () => {
 			KinkyDungeonState = "Stats";
+			KinkyDungeonLoadStats();
 			KDUpdatePlugSettings(true);
 			return true;
 		}, true, 875, 790, 750, 64, TextGet("KinkyDungeonStartGameAdv"), "#ffffff", "");
@@ -2504,7 +2492,7 @@ function KinkyDungeonRun() {
 			buttonsstart + (buttonspad + buttonswidth) * X, 190 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight, TextGet("KinkyDungeonClassMode" + Object.keys(KDClassStart)[i]),
 				((!KDClassReqs[Object.keys(KDClassStart)[i]]) || KDClassReqs[Object.keys(KDClassStart)[i]]()) ?
 				(KinkyDungeonClassMode == Object.keys(KDClassStart)[i] ? "#ffffff" : "#888888")
-				: "#ff5555", "", undefined, undefined, true, KDButtonColor);
+				: "#ff5277", "", undefined, undefined, true, KDButtonColor);
 			if (MouseIn(buttonsstart + (buttonspad + buttonswidth) * X, 190 + Y*(buttonsheight + buttonsypad), buttonswidth, buttonsheight)) {
 				DrawTextFitKD(TextGet("KinkyDungeonClassModeDesc" + Object.keys(KDClassStart)[i]), 1250, 120, 1000, "#ffffff", KDTextGray0);
 			}
@@ -2603,7 +2591,7 @@ function KinkyDungeonRun() {
 			KinkyDungeonProgressionMode = "Select";
 			localStorage.setItem("KinkyDungeonProgressionMode", "Select");
 			return true;
-		}, KinkyDungeonPerkProgressionMode != 0, 1275, 580, 175, 50, TextGet("KinkyDungeonProgressionMode2"), KinkyDungeonPerkProgressionMode == 0 ? "#ff5555" : (KinkyDungeonProgressionMode == "Select" ? "#ffffff" : "#888888"), "", undefined, undefined, true, KDButtonColor);
+		}, KinkyDungeonPerkProgressionMode != 0, 1275, 580, 175, 50, TextGet("KinkyDungeonProgressionMode2"), KinkyDungeonPerkProgressionMode == 0 ? "#ff5277" : (KinkyDungeonProgressionMode == "Select" ? "#ffffff" : "#888888"), "", undefined, undefined, true, KDButtonColor);
 		if (MouseIn(1275, 580, 175, 50)) {
 			DrawTextFitKD(TextGet("KinkyDungeonProgressionModeDesc2"), 1250, 120, 1000, "#ffffff", KDTextGray0);
 		}
@@ -2664,7 +2652,7 @@ function KinkyDungeonRun() {
 			danger = true;
 			DrawTextFitKD(TextGet("KDWillOverride").replace("NME",
 				loadedsaveNames[KDSaveSlot-1] ? loadedsaveNames[KDSaveSlot-1] : ""
-			), 1550, 385, 440, "#ff5555", undefined, 36, "left");
+			), 1550, 385, 440, "#ff5277", undefined, 36, "left");
 		} else {
 			KDConfirmDeleteSave = false;
 		}
@@ -2685,7 +2673,7 @@ function KinkyDungeonRun() {
 			((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + slt.y,
 			400, 50, (loadedsaveslots[KDSaveSlot-1] ? loadedsaveNames[slot - 1] : "")
 				|| (TextGet("KDEmpty")),
-			(danger && (slot == KDSaveSlot)) ? "#ff5555" : "#ffffff", "", undefined, undefined,
+			(danger && (slot == KDSaveSlot)) ? "#ff5277" : "#ffffff", "", undefined, undefined,
 			true, KDButtonColor);
 		}
 
@@ -2708,7 +2696,7 @@ function KinkyDungeonRun() {
 			return true;
 		}, true, (KDConfirmDeleteSave ? (Math.random() > 0.5 ? -1 : 1) : 0) + 875, KDConfirmDeleteSave ?
 			(Math.random() > 0.5 ? -1 : 1) + 550 : 450, 750, 64, TextGet(KDConfirmDeleteSave ?
-			"KDConfirmREALLY" : "KDConfirm"), KDConfirmDeleteSave ? "#ff5555" : "#ffffff", "");
+			"KDConfirmREALLY" : "KDConfirm"), KDConfirmDeleteSave ? "#ff5277" : "#ffffff", "");
 
 		DrawButtonKDEx("backButton", (_b) => {
 			KinkyDungeonState = "Menu";
@@ -3908,6 +3896,7 @@ function KDSendEvent(_type) {
 
 function KinkyDungeonLoadStats() {
 	KinkyDungeonStatsChoice = new Map();
+	KDReloadChallenge();
 	KDUpdatePlugSettings(false);
 	let statsChoice = localStorage.getItem('KinkyDungeonStatsChoice' + KinkyDungeonPerksConfig);
 	if (statsChoice) {
@@ -3935,7 +3924,7 @@ function KDInitializeJourney(Journey: string, Level: number = 0) {
 
 	let newIndex: string[] = [];
 
-	if (Journey)
+	if (Journey != undefined)
 		KDGameData.Journey = Journey;
 
 	if (KDGameData.Journey == "Random") {
@@ -4336,18 +4325,12 @@ function KDDrawLoadMenu() {
 			LoadMenuCurrentSlot = 0;
 			loadedSaveforPreview = null;
 			KDSaveSlot = null;
-			if (KDCurrentModels.get(KDPreviewModel)) {
-				KDCurrentModels.delete(KDPreviewModel);
-			}
 		}, true, CombarXX + 50, YYstart - 5, 150, 45, TextGet("KDLocalSaves"), "#ffffff", undefined, "")
 		DrawButtonKDEx(TextGet("KDCloudSaves"), () => {
 			KDLoadCloudGames = true;
 			LoadMenuCurrentSlot = 0;
 			loadedSaveforPreview = null;
 			KDSaveSlot = null;
-			if (KDCurrentModels.get(KDPreviewModel)) {
-				KDCurrentModels.delete(KDPreviewModel);
-			}
 		}, true, CombarXX + 210, YYstart - 5, 150, 45, TextGet("KDCloudSaves"), "#ffffff", undefined, "")
 	}
 
@@ -4362,6 +4345,8 @@ function KDDrawLoadMenu() {
 				LoadMenuCurrentSave = loadedsaveslots[num - 1];
 				loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
 
+				let origSaveSlot = KDSaveSlot;
+				KDSaveSlot = num;
 				// @ts-ignore
 				if (!loadedSaveforPreview.invalid) {
 					// Dress the KDPreviewModel
@@ -4371,11 +4356,6 @@ function KDDrawLoadMenu() {
 
 				KDConfirmDeleteSave = false;
 
-				let origSaveSlot = KDSaveSlot;
-				KDSaveSlot = num;
-				if (KDSaveSlot != origSaveSlot && KDCurrentModels.get(KDPreviewModel)) {
-					KDCurrentModels.delete(KDPreviewModel);
-				}
 
 				return true;
 			}, true, CombarXX + 100, YY, 300, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
@@ -4408,7 +4388,7 @@ function KDDrawLoadMenu() {
 						CombarXX + 42,
 						YY + 32,
 						120,
-						"#ff5555",
+						"#ff5277",
 					);
 				}
 			// @ts-ignore
@@ -4454,6 +4434,8 @@ function KDDrawLoadMenu() {
                 LoadMenuCurrentSlot = num;
                 LoadMenuCurrentSave = loadedcloudsaveslots[num - 1];
                 loadedSaveforPreview = KinkyDungeonLoadPreview(LoadMenuCurrentSave);
+				let origSaveSlot = KDSaveSlot;
+				KDSaveSlot = num;
 				// @ts-ignore
                 if (!loadedSaveforPreview.invalid) {
 					// Dress the KDPreviewModel
@@ -4462,11 +4444,6 @@ function KDDrawLoadMenu() {
                 }
                 KDConfirmDeleteSave = false;
                 KDConfirmUpload = false;
-				let origSaveSlot = KDSaveSlot;
-				KDSaveSlot = num;
-				if (KDSaveSlot != origSaveSlot && KDCurrentModels.get(KDPreviewModel)) {
-					KDCurrentModels.delete(KDPreviewModel);
-				}
                 return true;
             }, true, CombarXX + 160, YY, 240, 64, TextGet("KDSaveSlotButton") + i, "#ffffff", "");
 			// Selected arrow if the currently selected slot matches
@@ -4492,7 +4469,7 @@ function KDDrawLoadMenu() {
                     centered: true,
                 });
                 if ((KDDeleteSaveIndex == num && KDConfirmDeleteSave)) {
-                    DrawTextFitKD(TextGet("KDDelete"), CombarXX + 42, YY + 32, 120, "#ff5555");
+                    DrawTextFitKD(TextGet("KDDelete"), CombarXX + 42, YY + 32, 120, "#ff5277");
                 }
                 DrawButtonKDEx("KDUploadSlotButton" + i, (_b) => {
                     if (!KDConfirmUpload || KDUploadSaveIndex != num) {
@@ -4565,6 +4542,8 @@ function KDDrawLoadMenu() {
 		if (loadedSaveforPreview) {
 			LoadMenuCurrentSave = newValue ? newValue : KDSlot0;
 
+			let origSaveSlot = KDSaveSlot;
+			KDSaveSlot = 0;
 			// @ts-ignore
 			if (!loadedSaveforPreview.invalid) {
 				// Dress the KDPreviewModel
@@ -4572,11 +4551,6 @@ function KDDrawLoadMenu() {
 				KinkyDungeonDressModelPreview();
 			}
 
-			let origSaveSlot = KDSaveSlot;
-			KDSaveSlot = 0;
-			if (KDSaveSlot != origSaveSlot && KDCurrentModels.get(KDPreviewModel)) {
-				KDCurrentModels.delete(KDPreviewModel);
-			}
 		}
 		return true;
 	}, true, CombarXX + 220, 880, 180, 64,
@@ -4627,16 +4601,8 @@ function KDDrawLoadMenu() {
 
 		// Player Paper Doll
 		if (ModelPreviewLoaded) {
-			if (!KDCurrentModels.get(KDPreviewModel)) {
+			if (KDCurrentModels.get(KDPreviewModel))
 				DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true);
-
-				KinkyDungeonDressPlayer(KDPreviewModel, false, true, undefined,
-					loadedSaveforPreview.inventoryarray.restraint,
-					KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0,
-						loadedSaveforPreview.inventoryarray.restraint),
-					KDToggles.ForcePalette ? KDDefaultPalette : undefined, true);
-			}
-			DrawCharacter(KDPreviewModel, CombarXX + 530, YYstart + 35, 0.6, undefined, undefined, undefined, undefined, 100, true);
 
 		}
 		// New Game Text
@@ -5176,8 +5142,10 @@ function KDSyncCloudSaveGame() {
 
 function KinkyDungeonDressModelPreview() {
 	return new Promise((res, _rej) => {
-		KDPreviewModel = Object.assign({}, KinkyDungeonPlayer);
+		KDPreviewModel = Object.assign({}, JSON.parse(JSON.stringify(KinkyDungeonPlayer)));
 		KDPreviewModel.ID++;
+		CharacterNaked(KDPreviewModel);
+		KDNaked = true;
 		if (loadedSaveforPreview.saveStat?.appearance) {
 			KDPreviewModel.Appearance = JSON.parse(JSON.stringify(loadedSaveforPreview.saveStat.appearance));
 			if (KDCurrentModels.get(KDPreviewModel))
@@ -5187,12 +5155,14 @@ function KinkyDungeonDressModelPreview() {
 		}
 		//CharacterAppearanceRestore(KDPreviewModel, DecompressB64(localStorage.getItem(`kinkydungeonappearance${KDCurrentOutfit}`)))
 		//setTimeout(() => {
+		DrawCharacter(KDPreviewModel, PIXIWidth, PIXIHeight, 0.1);
 		KDRefreshCharacter.set(KDPreviewModel, true);
 		KinkyDungeonDressPlayer(KDPreviewModel, false, true, undefined,
 			loadedSaveforPreview.inventoryarray.restraint,
 			KinkyDungeonUpdateRestraints(KDPreviewModel, 0, 0,
 				loadedSaveforPreview.inventoryarray.restraint),
 			KDToggles.ForcePalette ? KDDefaultPalette : undefined, true);
+		DrawCharacter(KDPreviewModel, PIXIWidth, PIXIHeight, 0.1);
 		ModelPreviewLoaded = true;
 		res(true);
 		//}, 50);
@@ -6868,4 +6838,24 @@ async function RunGenMapCallback() {
 		(() => {
 			KinkyDungeonState = ff();
 		})();
+}
+
+function KDReloadChallenge() {
+	KinkyDungeonSexyMode = localStorage.getItem("KinkyDungeonSexyMode") != undefined ? localStorage.getItem("KinkyDungeonSexyMode") == "True" : true;
+	KinkyDungeonClassMode = localStorage.getItem("KinkyDungeonClassMode") != undefined ? localStorage.getItem("KinkyDungeonClassMode") : "Mage";
+	KinkyDungeonSexyPiercing = localStorage.getItem("KinkyDungeonSexyPiercing") != undefined ? localStorage.getItem("KinkyDungeonSexyPiercing") == "True" : false;
+	KinkyDungeonSexyPlug = localStorage.getItem("KinkyDungeonSexyPlug") != undefined ? localStorage.getItem("KinkyDungeonSexyPlug") == "True" : false;
+	KinkyDungeonSexyPlugFront = localStorage.getItem("KinkyDungeonSexyPlugFront") != undefined ? localStorage.getItem("KinkyDungeonSexyPlugFront") == "True" : false;
+	KinkyDungeonProgressionMode = localStorage.getItem("KinkyDungeonProgressionMode") != undefined ? localStorage.getItem("KinkyDungeonProgressionMode") : "Key";
+	KinkyDungeonSaveMode = localStorage.getItem("KinkyDungeonSaveMode") != undefined ? localStorage.getItem("KinkyDungeonSaveMode") == "True" : false;
+	KinkyDungeonHardMode = localStorage.getItem("KinkyDungeonHardMode") != undefined ? localStorage.getItem("KinkyDungeonHardMode") == "True" : false;
+	KinkyDungeonExtremeMode = localStorage.getItem("KinkyDungeonExtremeMode") != undefined ? localStorage.getItem("KinkyDungeonExtremeMode") == "True" : false;
+	KinkyDungeonPerksMode = localStorage.getItem("KinkyDungeonPerksMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerksMode")) || 0 : 0;
+	KinkyDungeonPerkProgressionMode = localStorage.getItem("KinkyDungeonPerkProgressionMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkProgressionMode")) || 0 : 1;
+	KinkyDungeonPerkBondageMode = localStorage.getItem("KinkyDungeonPerkBondageMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkBondageMode")) || 0 : 1;
+	KinkyDungeonPerkBondageVisMode = localStorage.getItem("KinkyDungeonPerkBondageVisMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonPerkBondageVisMode")) || 0 : 2;
+	KinkyDungeonRandomMode = localStorage.getItem("KinkyDungeonRandomMode") != undefined ? localStorage.getItem("KinkyDungeonRandomMode") == "True" : false;
+	KinkyDungeonEasyMode = localStorage.getItem("KinkyDungeonEasyMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonEasyMode")) || 0 : 0;
+	KinkyDungeonItemMode = localStorage.getItem("KinkyDungeonItemMode") != undefined ? parseInt(localStorage.getItem("KinkyDungeonItemMode")) || 0 : 0;
+
 }

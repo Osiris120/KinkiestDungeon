@@ -1884,7 +1884,7 @@ function KinkyDungeonDrawEnemiesHP(delta: number, canvasOffsetX: number, canvasO
 						if (!helpless) {
 							if (enemy.hp < enemy.Enemy.maxhp || KDAllied(enemy) || enemy.boundTo || enemy.shield > 0) {
 								// Draw hp bar
-								let fg = enemy.boundTo ? (KDAllied(enemy) ? "#77aaff" : "#dd88ff") : (KDAllied(enemy) ? "#00ff88" : "#ff5555");
+								let fg = enemy.boundTo ? (KDAllied(enemy) ? "#77aaff" : "#dd88ff") : (KDAllied(enemy) ? "#00ff88" : "#ff5277");
 								let bg = KDAllied(enemy) ? "#aa0000" : "#000000";
 								KinkyDungeonBarTo(kdenemystatusboard, canvasOffsetX + (xx - CamX + (enemy.boundTo? 0.1 : 0.05))*KinkyDungeonGridSizeDisplay, canvasOffsetY + (yy - CamY)*KinkyDungeonGridSizeDisplay - 15 - II * spacing,
 									hpbarMult * KinkyDungeonGridSizeDisplay * (enemy.boundTo? 0.8 : 0.9), enemy.boundTo? 7 : 9, enemy.visual_hp / enemy.Enemy.maxhp * 100, fg, bg);
@@ -2224,7 +2224,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		});
 	TooltipList.push({
 		str: TextGet("Name" + enemy.Enemy.name),
-		fg: enemy.Enemy.color || "#ff5555",
+		fg: enemy.Enemy.color || "#ff5277",
 		bg: "#000000",
 		size: 24,
 		center: true,
@@ -2290,7 +2290,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 	if (enemy.boundTo) {
 		TooltipList.push({
 			str: TextGet(enemy.weakBinding ? "KDTooltipWeakBinding" : "KDTooltipNormalBinding"),
-			fg: KDHostile(enemy) ? "#88ff88" : "#ff5555",
+			fg: KDHostile(enemy) ? "#88ff88" : "#ff5277",
 			bg: "#000000",
 			size: 14,
 			center: true,
@@ -2299,7 +2299,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		if (caster || caster?.player)
 			TooltipList.push({
 				str: TextGet("KDTooltipBoundTo").replace("ENEMYNAME", TextGet("Name" + caster.Enemy.name)),
-				fg: KDHostile(enemy) ? "#88ff88" : "#ff5555",
+				fg: KDHostile(enemy) ? "#88ff88" : "#ff5277",
 				bg: "#000000",
 				size: 14,
 				center: true,
@@ -2307,7 +2307,7 @@ function KDDrawEnemyTooltip(enemy: entity, offset: number): number {
 		else
 			TooltipList.push({
 				str: TextGet("KDTooltipDisappearing"),
-				fg: "#ff5555",
+				fg: "#ff5277",
 				bg: "#000000",
 				size: 14,
 				center: true,
@@ -2727,7 +2727,7 @@ function KDDrawEnemyDialogue(enemy: entity, offset: number): number {
 		});
 	TooltipList.push({
 		str: TextGet("Name" + enemy.Enemy.name),
-		fg: enemy.Enemy.color || "#ff5555",
+		fg: enemy.Enemy.color || "#ff5277",
 		bg: "#000000",
 		size: 24,
 		center: true,
@@ -6462,7 +6462,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							willpowerDamage += AIData.power;
 						let buffdmg = KinkyDungeonGetBuffedStat(enemy.buffs, "AttackDmg");
 						if (buffdmg) willpowerDamage = Math.max(0, willpowerDamage + buffdmg);
-						msgColor = "#ff5555";
+						msgColor = "#ff5277";
 						if (enemy.usingSpecial && willpowerDamage > 0 && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Will")) {
 							enemy.specialCD = enemy.Enemy.specialCD;
 						}
@@ -6472,7 +6472,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							staminaDamage += AIData.power;
 						let buffdmg = KinkyDungeonGetBuffedStat(enemy.buffs, "StaminaDmg");
 						if (buffdmg) staminaDamage = Math.max(0, staminaDamage + buffdmg + enemy.Enemy.staminaDamage);
-						msgColor = "#ff5555";
+						msgColor = "#ff5277";
 						if (enemy.usingSpecial && staminaDamage > 0 && enemy.Enemy.specialAttack != undefined && enemy.Enemy.specialAttack.includes("Stamina")) {
 							enemy.specialCD = enemy.Enemy.specialCD;
 						}
@@ -6581,7 +6581,7 @@ function KinkyDungeonEnemyLoop(enemy: entity, player: any, delta: number, vision
 							KinkyDungeonSetFlag("NPCCombat",  3);
 						happened = data.happened;
 						dmgString = dmg.string || TextGet("KDNoDamage");
-						KinkyDungeonSetFlag("playerTouched",  2);
+						KinkyDungeonSetEnemyFlag(enemy, "touchedPlayer", 2);
 						replace.push({keyword:"DamageTaken", value: dmgString});
 					} else { // if (KDRandom() <= playerEvasion)
 						if (AIData.attack.includes("Slow")) {
@@ -8014,7 +8014,7 @@ function KDGetAwareTooltip(enemy: entity): {suff: string, color: string} {
 			};
 			return {
 				suff: "Aware",
-				color: "#ff5555",
+				color: "#ff5277",
 			};
 		} else return {
 			suff:  "AwareFriendly",
@@ -8027,7 +8027,7 @@ function KDGetAwareTooltip(enemy: entity): {suff: string, color: string} {
 	};
 	if (enemy.vp > 2) return {
 		suff: "DangerHigh",
-		color: "#ff5555",
+		color: "#ff5277",
 	};
 	if (enemy.vp > 0.5) return {
 		suff: "Danger",

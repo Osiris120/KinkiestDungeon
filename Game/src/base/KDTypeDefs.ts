@@ -1813,6 +1813,8 @@ interface entity {
 	tempitems?: string[],
 	x: number,
 	y: number,
+	targetingX?: number,
+	targetingY?: number,
 	lastx?: number,
 	lasty?: number,
 	fx?: number,

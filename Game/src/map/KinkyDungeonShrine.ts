@@ -423,7 +423,7 @@ function KinkyDungeonDrawShrine() {
 			DrawButtonKDEx("shrinebuy", (_bdata) => {
 				KDSendInput("shrineBuy", {type: type, shopIndex: KinkyDungeonShopIndex});
 				return true;
-			}, cost <= KinkyDungeonGold, KDModalArea_x + 550, YY + 25, 200, 60, TextGet("KinkyDungeonCommercePurchase").replace("ItemCost", "" + cost*discount), (cost*discount <= KinkyDungeonGold) ? "#ffffff" : "#ff5555", "", "");
+			}, cost <= KinkyDungeonGold, KDModalArea_x + 550, YY + 25, 200, 60, TextGet("KinkyDungeonCommercePurchase").replace("ItemCost", "" + cost*discount), (cost*discount <= KinkyDungeonGold) ? "#ffffff" : "#ff5277", "", "");
 
 			if (KDShopBuyConfirm) {
 				DrawTextFitKD(TextGet("KDShopConfirm"),
@@ -540,7 +540,7 @@ function KinkyDungeonDrawShrine() {
 			return true;
 		}, !KinkyDungeonTargetTile.Rescue, KDModalArea_x, YY + 25 - II*shrineActionSpacing, 325, 60,
 		TextGet("KDShrineActionPray"), KinkyDungeonTargetTile?.Rescue ? KDTextGray2 : "#ffffff", "", "",
-		false, false, rescueAvailable ? KDTextGray2 : "#ff5555"))
+		false, false, rescueAvailable ? KDTextGray2 : "#ff5277"))
 			DrawTextFitKD(TextGet(KinkyDungeonTargetTile?.Rescue ? "KDShrineActionDescPrayFail" : "KDShrineActionDescPray"),
 				KDModalArea_x+400, YY + 55  - II*shrineActionSpacing, 600, "#ffffff", KDTextGray0, 20, "left", 70);
 		II++;

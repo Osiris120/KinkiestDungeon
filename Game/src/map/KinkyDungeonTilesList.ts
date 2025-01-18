@@ -1749,10 +1749,10 @@ let KDStairsAltAction = {
 			KinkyDungeonMapSet(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y, '2');
 			delete KinkyDungeonTilesGet(KinkyDungeonPlayerEntity.x + "," + KinkyDungeonPlayerEntity.y).AltStairAction;
 
-			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleport"), "#ff5555", 5);
+			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleport"), "#ff5277", 5);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
 		} else {
-			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleportFail"), "#ff5555", 5);
+			KinkyDungeonSendTextMessage(10, TextGet("KDRandomStairTeleportFail"), "#ff5277", 5);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Teleport.ogg");
 		}
 	},
@@ -1777,11 +1777,11 @@ function KDAttemptDoor(moveX: number, moveY: number) {
 				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobSuccess" + ((armsbound) ? "" : "Arms")), "#88ff88", 2);
 				open = true;
 			} else if (KDRandom() - grace < (armsbound ? KDDoorAttractChance : KDDoorAttractChanceArms) && DialogueBringNearbyEnemy(moveX, moveY, 10, true)) {
-				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobAttract" + ((armsbound) ? "" : "Arms")), "#ff5555", 2);
+				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobAttract" + ((armsbound) ? "" : "Arms")), "#ff5277", 2);
 				KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
 				open = true;
 			} else {
-				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFail" + (armsbound ? "" : "Arms")), "#ff5555", 2);
+				KinkyDungeonSendActionMessage(10, TextGet("KDDoorknobFail" + (armsbound ? "" : "Arms")), "#ff5277", 2);
 				KinkyDungeonMakeNoise(armsbound ? 6 : 3, moveX, moveY);
 				if (!KinkyDungeonFlags.get("failUnfairFirst")) {
 					KinkyDungeonSetFlag("failUnfair", 5);

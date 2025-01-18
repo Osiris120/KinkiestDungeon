@@ -244,7 +244,7 @@ function KDChillWalk(entity: entity) {
 	return KDEntityHasBuff(entity, "ChillWalk") || KDEntityHasBuff(entity, "ChillWalk2");
 }
 
-let KDRestraintDisarmLight = {id: "RestDisarmLight", aura: "#ff5555", type: "DisarmOnAttack", power: 3, player: false, enemies: true, duration: 9999, infinite: true, events: [
+let KDRestraintDisarmLight = {id: "RestDisarmLight", aura: "#ff5277", type: "DisarmOnAttack", power: 3, player: false, enemies: true, duration: 9999, infinite: true, events: [
 	{type: "RemoveRestraint", trigger: "tick"},
 	{type: "ApplyDisarm", trigger: "playerAttack"},
 ]};

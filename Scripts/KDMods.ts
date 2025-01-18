@@ -144,7 +144,7 @@ function KDDrawMods() {
 			try {
 				name = KDModInfo[keys[i]].modname || name; // if blank, ignore modname
 				if (KDModInfo[keys[i]].gamemajor >= 0 && VersionMajor != KDModInfo[keys[i]].gamemajor) {
-					color = "#ff0000";
+					color = "#ff5277";
 					info = "KDModOutdated2";
 				} else if (KDModInfo[keys[i]].gameminor >= 0 && VersionMinor != KDModInfo[keys[i]].gameminor) {
 					color = "#ff8800";

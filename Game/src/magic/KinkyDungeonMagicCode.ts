@@ -186,10 +186,10 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				return "Cast";
 			}
 
-			KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5555", 2);
+			KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5277", 2);
 			return "Fail";
 		}
-		KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5555", 2);
+		KinkyDungeonSendActionMessage(3, TextGet("KDMoiraiFail"), "#ff5277", 2);
 		return "Fail";
 	},
 	"Charge": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
@@ -254,18 +254,18 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						if (KinkyDungeonNoEnemy(dash_x, dash_y) && KDIsMovable(dash_x, dash_y)) {
 							KDMovePlayer(dash_x, dash_y, true, true);
 						}
-						KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_AttackMiss"), "#ff5555", 1, true);
+						KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_AttackMiss"), "#ff5277", 1, true);
 					}
 					KinkyDungeonPlaySound(KinkyDungeonRootDirectory + "Audio/Miss.ogg");
 					return "Cast";
 				} else {
-					KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoSpace"), "#ff5555", 1, true);
+					KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoSpace"), "#ff5277", 1, true);
 				}
 			} else {
-				KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoStamina"), "#ff5555", 1, true);
+				KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoStamina"), "#ff5277", 1, true);
 			}
 		} else {
-			KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoTarget"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDChargeFail_NoTarget"), "#ff5277", 1, true);
 		}
 		return "Fail";
 	},
@@ -314,7 +314,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						) : undefined);
 					if (!canApply) {
 						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"
-							+ (KinkyDungeonTargetingSpellItem ? (KDRestraint(KinkyDungeonTargetingSpellItem).quickBindCondition || "") : "")), "#ff5555", 1, true);
+							+ (KinkyDungeonTargetingSpellItem ? (KDRestraint(KinkyDungeonTargetingSpellItem).quickBindCondition || "") : "")), "#ff5277", 1, true);
 					}
 
 					if (KinkyDungeonTargetingSpellItem) {
@@ -349,7 +349,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 									if (condition) {
 										KinkyDungeonSendTextMessage(8,
 											TextGet("KDBondageCondition_" + condition),
-											"#ff5555", 1, true);
+											"#ff5277", 1, true);
 
 										KDCurrentRestrainingTarget = en.id;
 										KinkyDungeonDrawState = "Bondage";
@@ -394,7 +394,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							} else {
 								KinkyDungeonSendTextMessage(8,
 									TextGet("KDAlreadyBound"),
-									"#ff5555", 1, true);
+									"#ff5277", 1, true);
 
 								KDCurrentRestrainingTarget = en.id;
 								KinkyDungeonDrawState = "Bondage";
@@ -419,17 +419,17 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 						// Select wrists
 						KDSetBindingSlot(NPCBindingGroups[3].layers[2], NPCBindingGroups[4]);
 
-						KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5555", 1, true);
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageTarget"), "#ff5277", 1, true);
 						return "Fail";
 					}
 
 					//KinkyDungeonCurrentFilter = LooseRestraint;
 				} else {
-					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5555", 1, true);
+					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailInvalidTarget"), "#ff5277", 1, true);
 					return "Fail";
 				}
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailComponents"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailComponents"), "#ff5277", 1, true);
 			return "Fail";
 
 		} else if (en == entity) {
@@ -456,21 +456,21 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 							events: Object.assign([], KinkyDungeonTargetingSpellItem.events)}, undefined, undefined, true)) {
 							return "Cast";
 						} else {
-							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5555", 1, true);
+							KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5277", 1, true);
 						}
 					} else {
-						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailCantAdd"), "#ff5555", 1, true);
+						KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailCantAdd"), "#ff5277", 1, true);
 					}
 
 
 				} else {
-					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5555", 1, true);
+					KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailError"), "#ff5277", 1, true);
 				}
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoSelect"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoSelect"), "#ff5277", 1, true);
 			return "Fail";
 		}
-		KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoTarget"), "#ff5555", 1, true);
+		KinkyDungeonSendTextMessage(8, TextGet("KDBondageFailNoTarget"), "#ff5277", 1, true);
 		return "Fail";
 	},
 	"Pickaxe": (_spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
@@ -506,15 +506,15 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoOpen"), "#ffffff", 1, true);
 				return "Fail";
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoComp"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoComp"), "#ff5277", 1, true);
 			return "Fail";
 		}
-		KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoTarget"), "#ff5555", 1, true);
+		KinkyDungeonSendTextMessage(8, TextGet("KDPickaxeFailNoTarget"), "#ff5277", 1, true);
 		return "Fail";
 	},
 	"CommandWord": (spell, data, targetX, targetY, _tX, _tY, _entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KDSpellIgnoreComp(spell) && (data.gaggedMiscastFlag && KinkyDungeonGagTotal() >= 0.25)) {
-			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_Miscast"), "#ff5555", 1);
+			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_Miscast"), "#ff5277", 1);
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/SoftShield.ogg");
 			return "Miscast";
 		}
@@ -553,7 +553,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 				return "Cast";
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoEnemy"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoEnemy"), "#ff5277", 1, true);
 			return "Fail";
 		} else if (targetX == KinkyDungeonPlayerEntity.x && targetY == KinkyDungeonPlayerEntity.y) {
 			if (KinkyDungeonPlayerGetRestraintsWithLocks(KDMagicLocks).length > 0) {
@@ -572,7 +572,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				}
 				return "Cast";
 			}
-			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoLocks"), "#ff5555", 1, true);
+			KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoLocks"), "#ff5277", 1, true);
 			return "Fail";
 		} else if (KinkyDungeonTilesGet(targetX + "," + targetY) && KinkyDungeonTilesGet(targetX + "," + targetY).Type == "Charger" && KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove) {
 			KinkyDungeonTilesGet(targetX + "," + targetY).NoRemove = false;
@@ -581,7 +581,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 			if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Magic.ogg");
 			return "Cast";
 		}
-		KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoTarget"), "#ff5555", 1, true);
+		KinkyDungeonSendTextMessage(8, TextGet("KDCommandWordFail_NoTarget"), "#ff5277", 1, true);
 		return "Fail";
 	},
 	"Windup": (spell, _data, _targetX, _targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
@@ -660,7 +660,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				KinkyDungeonSetEnemyFlag(entity, "commandword", entity.Enemy.unlockCommandCD || 90);
 				KinkyDungeonSendActionMessage(7,
 					TextGet("KDCastCM1").replace("EnemyName", TextGet("Name" + entity.Enemy.name)).replace("TargetName", TextGet("Name" + en.Enemy.name)),
-					"#ff5555", 4);
+					"#ff5277", 4);
 			}
 			return "Cast";
 		}
@@ -959,7 +959,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	},
 	"ElasticGrip": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false)) {
-			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5277", 1);
 			return "Fail";
 		}
 		let en = KinkyDungeonEntityAt(targetX, targetY);
@@ -1012,7 +1012,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 	},
 	"RecoverObject": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!spell.aoe && !KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false)) {
-			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailObstacle"+spell.name), "#ff5555", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailObstacle"+spell.name), "#ff5277", 1);
 			return "Fail";
 		}
 		let tilesToCheck = [{x:targetX, y:targetY}];
@@ -1082,13 +1082,13 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 				found = true;
 			}
 		}
-		if (locked) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailLock"+spell.name), "#ff5555", 1);
+		if (locked) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFailLock"+spell.name), "#ff5277", 1);
 		if (grabbed) {
 			if (_miscast) return "Miscast";
 			KinkyDungeonSendActionMessage(3, TextGet("KinkyDungeonSpellCast"+spell.name), "#88AAFF", 2 + (spell.channel ? spell.channel - 1 : 0));
 			KDChangeMana(spell.name, "spell", "cast", -KinkyDungeonGetManaCost(spell) * (chest ? 1.0 : 0.25));
 			return "Cast";
-		} else if (!found) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
+		} else if (!found) KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5277", 1);
 		return "Fail";
 	},
 	"Aim_MaidKnightLight": (spell, data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
@@ -1209,7 +1209,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 	"Swap": (spell, _data, targetX, targetY, tX, tY, entity, _enemy, _moveDirection, _bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (!KinkyDungeonCheckPath(entity.x, entity.y, tX, tY, true, false, 1, true)) {
-			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5555", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KinkyDungeonSpellCastFail"+spell.name), "#ff5277", 1);
 			return "Fail";
 		}
 		let en = KinkyDungeonEntityAt(targetX, targetY);
@@ -1266,7 +1266,7 @@ let KinkyDungeonSpellSpecials: Record<string, KDSpellSpecialCode> = {
 
 	"UniversalSolvent": (spell, _data, targetX, targetY, _tX, _tY, entity, _enemy, _moveDirection, bullet, _miscast, _faction, _cast, _selfCast) => {
 		if (KDistChebyshev(entity.x - targetX, entity.y - targetY) && KinkyDungeonIsArmsBound(true, true)) {
-			KinkyDungeonSendActionMessage(8, TextGet("KDUniversalSolventFail"), "#ff5555", 1);
+			KinkyDungeonSendActionMessage(8, TextGet("KDUniversalSolventFail"), "#ff5277", 1);
 			return "Fail";
 		}
 		let en = KinkyDungeonEntityAt(targetX, targetY);

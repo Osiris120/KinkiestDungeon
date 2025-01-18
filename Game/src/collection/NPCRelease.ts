@@ -18,7 +18,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/Release.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[0]),
 		hotkeyPress: KinkyDungeonKeyUpcast[0],
 	})) {
@@ -53,7 +53,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/Ransom.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(ransomValue == 0 || Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(ransomValue == 0 || Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 		hotkey: KDHotkeyToText(KinkyDungeonKeyUpcast[1]),
 		hotkeyPress: KinkyDungeonKeyUpcast[1],
 	})) {
@@ -74,7 +74,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/UnmarkAll.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == 0,
-	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(Object.keys(KDCollectionReleaseSelection).length == 0) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 
 	})) {
 		tooltip = true;
@@ -97,7 +97,7 @@ KDCollectionTabDraw.Release = (value, buttonSpacing, III, x, y) => {
 	}, true, x + 10 + buttonSpacing*III++, y + 730 - 10 - 80, 80, 80,
 	"", "#ffffff", KinkyDungeonRootDirectory + "UI/Buttons/MarkAll.png",
 	undefined, undefined, Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length,
-	(Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length) ? "#ff5555" : KDButtonColor, undefined, undefined, {
+	(Object.keys(KDCollectionReleaseSelection).length == KDDrawnCollectionInventory.length) ? "#ff5277" : KDButtonColor, undefined, undefined, {
 
 	})) {
 		tooltip = true;

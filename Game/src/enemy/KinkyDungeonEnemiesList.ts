@@ -1683,7 +1683,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness"]),
 		AI: "hunt", difficulty: 0.2,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5555"},
+			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5277"},
 		],
 		spells: ["EncaseBolt"], spellCooldownMult: 1, spellCooldownMod: 0, projectileTargeting: true,
 		cueSfx: {
@@ -1718,7 +1718,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness"]),
 		AI: "hunt", difficulty: 0.2,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5555"},
+			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5277"},
 		],
 		maxblock: 0,
 		maxdodge: 0,
@@ -1754,7 +1754,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			"electricsevereweakness", "coldresist", "iceresist", "slashresist", "crushsevereweakness", "pierceweakness"]),
 		AI: "hunt", difficulty: 0.25,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5555"},
+			{trigger: "getLights", type: "enemyTorch", power: 4.5, color: "#ff5277"},
 		],
 		effect: {
 			effect: {name: "LatexSpray", count: 1, time: 4, power: 2, mult: 2, damage: "glue"},
@@ -3756,7 +3756,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			{enemy: "DragonShadow", range: 3, count: 1, chance: 0.25, strict: true},],
 		specialCD: 5, specialAttack: "Dash", specialRemove: "BindLockWill", specialCDonAttack: true, specialAttackPoints: 1, specialRange: 3, specialMinRange: 1.5, specialsfx: "Miss",
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ff5555"},
+			{trigger: "getLights", type: "enemyTorch", power: 3, color: "#ff5277"},
 		],
 		stamina: 8,
 		sprintspeed: 1.25,
@@ -4452,7 +4452,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		tags: KDMapInit(["opendoors", "chaos", "observer", "demon", "holyweakness", "obsAttract", "melee", "miniboss", "obsidianRestraints", "electricresist", "fireresist", "coldresist", "soulweakness", "charmweakness"]),
 		armor: 2, spellResist: 2, followRange: 0, AI: "hunt", disarm: 0.33,
 		events: [
-			{trigger: "getLights", type: "enemyTorch", power: 4, color: "#ff5555"},
+			{trigger: "getLights", type: "enemyTorch", power: 4, color: "#ff5277"},
 		],
 		effect: {
 			effect: {name: "TheShadowCurse", power: 4, count: 1},
@@ -5732,7 +5732,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {}, floors:KDMapInit([]), dropTable: [{name: "BlueKey", weight: 10}], ondeath: [{type: "dialogue", dialogue:"FuukaWin", click: true}]},
 
 
-	{name: "FuukaPillar", faction: "Natural", color: "#ff5555",
+	{name: "FuukaPillar", faction: "Natural", color: "#ff5277",
 		lowpriority: true,
 		nonDirectional: true, noFlip: true,
 		Sound: {
@@ -5797,7 +5797,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		terrainTags: {}, shrines: [], floors:KDMapInit([]),
 		dropTable: [{name: "PotionStamina", weight: 100, amount: 3}]},
 
-	{name: "WardenFighter", nameList: "dragonheart", outfit: "AdventurerDom", style: "BlackCatGirl", bound: "WardenFighter", color: "#ff5555",
+	{name: "WardenFighter", nameList: "dragonheart", outfit: "AdventurerDom", style: "BlackCatGirl", bound: "WardenFighter", color: "#ff5277",
 		playLine: "Adventurer_Switch_Fighter",
 		armor: 1,
 		Resistance: {
