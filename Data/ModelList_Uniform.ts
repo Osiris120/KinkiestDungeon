@@ -369,6 +369,7 @@ AddModel({
 			//AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
+			HidePoses: {"SkimpyLower": true},
 		},
 		{ Name: "SkirtBand", Layer: "Skirt", Pri: -3.9,
 			//swaplayerpose: {Kneel: "SkirtOverLower", KneelClosed: "SkirtOverLower"},

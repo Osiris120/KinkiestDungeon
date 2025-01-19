@@ -17,7 +17,7 @@ AddModel({
 		{ Name: "Dress", Layer: "Shirt", Pri: 5,
 			InheritColor: "Dress",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
-			HidePoses: ToMap(["EncaseTorsoUpper"]),
+			HidePoses: ToMap(["EncaseTorsoUpper", "SkimpyUpper"]),
 			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			DisplaceAmount: 125,
 			DisplaceLayers: ToMap(["CorsetTorso"]),

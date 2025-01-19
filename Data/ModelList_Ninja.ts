@@ -211,6 +211,7 @@ AddModel({
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
+			HidePoses: {"SkimpyLower": true},
 		},
 		{ Name: "SkirtBand", Layer: "Skirt", Pri: 15.1,
 			TieToLayer: "Skirt",

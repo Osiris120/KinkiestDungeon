@@ -201,9 +201,12 @@ function KDProcessInput(type: string, data: any): string {
 					if (!currentItem) equipped = false;
 					else {
 						if (KDDebugLink) {
-							linkable = KDCanAddRestraint(KDRestraint(newItem), true, "", false, currentItem, true, true);
+							linkable = KDCanAddRestraint(KDRestraint(newItem),
+							true, "", false, currentItem, true, true);
 						} else {
-							linkable = KDCanAddRestraint(KDRestraint(newItem), false, "", false, currentItem, true, true);
+							linkable = KDCanAddRestraint(KDRestraint(newItem),
+							false, "", false, currentItem, true,
+							true);
 							//KDCurrentItemLinkable(currentItem, newItem);
 						}
 						if (linkable) {

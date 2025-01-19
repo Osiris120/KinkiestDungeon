@@ -3705,7 +3705,7 @@ function KDCanAddRestraint (
 	if (!r) r = KinkyDungeonGetRestraintItem(restraint.Group);
 	// NoLink here because we do it later with augment
 	let power = (KinkyDungeonRestraintPower(r, true, restraint, Lock, curse) * (r && useAugmentedPower ? Math.max(0.9, KDRestraintPowerMult(KinkyDungeonPlayerEntity, KDRestraint(r), augmentedInventory)) : 1));
-	let linkUnder = KDGetLinkUnder(r, restraint, Bypass, NoStack, Deep, securityEnemy, Lock, curse, powerBonus, true);
+	let linkUnder = KDGetLinkUnder(r, restraint, Bypass, NoStack, Deep, securityEnemy, Lock, curse, powerBonus, !noOverpower);
 
 	let linkableCurrent = r && KDRestraint(r) && KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
 
@@ -3973,7 +3973,8 @@ function KDLinkUnder (
 	_reserved?:      boolean,
 	inventoryAs?:    string,
 	data?:           Record<string, any>,
-	powerBonus:      number = 0
+	powerBonus:      number = 0,
+	noOverpower: boolean = false,
 ): number
 {
 	KDRestraintDebugLog.push("LKUndering " + restraint.name);
@@ -4029,7 +4030,7 @@ function KDLinkUnder (
 
 
 	let linkUnder = null;
-	linkUnder = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy, Lock, Curse, powerBonus, true);
+	linkUnder = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy, Lock, Curse, powerBonus, !noOverpower);
 	let linkableCurrent = r
 		&& KDRestraint(r)
 		&& KinkyDungeonLinkableAndStricter(KDRestraint(r), restraint, r);
@@ -4040,7 +4041,7 @@ function KDLinkUnder (
 		// Insert the item underneath
 		ret = Math.max(1, Tightness);
 		KDRestraintDebugLog.push("Linking " + restraint.name  + " under " + linkUnder.name);
-		let safeLink = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy);
+		let safeLink = KDGetLinkUnder(r, restraint, Bypass, undefined, Deep, securityEnemy, undefined, undefined, undefined);
 		linkUnder.dynamicLink = {name: restraint.name, id: KinkyDungeonGetItemID(), type: Restraint, events:events ? events : KDGetEventsForRestraint(inventoryAs || restraint.name),
 			data: data,
 			tightness: Tightness, curse: Curse, faction: faction, dynamicLink: linkUnder.dynamicLink };
