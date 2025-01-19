@@ -190,7 +190,9 @@
             <key type="filename">../Models/ArmorChain/Panties.png</key>
             <key type="filename">../Models/ArmorChain/PantiesChain.png</key>
             <key type="filename">../Models/ArmorChain/PantiesChainClosed.png</key>
+            <key type="filename">../Models/ArmorChain/PantiesChainKneel.png</key>
             <key type="filename">../Models/ArmorChain/PantiesClosed.png</key>
+            <key type="filename">../Models/ArmorChain/PantiesKneel.png</key>
             <key type="filename">../Models/ArmorChain/Shirt.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChest.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChestFree.png</key>
@@ -1622,8 +1624,11 @@
             <key type="filename">../Models/Hair/TwintailLeft.png</key>
             <key type="filename">../Models/Hair/TwintailRight.png</key>
             <key type="filename">../Models/Hair2/BlondeBack.png</key>
+            <key type="filename">../Models/Hair2/BlondeBackM.png</key>
             <key type="filename">../Models/Hair2/BlondeBangs.png</key>
+            <key type="filename">../Models/Hair2/BlondeBangsM.png</key>
             <key type="filename">../Models/Hair2/BlondeFront.png</key>
+            <key type="filename">../Models/Hair2/BlondeFrontM.png</key>
             <key type="filename">../Models/Hair2/Hair2_Front.png</key>
             <key type="filename">../Models/Hair2/Hair2_FrontB.png</key>
             <key type="filename">../Models/Hair2/Hair2_FrontC.png</key>
