@@ -7,8 +7,17 @@
  */
 let KDHexVariantList = {
 	"Base": [
+		"Mimic",
 		"Common",
+		"MimicHoly",
 	],
+	"BaseWithSkimpy": [
+		"Mimic",
+		"Common",
+		"MimicHoly",
+		"Skimpy",
+	],
+
 	"Common": [
 		"Tickle",
 		"Punish",

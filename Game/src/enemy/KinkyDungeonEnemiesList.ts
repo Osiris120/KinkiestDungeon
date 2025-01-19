@@ -6260,7 +6260,7 @@ let KDSpecialBuffs: Record<string, KDSpecialEnemyBuff> = {
 				id: "EnergyShield2",
 				duration: 9999, infinite: true,
 				power: 0.5,
-				type: "ShieldRegen",
+				type: "ShieldRegenBG",
 			});
 		},
 	},

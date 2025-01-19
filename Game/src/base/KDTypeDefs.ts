@@ -632,6 +632,8 @@ interface floorParams {
 	beforeWorldGenCode?: (coord: WorldCoord) => void;
 	tagModifiers?: Record<string, number>;
 	globalTags?: Record<string, boolean>;
+	/** Tags for cursed mimic restraints */
+	curseTags: string[],
 	shadowColor?: number,
 	lightColor?: number,
 	background : string,
@@ -1567,6 +1569,7 @@ interface KinkyDungeonEvent {
 	requireFlag?: string;
 	trigger: string;
 	threshold?: number,
+	removeOnUncurse?: boolean,
 	restraint?: string;
 	sfx?: string;
 	vol?: number;
@@ -1689,6 +1692,14 @@ interface entity {
 	strugglePoints?: number,
 
 	partyLeader?: number,
+
+	/** BindStun is a mechanic that reduces the struggle rate based on how much bondage is added
+	 * Each turn it is reduced by 10% of enemy current hp, 10% of bindStun, or 2.5% of max hp, whichever is more
+	 * The amount is always set to the maximum of current bindStun or the amount of binding taken, or half damage taken
+	 *
+	 * BIG hits increase bindstun by a lot
+	 */
+	bindStun?: number,
 
 	/** Optional leash data, used for both NPC and player */
 	leash?: KDLeashData,
@@ -3307,6 +3318,9 @@ interface KDCursedVar {
 interface KDDelayedAction {
 	data: any,
 	time: number,
+	/** Tick of the action */
+	tick: number,
+	maxtime: number,
 	commit: string,
 	update?: string,
 	/** Cancel this in certain cases */

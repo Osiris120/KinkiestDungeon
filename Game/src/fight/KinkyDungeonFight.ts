@@ -1116,6 +1116,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 			}
 
 			if (Enemy.shield > 0 && predata.dmgDealt > 0) {
+				KinkyDungeonSetEnemyFlag(Enemy, "tookShieldDmg", KDEnemyShieldRegenStopTime(Enemy));
 				let orig = predata.dmgDealt;
 				Enemy.shield -= predata.dmgDealt;
 				if (Enemy.shield <= 0) {
@@ -1132,6 +1133,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 			}
 			if (predata.dmgDealt > 0) {
 				Enemy.hp -= predata.dmgDealt;
+				KDApplyBindStun(Enemy, 0.5*predata.dmgDealt);
 			}
 			if (Enemy.hp > 0 && Enemy.hp <= 0.51 && predata.dmgDealt > 0.51 && !forceKill && KDBoundEffects(Enemy) < 4) {
 				Enemy.hp = 0;
@@ -3375,4 +3377,8 @@ function KDBindEnemyWithTags(id: number, tags: string[],
 function KDWeaponStamPenType(weapon: weapon): string {
 	if (weapon.stamPenType != undefined) return weapon.stamPenType;
 	return "Weapon";
+}
+
+function KDEnemyShieldRegenStopTime(enemy: entity) {
+	return 3;
 }

@@ -330,32 +330,45 @@ function KinkyDungeonAttemptConsumable(Name: any, Quantity: number): boolean {
 		if (KDConsumablePrereq[KDConsumable(item.item).postreq](item.item, Quantity)) {
 			KDDelayedActionPrune(["Action", "Consume"]);
 			if (KDConsumable(item.item).delay || (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste"))) {
-				KDAddDelayedAction({
-					commit: "Consumable",
-					data: {
-						Name: Name,
-						Quantity: Quantity,
-					},
-					time: KDConsumable(item.item).delay || 2,
-					tags: ["Action", "Remove", "Restrain"],
-				});
-				KDStunTurns(KDConsumable(item.item).delay || 2, true);
+				let maxtime = KDConsumable(item.item).delay || 2;
+				for (let i = 1; i <= maxtime; i++)
+					KDAddDelayedAction({
+						commit: i == maxtime ? "Consumable" : undefined,
+						update: i < maxtime ? "Consumable" : undefined,
+						data: {
+							Name: Name,
+							Quantity: Quantity,
+						},
+						time: i,
+						tick: i - 1,
+						maxtime: maxtime,
+						tags: ["Action", "Remove", "Restrain"],
+					});
+				KDDelayedActionStart();
+				//KDStunTurns(KDConsumable(item.item).delay || 2, true);
 			} else KinkyDungeonUseConsumable(Name, Quantity);
 			return true;
 		} else return false;
 	}
 	KDDelayedActionPrune(["Action", "Consume"]);
 	if (KDConsumable(item.item).delay || (KDConsumable(item.item).potion && KinkyDungeonStatsChoice.has("SavourTheTaste"))) {
-		KDAddDelayedAction({
-			commit: "Consumable",
-			data: {
-				Name: Name,
-				Quantity: Quantity,
-			},
-			time: KDConsumable(item.item).delay || 2,
-			tags: ["Action", "Remove", "Restrain"],
-		});
-		KDStunTurns(KDConsumable(item.item).delay || 2, true);
+		let maxtime = KDConsumable(item.item).delay || 2;
+		for (let i = 1; i <= maxtime; i++)
+			KDAddDelayedAction({
+				commit: i == maxtime ? "Consumable" : undefined,
+				update: i < maxtime ? "Consumable" : undefined,
+				data: {
+					Name: Name,
+					Quantity: Quantity,
+				},
+				time: i,
+				tick: i - 1,
+				maxtime: maxtime,
+				tags: ["Action", "Remove", "Restrain"],
+			});
+
+		KDDelayedActionStart();
+		//KDStunTurns(KDConsumable(item.item).delay || 2, true);
 	} else KinkyDungeonUseConsumable(Name, Quantity);
 	return true;
 }

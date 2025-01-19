@@ -572,24 +572,21 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				for (let e of KDGetRemovableHex(item, KDGameData.CurseLevel)) {
 					removeHexes[e.original] = true;
 				}
-				let newEvents = [];
+				let newEvents: KinkyDungeonEvent[] = [];
 				for (let event of item.events) {
 					if (!event.original || !removeHexes[event.original]) newEvents.push(event);
 				}
 				item.events = newEvents;
-				let transform = false;
+				//let transform = false;
+				//for (let event of newEvents) {
+				//	if (event.trigger == "CurseTransform") transform = true;
+				//}
+				//if (!transform) {
 				for (let event of newEvents) {
-					if (event.trigger == "CurseTransform") transform = true;
-				}
-				if (!transform) {
-					for (let event of newEvents) {
-						if (event.trigger == "curseCount") {
-							newEvents.splice(newEvents.indexOf(event), 1);
-							break;
-						}
+					if (event.trigger == "curseCount" || event.removeOnUncurse) {
+						newEvents.splice(newEvents.indexOf(event), 1);
 					}
 				}
-
 				if (KDGetRestraintVariant(item)) {
 					KDGetRestraintVariant(item).events = JSON.parse(JSON.stringify(item.events));
 					if (KDGetRestraintVariant(item).suffix == "Cursed") KDGetRestraintVariant(item).suffix = "Purified";
@@ -597,6 +594,10 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 				}
 
 				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Evil.ogg");
+
+				KinkyDungeonSendEvent("cleanse", {
+					item: item,
+				});
 
 				if (KDGameData.UsingConsumable) {
 					KinkyDungeonSendTextMessage(8, TextGet("KinkyDungeonInventoryItem" + KDGameData.UsingConsumable + "Use"), "#ff5277", 1, true);
@@ -617,7 +618,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction
+				if (KinkyDungeonLastTurnAction != "Wait"
 					|| !(KinkyDungeonAllRestraintDynamic().some((r) => {return KDHasRemovableCurse(r.item, KDGameData.CurseLevel) || KDHasRemovableHex(r.item, KDGameData.CurseLevel);}))) {
 					KDGameData.UsingConsumable = "";
 					return true;
@@ -684,7 +685,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}
@@ -708,7 +709,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}
@@ -746,7 +747,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}
@@ -832,7 +833,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}
@@ -906,7 +907,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}
@@ -981,7 +982,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}
@@ -1029,7 +1030,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}
@@ -1076,7 +1077,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}
@@ -1126,7 +1127,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}
@@ -1185,7 +1186,7 @@ let KDInventoryAction: Record<string, KDInventoryActionDef> = {
 		/** Return true to cancel it */
 		cancel: (_player, delta) => {
 			if (delta > 0) {
-				if (KinkyDungeonLastTurnAction) {
+				if (KinkyDungeonLastTurnAction != "Wait") {
 					return true;
 				}
 			}

@@ -135,6 +135,8 @@ let KinkyDungeonNextDataLastTimeReceivedTimeout = 15000; // Clear data if more t
 let KinkyDungeonLastMoveDirection = null;
 let KinkyDungeonTargetingSpell: spell = null;
 
+let KDAutoWaitDelayed: boolean = false;
+
 /**
  * Item to decrement by 1 when spell is cast
  */
@@ -3130,12 +3132,20 @@ function KinkyDungeonPlaceShrines (
 			if (count == shrinecount && KDRandom() > shrinechance)
 				KinkyDungeonMapSet(shrine.x, shrine.y, 'a');
 			else {
-				let placedChampion = !allowQuests;
+				let placedChampion = !allowQuests || !KDGameData.Champion;
 				let playerTypes = KinkyDungeonRestraintTypes(shrinefilter);
-				let stype: {type: string, drunk?: boolean} = shrineTypes.length < orbcount ? {type: "Orb"}
-					: ((KDGameData.Champion && !placedChampion && shrineTypes.length == orbcount) ? {type: KDGameData.Champion} :
-						((shrineTypes.length == ((KDGameData.Champion && allowQuests) ? orbcount + 1 : orbcount) && playerTypes.length > 0) ?
-							{type: playerTypes[Math.floor(KDRandom() * playerTypes.length)]}
+				let stype: {type: string, drunk?: boolean} =
+					shrineTypes.length < orbcount
+						? {type: "Orb"}
+					: (
+						(KDGameData.Champion && !placedChampion && shrineTypes.length == orbcount)
+							? {type: KDGameData.Champion}
+							: ((shrineTypes.length ==
+									((KDGameData.Champion && allowQuests)
+										? orbcount + 1
+										: orbcount)
+								&& playerTypes.length > 0)
+								? {type: playerTypes[Math.floor(KDRandom() * playerTypes.length)]}
 								: KinkyDungeonGenerateShrine(Floor, filterTypes, manaChance)));
 				let type = stype.type;
 				let tile = 'A';
@@ -3170,7 +3180,7 @@ function KinkyDungeonPlaceShrines (
 					}
 					shrineTypes.push(type);
 					placedChampion = true;
-				} else if (!shrineTypes.includes("Ghost") || KDRandom() < 0.5) {
+				} else if (placedChampion && !shrineTypes.includes("Ghost") || KDRandom() < 0.5) {
 					shrineTypes.push("Ghost");
 					tile = 'G';
 					KinkyDungeonTilesSet("" + shrine.x + "," +shrine.y, {Type: "Ghost"});
@@ -3297,6 +3307,10 @@ function KinkyDungeonPlaceChargers(chargerlist: any[], chargerchance: number, li
 }
 
 let KinkyDungeonCommercePlaced = 0;
+
+function KDGetMapParams(): floorParams {
+	return KinkyDungeonMapParams[(KinkyDungeonMapIndex[MiniGameKinkyDungeonCheckpoint] || MiniGameKinkyDungeonCheckpoint)];
+}
 
 /**
  * @param Floor
@@ -5811,7 +5825,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 
 	// Handle delayed actions
 	if (!KDGameData.DelayedActions) KDGameData.DelayedActions = [];
-	let runActions = Object.assign([], KDGameData.DelayedActions);
+	let runActions: KDDelayedAction[] = Object.assign([], KDGameData.DelayedActions);
 	// Trim actions that have happened
 	KDGameData.DelayedActions = KDGameData.DelayedActions.filter((action) => {
 		return action.time - delta > 0;
@@ -5826,6 +5840,7 @@ function KinkyDungeonAdvanceTime(delta: number, NoUpdate?: boolean, NoMsgTick?: 
 			KDDelayedActionUpdate[action.update](action);
 		}
 	}
+	if (KDGameData.DelayedActions?.length == 0) KDAutoWaitDelayed = false;
 
 	if (!NoUpdate)
 		KinkyDungeonMultiplayerUpdate(KinkyDungeonNextDataSendTimeDelay);
@@ -6667,4 +6682,12 @@ function KDPruneEntrances
 	}
 	KDMapData.PotentialEntrances = successfulEntrances;
 
+}
+
+function KDDelayedActionStart() {
+	if (KDToggles.AutoWaitDelayed)
+		KDAutoWaitDelayed = true;
+	//KinkyDungeonAdvanceTime(1);
+	if (KDAutoWaitDelayed)
+		KinkyDungeonSleepTime = KDNormalWaitTime;
 }

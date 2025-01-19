@@ -2391,10 +2391,14 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 			{trigger: "bulletHitEnemy", type: "Arrow"},
 		],
 		onhit:"aoe", power: 4, noDirectDamage: true, delay: 0, range: 7.5, aoe: 1.5, lifetime: 1, damage: "fire", speed: 2.5, playerEffect: {name: "HeatBlast", time: 1, damage: "fire", power: 4}},
-	{name: "ArrowVine", tags: ["arrowspecial"], color: "#55ff55", sfx: "FireSpell", landsfx: "MagicSlash", manacost: 0, noMiscast: true, components: [], level: 1, type:"bolt", projectileTargeting:true,
+	{name: "ArrowVine", tags: ["arrowspecial"], color: "#55ff55", sfx: "FireSpell",
+		landsfx: "MagicSlash", manacost: 0, noMiscast: true, components: [], level: 1,
+		type:"bolt", projectileTargeting:true,
 		crit: 1.5,
 		faction: "Player",
 		bindType: "Vine",
+		addBind: true,
+
 		effectTileDurationMod: 10, effectTile: {
 			name: "Vines",
 			duration: 20,
@@ -2402,7 +2406,9 @@ let KinkyDungeonSpellListEnemies: spell[] = [
 		events: [
 			{trigger: "bulletHitEnemy", type: "Arrow"},
 		],
-		onhit:"", power: 4, delay: 0, range: 7.5, bind: 8, lifetime: 1, damage: "chain", speed: 2.5, playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "vineRestraints"}},
+		onhit:"", power: 4, delay: 0, range: 7.5, bind: 8, lifetime: 1,
+		damage: "chain", speed: 2.5,
+		playerEffect: {name: "Bind", damage: "chain", power: 2, tag: "vineRestraints"}},
 
 	{name: "BlasterBlast", hitsfx: "Shock", sfx: "Laser", school: "Elements", manacost: 0, components: [], level:1, type:"bolt", projectileTargeting:true, nonVolatile: true, onhit:"", power: 2.5, time: 1, delay: 0,
 		bulletColor: 0xffff00, bulletLight: 5, noMiscast: true,

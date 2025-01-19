@@ -189,10 +189,10 @@ function KDProcessInput(type: string, data: any): string {
 		case "equip": {
 
 			let equipped = false;
-			let newItem = null;
-			let currentItem = null;
+			let newItem: restraint = null;
+			let currentItem: item = null;
 			let linkable = null;
-			let name = data.name;
+			let name: string = data.name;
 
 			if (name) {
 				newItem = KDRestraint({name: name});
@@ -216,51 +216,24 @@ function KDProcessInput(type: string, data: any): string {
 			if (equipped) return "";
 
 
-			KDDelayedActionPrune(["Action", "Equip"]);
+			//KDDelayedActionPrune(["Action", "Equip"]);
 			KinkyDungeonSetFlag("SelfBondage", 1);
-			success = KinkyDungeonAddRestraintIfWeaker(KinkyDungeonGetRestraintByName(data.name), 0,
-				true, "",
-				KinkyDungeonGetRestraintItem(data.Group) && !KinkyDungeonLinkableAndStricter(KinkyDungeonGetRestraintByName(data.currentItem),
-					KinkyDungeonGetRestraintByName(data.name)), false, data.events, data.faction, KDDebugLink,
-				data.curse, undefined, undefined, data.inventoryVariant);
-			if (success) {
-				if (KDSoundEnabled()) AudioPlayInstantSoundKD(KinkyDungeonRootDirectory + "Audio/Unlock.ogg");
-				loose = KinkyDungeonInventoryGetLoose(data.name);
-				if (loose) {
-					if (!(loose.quantity > 1)) {
-						KinkyDungeonInventoryRemove(loose);
-					} else {
-						loose.quantity -= 1;
-					}
-				}
 
+			data.player = KDPlayer().id;
 
-				KDStunTurns(KinkyDungeonGetRestraintByName(data.name)?.protection ? 4 : 2, true);
-
-				let customEq = KDRestraint(loose).customEquip || "";
-				msg = "KinkyDungeonSelfBondage" + customEq;
-				if (!customEq) {
-					if (KDRestraint(loose).Group == "ItemVulvaPiercings" || KDRestraint(loose).Group == "ItemVulva" || KDRestraint(loose).Group == "ItemButt") {
-						if (KinkyDungeonIsChaste(false)) {
-							msg = "KinkyDungeonSelfBondagePlug";
-						}
-					} else if (KDRestraint(loose).Group == "Item") {
-						if (KinkyDungeonIsChaste(true)) {
-							msg = "KinkyDungeonSelfBondageNipple";
-						}
-					} else if (KDRestraint(loose).enchanted) {
-						msg = "KinkyDungeonSelfBondageEnchanted";
-					}
-				}
-
-				KinkyDungeonSendTextMessage(10, TextGet(msg).replace("RestraintName", TextGet("Restraint" + KDRestraint(loose).name)), "yellow", 1);
-
-				return msg;
-			} else {
-				KinkyDungeonSendTextMessage(10, TextGet("KDCantEquip").replace("RestraintName", KDGetItemNameString(data.name)), "yellow", 1);
-
-				return "KDCantEquip";
-			}
+			let maxtime = KDGetEquipDuration(newItem.name, KDPlayer());
+			for (let i = 1; i <= maxtime; i++)
+				KDAddDelayedAction({
+					data: data,
+					commit: i == maxtime ? "EquipRestraint" : undefined,
+					update: i < maxtime ? "EquipRestraint" : undefined,
+					time: i,
+					tick: i - 1,
+					maxtime: maxtime,
+					tags: ["Action", "Remove", "Restrain", "Hit"],
+				});
+			KDDelayedActionStart();
+			break;
 		}
 		case "tryOrgasm":
 			KDDelayedActionPrune(["Action", "Sexy"]);
@@ -1320,6 +1293,10 @@ function KDProcessInput(type: string, data: any): string {
 			KDFreeNPCRestraints(data.npc, data.player);
 			if (KDNPCChar.get(data.npc))
 				KDRefreshCharacter.set(KDNPCChar.get(data.npc), true);
+			break;
+		}
+		case "autoprune": {
+			KDDelayedActionPrune(["Auto"]);
 			break;
 		}
 		case "addNPCRestraint":

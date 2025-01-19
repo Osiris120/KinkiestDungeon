@@ -185,6 +185,7 @@ let KDCurses: Record<string, KDCursedDef> = {
 	"5Keys" : {
 		lock: true,
 		level: 3,
+		powerMult: 2.4,
 		weight: (_item) => {
 			return 3;
 		},
@@ -450,8 +451,53 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 		variant: (restraint, newRestraintName) => {
 			return KDAddEventVariant(restraint, newRestraintName, [
 				// We add this to ALL cursed items (including dormant curses)
-				{trigger: "curseCount", type: "add", power: 1},
+				{trigger: "curseCount", type: "add", power: 1, inheritLinked: true,
+					removeOnUncurse: true},
 			], 4, "", {commonCurse: 10});
+		}
+	},
+	"Skimpy": {
+		level: 1,
+		variant: (restraint, newRestraintName) => {
+			let ret = KDAddEventVariant(restraint, newRestraintName, [
+				// We add this to ALL cursed items (including dormant curses)
+				{trigger: "curseCount", type: "add", power: 1, inheritLinked: true,
+					removeOnUncurse: true},
+			], 4, "", {});
+			if (KDSkimpyModelReplace[restraint.Model]) {
+				KDSkimpyModelReplace[restraint.Model](ret, restraint, newRestraintName);
+			}
+			return ret;
+		}
+	},
+	"Mimic": {
+		level: 2,
+		variant: (restraint, newRestraintName) => {
+			return KDAddEventVariant(restraint, newRestraintName, [
+				// We add this to ALL cursed items (including dormant curses)
+				{trigger: "curseCount", type: "add", power: 1, inheritLinked: true,
+					removeOnUncurse: true},
+				{trigger: "tick", type: "mimiccurse", time: 10, chance: 0.2, sfx: "Evil",
+					inheritLinked: true, removeOnUncurse: true},
+			], 8, "", {mimicCurse: 10});
+		}
+	},
+	"MimicHoly": {
+		level: 2,
+		variant: (restraint, newRestraintName) => {
+			return KDAddEventVariant(restraint, newRestraintName, [
+				// We add this to ALL cursed items (including dormant curses)
+				{trigger: "curseCount", type: "add", power: 1, inheritLinked: true,
+					removeOnUncurse: true},
+				{trigger: "tick", type: "mimiccurse", time: 10, chance: 0.2, sfx: "Evil",
+					inheritLinked: true, removeOnUncurse: true},
+				{trigger: "cleanse", type: "RemoveAndRevert", kind: restraint.name, sfx: "Magic",
+					inheritLinked: true},
+				{original: "MimicHoly", trigger: "inventoryTooltip",
+					type: "mimicholy", msg: "MimicHolyGlow", color: "#000044", bgcolor: "#ffff88",
+					removeOnUncurse: true},
+
+			], 8, "", {divinemimicCurse: 10});
 		}
 	},
 };
@@ -602,4 +648,27 @@ function KDCurseMult(curse: string): number {
 		return KDCurses[curse].powerMult || 3;
 	}
 	return 1;
+}
+
+type KDSkimpyReplacer = (ret, restraint: restraint, newRestraintName: string) => any
+
+let KDSkimpyModelReplace: Record<string, KDSkimpyReplacer> = {
+	ChainSkirt: (ret, restraint, newRestraintName) => {
+		ret.enemyTags = {skimpyCurse: 10};
+		ret.Model = "ChainPanties2";
+		ret.remove = ["ClothLower", "Skirts", "Pants"];
+		return ret;
+	},
+	ChainSkirt2: (ret, restraint, newRestraintName) => {
+		ret.enemyTags = {skimpyCurse: 10};
+		ret.Model = "ChainPanties";
+		ret.remove = ["ClothLower", "Skirts", "Pants"];
+		return ret;
+	},
+	ChainTunic: (ret, restraint, newRestraintName) => {
+		ret.enemyTags = {skimpyCurse: 10};
+		ret.Model = "ChainBikini";
+		ret.remove = ["Cloth", "Shirts"];
+		return ret;
+	},
 }

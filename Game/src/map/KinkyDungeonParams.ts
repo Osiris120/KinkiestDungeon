@@ -2,6 +2,7 @@
 
 const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 	"menu":{
+		curseTags: ["trap"],
 		successorNegative: {
 			menu: 1.0,
 		},
@@ -55,6 +56,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 	},
 	"shoppe":{
+		curseTags: ["trap"],
 		successorNegative: {
 			menu: 1.0,
 		},
@@ -109,6 +111,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 	},
 	"bandit":{
+		curseTags: ["trap", "leatherRestraints", "leatherRestraintsHeavy"],
 		successorNegative: {
 			bandit: 1.0,
 		},
@@ -187,6 +190,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 	},
 	"grv":{//DungeonName0,-Graveyard-
+		curseTags: ["trap"],
 		color: "#8cba75",
 		successorNegative: {
 			tmb: 1.0,
@@ -287,6 +291,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 	},
 	"cat":{// DungeonName1,-Catacombs-
+		curseTags: ["trap", "shackleRestraints", "steelbondage"],
 		successorNegative: {
 			tmb: 0.5,
 			cry: 0.1,
@@ -398,6 +403,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 	},
 	"jng":{//DungeonName2,-Underground Jungle-
+		curseTags: ["trap", "latexRestraints", "mithrilCuffs"],
 		successorNegative: {
 			cry: 0.3,
 			cav: 0.5,
@@ -576,6 +582,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Type: "Will", Weight: 13},]
 	},
 	"tmp":{//DungeonName3,-Lost Temple-
+		curseTags: ["trap", "obsidianRestraints"],
 		successorNegative: {
 			ore: 1.0,
 		},
@@ -700,6 +707,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		"lockmult" : 1.5,
 	},
 	"tmb":{//DungeonName11,-Ancient Tombs-
+		curseTags: ["trap", "kittyRestraints", "leatherRestraints", "leatherRestraintsHeavy"],
 		successorNegative: {
 			tmp: 0.4,
 			lib: 0.6,
@@ -823,6 +831,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Type: "Will", Weight: 13},]
 	},
 	"lib":{//DungeonName12,-Magic Library-
+		curseTags: ["trap", "dressRestraints"],
 		successorNegative: {
 			bel: 0.4,
 			ore: 0.6,
@@ -932,6 +941,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Type: "Will", Weight: 13},]
 	},
 	"cry":{//DungeonName13,-Crystal Cave-
+		curseTags: ["trap", "crystalRestraints"],
 		successorNegative: {
 			jng: 0.5,
 			tmp: 0.1,
@@ -1045,6 +1055,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Type: "Will", Weight: 13},]
 	},
 	"cav":{//Caves
+		curseTags: ["trap", "steelBondage"],
 		successorNegative: {
 			jng: 0.3,
 			cry: 0.7,
@@ -1154,6 +1165,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Type: "Will", Weight: 13},]
 	},
 	"DragonLair":{//DragonLair (used for music only atm)
+		curseTags: ["trap", "steelBondage", "mithrilCuffs"],
 		successorNegative: {
 			jng: 0.3,
 			cry: 0.7,
@@ -1262,6 +1274,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 			{Type: "Will", Weight: 13},]
 	},
 	"ore":{//DungeonName8,-Orrery-
+		curseTags: ["trap", "obsidianRestraints", "shadowLatexRestraints", "shadowLatexRestraintsHeavy", "shadowLatexPetsuit"],
 		successorNegative: {
 			jng: 0.6,
 			lib: 0.4,
@@ -1380,6 +1393,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 
 	"DollStorage":{//DungeonName8,-Orrery-
+		curseTags: ["cyberdollrestraints", "latexRestraints", "latexRestraintsHeavy"],
 		successorNegative: {
 			cry: 1.0,
 		},
@@ -1493,6 +1507,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 	},
 
 	"Summit":{//DungeonName8,-Orrery-
+		curseTags: ["trap"],
 		successorNegative: {
 			cry: 1.0,
 		},
@@ -1592,6 +1607,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 	},
 
 	"vault":{//DungeonName8,-Orrery-
+		curseTags: ["cyberdollrestraints", "controlHarness"],
 		successorNegative: {
 			cry: 1.0,
 		},
@@ -1706,6 +1722,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 		"lockmult" : 2.0,
 	},
 	"bel":{//DungeonName8,-Orrery-
+		curseTags: ["blacksteelRestraints", "blacksteelchastity", "blacksteelCuffs"],
 		successorNegative: {
 			cav: 0.6,
 			cry: 0.4,
@@ -1831,6 +1848,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 
 	"Dollmaker":{//DungeonName8,-Orrery-
+		curseTags: ["cyberdollrestraints", "latexRestraints", "latexRestraintsHeavy"],
 		successorNegative: {
 			cry: 1.0,
 		},
@@ -1940,6 +1958,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 
 	// Extra
 	"DemonTransition":{// DungeonName1,-Catacombs-
+		curseTags: ["trap", "obsidianRestraints", "shadowLatexRestraints", "shadowLatexRestraintsHeavy", "mithrilCuffs"],
 		successorNegative: {
 			DemonTransition: 1.0,
 		},
@@ -2042,6 +2061,7 @@ const KinkyDungeonMapParams: Record<mapKey, floorParams> = {
 	},
 
 	"cst":{// Coast
+		curseTags: ["trap", "latexRestraints", "latexRestraintsHeavy"],
 		worldGenCode: () => {
 			for (let X = 1; X < KDMapData.GridWidth - 1; X++) {
 				for (let Y = 1; Y < KDMapData.GridHeight - 1; Y++) {

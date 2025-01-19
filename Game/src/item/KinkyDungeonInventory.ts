@@ -3216,7 +3216,8 @@ function KDEquipInventoryVariant (
 	_inventoryAs?:       string,
 	ID:                  string = "",
 	suffix:              string = "",
-	powerBonus:          number = 0
+	powerBonus:          number = 0,
+	NoActionPrune:		 boolean = false,
 )
 {
 	KDUpdateItemEventCache = true;
@@ -3234,8 +3235,12 @@ function KDEquipInventoryVariant (
 		KinkyDungeonRestraintVariants[newname] = variant;
 	if (variant.events)
 		Object.assign(events, variant.events);
-	return KinkyDungeonAddRestraintIfWeaker(origRestraint, Tightness, Bypass, Lock, Keep, Trapped, events, faction, Deep, curse, securityEnemy, useAugmentedPower, newname, undefined, undefined, undefined,
-		powerBonus
+	return KinkyDungeonAddRestraintIfWeaker(origRestraint,
+		Tightness, Bypass, Lock, Keep, Trapped,
+		events, faction, Deep, curse,
+		securityEnemy, useAugmentedPower, newname,
+		undefined, undefined, undefined,
+		powerBonus, NoActionPrune
 	);
 }
 

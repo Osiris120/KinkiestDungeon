@@ -100,7 +100,8 @@ let KDCursedVariantsCreated: Record<string, Record<string, number>> = {};
 function KinkyDungeonAddCursedVariants(Restraint: restraint, Variants: string[]): void {
 	for (let v of Variants) {
 		if (KDCursedVars[v]) {
-			KinkyDungeonCloneRestraint(Restraint.name, Restraint.name+v, KDCursedVars[v].variant(Restraint, Restraint.name+v));
+			KinkyDungeonCloneRestraint(Restraint.name, Restraint.name+v,
+				KDCursedVars[v].variant(Restraint, Restraint.name+v));
 			if (!KDCursedVariantsCreated[Restraint.name]) KDCursedVariantsCreated[Restraint.name] = {};
 			KDCursedVariantsCreated[Restraint.name][v] = KDCursedVars[v].level;
 		}

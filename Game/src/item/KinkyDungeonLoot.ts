@@ -378,7 +378,7 @@ function KinkyDungeonLootEvent(Loot: any, Floor: number, Replacemsg: string, Loc
 				if (!enchantVariant) {
 					hexVariant = curs;
 					// Sets the armor to the cursed type
-					armor = armor+(Loot.cursesuffix != undefined ? Loot.cursesuffix : Loot.hexlist);
+					armor = armor+(Loot.cursesuffix != undefined ? Loot.cursesuffix : (KDGetCursedSuffix(armor)) || Loot.hexlist);
 				} else {
 					hex_extra.push(curs);
 				}
@@ -1154,4 +1154,19 @@ function KDGenerateMinorLoot(lootType: string, coord: WorldCoord, tile: any, x: 
 			}
 		}
 	}
+}
+
+function KDGetCursedSuffix(armor: string) {
+	if (KDRestraint({name: armor + "Cursed"})) return "Cursed";
+	if (KDRestraint({name: armor + "Common"})) return "Common";
+
+	return "";
+}
+
+function KDGetCursedTags(item: item): string[] {
+	let params = KDGetMapParams();
+	if (params?.curseTags) {
+		return params.curseTags;
+	}
+	return ["trap"];
 }

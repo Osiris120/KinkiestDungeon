@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.34"
+KDVersionStr,"5.4.36"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -46,6 +46,7 @@ KDToggleTabControls,Controls
 KDToggleTabKeybindings,Keybindings
 
 KDToggleBindPercent,Show Enemy Binding as %
+KDToggleAutoWaitDelayed,Auto-wait Through Delayed Actions
 
 KDToggleMMLabels,Show Minimap Labels
 KDToggle,Auto loot all from chests
@@ -26686,3 +26687,14 @@ KDAutoRelease_Escaped,"Autorelease escaped"
 
 KDAutoReleased_NonNotable,NME is not notable enough for your collection.
 KDAutoReleased_Escaped,Auto-released NME due to Escape.
+
+KDMimicCurseTransform,Your ITMN1 was cursed and transforms into a ITMN2!
+
+KDDelayedAction_EquipRestraint,Equipping Restraint...
+KDDelayedAction_Armor,Equipping Armor...
+KDDelayedAction_Consumable,Using Consumable...
+KDDelayedAction_Struggle,Struggling...
+
+KDMimicCleanse,The ITMN1 is cleansed and returns to being a ITMN2!
+KDInvTooltip_MimicHolyGlow,Reverts if cleansed.
+KDInvTooltip_SkimpyCurse,...smaller than expected.

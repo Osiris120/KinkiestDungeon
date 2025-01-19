@@ -277,6 +277,8 @@ let KDToggles = {
 	HideArmorWardrobe: false,
 
 	BindPercent: true,
+
+	AutoWaitDelayed: true,
 };
 
 let KDToggleCategories = {
@@ -353,6 +355,7 @@ let KDToggleCategories = {
 	Autoloot: "UI",
 	HideArmorWardrobe: "none",
 	BindPercent: "UI",
+	AutoWaitDelayed: "UI",
 };
 
 // endregion
@@ -1748,8 +1751,9 @@ function KinkyDungeonRun() {
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
 						let decoded = LZString.decompressFromBase64(code);
-						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName) loadedsaveNames[num - 1] =
-							JSON.parse(decoded)?.KDGameData?.PlayerName;
+						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName)
+							loadedsaveNames[num - 1] =
+								JSON.parse(decoded)?.KDGameData?.PlayerName;
 						if (!emptySlot && !code) {
 							emptySlot = num;
 							KDSaveSlot = emptySlot;
@@ -1772,6 +1776,11 @@ function KinkyDungeonRun() {
 					let num = (i);
 					KinkyDungeonDBLoad(num).then((code) => {
 						loadedsaveslots[num - 1] = code;
+
+						let decoded = LZString.decompressFromBase64(code);
+						if (decoded && JSON.parse(decoded)?.KDGameData?.PlayerName)
+							loadedsaveNames[num - 1] =
+								JSON.parse(decoded)?.KDGameData?.PlayerName;
 					});
 				}
 
@@ -2973,19 +2982,22 @@ function KinkyDungeonRun() {
 					}
 					KinkyDungeonSleepTime = CommonTime() + (KinkyDungeonInDanger() ? 250 : 0) + 250 * (0.25 + KDAnimSpeed * 0.75);
 				}
-			} else if (KinkyDungeonAutoWait) {
+			} else if (KinkyDungeonAutoWait || (KDAutoWaitDelayed && KDGameData.DelayedActions?.length > 0)) {
 				if (CommonTime() > KinkyDungeonSleepTime) {
 					let lastStamina = KinkyDungeonStatStamina;
-					KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
-					if (KinkyDungeonFastStruggle && KinkyDungeonStatStamina == KinkyDungeonStatStaminaMax && lastStamina < KinkyDungeonStatStamina) {
-						if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonInDanger())
-							KDDisableAutoWait();
-					}
 					let wt = KDNormalWaitTime;
-					if (KDGameData.FocusControlToggle.AutoWaitSlow) wt = KDSlowWaitTime;
-					else if (KDGameData.FocusControlToggle.AutoWaitNormal) wt = KDNormalWaitTime;
-					else if (KDGameData.FocusControlToggle.AutoWaitFast) wt = KDFastWaitTime;
-					else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = KDVeryFastWaitTime;
+					KDSendInput("move", {dir: {x:0, y: 0, delta: 0}, delta: 1, AllowInteract: true, AutoDoor: false, AutoPass: KinkyDungeonToggleAutoPass, sprint: KinkyDungeonToggleAutoSprint, SuppressSprint: KinkyDungeonSuppressSprint}, false, true);
+
+					if (KinkyDungeonAutoWait) {
+						if (KinkyDungeonFastStruggle && KinkyDungeonStatStamina == KinkyDungeonStatStaminaMax && lastStamina < KinkyDungeonStatStamina) {
+							if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonInDanger())
+								KDDisableAutoWait();
+						}
+						if (KDGameData.FocusControlToggle.AutoWaitSlow) wt = KDSlowWaitTime;
+						else if (KDGameData.FocusControlToggle.AutoWaitNormal) wt = KDNormalWaitTime;
+						else if (KDGameData.FocusControlToggle.AutoWaitFast) wt = KDFastWaitTime;
+						else if (KDGameData.FocusControlToggle.AutoWaitVeryFast) wt = KDVeryFastWaitTime;
+					}
 					KinkyDungeonSleepTime = CommonTime() + (wt);
 				}
 			} else if (KinkyDungeonAutoWaitStruggle) {

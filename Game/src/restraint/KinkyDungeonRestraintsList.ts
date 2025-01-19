@@ -2164,6 +2164,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Hardware: {color: "DarkNeutral", override: true},
 		},
 		unlimited: true,
+		requireAllTagsToEquip: ["Collars"],
 		events: [
 			{trigger: "postRemoval", type: "RequireCollar"},
 		],
@@ -3294,7 +3295,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Band: {"gamma":0.43333333333333335,"saturation":1,"contrast":1.1833333333333333,"brightness":0.5166666666666666,"red":1,"green":1,"blue":1,"alpha":1},
 			Mitten: {"gamma":0.9166666666666666,"saturation":1,"contrast":3,"brightness":0.06666666666666667,"red":1,"green":1,"blue":1,"alpha":1},
 		},
-		maxwill: 0.5, escapeChance: {"Struggle": 0.05, "Cut": 0.4, "Remove": 0.15, "Pick": 1.0}, enemyTags: {"leatherRestraints":6, "mittensSpell": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Mittens", "Leather"]},
+		maxwill: 0.5, escapeChance: {"Struggle": 0.05, "Cut": 0.4, "Remove": 0.15, "Pick": 1.0}, enemyTags: {"leatherRestraints":6, "trap": 2, "mittensSpell": 10}, playerTags: {"ItemHandsFull":-2}, minLevel: 4, allFloors: true, shrine: ["Mittens", "Leather"]},
 	// These ones are tougher
 	{inventory: true, arousalMode: true, trappable: true, name: "TrapBelt2", Asset: "OrnateChastityBelt", OverridePriority: 26, Color: ["#272727", "#D3B24B"], Group: "ItemPelvis", chastity: true,
 		power: 9, weight: 0, DefaultLock: "Gold",
@@ -6712,7 +6713,8 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true, name: "ElvenPanties", debris: "Fabric", inaccessible: true,
 		Asset: "ElfPanties", Color: "#ff00ff", Group: "ItemPelvis", power: 1, weight: 0,
 		value: 250,
-		armor: true,
+
+	armor: true, bypass: true,
 		Model: "ElfPanties",
 		LinkAll: true,
 		AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -6735,7 +6737,8 @@ const KinkyDungeonRestraints: restraint[] = [
 	{inventory: true, removePrison: true, alwaysKeep: true, showInQuickInv: true, good: true,
 		name: "Sunglasses", accessible: true,
 		Asset: "Sunglasses", Color: "#ffffff", Group: "ItemHead", power: 1, weight: 0,
-		armor: true,
+
+	armor: true, bypass: true,
 		displayPower: 2,
 		value: 150,
 		Model: "Glasses",
@@ -6757,7 +6760,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		displayPower: 2,
 		value: 150,
 		Model: "Sunglasses",
-		armor: true,
+
+	armor: true, bypass: true,
 		Filters: {
 			Glasses: {"gamma":1,"saturation":0.18333333333333335,"contrast":0.5,"brightness":0.9666666666666667,"red":1,"green":1,"blue":1,"alpha":1},
 			Lens: {"gamma":1,"saturation":1,"contrast":1,"brightness":0.08333333333333333,"red":1,"green":1,"blue":1,"alpha":1.2666666666666668},
@@ -6784,6 +6788,7 @@ const KinkyDungeonRestraints: restraint[] = [
 			Leash: {color: "DarkNeutral", override: true},
 			Hardware: {color: "LightNeutral", override: true},
 		},
+		requireAllTagsToEquip: ["Collars"],
 		events: [
 			{trigger: "postRemoval", type: "RequireCollar"}
 		],
@@ -7707,7 +7712,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "ChestArmor", "MetalArmor", "Heavy"],
 	addPose: ["ChestArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	protection: 1,
 	displayPower: 4,
@@ -7741,7 +7747,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "TorsoArmor", "Light"],
 	addPose: ["TorsoArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	protection: 1,
 	displayPower: 3,
@@ -7777,7 +7784,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "TorsoArmor", "Cloth"],
 	addPose: ["TorsoArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategories: ["Armor", "Swimsuit"], linkSizes: [0.3, 0.6],
 	protection: 1,
 	displayPower: 2,
@@ -7822,7 +7830,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	DefaultLock: "Divine",
 	shrine: ["Armor", "TorsoArmor", "Cloth"],
 	addPose: ["TorsoArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategories: ["Armor", "Swimsuit"], linkSizes: [0.3, 0.6],
 	protection: 3,
 	displayPower: 30,
@@ -7864,7 +7873,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	strictness: 0.08,
 	shrine: ["Armor", "TorsoArmor", "MetalArmor", "Heavy"],
 	addPose: ["TorsoArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	noRecover: true,
 	removePrison: true,
@@ -7876,7 +7886,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "sneakBuff", power: -0.5, inheritLinked: true},
 	],
 }, "Chainmail Tank Top", "Cumbersome, but effective!", "Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithSkimpy]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "ChainBikini",
@@ -7903,7 +7913,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	strictness: 0.08,
 	shrine: ["Armor", "TorsoArmor", "MetalArmor", "Light"],
 	addPose: ["TorsoArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	noRecover: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	removePrison: true,
@@ -7933,7 +7944,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "TorsoArmor", "MetalArmor", "Heavy"],
 	addPose: ["TorsoArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
 	protection: 3,
@@ -7967,7 +7979,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 0.25,
 	},
 	shrine: ["Armor", "Robe", "Mage"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
 	protection: 1,
@@ -7998,7 +8011,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 0.35,
 	},
 	shrine: ["Armor", "PelvisArmor", "MetalArmor", "Heavy"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	protection: 1,
 	debris: "Belts",
@@ -8012,7 +8026,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "RestraintBlock", power: 3.5, inheritLinked: true},
 	],
 }, "Chain Skirt", "A defensive garment providing optimal coverage to the lower torso.", "Provides medium protection. No impact to stealth or evasion")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithSkimpy]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "SteelSkirt",
@@ -8032,7 +8046,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "PelvisArmor", "MetalArmor", "Heavy"],
 	addPose: ["PelvisArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	protection: 2,
 	debris: "Belts",
@@ -8046,7 +8061,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "RestraintBlock", power: 5, inheritLinked: true},
 	],
 }, "Armored Skirt", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithSkimpy]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Gauntlets",
@@ -8065,7 +8080,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "GlovesArmor", "MetalArmor", "Heavy"],
 	addPose: ["GlovesArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
 	protection: 1,
@@ -8100,7 +8116,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "GlovesArmor", "Light"],
 	addPose: ["GlovesArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	displayPower: 2,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
@@ -8131,7 +8148,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "ArmArmor", "Heavy"],
 	addPose: ["ArmArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	displayPower: 3,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
@@ -8166,7 +8184,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "ArmArmor", "Light"],
 	addPose: ["ArmArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
 	protection: 1,
@@ -8197,7 +8216,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "ArmArmor", "MagicArmor", "Mage"],
 	addPose: ["ArmArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Chains",
 	protection: 1,
@@ -8229,7 +8249,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "BootsArmor", "MetalArmor", "Heavy"],
 	addPose: ["BootsArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	protection: 1,
 	displayPower: 4,
@@ -8264,7 +8285,8 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	},
 	shrine: ["Armor", "BootsArmor", "Light"],
 	addPose: ["BootsArmor"],
-	armor: true,
+
+	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
 	debris: "Belts",
 	displayPower: 2,

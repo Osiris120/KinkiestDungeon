@@ -816,6 +816,66 @@ AddModel({
 });
 
 AddModel({
+	Name: "ChainPanties",
+	Folder: "ArmorChain",
+	Parent: "ChainArmor",
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "Panties", Layer: "CrotchPanelMid", Pri: 15,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Closed: "Closed", Hogtie: "Closed"},
+			Invariant: true,
+			InheritColor: "Panties",
+			HidePoseConditional: [
+				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
+			],
+		},
+		{ Name: "PantiesChain", Layer: "CrotchPanelMid", Pri: 14.9,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Closed: "Closed", Hogtie: "Closed"},
+			Invariant: true,
+			InheritColor: "Chain",
+			TieToLayer: "Panties",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "ChainPanties2",
+	Folder: "ArmorChain",
+	Parent: "ChainArmor",
+	Categories: ["Armor"],
+	Layers: ToLayerMap([
+		{ Name: "Panties", Layer: "CrotchPanelMid", Pri: 15,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Closed: "Closed", Hogtie: "Closed"},
+			Invariant: true,
+			InheritColor: "Panties",
+			HidePoseConditional: [
+				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
+			],
+		},
+		{ Name: "PantiesChain", Layer: "CrotchPanelMid", Pri: 14.9,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Closed: "Closed", Hogtie: "Closed"},
+			Invariant: true,
+			InheritColor: "Chain",
+			TieToLayer: "Panties",
+		},
+		{ Name: "Skirt", Layer: "OverSkirt", Pri: 15.3,
+			Poses: ToMap([...LEGPOSES]),
+			MorphPoses: {Hogtie: "Hogtie", Kneel: "Kneel", KneelClosed: "Kneel"},
+			Invariant: true,
+			InheritColor: "Plate",
+			HidePoseConditional: [
+				["DynamicArmor", "PelvisArmor", "SuppressDynamic"],
+			],
+		},
+	])
+});
+
+AddModel({
 	Name: "ChainArmor",
 	Folder: "ArmorChain",
 	TopLevel: true,

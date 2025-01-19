@@ -1071,7 +1071,8 @@ function KinkyDungeonSetEnemyFlag(enemy: entity, flag: string, duration?: number
  */
 function KDSetIDFlag(id: number, flag: string, duration: number) {
 	if (id == -1) {
-		KinkyDungeonSetFlag(flag, duration);
+		KinkyDungeonSetFlag(flag, duration)
+		return;
 	}
 	let enemy = KDGetGlobalEntity(id);
 	if (!enemy) {
@@ -1700,7 +1701,11 @@ function KDGetMaxShield(enemy: entity): number {
  * @param enemy
  */
 function KDGetShieldRegen(enemy: entity): number {
-	return (enemy?.Enemy?.shieldregen || 0) + KDEntityBuffedStat(enemy, "ShieldRegen");
+	let regen = (enemy?.Enemy?.shieldregen || 0) + KDEntityBuffedStat(enemy, "ShieldRegen");
+	if (!KDEntityHasFlag(enemy, "tookShieldDmg")) {
+		regen += KDEntityBuffedStat(enemy, "ShieldRegenBG");
+	}
+	return regen;
 }
 
 function KDEaseBars(enemy: entity, delta: number) {
@@ -3903,6 +3908,7 @@ function KinkyDungeonUpdateEnemies(maindelta: number, Allied: boolean) {
 			if (!(enemy.stun > 0 || enemy.freeze > 0 || enemy.teleporting > 0) && (!KDHelpless(enemy) || KDEnemyHasHelp(enemy))) {
 				KDEnemyStruggleTurn(enemy, delta, KDNPCStruggleThreshMult(enemy), false, false);
 			}
+			KDEnemyDecayBindStun(enemy, delta);
 			let vibe = KDEntityMaxBuffedStat(enemy, "Vibration");
 			if (enemy.distraction > 0 || vibe) {
 				let DD = KDGetEnemyDistractionDamage(enemy, vibe);
@@ -7670,6 +7676,7 @@ function KDTieUpEnemy(enemy: entity, amount: number, type: string = "Leather", D
 	}
 	if (data.amount || data.amntAdded != undefined) {
 		enemy.boundLevel = Math.max(0, (enemy.boundLevel || 0) + (data.amntAdded != undefined ? data.amntAdded : data.amount));
+		KDApplyBindStun(enemy, data.amntAdded);
 	}
 
 	if (data.Msg) {
@@ -7711,6 +7718,9 @@ function KDPredictStruggle(enemy: entity, struggleMod: number, delta: number, al
 	// Reduce to delta amount;
 	data.struggleMod *= data.delta;
 
+	if (enemy.bindStun > 0)
+		data.struggleMod = Math.max(0, data.struggleMod - 0.01*enemy.bindStun)
+
 	let minLevel = Math.max(data.minBoundLevel,
 		(enemy.buffs && KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel"))
 			? KinkyDungeonGetBuffedStat(enemy.buffs, "MinBoundLevel")
@@ -7719,6 +7729,7 @@ function KDPredictStruggle(enemy: entity, struggleMod: number, delta: number, al
 	if (Object.keys(data.specialBoundLevel).length < 1) {
 		// Simple math, reduce bound level, dont have to worry.
 		data.struggleMod *= (10 + Math.pow(Math.max(0.01, enemy.hp ** KDEnemyStruggleHPExp), 0.75));
+		//data.struggleMod = Math.max(data.struggleMod - (enemy.bindStun || 0), 0);
 		data.boundLevel = Math.max(Math.min(Math.max(0, data.boundLevel), minLevel), data.boundLevel - data.struggleMod);
 	} else {
 		// We go layer by layer
@@ -7728,6 +7739,7 @@ function KDPredictStruggle(enemy: entity, struggleMod: number, delta: number, al
 		});
 		// These are the base resources, we exhaust till they are out
 		data.struggleMod *= 2;
+		//data.struggleMod = Math.max(data.struggleMod - (enemy.bindStun || 0), 0);
 
 		let i = 0;
 		while (i < bondage.length
@@ -10370,4 +10382,37 @@ function KDWanderFarEnemyParty(enemy: entity) {
 		}
 	}
 	return false;
+}
+
+/** returns the amount added */
+function KDApplyBindStun(enemy: entity, amount: number): number {
+	if (amount > 0 && enemy.Enemy.bound) {
+		if (!enemy.bindStun) enemy.bindStun = 0;
+		let orig = enemy.bindStun;
+		enemy.bindStun = Math.max(amount, enemy.bindStun);
+		return enemy.bindStun - orig;
+	}
+	return 0;
+}
+
+let KDBindStunDecayHPFactor = 0.05;
+let KDBindStunDecayMaxHPFactor = 0.01;
+let KDBindStunCurrentStunFactor = 0.1;
+
+function KDEnemyDecayBindStun(enemy: entity, delta: number) {
+	if (enemy.bindStun > 0) {
+		let packed = KDUnPackEnemy(enemy);
+		for (let i = 0; i < delta; i++) {
+			let decay = Math.max(
+				enemy.hp * KDBindStunDecayHPFactor,
+				enemy.Enemy.maxhp * KDBindStunDecayMaxHPFactor,
+				enemy.bindStun * KDBindStunCurrentStunFactor,
+			);
+
+			enemy.bindStun = Math.max(0, enemy.bindStun - decay);
+		}
+		if (packed) KDPackEnemy(enemy);
+	} else {
+		delete enemy.bindStun;
+	}
 }

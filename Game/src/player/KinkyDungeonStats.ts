@@ -362,7 +362,8 @@ function KinkyDungeonGetHearingRadius(entity?: entity): {radius: number, mult: n
  * Returns if the player is automatically doing stuff
  */
 function KDIsAutoAction(): boolean {
-	return KinkyDungeonAutoWait || KinkyDungeonAutoWaitStruggle;
+	return KinkyDungeonAutoWait || KinkyDungeonAutoWaitStruggle || KDAutoWaitDelayed
+		|| (KDGameData.SlowMoveTurns && KDGameData.DelayedActions?.length > 0);
 }
 
 /**
@@ -371,13 +372,17 @@ function KDIsAutoAction(): boolean {
 function KDDisableAutoWait() {
 	KinkyDungeonAutoWait = false;
 	KinkyDungeonAutoWaitStruggle = false;
+	KDAutoWaitDelayed = false;
+	KDSendInput("autoprune", {force: true});
 }
 
 function KinkyDungeonInterruptSleep() {
 	KDGameData.SleepTurns = 0;
 	KDGameData.PlaySelfTurns = 0;
-	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonGetRestraintItem("ItemDevices") && !KinkyDungeonFlags.get("ZeroResistance"))
+	if (KinkyDungeonTempWait && !KDGameData.KinkyDungeonLeashedPlayer && !KinkyDungeonGetRestraintItem("ItemDevices") && !KinkyDungeonFlags.get("ZeroResistance")) {
+		KDAutoWaitDelayed = false;
 		KinkyDungeonAutoWait = false;
+	}
 	if (KinkyDungeonInDanger()) KinkyDungeonAutoWaitStruggle = false;
 }
 
