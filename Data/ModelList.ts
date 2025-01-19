@@ -823,7 +823,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Panties", Layer: "CrotchPanelMid", Pri: 15,
 			Poses: ToMap([...LEGPOSES]),
-			MorphPoses: {Closed: "Closed", Hogtie: "Closed"},
+			MorphPoses: {Closed: "Closed", Hogtie: "Closed", Kneel: "Kneel", KneelClosed: "KneelClosed"},
 			Invariant: true,
 			InheritColor: "Panties",
 			HidePoseConditional: [
@@ -849,7 +849,7 @@ AddModel({
 	Layers: ToLayerMap([
 		{ Name: "Panties", Layer: "CrotchPanelMid", Pri: 15,
 			Poses: ToMap([...LEGPOSES]),
-			MorphPoses: {Closed: "Closed", Hogtie: "Closed"},
+			MorphPoses: {Closed: "Closed", Hogtie: "Closed", Kneel: "Kneel", KneelClosed: "KneelClosed"},
 			Invariant: true,
 			InheritColor: "Panties",
 			HidePoseConditional: [

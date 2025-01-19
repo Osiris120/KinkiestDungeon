@@ -143,7 +143,7 @@ let KDEventMapInventorySelected: Record<string, Record<string, (e: KinkyDungeonE
 				data.extraLineColorBG.push(bg);
 			}
 		},
-		"mimicholy": (e, item, data) => {
+		"invtooltipworn": (e, item, data) => {
 			if (item == data.item && item.type == Restraint) {
 				data.extraLines.push(TextGet("KDInvTooltip_" + e.msg));
 				data.extraLineColor.push(KDBookText); // e.color || "#ffffff"

@@ -1,23 +1,30 @@
 'use strict';
 
 
+let KDBaseCursedVars = [
+	"Mimic",
+	"Common",
+	"MimicHoly",
+];
 /**
  * Contains a list of curse variant types
  * Can be modified dynamically so mods can add basic curses
  */
 let KDHexVariantList = {
-	"Base": [
-		"Mimic",
-		"Common",
-		"MimicHoly",
-	],
+	"Base": [...KDBaseCursedVars],
 	"BaseWithSkimpy": [
-		"Mimic",
-		"Common",
-		"MimicHoly",
+		...KDBaseCursedVars,
 		"Skimpy",
 	],
-
+	"BaseWithShibari": [
+		...KDBaseCursedVars,
+		"Shibari",
+	],
+	"BaseWithSkimpyShibari": [
+		...KDBaseCursedVars,
+		"Skimpy",
+		"Shibari",
+	],
 	"Common": [
 		"Tickle",
 		"Punish",

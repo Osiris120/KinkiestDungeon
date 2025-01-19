@@ -187,6 +187,10 @@
             <key type="filename">../Models/Armbinder/StrapsRightBoxtie.png</key>
             <key type="filename">../Models/Armbinder/StrapsRightWristtie.png</key>
             <key type="filename">../Models/Armbinder/WolfHarness.png</key>
+            <key type="filename">../Models/ArmorChain/Panties.png</key>
+            <key type="filename">../Models/ArmorChain/PantiesChain.png</key>
+            <key type="filename">../Models/ArmorChain/PantiesChainClosed.png</key>
+            <key type="filename">../Models/ArmorChain/PantiesClosed.png</key>
             <key type="filename">../Models/ArmorChain/Shirt.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChest.png</key>
             <key type="filename">../Models/ArmorChain/ShirtChestFree.png</key>

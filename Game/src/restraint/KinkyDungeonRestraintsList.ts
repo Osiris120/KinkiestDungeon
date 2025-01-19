@@ -5411,7 +5411,8 @@ const KinkyDungeonRestraints: restraint[] = [
 		affinity: {Remove: ["Hook"],},
 		UnderlinkedAlwaysRender: true,
 		maxwill: 1.0, enemyTags: {"ropeRestraints":8}, playerTags: {"ItemArmsFull":-1}, minLevel: 0, allFloors: true, shrine: ["RopeSnake", "Rope", "Cuffs", "HandsFrontAllowed", "HandsCrossedAllowed", "HandsUpAllowed", "HogtieUpper"]},
-	{unlimited: true, inventory: true, name: "RopeSnakeCuffsAdv", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "RopeCuffs", Color: "Default",
+	{unlimited: true, inventory: true, name: "RopeSnakeCuffsAdv", debris: "Ropes",
+		accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "RopeCuffs", Color: "Default",
 
 		linkPriority: 11,
 		linkCategories: ["Ropework", "EnchantableRopework"], linkSizes: [0.33, 0.51],
@@ -5444,7 +5445,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		struggleMult: {"Struggle": 0.1, "Remove": 0.1},
 		LinkableBy: ["Boxbinders", "Armbinders", ...KDBindable, "Cuffs", "RopeReinforce"], Group: "ItemArms", bindarms: true, power: 3, weight: 0, escapeChance: {"Struggle": 0.25, "Cut": 0.67, "Remove": 0.2},
 		affinity: {Remove: ["Hook"],}, strictness: 0.1, strictnessZones: ["ItemHands", "HandsFrontAllowed", "HandsCrossedAllowed", "HandsUpAllowed"],
-		maxwill: 1.0, enemyTags: {"ropeRestraints":8}, playerTags: {"ItemArmsFull":-1}, minLevel: 3, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeReinforce", "ChestHarnesses", "HogtieUpper"]},
+		maxwill: 1.0, enemyTags: {"ropeRestraints":8, "ropeRestraintsNonbind": 10}, playerTags: {"ItemArmsFull":-1}, minLevel: 3, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "RopeReinforce", "ChestHarnesses", "HogtieUpper"]},
 	{unlimited: true, inventory: true, name: "RopeSnakeArmsWrist", debris: "Ropes", accessible: true, factionColor: [[], [0]], Asset: "HempRope", Type: "WristElbowHarnessTie",
 		Model: "RopeWristtie1",
 		linkPriority: 10,
@@ -5638,7 +5639,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		disassembleAs: "RopeSnakeRaw",
 		sfxGroup: "Ropes",
 		aggroLevel: 2.0,
-		maxwill: 0.75, enemyTags: {"ropeRestraints2":1}, playerTags: {"ItemTorsoFull":5}, minLevel: 3, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Harnesses", "RopeHarness"]},
+		maxwill: 0.75, enemyTags: {"ropeRestraints2":1, "ropeRestraintsNonbind": 10}, playerTags: {"ItemTorsoFull":5}, minLevel: 3, allFloors: true, shrine: ["RopeSnake", "Rope", "Ties", "Harnesses", "RopeHarness"]},
 	{unlimited: true, inventory: true, name: "RopeSnakeCrotch", debris: "Ropes", accessible: true, factionColor: [[], [0]], crotchrope: true, strictness: 0.15, Asset: "HempRope", Type: "OverPanties", LinkableBy: ["ChastityBelts"], OverridePriority: 26, Color: "Default", Group: "ItemPelvis", power: 1, weight: 0,
 		Model: "RopeCrotch",
 		harness: true,
@@ -5650,7 +5651,7 @@ const KinkyDungeonRestraints: restraint[] = [
 		disassembleAs: "RopeSnakeRaw",
 		sfxGroup: "Ropes",
 		aggroLevel: 1.0,
-		maxwill: 0.75, escapeChance: {"Struggle": 0.1, "Cut": 0.67, "Remove": 0.15}, enemyTags: {"ropeRestraints2":4}, playerTags: {"ItemPelvisFull":-3}, minLevel: 0, allFloors: true, shrine: ["RopeCrotch", "RopeSnake", "Rope", "Ties"],
+		maxwill: 0.75, escapeChance: {"Struggle": 0.1, "Cut": 0.67, "Remove": 0.15}, enemyTags: {"ropeRestraints2":4, "ropeRestraintsNonbind": 10}, playerTags: {"ItemPelvisFull":-3}, minLevel: 0, allFloors: true, shrine: ["RopeCrotch", "RopeSnake", "Rope", "Ties"],
 		events: [{trigger: "struggle", type: "crotchrope"}]},
 	//endregion
 
@@ -7726,7 +7727,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "sneakBuff", power: -0.15, inheritLinked: true},
 	],
 }, "Breastplate", "Rock-solid and form-fitting.", "Provides minor protection against enemy attacks. Decreases stealth.")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Bustier",
@@ -7960,7 +7961,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "RestraintBlock", power: 8, inheritLinked: true},
 	],
 }, "Light Plate Armor", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "MageArmor",
@@ -7979,6 +7980,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 0.25,
 	},
 	shrine: ["Armor", "Robe", "Mage"],
+	addPose: ["TorsoRobe"],
 
 	armor: true, bypass: true,
 	LinkAll: true, AlwaysLinkable: true, linkCategory: "Armor", linkSize: 0.6,
@@ -7992,7 +7994,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "spellWardBuff", power: 1, inheritLinked: true},
 	],
 }, "Wizard's Robe", "I have the power!", "+30% spell damage and +10 spell ward")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "SteelSkirt2",
@@ -8026,7 +8028,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "RestraintBlock", power: 3.5, inheritLinked: true},
 	],
 }, "Chain Skirt", "A defensive garment providing optimal coverage to the lower torso.", "Provides medium protection. No impact to stealth or evasion")
-, [...KDHexVariantList.BaseWithSkimpy]);
+, [...KDHexVariantList.BaseWithSkimpyShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "SteelSkirt",
@@ -8061,7 +8063,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "RestraintBlock", power: 5, inheritLinked: true},
 	],
 }, "Armored Skirt", "Knight in shining rest-err, armor!", "Provides +5 armor and high protection. No impact to stealth or evasion")
-, [...KDHexVariantList.BaseWithSkimpy]);
+, [...KDHexVariantList.BaseWithSkimpyShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Gauntlets",
@@ -8161,7 +8163,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	],
 	noRecover: true,
 }, "Steel Pauldrons", "Dependable protection for the average adventurer.", "Provides minor protection against enemy attacks.")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "Cape",
@@ -8197,7 +8199,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "sneakBuff", power: .15, inheritLinked: true},
 	],
 }, "Ranger's Cape", "Inbued with the powers of moss and ferns and stuff.", "+25 Evasion. Increases stealth slightly.")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "MagicArmbands",
@@ -8229,7 +8231,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "spellWardBuff", power: 0.5, inheritLinked: true},
 	],
 }, "Oracle's Armbands", "Armbands made of a slightly magical material.", "+5% spell damage. +5 Magic Armor.")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "SteelBoots",

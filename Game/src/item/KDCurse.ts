@@ -463,6 +463,9 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 				// We add this to ALL cursed items (including dormant curses)
 				{trigger: "curseCount", type: "add", power: 1, inheritLinked: true,
 					removeOnUncurse: true},
+				{original: "MimicHoly", trigger: "inventoryTooltip",
+					type: "invtooltipworn", msg: "SkimpyCurse", color: "#000044", bgcolor: "#ffffff",
+					removeOnUncurse: true},
 			], 4, "", {});
 			if (KDSkimpyModelReplace[restraint.Model]) {
 				KDSkimpyModelReplace[restraint.Model](ret, restraint, newRestraintName);
@@ -494,10 +497,34 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 				{trigger: "cleanse", type: "RemoveAndRevert", kind: restraint.name, sfx: "Magic",
 					inheritLinked: true},
 				{original: "MimicHoly", trigger: "inventoryTooltip",
-					type: "mimicholy", msg: "MimicHolyGlow", color: "#000044", bgcolor: "#ffff88",
+					type: "invtooltipworn", msg: "MimicHolyGlow", color: "#000044", bgcolor: "#ffff88",
 					removeOnUncurse: true},
 
 			], 8, "", {divinemimicCurse: 10});
+		}
+	},
+	"Shibari": {
+		level: 2,
+		variant: (restraint, newRestraintName) => {
+			let ret = KDAddEventVariant(restraint, newRestraintName, [
+				// We add this to ALL cursed items (including dormant curses)
+				{trigger: "curseCount", type: "add", power: 1, inheritLinked: true,
+					removeOnUncurse: true},
+				{original: "MimicHoly", trigger: "inventoryTooltip",
+					type: "invtooltipworn", msg: "ShibariCurse", color: "#000044", bgcolor: "#ffffff",
+					removeOnUncurse: true},
+			], 8, "", {shibariCurse: 10});
+			let mapGroup = KDRopeMapByGroup;
+			if (!ret.alwaysDressModel) ret.alwaysDressModel = [];
+			ret.alwaysDressModel.push(
+				{
+					Model: mapGroup[restraint.Group] || "RopeHarness",
+					factionFilters: {
+						Rope: {color: "Highlight", override: true},
+					},
+				}
+			);
+			return ret;
 		}
 	},
 };
@@ -657,18 +684,35 @@ let KDSkimpyModelReplace: Record<string, KDSkimpyReplacer> = {
 		ret.enemyTags = {skimpyCurse: 10};
 		ret.Model = "ChainPanties2";
 		ret.remove = ["ClothLower", "Skirts", "Pants"];
+		if (restraint.addPose) {
+			ret.addPose = [...restraint.addPose, "SkimpyLower"];
+		} else ret.addPose = ["SkimpyLower"];
 		return ret;
 	},
 	ChainSkirt2: (ret, restraint, newRestraintName) => {
 		ret.enemyTags = {skimpyCurse: 10};
 		ret.Model = "ChainPanties";
 		ret.remove = ["ClothLower", "Skirts", "Pants"];
+		if (restraint.addPose) {
+			ret.addPose = [...restraint.addPose, "SkimpyLower"];
+		} else ret.addPose = ["SkimpyLower"];
 		return ret;
 	},
 	ChainTunic: (ret, restraint, newRestraintName) => {
 		ret.enemyTags = {skimpyCurse: 10};
 		ret.Model = "ChainBikini";
 		ret.remove = ["Cloth", "Shirts"];
+		if (restraint.addPose) {
+			ret.addPose = [...restraint.addPose, "SkimpyUpper"];
+		} else ret.addPose = ["SkimpyUpper"];
 		return ret;
 	},
+}
+
+let KDRopeMapByGroup = {
+	ItemTorso: "RopeHarness",
+	ItemPelvis: "RopeCrotch",
+	ItemLegs: "RopeCrotch",
+	ItemArms: "RopeChestStraps2",
+	ItemBreast: "RopeChestStraps2",
 }

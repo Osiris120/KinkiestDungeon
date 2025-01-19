@@ -5273,6 +5273,7 @@ function KDChooseRestraintFromListGroupPriWithVariants (
 
 type kdRopeSlimePart = {
 	enemyTagSuffix?: string;
+	enemyTagSuffix2?: string;
 	enemyTagExtra?: Record<string, number>,
 }
 
@@ -5289,12 +5290,12 @@ let KDSlimeParts: Record<string, kdRopeSlimePart> = {
 };
 
 let KDRopeParts: Record<string, kdRopeSlimePart> = {
-	"Collar": {enemyTagSuffix: "Collar",enemyTagExtra: {"livingCollar":10}},
+	"Collar": {enemyTagSuffix: "Collar", enemyTagExtra: {"livingCollar":10}},
 	"ArmsBoxtie": {},
 	"ArmsWrist": {},
 	"Cuffs": {},
 	"CuffsAdv": {},
-	"CuffsAdv2": {},
+	"CuffsAdv2": {enemyTagSuffix2: "Nonbind"},
 	//"Hogtie": {enemyTagSuffix: "Hogtie"},
 	//"HogtieWrist": {enemyTagSuffix: "Hogtie"},
 	"HogtieLink": {enemyTagSuffix: "Hogtie"},
@@ -5305,8 +5306,8 @@ let KDRopeParts: Record<string, kdRopeSlimePart> = {
 	"Legs2": {},
 	"Legs3": {},
 	"Belt": {},
-	"Harness": {},
-	"Crotch": {},
+	"Harness": {enemyTagSuffix2: "Nonbind"},
+	"Crotch": {enemyTagSuffix2: "Nonbind"},
 	"Toes": {},
 	"Raw": {},
 };
@@ -5526,6 +5527,7 @@ function KDAddRopeVariants (
 			// For each category of rope items we dupe the original item and apply modifications based on the category parameters
 			let enemyTags: Record<string, number> = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
+			enemyTags[tagBase + (part[1].enemyTagSuffix2 || "")] = baseWeight;
 			if (part[1].enemyTagExtra) {
 				for (let tag in part[1].enemyTagExtra) {
 					enemyTags[tag] = part[1].enemyTagExtra[tag];
@@ -5536,6 +5538,7 @@ function KDAddRopeVariants (
 
 			let enemyTagsMult: Record<string, number> = {};
 			enemyTagsMult[tagBase + (part[1].enemyTagSuffix || "")] = 1;
+			enemyTagsMult[tagBase + (part[1].enemyTagSuffix2 || "")] = 1;
 			let shrine = [...allTag, ...KDGetRestraintTags(origRestraint)];
 			for (let t of removeTag) {
 				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
@@ -5636,6 +5639,7 @@ function KDAddHardSlimeVariants (
 			// For each category of rope items we dupe the original item and apply modifications based on the category parameters
 			let enemyTags: Record<string, number> = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
+			enemyTags[tagBase + (part[1].enemyTagSuffix2 || "")] = baseWeight;
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 3;
 			if (part[1].enemyTagExtra) {
 				for (let tag in part[1].enemyTagExtra) {
