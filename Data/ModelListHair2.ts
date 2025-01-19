@@ -42,7 +42,7 @@ AddModel({
 		{ Name: "Hairpin", Layer: "HairFront", Pri: 30,
 			NoOverride: true,
 			Folder: "Uniform",
-			RequirePoses: {"Marhntha": true},
+			RequirePoses: {"Marhnth": true},
 		},
 	])
 });
