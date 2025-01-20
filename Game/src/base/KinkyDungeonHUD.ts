@@ -2950,7 +2950,17 @@ function KDDrawBuffIcons(minXX: number, minYY: number, statsDraw: Record<string,
 				16, undefined, 151.1, undefined, 5);
 
 		if (!tooltip && MouseIn(XX, YY - Math.ceil(spriteSize/2), spriteSize, spriteSize)) {
-			DrawTextFitKD(stat.text, side ? XX + 100 : minXX, side ? YY : tooltipY, 1000, stat.color, "#000000", 22, "left", 160, 1.0, 8);
+			FillRectKD(kdcanvas, kdpixisprites, "buffttDesc", {
+				Left: (side ? XX + 100 : minXX) - 10,
+				Top: (side ? YY : tooltipY) - 17,
+				Width: 1020,
+				Height: 32,
+				Color: "#222222",
+				zIndex: 159,
+				alpha: 0.5,
+			});
+			DrawTextFitKD(stat.text, side ? XX + 100 : minXX, side ? YY : tooltipY, 1000, stat.color,
+				"#000000", 22, "left", 160, 1.0, 8);
 			tooltip = true;
 			if (stat.click) {
 				DrawButtonKDEx("statHighlight" + II, (_bdata) => {

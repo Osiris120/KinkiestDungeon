@@ -10395,17 +10395,19 @@ function KDApplyBindStun(enemy: entity, amount: number): number {
 	return 0;
 }
 
-let KDBindStunDecayHPFactor = 0.05;
-let KDBindStunDecayMaxHPFactor = 0.01;
+let KDBindStunDecayHPFactor = 0.5;
+let KDBindStunDecayHPFactorExp = 0.5;
+let KDBindStunDecayMaxHPFactor = 0.1;
 let KDBindStunCurrentStunFactor = 0.1;
+let KDBindStunDecayMaxHPFactorExp = 0.5;
 
 function KDEnemyDecayBindStun(enemy: entity, delta: number) {
 	if (enemy.bindStun > 0) {
 		let packed = KDUnPackEnemy(enemy);
 		for (let i = 0; i < delta; i++) {
 			let decay = Math.max(
-				enemy.hp * KDBindStunDecayHPFactor,
-				enemy.Enemy.maxhp * KDBindStunDecayMaxHPFactor,
+				Math.max(enemy.hp, 0)**KDBindStunDecayHPFactorExp * KDBindStunDecayHPFactor,
+				Math.max(enemy.Enemy.maxhp, 0)**KDBindStunDecayMaxHPFactorExp * KDBindStunDecayMaxHPFactor,
 				enemy.bindStun * KDBindStunCurrentStunFactor,
 			);
 
