@@ -5528,7 +5528,8 @@ function KDAddRopeVariants (
 			// For each category of rope items we dupe the original item and apply modifications based on the category parameters
 			let enemyTags: Record<string, number> = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
-			enemyTags[tagBase + (part[1].enemyTagSuffix2 || "")] = baseWeight;
+			if (part[1].enemyTagSuffix2)
+				enemyTags[tagBase + (part[1].enemyTagSuffix2 || "")] = baseWeight;
 			if (part[1].enemyTagExtra) {
 				for (let tag in part[1].enemyTagExtra) {
 					enemyTags[tag] = part[1].enemyTagExtra[tag];
@@ -5539,7 +5540,8 @@ function KDAddRopeVariants (
 
 			let enemyTagsMult: Record<string, number> = {};
 			enemyTagsMult[tagBase + (part[1].enemyTagSuffix || "")] = 1;
-			enemyTagsMult[tagBase + (part[1].enemyTagSuffix2 || "")] = 1;
+			if (part[1].enemyTagSuffix2)
+				enemyTagsMult[tagBase + (part[1].enemyTagSuffix2 || "")] = 1;
 			let shrine = [...allTag, ...KDGetRestraintTags(origRestraint)];
 			for (let t of removeTag) {
 				if (shrine.includes(t)) shrine.splice(shrine.indexOf(t), 1);
@@ -5640,7 +5642,8 @@ function KDAddHardSlimeVariants (
 			// For each category of rope items we dupe the original item and apply modifications based on the category parameters
 			let enemyTags: Record<string, number> = {};
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "")] = baseWeight;
-			enemyTags[tagBase + (part[1].enemyTagSuffix2 || "")] = baseWeight;
+			if (part[1].enemyTagSuffix2)
+				enemyTags[tagBase + (part[1].enemyTagSuffix2 || "")] = baseWeight;
 			enemyTags[tagBase + (part[1].enemyTagSuffix || "") + "Random"] = baseWeight + 3;
 			if (part[1].enemyTagExtra) {
 				for (let tag in part[1].enemyTagExtra) {

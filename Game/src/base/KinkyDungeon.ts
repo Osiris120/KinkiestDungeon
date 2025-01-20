@@ -1375,7 +1375,7 @@ async function sleep(msec: number) {
 let KDMarkAsCache = [];
 
 let lastGlobalRefresh = 0;
-let GlobalRefreshInterval = 2000;
+let GlobalRefreshInterval = 2500;
 let KDGlobalRefresh = false;
 let KDGlobalFilterCacheRefresh = true;
 
@@ -1716,7 +1716,7 @@ function KinkyDungeonRun() {
 			//let str = TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr");
 			//DrawTextKD(str.substring(0, Math.min(str.length, Math.round((CommonTime()-KDStartTime)/100))), 1000, 80, "#ffffff", KDTextGray2, 84);
 
-			KDDraw(kdcanvas, kdpixisprites, "logo", KinkyDungeonRootDirectory + "SimpleLogo.png", 1000 - 350, 0, 350 * 2, 150 * 2);
+			KDDraw(kdcanvas, kdpixisprites, "logomm", KinkyDungeonRootDirectory + "SimpleLogo.png", 1000 - 350, 0, 350 * 2, 150 * 2);
 			DrawTextKD(KDPatched ? (TextGet("KDVersion") + " " + TextGet("KDVersionStr")) : TextGet("KDLogo2"), 1000, 300, "#fff6bc", KDTextGray2, 24);
 			//DrawTextKD(TextGet("KinkyDungeon") + " v" + TextGet("KDVersionStr"), 1000, 200, "#ffffff", KDTextGray2);
 
@@ -3355,8 +3355,9 @@ function KDCullSprites(): void {
 				if (sprite[1].destroy)
 					sprite[1].destroy();
 			} else sprite[1].visible = false;
-		}
+		}// else sprite[1].visible = true;
 	}
+	if (cull) KDlastCull.set(kdpixisprites, CommonTime());
 }
 function KDCullSpritesList(list: Map<string, any>): void {
 	if (!KDlastCull.get(list)) KDlastCull.set(list, 0);
@@ -3370,8 +3371,9 @@ function KDCullSpritesList(list: Map<string, any>): void {
 				delete sprite[1].filters;
 				sprite[1].destroy();
 			} else sprite[1].visible = false;
-		}
+		}// else sprite[1].visible = true;
 	}
+	if (cull) KDlastCull.set(list, CommonTime());
 }
 
 let KDButtonsCache: Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number, scrollfunc?: (amount: number) => void, hotkeyPress?: string}> = {

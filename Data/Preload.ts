@@ -437,7 +437,19 @@ async function LoadTextureAtlas(list, scale_mode, preload = false) {
 		 : await PIXI.Assets.load(dataFile + buildSuff).then((value) => {
 			for (let s of Object.values(value.linkedSheets)) {
 				for (let t of Object.keys((s as any).textures)) {
-					KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST);
+					let tsprite = PIXI.Sprite.from(KDTex(t, scale_mode == PIXI.SCALE_MODES.NEAREST));
+					let rt = PIXI.RenderTexture.create(
+						{ width: 100, height: 100,
+							resolution: 1});
+
+					PIXIapp.renderer.render(tsprite, {
+						//blit: true,
+						clear: true,
+						renderTexture: rt,
+						blit: true,
+					});
+					tsprite.destroy();
+					rt.destroy(true);
 				}
 			}
 

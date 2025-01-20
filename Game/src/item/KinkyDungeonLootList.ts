@@ -207,7 +207,7 @@ let KDAdvancedArmor = [
 		nouncursed: ["Cape"], message:"LootChestArmor", messageColor:"lightblue", messageTime: 3, allFloors: true},
 	{name: "CapeShibari", minLevel: 0, weight: KDAdvancedArmorWeight,
 		armor: "Cape",
-		cursesuffix: "MimicShibari",
+		cursesuffix: "Shibari",
 		hexlist: "Common", enchantlist: "Common", hexchance: KD_hexchance_Default, enchantchance: KD_enchantchance_Default, alwaysenchanthex: true,
 		hexscale: KD_hexscale_Default, enchantscale: KD_enchantscale_Default,
 		unlockcurse: ["Common"], hexlevelmin: 0, hexlevelmax: 10, enchantlevelmin: 0, enchantlevelmax: 10,

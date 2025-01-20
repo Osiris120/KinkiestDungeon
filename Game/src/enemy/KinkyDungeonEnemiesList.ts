@@ -3092,6 +3092,7 @@ let KinkyDungeonEnemies: enemy[] = [
 			"soulimmune", "slashresist", "electricresist", "crushweakness", "unarmedresist", "chainimmune", "glueresist", "soapresist", "tickleresist", "groperesist", "painresist", "charmimmune",
 			"bulwark",
 		]), spellResist: 2, sneakthreshold: 0.6,
+		nonDirectional: true,
 		evasion: -9, ignorechance: 1.0, armor: 3, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05, immobile: true,
 		visionRadius: 0, maxhp: 10, minLevel:0, weight:-4, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
 		terrainTags: {"obstacle": 10, "obstacletile": 50}, allFloors: true, shrines: [],
@@ -3100,6 +3101,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		],
 	},
 	{name: "SteelDoor", faction: "Door", blockVision: true,
+		nonDirectional: true,
 		lowpriority: true,
 		pathcondition: "stonedoor",
 		cueSfx: {
@@ -3125,6 +3127,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		],
 	},
 	{name: "DollDoor", faction: "Door", blockVision: true,
+		nonDirectional: true,
 		lowpriority: true,
 		cueSfx: {
 			Block: "Clang",
@@ -3151,6 +3154,7 @@ let KinkyDungeonEnemies: enemy[] = [
 
 	{name: "GiantMushroom", faction: "Natural", clusterWith: "mushroom", tags: KDMapInit(["mushroom", "nofidget", "scenery", "nonvulnerable", "minor", "inactive", "harmless", "immobile", "unstoppable", "soulimmune", "slashweakness", "fireweakness", "glueresist", "poisonimmune", "coldweakness"]), spellResist: 0.33, sneakthreshold: 0.6,
 		lowpriority: true,
+		nonDirectional: true,
 		evasion: -9, ignorechance: 1.0, armor: 0, followRange: 1, AI: "ambush", ambushRadius: 0, difficulty: -0.05,
 		visionRadius: 0, maxhp: 1, minLevel:0, weight:5, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 1, dmgType: "souldrain",
 		terrainTags: {}, floors:KDMapInit(["cry", "jng"]), shrines: ["Will"], ondeath: [{type: "spellOnSelf", spell: "Spores"}],
@@ -4184,6 +4188,7 @@ let KinkyDungeonEnemies: enemy[] = [
 		Sound: {
 			baseAmount: 0,
 		},
+		nonDirectional: true,
 		nopickpocket: true,
 		visionRadius: 0, maxhp: 8, minLevel:0, weight:140, movePoints: 99999, attackPoints: 4, attack: "", attackWidth: 8, attackRange: 3, power: 4, dmgType: "souldrain",
 		terrainTags: {"passage": -999, "temple": 82, "open": 10}, floors:KDMapInit(["tmp"]), shrines: []},

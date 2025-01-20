@@ -652,7 +652,8 @@ function KinkyDungeonDressPlayer (
 				undefined, undefined);
 			ReUpdate = true;
 		}
-		if (!KDCurrentModels.get(Character)?.Poses?.Hair && KDModelHair[hairstyle]) {
+		if (!KDCurrentModels.get(Character)?.Poses?.Hair
+			&& !KDCurrentModels.get(Character)?.Poses?.Hairstyles && KDModelHair[hairstyle]) {
 			for (let hair of Object.values(KDModelHair[hairstyle])) {
 				KDInventoryWear(Character, hair.Item, undefined, undefined, undefined, hair.Filters, hair.Properties);
 				ReUpdate = true;

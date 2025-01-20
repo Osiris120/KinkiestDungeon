@@ -112,6 +112,8 @@ class ModelContainer {
 	readonly ForceUpdate: Set<string>;
 	readonly Refresh: Set<string>;
 	readonly Mods: Map<string, PoseMod[]>;
+	readonly EndMods: Map<string, PoseMod[]>;
+
 
 	constructor(Character: Character, Models: Map<string, Model>, Containers: Map<string, ContainerInfo>, ContainersDrawn: Map<string, ContainerInfo>, Poses: Record<string, boolean>) {
 		this.Character = Character;
@@ -122,6 +124,7 @@ class ModelContainer {
 		this.TempPoses = {};
 		this.HighestPriority = {};
 		this.Mods = new Map();
+		this.EndMods = new Map();
 		this.Update = new Set();
 		this.ForceUpdate = new Set();
 		this.Refresh = new Set();
@@ -375,9 +378,15 @@ function DisposeEntity(id: number, resort: boolean = true, deleteSpecial = false
  * @param DrawCanvas - Pixi container to draw to
  * @param Blend - The blend mode to use
  * @param StartMods - Mods applied
+ * @param EndMods - Mods applied at end
  * @param flip - Mods applied
  */
-function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null, Blend: any = PIXI.SCALE_MODES.LINEAR, StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false, extraPoses: string[] = undefined, containerID?: string): void {
+function DrawCharacter(C: Character, X: number, Y: number, Zoom: number,
+	IsHeightResizeAllowed: boolean = true, DrawCanvas: any = null,
+	Blend: any = PIXI.SCALE_MODES.LINEAR,
+	StartMods: PoseMod[] = [], zIndex: number = 0, flip: boolean = false,
+	extraPoses: string[] = undefined, containerID?: string,
+	EndMods: PoseMod[] = []): void {
 	if (!DrawCanvas) DrawCanvas = kdcanvas;
 
 	// Update the RenderCharacterQueue
@@ -458,6 +467,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			y: Y,
 			Blend: Blend,
 			StartMods: StartMods,
+			EndMods: EndMods,
 		};
 		KinkyDungeonSendEvent("beforeMeshDestroy", data);
 		MC.Update.delete(containerID);
@@ -474,13 +484,16 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		refreshfilters = true;
 		if (KDGlobalFilterCacheRefresh) {
 			KDGlobalFilterCacheRefresh = false;
-			for (let fc of KDAdjustmentFilterCache.values()) {
+			for (let fce of KDAdjustmentFilterCache.entries()) {
+				let fc = fce[1];
 				for (let f of fc) {
-					if (!KDFilterDrawn.get(f))
+					if (!KDFilterDrawn.get(f)) {
 						KDFilterCacheToDestroy.push(f);
+						fc.splice(fc.indexOf(f), 1);
+					}
 				}
+				if (fc.length == 0) KDAdjustmentFilterCache.delete(fce[0]);
 			}
-			KDAdjustmentFilterCache.clear();
 			KDFilterDrawn = new Map();
 		}
 
@@ -521,6 +534,7 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 			y: Y,
 			Blend: Blend,
 			StartMods: StartMods,
+			EndMods: EndMods,
 		};
 		KinkyDungeonSendEvent("meshCreate", data);
 		//Container.Container.filterArea = new PIXI.Rectangle(0,0,MODELWIDTH*MODEL_SCALE,MODELHEIGHT*MODEL_SCALE);
@@ -532,10 +546,14 @@ function DrawCharacter(C: Character, X: number, Y: number, Zoom: number, IsHeigh
 		let flippedPoses = DrawModelProcessPoses(MC, extraPoses);
 
 		if (PIXI.BaseTexture.defaultOptions.scaleMode != Blend) PIXI.BaseTexture.defaultOptions.scaleMode = Blend;
-		let modified = DrawCharacterModels(containerID, MC, X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25, Y + Zoom * MODEL_SCALE * MODELHEIGHT/2, (Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
-			MC.Containers.get(containerID), refreshfilters, flip);
+		let modified = DrawCharacterModels(containerID,
+			MC, X + Zoom * MODEL_SCALE * MODELHEIGHT * 0.25,
+			Y + Zoom * MODEL_SCALE * MODELHEIGHT/2,
+			(Zoom * MODEL_SCALE) || MODEL_SCALE, StartMods,
+			MC.Containers.get(containerID), refreshfilters, flip, EndMods);
 		let oldBlend = PIXI.BaseTexture.defaultOptions.scaleMode;
 		MC.Mods.set(containerID, StartMods);
+		MC.EndMods.set(containerID, EndMods);
 		MC.Update.add(containerID);
 
 		let Container = MC.Containers.get(containerID);
@@ -697,7 +715,9 @@ function KDLayerPropName(l: ModelLayer, Poses: Record<string, boolean>): string 
 /**
  * Setup sprites from the modelcontainer
  */
-function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom, StartMods, ContainerContainer, refreshfilters: boolean, flip: boolean) : boolean {
+function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom,
+	StartMods: PoseMod[],
+	ContainerContainer, refreshfilters: boolean, flip: boolean, EndMods: PoseMod[]) : boolean {
 	// We create a list of models to be added
 	let Models = new Map(MC.Models.entries());
 	let modified = false;
@@ -739,12 +759,13 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 			}
 
-			let pri = LayerPri(MC, l, m, StartMods);
-			if (!l.DontAlwaysOverride && LayerIsHidden(MC, l, m, StartMods)) continue;
+			let Mods = [...(StartMods || []), ...(EndMods || [])]
+			let pri = LayerPri(MC, l, m, Mods);
+			if (!l.DontAlwaysOverride && LayerIsHidden(MC, l, m, Mods)) continue;
 
 
 			if (!l.NoOverride && !(prop?.NoOverride != undefined && prop.NoOverride == 1)) {
-				let layer = LayerLayer(MC, l, m, StartMods);
+				let layer = LayerLayer(MC, l, m, Mods);
 				MC.HighestPriority[layer] = Math.max(MC.HighestPriority[layer] || -500, pri || -500);
 			}
 			if (l.CrossHideOverride) {
@@ -769,6 +790,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(MC.Poses, flip);
 	let {rotation, X_Anchor, Y_Anchor} = ModelGetPoseRotation(MC.Poses);
 	let mods = ModelGetPoseMods(MC.Poses);
+	let totalMods: {[_: string]: PoseMod[]} = {};
+	let endMods: {[_: string]: PoseMod[]} = {};
 	ContainerContainer.Container.angle = rotation;
 	ContainerContainer.Container.pivot.x = MODELWIDTH*Zoom * X_Anchor + MODEL_XOFFSET*Zoom;
 	ContainerContainer.Container.pivot.y = MODELHEIGHT*Zoom * Y_Anchor;
@@ -780,14 +803,27 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	for (let m of StartMods) {
 		if (!mods[m.Layer]) mods[m.Layer] = [];
 		mods[m.Layer].push(m);
+		if (!totalMods[m.Layer]) totalMods[m.Layer] = [];
+		totalMods[m.Layer].push(m);
 	}
+
+
+	if (EndMods)
+		for (let m of EndMods) {
+			if (!endMods[m.Layer]) endMods[m.Layer] = [];
+			endMods[m.Layer].push(m);
+			if (!totalMods[m.Layer]) totalMods[m.Layer] = [];
+			totalMods[m.Layer].push(m);
+		}
+
+
 
 	let drawLayers: Record<string, boolean> = {};
 
 	// Yes we draw these layers
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
-			if (!LayerIsHidden(MC, l, m, mods))
+			if (!LayerIsHidden(MC, l, m, totalMods))
 				drawLayers[m.Name + "," + l.Name] = ModelDrawLayer(MC, m, l, MC.Poses);
 		}
 	}
@@ -827,7 +863,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				) {
 				let transform = new Transform();
 
-				let layer = LayerLayer(MC, l, m, mods);
+				let layer = LayerLayer(MC, l, m, totalMods);
+
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
@@ -869,11 +906,29 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
+				layer = LayerLayer(MC, l, m, totalMods);
+				while (layer) {
+					let mod_selected: PoseMod[] = endMods[layer] || [];
+					for (let mod of mod_selected) {
+						transform = transform.recursiveTransform(
+							mod.offset_x || 0,
+							mod.offset_y || 0,
+							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+							mod.scale_x || 1,
+							mod.scale_y || 1,
+						(mod.rotation * Math.PI / 180) || 0
+						);
+					}
+					layer = LayerProperties[layer]?.Parent;
+				}
 
 				for (let ll of Object.entries(l.DisplaceLayers)) {
-					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite, "DisplacementMaps", false, l.DisplacementInvariant, l.DisplacementMorph, l.NoAppendDisplacement);
+					let id = ModelLayerStringCustom(m, l, MC.Poses, l.DisplacementSprite,
+						"DisplacementMaps", false, l.DisplacementInvariant,
+						l.DisplacementMorph, l.NoAppendDisplacement);
 
-					let zzz = (l.DisplaceZBonus || 0)*LAYER_INCREMENT-ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0);
+					let zzz = (l.DisplaceZBonus || 0)*LAYER_INCREMENT-ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
 					if (DisplaceFiltersInUse[id] != undefined && DisplaceFiltersInUse[id] < zzz) {
 						DisplaceFiltersInUse[id] = zzz;
 						for (let dg of Object.keys(LayerGroups[ll[0]])) {
@@ -960,7 +1015,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			) {
 				let transform = new Transform();
 
-				let layer = LayerLayer(MC, l, m, mods);
+				let layer = LayerLayer(MC, l, m, totalMods);
+
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
 					for (let mod of mod_selected) {
@@ -976,6 +1032,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					}
 					layer = LayerProperties[layer]?.Parent;
 				}
+
 				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
@@ -1001,11 +1058,26 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						(Properties.Rotation * Math.PI / 180) || 0
 					);
 				}
-
+				layer = LayerLayer(MC, l, m, totalMods);
+				while (layer) {
+					let mod_selected: PoseMod[] = endMods[layer] || [];
+					for (let mod of mod_selected) {
+						transform = transform.recursiveTransform(
+							mod.offset_x || 0,
+							mod.offset_y || 0,
+							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+							mod.scale_x || 1,
+							mod.scale_y || 1,
+							(mod.rotation * Math.PI / 180) || 0
+						);
+					}
+					layer = LayerProperties[layer]?.Parent;
+				}
 
 				for (let ll of Object.entries(l.EraseLayers)) {
 					let id = ModelLayerStringCustom(m, l, MC.Poses, l.EraseSprite, "DisplacementMaps", false, l.EraseInvariant, l.EraseMorph, l.NoAppendErase);
-					let zzz = (l.EraseZBonus || 0)*LAYER_INCREMENT -ModelLayers[LayerLayer(MC, l, m, mods)] + (LayerPri(MC, l, m, mods) || 0);
+					let zzz = (l.EraseZBonus || 0)*LAYER_INCREMENT -ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
 					if (EraseFiltersInUse[id] != undefined && EraseFiltersInUse[id] < zzz) {
 						EraseFiltersInUse[id] = zzz;
 						for (let dg of Object.keys(LayerGroups[ll[0]])) {
@@ -1129,12 +1201,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 		for (let l of Object.values(m.Layers)) {
 			if (drawLayers[m.Name + "," + l.Name] && !ModelLayerHidden(drawLayers, MC, m, l, MC.Poses)) {
 
-				let layer = LayerLayer(MC, l, m, mods);
+				let layer = LayerLayer(MC, l, m, totalMods);
 				let origlayer = layer;
 
 				let transform = new Transform();
-
-
 
 				while (layer) {
 					let mod_selected: PoseMod[] = mods[layer] || [];
@@ -1178,6 +1248,24 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					);
 				}
 
+
+				layer = LayerLayer(MC, l, m, totalMods);
+				while (layer) {
+					let mod_selected: PoseMod[] = endMods[layer] || [];
+					for (let mod of mod_selected) {
+						transform = transform.recursiveTransform(
+							mod.offset_x || 0,
+							mod.offset_y || 0,
+							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+							mod.scale_x || 1,
+							mod.scale_y || 1,
+							(mod.rotation * Math.PI / 180) || 0
+						);
+					}
+					layer = LayerProperties[layer]?.Parent;
+				}
+
 				let ox = transform.ox;
 				let oy = transform.oy;
 				let ax = transform.ax;
@@ -1196,7 +1284,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 
 				let extrafilter: PIXIFilter[] = [];
-				let zz = -ModelLayers[origlayer] + (LayerPri(MC, l, m, mods) || 0);
+				let zz = -ModelLayers[origlayer] + (LayerPri(MC, l, m, totalMods) || 0);
 				// Add extrafilters
 				if (ExtraFilters[origlayer]) {
 					for (let ef of ExtraFilters[origlayer]) {
@@ -1858,9 +1946,14 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
 
 	let MC = KDCurrentModels.get(C);
 	let StartMods = MC.Mods.get(`${X},${Y},${ZoomInit}`);
+	let EndMods = MC.EndMods.get(`${X},${Y},${ZoomInit}`);
 	let mods = ModelGetPoseMods(MC.Poses);
 
 	for (let m of StartMods) {
+		if (!mods[m.Layer]) mods[m.Layer] = [];
+		mods[m.Layer].push(m);
+	}
+	for (let m of EndMods) {
 		if (!mods[m.Layer]) mods[m.Layer] = [];
 		mods[m.Layer].push(m);
 	}
@@ -2040,11 +2133,12 @@ function KDCullModelContainerContainer(MC: ModelContainer, containerID: string) 
 			if (cull) {
 				sprite[1].parent.removeChild(sprite[1]);
 				Container.SpriteList.delete(sprite[0]);
-				modified = true;
 				KDSpritesToCull.push(sprite[1]);
 			} else sprite[1].visible = false;
-		}
+			modified = true;
+		}// else sprite[1].visible = true;
 	}
+	if (cull) KDlastCull.set(containerID, CommonTime());
 	return modified;
 }
 

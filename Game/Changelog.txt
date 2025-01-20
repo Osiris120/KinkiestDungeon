@@ -39,6 +39,10 @@ Note to Modders: if your mod alters the function KDFreeNPC you will have to reim
 
 TODO add ability to recolor own restraints via palette
 
+5.4.38
+- Additional optimizations to rendering
+- hopefully fixed a memory leak
+
 5.4.37
 - Added shibari cursed armor -- adds cosmetic rope when worn, mostly torso chest armor atm
 - Added skimpy cursed armor -- turns into a skimpier version, mostly just chain skirt atm

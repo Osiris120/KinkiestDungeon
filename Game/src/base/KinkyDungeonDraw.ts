@@ -13,16 +13,17 @@ interface KDLight {
 }
 
 let KDDebugOverlay = false;
-let CHIBIMOD: PoseMod[] = [
+let CHIBIMODEND: PoseMod[] = [
 	{
 		Layer: "HairBack",
 		scale_x: 1.0,
 		scale_y: 0.65,
-		rotation_x_anchor: 1190,
-		rotation_y_anchor: 690,
-		offset_x: 1100,
-		offset_y: 620,
+		rotation_x_anchor: 1220,
+		rotation_y_anchor: 420,
+		offset_x: 1220,
+		offset_y: 420,
 	},
+];let CHIBIMOD: PoseMod[] = [
 	{
 		Layer: "Head",
 		scale_x: 2.25,
@@ -3099,6 +3100,7 @@ function DrawTextVisKD (Container: PIXIContainer, Map: Map<string, any>, id: str
 			kdprimitiveparams.set(id, Params);
 	}
 	if (sprite) {
+		sprite.visible = true;
 		// Modify the sprite according to the params
 		sprite.name = id;
 		//sprite.cacheAsBitmap = true;
@@ -3144,6 +3146,7 @@ function DrawRectKD (Container: PIXIContainer, Map: Map<string, any>, id: string
 			kdprimitiveparams.set(id, Params);
 	}
 	if (sprite) {
+		sprite.visible = true;
 		// Modify the sprite according to the params
 		sprite.name = id;
 		sprite.position.x = Params.Left;
@@ -3188,6 +3191,7 @@ function DrawCircleKD(Container: PIXIContainer, Map: Map<string, any>, id: strin
 			kdprimitiveparams.set(id, Params);
 	}
 	if (sprite) {
+		sprite.visible = true;
 		// Modify the sprite according to the params
 		sprite.name = id;
 		sprite.position.x = Params.Left;
@@ -3236,6 +3240,7 @@ function DrawCrossKD(Container: PIXIContainer, Map: Map<string, any>, id: string
 			kdprimitiveparams.set(id, Params);
 	}
 	if (sprite) {
+		sprite.visible = true;
 		// Modify the sprite according to the params
 		sprite.name = id;
 		sprite.position.x = Params.Left;
@@ -3281,6 +3286,7 @@ function FillRectKD(Container: PIXIContainer, Map: Map<string, any>, id: string,
 			kdprimitiveparams.set(id, Params);
 	}
 	if (sprite) {
+		sprite.visible = true;
 		// Modify the sprite according to the params
 		sprite.name = id;
 		sprite.position.x = Params.Left;
@@ -3933,7 +3939,10 @@ function KDDraw (
 ): any
 {
 	let sprite: PIXISprite = Map.get(id);
-	if (!sprite?.parent) sprite = null;
+	if (!sprite?.parent) {
+		sprite = null;
+		Map.delete(id);
+	};
 	if (!sprite) {
 		// Load the texture
 		if (Nearest && StandalonePatched) {
@@ -4987,6 +4996,7 @@ function KDDoGraphicsSanitize(): void {
 	}
 	KDRenderTexToDestroy = [];
 	for (let t of KDMeshToDestroy) {
+		delete t.filters;
 		t.destroy({
 			baseTexture: true,
 		});
@@ -4997,6 +5007,7 @@ function KDDoGraphicsSanitize(): void {
 	}
 	KDFilterCacheToDestroy = [];
 	for (let s of KDSpritesToCull) {
+		delete s.filters;
 		s.destroy();
 	}
 	KDSpritesToCull = [];
@@ -5056,7 +5067,9 @@ function KDPlayerZoom(PlayerModel: ModelContainer): number {
 function KDDrawChibi(Character: Character, x: number, y: number, zoom: number) {
 	DrawCharacter(Character,
 		x, y,
-		zoom, false, undefined, PIXI.SCALE_MODES.NEAREST, CHIBIMOD, undefined, KDFlipPlayer, ["Sprite"]);
+		zoom, false, undefined,
+		PIXI.SCALE_MODES.NEAREST, CHIBIMOD, undefined, KDFlipPlayer, ["Sprite"],
+			undefined, CHIBIMODEND);
 
 
 }

@@ -3866,7 +3866,11 @@ function KinkyDungeonReplaceDoodads(Chance: number, barchance: number, wallRubbl
 				}
 
 			} else
-			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < wallRubblechance && !KDMapData.TilesSkin[X + "," + Y]) {
+			if (KinkyDungeonMapGet(X, Y) == '1' && KDRandom() < wallRubblechance && !KDMapData.TilesSkin[X + "," + Y]
+				&& KDNearbyMapTiles(X, Y, 1.5).some((mt) => {
+					return KinkyDungeonGroundTiles.includes(mt.tile)
+						&& KDMapData.RandomPathablePoints["" + mt.x + "," + mt.y];
+				})) {
 				KinkyDungeonMapSet(X, Y, 'Y');
 				KDMapData.PotentialEntrances.push({
 					Excavate: [{x: X, y: Y}],
@@ -3875,9 +3879,6 @@ function KinkyDungeonReplaceDoodads(Chance: number, barchance: number, wallRubbl
 					x: X,
 					y: Y,
 				})
-				if (KDAlreadyOpened(X, Y)) {
-					//KinkyDungeonMapSet(X, Y, '1');
-				}
 			}
 
 		}
