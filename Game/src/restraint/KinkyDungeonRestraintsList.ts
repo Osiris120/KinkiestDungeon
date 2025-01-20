@@ -4002,33 +4002,6 @@ const KinkyDungeonRestraints: restraint[] = [
 		escapeChance: {"Struggle": -0.6, "Cut": -0.4, "Remove": 0.1, "Pick": 0.4}, enemyTags: {"handcuffer":4, "shackleRestraints": 1, "cuffsSpell": 7}, enemyTagsMult: {handcuffer: 0.2, Unchained: 0.1}, minLevel: 7, allFloors: true, shrine: ["Legirons", "Metal", "Cuffs"]},
 
 
-
-	{inventory: true, trappable: true, name: "ThumbCuffs", debris: "Chains", Asset: "MetalCuffs", accessible: true,
-		Model: "Thumbcuffs",
-		struggleBreak: true,
-		hideTags: ["Armbinders", "Boxbinders", "Boxties", "Wristies", "BoundArms"],
-		AssetGroup: "ItemArms",
-		sfxGroup: "Handcuffs",
-		linkCategory: "Thumbs", linkSize: 0.51, LinkableBy: [...KDElbowBind, ...KDBoxBind, ...KDBindable], Group: "ItemHands",
-		Color: "Default", bindarms: true, power: 6, DefaultLock: "White",
-		bindhands: 0.4,
-		events: [
-			{trigger: "postUnlock", type: "RequireLocked", inheritLinked: true},
-			{trigger: "postApply", type: "NoYoke", inheritLinked: true},
-		],
-		helpChance: {"Pick": 0.4, "Unlock": 1.0},
-		escapeChance: {"Struggle": -0.2, "Cut": -0.2, "Remove": -0.2, "Pick": -0.12, "Unlock": -0.05},
-		enemyTags: {},
-		restriction: 3,
-		enemyTagsMult: {},
-		weight: -10000,
-		noDupe: true,
-		playerTags: {},
-		playerTagsMult: {Metal: 2},
-		playerTagsMissing: {Metal: -13},
-		playerTagsMissingMult: {Metal: 0.2},
-		minLevel: 8, allFloors: true, shrine: ["Thumbcuffs", "Cuffs", "Metal",  "HandsFrontAllowed"]},
-
 	{inventory: true, trappable: true, name: "ThumbCuffsNew", debris: "Chains", Asset: "MetalCuffs", accessible: true,
 		Model: "Thumbcuffs",
 		struggleBreak: true,

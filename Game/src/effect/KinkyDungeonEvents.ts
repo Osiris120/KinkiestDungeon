@@ -323,6 +323,7 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 		"ControlHarness": (e, item, data: KDEventData_PostApply) => {
 			let itemAdded = data.item;
 			if (!itemAdded) return;
+			if (data.UnLink) return;
 			let itemtags = KDRestraint(itemAdded)?.shrine;
 			console.log(itemtags);
 			// Ignore anything that isnt futuristic
@@ -373,13 +374,13 @@ let KDEventMapInventory: Record<string, Record<string, (e: KinkyDungeonEvent, it
 			}
 		},
 
-		"NoYoke": (_e, item, data) => {
+		"NoYoke": (_e, item, data: KDEventData_PostApply) => {
 			if (item == data.item && KinkyDungeonPlayerTags.get("Yoked"))
-				KinkyDungeonRemoveRestraintSpecific(item, true, false);
+				KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
 		},
-		"requireNoGags": (_e, item, data) => {
+		"requireNoGags": (_e, item, data: KDEventData_PostApply) => {
 			if (item != data.item && KinkyDungeonPlayerTags.get("Gags")) {
-				KinkyDungeonRemoveRestraintSpecific(item, true, false);
+				KinkyDungeonRemoveRestraintSpecific(item, data.keep, false);
 				KinkyDungeonSendTextMessage(4, TextGet("KDGagNecklaceOff"), "#ffffff", 4);
 			}
 		},

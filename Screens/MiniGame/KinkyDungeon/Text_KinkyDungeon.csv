@@ -23598,6 +23598,9 @@ KDVarPrefManaCostSpecific,Entuned
 KDVarPrefManaRegenOnKill,Draining
 KDVarSuffElementalEcho,of Echoes
 KDVarPrefElementalDmg,Infused
+KDVarPrefElementalDmg_stun,Explosive
+KDVarPrefElementalDmg_fire,Flaming
+KDVarPrefElementalDmg_cold,Shadow
 KDVarPrefManaRegen,Focusing
 KDVarSuffBaseDamageBuffMelee,of Empowerment
 KDVarSuffBaseDamageBuffMagic,of Destruction
