@@ -69,6 +69,13 @@ Object.assign(KinkyDungeonConsumables, KDCookies);
 
 let KDRechargeCost = 100;
 
+/** Criteria that must be true for an enemy to sell you an item */
+let KDSellCriteria = {
+	Keyring: (seller: entity) => {
+		return KDMapData.EscapeMethod == "Key";
+	},
+}
+
 let KinkyDungneonBasic = {
 	"Key" : {name: "Key", rarity: 0, shop: false},
 	"Keyring" : {name: "Key", rarity: 0, shop: false},

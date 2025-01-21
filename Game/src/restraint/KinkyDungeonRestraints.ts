@@ -2951,7 +2951,7 @@ function KDGetRestraintsEligible (
 	NoStack?:            boolean,
 	extraTags?:          Record<string, number>,
 	agnostic?:           boolean,
- 	filter?:             {filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]},
+ 	filter?:             {filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[], currentWill?: number},
 	securityEnemy?:      entity,
 	curse?:              string,
 	filterEps:           number = 0.9,
@@ -3057,6 +3057,7 @@ function KDGetRestraintsEligible (
 	for (let r of cache) {
 		let restraint = r.r;
 		if (filter && !r.inventory) {
+			if (filter.currentWill != undefined && r.r.maxwill != undefined && filter.currentWill > r.r.maxwill) continue;
 			if (filter.allowedGroups && !filter.allowedGroups.includes(r.r.Group)) continue;
 			if (filter.maxPower && r.r.power > filter.maxPower && (!filter.looseLimit || !r.r.unlimited)) continue;
 			if (filter.minPower && r.r.power < filter.minPower && (!filter.looseLimit || !r.r.limited) && !r.r.unlimited) continue;
@@ -3216,7 +3217,7 @@ function KinkyDungeonGetRestraint (
 	NoStack?:             boolean,
 	extraTags?:           Record<string, number>,
 	agnostic?:            boolean,
-	filter?:              {filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[]},
+	filter?:              {filterGroups?: string[], minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[], allowedGroups?: string[], currentWill?: number},
 	securityEnemy?:       entity,
 	curse?:               string,
 	useAugmented?:        boolean,

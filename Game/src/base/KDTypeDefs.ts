@@ -444,6 +444,8 @@ interface KDRestraintPropsBase {
 	blindfold?: number
 	/** Maximum stamina percentage the player can have in order for the restraint to be applied. 0.25-0.35 for really strict stuff, 0.9 for stuff like ball gags, none for quick restraints like cuffs */
 	maxwill?: number,
+	/** for enemies only */
+	maxwillEnemy?: number,
 	Type?: string,
 	/** Item is removed when the wearer goes to prison */
 	removePrison?: boolean,

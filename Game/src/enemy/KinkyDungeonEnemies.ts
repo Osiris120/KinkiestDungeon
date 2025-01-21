@@ -1702,7 +1702,7 @@ function KDGetMaxShield(enemy: entity): number {
  */
 function KDGetShieldRegen(enemy: entity): number {
 	let regen = (enemy?.Enemy?.shieldregen || 0) + KDEntityBuffedStat(enemy, "ShieldRegen");
-	if (!KDEntityHasFlag(enemy, "tookShieldDmg")) {
+	if (!KDEntityHasFlag(enemy, "tookShieldDmg") && !KDEntityHasFlag(enemy, "tookHpDmg")) {
 		regen += KDEntityBuffedStat(enemy, "ShieldRegenBG");
 	}
 	return regen;

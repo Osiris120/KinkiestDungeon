@@ -1133,6 +1133,7 @@ function KinkyDungeonDamageEnemy(Enemy: entity, Damage: damageInfo, Ranged: bool
 			}
 			if (predata.dmgDealt > 0) {
 				Enemy.hp -= predata.dmgDealt;
+				KinkyDungeonSetEnemyFlag(Enemy, "tookHpDmg", KDEnemyShieldRegenStopTime(Enemy));
 				KDApplyBindStun(Enemy, 0.5*predata.dmgDealt);
 			}
 			if (Enemy.hp > 0 && Enemy.hp <= 0.51 && predata.dmgDealt > 0.51 && !forceKill && KDBoundEffects(Enemy) < 4) {
@@ -3308,16 +3309,20 @@ function KDBindEnemyWithTags(id: number, tags: string[],
 		let maxBinding = entity.boundLevel + amount;
 		let expected = KDGetExpectedBondageAmountTotal(id, entity);
 		let regenEligible = () => {
-			restraintsEligible = KDGetNPCEligibleRestraints_fromTags(
-				id,
-				tags,
-				{
-					forceEffLevel: KDGetEffLevel() + power,
-					allowVariants: allowVariants,
-					noOverride: !allowOverride,
-					forceConjure: forceConjure,
-				}
-			);
+			let currentWill = Math.min(entity.hp, entity.Enemy.maxhp - (entity.boundLevel || 0)/(1 + KDGetBindEffectMult(entity)))/entity.Enemy.maxhp;
+			let delta = 0.25;
+			for (let will = currentWill; will >= 0; will = (will == 0 ? -1 : Math.max(0, will - delta)))
+				restraintsEligible = KDGetNPCEligibleRestraints_fromTags(
+					id,
+					tags,
+					{
+						forceEffLevel: KDGetEffLevel() + power,
+						allowVariants: allowVariants,
+						noOverride: !allowOverride,
+						forceConjure: forceConjure,
+						currentWill: will,
+					}
+				);
 		}
 		let restraintsEligible: EligibleRestraintEntry[] = [];
 		regenEligible();

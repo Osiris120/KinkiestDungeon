@@ -1760,7 +1760,7 @@ function KDShopDialogue(name: string, items: string[], requireTags: string[], re
 	return shop;
 }
 
-// The dialogue for allies sellin g you their inventory
+// The dialogue for npc selling you their inventory
 function KDShopBuyDialogue(name: string): KinkyDialogue {
 	let shop: KinkyDialogue = {
 		inventory: true,
@@ -1862,6 +1862,9 @@ function KDShopBuyDialogue(name: string): KinkyDialogue {
 				}
 				if (items.length > i) {
 					let item = items[i];
+					if (KDSellCriteria[item]) {
+						if (!KDSellCriteria[item](enemy)) return false;
+					}
 
 					// Don't sell what we want to buy
 					let shops = Object.values(KDShops).filter((shp) => {return KDEnemyHasFlag(enemy, shp.name);});
