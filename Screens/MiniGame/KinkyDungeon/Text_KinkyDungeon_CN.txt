@@ -1219,7 +1219,7 @@ Invisible: You are very difficult to see.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 迅捷 : ‎你的下一个动作极其迅速，不消耗回合时间。
 All Damage Reduction:
-全部伤害减免：
+全部伤害减免 : ‎
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 你受到的DAMAGETYPE伤害COUNTPERCENT [基于 PERCENT2 DAMAGETYPE抗性和 PERCENT3 DAMAGECATEGORY修正]
 You deal PERCENT more DAMAGETYPE damage.
@@ -1259,15 +1259,15 @@ Hands are useless!
 Hands are impaired! Some tasks will be harder...
 你的双手受到束缚！一些操作会更加困难...
 Slow Level 2: Movement significantly impaired!
-减速 2 级：行动能力显著降低！
+减速 2 级 : 行动能力显著降低！
 Slow Level 1: Movement slightly impaired.
-减速 1 级：行动能力降低。
+减速 1 级 : 行动能力降低。
 Slow Level 3: Movement severely impaired!
-减速 3 级：行动能力严重降低！
+减速 3 级 : 行动能力严重降低！
 Slow Level 4+: Movement is almost impossible. Sprinting and hopping are disabled.
-减速 4 级以上：几乎无法移动。冲刺和跳跃均被禁用。
+减速 4 级以上 : 几乎无法移动。冲刺和跳跃均被禁用。
 Slow Level 10+: Immobilized!
-减速 10 级以上：完全无法动弹！
+减速 10 级以上 : 完全无法动弹！
 Your mouth is free for potion-drinking and spellcasting activities.
 你的嘴巴可以自由饮用药剂和施放法术。
 Your vision is clear.
@@ -1327,7 +1327,7 @@ You are on fire and taking damage!
 Divine Punishment: Deals bonus damage when you hit an enemy.
 狂暴状态 : ‎当你击中敌人时，造成额外的伤害
 Divine Protection: Automatically blocks the next 3 times an enemy tries to bind you.
-神圣守护：自动阻挡敌人接下来三次试图束缚你的攻击。
+神圣守护 : 自动阻挡敌人接下来三次试图束缚你的攻击。
 Divine Cunning: You turn invisible briefly after attacking.
 神圣之灵 : ‎你在攻击后短暂变得隐形
 -MP Cost (Fire)
@@ -1463,7 +1463,7 @@ Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 Block Chance: Percent%, based on BLOCKSUM Block and BLOCKPENALTY% penalty.
 格挡率 : ‎Percent% [基于 BLOCKSUM 点格挡值和 BLOCKPENALTY% 格挡值惩罚]
 Chance to resist a level 10 restraint: AMNT1%, based on AMNT2 Bondage Resist and RESBLKPENALTY penalty.
-抵抗 10 级束缚的几率：AMNT1%，基于 AMNT2 束缚抵抗和 RESBLKPENALTY 惩罚。
+抵抗 10 级束缚的几率 : AMNT1%，基于 AMNT2 束缚抵抗和 RESBLKPENALTY 惩罚。
 Sight Range: RADIUS
 视距 : ‎RADIUS
 Speed: SPD
@@ -1737,7 +1737,7 @@ Press a key, then press a button to set that key
 Floor FLOORNUMBER: DUNGEONNAME
 楼层 FLOORNUMBER : DUNGEONNAME
 Lockpicks:
-撬锁工具：
+撬锁工具 : ‎
 Keys:
 钥匙
 Magic Keys:
@@ -5368,9 +5368,9 @@ Goddess Blessing:
 Goddess Curse: 
 女神诅咒 : ‎
 Mana Bonus: 
-法力值加成：
+法力值加成 : ‎
 Lack of Mana Penalty: 
-缺乏法力惩罚：
+缺乏法力惩罚 : ‎
 Your excess mana helps you suppress the enchantment!
 你多余的法力可以帮助你抵抗附魔！
 Your mana is too weak to fight the magical enchantment...
@@ -5390,11 +5390,11 @@ These runes are meant for someone with less willpower.
 You try to read the runes but cannot understand them.
 你尝试阅读符文，但无法理解它们。
 Allies:
-盟友：
+盟友 : ‎
 Enemies:
-敌人：
+敌人 : ‎
 Favorable:
-好感度：
+好感度 : ‎
 None
 无
 Nevermere Trainers
@@ -8032,9 +8032,9 @@ Mental Resistance
 +100 Psychic and Charm Resist. You can no longer let go involuntarily while your WP is above 10% or you are shielded, and willpower drains 70% slower while edged. (click the buff to toggle)
 +100精神与魅力抗性。除非你的意志力高于10%或被屏蔽，否则你无法不自觉地高潮（点击增益效果可切换）。在处于“高潮边缘”状态时，意志力消耗速度减慢70%。
 Mental Resistance: You cannot orgasm except by choice or below 25% WP. Click to toggle.
-坚定意志：除非自愿或意志力为25%以下，否则无法高潮。点击以切换。
+坚定意志 : 除非自愿或意志力为25%以下，否则无法高潮。点击以切换。
 Mental Resistance: You are allowing yourself to let go. Click to toggle.
-坚定意志：你随意允许自己高潮。点击以切换。
+坚定意志 : 你随意允许自己高潮。点击以切换。
 Way of Discipline
 戒律之路
 You have chosen the path of absolute discipline. Being in an Edged state increases passive mana recovery and you regenerate 0.5 mana per turn, restoring the same amount to the Mana Pool if you have willpower to spare. Blocks Way of Pleasure.
@@ -9246,7 +9246,7 @@ CMD: Bind
 Select area to bind
 选择施放位置
 Commands nearby restraints to bind targets standing on them. Rope: 30 chain dmg/5 turn snare. Chain: 30 crush dmg/8 turn disarm. Belts: 50 binding/3 turns vulnerability.
-命令附近的拘束具束缚站在其上的目标。绳索：造成 30 锁链伤害并束缚 5 回合，皮带：增加 50 点束缚并脆弱 3 回合，锁链：增加 30 点碾压伤害并缴械 8 回合。
+命令附近的拘束具束缚站在其上的目标。绳索 : 造成 30 锁链伤害并束缚 5 回合，皮带 : 增加 50 点束缚并脆弱 3 回合，锁链 : 增加 30 点碾压伤害并缴械 8 回合。
 CMD: Unlock
 指令 : ‎解锁
 Select which creature to unlock
@@ -9340,7 +9340,7 @@ Produce a bright light for Duration turns. Has no effect in dark rooms.
 Levitate
 漂浮
 When enabled and above 0 stamina: Drain 5 mana per step to reduce slow level by 1 (if above 1), or 20 mana to ignore a temporary slow effect.
-在体力大于0时激活：每走一步消耗5点法力值，可将减速等级降低1级（如果减速等级大于1），或者消耗20点法力值来无视一次临时减速效果。
+在体力大于0时激活 : 每走一步消耗5点法力值，可将减速等级降低1级（如果减速等级大于1），或者消耗20点法力值来无视一次临时减速效果。
 You levitate over the trap!
 你漂浮在陷阱上！
 You snag a tripwire while floating!
@@ -9352,7 +9352,7 @@ You hover with reduced effect from bindings.
 Iron Blood
 铁血
 Channel 4 turns: Halves SP cost of melee attacks by 50%, but increases MP cost of spells by 25%. Ends on sleep or recast.
-引导4回合：近战攻击体力消耗 -50%，但释放法术时法力消耗 +25%，睡眠或再次使用时停止。
+引导4回合 : 近战攻击体力消耗 -50%，但释放法术时法力消耗 +25%，睡眠或再次使用时停止。
 Your skin glows a pale red!
 你的皮肤发出淡红色的光芒！
 Stone Skin
@@ -10100,7 +10100,7 @@ You need more spell points.
 You don't have enough maximum mana to cast this spell!
 您没有足够的最大法力值来施放这个法术！
 School:
-学校：
+学校 : ‎
 Generic
 通用
 Upgrade
@@ -10112,9 +10112,9 @@ Learn Spell
 Spell Points:
 法术点
 Level:
-等级：
+等级 : ‎
 Spell Point Cost:
-需求法术点：
+需求法术点 : ‎
 Mana Cost:
 法力消耗
 Remove Spell 1
@@ -10146,19 +10146,19 @@ Replace Spell 6
 Replace Spell 7
 替换法术 7
 Current Spell 1:
-当前法术1
+当前法术 1
 Current Spell 2:
-当前法术2：
+当前法术 2 : ‎
 Current Spell 3:
-当前法术3：
+当前法术 3 : ‎
 Current Spell 4:
-当前法术4：
+当前法术 4 : ‎
 Current Spell 5:
-当前法术5：
+当前法术 5 : ‎
 Current Spell 6:
-当前法术6：
+当前法术 6 : ‎
 Current Spell 7:
-当前法术7：
+当前法术 7 : ‎
 ???
 ？？？
 Unfiled
@@ -10232,7 +10232,7 @@ Ejahl
 (It looks like a... receipt) Thank you for your offering to CELESTIAL COMMERCE. Please accept this fine-quality steel blade as compensation for your continued devotion and selflessness.
 ( 看起来像……收据 ) 感谢您向 CELESTIAL COMMERCE 提供的服务。请接受这把优质钢刀片作为对您持续奉献和无私的补偿。
 (A note written in cursive) To whomever assaulted our courier and left them tied up here: The shrines of the Goddess of ILLUSION are NOT to be used in this manner. If you desire a subject for your lewd experimentations, please attempt to do so on one of the locals and for heaven's sake do not call up an angelic courier just so you may tie her up. It does not matter that she consented, nor that you paid, our couriers have responsibilities that they must attend to. Signed: HERONA, enforcer of the GODDESS of ILLUSIONS.
-(用草书写的便条）致那些袭击我们的信使并把他们绑在这里的人：幻象女神的神殿不能以这种方式使用。如果你想要一个对象来做你的下流实验，请尝试在一个当地人身上这样做，看在神的份上，不要为了把她绑起来而传信给天使信使。她同意与否，你付钱与否都不重要，我们的信使有他们必须履行的责任。签名：赫罗娜，幻象女神的执行者。
+(用草书写的便条）致那些袭击我们的信使并把他们绑在这里的人 : 幻象女神的神殿不能以这种方式使用。如果你想要一个对象来做你的下流实验，请尝试在一个当地人身上这样做，看在神的份上，不要为了把她绑起来而传信给天使信使。她同意与否，你付钱与否都不重要，我们的信使有他们必须履行的责任。签名 : 赫罗娜，幻象女神的执行者。
 (From an essay titled 'On Celestial Supply Chains') It is known that the heavens seek gold. We do not know why it is that the heavens seek it, but we do know that the Goddesses grant us fragments of their limitless power in exchange for this otherwise-useless metal we dredge up from the earth. They care about it so much that shrines are commonplace, each hosting an angelic courier lying in wait for any adventurer willing to part with hers.
 ( 摘自一篇题为《论天上供应链》的文章 ) 众所周知，天上求金。我们不知道为什么上天会寻找它，但我们知道女神赐予我们无限力量的碎片，以换取我们从地球上挖出的这种原本无用的金属。他们非常关心它，以至于神龛司空见惯，每个神龛都有一个天使信使，等待任何愿意与她分享的冒险者。
 They say that the maiden who safeguards the graveyard is kind to her pets...
@@ -10304,7 +10304,7 @@ Ninjas aren't so tough to fight when their hands are tied behind their back. Goo
 (It's a interlinear translation of an ancient letter) Your highness, I have delivered to you the prisoners that you have asked. They are the worst of the worst--thieves, slanderers, sorcerers and seducers. But I must inquire, why is it that we must wrap them in silken scarves, worth twenty gold pieces each? Surely they are being handed over to be disciplined, not to be anointed?
 ( 这是一封古信的行间翻译 ) 殿下，您所要求的囚犯我已经交给您了。他们是最坏中的最坏的人——小偷、诽谤者、巫师和诱惑者。但我要问，为什么一定要给他们裹上每条价值二十金币的丝巾呢？难道他们被交给人是为了接受纪律，而不是为了受膏抹吗？
 (It's a record of an interview)|ME: Why are you like this?|MUMMY: Because we are blessed!|ME: Blessed? You've been wrapped up for thousands of years!|MUMMY: A thousand years is nothing compared to the glory that will come!|ME: Why do you have to be wrapped up? There are plenty of you who aren't...|MUMMY: The chosen ones will inherit the land when the goddess returns.
-(采访记录）|我：你为什么这样？木乃伊：因为我们被祝福了！|我:祝福吗?你被包裹了几千年！木乃伊：与即将到来的荣耀相比，千年不算什么！我：你为什么要裹得严严实实的？你们中有很多人不是……木乃伊：当女神回来时，被选中的人将继承土地。
+(采访记录）|我 : 你为什么这样？木乃伊 : 因为我们被祝福了！|我:祝福吗?你被包裹了几千年！木乃伊 : 与即将到来的荣耀相比，千年不算什么！我 : 你为什么要裹得严严实实的？你们中有很多人不是……木乃伊 : 当女神回来时，被选中的人将继承土地。
 (It's a record of an interview)|ME: Which goddess are you referring to? The goddess of restoration?|MUMMY: The blessed kitty.. she was promised to rule over the lesser goddesses.|ME: Lesser goddesses? Which ones?|MUMMY: YOUR goddesses. The ones you humans created that should not be. Ours is the true offspring of the creators, a goddess created to rule!
 ( 采访记录 ) |我 : ‎你指的是哪位女神？ 恢复女神？|木乃伊 : ‎受祝福的小猫..她被许诺统治小女神。|我 : ‎小女神？哪些？|MUMMY : ‎你的女神。你们人类创造的那些不应该是的。我们是造物主的真正后代，是为统治而生的女神！
 (It's a record of an interview)|ME: What of the elves? Don't they talk about a 'kingdom' too?|MUMMY: Who are the elves?|ME: You know, pointy ears, green hair, a heck of an attitude... they seem in tune with nature.|MUMMY: They sound arrogant.|ME: They are.|MUMMY: Perhaps they know nothing of the promise between our goddess and theirs.
@@ -10376,7 +10376,7 @@ Curse of Sensitivity: Makes it easier to lose control of yourself.
 Curse of Distraction: Multiplies DP gain by 1.5x.
 性奋诅咒 : ‎将性奋值增益提高至1.5 倍
 Curse of Exhaustion: -25% Stamina regen cap.
-疲劳诅咒：体力值上限-25%。
+疲劳诅咒 : 体力值上限-25%。
 Curse of Futility: Multiplies WP gain by 0.5x.
 徒劳诅咒 : ‎将意志力增益降低至0.5 倍
 Curse of Submission: Gain submissiveness when you lose control of yourself...
@@ -11064,9 +11064,9 @@ Can disarm (chance: DISARMCHANCE%)
 Resistances:
 抗性 : ‎
 HP:
-生命值：
+生命值 : ‎
 Binding:
-束缚值：
+束缚值 : ‎
 Ambivalent
 矛盾
 Likes you
@@ -11354,7 +11354,7 @@ Extreme Mode
 A supposedly reasonable difficulty curve.
 合理的难度曲线
 Play the game the way it was intended. Cruel and restrictive.
-以游戏的本意进行游玩：残酷且充满限制。
+以游戏的本意进行游玩 : 残酷且充满限制。
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 你将自食其果，该难度通过双击“困难模式”按钮解锁
 Aroused
@@ -12922,7 +12922,7 @@ This is just to make sure your clothes don't fall off, don't worry!
 My name's Melissa! I know I'm pretty, but try not to stare too much~
 我叫梅丽莎！我知道我很漂亮，但尽量不要盯着看~
 Let me show you how it's done: SPL!
-让我来告诉你怎么做：SPL！
+让我来告诉你怎么做 : SPL！
 You've just narrowly avoided my SPL~
 你差一点就躲过了我的 SPL
 Kya~ I have no mana, I'm so defenseless right now~
@@ -13476,7 +13476,7 @@ Requesting backup!
 Calling in a blockade!
 呼叫封锁！
 Hidden technique: SPL!
-隐藏技巧：SPL！
+隐藏技巧 : SPL！
 I practiced a thousand times... for this!?
 我练习了一千次……对于这个! ?
 I'm not hiding anything, if you know what I mean...
@@ -16488,7 +16488,7 @@ Why don't you try it on yourself! (PERCENT chance to avoid)
 (The SPEAKER looks happy again)|Thank you! I'm super grateful!
 ( SPEAKER 看起来又高兴了)|谢谢！我非常感激！
 (The SPEAKER tilts her head)|Fine then. You win.|(As you leave, you hear a 'just kidding' as she breaks a glass vial)|(A suit of blue latex envelops you!)
-( SPEAKER 歪着头)|那好吧。你赢了|(当你离开时，你听到她打碎了一个小玻璃瓶，她说：“开个玩笑。”)|(一套蓝色乳胶套装包裹着你！)
+( SPEAKER 歪着头)|那好吧。你赢了|(当你离开时，你听到她打碎了一个小玻璃瓶，她说 : “开个玩笑。”)|(一套蓝色乳胶套装包裹着你！)
 ...Hello?
 ...你好？
 You guys are crazy.
@@ -16568,7 +16568,7 @@ I will never bow to you! (PERCENT chance to avoid)
 (The SPEAKER waves)|You seem like an exceptional individual.|What do you think of joining the Guild?
 ( SPEAKER 挥手)|你看起来是个与众不同的人|你觉得加入公会怎么样？
 (The SPEAKER smiles)|Excellent! I'll put in a word with the Guild.|Do note: this will affect your reputation with certain bad actors.
-( SPEAKER 微笑)|太棒了！我会和公会谈谈的|请注意：这会影响你在某些坏角色面前的声誉。
+( SPEAKER 微笑)|太棒了！我会和公会谈谈的|请注意 : 这会影响你在某些坏角色面前的声誉。
 (The SPEAKER takes out a magic scroll and signs it)|(The scroll vanishes into the aether)|Good luck out there, freelancer.
 ( SPEAKER 拿出一个魔法卷轴并签名)|(卷轴消失在以太中)|祝你好运，自由职业者。
 (The SPEAKER nods)|Fair enough. Guild work is not for everyone.
@@ -18216,7 +18216,7 @@ LEVEL 级
 Prerequisite
 前置条件
 Unlocks:
-解锁：
+解锁 : ‎
 You need to learn REQUIREDSPELL before you can learn this one.
 你需要先学习 REQUIREDSPELL 才能学习这个。
 You no longer have the will to struggle.
@@ -18264,7 +18264,7 @@ Your harness projects energy tethers between your cuffs EnemyName activates it!
 
 
 Turn Count: 
-回合计数：
+回合计数 : ‎
 
 
 The Shopkeeper leashes you!
@@ -18634,7 +18634,7 @@ Paste
 Items on Ground:
 地面物品 : ‎
 Preloading Character Assets:
-预加载角色资产：
+预加载角色资产 : ‎
 Uniforms
 制服
 Suits
@@ -20844,7 +20844,7 @@ AMNT 每回合性奋
 AMNT AP from attacks
 AMNT AP 遭受攻击
 After attacking with a teasing weapon:
-用挑逗性武器攻击后：
+用挑逗性武器攻击后 : ‎
 Gain AMNT% Spell Damage for DRTN turns
 在 DRTN 回合内造成 AMNT% 法术伤害
 Drains mana from the wearer.
@@ -22626,7 +22626,7 @@ Hogtied!
 Experience a comprehensive rope bondage experience.
 体验全面的绳索束缚体验。
 Receive the following restraints:
-受以下拘束：
+受以下拘束 : ‎
 You will be bound with some form of restraint.
 你将受到某种形式的束缚。
 Gag Geist
@@ -23148,7 +23148,7 @@ Guest #NUMR/TTL
 Select a character to examine
 选择要检查的角色
 Former Faction:
-前派系：
+前派系 : ‎
 Miku
 未来（Miku）
 Nevermere
@@ -23328,7 +23328,7 @@ Yokes are less favored over other heavy bondage.
 You crouch and move slowly.
 你蹲下并缓慢移动。
 Owned by:
-拥有者：
+拥有者 : ‎
 Warden's Belt
 典狱长的贞操带
 You may go on your way, but only as long your freedom is useful to her.
@@ -24506,11 +24506,11 @@ You can use it to unlock certain doors.
 Your keycard blinks red as the facility remotely locks it!
 当设备远程锁定时，你的钥匙卡会闪烁红色！
 Your keycard blinks red as the facility remotely locks it! System Security: 100%
-当设施远程锁定时，你的钥匙卡会闪烁红光！系统安全性：100%
+当设施远程锁定时，你的钥匙卡会闪烁红光！系统安全性 : 100%
 Unauthorized removal detected. System Security: AMNT%
-检测到未经授权的删除。系统安全性：AMNT%
+检测到未经授权的删除。系统安全性 : AMNT%
 Security breach. Initiating remote lockout. System Security: AMNT%
-安全漏洞。启动远程锁定。系统安全性：AMNT%
+安全漏洞。启动远程锁定。系统安全性 : AMNT%
 You pick up a flash bomb.
 你拿起了一颗闪光弹。
 You pick up a flashbang grenade.
@@ -24832,17 +24832,17 @@ Toe Tie
 Heels
 高跟鞋
 Equipped:
-已装备：
+已装备 : ‎
 Click to Add
 点击以添加
 Apply
 应用
 Raw Material:
-基本材料：
+基本材料 : ‎
 Free Prisoner
 释放囚犯
 Perk Unlocked:
-已解锁技能：
+已解锁技能 : ‎
 Latex Solvent
 乳胶溶剂
 You ready the bottle of Latex Solvent.
@@ -24880,7 +24880,7 @@ Can't assign to
 Imprison
 监禁
 Opinion:
-观点：
+观点 : ‎
 Last Seen on Floor FLR, LOC
 最后出现在楼层 FLR 的 LOC 位置
 Present in current level
@@ -24960,9 +24960,9 @@ Remove From Party Before Promoting?
 
 
 Servant Cuddle Points: AMNT (+OPN opinion/cycle)
-仆人拥抱点： AMNT (+OPN 观点/周期)
+仆人拥抱点 :  AMNT (+OPN 观点/周期)
 Prisoner Cuddle Points: AMNT (+OPN opinion/cycle)
-囚犯拥抱点： AMNT (+OPN 观点/周期)
+囚犯拥抱点 :  AMNT (+OPN 观点/周期)
 Submissive prisoners and dominant servants add different amounts of opinion per cycle
 顺从的囚犯和占主导地位的仆人每周期增加不同的好感度
 Release Prisoners
@@ -24998,7 +24998,7 @@ Combat Maneuver: Your next move is instant.
 Appointing managers increases the efficiency of other facilities.
 任命管理人员可以提高其他设施的效率。
 Total Efficiency Boost: AMNT%
-总效率提升：AMNT%
+总效率提升 : AMNT%
 idle
 闲置
 (As you approach the statue, you hear a crumbling sound)|(The stone crumbles along the statue's slender frame)|(...revealing inside a beautiful, and extremely angry catgirl)|Who dares disturb my slumber?|I shall see to it that you receive your punishment!
@@ -25008,7 +25008,7 @@ Mysterious Statue
 Select a Binding Slot
 选择一个绑定插槽
 Cost:
-花费：
+花费 : ‎
 Zoom set to PCNT%
 缩放设置为 PCNT%
 You need free arms to tie others!
@@ -25573,7 +25573,7 @@ Catherine Willows' Journal (pg. 51)
 Willows 51
 条 51
 It seems I am not alone in my search for the Staff. To whom it may concern: the Great Work is a lie, and it will doom us all. If you care for your soul, you need to break the cycle, and for that we need a key: the Mistress' Staff.
-看来，我不是一个人在寻找这把法杖。伟大成就是一个谎言，它将毁灭我们所有人。如果你关心自己的灵魂，就必须打破这个循环，为此我们需要一把钥匙：女魔杖。
+看来，我不是一个人在寻找这把法杖。伟大成就是一个谎言，它将毁灭我们所有人。如果你关心自己的灵魂，就必须打破这个循环，为此我们需要一把钥匙 : 女魔杖。
 Silver Witch's Notes #10
 银发魔女的笔记 #10
 Silver 10
@@ -25603,7 +25603,7 @@ Silver Witch's Notes #15
 Silver 15
 银 15
 Throughout my studies I have chased after the existence of a being I call 'the Primordial One.' My theories stem from the following observations:|1)Slimes were not present in ancient history, and appeared during my lifetime as a force of nature.|2)Slime can be transmuted into almost any known material, like a Prima Materia of sorts.|3) A fragment of Sariel's notes, one of my most guarded possessions, discusses the existence of slimes long before they were first observed in the world.|Based on this, I believe the world must have been created through the influence of some primordial being who then left, but must be returning somehow.|I'm sure this being holds the key to repairing our bodies.
-在我的研究过程中，我一直在追寻一种我称之为'原初之神'的存在。我的理论源于以下观察：|1）粘液在古代历史中并不存在，在我有生之年作为一种自然力量出现了。|2）粘液几乎可以转化成任何已知的材料，就像一种原始材料。|3）萨瑞尔笔记的一个片段是我最珍视的财产之一，其中讨论了史莱姆的存在，这比人们第一次在世界上观察到史莱姆要早得多。| |基于这一点，我相信这个世界一定是在某个原始生命的影响下被创造出来的。|我相信这个生物掌握着修复我们身体的关键。
+在我的研究过程中，我一直在追寻一种我称之为'原初之神'的存在。我的理论源于以下观察 : |1）粘液在古代历史中并不存在，在我有生之年作为一种自然力量出现了。|2）粘液几乎可以转化成任何已知的材料，就像一种原始材料。|3）萨瑞尔笔记的一个片段是我最珍视的财产之一，其中讨论了史莱姆的存在，这比人们第一次在世界上观察到史莱姆要早得多。| |基于这一点，我相信这个世界一定是在某个原始生命的影响下被创造出来的。|我相信这个生物掌握着修复我们身体的关键。
 Silver Witch's Notes on the Primordial One
 银发魔女的原始者笔记
 Silver 4
@@ -25627,7 +25627,7 @@ Silver Witch's Notes #117
 Silver 117
 银 117
 The Kingdom of Ejahl appeared in Agartha 170 years after the death of Sariel Vinlaga. It had three* rulers who vied for the throne at different times:|Diana, Princess of Machinery|Emer, the Warsage|And the Dollmaker, High General of the Kingdom||*Some manuscripts read 'two'
-萨瑞尔-文拉加死后 170 年，埃亚尔王国出现在阿加莎。它有三位*统治者，他们在不同时期争夺王位：|机械公主戴安娜|战争之王埃玛尔|玩偶制造者，王国的高级将领|||        *有些手稿上写的是 “两个”。
+萨瑞尔-文拉加死后 170 年，埃亚尔王国出现在阿加莎。它有三位*统治者，他们在不同时期争夺王位 : |机械公主戴安娜|战争之王埃玛尔|玩偶制造者，王国的高级将领|||        *有些手稿上写的是 “两个”。
 The Chronicles of Ejahl
 埃亚尔王国编年史
 Ejahl 1
@@ -25641,45 +25641,45 @@ Ejahl 2
 Danger Level: Nearly Harmless|A reanimated corpse from before the Great Work. I can't tell if the original soul still inhabits the body, since it can barely speak let alone explain its identity.||-Denizens of the Dungeon by Catherine Willows
 危险等级: 几乎无害|一具伟大工程之前复活的尸体。我无法判断这具躯体中是否还居住着最初的灵魂，因为它几乎不会说话，更不用说解释自己的身份了。||《地下城居民》————凯瑟琳·韦罗斯
 Danger Level: Normal|These zombies are more motivated than the others. Their behavior is similar to that of vengeful spirits I've encountered in the depths.||-Denizens of the Dungeon by Catherine Willows
-危险等级： 正常|这些僵尸比其他僵尸更有动机。它们的行为类似于我在深渊中遇到的复仇之灵。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 :  正常|这些僵尸比其他僵尸更有动机。它们的行为类似于我在深渊中遇到的复仇之灵。||《地下城居民》————凯瑟琳·韦罗斯
 Fast Z.
 愤怒僵尸 Z
 Danger Level: Normal|A zombie that can use magic. It doesn't look like any magic I've seen outside the ruins, which makes me think that it was taught to use magic. Some of them have tattoos associated with magic in the old times. Since magic comes from the soul, I assume there is some hint of the original soul still present.|-Denizens of the Dungeon by Catherine Willows
-危险等级： 普通|会使用魔法的僵尸。它看起来不像我在废墟外见过的任何魔法，这让我觉得它是被教会使用魔法的。有些僵尸身上的纹身与旧时代的魔法有关。因为魔法来自灵魂，所以我认为他们身上还残留着一些原始灵魂的影子。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 :  普通|会使用魔法的僵尸。它看起来不像我在废墟外见过的任何魔法，这让我觉得它是被教会使用魔法的。有些僵尸身上的纹身与旧时代的魔法有关。因为魔法来自灵魂，所以我认为他们身上还残留着一些原始灵魂的影子。||《地下城居民》————凯瑟琳·韦罗斯
 Mage Z.
 魔法僵尸 Z
 Danger Level: High|A zombie with impeccable sword technique. I've never seen an undead handle a sword so smoothly. Probably buried with their weapons and gear, since most of it is aged. Even their binding techniques resemble those in the textbooks rather than modern ropework.||-Denizens of the Dungeon by Catherine Willows
-危险等级：高|一个有着高超剑术的僵尸。我从没见过一个亡灵能把剑用得如此顺手。可能是他们的武器和装备被埋没了，因为大部分都已经老化。甚至他们的捆绑技术也很像教科书上的，而不是现代的绳索。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 : 高|一个有着高超剑术的僵尸。我从没见过一个亡灵能把剑用得如此顺手。可能是他们的武器和装备被埋没了，因为大部分都已经老化。甚至他们的捆绑技术也很像教科书上的，而不是现代的绳索。||《地下城居民》————凯瑟琳·韦罗斯
 Warrior Z.
 战士僵尸 Z
 Danger Level: High|A zombie that uses sealing charms and healing magic. Irony aside, I've seen these with rope marks and gag strap marks on their skin and face. It seems like someone is playing with them. Who could that be?||-Denizens of the Dungeon by Catherine Willows
-危险等级：高|使用封印符咒和治疗魔法的僵尸。除了讽刺之外，我还见过这些僵尸的皮肤和脸上有绳子和塞口带的痕迹。好像有人在玩弄他们。会是谁呢？||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 : 高|使用封印符咒和治疗魔法的僵尸。除了讽刺之外，我还见过这些僵尸的皮肤和脸上有绳子和塞口带的痕迹。好像有人在玩弄他们。会是谁呢？||《地下城居民》————凯瑟琳·韦罗斯
 Talisman Z.
 护符僵尸 Z
 Danger Level: Annoying|A playful spirit residing in the dungeon, taking advantage of any adventurers they come across. They can pass through walls, and most physical weapons go right through them. Using a magical weapon seems to banish them for some time, at least.||-Denizens of the Dungeon by Catherine Willows
-危险等级： 令人讨厌|居住在地牢中的嬉戏精灵，会利用遇到的冒险者。它们可以穿墙而过，大多数物理武器都能直接穿过它们。使用魔法武器似乎能驱逐它们一段时间。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 :  令人讨厌|居住在地牢中的嬉戏精灵，会利用遇到的冒险者。它们可以穿墙而过，大多数物理武器都能直接穿过它们。使用魔法武器似乎能驱逐它们一段时间。||《地下城居民》————凯瑟琳·韦罗斯
 Danger Level: Very Annoying|It is said that ghosts are the spirits of pre-Great Work humans whose souls are bound to this world by unfinished dreams and ambitions. But I don't believe a word of that. These little guys care about nothing except humiliating people. Ask me how I know.||-Denizens of the Dungeon by Catherine Willows
-危险等级： 非常令人讨厌|据说鬼魂是伟大成就之前人类的灵魂，他们的灵魂被未完成的梦想和抱负束缚在这个世界上。但我一点也不相信。这些小家伙除了羞辱人，什么都不在乎。问问我是怎么知道的||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 :  非常令人讨厌|据说鬼魂是伟大成就之前人类的灵魂，他们的灵魂被未完成的梦想和抱负束缚在这个世界上。但我一点也不相信。这些小家伙除了羞辱人，什么都不在乎。问问我是怎么知道的||《地下城居民》————凯瑟琳·韦罗斯
 Danger Level: Medium|A very playful ghost with a penchant for teasing. It even carries spectral restraints of its own for use in 'games,' which tend to consist of tickling tied up girls.||-Denizens of the Dungeon by Catherine Willows
-危险等级：中 | 喜欢捉弄人的调皮鬼魂，尤其喜欢骚弄被绑住的女孩子们。它们往往在“游戏”中使用自带的透明束缚物。|| —《地牢中的居民》 凯瑟琳·威洛斯 著
+危险等级 : 中 | 喜欢捉弄人的调皮鬼魂，尤其喜欢骚弄被绑住的女孩子们。它们往往在“游戏”中使用自带的透明束缚物。|| —《地牢中的居民》 凯瑟琳·威洛斯 著
 Danger Level: Low|The feelings of a person who desired wealth in life. While it is unable to claim any physical wealth for itself, it nonetheless will rummage through your pockets and possessions if it gets a chance.||-Denizens of the Dungeon by Catherine Willows
-危险等级：低｜一个人生前所渴望财富的情感，虽然他无法获得任何实际的财物，但是他依然会翻找你的口袋。||——《地牢里的居民》 凯瑟琳·威洛斯 著
+危险等级 : 低｜一个人生前所渴望财富的情感，虽然他无法获得任何实际的财物，但是他依然会翻找你的口袋。||——《地牢里的居民》 凯瑟琳·威洛斯 著
 Danger Level: High|A constricting mass of negative thoughts. According to local myths, the other ghosts attempt to cheer this one up by hugging it, but its wails end up attracting them to your position. Be prepared to take it down lest you find yourself a plaything for the beyond.||-Denizens of the Dungeon by Catherine Willows
-危险等级：高 | 一团压迫感强烈的负面思维。根据当地的传说，其他幽灵试图通过拥抱来安慰它，但它的哀号最终会将它们吸引到你的身边。准备好击败它，否则你可能会成为来自异界存在的玩物。 ||《地牢中的居民》凯瑟琳·威洛斯 著
+危险等级 : 高 | 一团压迫感强烈的负面思维。根据当地的传说，其他幽灵试图通过拥抱来安慰它，但它的哀号最终会将它们吸引到你的身边。准备好击败它，否则你可能会成为来自异界存在的玩物。 ||《地牢中的居民》凯瑟琳·威洛斯 著
 Danger Level: High|While most wizards spend literal centuries mastering the art of magic, there are those lacking the patience or discipline to study magic the old fashioned way. Driven by a need for power, these individuals make contracts with otherworldly beings and become Witches.||-Denizens of the Dungeon by Catherine Willows
-危险等级：高｜虽然大多数魔法师会用数个世纪的时间来练习，精通自己的魔法技术，但也有一些人缺乏耐心，不去按传统方式学习魔法。为了追求力量，这些人会与其他世界的存在签订契约，成为女巫。||-《地牢中的居民》 凯瑟琳·威洛斯 著
+危险等级 : 高｜虽然大多数魔法师会用数个世纪的时间来练习，精通自己的魔法技术，但也有一些人缺乏耐心，不去按传统方式学习魔法。为了追求力量，这些人会与其他世界的存在签订契约，成为女巫。||-《地牢中的居民》 凯瑟琳·威洛斯 著
 The Witches' Coven
 女巫集会
 Witches
 女巫
 Danger Level: Extreme|A witch gifted in the arts of conjuration. Backed by an army of animated spectral hands and devious tomes, this variety of witch is extremely dangerous. Her close range attacks are slow and unwieldy, but take care not to get surrounded.||-Denizens of the Dungeon by Catherine Willows
-危险等级：极高 | 一位擅长召唤术的女巫。她有一支由影之手和魔法书组成的军队，如此类型的女巫极其危险。她的近战攻击动作缓慢且笨拙，但要小心不要被包围。||——《地牢中的居民》凯瑟琳·威洛斯 著
+危险等级 : 极高 | 一位擅长召唤术的女巫。她有一支由影之手和魔法书组成的军队，如此类型的女巫极其危险。她的近战攻击动作缓慢且笨拙，但要小心不要被包围。||——《地牢中的居民》凯瑟琳·威洛斯 著
 Danger Level: High|They appear to be influential figures in the ancient Bast cult. Not only are they able to wield explosive magics, they can conjure magical wrappings at close range.||-Denizens of the Dungeon by Catherine Willows
-危险等级：高|他们似乎是古代Bast邪教中颇具影响力的人物。他们不仅能施展爆炸魔法，还能在近距离变出魔法包裹。||《地下城居民》————凯瑟琳·韦罗斯
+危险等级 : 高|他们似乎是古代Bast邪教中颇具影响力的人物。他们不仅能施展爆炸魔法，还能在近距离变出魔法包裹。||《地下城居民》————凯瑟琳·韦罗斯
 Bast Mummy
 猫女神木乃伊
 Danger Level: Medium|Worshippers of the Cat Goddess. Devoted to the sole task of defending the tombs from outsiders, they are rarely willing to negotiate. Some maintain peak physical prowess, while others can even cast spells.||-Denizens of the Dungeon by Catherine Willows
-危险等级：中等 | 猫女神的信徒。仅致力于唯一的任务——保护墓地不受外人侵犯，她们很少愿意谈判。有些信徒有着极高的身体素质，而另一些则能施展魔法。||——《地牢中的居民》 凯瑟琳·威洛斯 著
+危险等级 : 中等 | 猫女神的信徒。仅致力于唯一的任务——保护墓地不受外人侵犯，她们很少愿意谈判。有些信徒有着极高的身体素质，而另一些则能施展魔法。||——《地牢中的居民》 凯瑟琳·威洛斯 著
 Bast Clerics
 猫女神祭司
 Rock-solid and form-fitting.
