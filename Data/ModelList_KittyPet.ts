@@ -74,29 +74,114 @@ AddModel({
 	TopLevel: true,
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
-		{ Name: "LeotardChestCollar", Layer: "SuitChestOver", Pri: 25,
+		{ Name: "LeotardChestCollar", Layer: "BustierCollar", Pri: 25,
 			HideWhenOverridden: true,
 			NoOverride: true,
 			InheritColor: "CollarRight",
 			MorphPoses: {Up: "Up",},
 		},
-		{ Name: "LeotardChestCollarLeft", Layer: "SuitChestOver", Pri: 25,
+		{ Name: "LeotardChestCollarLeft", Layer: "BustierCollar", Pri: 25,
 			NoOverride: true,
 			InheritColor: "CollarLeft",
 			TieToLayer: "LeotardChestCollar",
 			MorphPoses: {Boxtie: "Tied", Front: "Tied", Crossed: "Tied", Wristtie: "Tied", Up: "Tied",},
 		},
-		{ Name: "LeotardChestCollarStripes", Layer: "SuitChestOver", Pri: 25.1,
+		{ Name: "LeotardChestCollarStripes", Layer: "BustierCollar", Pri: 25.1,
 			NoOverride: true,
 			InheritColor: "StripesRight",
 			TieToLayer: "LeotardChestCollar",
 			MorphPoses: { Up: "Up",},
 		},
-		{ Name: "LeotardChestCollarStripesLeft", Layer: "SuitChestOver", Pri: 25.1,
+		{ Name: "LeotardChestCollarStripesLeft", Layer: "BustierCollar", Pri: 25.1,
 			NoOverride: true,
 			InheritColor: "StripesLeft",
 			TieToLayer: "LeotardChestCollarLeft",
 			MorphPoses: {Boxtie: "Tied", Front: "Tied", Crossed: "Tied", Wristtie: "Tied", Up: "Tied",},
 		},
+
+
+		{ Name: "CollarDeco", Layer: "ChestDeco", Pri: 40,
+			InheritColor: "Tag",
+			HideWhenOverridden: true,
+		},
+		{ Name: "CollarDecoSymbol", Layer: "ChestDeco", Pri: 40.1,
+			InheritColor: "Symbol",
+			TieToLayer: "CollarDeco",
+			NoOverride: true,
+		},
 	])
 });
+
+
+
+AddModel({
+	Name: "KittyPetTail",
+	Folder: "KittyPet",
+	Parent: "KittyPet",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Tails", "Kitty", "Cosplay"],
+	AddPose: ["Tails", "Kitty", "Cosplay"],
+	Layers: ToLayerMap([
+		{ Name: "Tail", Layer: "Tail", Pri: 5,
+			Invariant: true,
+			InheritColor: "Tail",
+			NoOverride: true,
+		},
+		{ Name: "TailStripe", Layer: "Tail", Pri: 5.1,
+			Invariant: true,
+			InheritColor: "Stripe",
+			TieToLayer: "Tail",
+			NoOverride: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "KittyPetBlindfold",
+	Folder: "KittyPet",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints", "Blindfolds"],
+	AddPose: ["Blindfolds"],
+	Layers: ToLayerMap([
+		{ Name: "BlindfoldRim", Layer: "Blindfold", Pri: 40,
+			Invariant: true,
+			InheritColor: "Rim",
+		},
+		{ Name: "Blindfold", Layer: "Blindfold", Pri: 40.1,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+		},
+		{ Name: "BlindfoldBrow", Layer: "Blindfold", Pri: 40.2,
+			Invariant: true,
+			TieToLayer: "BlindfoldRim",
+			InheritColor: "Brows",
+		},
+	])
+});
+
+
+AddModel(GetModelFashionVersion("KittyPetBlindfold", true));
+
+
+AddModel({
+	Name: "KittyPetSteelCollar",
+	Folder: "KittyPet",
+	Parent: "KittyPetLeotard",
+	TopLevel: true,
+	Categories: ["Restraints", "Collars", "Accessories"],
+	Layers: ToLayerMap([
+		{ Name: "Collar", Layer: "Collar", Pri: -10,
+			InheritColor: "BaseMetal",
+		},
+		{ Name: "CollarStripe", Layer: "Collar", Pri: -9.9,
+			InheritColor: "Stripe",
+			TieToLayer: "Collar",
+			NoOverride: true,
+		},
+	])
+});
+
+AddModel(GetModelFashionVersion("KittyPetSteelCollar", true));
