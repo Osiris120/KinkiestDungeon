@@ -9,7 +9,6 @@ let KDFocusableTextFields = [
 	"MagicFilter",
 	"RenameNPC",
 	"PlayerNameField",
-
 ];
 
 let KDMAXGODDESSQUESTS = 3;

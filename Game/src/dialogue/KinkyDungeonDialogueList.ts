@@ -1587,6 +1587,39 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 					},
 				}
 			},
+			"Talk": {
+				playertext: "Default", response: "Default",
+				prerequisiteFunction: (_gagged, _player) => {
+					let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+
+					return !!(en && !en.player && (KDIsImprisoned(en) && en.prisondialogue)
+						|| en.specialdialogue);
+				},
+				clickFunction: (_gagged, _player) => {
+					let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
+					if (en && !en.player) {
+						if (KDIsImprisoned(en) && en.prisondialogue) {
+							KDStartDialog(en.prisondialogue,
+								en.Enemy.name, true,
+								en.personality, en);
+							return true;
+						} else if (en.specialdialogue) {
+							KDStartDialog(en.specialdialogue,
+								en.Enemy.name, true,
+								en.personality, en);
+							return true;
+						}
+					}
+					return false;
+				},
+				exitDialogue: true,
+				options: {
+					"Leave": {
+						playertext: "Leave", response: "Default",
+						exitDialogue: true,
+					},
+				}
+			},
 			"Leave": {
 				playertext: "Leave", response: "Default",
 				exitDialogue: true,
@@ -3610,6 +3643,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 							if (KDDialogueEnemy()) {
 								let e = KDDialogueEnemy();
 								KDFreeNPC(e);
+								KDDefectIfPossible(e);
 								if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
@@ -3713,6 +3747,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								if (KDDialogueEnemy()) {
 									let e = KDDialogueEnemy();
 									KDFreeNPC(e);
+									KDDefectIfPossible(e);
 									if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
 									KDGameData.CurrentDialogMsg = "PrisonerJailPick";
 									if (e.Enemy.tags.gagged) {

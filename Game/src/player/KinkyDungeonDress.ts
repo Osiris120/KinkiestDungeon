@@ -625,7 +625,11 @@ function KinkyDungeonDressPlayer (
 				Xray.push("XrayBra");
 			}
 		}
-		if (KDRefreshCharacter.get(Character) || Character == KinkyDungeonPlayer || Character == KDSpeakerNPC)
+		if (KDRefreshCharacter.get(Character)
+			|| Character == KinkyDungeonPlayer
+			|| Character == KDSpeakerNPC
+			|| Character == KDPreviewModel
+			|| Math.random() < 0.05)
 			UpdateModels(Character, Xray);
 		let ReUpdate = false;
 
@@ -634,6 +638,13 @@ function KinkyDungeonDressPlayer (
 		let facestyle = KDNPCStyle.get(Character)?.facestyle || "Default";
 		let cosplaystyle = KDNPCStyle.get(Character)?.cosplaystyle || "Default";
 
+
+		if (!KDCurrentModels.get(Character)?.Poses?.Hair && KDModelHair[hairstyle]) {
+			for (let hair of Object.values(KDModelHair[hairstyle])) {
+				KDInventoryWear(Character, hair.Item, undefined, undefined, undefined, hair.Filters, hair.Properties);
+				ReUpdate = true;
+			}
+		}
 		if (!KDCurrentModels.get(Character)?.Poses?.Body && KDModelBody[bodystyle]) {
 			for (let body of Object.values(KDModelBody[bodystyle])) {
 				KDInventoryWear(Character, body.Item, undefined, undefined, undefined, body.Filters, body.Properties);
@@ -651,13 +662,6 @@ function KinkyDungeonDressPlayer (
 				undefined, undefined, undefined,
 				undefined, undefined);
 			ReUpdate = true;
-		}
-		if (!KDCurrentModels.get(Character)?.Poses?.Hair
-			&& !KDCurrentModels.get(Character)?.Poses?.Hairstyles && KDModelHair[hairstyle]) {
-			for (let hair of Object.values(KDModelHair[hairstyle])) {
-				KDInventoryWear(Character, hair.Item, undefined, undefined, undefined, hair.Filters, hair.Properties);
-				ReUpdate = true;
-			}
 		}
 		if (!KDCurrentModels.get(Character)?.Poses?.Cosplay && KDModelCosplay[cosplaystyle]) {
 			for (let cosplay of Object.values(KDModelCosplay[cosplaystyle])) {

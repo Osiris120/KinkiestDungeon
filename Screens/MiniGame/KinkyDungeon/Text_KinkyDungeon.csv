@@ -13371,6 +13371,7 @@ rFurnitureUse,"(You lock yourself in the furniture!)"
 rFurnitureEnemyFail,"(The SPEAKER slips out of your grip|before you can lock her in place!)"
 dFurniture_NPC,(Display one of your prisoners)
 dFurniture_Use,(Lock yourself inside)
+dFurniture_Talk,(Check the occupant)
 
 dFurniture_Enemy,(Try to lock NME into the furniture) (PRCNT% Chance)
 rFurnitureEnemy,"(You close the furniture around your unfortunate victim!)"

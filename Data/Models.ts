@@ -1836,8 +1836,13 @@ async function ForceRefreshModelsAsync(C: Character, ms = 100) {
  */
 function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 	let ret = [];
+	let dupe: Record<string, boolean> = {};
 	for (let layer of Object.values(Model.Layers)) {
 		if ((!layer.NoColorize || Properties) && !layer.InheritColor) {
+			if (!dupe[layer.Name]) {
+				dupe[layer.Name] = true;
+				ret.push(layer.Name);
+			}
 			if (Properties && (layer.Poses || layer.MorphPoses || layer.GlobalDefaultOverride)) {
 				let poses: Record<string, boolean> = {};
 				if (layer.Poses)
@@ -1850,11 +1855,17 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 						poses[pose[1]] = true;
 					}
 				for (let key of Object.keys(poses)) {
-					ret.push(layer.Name + key);
+					if (!dupe[layer.Name + key]) {
+						dupe[layer.Name + key] = true;
+						ret.push(layer.Name + key);
+					}
 				}
 			}
-			ret.push(layer.Name);
 		} else if (layer.InheritColor && !ret.includes(layer.InheritColor)) {
+			if (!dupe[layer.InheritColor]) {
+				dupe[layer.InheritColor] = true;
+				ret.push(layer.InheritColor);
+			}
 			if (Properties && (layer.Poses || layer.MorphPoses || layer.GlobalDefaultOverride)) {
 				let poses: Record<string, boolean> = {};
 				if (layer.Poses)
@@ -1867,13 +1878,17 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 						poses[pose[1]] = true;
 					}
 				for (let key of Object.keys(poses)) {
-					ret.push(layer.InheritColor + key);
+
+					if (!dupe[layer.InheritColor + key]) {
+						dupe[layer.InheritColor + key] = true;
+						ret.push(layer.InheritColor + key);
+					}
 				}
 			}
-			ret.push(layer.InheritColor);
 
 		}
 	}
+
 	return ret;
 }
 
