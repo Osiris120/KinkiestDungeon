@@ -453,7 +453,7 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 				// We add this to ALL cursed items (including dormant curses)
 				{trigger: "curseCount", type: "add", power: 1, inheritLinked: true,
 					removeOnUncurse: true},
-			], 4, undefined, {commonCurse: 10});
+			], 4, restraint.DefaultLock || "", {commonCurse: 10});
 		}
 	},
 	"Skimpy": {
@@ -466,7 +466,7 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 				{original: "MimicHoly", trigger: "inventoryTooltip",
 					type: "invtooltipworn", msg: "SkimpyCurse", color: "#000044", bgcolor: "#ffffff",
 					removeOnUncurse: true},
-			], 4, undefined, {});
+			], 4, restraint.DefaultLock || "", {});
 			if (KDSkimpyModelReplace[restraint.Model]) {
 				KDSkimpyModelReplace[restraint.Model](ret, restraint, newRestraintName);
 			}
@@ -482,7 +482,7 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 					removeOnUncurse: true},
 				{trigger: "tick", type: "mimiccurse", time: 10, chance: 0.2, sfx: "Evil",
 					inheritLinked: true, removeOnUncurse: true},
-			], 8, undefined, {mimicCurse: 10});
+			], 8, restraint.DefaultLock || "", {mimicCurse: 10});
 		}
 	},
 	"MimicHoly": {
@@ -500,7 +500,7 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 					type: "invtooltipworn", msg: "MimicHolyGlow", color: "#000044", bgcolor: "#ffff88",
 					removeOnUncurse: true},
 
-			], 8, undefined, {divinemimicCurse: 10});
+			], 8, restraint.DefaultLock || "", {divinemimicCurse: 10});
 		}
 	},
 	"Shibari": {
@@ -513,7 +513,7 @@ let KDCursedVars: Record<string, KDCursedVar> = {
 				{original: "MimicHoly", trigger: "inventoryTooltip",
 					type: "invtooltipworn", msg: "ShibariCurse", color: "#000044", bgcolor: "#ffffff",
 					removeOnUncurse: true},
-			], 8, undefined, {shibariCurse: 10});
+			], 8, restraint.DefaultLock || "", {shibariCurse: 10});
 			let mapGroup = KDRopeMapByGroup;
 			if (!ret.alwaysDressModel) ret.alwaysDressModel = [];
 			ret.alwaysDressModel.push(
@@ -576,7 +576,7 @@ function KDAddEventVariant(restraint: restraint, newRestraintName: string, ev: K
 		protectionCursed: true,
 		escapeChance: escapeChance,
 		DefaultLock: lock == undefined ? restraint.DefaultLock : lock,
-		HideDefaultLock: lock != undefined,
+		HideDefaultLock: lock != restraint.DefaultLock || restraint.HideDefaultLock,
 		magic: true,
 		events: events,
 		power: power,
