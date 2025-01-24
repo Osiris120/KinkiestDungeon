@@ -43,7 +43,19 @@ TODO add ability to recolor own restraints via palette
 - Added kitty pet leotard
 - Added kitty pet uniform collar
 - Added kitty pet tail
-- Hopefully increased variety in restraint types in jail
+- Hopefully increased variety in restraint types (armbinder, boxbinder, jacket) in jail
+TODO
+- Middle mouse button to toggle sprint option
+- middle mouse to toggle passthrough?
+- middle mouse to interact
+- middle mouse to shoot
+- middle mouse to truss
+- middle mouse to cast spell 0/9
+- mouse shortcut menu?
+- pinch self
+- banish horny thoughts
+- tabs for playself
+
 
 5.4.38
 - Additional optimizations to rendering

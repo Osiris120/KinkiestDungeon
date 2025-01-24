@@ -167,6 +167,7 @@
         "Data/ModelList_Kigu.ts",
         "Data/ModelList_Leotards.ts",
         "Data/ModelList_KittyPet.ts",
+        "Data/ModelList_KittyPetsuit.ts",
         "Data/ModelList_Opera.ts",
         "Data/ModelList_Sailor.ts",
         "Data/ModelList_Dress.ts",

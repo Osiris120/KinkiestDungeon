@@ -109,6 +109,28 @@ AddModel({
 			TieToLayer: "CollarDeco",
 			NoOverride: true,
 		},
+
+
+		{ Name: "ShoulderCuffLeft", Layer: "SuitChestOver", Pri: 2.8,
+			NoOverride: true,
+			InheritColor: "LeftShoulder",
+			TieToLayer: "LeotardChestCollarLeft",
+		},
+		{ Name: "ShoulderCuffStripeLeft", Layer: "SuitChestOver", Pri: 2.9,
+			NoOverride: true,
+			InheritColor: "LeftShoulderStripe",
+			TieToLayer: "ShoulderCuffLeft",
+		},
+		{ Name: "ShoulderCuffRight", Layer: "SuitChestOver", Pri: 2.8,
+			NoOverride: true,
+			InheritColor: "RightShoulder",
+			TieToLayer: "LeotardChestCollar",
+		},
+		{ Name: "ShoulderCuffStripeRight", Layer: "SuitChestOver", Pri: 2.9,
+			NoOverride: true,
+			InheritColor: "RightShoulderStripe",
+			TieToLayer: "LeotardChestCollar",
+		},
 	])
 });
 

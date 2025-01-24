@@ -3368,6 +3368,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								KinkyDungeonChangeRep("Prisoner", 0.5);
 								KDAddConsumable("RedKey", -1);
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
+									KinkyDungeonSetFlag("embarrassed", 8);
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockSlow";
 								} else {
@@ -3498,6 +3499,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								KinkyDungeonChangeRep("Prisoner", 0.5);
 								KDAddConsumable( KDGameData.CurrentDialogMsgData.SSSvnt, -1);
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
+									KinkyDungeonSetFlag("embarrassed", 8);
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerLatexUnlockSlow";
 								} else {
@@ -3550,6 +3552,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								KinkyDungeonChangeRep("Prisoner", 0.5);
 
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
+									KinkyDungeonSetFlag("embarrassed", 8);
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerLatexCutSlow";
 								} else {
@@ -3646,6 +3649,7 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 								KDDefectIfPossible(e);
 								if (e.specialdialogue == "PrisonerJailOwn") delete e.specialdialogue;
 								if (KinkyDungeonIsHandsBound(false, true, 0.2)) {
+									KinkyDungeonSetFlag("embarrassed", 8);
 									DialogueBringNearbyEnemy(player.x, player.y, 8, true);
 									KDGameData.CurrentDialogMsg = "PrisonerJailUnlockSlow";
 								} else {

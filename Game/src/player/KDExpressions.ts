@@ -881,8 +881,11 @@ let KDExpressions: Record<string, KDExpression> = {
 						return true;
 				}
 			}
-			return (KDGameData.PrisonerState == "jail" || KDGameData.PrisonerState == "parole")
-				&& KinkyDungeonGoddessRep.Ghost >= -25 && KinkyDungeonGoddessRep.Ghost < 25;
+			return (KDGameData.PrisonerState == "jail" || KDGameData.PrisonerState == "parole"
+				|| KinkyDungeonFlags.get("embarrassed")
+			)
+				&& ((KinkyDungeonGoddessRep.Ghost >= -25 && KinkyDungeonGoddessRep.Ghost < 25)
+					|| !KinkyDungeonHasWill(0.1));
 		},
 		expression: (C, flags) => {
 			return {
@@ -892,6 +895,35 @@ let KDExpressions: Record<string, KDExpression> = {
 				Brows2Pose: "",
 				BlushPose: "BlushMedium",
 				MouthPose: "MouthEmbarrassed",
+				FearPose: "",
+			};
+		},
+	},
+	"Frust": {
+		stackable: true,
+		priority: 0.2,
+		criteria: (C, flags) => {
+			if (C != KinkyDungeonPlayer) {
+				let id = KDNPCChar_ID.get(C);
+				if (id) {
+					let opinion = KDGetModifiedOpinionID(id);
+					if (opinion >= -15 && opinion <= 15)
+						return true;
+				}
+			}
+			return (KinkyDungeonFlags.get("embarrassed")
+			)
+				&& (KinkyDungeonGoddessRep.Ghost < -25
+					&& KinkyDungeonHasWill(0.1));
+		},
+		expression: (C, flags) => {
+			return {
+				EyesPose: "EyesSly",
+				Eyes2Pose: "Eyes2Sly",
+				BrowsPose: "BrowsAngry",
+				Brows2Pose: "Brows2Angry",
+				BlushPose: "BlushMedium",
+				MouthPose: "",
 				FearPose: "",
 			};
 		},
