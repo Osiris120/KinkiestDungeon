@@ -57,7 +57,7 @@ TODO
 - pinch self
 - banish horny thoughts
 - tabs for playself
-
+- Glow around layer affected by current expert tools selection
 
 5.4.38
 - Additional optimizations to rendering

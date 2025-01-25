@@ -4040,6 +4040,23 @@ function KDDraw (
 }
 
 
+let KDAdaptiveTexCache: Map<string, number> = new Map();
+let KDAdaptiveTexCacheThreshold = 2; // 2 consecutive lookups
+let KDAdaptiveTexCacheMax = 10; // 10 consecutive lookups
+
+function KDTickAdaptiveTexCache(delta: number) {
+	if (delta > 0)
+		for (let entry of KDAdaptiveTexCache.entries()) {
+			KDAdaptiveTexCache.set(entry[0], entry[1] - delta);
+			if (!KDAdaptiveTexCache.get(entry[0]) || KDAdaptiveTexCache.get(entry[0]) < 0)
+				KDAdaptiveTexCache.delete(entry[0]);
+		}
+}
+function KDDoAdaptiveTexCache(id: string, delta: number): boolean {
+	let curr = KDAdaptiveTexCache.get(id) || 0;
+	KDAdaptiveTexCache.set(id, Math.min(curr + delta, KDAdaptiveTexCacheMax));
+	return curr + delta > KDAdaptiveTexCacheThreshold;
+}
 
 /** The purpose of this is to prerender a rendertexture with a specific set of filters
  * This is important because we dont want to rerender those filters constantly
@@ -4048,11 +4065,17 @@ function KDDraw (
 function KDGetOrMakeRenderTexture(Image: string, Nearest: boolean, id: string = "", filters: PIXIFilter[]): PIXITexture {
 	let baseTex = KDTex(Image, Nearest);
 
+	if (!filters || filters.length == 0) return baseTex;
+
 	kdTexlastLookup.set(Image + id, CommonTime());
 
 	if (!baseTex) return null;
 
 	let res = baseTex.baseTexture.resource.src;
+
+	// TODO add adaptive decision making based on how often this sprite is referenced
+
+	if (!res || (!KDDoAdaptiveTexCache(res + id, 1) && !kdRTcache.get(res + id))) return null;
 
 	kdRTlastLookup.set(res + id, CommonTime());
 	let rt: PIXIRenderTexture = kdRTcache.get(res + id) || PIXI.RenderTexture.create({
@@ -4136,6 +4159,7 @@ function KDDrawRT (
 		sprite = null;
 		Map.delete(id);
 	};
+	let mergeFilters = false;
 	if (!sprite) {
 		// Load the texture
 		if (Nearest && StandalonePatched) {
@@ -4146,6 +4170,17 @@ function KDDrawRT (
 		if (tex) {
 			// Create the sprite by making a rendertexture
 			sprite = new PIXI.Sprite(tex);
+			Map.set(id, sprite);
+			// Add it to the container
+			Container.addChild(sprite);
+		} else {
+			mergeFilters = true;
+			if (Nearest)
+				sprite = PIXI.Sprite.from(KDTex(Image, Nearest), {
+					scaleMode: PIXI.SCALE_MODES.NEAREST,
+				});
+			else
+				sprite = PIXI.Sprite.from(KDTex(Image));
 			Map.set(id, sprite);
 			// Add it to the container
 			Container.addChild(sprite);
@@ -4186,6 +4221,9 @@ function KDDrawRT (
 					if (v != undefined || k != "tint")
 						sprite[k] = v;
 				}
+			}
+			if (mergeFilters && baseFilters?.length > 0 && options?.filters) {
+				sprite.filters = [...options.filters, ...baseFilters];
 			}
 
 			if (options.zIndex != undefined) {

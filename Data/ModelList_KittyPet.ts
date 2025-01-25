@@ -194,6 +194,9 @@ AddModel({
 	Parent: "KittyPetLeotard",
 	TopLevel: true,
 	Categories: ["Restraints", "Collars", "Accessories"],
+	Filters: {
+		Stripe: {"gamma":1,"saturation":0,"contrast":1.59,"brightness":1,"red":1.2352941176470589,"green":0.7058823529411765,"blue":1.1176470588235294,"alpha":1},
+	},
 	Layers: ToLayerMap([
 		{ Name: "Collar", Layer: "Collar", Pri: -10,
 			InheritColor: "BaseMetal",
@@ -286,7 +289,7 @@ AddModel({
 AddModel({
 	Name: "KittyPetMittens",
 	Folder: "KittyPetPaws",
-	Parent: "KittyPetsuit",
+	Parent: "KittyPetLeotard",
 	TopLevel: true,
 	Categories: ["Mittens", "Restraints"],
 	Layers: ToLayerMap([

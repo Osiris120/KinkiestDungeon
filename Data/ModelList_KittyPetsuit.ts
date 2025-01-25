@@ -136,7 +136,7 @@ AddModel({
 AddModel({
 	Name: "KittyPetSocks",
 	Folder: "KittyPetSocks",
-	Parent: "KittyPetsuit",
+	Parent: "KittyPetLeotard",
 	TopLevel: true,
 	Categories: ["Socks"],
 	Layers: ToLayerMap([
@@ -205,7 +205,7 @@ AddModel({
 AddModel({
 	Name: "KittyPetPaws",
 	Folder: "KittyPetPaws",
-	Parent: "KittyPetsuit",
+	Parent: "KittyPetLeotard",
 	TopLevel: true,
 	Categories: ["Socks", "Cosplay"],
 	Layers: ToLayerMap([
