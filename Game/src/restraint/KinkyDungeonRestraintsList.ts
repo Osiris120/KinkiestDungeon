@@ -7742,7 +7742,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "RestraintBlock", power: 1, inheritLinked: true},
 	],
 }, "Adventuring Corset", "Protects your organs and your sense of style.", "Provides minor protection against enemy attacks at the cost of flexibility.")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithShibari]);
 
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
@@ -7866,7 +7866,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "sneakBuff", power: -0.5, inheritLinked: true},
 	],
 }, "Chainmail Tank Top", "Cumbersome, but effective!", "Provides +10 armor and protection against enemy attacks. Decreases stealth/evasion and makes struggling harder.")
-, [...KDHexVariantList.BaseWithSkimpy]);
+, [...KDHexVariantList.BaseWithSkimpyShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "ChainBikini",
@@ -7903,7 +7903,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		{trigger: "tick", type: "RestraintBlock", power: 2.0, inheritLinked: true},
 	],
 }, "Chainmail Bikini", "Covers the important bits, anyway.", "+20 Bondage Resist. Conducts electricity.")
-, [...KDHexVariantList.Base]);
+, [...KDHexVariantList.BaseWithShibari]);
 
 KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 	name: "SteelArmor",

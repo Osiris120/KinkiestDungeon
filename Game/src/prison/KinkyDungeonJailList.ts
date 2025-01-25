@@ -990,15 +990,15 @@ let KDJailConditions: Record<string, (r: KDJailRestraint) => boolean> = {
 			&& KinkyDungeonStatsChoice.get("Less_Armbinders"));
 	},
 	MoreArmbinders: (_r) => {
-		return KinkyDungeonStatsChoice.get("More_Armbinders");
+		return KinkyDungeonStatsChoice.get("More_Armbinders") || KinkyDungeonFlags.get("prefer_armbinder");
 	},
 	MoreYokes: (_r) => {
-		return KinkyDungeonStatsChoice.get("More_Yokes");
+		return KinkyDungeonStatsChoice.get("More_Yokes") || KinkyDungeonFlags.get("prefer_yoke");
 	},
 	MoreBoxbinders: (_r) => {
-		return KinkyDungeonStatsChoice.get("More_Boxbinders");
+		return KinkyDungeonStatsChoice.get("More_Boxbinders") || KinkyDungeonFlags.get("prefer_boxbinder");
 	},
 	MoreJackets: (_r) => {
-		return KinkyDungeonStatsChoice.get("More_Jackets");
+		return KinkyDungeonStatsChoice.get("More_Jackets") || KinkyDungeonFlags.get("prefer_jacket");
 	},
 };

@@ -2680,7 +2680,7 @@ function KinkyDungeonRun() {
 			}, true,
 			((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + slt.x,
 			((danger && (slot == KDSaveSlot)) ? (Math.random() > 0.5 ? -1 : 1) : 0) + slt.y,
-			400, 50, (loadedsaveslots[KDSaveSlot-1] ? loadedsaveNames[slot - 1] : "")
+			400, 50, (loadedsaveNames[slot-1] ? loadedsaveNames[slot - 1] : "")
 				|| (TextGet("KDEmpty")),
 			(danger && (slot == KDSaveSlot)) ? "#ff5277" : "#ffffff", "", undefined, undefined,
 			true, KDButtonColor);
@@ -3301,6 +3301,13 @@ function KinkyDungeonRun() {
 
 	if (!(KinkyDungeonState == "Toggles" && KDToggleTab == "Keybindings")) {
 		if (KinkyDungeonKeybindingCurrentKey && KinkyDungeonGameKeyDown()) {
+
+			if ((document.activeElement && KDFocusableTextFields.includes(document.activeElement.id))) {
+				if (KinkyDungeonKeybindingCurrentKey)
+					KDLastKeyTime[KinkyDungeonKeybindingCurrentKey] = CommonTime();
+				KinkyDungeonKeybindingCurrentKey = '';
+				return true;
+			}
 			for (let [k, v] of Object.entries(KDButtonsCache)) {
 				if (v.hotkeyPress == KinkyDungeonKeybindingCurrentKey) {
 					KDClickButton(k);

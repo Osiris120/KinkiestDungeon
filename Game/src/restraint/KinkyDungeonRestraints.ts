@@ -1017,7 +1017,11 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 		),
 	};
 	KinkyDungeonSendEvent("affinity", data);
-	if (data.forceFalse > 0 && data.forceFalse >= data.forceTrue) return false;
+	if (data.forceFalse > 0 && data.forceFalse >= data.forceTrue) {
+		if (Message)
+			KinkyDungeonSetFlag("embarrassed", 8);
+		return false;
+	}
 	if (data.forceTrue > 0) return true;
 
 	let effectTiles = KDGetEffectTiles(KinkyDungeonPlayerEntity.x, KinkyDungeonPlayerEntity.y);
@@ -1078,9 +1082,15 @@ function KinkyDungeonGetAffinity(Message: boolean, affinity: string, group?: str
 				}
 			}
 		}
+
+		if (Message)
+			KinkyDungeonSetFlag("embarrassed", 8);
 		return false;
 	}
-	return KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
+	let ret = KinkyDungeonHasGhostHelp() || KinkyDungeonHasAllyHelp();
+	if (Message && !ret)
+		KinkyDungeonSetFlag("embarrassed", 3);
+	return ret;
 }
 
 function KinkyDungeonWallCrackAndKnife(Message: boolean): boolean {
@@ -2057,6 +2067,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				}
 				KinkyDungeonAdvanceTime(1);
 				KinkyDungeonSetFlag("escapeimpossible", 2);
+				KinkyDungeonSetFlag("embarrassed", 8);
 			}
 			return "Impossible";
 		}
@@ -2225,6 +2236,7 @@ function KDGetStruggleData(data: KDStruggleData): string {
 				}
 				KinkyDungeonAdvanceTime(1);
 				KinkyDungeonSetFlag("escapeimpossible", 2);
+				KinkyDungeonSetFlag("embarrassed", 8);
 				return "Impossible";
 			}
 		}
@@ -2426,6 +2438,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 		// Handle cases where you can't even attempt to unlock or pick
 		if (data.lockType && (StruggleType == "Unlock" && !data.lockType.canUnlock(data))
 			|| (StruggleType == "Pick" && data.lockType && !data.lockType.canPick(data))) {
+			KinkyDungeonSetFlag("embarrassed", 3);
 			if (StruggleType == "Unlock")
 				KinkyDungeonSendActionMessage(10, TextGet("KinkyDungeonStruggleUnlockNo" + restraint.lock + "Key")
 					.replace("TargetRestraint", TextGet("Restraint" + restraint.name)), "orange", 2, true);
@@ -2788,6 +2801,7 @@ function KinkyDungeonStruggle(struggleGroup: string, StruggleType: string, index
 			return Pass;
 		}
 		KinkyDungeonSetFlag("escapeimpossible", 2);
+		KinkyDungeonSetFlag("embarrassed", 8);
 		return "Impossible";
 	} else {
 		return result || ((data.escapeChance - Math.max(0, data.limitChance, data.extraLim) > 0) ? "Success" : "Impossible");
@@ -2871,6 +2885,7 @@ let KDHeavyRestraintPrefs = [
 	"Less_Jackets",
 	"Less_Yokes",
 ];
+
 
 /** Tags which the 'agnostic' option on KinkyDungeonGetRestraint does not override */
 let KDNoOverrideTags = [
@@ -6407,4 +6422,48 @@ function KDDoEquipDelayed(data: any, player: entity): string {
 		return "KDCantEquip";
 	}
 
+}
+
+
+function KDResetPreferenceFlags() {
+	KinkyDungeonFlags.set("prefer_armbinder", 0);
+	KinkyDungeonFlags.set("prefer_boxbinder", 0);
+	KinkyDungeonFlags.set("prefer_jacket", 0);
+	KinkyDungeonFlags.set("prefer_yoke", 0);
+}
+
+function KDGetPreferenceFlags(): string[] {
+	let select: string[] = [];
+	// remove if we have the no perk
+	if (!KinkyDungeonStatsChoice.get("Less_Armbinders"))
+		select.push("prefer_armbinder");
+	if (!KinkyDungeonStatsChoice.get("Less_Boxbinders"))
+		select.push("prefer_boxbinder");
+	if (!KinkyDungeonStatsChoice.get("Less_Jackets"))
+		select.push("prefer_jacket");
+	if (!KinkyDungeonStatsChoice.get("Less_Yokes"))
+		select.push("prefer_yoke");
+
+	// Double up if we have the yes perk
+	if (KinkyDungeonStatsChoice.get("More_Armbinders"))
+		select.push("prefer_armbinder");
+	if (KinkyDungeonStatsChoice.get("More_Boxbinders"))
+		select.push("prefer_boxbinder");
+	if (KinkyDungeonStatsChoice.get("More_Jackets"))
+		select.push("prefer_jacket");
+	if (KinkyDungeonStatsChoice.get("More_Yokes"))
+		select.push("prefer_yoke");
+
+	return select;
+}
+
+function KDUpdatePreferenceFlags() {
+	KDResetPreferenceFlags();
+
+	let select: string[] = KDGetPreferenceFlags();
+
+	let selected = select.length > 0 ? select[Math.floor(KDRandom() * select.length)] : "";
+	if (selected) {
+		KinkyDungeonFlags.set(selected, 0);
+	}
 }

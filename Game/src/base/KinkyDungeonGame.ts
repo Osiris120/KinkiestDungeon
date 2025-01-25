@@ -9,7 +9,6 @@ let KDFocusableTextFields = [
 	"MagicFilter",
 	"RenameNPC",
 	"PlayerNameField",
-
 ];
 
 let KDMAXGODDESSQUESTS = 3;
@@ -959,6 +958,9 @@ function KinkyDungeonCreateMap (
 	forceEscape?:    string
 ): void
 {
+	// every time a map is created the preference flags are updated
+	KDUpdatePreferenceFlags();
+
 	KDTileModes = {};
 	KDUpdateOptionGame();
 	KDBreakTether(KDPlayer());

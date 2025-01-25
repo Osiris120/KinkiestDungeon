@@ -1388,7 +1388,9 @@ function KDGetDistractionRate(delta: number): number {
 	} else if (KDGameData.PlaySelfTurns < 1) distractionRate += distractionBonus;
 
 	if (distractionRate < 0 && KinkyDungeonStatDistraction >= KinkyDungeonStatDistractionLower && KinkyDungeonStatDistraction + distractionRate < KinkyDungeonStatDistractionLower) {
-		distractionRate = Math.max(distractionRate, KinkyDungeonStatDistractionLower - KinkyDungeonStatDistraction);
+		distractionRate = Math.max(distractionRate, (KinkyDungeonStatDistractionLower - KinkyDungeonStatDistraction) * (
+			KinkyDungeonStatDistractionLower > 0 ? 0.25 : 1
+		));
 	}
 
 	if (KDGameData.OrgasmStamina > 0 && delta > 0) {
@@ -1400,7 +1402,7 @@ function KDGetDistractionRate(delta: number): number {
 	if (KinkyDungeonStatDistraction < KinkyDungeonStatDistractionLower) {
 		distractionRate +=
 		Math.min(
-			Math.max(0, 0.25*(KinkyDungeonStatDistractionLower - KinkyDungeonStatDistraction)),
+			Math.max(0, 0.1*(KinkyDungeonStatDistractionLower - KinkyDungeonStatDistraction)),
 			KDGetDistractionDesireRate());
 	}
 	if (!KDGameData.DistractionCooldown) KDGameData.DistractionCooldown = 0;

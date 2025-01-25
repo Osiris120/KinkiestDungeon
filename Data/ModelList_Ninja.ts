@@ -25,7 +25,7 @@ AddModel({
 	Categories: ["Accessories"],
 	Layers: ToLayerMap([
 		...GetModelLayers("ClothCollar"),
-		{ Name: "CollarTag", Layer: "Collar", Pri: 10.1,
+		{ Name: "CollarTag", Layer: "CollarAcc", Pri: 10.1,
 			Invariant: true,
 			NoOverride: true, TieToLayer: "Collar",
 		},

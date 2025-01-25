@@ -31,7 +31,7 @@ RestartNeededRU,"Restart required!"
 
 KDVersion,"Version"
 KinkyDungeon,"Kinky Dungeon"
-KDVersionStr,"5.4.38"
+KDVersionStr,"5.4.39"
 KDLogo2,"By Ada18980"
 Intro,"You are an adventurer descending into an ancient underground city of magic."
 Intro2,"Beneath its depths lies the Mistress' Staff, an artifact of untold power."
@@ -13371,6 +13371,7 @@ rFurnitureUse,"(You lock yourself in the furniture!)"
 rFurnitureEnemyFail,"(The SPEAKER slips out of your grip|before you can lock her in place!)"
 dFurniture_NPC,(Display one of your prisoners)
 dFurniture_Use,(Lock yourself inside)
+dFurniture_Talk,(Check the occupant)
 
 dFurniture_Enemy,(Try to lock NME into the furniture) (PRCNT% Chance)
 rFurnitureEnemy,"(You close the furniture around your unfortunate victim!)"
@@ -26402,7 +26403,7 @@ KDTut_TeleCrit,You flanked the enemy! Now attack its weak point for massive dama
 KDTut_Vulnerable2,Enemies that miss an attack become vulnerable for a turn.
 KDTut_Vulnerable,Attack them for a guaranteed critical hit!
 KDTut_Dodge,before the attack lands! You can tell the difference by the border of the tiles.
-KDTut_Dodge2,Enemy attacks take time to hit. Make sure to step out of the warning tiles,
+KDTut_Dodge2,"Enemy attacks take time to hit. Make sure to step out of the warning tiles,"
 KDTut_Projec,You can dodge out of the way of most projectiles. Avoid the marked tiles.
 KDTut_Charge,'Charge' is a unified ammunition for all of your weapons. Recharge it with ancient crystals.
 KDTut_Charge2,"Spent crystals can slot into some light fixtures to recharge them, but it requires 100 gold."

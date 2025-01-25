@@ -1267,7 +1267,7 @@ function KDValidateEscapeGrace(value: KDCollectionEntry): boolean {
 		let bondageAmount = Math.min(entity?.boundLevel || 0,
 			KDGetExpectedBondageAmountTotal(value.id, entity));
 		let enemy = KinkyDungeonGetEnemyByName(value.type);
-		if (bondageAmount < enemy.maxhp * KDNPCStruggleThreshMultType(enemy)) {
+		if (enemy && bondageAmount < enemy.maxhp * KDNPCStruggleThreshMultType(enemy)) {
 			value.escapegrace = true;
 		} else value.escapegrace = undefined;
 	} else value.escapegrace = undefined;
@@ -1745,4 +1745,15 @@ function KDDoCollect(entity: entity): boolean {
 		return notable;
 	}
 	return true;
+}
+
+function KDDefectIfPossible(entity: entity, defectTo: string = "Player"): boolean {
+	// TODO make this more complicated
+	let op = KDGetModifiedOpinionID(entity.id);
+
+	if (op > 0 && !entity.hostile && entity.faction != "Player" && entity.faction != defectTo) {
+		entity.faction = defectTo;
+		return true;
+	}
+	return false;
 }
