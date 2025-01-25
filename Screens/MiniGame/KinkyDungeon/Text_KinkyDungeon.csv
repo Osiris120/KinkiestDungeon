@@ -60,6 +60,7 @@ KDToggleAlwaysApplyCharPalette,Always use character palette
 KDToggleDefaultApplyCharPalette,Use character palette for default outfit
 
 KDToggleBackgrounds,Show Background Art
+KDToggleOptRender,Optimized Drawing (requires high RAM)
 
 KDToggleSoundOffWhenMin,Mute when Minimized
 KDToggleBackgrounds,Show Background Art
@@ -22815,7 +22816,7 @@ ItemPickupDivineTear,"You find a shimmering macaron."
 KinkyDungeonInventoryItemDivineTear,Heavenly Crunch Macaron
 KinkyDungeonInventoryItemDivineTearUse,"You feel holy energy neutralizing the cursed magic permanently."
 KinkyDungeonInventoryItemDivineTearDesc,"Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful."
-KinkyDungeonInventoryItemDivineTearDesc2,"Unlocks a cursed item and/or removes all curses from one currently worn item of your choice."
+KinkyDungeonInventoryItemDivineTearDesc2,"Purifies and unlocks a cursed item and/or removes all curses from one currently worn item of your choice."
 
 rCommercePortal,"Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)"
 rCommercePortalGo,"(You step through the portal. An unperturbed shopkeeper greets you.)|Another visitor? Oh, it's just you~"
@@ -26699,7 +26700,7 @@ KDDelayedAction_Armor,Equipping Armor...
 KDDelayedAction_Consumable,Using Consumable...
 KDDelayedAction_Struggle,Struggling...
 
-KDMimicCleanse,The ITMN1 is cleansed and returns to being a ITMN2!
-KDInvTooltip_MimicHolyGlow,Reverts if cleansed.
+KDMimicCleanse,The ITMN1 is purified and returns to being a ITMN2!
+KDInvTooltip_MimicHolyGlow,Reverts if purified with item.
 KDInvTooltip_SkimpyCurse,...smaller than expected.
 KDInvTooltip_ShibariCurse,Comes with an artistic flair.

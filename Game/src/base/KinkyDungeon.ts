@@ -1,5 +1,6 @@
 "use strict";
 
+
 let KDENABLEDISCORDSYNC = false;
 
 let KDGenMapCallback: () => string = null;
@@ -198,6 +199,7 @@ let KDToggles = {
 	Music: true,
 	Sound: true,
 	HighResDisplacement: false,
+	OptRender: false,//!CommonIsMobile, // experimental, for now
 	Bloom: true,
 	StunFlash: true,
 	ParticlesFX: true,
@@ -294,6 +296,7 @@ let KDToggleCategories = {
 	RetroAnim: "GFX",
 	HiResModel: "GFX",
 	HighResDisplacement: "GFX",
+	OptRender: "GFX",
 	Bloom: "GFX",
 	StunFlash: "UI",
 	ParticlesFX: "GFX",
@@ -3254,6 +3257,8 @@ function KinkyDungeonRun() {
 	//}
 	// Cull the sprites that werent rendered or updated this frame
 	KDCullSprites();
+	KDCullRTList(kdRTcache);
+	KDCullTexList(kdTexcache);
 
 
 
@@ -3347,9 +3352,14 @@ let kdTrackGameParticles = false;
 
 let KDlastCull = new Map();
 
+function KDGetCullTime() {
+	// Adaptive culling
+	return Math.max(1000, KDCULLTIME);
+}
+
 function KDCullSprites(): void {
 	if (!KDlastCull.get(kdpixisprites)) KDlastCull.set(kdpixisprites, 0);
-	let cull = CommonTime() > (KDlastCull.get(kdpixisprites) || 0) + KDCULLTIME;
+	let cull = CommonTime() > ((KDlastCull.get(kdpixisprites) || 0) + KDGetCullTime());
 	for (let sprite of kdpixisprites.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0])) {
 			if (cull) {
@@ -3359,16 +3369,18 @@ function KDCullSprites(): void {
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 				kdpixisprites.delete(sprite[0]);
 				delete sprite[1].filters;
-				if (sprite[1].destroy)
+				if (sprite[1].destroy && !sprite[1].destroyed)
 					sprite[1].destroy();
 			} else sprite[1].visible = false;
 		}// else sprite[1].visible = true;
 	}
 	if (cull) KDlastCull.set(kdpixisprites, CommonTime());
+
+
 }
 function KDCullSpritesList(list: Map<string, any>): void {
 	if (!KDlastCull.get(list)) KDlastCull.set(list, 0);
-	let cull = CommonTime() > (KDlastCull.get(list) || 0) + KDCULLTIME;
+	let cull = CommonTime() > ((KDlastCull.get(list) || 0) + KDGetCullTime());
 	for (let sprite of list.entries()) {
 		if (!kdSpritesDrawn.has(sprite[0])) {
 			if (cull) {
@@ -3376,11 +3388,48 @@ function KDCullSpritesList(list: Map<string, any>): void {
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 				list.delete(sprite[0]);
 				delete sprite[1].filters;
-				sprite[1].destroy();
+				if (sprite[1].destroy && !sprite[1].destroyed)
+					sprite[1].destroy();
 			} else sprite[1].visible = false;
 		}// else sprite[1].visible = true;
 	}
 	if (cull) KDlastCull.set(list, CommonTime());
+}
+
+
+function KDCullRTList(list: Map<string, PIXIRenderTexture>): void {
+	let ct = CommonTime() - KDGetCullTime();
+	for (let sprite of list.entries()) {
+		if (!kdRTlastLookup.has(sprite[0])
+			||
+			ct > kdRTlastLookup.get(sprite[0])
+	) {
+			list.delete(sprite[0]);
+
+			if (kdRTSpritecache.get(sprite[1])) {
+				if (kdRTSpritecache.get(sprite[1]).destroy && !kdRTSpritecache.get(sprite[1]).destroyed)
+					kdRTSpritecache.get(sprite[1]).destroy();
+				kdRTSpritecache.delete(sprite[1]);
+			}
+
+			kdRTlastLookup.delete(sprite[0]);
+			sprite[1].destroy(true);
+		}
+	}
+}
+
+function KDCullTexList(list: Map<string, PIXITexture>): void {
+	let ct = CommonTime() - KDGetCullTime();
+	for (let sprite of list.entries()) {
+		if (!kdTexlastLookup.has(sprite[0])
+			||
+			ct > kdTexlastLookup.get(sprite[0])
+	) {
+			list.delete(sprite[0]);
+			kdTexlastLookup.delete(sprite[0]);
+			sprite[1].destroy(false);
+		}
+	}
 }
 
 let KDButtonsCache: Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean, priority: number, scrollfunc?: (amount: number) => void, hotkeyPress?: string}> = {

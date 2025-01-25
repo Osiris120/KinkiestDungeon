@@ -207,3 +207,94 @@ AddModel({
 });
 
 AddModel(GetModelFashionVersion("KittyPetSteelCollar", true));
+
+
+
+AddModel({
+	Name: "KittyPetMittenLeft",
+	Folder: "KittyPetPaws",
+	Parent: "KittyPetPaws",
+	Categories: ["Mittens", "Restraints"],
+	Layers: ToLayerMap([
+		{ Name: "GloveLeft", Layer: "MittenLeft", Pri: -1,
+			Poses: ToMap([...ARMPOSES]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			InheritColor: "Mitten",
+			EraseSprite: "Mitts",
+			EraseLayers: ToMap(["Mitts"]),
+		},
+		{ Name: "GloveLeftPaw", Layer: "MittenLeft", Pri: -0.9,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie", "Crossed", "Up"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+			NoOverride: true,
+			TieToLayer: "GloveLeft",
+		},
+		{ Name: "ForeGloveLeft", Layer: "ForeMittenLeft", Pri: -1,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveLeft",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+			EraseSprite: "Mitts",
+			EraseLayers: ToMap(["Mitts"]),
+		},
+		{ Name: "ForeGloveLeftPaw", Layer: "ForeMittenLeft", Pri: -0.9,
+			Poses: ToMapSubtract([...FOREARMPOSES], ["Crossed"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "GloveLeft",
+			SwapLayerPose: {Crossed: "CrossGloveLeft"},
+			NoOverride: true,
+			TieToLayer: "ForeGloveLeft",
+		},
+	])
+});
+
+AddModel({
+	Name: "KittyPetMittenRight",
+	Folder: "KittyPetPaws",
+	Parent: "KittyPetPaws",
+	Categories: ["Mittens", "Restraints"],
+	Layers: ToLayerMap([
+		{ Name: "GloveRight", Layer: "MittenRight", Pri: -1,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie"]),
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+		},
+		{ Name: "GloveRightPaw", Layer: "MittenRight", Pri: -0.9,
+			Poses: ToMapSubtract([...ARMPOSES], ["Wristtie", "Boxtie", "Crossed", "Up"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+			NoOverride: true,
+			TieToLayer: "GloveRight",
+		},
+		{ Name: "ForeGloveRight", Layer: "ForeMittenRight", Pri: -1,
+			Poses: ToMap([...FOREARMPOSES]),
+			InheritColor: "GloveRight",
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
+		},
+		{ Name: "ForeGloveRightPaw", Layer: "ForeMittenRight", Pri: -0.9,
+			Poses: ToMapSubtract([...FOREARMPOSES], ["Crossed"]),
+			GlobalDefaultOverride: ToMap(["Front"]),
+			InheritColor: "GloveRight",
+			SwapLayerPose: {Crossed: "CrossGloveRight"},
+			NoOverride: true,
+			TieToLayer: "ForeGloveRight",
+		},
+
+
+	])
+});
+
+AddModel({
+	Name: "KittyPetMittens",
+	Folder: "KittyPetPaws",
+	Parent: "KittyPetsuit",
+	TopLevel: true,
+	Categories: ["Mittens", "Restraints"],
+	Layers: ToLayerMap([
+		...GetModelLayers("KittyPetMittenLeft"),
+		...GetModelLayers("KittyPetMittenRight"),
+	])
+});
+
+AddModel(GetModelFashionVersion("KittyPetMittenLeft", true));
+AddModel(GetModelFashionVersion("KittyPetMittenRight", true));
+AddModel(GetModelFashionVersion("KittyPetMittens", true));

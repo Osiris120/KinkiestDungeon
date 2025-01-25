@@ -174,6 +174,8 @@ interface ModelLayer extends Namable {
 	NoAppendErase?: boolean,
 	/** When this pose is present it appends it to the name. Only one can be appended this way */
 	AppendPose?: Record<string, string>,
+	/** When this pose is present it appends it to the name. Same as appendpose but appends all that are available*/
+	AppendPoseMulti?: Record<string, string>,
 	/** Lists the poses that can be affected by AppendPose*/
 	AppendPoseRequire?: Record<string, boolean>,
 	/** Hides when this pose plus the layer name is present. E.g. HidePrefixPose: ["Encase"] will hide EncaseShoeLeft if the layer is on ShoeLeft */
