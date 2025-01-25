@@ -265,9 +265,15 @@ let KDGoodColor = "#77ff99";
 let KDTutorialColor = "#00ffff";
 
 let kdSpritesDrawn: Map<string, boolean> = new Map();
+let kdRTlastLookup: Map<string, number> = new Map();
+let kdTexlastLookup: Map<string, number> = new Map();
+
 
 let kdlightsprites: Map<string, any> = new Map();
 let kdpixisprites: Map<string, any> = new Map();
+let kdRTcache: Map<string, PIXIRenderTexture> = new Map();
+let kdRTSpritecache: Map<PIXIRenderTexture, PIXISprite> = new Map();
+let kdTexcache: Map<string, PIXITexture> = new Map();
 let kdminimapsprites: Map<string, any> = new Map();
 let kdpixifogsprites: Map<string, any> = new Map();
 let kdpixibrisprites: Map<string, any> = new Map();
@@ -4033,6 +4039,189 @@ function KDDraw (
 	return null;
 }
 
+
+
+/** The purpose of this is to prerender a rendertexture with a specific set of filters
+ * This is important because we dont want to rerender those filters constantly
+ * if there are no filters then its unnecessary
+ */
+function KDGetOrMakeRenderTexture(Image: string, Nearest: boolean, id: string = "", filters: PIXIFilter[]): PIXITexture {
+	let baseTex = KDTex(Image, Nearest);
+
+	kdTexlastLookup.set(Image + id, CommonTime());
+
+	if (!baseTex) return null;
+
+	let res = baseTex.baseTexture.resource.src;
+
+	kdRTlastLookup.set(res + id, CommonTime());
+	let rt: PIXIRenderTexture = kdRTcache.get(res + id) || PIXI.RenderTexture.create({
+		width: baseTex.baseTexture.width,
+		height: baseTex.baseTexture.height,
+		resolution: baseTex.baseTexture.resolution
+	});
+	if (!kdRTcache.get(res + id) && res) {
+		// do the rendering fr
+		let sprite: PIXISprite = (kdpixisprites.get(res + id) && !kdpixisprites.get(res + id).destroyed) ?
+			kdpixisprites.get(res + id) : PIXI.Sprite.from(baseTex.baseTexture);
+
+		sprite.setTransform();
+		sprite.filters = filters;
+
+		PIXIapp.renderer.render(sprite, {
+			renderTexture: rt,
+		});
+		kdpixisprites.set(res + id, sprite);
+
+		kdRTSpritecache.set(rt, sprite);
+
+		if (!kdRTcache.get(res + id)) kdRTcache.set(res + id, rt);
+	}
+
+	let tex = kdTexcache.get(Image + id)
+		|| new PIXI.Texture(
+			rt.baseTexture,
+			baseTex.frame,
+			baseTex.orig,
+			baseTex.trim,
+			baseTex.rotate,
+			baseTex.defaultAnchor,
+			baseTex.defaultBorders);
+	if (!kdTexcache.get(Image + id)) kdTexcache.set(Image + id, tex);
+
+	// We rendered the atlas, now we generate a new texture from the atlas based on the basetexture
+	return tex;
+}
+
+
+/**
+ * @param Container
+ * @param Map
+ * @param id
+ * @param Image
+ * @param Left
+ * @param Top
+ * @param Width
+ * @param Height
+ * @param [Rotation]
+ * @param [options]
+ * @param [Centered]
+ * @param [SpritesDrawn]
+ * @param [Scale]
+ * @param [Nearest]
+ * @returns {any}
+ */
+function KDDrawRT (
+	Container:     PIXIContainer,
+	Map:           Map<string, any>,
+	id:            string,
+	filterid: string,
+	Image:         string,
+	Left:          number,
+	Top:           number,
+	Width:         number,
+	Height:        number,
+	Rotation?:     number,
+	options?:      any,
+	Centered?:     boolean,
+	SpritesDrawn?: Map<string, boolean>,
+	Scale?:        number,
+	Nearest?:      boolean,
+	/** The filters to be used in render texture */
+	baseFilters?: PIXIFilter[]
+): any
+{
+	let sprite: PIXISprite = Map.get(id);
+	if (!sprite?.parent) {
+		sprite = null;
+		Map.delete(id);
+	};
+	if (!sprite) {
+		// Load the texture
+		if (Nearest && StandalonePatched) {
+			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
+		}
+		let tex = KDGetOrMakeRenderTexture(Image, Nearest, filterid, baseFilters);
+
+		if (tex) {
+			// Create the sprite by making a rendertexture
+			sprite = new PIXI.Sprite(tex);
+			Map.set(id, sprite);
+			// Add it to the container
+			Container.addChild(sprite);
+		}
+		if (Nearest && StandalonePatched) {
+			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.LINEAR;
+		}
+	}
+	if (sprite && sprite.texture && sprite.texture.orig) {
+		sprite.visible = true;
+		//sprite.roundPixels = true;
+		sprite.interactive = false;
+		// Modify the sprite according to the params
+		//let tex = KDTex(Image);
+		//let tex = KDGetOrMakeRenderTexture(Image, Nearest, filterid, baseFilters);
+		//if (tex) sprite.texture = tex;
+		sprite.name = id;
+		sprite.position.x = Left;
+		sprite.position.y = Top;
+		if (Width)
+			sprite.width = Width;
+		if (Height)
+			sprite.height = Height;
+		if (Scale) {
+			sprite.scale.x = Scale;
+			sprite.scale.y = Scale;
+		}
+		if (Centered) {
+			sprite.anchor.set(0.5);
+		}
+		if (Rotation != undefined)
+			sprite.rotation = Rotation;
+		if (options) {
+			if (options.filters && sprite.cacheAsBitmap) {
+				sprite.filters = null;
+			} else {
+				for (let [k, v] of Object.entries(options)) {
+					if (v != undefined || k != "tint")
+						sprite[k] = v;
+				}
+			}
+
+			if (options.zIndex != undefined) {
+				sprite.zIndex = options.zIndex;
+			}
+			if (options.scalex != undefined) {
+				sprite.scale.x = sprite.scale.x * options.scalex;
+			}
+			if (options.scaley != undefined) {
+				sprite.scale.y = sprite.scale.y * options.scaley;
+			}
+			if (options.anchorx != undefined) {
+				if (options.normalizeAnchorX) {
+					sprite.anchor.x = options.anchorx * (options.normalizeAnchorX/sprite.texture.width);
+				} else {
+					sprite.anchor.x = options.anchorx;
+				}
+
+			}
+			if (options.anchory != undefined) {
+				if (options.normalizeAnchorY) {
+					sprite.anchor.y = options.anchory * (options.normalizeAnchorY/sprite.texture.height);
+				} else {
+					sprite.anchor.y = options.anchory;
+				}
+			}
+		}
+		if (SpritesDrawn)
+			SpritesDrawn.set(id, true);
+		else
+			kdSpritesDrawn.set(id, true);
+		return sprite;
+	}
+	return null;
+}
+
 let OPTIONS_NEAREST = {scaleMode: PIXI.SCALE_MODES.NEAREST};
 
 let errorImg = {};
@@ -4998,6 +5187,8 @@ function KDDoGraphicsSanitize(): void {
 	for (let t of KDMeshToDestroy) {
 		delete t.filters;
 		t.destroy({
+			children: true,
+			texture: true,
 			baseTexture: true,
 		});
 	}
