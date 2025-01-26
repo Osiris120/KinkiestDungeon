@@ -199,7 +199,7 @@ let KDToggles = {
 	Music: true,
 	Sound: true,
 	HighResDisplacement: false,
-	OptRender: false,//!CommonIsMobile, // experimental, for now
+	OptRender: !CommonIsMobile, // experimental, for now
 	Bloom: true,
 	StunFlash: true,
 	ParticlesFX: true,
@@ -3249,6 +3249,7 @@ function KinkyDungeonRun() {
 	}
 
 
+	KDTickAdaptiveTexCache(KDDrawDelta/KDCULLTIME);
 	// Cull temp elements
 	KDCullTempElements();
 

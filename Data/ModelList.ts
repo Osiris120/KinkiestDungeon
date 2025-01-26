@@ -1062,14 +1062,13 @@ AddModel({
 			TieToLayer: "Skirt",
 			NoOverride: true,
 			Poses: ToMap([...LEGPOSES]),
-			HideWhenOverridden: true,
 			//swaplayerpose: {Kneel: "SkirtLower", KneelClosed: "SkirtLower"},
 			MorphPoses: {Hogtie: "Closed", Closed: "Closed", Kneel: "Kneel", KneelClosed: "Kneel"},
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			Invariant: true,
 		},
-		{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 7,
+		/*{ Name: "SkirtOver", Layer: "SkirtOver", Pri: 7,
 			Poses: ToMap([...KNEELPOSES]),
 			//RequirePoses: ToMap(["CrotchStrap"]),
 			TieToLayer: "Skirt", NoOverride: true,
@@ -1086,7 +1085,7 @@ AddModel({
 			AppendPose: ToMapDupe(["CrotchStrap"]),
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoLower"],
 			//Invariant: true,
-		},
+		},*/
 	])
 });
 
