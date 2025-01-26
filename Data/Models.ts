@@ -832,7 +832,9 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	// Create the layer extra filter matrix
 	let ExtraFilters: Record<string, LayerFilter[]> = {};
 	let DisplaceFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
+	let OcclusionFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let DisplaceFiltersInUse = {};
+	let OcclusionFiltersInUse = {};
 	let EraseFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let EraseFiltersInUse = {};
 	for (let m of Models.values()) {
@@ -854,6 +856,158 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			}
 
 			let lyr = KDLayerPropName(l, MC.Poses);
+			// Apply occlusion
+			/*if (l.OccludeLayers
+				&& (!l.OccludePoses
+					|| l.OccludePoses.some((pose) => {return MC.Poses[pose];}))
+				&& (!l.OccludePosesExclude
+					|| l.OccludePosesExclude.every((pose) => {return !MC.Poses[pose];}))
+				) {
+				let transform = new Transform();
+
+				let layer = LayerLayer(MC, l, m, totalMods);
+
+
+				while (layer) {
+					let mod_selected: PoseMod[] = mods[layer] || [];
+					for (let mod of mod_selected) {
+						transform = transform.recursiveTransform(
+							mod.offset_x || 0,
+							mod.offset_y || 0,
+							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+							mod.scale_x || 1,
+							mod.scale_y || 1,
+						(mod.rotation * Math.PI / 180) || 0
+						);
+					}
+					layer = LayerProperties[layer]?.Parent;
+				}
+
+				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
+				if (Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+				let oldProps = Properties;
+				Properties = m.Properties ? (m.Properties[l.Name] || m.Properties[l.InheritColor]) : undefined;
+				if (Properties && oldProps != Properties) {
+					transform = transform.recursiveTransform(
+						Properties.XOffset || 0,
+						Properties.YOffset || 0,
+						Properties.XPivot ||  0,
+						Properties.YPivot ||  0,
+						Properties.XScale ||  1,
+						Properties.YScale ||  1,
+						(Properties.Rotation * Math.PI / 180) || 0
+					);
+				}
+				layer = LayerLayer(MC, l, m, totalMods);
+				while (layer) {
+					let mod_selected: PoseMod[] = endMods[layer] || [];
+					for (let mod of mod_selected) {
+						transform = transform.recursiveTransform(
+							mod.offset_x || 0,
+							mod.offset_y || 0,
+							mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+							mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+							mod.scale_x || 1,
+							mod.scale_y || 1,
+						(mod.rotation * Math.PI / 180) || 0
+						);
+					}
+					layer = LayerProperties[layer]?.Parent;
+				}
+
+				for (let ll of Object.entries(l.OccludeLayers)) {
+					let id = "occ_" + ModelLayerString(m, l, MC.Poses);
+
+					let zzz = (l.DisplaceZBonus || 0)*LAYER_INCREMENT-ModelLayers[LayerLayer(MC, l, m, totalMods)] + (LayerPri(MC, l, m, totalMods) || 0);
+					if (OcclusionFiltersInUse[id] != undefined && OcclusionFiltersInUse[id] < zzz) {
+						OcclusionFiltersInUse[id] = zzz;
+						for (let dg of Object.keys(LayerGroups[ll[0]])) {
+							if (OcclusionFilters[dg])
+								for (let ft of OcclusionFilters[dg]) {
+									if (ft.id == id && ft.zIndex < zzz) {
+										ft.zIndex = zzz;
+									}
+								}
+						}
+						continue;
+					}
+					OcclusionFiltersInUse[id] = zzz;
+
+					for (let dg of Object.keys(LayerGroups[ll[0]])) {
+						if (!OcclusionFilters[dg]) OcclusionFilters[dg] = [];
+
+						let tt = transform;
+						if (KDOptimizeDisplacementMapInfo[id]) {
+							tt = new Transform(
+								tt.ox,
+								tt.oy,
+								tt.ax,
+								tt.ay,
+								tt.sx,
+								tt.sy,
+								tt.rot,
+							).recursiveTransform(
+								KDOptimizeDisplacementMapInfo[id].xPad || 0,
+								KDOptimizeDisplacementMapInfo[id].yPad || 0,
+								0,
+								0,
+								1,
+								1,
+								0
+							);
+						}
+
+						let ox = tt.ox;
+						let oy = tt.oy;
+						let ax = tt.ax;
+						let ay = tt.ay;
+						let sx = tt.sx;
+						let sy = tt.sy;
+						let rot = tt.rot;
+						let img = ModelLayerString(m, l, MC.Poses);
+						OcclusionFilters[dg].push(
+							{
+								amount: (l.OccludeAmount || 1) * Zoom,
+								hash: id + m.Name + "," + l.Name,
+								zIndex: zzz,
+								id: id,
+								spriteName: img,
+								sprite: KDDrawRT(
+									ContainerContainer.Container,
+									ContainerContainer.SpriteList,
+									id, img,
+									img,
+									ox * Zoom, oy * Zoom, undefined, undefined,
+									rot, {
+										zIndex: zzz,
+										anchorx: (ax - (l.OffsetX/MODELWIDTH || 0)) * (l.AnchorModX || 1),
+										anchory: (ay - (l.OffsetY/MODELHEIGHT || 0)) * (l.AnchorModY || 1),
+										scalex: sx != 1 ? sx : undefined,
+										scaley: sy != 1 ? sy : undefined,
+										alpha: 0.0,
+										cullable: KDCulling,
+									}, false,
+									ContainerContainer.SpritesDrawn,
+									Zoom, undefined, undefined, true, false
+								),
+							}
+						);
+					}
+
+				}
+			}*/
+
 			// Apply displacement
 			if (l.DisplaceLayers
 				&& (!l.DisplacementPoses
@@ -1325,6 +1479,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						extrafilter.push(...efilter);
 					}
 				}
+
 				// Add displacement filters
 				if (!l.NoDisplace && DisplaceFilters[origlayer]) {
 					for (let ef of DisplaceFilters[origlayer]) {
@@ -1348,6 +1503,29 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						extrafilter.push(...efilter);
 					}
 				}
+				// Add occlusion filters AFTER displacement
+				/*if (!l.NoErase && OcclusionFilters[origlayer]) {
+					for (let ef of OcclusionFilters[origlayer]) {
+						if (!ef.sprite) continue;
+						if (ef.spriteName != undefined && ef.spriteName == l.EraseSprite) continue;
+						if (ef.zIndex != undefined && ef.zIndex - (l.DisplaceZBonus || 0) <= zz + 0.01) continue;
+						let efh = containerID + "occ_" + ef.hash;
+						let dsprite = ef.sprite;
+						if (refreshfilters) {
+							KDAdjustmentFilterCache.delete(efh);
+						}
+						KDTex(dsprite.name, false); // try to preload it
+						f = new OcclusionFilter(
+							dsprite,
+						);
+						f.multisample = 0;
+						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
+						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
+							KDAdjustmentFilterCache.set(efh, efilter);
+						}
+						extrafilter.push(...efilter);
+					}
+				}*/
 
 				let img = ModelLayerString(m, l, MC.Poses);
 				let id = `layer_${m.Name}_${l.Name}_${img}_${fh}_${Math.round(ax*10000)}_${Math.round(ay*10000)}_${Math.round(rot*1000)}_${Math.round(sx*1000)}_${Math.round(sy*1000)}`;

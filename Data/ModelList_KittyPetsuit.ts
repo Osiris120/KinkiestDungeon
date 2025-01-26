@@ -215,3 +215,72 @@ AddModel({
 });
 
 AddModel(GetModelRestraintVersion("KittyPetPaws", true));
+
+
+
+AddModel({
+	Name: "KittyPetPawShortLeft",
+	Folder: "KittyPetPawsShort",
+	Parent: "KittyPetPaws",
+	Categories: ["Socks"],
+	TopLevel: false,
+	Layers: ToLayerMap([
+		{ Name: "SockLeft", Layer: "StockingLeft", Pri: -3,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
+		{ Name: "SockLeftPaws", Layer: "StockingLeft", Pri: -2.9,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			TieToLayer: "SockLeft",
+			InheritColor: "PawLeft",
+			NoOverride: true,
+		},
+		{ Name: "FootLeftHogtie", Layer: "SockLeftHogtie", Pri: -3.5,
+			Poses: ToMap(["Hogtie"]),
+			InheritColor: "SockLeft",
+			Invariant: true,
+		},
+		{ Name: "FootLeftHogtiePaws", Layer: "SockLeftHogtie", Pri: -3.4,
+			Poses: ToMap(["Hogtie"]),
+			InheritColor: "PawLeft",
+			Invariant: true,
+			TieToLayer: "FootLeftHogtie",
+			NoOverride: true,
+		},
+	])
+});
+AddModel({
+	Name: "KittyPetPawShortRight",
+	Folder: "KittyPetPawsShort",
+	Parent: "KittyPetPaws",
+	Categories: ["Socks"],
+	TopLevel: false,
+	Layers: ToLayerMap([
+		{ Name: "SockRight", Layer: "StockingRight", Pri: -3,
+			Poses: ToMap([...LEGPOSES]),
+			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+		},
+		{ Name: "FootRightKneel", Layer: "SockRightKneel", Pri: -1.5,
+			HidePoses: ToMap(["FeetLinked"]),
+			Poses: ToMap(["Kneel"]),
+			InheritColor: "SockRight",
+			Invariant: true,
+			HideWhenOverridden: true,
+		},
+	])
+});
+
+AddModel({
+	Name: "KittyPetPawsShort",
+	Folder: "KittyPetPawsShort",
+	Parent: "KittyPetPaws",
+	TopLevel: false,
+	Categories: ["Socks", "Cosplay"],
+	Layers: ToLayerMap([
+		...GetModelLayers("KittyPetPawShortRight"),
+		...GetModelLayers("KittyPetPawShortLeft"),
+	])
+});
+
+AddModel(GetModelRestraintVersion("KittyPetPawsShort", true));
