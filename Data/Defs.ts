@@ -1224,6 +1224,16 @@ let LayerGroups = {
 		"SockRightKneel",
 		"FootRightKneel",
 	]),
+
+	"Stockings": ToMap([
+
+		// Shoes
+		"StockingLeftKneel", "StockingLeft",
+		"StockingRight",
+
+		"LegLeft",
+		"LegRight",
+	]),
 	"ToeTie": ToMap([
 
 		"ShoeLeft",

@@ -4062,31 +4062,33 @@ function KDDoAdaptiveTexCache(id: string, delta: number): boolean {
  * This is important because we dont want to rerender those filters constantly
  * if there are no filters then its unnecessary
  */
-function KDGetOrMakeRenderTexture(Image: string, Nearest: boolean, id: string = "", filters: PIXIFilter[]): PIXITexture {
+function KDGetOrMakeRenderTexture(Image: string, Nearest: boolean, id: string = "", filters: PIXIFilter[],
+		force: boolean = false, useAtlas: boolean = true, resolution: number = 1): PIXITexture {
 	let baseTex = KDTex(Image, Nearest);
 
-	if (!filters || filters.length == 0) return baseTex;
+	if (!force && (!filters || filters.length == 0)) return baseTex;
 
 	kdTexlastLookup.set(Image + id, CommonTime());
 
 	if (!baseTex) return null;
 
-	let res = baseTex.baseTexture.resource.src;
+	let res = useAtlas ? baseTex.baseTexture.resource.src : Image;
 
 	// TODO add adaptive decision making based on how often this sprite is referenced
 
-	if (!res || (!KDDoAdaptiveTexCache(res + id, 1) && !kdRTcache.get(res + id))) return null;
+	if (!res || (!force && !KDDoAdaptiveTexCache(res + id, 1) && !kdRTcache.get(res + id))) return null;
 
 	kdRTlastLookup.set(res + id, CommonTime());
 	let rt: PIXIRenderTexture = kdRTcache.get(res + id) || PIXI.RenderTexture.create({
-		width: baseTex.baseTexture.width,
-		height: baseTex.baseTexture.height,
-		resolution: baseTex.baseTexture.resolution
+		width: useAtlas ? baseTex.baseTexture.width : baseTex.width,
+		height: useAtlas ? baseTex.baseTexture.height : baseTex.height,
+		resolution: resolution * (useAtlas ? baseTex.baseTexture.resolution : baseTex.resolution)
 	});
 	if (!kdRTcache.get(res + id) && res) {
 		// do the rendering fr
 		let sprite: PIXISprite = (kdpixisprites.get(res + id) && !kdpixisprites.get(res + id).destroyed) ?
-			kdpixisprites.get(res + id) : PIXI.Sprite.from(baseTex.baseTexture);
+			kdpixisprites.get(res + id) : PIXI.Sprite.from(
+				useAtlas ? baseTex.baseTexture : baseTex);
 
 		sprite.setTransform();
 		sprite.filters = filters;
@@ -4104,12 +4106,12 @@ function KDGetOrMakeRenderTexture(Image: string, Nearest: boolean, id: string = 
 	let tex = kdTexcache.get(Image + id)
 		|| new PIXI.Texture(
 			rt.baseTexture,
-			baseTex.frame,
-			baseTex.orig,
-			baseTex.trim,
-			baseTex.rotate,
-			baseTex.defaultAnchor,
-			baseTex.defaultBorders);
+			useAtlas ? baseTex.frame : undefined,
+			useAtlas ? baseTex.orig : undefined,
+			useAtlas ? baseTex.trim : undefined,
+			useAtlas ? baseTex.rotate : undefined,
+			useAtlas ? baseTex.defaultAnchor : undefined,
+			useAtlas ? baseTex.defaultBorders : undefined);
 	if (!kdTexcache.get(Image + id)) kdTexcache.set(Image + id, tex);
 
 	// We rendered the atlas, now we generate a new texture from the atlas based on the basetexture
@@ -4151,7 +4153,12 @@ function KDDrawRT (
 	Scale?:        number,
 	Nearest?:      boolean,
 	/** The filters to be used in render texture */
-	baseFilters?: PIXIFilter[]
+	baseFilters?: PIXIFilter[],
+	/** force to use RT regardless of filters */
+	force: boolean = false,
+	/** force to use RT regardless of filters */
+	useAtlas: boolean = true,
+	resolution: number = 1,
 ): any
 {
 	let sprite: PIXISprite = Map.get(id);
@@ -4165,7 +4172,8 @@ function KDDrawRT (
 		if (Nearest && StandalonePatched) {
 			PIXI.BaseTexture.defaultOptions.scaleMode = PIXI.SCALE_MODES.NEAREST;
 		}
-		let tex = KDGetOrMakeRenderTexture(Image, Nearest, filterid, baseFilters);
+		let tex = KDGetOrMakeRenderTexture(Image, Nearest, filterid, baseFilters,
+			force, useAtlas, resolution);
 
 		if (tex) {
 			// Create the sprite by making a rendertexture

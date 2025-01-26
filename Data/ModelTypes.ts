@@ -132,6 +132,14 @@ interface ModelLayer extends Namable {
 	/** Prevents displacement maps from applying to this item */
 	NoDisplace?: boolean,
 
+	OccludePoses?: string[],
+	/** No displacement map in these poses */
+	OccludePosesExclude?: string[],
+	/** Which layers to apply displacement to */
+	OccludeLayers?: Record<string, boolean>,
+	/** Amount of displacement */
+	OccludeAmount?: number,
+
 
 	/** [Group, Color] */
 	ImportColorFromGroup?: string[],
