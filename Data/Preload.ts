@@ -523,7 +523,7 @@ async function PreloadDisplacement(list) {
 }
 
 KDLoadToggles();
-if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
+//if (!KDToggles.HighResDisplacement) DisplacementScale = 1/16
 
 
 async function load() {

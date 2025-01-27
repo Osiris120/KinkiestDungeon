@@ -260,6 +260,9 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			SwapLayerPose: {KneelClosed: "StockingLeftKneel"},
 			NoOverride: true,
+			DisplaceLayers: {StockingLeft: true,},
+			DisplacementSprite: "SockLSquish_Short",
+			DisplaceAmount: 20,
 		},
 	])
 });
@@ -275,6 +278,9 @@ AddModel({
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
 			SwapLayerPose: {Kneel: "SockRightKneel"},
 			NoOverride: true,
+			DisplaceLayers: {StockingRight: true,},
+			DisplacementSprite: "SockRSquish_Short",
+			DisplaceAmount: 20,
 		},
 
 	])

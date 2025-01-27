@@ -198,7 +198,7 @@ let KDToggles = {
 	VibeSounds: true,
 	Music: true,
 	Sound: true,
-	HighResDisplacement: false,
+	//HighResDisplacement: false,
 	OptRender: !CommonIsMobile, // experimental, for now
 	Bloom: true,
 	StunFlash: true,

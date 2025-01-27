@@ -85,7 +85,7 @@ interface Model extends Namable {
 	/** Color definition */
 	Filters?: Record<string, LayerFilter>,
 	/** Color definition */
-	Properties?: Record<string, LayerProperties>,
+	Properties?: Record<string, LayerPropertiesType>,
 	/** Hardcoded Lock Type */
 	LockType?: string,
 	/** Hardcoded body filters */
@@ -241,7 +241,7 @@ type LayerFilter = {
     alpha: number;
 }
 
-type LayerProperties = {
+type LayerPropertiesType = {
     LayerBonus?: number,
     XOffset?: number,
     YOffset?: number,
@@ -259,6 +259,8 @@ type LayerProperties = {
     ExtraHidePrefixPose?: string[],
     ExtraHidePrefixPoseSuffix?: string[],
 	AddPose?: string[],
+	DisplaceAmount?: number,
+	EraseAmount?: number,
 }
 
 interface Namable {

@@ -133,7 +133,7 @@ class ModelContainer {
 	/**
 	 * Adds a model to the modelcontainer
 	 */
-	addModel(Model: Model, Filters?: Record<string, LayerFilter>, LockType?: string, Properties?: Record<string, LayerProperties>) {
+	addModel(Model: Model, Filters?: Record<string, LayerFilter>, LockType?: string, Properties?: Record<string, LayerPropertiesType>) {
 		let mod: Model = JSON.parse(JSON.stringify(Model));
 		if (Filters) {
 			mod.Filters = JSON.parse(JSON.stringify(Filters)) || mod.Filters;
@@ -684,7 +684,7 @@ function LayerPri(MC: ModelContainer, l: ModelLayer, m: Model, Mods?) : number {
 			if (MC.Poses[p[0]] || MC.TempPoses[p[0]]) temp += p[1];
 		}
 	}
-	let Properties: LayerProperties = m.Properties;
+	let Properties: LayerPropertiesType = m.Properties;
 	let lyr = l.InheritColor || l.Name;
 	if (Properties && Properties[lyr]) {
 		if (Properties[lyr].LayerBonus) temp += Properties[lyr].LayerBonus;
@@ -749,7 +749,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 		for (let l of Object.values(m.Layers)) {
 
 
-			let prop: LayerProperties = null;
+			let prop: LayerPropertiesType = null;
 			if (m.Properties) {
 				prop = (m.Properties[l.Name] || m.Properties[l.InheritColor]);
 				if (!prop && m.Properties[KDLayerPropName(l, MC.Poses)]) {
@@ -832,9 +832,9 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	// Create the layer extra filter matrix
 	let ExtraFilters: Record<string, LayerFilter[]> = {};
 	let DisplaceFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
-	let OcclusionFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
+	//let OcclusionFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let DisplaceFiltersInUse = {};
-	let OcclusionFiltersInUse = {};
+	//let OcclusionFiltersInUse = {};
 	let EraseFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	let EraseFiltersInUse = {};
 	for (let m of Models.values()) {
@@ -1008,6 +1008,9 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				}
 			}*/
 
+			let dAmount = 1;
+			let eAmount = 1;
+
 			// Apply displacement
 			if (l.DisplaceLayers
 				&& (!l.DisplacementPoses
@@ -1035,8 +1038,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					layer = LayerProperties[layer]?.Parent;
 				}
 
-				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
+				let Properties: LayerPropertiesType = m.Properties ? m.Properties[lyr] : undefined;
 				if (Properties) {
+					if (Properties.DisplaceAmount != undefined) dAmount *= Properties.DisplaceAmount;
+					if (Properties.EraseAmount != undefined) eAmount *= Properties.EraseAmount;
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -1050,6 +1055,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let oldProps = Properties;
 				Properties = m.Properties ? (m.Properties[l.Name] || m.Properties[l.InheritColor]) : undefined;
 				if (Properties && oldProps != Properties) {
+					if (Properties.DisplaceAmount != undefined) dAmount *= Properties.DisplaceAmount;
+					if (Properties.EraseAmount != undefined) eAmount *= Properties.EraseAmount;
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -1095,6 +1102,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						}
 						continue;
 					}
+					if (dAmount == 0) continue;
 					DisplaceFiltersInUse[id] = zzz;
 
 					for (let dg of Object.keys(LayerGroups[ll[0]])) {
@@ -1131,7 +1139,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 						DisplaceFilters[dg].push(
 							{
-								amount: (l.DisplaceAmount || 50) * Zoom,
+								amount: dAmount * (l.DisplaceAmount || 50) * Zoom,
 								hash: id + m.Name + "," + l.Name,
 								zIndex: zzz,
 								id: id,
@@ -1152,7 +1160,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 										cullable: KDCulling,
 									}, false,
 									ContainerContainer.SpritesDrawn,
-									Zoom, undefined, undefined, true, false, DisplacementScale
+									Zoom, undefined, undefined, true, false
 								),
 							}
 						);
@@ -1187,7 +1195,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					layer = LayerProperties[layer]?.Parent;
 				}
 
-				let Properties: LayerProperties = m.Properties ? m.Properties[lyr] : undefined;
+				let Properties: LayerPropertiesType = m.Properties ? m.Properties[lyr] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
@@ -1244,6 +1252,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						}
 						continue;
 					}
+					if (eAmount == 0) continue;
 					EraseFiltersInUse[id] = zzz;
 
 
@@ -1282,7 +1291,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 						EraseFilters[dg].push(
 							{
-								amount: (l.EraseAmount || 50) * Zoom,
+								amount: eAmount * (l.EraseAmount || 50) * Zoom,
 								hash: id + m.Name + "," + l.Name,
 								id: id,
 								spriteName: l.EraseSprite,
@@ -1303,7 +1312,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 										cullable: KDCulling,
 									}, false,
 									ContainerContainer.SpritesDrawn,
-									Zoom, undefined, undefined, true, false, DisplacementScale
+									Zoom, undefined, undefined, true, false
 								),
 							}
 						);
@@ -1376,7 +1385,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 					layer = LayerProperties[layer]?.Parent;
 				}
 
-				let Properties: LayerProperties = m.Properties ? m.Properties[KDLayerPropName(l, MC.Poses)] : undefined;
+				let Properties: LayerPropertiesType = m.Properties ? m.Properties[KDLayerPropName(l, MC.Poses)] : undefined;
 				if (Properties) {
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
@@ -1609,7 +1618,7 @@ const KDAdjustmentFilterCache: Map<string, PIXIFilter[]> = new Map();
  */
 function ModelDrawLayer(MC: ModelContainer, Model: Model, Layer: ModelLayer, Poses: Record<string, boolean>): boolean {
 	// Hide if not highest
-	let prop: LayerProperties = null;
+	let prop: LayerPropertiesType = null;
 	if (Model.Properties) {
 		prop = Model.Properties[Layer.InheritColor || Layer.Name];
 		if (!prop && Model.Properties[KDLayerPropName(Layer, Poses)]) {

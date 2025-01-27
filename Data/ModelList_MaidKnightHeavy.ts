@@ -707,6 +707,9 @@ AddModel({
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: -40,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			DisplaceLayers: {StockingLeft: true,},
+			DisplacementSprite: "SockLSquish_Long",
+			DisplaceAmount: 10,
 
 		},
 		{ Name: "FootSockLeftHogtie", Layer: "SockLeftHogtie", Pri: -40,
@@ -726,6 +729,9 @@ AddModel({
 		{ Name: "SockRight", Layer: "StockingRight", Pri: -40,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			DisplaceLayers: {StockingRight: true,},
+			DisplacementSprite: "SockRSquish_Long",
+			DisplaceAmount: 10,
 
 		},
 		{ Name: "FootSockRightKneel", Layer: "SockRightKneel", Pri: -40,
