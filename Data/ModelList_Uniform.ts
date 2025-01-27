@@ -396,10 +396,18 @@ AddModel({
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie"]),
 			GlobalDefaultOverride: ToMap(["KneelClosed"]),
 			HideWhenOverridden: true,
+
+			DisplaceLayers: {ShoeLeft: true,},
+			DisplacementSprite: "SockLSquish_Short",
+			DisplaceAmount: 10,
 		},
 		{ Name: "ShoeRight", Layer: "ShoeRight", Pri: 17,
 			Poses: ToMapSubtract([...LEGPOSES], ["Hogtie", "Kneel", "KneelClosed"]),
 			HideWhenOverridden: true,
+
+			DisplaceLayers: {ShoeRight: true,},
+			DisplacementSprite: "SockRSquish_Short",
+			DisplaceAmount: 10,
 		},
 		{ Name: "ShoeRightKneel", Layer: "ShoeRightKneel", Pri: 17,
 			Poses: ToMap(["Kneel"]),
@@ -443,6 +451,9 @@ AddModel({
 		{ Name: "SockLeft", Layer: "StockingLeft", Pri: -30,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			DisplaceLayers: {StockingLeft: true,},
+			DisplacementSprite: "SockLSquish_Long",
+			DisplaceAmount: 30,
 
 		},
 		{ Name: "FootSockLeftHogtie", Layer: "SockLeftHogtie", Pri: -30,
@@ -462,6 +473,9 @@ AddModel({
 		{ Name: "SockRight", Layer: "StockingRight", Pri: -30,
 			Poses: ToMap([...LEGPOSES]),
 			GlobalDefaultOverride: ToMap(["Hogtie", "KneelClosed"]),
+			DisplaceLayers: {StockingRight: true,},
+			DisplacementSprite: "SockRSquish_Long",
+			DisplaceAmount: 30,
 
 		},
 		{ Name: "FootSockRightKneel", Layer: "SockRightKneel", Pri: -30,

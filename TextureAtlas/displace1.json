@@ -16,25 +16,9 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/Arm1SquishBoxtie.png":
-{
-	"frame": {"x":1535,"y":3,"w":510,"h":447},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":510,"h":447},
-	"sourceSize": {"w":510,"h":447}
-},
-"DisplacementMaps/Arm2SquishBoxtie.png":
-{
-	"frame": {"x":1535,"y":871,"w":508,"h":342},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":508,"h":342},
-	"sourceSize": {"w":508,"h":342}
-},
 "DisplacementMaps/BalletCuffsClosed.png":
 {
-	"frame": {"x":911,"y":3,"w":620,"h":877},
+	"frame": {"x":658,"y":3,"w":620,"h":877},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
@@ -48,86 +32,94 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/BeltFeet1SquishClosed.png":
+"DisplacementMaps/BalletEraseSpread.png":
 {
-	"frame": {"x":1251,"y":1301,"w":412,"h":744},
+	"frame": {"x":1251,"y":884,"w":620,"h":877},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":412,"h":744},
-	"sourceSize": {"w":412,"h":744}
+	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
+	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/BeltLegs1SquishKneelClosed.png":
+"DisplacementMaps/BalletRightEraseClosed.png":
 {
-	"frame": {"x":627,"y":402,"w":257,"h":477},
+	"frame": {"x":1282,"y":3,"w":620,"h":877},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":257,"h":477},
-	"sourceSize": {"w":257,"h":477}
+	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
+	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/ElbowCuffLeftUp.png":
+"DisplacementMaps/FrogThigh3SquishKneel.png":
 {
-	"frame": {"x":3,"y":1765,"w":531,"h":198},
+	"frame": {"x":1616,"y":1896,"w":179,"h":114},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":198},
-	"sourceSize": {"w":531,"h":198}
+	"trimmed": true,
+	"spriteSourceSize": {"x":186,"y":420,"w":179,"h":114},
+	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/ElbowCuffRightYoked.png":
+"DisplacementMaps/FrogThigh3SquishKneelClosed.png":
 {
-	"frame": {"x":1667,"y":1217,"w":378,"h":450},
+	"frame": {"x":1799,"y":1896,"w":171,"h":99},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":378,"h":450},
-	"sourceSize": {"w":378,"h":450}
-},
-"DisplacementMaps/GuardRightFront.png":
-{
-	"frame": {"x":1667,"y":1671,"w":287,"h":362},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":287,"h":362},
-	"sourceSize": {"w":287,"h":362}
+	"trimmed": true,
+	"spriteSourceSize": {"x":199,"y":405,"w":171,"h":99},
+	"sourceSize": {"w":620,"h":877}
 },
 "DisplacementMaps/SovietHatErase.png":
 {
-	"frame": {"x":538,"y":1765,"w":369,"h":127},
+	"frame": {"x":1616,"y":1765,"w":369,"h":127},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":369,"h":127},
 	"sourceSize": {"w":369,"h":127}
 },
-"DisplacementMaps/TapeHeavyRightBoxtie.png":
+"DisplacementMaps/Template_Hogtie.png":
 {
-	"frame": {"x":627,"y":3,"w":280,"h":395},
+	"frame": {"x":3,"y":1765,"w":240,"h":257},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":280,"h":395},
-	"sourceSize": {"w":280,"h":395}
+	"trimmed": true,
+	"spriteSourceSize": {"x":181,"y":358,"w":240,"h":257},
+	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/TapeLightLeftBoxtie.png":
+"DisplacementMaps/Template_Kneel.png":
 {
-	"frame": {"x":1535,"y":454,"w":508,"h":413},
+	"frame": {"x":658,"y":1765,"w":339,"h":205},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":508,"h":413},
-	"sourceSize": {"w":508,"h":413}
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":365,"w":339,"h":205},
+	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/TapeLightRightCrossed.png":
+"DisplacementMaps/Template_KneelClosedL.png":
 {
-	"frame": {"x":1251,"y":884,"w":278,"h":413},
+	"frame": {"x":1001,"y":1765,"w":307,"h":193},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":170,"y":370,"w":307,"h":193},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/Template_KneelL.png":
+{
+	"frame": {"x":1312,"y":1765,"w":300,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":169,"y":377,"w":300,"h":182},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/XrayFace.png":
+{
+	"frame": {"x":247,"y":1765,"w":407,"h":207},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":278,"h":413},
-	"sourceSize": {"w":278,"h":413}
+	"spriteSourceSize": {"x":0,"y":0,"w":407,"h":207},
+	"sourceSize": {"w":407,"h":207}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.1",
 	"image": "displace1.webp",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":2048},
+	"size": {"w":1988,"h":2025},
 	"scale": "0.25",
-	"related_multi_packs": [ "displace0.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json", "displace10.json", "displace11.json", "displace12.json", "displace13.json", "displace14.json", "displace15.json", "displace16.json", "displace17.json", "displace18.json", "displace19.json", "displace20.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:faae6ece122e400a4653d3320863a4a3:425b9df27e0ed7b85e1258120cf6fc09:48144ce619717246c78b05f98c7bda7b$"
+	"related_multi_packs": [ "displace0.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json", "displace10.json", "displace11.json", "displace12.json", "displace13.json", "displace14.json", "displace15.json", "displace16.json", "displace17.json", "displace18.json", "displace19.json", "displace20.json", "displace21.json", "displace22.json", "displace23.json", "displace24.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:0bd097ea5be249e778fe964e9f2da724:594f5c3ee6cb19def4e18613105d567e:44b3d303d8b4a8e896115ea1e938285b$"
 }
 }

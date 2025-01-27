@@ -788,7 +788,7 @@ function KinkyDungeonGetOutfit(Name: string): any {
  * @param [filters] - parent item
  * @param [Properties] - parent item
  */
-function KDInventoryWear(Character: Character, AssetName: string, AssetGroup: string, _par?: string, color?: ItemColor, filters?: Record<string, LayerFilter>, Properties?: Record<string, LayerProperties>): Item {
+function KDInventoryWear(Character: Character, AssetName: string, AssetGroup: string, _par?: string, color?: ItemColor, filters?: Record<string, LayerFilter>, Properties?: Record<string, LayerPropertiesType>): Item {
 	const M = StandalonePatched ? ModelDefs[AssetName] : undefined;
 	if (!M) return;
 	let item = KDAddModel(Character, AssetGroup, M, color || "Default", filters, undefined, Properties);

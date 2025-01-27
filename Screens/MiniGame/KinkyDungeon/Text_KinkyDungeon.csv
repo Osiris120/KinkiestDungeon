@@ -25484,6 +25484,8 @@ KDPropField_ExtraRequirePoses,Require Pose (e.g. ChestArmor)
 KDPropField_ExtraHidePrefixPose,Hide Prefix (e.g Encase)
 KDPropField_ExtraHidePrefixPoseSuffix,Hide Suffix (e.g TorsoUpper)
 KDPropField_Protected,Protected
+KDPropField_DisplaceAmount,Displace Amount
+KDPropField_EraseAmount,Erase Amount
 
 KinkyDungeonLoadFromFile,Load from File
 KinkyDungeonSaveToFile,Save to File

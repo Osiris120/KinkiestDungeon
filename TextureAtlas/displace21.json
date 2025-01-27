@@ -1,0 +1,157 @@
+{"frames": {
+
+"DisplacementMaps/Arm1SquishBoxtie.png":
+{
+	"frame": {"x":940,"y":1130,"w":510,"h":447},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":510,"h":447},
+	"sourceSize": {"w":510,"h":447}
+},
+"DisplacementMaps/Arm2SquishBoxtie.png":
+{
+	"frame": {"x":490,"y":1678,"w":508,"h":342},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":508,"h":342},
+	"sourceSize": {"w":508,"h":342}
+},
+"DisplacementMaps/BeltLegs1SquishKneelClosed.png":
+{
+	"frame": {"x":1784,"y":442,"w":257,"h":477},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":257,"h":477},
+	"sourceSize": {"w":257,"h":477}
+},
+"DisplacementMaps/ButtSleeves.png":
+{
+	"frame": {"x":1347,"y":449,"w":433,"h":548},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":433,"h":548},
+	"sourceSize": {"w":433,"h":548}
+},
+"DisplacementMaps/CuffLeftFree.png":
+{
+	"frame": {"x":3,"y":3,"w":539,"h":559},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":539,"h":559},
+	"sourceSize": {"w":539,"h":559}
+},
+"DisplacementMaps/ElbowCuffLeftWristtie.png":
+{
+	"frame": {"x":1087,"y":3,"w":491,"h":442},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":491,"h":442},
+	"sourceSize": {"w":491,"h":442}
+},
+"DisplacementMaps/ElbowCuffLeftYoked.png":
+{
+	"frame": {"x":546,"y":3,"w":537,"h":455},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":455},
+	"sourceSize": {"w":537,"h":455}
+},
+"DisplacementMaps/ElbowCuffRightUp.png":
+{
+	"frame": {"x":3,"y":1735,"w":390,"h":310},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":390,"h":310},
+	"sourceSize": {"w":390,"h":310}
+},
+"DisplacementMaps/EraseCorsetEncase.png":
+{
+	"frame": {"x":3,"y":1171,"w":483,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":483,"h":560},
+	"sourceSize": {"w":483,"h":560}
+},
+"DisplacementMaps/EraseCorsetKneel.png":
+{
+	"frame": {"x":490,"y":566,"w":483,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":483,"h":560},
+	"sourceSize": {"w":483,"h":560}
+},
+"DisplacementMaps/EraseCorsetKneelEncase.png":
+{
+	"frame": {"x":3,"y":1171,"w":483,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":483,"h":560},
+	"sourceSize": {"w":483,"h":560}
+},
+"DisplacementMaps/JacketArmsWristtie.png":
+{
+	"frame": {"x":1002,"y":1581,"w":483,"h":464},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":483,"h":464},
+	"sourceSize": {"w":483,"h":464}
+},
+"DisplacementMaps/JacketCrossed.png":
+{
+	"frame": {"x":1454,"y":1001,"w":476,"h":462},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":476,"h":462},
+	"sourceSize": {"w":476,"h":462}
+},
+"DisplacementMaps/TapeAnklesSquishKneel.png":
+{
+	"frame": {"x":3,"y":566,"w":483,"h":601},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":483,"h":601},
+	"sourceSize": {"w":483,"h":601}
+},
+"DisplacementMaps/TapeHeavyLeftBoxtie.png":
+{
+	"frame": {"x":1489,"y":1467,"w":488,"h":438},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":488,"h":438},
+	"sourceSize": {"w":488,"h":438}
+},
+"DisplacementMaps/TapeHeavyLeftWristtie.png":
+{
+	"frame": {"x":1582,"y":3,"w":458,"h":435},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":458,"h":435},
+	"sourceSize": {"w":458,"h":435}
+},
+"DisplacementMaps/Template_Free.png":
+{
+	"frame": {"x":977,"y":462,"w":366,"h":657},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":114,"y":181,"w":366,"h":657},
+	"sourceSize": {"w":620,"h":877}
+},
+"DisplacementMaps/XrayPanties.png":
+{
+	"frame": {"x":490,"y":1130,"w":446,"h":544},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":446,"h":544},
+	"sourceSize": {"w":446,"h":544}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "displace21.webp",
+	"format": "RGBA8888",
+	"size": {"w":2044,"h":2048},
+	"scale": "0.25",
+	"related_multi_packs": [ "displace0.json", "displace1.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json", "displace10.json", "displace11.json", "displace12.json", "displace13.json", "displace14.json", "displace15.json", "displace16.json", "displace17.json", "displace18.json", "displace19.json", "displace20.json", "displace22.json", "displace23.json", "displace24.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:0bd097ea5be249e778fe964e9f2da724:594f5c3ee6cb19def4e18613105d567e:44b3d303d8b4a8e896115ea1e938285b$"
+}
+}

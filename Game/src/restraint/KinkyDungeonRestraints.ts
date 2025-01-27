@@ -5398,7 +5398,7 @@ function KDAddCuffVariants (
 	CuffModels:            Record<string, string> = {},
 	noLockBase?:           boolean,
 	noLockLink?:           boolean,
-	Properties?:           Record<string, LayerProperties>
+	Properties?:           Record<string, LayerPropertiesType>
 )
 {
 	for (let part of Object.entries(KDCuffParts)) {
@@ -5533,7 +5533,7 @@ function KDAddRopeVariants (
 	Filters:          Record<string, LayerFilter>,
 	baseWeight:       number = 10,
 	Enchantable:      boolean = false,
-	Properties?:      Record<string, LayerProperties>
+	Properties?:      Record<string, LayerPropertiesType>
 )
 {
 	for (let part of Object.entries(KDRopeParts)) {
@@ -5647,7 +5647,7 @@ function KDAddHardSlimeVariants (
 	Filters?:          Record<string, LayerFilter>,
 	baseWeight:        number = 100,
 	restraintType?:    string,
-	Properties?:       Record<string, LayerProperties>
+	Properties?:       Record<string, LayerPropertiesType>
 )
 {
 	for (let part of Object.entries(KDSlimeParts)) {

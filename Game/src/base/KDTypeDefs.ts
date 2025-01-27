@@ -158,7 +158,7 @@ interface KDRestraintPropsBase {
 	/** Used in standalone to replace Color */
 	Filters?: Record<string, LayerFilter>,
 	/** Used in standalone to replace Properties */
-	Properties?: Record<string, LayerProperties>,
+	Properties?: Record<string, LayerPropertiesType>,
 	/** Forces this restraint to always be conjured when applied to NPCs*/
 	forceConjure?: boolean,
 	/** TODO Used in standalone to indicate which faction colors map to which filter
@@ -764,7 +764,7 @@ interface alwaysDressModel {
 	/** Group */
 	Group?: string,
 	/** Filters */
-	Properties?: Record<string, LayerProperties>,
+	Properties?: Record<string, LayerPropertiesType>,
 	/** Filters */
 	Filters?: Record<string, LayerFilter>,
 	/** Faction filter index */
@@ -1886,7 +1886,7 @@ type KinkyDungeonDress = {
 	Group?: string;
 	Color: string | string[];
 	Filters?: Record<string, LayerFilter>;
-	Properties?: Record<string, LayerProperties>;
+	Properties?: Record<string, LayerPropertiesType>;
 
 	Lost: boolean;
 	NoLose?: boolean;

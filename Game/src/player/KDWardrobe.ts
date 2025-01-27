@@ -93,7 +93,7 @@ let KDColorSliders: LayerFilter = {
 	blue: 1,
 	alpha: 1,
 };
-let KDProps: LayerProperties = {
+let KDProps: LayerPropertiesType = {
 };
 let KDColorSliderColor = {
 	red: "#ff5277",
@@ -297,7 +297,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 			DrawButtonKDEx("KDPasteProps", (_bdata) => {
 				navigator.clipboard.readText()
 					.then(text => {
-						let parsed: LayerProperties = JSON.parse(text);
+						let parsed: LayerPropertiesType = JSON.parse(text);
 						if (parsed) {
 							console.log(Object.assign({}, parsed));
 							KDChangeWardrobe(C);
@@ -347,7 +347,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 		YY += 60;
 
 		/** Property fields */
-		let fields: Record<keyof LayerProperties, string> = {
+		let fields: Record<keyof LayerPropertiesType, string> = {
 			"XOffset": "0",
 			"YOffset": "0",
 			"XPivot": "0",
@@ -365,7 +365,12 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 			ExtraHidePrefixPose: ",",
 			ExtraHidePrefixPoseSuffix: ",",
 			AddPose: ",",
+			DisplaceAmount: "1",
+			EraseAmount: "1",
 		};
+
+		let XXOff = 0;
+		let dXXOff = width/2;
 
 		if (KDRefreshProps) {
 			KDRefreshProps = false;
@@ -373,15 +378,33 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 		} else {
 			let YYold = YY;
 			YY -= 24;
+			let start = true;
+			let lastlong = false;
 			for (let field0 of Object.entries(fields)) {
 
 				let field = field0[0];
 				let deff = field0[1];
+				let long = deff.includes(',');
 
-				DrawTextFitKD(TextGet("KDPropField_" + field), X + width/2 + 10, YY + 10, width, "#ffffff", "#000000", 20);
+				if (!start) {
+					if (!long && !lastlong && XXOff < dXXOff) XXOff += dXXOff;
+					else {
+						XXOff = 0;
+						YY += 30;
+					}
+				} else {
+					start = false;
+				}
 
 
-				let FF = KDTextField("KDPropField" + field, X, YY, width, 20,
+
+				DrawTextFitKD(TextGet("KDPropField_" + field),
+				X + (long ? width/2 : width/4) + 10 + XXOff,
+				YY + 10, long ? width : width/2, "#ffffff", "#000000", 20);
+
+
+				let FF = KDTextField("KDPropField" + field, X + XXOff, YY,
+					long ? width : width/2, 20,
 					undefined, undefined, "100", "18");
 				if (FF.Created) {
 					if (Model.Properties && Model.Properties[KDCurrentLayer])
@@ -417,8 +440,10 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				}
 
 
+				if (long) lastlong = true;
+				else lastlong = false;
 
-				YY += 30;
+				//YY += 30;
 			}
 			YY = YYold + 400;
 		}
