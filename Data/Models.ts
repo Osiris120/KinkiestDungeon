@@ -1136,10 +1136,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								zIndex: zzz,
 								id: id,
 								spriteName: l.DisplacementSprite,
-								sprite: KDDraw(
+								sprite: KDDrawRT(
 									ContainerContainer.Container,
 									ContainerContainer.SpriteList,
-									id,
+									id, id,
 									id,
 									ox * Zoom, oy * Zoom, undefined, undefined,
 									rot, {
@@ -1152,7 +1152,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 										cullable: KDCulling,
 									}, false,
 									ContainerContainer.SpritesDrawn,
-									Zoom
+									Zoom, undefined, undefined, true, false, DisplacementScale
 								),
 							}
 						);
@@ -1287,10 +1287,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 								id: id,
 								spriteName: l.EraseSprite,
 								zIndex: zzz,
-								sprite: KDDraw(
+								sprite: KDDrawRT(
 									ContainerContainer.Container,
 									ContainerContainer.SpriteList,
-									id,
+									id, id,
 									id,
 									ox * Zoom, oy * Zoom, undefined, undefined,
 									rot, {
@@ -1303,7 +1303,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 										cullable: KDCulling,
 									}, false,
 									ContainerContainer.SpritesDrawn,
-									Zoom
+									Zoom, undefined, undefined, true, false, DisplacementScale
 								),
 							}
 						);
@@ -1460,6 +1460,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				// Add erase filters BEFORE displacement
 				if (!l.NoErase && EraseFilters[origlayer]) {
 					for (let ef of EraseFilters[origlayer]) {
+						if (!ef.sprite) continue;
 						if (ef.spriteName != undefined && ef.spriteName == l.EraseSprite) continue;
 						if (ef.zIndex != undefined && ef.zIndex - (l.EraseZBonus || 0) <= zz + 0.01) continue;
 						let efh = containerID + "ers_" + ef.hash;
@@ -1483,6 +1484,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				// Add displacement filters
 				if (!l.NoDisplace && DisplaceFilters[origlayer]) {
 					for (let ef of DisplaceFilters[origlayer]) {
+						if (!ef.sprite) continue;
 						if (ef.spriteName != undefined && ef.spriteName == l.DisplacementSprite) continue;
 						if (ef.zIndex != undefined && ef.zIndex - (l.DisplaceZBonus || 0) <= zz + 0.01) continue;
 						let efh = containerID + "disp_" + ef.hash;

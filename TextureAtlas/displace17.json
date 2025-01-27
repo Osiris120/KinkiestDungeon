@@ -1,0 +1,133 @@
+{"frames": {
+
+"DisplacementMaps/BalletCuffsKneelClosed.png":
+{
+	"frame": {"x":3,"y":602,"w":511,"h":590},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":511,"h":590},
+	"sourceSize": {"w":511,"h":590}
+},
+"DisplacementMaps/BalletKneelClosed.png":
+{
+	"frame": {"x":550,"y":3,"w":511,"h":590},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":511,"h":590},
+	"sourceSize": {"w":511,"h":590}
+},
+"DisplacementMaps/CuffLeftFree.png":
+{
+	"frame": {"x":1065,"y":3,"w":539,"h":559},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":539,"h":559},
+	"sourceSize": {"w":539,"h":559}
+},
+"DisplacementMaps/CuffsSquishCrossed.png":
+{
+	"frame": {"x":1498,"y":1455,"w":345,"h":433},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":345,"h":433},
+	"sourceSize": {"w":345,"h":433}
+},
+"DisplacementMaps/CuffsSquishFront.png":
+{
+	"frame": {"x":1061,"y":1447,"w":433,"h":341},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":433,"h":341},
+	"sourceSize": {"w":433,"h":341}
+},
+"DisplacementMaps/ElbowCuffLeftYoked.png":
+{
+	"frame": {"x":518,"y":602,"w":537,"h":455},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":455},
+	"sourceSize": {"w":537,"h":455}
+},
+"DisplacementMaps/ElbowCuffRightBoxtie.png":
+{
+	"frame": {"x":1146,"y":1005,"w":371,"h":424},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":371,"h":424},
+	"sourceSize": {"w":371,"h":424}
+},
+"DisplacementMaps/ElbowCuffRightCrossed.png":
+{
+	"frame": {"x":1521,"y":1005,"w":352,"h":446},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":352,"h":446},
+	"sourceSize": {"w":352,"h":446}
+},
+"DisplacementMaps/ElbowCuffRightWristtie.png":
+{
+	"frame": {"x":1608,"y":3,"w":351,"h":465},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":351,"h":465},
+	"sourceSize": {"w":351,"h":465}
+},
+"DisplacementMaps/ForeArm2SquishWristtie.png":
+{
+	"frame": {"x":522,"y":1061,"w":620,"h":382},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":382},
+	"sourceSize": {"w":620,"h":382}
+},
+"DisplacementMaps/GuardLeftFront.png":
+{
+	"frame": {"x":1065,"y":566,"w":620,"h":435},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":435},
+	"sourceSize": {"w":620,"h":435}
+},
+"DisplacementMaps/GuardLeftYoked.png":
+{
+	"frame": {"x":522,"y":1447,"w":535,"h":314},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":535,"h":314},
+	"sourceSize": {"w":535,"h":314}
+},
+"DisplacementMaps/HeelsKneel.png":
+{
+	"frame": {"x":3,"y":1196,"w":515,"h":567},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":515,"h":567},
+	"sourceSize": {"w":515,"h":567}
+},
+"DisplacementMaps/TapeHeavyRightWristtie.png":
+{
+	"frame": {"x":1689,"y":472,"w":281,"h":467},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":281,"h":467},
+	"sourceSize": {"w":281,"h":467}
+},
+"DisplacementMaps/ThighCuffsLeftSpread.png":
+{
+	"frame": {"x":3,"y":3,"w":543,"h":595},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":543,"h":595},
+	"sourceSize": {"w":543,"h":595}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "displace17.webp",
+	"format": "RGBA8888",
+	"size": {"w":1973,"h":1891},
+	"scale": "0.25",
+	"related_multi_packs": [ "displace0.json", "displace1.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json", "displace10.json", "displace11.json", "displace12.json", "displace13.json", "displace14.json", "displace15.json", "displace16.json", "displace18.json", "displace19.json", "displace20.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:faae6ece122e400a4653d3320863a4a3:425b9df27e0ed7b85e1258120cf6fc09:48144ce619717246c78b05f98c7bda7b$"
+}
+}

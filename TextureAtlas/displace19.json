@@ -1,0 +1,189 @@
+{"frames": {
+
+"DisplacementMaps/Arm1SquishWristtie.png":
+{
+	"frame": {"x":3,"y":890,"w":482,"h":357},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":482,"h":357},
+	"sourceSize": {"w":482,"h":357}
+},
+"DisplacementMaps/BinderLeftBoxtie.png":
+{
+	"frame": {"x":993,"y":449,"w":482,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":482,"h":400},
+	"sourceSize": {"w":482,"h":400}
+},
+"DisplacementMaps/BinderRightBoxtie.png":
+{
+	"frame": {"x":494,"y":834,"w":482,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":482,"h":400},
+	"sourceSize": {"w":482,"h":400}
+},
+"DisplacementMaps/ElbowCuffLeftCrossed.png":
+{
+	"frame": {"x":1494,"y":3,"w":487,"h":385},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":487,"h":385},
+	"sourceSize": {"w":487,"h":385}
+},
+"DisplacementMaps/ElbowCuffLeftFree.png":
+{
+	"frame": {"x":1494,"y":392,"w":486,"h":405},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":486,"h":405},
+	"sourceSize": {"w":486,"h":405}
+},
+"DisplacementMaps/ElbowCuffLeftFront.png":
+{
+	"frame": {"x":501,"y":3,"w":494,"h":385},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":494,"h":385},
+	"sourceSize": {"w":494,"h":385}
+},
+"DisplacementMaps/ElbowCuffLeftWristtie.png":
+{
+	"frame": {"x":999,"y":3,"w":491,"h":442},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":491,"h":442},
+	"sourceSize": {"w":491,"h":442}
+},
+"DisplacementMaps/ElbowCuffRightUp.png":
+{
+	"frame": {"x":1245,"y":1266,"w":390,"h":310},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":390,"h":310},
+	"sourceSize": {"w":390,"h":310}
+},
+"DisplacementMaps/ForeArm1SquishWristtie.png":
+{
+	"frame": {"x":3,"y":449,"w":487,"h":437},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":487,"h":437},
+	"sourceSize": {"w":487,"h":437}
+},
+"DisplacementMaps/HideBoxtieHand.png":
+{
+	"frame": {"x":279,"y":1641,"w":395,"h":392},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":395,"h":392},
+	"sourceSize": {"w":395,"h":392}
+},
+"DisplacementMaps/JacketArmsBoxtie.png":
+{
+	"frame": {"x":489,"y":1238,"w":467,"h":399},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":467,"h":399},
+	"sourceSize": {"w":467,"h":399}
+},
+"DisplacementMaps/JacketBoxtie.png":
+{
+	"frame": {"x":980,"y":853,"w":478,"h":409},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":478,"h":409},
+	"sourceSize": {"w":478,"h":409}
+},
+"DisplacementMaps/LaceChest.png":
+{
+	"frame": {"x":678,"y":1641,"w":429,"h":373},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":429,"h":373},
+	"sourceSize": {"w":429,"h":373}
+},
+"DisplacementMaps/TapeFullRightBoxtie.png":
+{
+	"frame": {"x":960,"y":1266,"w":281,"h":351},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":281,"h":351},
+	"sourceSize": {"w":281,"h":351}
+},
+"DisplacementMaps/TapeHeavyLeftBoxtie.png":
+{
+	"frame": {"x":501,"y":392,"w":488,"h":438},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":488,"h":438},
+	"sourceSize": {"w":488,"h":438}
+},
+"DisplacementMaps/TapeHeavyLeftCrossed.png":
+{
+	"frame": {"x":3,"y":3,"w":494,"h":442},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":494,"h":442},
+	"sourceSize": {"w":494,"h":442}
+},
+"DisplacementMaps/TapeLightLeftCrossed.png":
+{
+	"frame": {"x":1479,"y":801,"w":478,"h":445},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":478,"h":445},
+	"sourceSize": {"w":478,"h":445}
+},
+"DisplacementMaps/TapeLightRightBoxtie.png":
+{
+	"frame": {"x":3,"y":1641,"w":272,"h":393},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":272,"h":393},
+	"sourceSize": {"w":272,"h":393}
+},
+"DisplacementMaps/TapeMedRightBoxtie.png":
+{
+	"frame": {"x":1111,"y":1621,"w":317,"h":423},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":317,"h":423},
+	"sourceSize": {"w":317,"h":423}
+},
+"DisplacementMaps/TapeMedRightCrossed.png":
+{
+	"frame": {"x":1743,"y":1250,"w":302,"h":413},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":302,"h":413},
+	"sourceSize": {"w":302,"h":413}
+},
+"DisplacementMaps/TapeMedRightWristtie.png":
+{
+	"frame": {"x":1432,"y":1580,"w":307,"h":458},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":307,"h":458},
+	"sourceSize": {"w":307,"h":458}
+},
+"DisplacementMaps/XrayBra.png":
+{
+	"frame": {"x":3,"y":1251,"w":431,"h":379},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":431,"h":379},
+	"sourceSize": {"w":431,"h":379}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "displace19.webp",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2047},
+	"scale": "0.25",
+	"related_multi_packs": [ "displace0.json", "displace1.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json", "displace10.json", "displace11.json", "displace12.json", "displace13.json", "displace14.json", "displace15.json", "displace16.json", "displace17.json", "displace18.json", "displace20.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:faae6ece122e400a4653d3320863a4a3:425b9df27e0ed7b85e1258120cf6fc09:48144ce619717246c78b05f98c7bda7b$"
+}
+}
