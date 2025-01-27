@@ -140,6 +140,7 @@ let KDOptimizeDisplacementMapInfo: Record<string, {xPad: number, yPad: number}> 
 };
 
 let DisplacementMaps = [
+	/*
 'SovietHatErase.png',
 'SlimeLeftClosed.png',
 'SlimeRightClosed.png',
@@ -378,7 +379,7 @@ let DisplacementMaps = [
 'GuardLeftFree.png',
 'GuardRightFree.png',
 'GuardLeftFront.png',
-'GuardRightFront.png',
+'GuardRightFront.png',*/
 ];
 
 // Scale factor for displacement and erase maps
@@ -390,6 +391,7 @@ let displacementList = [
 
 let linearList = [
 	"TextureAtlas/atlas0.json",
+	"TextureAtlas/displace0.json",
 ];
 
 let nearestList = [

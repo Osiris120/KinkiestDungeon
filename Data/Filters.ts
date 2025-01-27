@@ -17,7 +17,9 @@ void main(void)
   vec4 map = texture2D(mapSampler, vFilterCoord);
   vec4 color = texture2D(uSampler, vTextureCoord);
 
-  color.rgba *= clamp(map.r, 0., 1.);
+  // If map.a == 0 then it will always be 100% alpha
+  // If map.a == 1 then it will be map.r alpha
+  color.rgba *= clamp(map.r + 1. - map.a, 0., 1.);
 
   gl_FragColor = color;
 }
@@ -164,11 +166,11 @@ void main(void)
 {
   vec4 map =  texture2D(mapSampler, vFilterCoord);
 
-  map -= 0.5;
+  map.xy -= 0.5;
   map.xy = scale * inputSize.zw * (rotation * map.xy);
 
   gl_FragColor = texture2D(uSampler,
-    clamp(vec2(vTextureCoord.x + map.x, vTextureCoord.y + map.y),
+    clamp(vec2(vTextureCoord.x + (map.x + 1. - map.a), vTextureCoord.y + (map.y + 1. - map.a)),
         inputClamp.xy,
         inputClamp.zw));
 }
