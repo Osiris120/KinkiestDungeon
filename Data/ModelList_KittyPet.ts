@@ -309,3 +309,171 @@ AddModel({
 AddModel(GetModelFashionVersion("KittyPetMittenLeft", true));
 AddModel(GetModelFashionVersion("KittyPetMittenRight", true));
 AddModel(GetModelFashionVersion("KittyPetMittens", true));
+
+
+
+AddModel({
+	Name: "KittyPetEars1",
+	Folder: "KittyPet",
+	Parent: "KittyPetEarmuffs",
+	TopLevel: false,
+	Categories: ["Accessories", "AnimalEars"],
+	Layers: ToLayerMap([
+		{ Name: "Ears1L", Layer: "Circlet", Pri: 40,
+			TieToLayer: "Headgear",
+			NoOverride: true,
+			Invariant: true,
+		},
+		{ Name: "Ears1R", Layer: "Circlet", Pri: 40.1,
+			TieToLayer: "Headgear",
+			NoOverride: true,
+			Invariant: true,
+		},
+		{ Name: "Ears1InnerL", Layer: "Circlet", Pri: 40,
+			TieToLayer: "Headgear",
+			NoOverride: true,
+			Invariant: true,
+		},
+		{ Name: "Ears1InnerR", Layer: "Circlet", Pri: 40.1,
+			TieToLayer: "Headgear",
+			NoOverride: true,
+			Invariant: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "KittyPetEars2",
+	Folder: "KittyPet",
+	Parent: "KittyPetEarmuffs",
+	TopLevel: false,
+	Categories: ["Accessories", "AnimalEars"],
+	Layers: ToLayerMap([
+		{ Name: "Ears2L", Layer: "Circlet", Pri: 40,
+			TieToLayer: "Headgear",
+			NoOverride: true,
+			Invariant: true,
+		},
+		{ Name: "Ears2R", Layer: "Circlet", Pri: 40.1,
+			TieToLayer: "Headgear",
+			NoOverride: true,
+			Invariant: true,
+		},
+		{ Name: "Ears2InnerL", Layer: "Circlet", Pri: 40,
+			TieToLayer: "Headgear",
+			NoOverride: true,
+			Invariant: true,
+		},
+		{ Name: "Ears2InnerR", Layer: "Circlet", Pri: 40.1,
+			TieToLayer: "Headgear",
+			NoOverride: true,
+			Invariant: true,
+		},
+	])
+});
+
+
+AddModel({
+	Name: "KittyPetEarmuffs",
+	Folder: "KittyPet",
+	Parent: "KittyPetEarmuffs",
+	TopLevel: true,
+	Categories: ["Accessories", "AnimalEars"],
+	Layers: ToLayerMap([
+		{ Name: "Band", Layer: "Circlet", Pri: 35,
+			HideWhenOverridden: true,
+			NoOverride: true,
+			Invariant: true,
+			InheritColor: "Band",
+		},
+		{ Name: "EarmuffersL", Layer: "Circlet", Pri: 35.1,
+			TieToLayer: "Headgear",
+			NoOverride: true,
+			Invariant: true,
+			InheritColor: "EarmuffL",
+		},
+		{ Name: "EarmuffersR", Layer: "CircletUnder", Pri: -35,
+			NoOverride: true,
+			Invariant: true,
+			InheritColor: "EarmuffR",
+		},
+	])
+});
+
+AddModel(GetModelRestraintVersion("KittyPetEarmuffs", true));
+AddModel(GetModelRestraintVersion("KittyPetEars1", true));
+AddModel(GetModelRestraintVersion("KittyPetEars2", true));
+
+
+AddModel({
+	Name: "KittyPetGag",
+	Folder: "KittyPet",
+	TopLevel: true,
+	Restraint: true,
+	Categories: ["Restraints","Gags","Leather"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "Gag", Layer: "GagMuzzle", Pri: 30,
+			InheritColor: "Gag",
+		},
+		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
+			InheritColor: "Collar",
+		},
+	])
+});
+AddModel({
+	Name: "KittyPetGagSeamless",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetGag",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Leather"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "GagSeamless", Layer: "GagMuzzle", Pri: 30,
+			InheritColor: "Gag",
+		},
+		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
+			InheritColor: "Collar",
+		},
+	])
+});
+AddModel({
+	Name: "KittyPetGagMouth",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetGag",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Leather"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "GagMouth", Layer: "GagMuzzle", Pri: 30,
+			InheritColor: "Gag",
+		},
+		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
+			InheritColor: "Collar",
+		},
+	])
+});
+AddModel({
+	Name: "KittyPetGagMouthSeamless",
+	Folder: "KittyPet",
+	TopLevel: false,
+	Parent: "KittyPetGag",
+	Restraint: true,
+	Categories: ["Restraints","Gags","Leather"],
+	AddPose: ["FaceCoverGag"],
+	Layers: ToLayerMap([
+		{ Name: "GagMouthSeamless", Layer: "GagMuzzle", Pri: 30,
+			InheritColor: "Gag",
+		},
+		{ Name: "GagCollar", Layer: "NeckCorset", Pri: -50,
+			InheritColor: "Collar",
+		},
+	])
+});
+AddModel(GetModelFashionVersion("KittyPetGag", true));
+AddModel(GetModelFashionVersion("KittyPetGagSeamless", true));
+AddModel(GetModelFashionVersion("KittyPetGagMouth", true));
+AddModel(GetModelFashionVersion("KittyPetGagMouthSeamless", true));
