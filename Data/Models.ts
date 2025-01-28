@@ -192,13 +192,20 @@ function ToLayerMap(Layers: ModelLayer[]): {[_: string]: ModelLayer} {
 	return ToNamedMap(Layers);
 }
 
-function GetModelLayers(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number, layerSwap?: string, Folder?: string): ModelLayer[] {
+function GetModelLayers(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number, layerSwap?: string, Folder?: string, noTieToLayer: boolean = false): ModelLayer[] {
 	if (ModelDefs[ModelName]) {
 		let ret : ModelLayer[] = JSON.parse(JSON.stringify(Object.values(ModelDefs[ModelName].Layers)));
 		for (let layer of ret) {
 			layer.Name = (PrependString || "") + layer.Name + (AppendString || "");
 			if (InheritColor) layer.InheritColor = InheritColor;
-			if (PriBonus) layer.Pri += PriBonus;
+			if (PriBonus) {
+				layer.Pri += PriBonus;
+				if (!noTieToLayer && !layerSwap && (PrependString || AppendString)) {
+					layer.NoOverride = true;
+					layer.TieToLayer = layer.Name;
+					delete layer.HideWhenOverridden;
+				}
+			}
 			if (layerSwap) layer.Layer = layerSwap;
 			if (Folder) layer.Folder = Folder;
 		}

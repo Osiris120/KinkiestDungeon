@@ -185,6 +185,8 @@
         "Data/ModelList_Skirt.ts",
         "Data/ModelList_Wolf.ts",
         "Data/ModelList_LeatherCuffs.ts",
+        "Data/ModelList_KittyPetCuffs.ts",
+        "Data/ModelList_KittyPawCuffs.ts",
         "Data/ModelList_DivineCuffs.ts",
         "Data/ModelList_DivineCuffsClean.ts",
         "Data/ModelList_SteelCuffs.ts",
