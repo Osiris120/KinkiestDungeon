@@ -60,7 +60,7 @@ KDToggleAlwaysApplyCharPalette,Always use character palette
 KDToggleDefaultApplyCharPalette,Use character palette for default outfit
 
 KDToggleBackgrounds,Show Background Art
-KDToggleOptRender,Optimized Drawing (requires high RAM)
+KDToggleOptRender,Experimental Rendering (unstable)
 
 KDToggleSoundOffWhenMin,Mute when Minimized
 KDToggleBackgrounds,Show Background Art

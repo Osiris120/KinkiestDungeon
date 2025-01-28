@@ -1022,7 +1022,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 			let filter = m.Filters ? m.Filters[l.InheritColor || l.Name] :
 				undefined;
-			if (filter?.alpha != undefined && filter.alpha < 1) {
+			if (filter?.alpha != undefined && filter.alpha < 0.8) {
 				dAmount = 0;
 				eAmount = 0;
 			}
