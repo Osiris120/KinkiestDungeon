@@ -243,7 +243,32 @@
             <key type="filename">../DisplacementMaps/Sarco.png</key>
             <key type="filename">../DisplacementMaps/SlimeCorsetErase.png</key>
             <key type="filename">../DisplacementMaps/SlimeThighsClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_LongClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_LongHogtie.png</key>
             <key type="filename">../DisplacementMaps/SockLSquish_LongKneel.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_LongKneelClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_LongSpread.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_MidClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_MidHogtie.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_MidKneel.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_MidKneelClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_MidSpread.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_ShortClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_ShortKneel.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_ShortKneelClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockLSquish_ShortSpread.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_LongClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_LongHogtie.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_LongKneel.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_LongKneelClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_LongSpread.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_MidClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_MidHogtie.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_MidKneel.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_MidKneelClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_MidSpread.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_ShortClosed.png</key>
+            <key type="filename">../DisplacementMaps/SockRSquish_ShortSpread.png</key>
             <key type="filename">../DisplacementMaps/TapeAnklesSquishClosed.png</key>
             <key type="filename">../DisplacementMaps/TapeArmsBoxtie.png</key>
             <key type="filename">../DisplacementMaps/TapeClosed.png</key>
@@ -1483,6 +1508,66 @@
                 <rect>417,865,833,1729</rect>
                 <key>scale9Paddings</key>
                 <rect>417,865,833,1729</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/SockLSquish_ShortHogtie.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,14,30,29</rect>
+                <key>scale9Paddings</key>
+                <rect>15,14,30,29</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/SockRSquish_ShortHogtie.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,18,31,36</rect>
+                <key>scale9Paddings</key>
+                <rect>16,18,31,36</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/SockRSquish_ShortKneel.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>14,11,27,21</rect>
+                <key>scale9Paddings</key>
+                <rect>14,11,27,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/SockRSquish_ShortKneelClosed.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>14,13,29,25</rect>
+                <key>scale9Paddings</key>
+                <rect>14,13,29,25</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

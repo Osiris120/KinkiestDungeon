@@ -192,13 +192,20 @@ function ToLayerMap(Layers: ModelLayer[]): {[_: string]: ModelLayer} {
 	return ToNamedMap(Layers);
 }
 
-function GetModelLayers(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number, layerSwap?: string, Folder?: string): ModelLayer[] {
+function GetModelLayers(ModelName: string, PrependString?: string, AppendString?: string, InheritColor?: string, PriBonus?: number, layerSwap?: string, Folder?: string, noTieToLayer: boolean = false): ModelLayer[] {
 	if (ModelDefs[ModelName]) {
 		let ret : ModelLayer[] = JSON.parse(JSON.stringify(Object.values(ModelDefs[ModelName].Layers)));
 		for (let layer of ret) {
 			layer.Name = (PrependString || "") + layer.Name + (AppendString || "");
 			if (InheritColor) layer.InheritColor = InheritColor;
-			if (PriBonus) layer.Pri += PriBonus;
+			if (PriBonus) {
+				layer.Pri += PriBonus;
+				if (!noTieToLayer && !layerSwap && (PrependString || AppendString)) {
+					layer.NoOverride = true;
+					layer.TieToLayer = layer.Name;
+					delete layer.HideWhenOverridden;
+				}
+			}
 			if (layerSwap) layer.Layer = layerSwap;
 			if (Folder) layer.Folder = Folder;
 		}
@@ -833,10 +840,12 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 	let ExtraFilters: Record<string, LayerFilter[]> = {};
 	let DisplaceFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
 	//let OcclusionFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
-	let DisplaceFiltersInUse = {};
+	let DisplaceFiltersInUse: Record<string,number> = {};
+	let DisplaceFilterAmt: Record<string,number> = {};
 	//let OcclusionFiltersInUse = {};
 	let EraseFilters: Record<string, {sprite: any, id: string, spriteName?: string, hash: string, amount: number, zIndex?: number}[]> = {};
-	let EraseFiltersInUse = {};
+	let EraseFiltersInUse: Record<string,number> = {};
+	let EraseFiltersAmt: Record<string,number> = {};
 	for (let m of Models.values()) {
 		for (let l of Object.values(m.Layers)) {
 
@@ -1011,6 +1020,14 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 			let dAmount = 1;
 			let eAmount = 1;
 
+			let filter = m.Filters ? m.Filters[l.InheritColor || l.Name] :
+				undefined;
+			if (filter?.alpha != undefined && filter.alpha < 0.8) {
+				dAmount = 0;
+				eAmount = 0;
+			}
+
+
 			// Apply displacement
 			if (l.DisplaceLayers
 				&& (!l.DisplacementPoses
@@ -1040,8 +1057,8 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 				let Properties: LayerPropertiesType = m.Properties ? m.Properties[lyr] : undefined;
 				if (Properties) {
-					if (Properties.DisplaceAmount != undefined) dAmount *= Properties.DisplaceAmount;
-					if (Properties.EraseAmount != undefined) eAmount *= Properties.EraseAmount;
+					if (Properties.DisplaceAmount != undefined) dAmount = Properties.DisplaceAmount;
+					if (Properties.EraseAmount != undefined) eAmount = Properties.EraseAmount;
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -1055,8 +1072,14 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let oldProps = Properties;
 				Properties = m.Properties ? (m.Properties[l.Name] || m.Properties[l.InheritColor]) : undefined;
 				if (Properties && oldProps != Properties) {
-					if (Properties.DisplaceAmount != undefined) dAmount *= Properties.DisplaceAmount;
-					if (Properties.EraseAmount != undefined) eAmount *= Properties.EraseAmount;
+					if (Properties.DisplaceAmount != undefined) {
+						if (dAmount == 0) dAmount = 1;
+						dAmount *= Properties.DisplaceAmount;
+					}
+					if (Properties.EraseAmount != undefined) {
+						if (eAmount == 0) eAmount = 1;
+						eAmount *= Properties.EraseAmount;
+					}
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -1107,6 +1130,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 					for (let dg of Object.keys(LayerGroups[ll[0]])) {
 						if (!DisplaceFilters[dg]) DisplaceFilters[dg] = [];
+						DisplaceFilterAmt[id + dg] = Math.max(
+							dAmount * (l.DisplaceAmount || 50) * Zoom,
+							DisplaceFilterAmt[id + dg] || 0,
+						)
 
 						let tt = transform;
 						if (KDOptimizeDisplacementMapInfo[id]) {
@@ -1139,7 +1166,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 						DisplaceFilters[dg].push(
 							{
-								amount: dAmount * (l.DisplaceAmount || 50) * Zoom,
+								amount: DisplaceFilterAmt[id + dg],
 								hash: id + m.Name + "," + l.Name,
 								zIndex: zzz,
 								id: id,
@@ -1258,6 +1285,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 					for (let dg of Object.keys(LayerGroups[ll[0]])) {
 						if (!EraseFilters[dg]) EraseFilters[dg] = [];
+						EraseFiltersAmt[id + dg] = Math.max(
+							eAmount * (l.EraseAmount || 50) * Zoom,
+							EraseFiltersAmt[id + dg] || 0,
+						)
 
 						let tt = transform;
 						if (KDOptimizeDisplacementMapInfo[id]) {
@@ -1291,7 +1322,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 						EraseFilters[dg].push(
 							{
-								amount: eAmount * (l.EraseAmount || 50) * Zoom,
+								amount: EraseFiltersAmt[id + dg],
 								hash: id + m.Name + "," + l.Name,
 								id: id,
 								spriteName: l.EraseSprite,
@@ -1481,6 +1512,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 						f = new EraseFilter(
 							dsprite,
 						);
+						KDSetFilterSprite(f, dsprite);
 						f.multisample = 0;
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
@@ -1506,6 +1538,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 							dsprite,
 							ef.amount,
 						);
+						KDSetFilterSprite(f, dsprite);
 						f.multisample = 0;
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
@@ -2494,4 +2527,18 @@ function KDContainerClear(Container: ContainerInfo) {
 	Container.Mesh.destroy();
 	Container.Container.destroy();
 	Container.RenderTexture.destroy();
+}
+
+function KDSetFilterSprite(filter: PIXIFilter, sprite: PIXISprite) {
+	if (!kdFilterSprites.get(sprite)) {
+		kdFilterSprites.set(sprite, []);
+		kdFilterSprites.get(sprite).push(filter);
+	}
+	if (sprite.texture) {
+		if (!kdFilterSprites.get(sprite.texture)) {
+			kdFilterSprites.set(sprite.texture, []);
+		}
+		kdFilterSprites.get(sprite.texture).push(filter);
+	}
+
 }

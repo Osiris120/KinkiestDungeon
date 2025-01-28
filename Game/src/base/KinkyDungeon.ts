@@ -199,7 +199,7 @@ let KDToggles = {
 	Music: true,
 	Sound: true,
 	//HighResDisplacement: false,
-	OptRender: !CommonIsMobile, // experimental, for now
+	OptRender: false,//!CommonIsMobile, // experimental, for now
 	Bloom: true,
 	StunFlash: true,
 	ParticlesFX: true,
@@ -3358,6 +3358,15 @@ function KDGetCullTime() {
 	return Math.max(1000, KDCULLTIME);
 }
 
+function KDPurgeSpriteRelatedFilters(sprite: PIXISprite | PIXITexture) {
+	if (kdFilterSprites.get(sprite)) {
+		for (let f of kdFilterSprites.get(sprite)) {
+			KDFilterCacheToDestroy.push(f);
+		}
+		kdFilterSprites.delete(sprite);
+	}
+}
+
 function KDCullSprites(): void {
 	if (!KDlastCull.get(kdpixisprites)) KDlastCull.set(kdpixisprites, 0);
 	let cull = CommonTime() > ((KDlastCull.get(kdpixisprites) || 0) + KDGetCullTime());
@@ -3370,6 +3379,7 @@ function KDCullSprites(): void {
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 				kdpixisprites.delete(sprite[0]);
 				delete sprite[1].filters;
+				KDPurgeSpriteRelatedFilters(sprite[1]);
 				if (sprite[1].destroy && !sprite[1].destroyed)
 					sprite[1].destroy();
 			} else sprite[1].visible = false;
@@ -3389,6 +3399,7 @@ function KDCullSpritesList(list: Map<string, any>): void {
 				if (kdprimitiveparams.has(sprite[0])) kdprimitiveparams.delete(sprite[0]);
 				list.delete(sprite[0]);
 				delete sprite[1].filters;
+				KDPurgeSpriteRelatedFilters(sprite[1]);
 				if (sprite[1].destroy && !sprite[1].destroyed)
 					sprite[1].destroy();
 			} else sprite[1].visible = false;
@@ -3413,6 +3424,7 @@ function KDCullRTList(list: Map<string, PIXIRenderTexture>): void {
 				kdRTSpritecache.delete(sprite[1]);
 			}
 
+			KDPurgeSpriteRelatedFilters(sprite[1]);
 			kdRTlastLookup.delete(sprite[0]);
 			sprite[1].destroy(true);
 		}
@@ -3428,6 +3440,7 @@ function KDCullTexList(list: Map<string, PIXITexture>): void {
 	) {
 			list.delete(sprite[0]);
 			kdTexlastLookup.delete(sprite[0]);
+			KDPurgeSpriteRelatedFilters(sprite[1]);
 			sprite[1].destroy(false);
 		}
 	}

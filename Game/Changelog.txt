@@ -40,12 +40,15 @@ Note to Modders: if your mod alters the function KDFreeNPC you will have to reim
 TODO add ability to recolor own restraints via palette
 
 5.4.39
-- New Optimized Drawing option
+- New Experimental Rendering (unstable) option
 - Added kitty pet leotard
 - Added kitty pet uniform collar
 - Added kitty pet tail
 - Added kitty pet paws, gloves, and socks
+- Added kitty pet headgear and gag (fashion only atm)
 - Hopefully increased variety in restraint types (armbinder, boxbinder, jacket) in jail
+- Optimized RAM usage for displacement maps (hopefully).
+
 TODO
 - Middle mouse button to toggle sprint option
 - middle mouse to toggle passthrough?
