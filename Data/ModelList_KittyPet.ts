@@ -248,6 +248,10 @@ AddModel({
 			NoOverride: true,
 			TieToLayer: "ForeGloveLeft",
 		},
+		...GetModelLayers("KittyPawCuffsWristLeft",
+			undefined, undefined, undefined, undefined, undefined, "KittyPawCuffs"),
+		...GetModelLayers("KittyPawCuffsElbowLeft",
+			undefined, undefined, undefined, undefined, undefined, "KittyPawCuffs"),
 	])
 });
 
@@ -281,6 +285,10 @@ AddModel({
 			NoOverride: true,
 			TieToLayer: "ForeGloveRight",
 		},
+		...GetModelLayers("KittyPawCuffsWristRight",
+			undefined, undefined, undefined, undefined, undefined, "KittyPawCuffs"),
+		...GetModelLayers("KittyPawCuffsElbowRight",
+			undefined, undefined, undefined, undefined, undefined, "KittyPawCuffs"),
 
 
 	])

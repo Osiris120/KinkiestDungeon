@@ -16,6 +16,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesWristLeft", "", "", "Cuff"),
 		...GetModelLayers("ShacklesWristLeft", "Band", "", "Band", 0.4),
+		...GetModelLayers("ShacklesWristLeft", "Lock", "", "Lock", 0.5),
 	])
 });
 AddModel({
@@ -28,6 +29,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesWristRight", "", "", "Cuff"),
 		...GetModelLayers("ShacklesWristRight", "Band", "", "Band", 0.4),
+		...GetModelLayers("ShacklesWristRight", "Lock", "", "Lock", 0.5),
 	])
 });
 
@@ -75,6 +77,16 @@ AddModel({
 			NoOverride: true,
 		},
 
+		{ Name: "LockElbowLeft", Layer: "BindElbowLeft", Pri: 1.5,
+			Poses: ToMap([...ARMPOSES]),
+			SwapLayerPose: {Front: "BindForeElbowLeft", Crossed: "BindCrossElbowLeft", Up: "BindForeElbowLeft"},
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			InheritColor: "Lock",
+			HidePoses: ToMap(["EncaseArmLeft"]),
+			TieToLayer: "ElbowLeft",
+			NoOverride: true,
+		},
+
 	])
 });
 AddModel({
@@ -101,6 +113,16 @@ AddModel({
 			SwapLayerPose: {Front: "BindForeElbowRight", Crossed: "BindCrossElbowRight", Up: "BindForeElbowRight"},
 			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
 			InheritColor: "Band",
+			HidePoses: ToMap(["EncaseArmRight"]),
+			TieToLayer: "ElbowRight",
+			NoOverride: true,
+		},
+
+		{ Name: "LockElbowRight", Layer: "BindElbowRight", Pri: 1.5,
+			Poses: ToMapSubtract([...ARMPOSES], ["Free"]),
+			SwapLayerPose: {Front: "BindForeElbowRight", Crossed: "BindCrossElbowRight", Up: "BindForeElbowRight"},
+			GlobalDefaultOverride: ToMap(["Front", "Crossed"]),
+			InheritColor: "Lock",
 			HidePoses: ToMap(["EncaseArmRight"]),
 			TieToLayer: "ElbowRight",
 			NoOverride: true,
@@ -145,6 +167,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesAnklesLeft", "", "", "Cuff"),
 		...GetModelLayers("ShacklesAnklesLeft", "Band", "", "Band", 0.4),
+		...GetModelLayers("ShacklesAnklesLeft", "Lock", "", "Lock", 0.5),
 	])
 });
 
@@ -158,6 +181,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesAnklesRight", "", "", "Cuff"),
 		...GetModelLayers("ShacklesAnklesRight", "Band", "", "Band", 0.4),
+		...GetModelLayers("ShacklesAnklesRight", "Lock", "", "Lock", 0.5),
 	])
 });
 
@@ -186,6 +210,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesThighLeft", "", "", "Cuff"),
 		...GetModelLayers("ShacklesThighLeft", "Band", "", "Band", 0.4),
+		...GetModelLayers("ShacklesThighLeft", "Lock", "", "Lock", 0.5),
 	])
 });
 
@@ -199,6 +224,7 @@ AddModel({
 	Layers: ToLayerMap([
 		...GetModelLayers("ShacklesThighRight", "", "", "Cuff"),
 		...GetModelLayers("ShacklesThighRight", "Band", "", "Band", 0.4),
+		...GetModelLayers("ShacklesThighRight", "Lock", "", "Lock", 0.5),
 	])
 });
 
@@ -215,23 +241,6 @@ AddModel({
 	])
 });
 
-
-AddModel({
-	Name: "KittyPawCuffsCollar",
-	Folder: "KittyPawCuffs",
-	TopLevel: true,
-	Restraint: true,
-	Categories: ["Restraints", "Accessories"],
-	Layers: ToLayerMap([
-		...GetModelLayers("IronCollar", "", "", "Cuff"),
-		...GetModelLayers("IronCollar", "Band", "", "Band", 0.4),
-	])
-});
-
-
-
-
-AddModel(GetModelFashionVersion("KittyPawCuffsCollar", true));
 AddModel(GetModelFashionVersion("KittyPawCuffsWristLeft", true));
 AddModel(GetModelFashionVersion("KittyPawCuffsWristRight", true));
 AddModel(GetModelFashionVersion("KittyPawCuffsWrists", true));

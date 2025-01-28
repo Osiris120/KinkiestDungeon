@@ -188,6 +188,12 @@ AddModel({
 			TieToLayer: "FootLeftHogtie",
 			NoOverride: true,
 		},
+
+
+		...GetModelLayers("KittyPawCuffsThighLeft",
+			undefined, undefined, undefined, undefined, undefined, "KittyPawCuffs"),
+		...GetModelLayers("KittyPawCuffsAnklesLeft",
+			undefined, undefined, undefined, undefined, undefined, "KittyPawCuffs"),
 	])
 });
 AddModel({
@@ -211,6 +217,10 @@ AddModel({
 			Invariant: true,
 			HideWhenOverridden: true,
 		},
+		...GetModelLayers("KittyPawCuffsThighRight",
+			undefined, undefined, undefined, undefined, undefined, "KittyPawCuffs"),
+		...GetModelLayers("KittyPawCuffsAnklesRight",
+			undefined, undefined, undefined, undefined, undefined, "KittyPawCuffs"),
 	])
 });
 
