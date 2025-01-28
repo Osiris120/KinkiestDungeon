@@ -278,6 +278,10 @@ let kdminimapsprites: Map<string, any> = new Map();
 let kdpixifogsprites: Map<string, any> = new Map();
 let kdpixibrisprites: Map<string, any> = new Map();
 
+/** Filters associated with a sprite, to be deleted*/
+let kdFilterSprites: Map<PIXISprite | PIXITexture, PIXIFilter[]> = new Map();
+
+
 
 
 let kdprimitiveparams: Map<string, any> = new Map();
@@ -5225,6 +5229,8 @@ function KDClearOutlineFilterCache(): void {
 	KDOutlineFilterCache = new Map();
 }
 
+let KDLastFilterSpritesSanitize = 0;
+
 function KDDoGraphicsSanitize(): void {
 	for (let t of KDRenderTexToDestroy) {
 		t.destroy(true);
@@ -5239,13 +5245,32 @@ function KDDoGraphicsSanitize(): void {
 		});
 	}
 	KDMeshToDestroy = [];
+	let map = new Map();
 	for (let f of KDFilterCacheToDestroy) {
-		f.destroy();
+		if (f.uniformGroup) {
+			f.destroy();
+			map.set(f, true);
+		}
 	}
+	if (KDFilterCacheToDestroy.length > 0 && CommonTime() > KDLastFilterSpritesSanitize + KDCULLTIME) {
+		KDLastFilterSpritesSanitize = CommonTime();
+		for (let f of kdFilterSprites.entries()) {
+			f[1] = f[1].filter((ff) => {
+				return !map.get(ff);
+			});
+			if (f[1].length > 0) {
+				kdFilterSprites.set(f[0], f[1]);
+			} else {
+				kdFilterSprites.delete(f[0]);
+			}
+		}
+	}
+
 	KDFilterCacheToDestroy = [];
 	for (let s of KDSpritesToCull) {
 		delete s.filters;
-		s.destroy();
+		if (!s.destroyed)
+			s.destroy();
 	}
 	KDSpritesToCull = [];
 }

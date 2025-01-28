@@ -18,7 +18,6 @@ AddModel({
 			InheritColor: "JacketBottom",
 			HidePrefixPose: ["Encase"],	HidePrefixPoseSuffix: ["TorsoUpper"],
 			HidePoses: ToMap(["EncaseTorsoUpper"]),
-			MorphPoses: {Kneel: "Kneel", KneelClosed: "Kneel"},
 			Invariant: true,
 		},
 		{ Name: "DressChest", Layer: "ShirtChest", Pri: 30,
