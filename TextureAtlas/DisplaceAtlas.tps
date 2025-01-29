@@ -237,6 +237,8 @@
             <key type="filename">../DisplacementMaps/HeelsRightEraseClosed.png</key>
             <key type="filename">../DisplacementMaps/HeelsSpread.png</key>
             <key type="filename">../DisplacementMaps/LegbinderSquishClosed.png</key>
+            <key type="filename">../DisplacementMaps/MittLFree.png</key>
+            <key type="filename">../DisplacementMaps/MittRYoked.png</key>
             <key type="filename">../DisplacementMaps/MittsFree.png</key>
             <key type="filename">../DisplacementMaps/MittsFront.png</key>
             <key type="filename">../DisplacementMaps/MittsYoked.png</key>
@@ -1451,6 +1453,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../DisplacementMaps/MittLCrossed.png</key>
+            <key type="filename">../DisplacementMaps/MittRCrossed.png</key>
             <key type="filename">../DisplacementMaps/MittsCrossed.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1463,6 +1467,66 @@
                 <rect>3,3,5,5</rect>
                 <key>scale9Paddings</key>
                 <rect>3,3,5,5</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/MittLFront.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>400,348,800,697</rect>
+                <key>scale9Paddings</key>
+                <rect>400,348,800,697</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/MittLYoked.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>582,291,1164,581</rect>
+                <key>scale9Paddings</key>
+                <rect>582,291,1164,581</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/MittRFree.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>241,395,481,789</rect>
+                <key>scale9Paddings</key>
+                <rect>241,395,481,789</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../DisplacementMaps/MittRFront.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>620,339,1240,677</rect>
+                <key>scale9Paddings</key>
+                <rect>620,339,1240,677</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

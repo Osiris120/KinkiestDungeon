@@ -48,17 +48,9 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":620,"h":877},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/ArmHarnessSquish.png":
-{
-	"frame": {"x":1162,"y":1765,"w":410,"h":225},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":410,"h":225},
-	"sourceSize": {"w":410,"h":225}
-},
 "DisplacementMaps/BalletCuffsHogtie.png":
 {
-	"frame": {"x":2034,"y":2010,"w":3,"h":2},
+	"frame": {"x":733,"y":1985,"w":3,"h":2},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":2},
@@ -66,7 +58,7 @@
 },
 "DisplacementMaps/BalletErase.png":
 {
-	"frame": {"x":2034,"y":2022,"w":1,"h":1},
+	"frame": {"x":745,"y":1984,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
@@ -74,7 +66,7 @@
 },
 "DisplacementMaps/BalletHogtie.png":
 {
-	"frame": {"x":2034,"y":2010,"w":3,"h":2},
+	"frame": {"x":733,"y":1985,"w":3,"h":2},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":2},
@@ -82,7 +74,7 @@
 },
 "DisplacementMaps/BalletRightErase.png":
 {
-	"frame": {"x":2034,"y":2022,"w":1,"h":1},
+	"frame": {"x":745,"y":1984,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
@@ -98,7 +90,7 @@
 },
 "DisplacementMaps/CuffLeftCrossed.png":
 {
-	"frame": {"x":2035,"y":1985,"w":8,"h":3},
+	"frame": {"x":706,"y":1989,"w":8,"h":3},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":3},
@@ -106,7 +98,7 @@
 },
 "DisplacementMaps/CuffLeftFront.png":
 {
-	"frame": {"x":2016,"y":2027,"w":14,"h":6},
+	"frame": {"x":773,"y":1967,"w":14,"h":6},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":6},
@@ -114,7 +106,7 @@
 },
 "DisplacementMaps/CuffRightCrossed.png":
 {
-	"frame": {"x":2016,"y":2037,"w":11,"h":8},
+	"frame": {"x":791,"y":1967,"w":11,"h":8},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":8},
@@ -122,19 +114,11 @@
 },
 "DisplacementMaps/CuffRightFront.png":
 {
-	"frame": {"x":2031,"y":2037,"w":10,"h":7},
+	"frame": {"x":773,"y":1977,"w":10,"h":7},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":7},
 	"sourceSize": {"w":10,"h":7}
-},
-"DisplacementMaps/CuffRightYoked.png":
-{
-	"frame": {"x":1576,"y":1765,"w":264,"h":268},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":264,"h":268},
-	"sourceSize": {"w":264,"h":268}
 },
 "DisplacementMaps/ElbowCuffLeftUp.png":
 {
@@ -146,7 +130,7 @@
 },
 "DisplacementMaps/EraseCorset.png":
 {
-	"frame": {"x":2034,"y":2027,"w":1,"h":1},
+	"frame": {"x":750,"y":1984,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
@@ -154,18 +138,10 @@
 },
 "DisplacementMaps/FrogThigh1SquishKneel.png":
 {
-	"frame": {"x":1844,"y":1955,"w":168,"h":79},
+	"frame": {"x":1875,"y":1679,"w":168,"h":79},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":158,"y":465,"w":168,"h":79},
-	"sourceSize": {"w":620,"h":877}
-},
-"DisplacementMaps/FrogThigh1SquishKneelClosed.png":
-{
-	"frame": {"x":1875,"y":1679,"w":122,"h":80},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":166,"y":454,"w":122,"h":80},
 	"sourceSize": {"w":620,"h":877}
 },
 "DisplacementMaps/FrogThigh2SquishKneel.png":
@@ -186,7 +162,7 @@
 },
 "DisplacementMaps/Heels2Closed.png":
 {
-	"frame": {"x":2034,"y":1995,"w":4,"h":4},
+	"frame": {"x":718,"y":1985,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -194,7 +170,7 @@
 },
 "DisplacementMaps/Heels2Hogtie.png":
 {
-	"frame": {"x":2034,"y":2010,"w":3,"h":2},
+	"frame": {"x":733,"y":1985,"w":3,"h":2},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":2},
@@ -202,7 +178,7 @@
 },
 "DisplacementMaps/HeelsClosed.png":
 {
-	"frame": {"x":2034,"y":1995,"w":4,"h":4},
+	"frame": {"x":718,"y":1985,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -210,7 +186,7 @@
 },
 "DisplacementMaps/HeelsErase.png":
 {
-	"frame": {"x":2034,"y":2022,"w":1,"h":1},
+	"frame": {"x":745,"y":1984,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
@@ -218,7 +194,7 @@
 },
 "DisplacementMaps/HeelsEraseSpread.png":
 {
-	"frame": {"x":2034,"y":2022,"w":1,"h":1},
+	"frame": {"x":745,"y":1984,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
@@ -226,23 +202,55 @@
 },
 "DisplacementMaps/HeelsHogtie.png":
 {
-	"frame": {"x":2034,"y":2010,"w":3,"h":2},
+	"frame": {"x":733,"y":1985,"w":3,"h":2},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":2},
 	"sourceSize": {"w":3,"h":2}
 },
-"DisplacementMaps/MittsCrossed.png":
+"DisplacementMaps/MittLCrossed.png":
 {
-	"frame": {"x":2034,"y":2003,"w":3,"h":3},
+	"frame": {"x":726,"y":1985,"w":3,"h":3},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
 	"sourceSize": {"w":3,"h":3}
 },
+"DisplacementMaps/MittRCrossed.png":
+{
+	"frame": {"x":726,"y":1985,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":3,"h":3}
+},
+"DisplacementMaps/MittRFront.png":
+{
+	"frame": {"x":627,"y":1967,"w":67,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":243,"y":230,"w":67,"h":60},
+	"sourceSize": {"w":620,"h":339}
+},
+"DisplacementMaps/MittsCrossed.png":
+{
+	"frame": {"x":726,"y":1985,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":3,"h":3}
+},
+"DisplacementMaps/MittsYoked.png":
+{
+	"frame": {"x":1162,"y":1765,"w":494,"h":202},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":62,"y":62,"w":494,"h":202},
+	"sourceSize": {"w":620,"h":877}
+},
 "DisplacementMaps/Null.png":
 {
-	"frame": {"x":2034,"y":2032,"w":1,"h":1},
+	"frame": {"x":755,"y":1982,"w":1,"h":1},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":1},
@@ -250,7 +258,7 @@
 },
 "DisplacementMaps/SockLSquish_ShortHogtie.png":
 {
-	"frame": {"x":2016,"y":1977,"w":15,"h":14},
+	"frame": {"x":718,"y":1967,"w":15,"h":14},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":14},
@@ -258,7 +266,7 @@
 },
 "DisplacementMaps/SockRSquish_ShortHogtie.png":
 {
-	"frame": {"x":2016,"y":1955,"w":16,"h":18},
+	"frame": {"x":698,"y":1967,"w":16,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":18},
@@ -266,7 +274,7 @@
 },
 "DisplacementMaps/SockRSquish_ShortKneel.png":
 {
-	"frame": {"x":2016,"y":2012,"w":14,"h":11},
+	"frame": {"x":755,"y":1967,"w":14,"h":11},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":11},
@@ -274,7 +282,7 @@
 },
 "DisplacementMaps/SockRSquish_ShortKneelClosed.png":
 {
-	"frame": {"x":2016,"y":1995,"w":14,"h":13},
+	"frame": {"x":737,"y":1967,"w":14,"h":13},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":13},
@@ -282,7 +290,7 @@
 },
 "DisplacementMaps/TapeAnklesSquishHogtie.png":
 {
-	"frame": {"x":2034,"y":2016,"w":1,"h":2},
+	"frame": {"x":740,"y":1984,"w":1,"h":2},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1,"h":2},
@@ -290,7 +298,7 @@
 },
 "DisplacementMaps/TapeFullLeft.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -298,7 +306,7 @@
 },
 "DisplacementMaps/TapeFullRight.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -306,7 +314,7 @@
 },
 "DisplacementMaps/TapeHeavyLeft.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -314,7 +322,7 @@
 },
 "DisplacementMaps/TapeHeavyRight.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -322,7 +330,7 @@
 },
 "DisplacementMaps/TapeLightLeft.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -330,7 +338,7 @@
 },
 "DisplacementMaps/TapeLightRight.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -338,7 +346,7 @@
 },
 "DisplacementMaps/TapeMedLeft.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -346,7 +354,7 @@
 },
 "DisplacementMaps/TapeMedRight.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -354,7 +362,7 @@
 },
 "DisplacementMaps/TapeTopLeft.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -362,7 +370,7 @@
 },
 "DisplacementMaps/TapeTopRight.png":
 {
-	"frame": {"x":2035,"y":1977,"w":4,"h":4},
+	"frame": {"x":698,"y":1989,"w":4,"h":4},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":4},
@@ -400,12 +408,12 @@
 	"spriteSourceSize": {"x":246,"y":439,"w":140,"h":173},
 	"sourceSize": {"w":620,"h":877}
 },
-"DisplacementMaps/Template_KneelClosedR.png":
+"DisplacementMaps/Template_Kneel.png":
 {
-	"frame": {"x":1844,"y":1765,"w":174,"h":186},
+	"frame": {"x":1660,"y":1765,"w":339,"h":205},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":132,"y":366,"w":174,"h":186},
+	"spriteSourceSize": {"x":133,"y":365,"w":339,"h":205},
 	"sourceSize": {"w":620,"h":877}
 },
 "DisplacementMaps/Template_KneelR.png":
@@ -421,9 +429,9 @@
 	"version": "1.1",
 	"image": "displace0.webp",
 	"format": "RGBA8888",
-	"size": {"w":2046,"h":2048},
+	"size": {"w":2046,"h":2030},
 	"scale": "0.25",
 	"related_multi_packs": [ "displace1.json", "displace2.json", "displace3.json", "displace4.json", "displace5.json", "displace6.json", "displace7.json", "displace8.json", "displace9.json", "displace10.json", "displace11.json", "displace12.json", "displace13.json", "displace14.json", "displace15.json", "displace16.json", "displace17.json", "displace18.json", "displace19.json", "displace20.json", "displace21.json", "displace22.json", "displace23.json", "displace24.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:0bd097ea5be249e778fe964e9f2da724:594f5c3ee6cb19def4e18613105d567e:44b3d303d8b4a8e896115ea1e938285b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e8080ca31b63ef791246ea5ac6739043:1482d83a5ac2196d10e8c8a53055230a:44b3d303d8b4a8e896115ea1e938285b$"
 }
 }
