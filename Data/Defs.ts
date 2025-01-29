@@ -1804,7 +1804,6 @@ let LayerGroups = {
 	"Pants",
 	"ShortsLeft",
 	"Shorts",
-	"Bodysuit",
 
 	"SleeveDecoLeft",
 	"SleeveLeft",
@@ -1821,6 +1820,7 @@ let LayerGroups = {
 	// Upper body underwear and bodysuits
 	"CorsetLiner",
 	"CorsetLinerLower",
+	"BodysuitOver",
 
 	// Right arm clothes
 	"SleeveDecoRight",
