@@ -3361,7 +3361,8 @@ function KDGetCullTime() {
 function KDPurgeSpriteRelatedFilters(sprite: PIXISprite | PIXITexture) {
 	if (kdFilterSprites.get(sprite)) {
 		for (let f of kdFilterSprites.get(sprite)) {
-			KDFilterCacheToDestroy.push(f);
+			KDFilterCacheToDestroy.push(f.filter);
+			KDAdjustmentFilterCache.delete(f.hash);
 		}
 		kdFilterSprites.delete(sprite);
 	}

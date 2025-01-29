@@ -366,7 +366,9 @@ function KinkyDungeonDressPlayer (
 					//if (KinkyDungeonGetRestraintItem("ItemBreast")) clothes.Lost = true;
 					//}
 					if (clothes.Group == "Panties" && !clothes.NoLose) {
-						if (KinkyDungeonGetRestraintItem("ItemPelvis")) clothes.Lost = true;
+
+						if (KinkyDungeonGetRestraintItem("ItemPelvis")
+							&& KDRestraint(KinkyDungeonGetRestraintItem("ItemPelvis"))?.chastity) clothes.Lost = true;
 					}
 					if (ModelDefs[clothes.Item]?.Categories?.includes("Skirts")
 						&& !ModelDefs[clothes.Item]?.Categories?.includes("NanoSkirts")) {

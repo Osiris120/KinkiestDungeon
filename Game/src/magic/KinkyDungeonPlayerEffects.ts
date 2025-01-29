@@ -16,9 +16,21 @@ let KDPlayerEffects: Record<string, (target: any, damage: string, playerEffect: 
 		return {sfx: "Shield", effect: false};
 	},
 	"Disrobe": (_target, _damage, _playerEffect, _spell, _faction, _bullet, entity) => {
-		let RopeDresses = ["Leotard", "Bikini", "Lingerie"];
-		if (!RopeDresses.includes(KinkyDungeonCurrentDress) && !KinkyDungeonStatsChoice.get("KeepOutfit")) {
-			KinkyDungeonSetDress(RopeDresses[Math.floor(Math.random() * RopeDresses.length)], "");
+		let strip = false;
+		let CurrentDress = KinkyDungeonCurrentDress;
+		let DressList = KDGetDressList()[CurrentDress];
+		for (let clothes of DressList) {
+			if (!clothes.Lost && (
+				!ModelDefs[clothes.Item].Protected
+				&& ["Shirts", "Skirts", "Pants", "Shorts", "Tops", "Clothes"].some((ee) => {
+					return ModelDefs[clothes.Item]?.Categories?.includes(ee);
+				})
+			)) {
+				clothes.Lost = true;
+				strip = true;
+			}
+		}
+		if (strip) {
 			KinkyDungeonDressPlayer();
 			KinkyDungeonSendTextMessage(1, TextGet("KDWitchShibariDisrobe").replace("ENMY", TextGet("Name" + entity?.Enemy?.name)), "#e7cf1a", 3);
 			return {sfx: "Tickle", effect: true};

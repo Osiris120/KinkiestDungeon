@@ -1057,8 +1057,14 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 				let Properties: LayerPropertiesType = m.Properties ? m.Properties[lyr] : undefined;
 				if (Properties) {
-					if (Properties.DisplaceAmount != undefined) dAmount = Properties.DisplaceAmount;
-					if (Properties.EraseAmount != undefined) eAmount = Properties.EraseAmount;
+					if (Properties.DisplaceAmount != undefined) {
+						if (dAmount == 0) dAmount = 1;
+						dAmount *= Properties.DisplaceAmount;
+					}
+					if (Properties.EraseAmount != undefined) {
+						if (eAmount == 0) eAmount = 1;
+						eAmount *= Properties.EraseAmount;
+					}
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -1224,6 +1230,14 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 
 				let Properties: LayerPropertiesType = m.Properties ? m.Properties[lyr] : undefined;
 				if (Properties) {
+					if (Properties.DisplaceAmount != undefined) {
+						if (dAmount == 0) dAmount = 1;
+						dAmount *= Properties.DisplaceAmount;
+					}
+					if (Properties.EraseAmount != undefined) {
+						if (eAmount == 0) eAmount = 1;
+						eAmount *= Properties.EraseAmount;
+					}
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -1237,6 +1251,14 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let oldProps = Properties;
 				Properties = m.Properties ? (m.Properties[l.Name] || m.Properties[l.InheritColor]) : undefined;
 				if (Properties && oldProps != Properties) {
+					if (Properties.DisplaceAmount != undefined) {
+						if (dAmount == 0) dAmount = 1;
+						dAmount *= Properties.DisplaceAmount;
+					}
+					if (Properties.EraseAmount != undefined) {
+						if (eAmount == 0) eAmount = 1;
+						eAmount *= Properties.EraseAmount;
+					}
 					transform = transform.recursiveTransform(
 						Properties.XOffset || 0,
 						Properties.YOffset || 0,
@@ -1366,10 +1388,10 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 							amount: EraseAmount,
 							hash: x,
 							id: 'ef' + x,
-							sprite: KDDraw(
+							sprite: KDDrawRT(
 								ContainerContainer.Container,
 								ContainerContainer.SpriteList,
-								"xrayfilter_" + x,
+								"xrayfilter_" + x, "xrayfilter_" + x,
 								"DisplacementMaps/" + x + ".png",
 								0, 0, undefined, undefined,
 								0, {
@@ -1378,7 +1400,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 									cullable: KDCulling,
 								}, false,
 								ContainerContainer.SpritesDrawn,
-								Zoom
+								Zoom, undefined, undefined, true, false
 							),
 						}
 					);
@@ -1473,7 +1495,7 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 				let fh = containerID + fhash;
 
 				let filter = m.Filters ? (m.Filters[l.InheritColor || l.Name] ?
-					(KDAdjustmentFilterCache.get(fh) || [adjustFilter(m.Filters[l.InheritColor || l.Name])])
+					((KDAdjustmentFilterCache.get(fh)) || [adjustFilter(m.Filters[l.InheritColor || l.Name])])
 					: undefined) : undefined;
 				if (filter && !KDAdjustmentFilterCache.get(fh)) {
 					KDAdjustmentFilterCache.set(containerID + FilterHash(m.Filters[l.InheritColor || l.Name]), filter);
@@ -1509,11 +1531,14 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 							KDAdjustmentFilterCache.delete(efh);
 						}
 						KDTex(dsprite.name, false); // try to preload it
-						f = new EraseFilter(
-							dsprite,
-						);
-						KDSetFilterSprite(f, dsprite);
-						f.multisample = 0;
+						if (!KDAdjustmentFilterCache.get(efh)) {
+							f = new EraseFilter(
+								dsprite,
+							);
+
+							KDSetFilterSprite({hash: efh, filter: f}, dsprite);
+							f.multisample = 0;
+						}
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
 							KDAdjustmentFilterCache.set(efh, efilter);
@@ -1534,12 +1559,16 @@ function DrawCharacterModels(containerID: string, MC: ModelContainer, X, Y, Zoom
 							KDAdjustmentFilterCache.delete(efh);
 						}
 						KDTex(dsprite.name, false); // try to preload it
-						f = new DisplaceFilter(
-							dsprite,
-							ef.amount,
-						);
-						KDSetFilterSprite(f, dsprite);
-						f.multisample = 0;
+						if (!KDAdjustmentFilterCache.get(efh)) {
+							f = new DisplaceFilter(
+								dsprite,
+								ef.amount,
+							);
+							//Unneeded because its already in the filter cache
+							KDSetFilterSprite({hash: efh, filter: f}, dsprite);
+							f.multisample = 0;
+						}
+
 						let efilter = (KDAdjustmentFilterCache.get(efh) || [f]);
 						if (efilter && !KDAdjustmentFilterCache.get(efh)) {
 							KDAdjustmentFilterCache.set(efh, efilter);
@@ -2529,16 +2558,16 @@ function KDContainerClear(Container: ContainerInfo) {
 	Container.RenderTexture.destroy();
 }
 
-function KDSetFilterSprite(filter: PIXIFilter, sprite: PIXISprite) {
+function KDSetFilterSprite(info: {hash: string, filter: PIXIFilter}, sprite: PIXISprite) {
 	if (!kdFilterSprites.get(sprite)) {
 		kdFilterSprites.set(sprite, []);
-		kdFilterSprites.get(sprite).push(filter);
+		kdFilterSprites.get(sprite).push(info);
 	}
 	if (sprite.texture) {
 		if (!kdFilterSprites.get(sprite.texture)) {
 			kdFilterSprites.set(sprite.texture, []);
 		}
-		kdFilterSprites.get(sprite.texture).push(filter);
+		kdFilterSprites.get(sprite.texture).push(info);
 	}
 
 }

@@ -250,6 +250,10 @@ class EraseFilter extends PIXI.Filter
         clearMode: PIXICLEAR_MODES
     ): void
     {
+        if (!this.uniformGroup?.uniforms || !this.uniforms) {
+            KDFilterCacheToDestroy.push(this);
+            return;
+        }
         // fill maskMatrix with _normalized sprite texture coords_
         this.uniforms.filterMatrix = filterManager.calculateSpriteMatrix(this.maskMatrix, this.maskSprite);
 
@@ -334,6 +338,10 @@ class DisplaceFilter extends PIXI.Filter
         clearMode: PIXICLEAR_MODES
     ): void
     {
+        if (!this.uniformGroup?.uniforms || !this.uniforms) {
+            KDFilterCacheToDestroy.push(this);
+            return;
+        }
         // fill maskMatrix with _normalized sprite texture coords_
         this.uniforms.filterMatrix =
             filterManager.calculateSpriteMatrix(this.maskMatrix, this.maskSprite);

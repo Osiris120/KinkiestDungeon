@@ -32,8 +32,7 @@ AddModel({
 	Categories: ["Hairstyles", "FrontHair"],
 	AddPose: ["Hair"],
 	Layers: ToLayerMap([
-		{ Name: "BlondeFront", Layer: "Hair", Pri: 3,
-			SwapLayerPose: {HoodMask: "HairOver"},
+		{ Name: "BlondeFront", Layer: "HairOver", Pri: 3,
 			InheritColor: "Hair",
 			HidePoses: {"Marhnth": true},
 		},
@@ -41,8 +40,7 @@ AddModel({
 			InheritColor: "Bangs",
 			HidePoses: {"Marhnth": true},
 		},
-		{ Name: "BlondeFrontM", Layer: "Hair", Pri: 3,
-			SwapLayerPose: {HoodMask: "HairOver"},
+		{ Name: "BlondeFrontM", Layer: "HairOver", Pri: 3,
 			InheritColor: "Hair",
 			RequirePoses: {"Marhnth": true},
 		},
@@ -124,7 +122,7 @@ AddModel({
 		{ Name: "HairAura_Left", Layer: "Hair", Pri: -100,
 			InheritColor: "Bang",
 		},
-		{ Name: "HairAura_LeftB", Layer: "HairBack", Pri: -5,
+		{ Name: "HairAura_LeftB", Layer: "HairPonytail", Pri: -5,
 			InheritColor: "Tail",
 		},
 	])
@@ -140,7 +138,7 @@ AddModel({
 		{ Name: "HairAura_Right", Layer: "Hair", Pri: 0,
 			InheritColor: "Bang",
 		},
-		{ Name: "HairAura_RightB", Layer: "HairBack", Pri: -5,
+		{ Name: "HairAura_RightB", Layer: "HairPonytail", Pri: -5,
 			InheritColor: "Tail",
 		},
 	])
@@ -295,10 +293,10 @@ AddModel({
 	Categories: ["Hairstyles"],
 	AddPose: ["Hair"],
 	Layers: ToLayerMap([
-		{ Name: "Hair4_Left", Layer: "HairBack", Pri: -5,
+		{ Name: "Hair4_Left", Layer: "HairPonytail", Pri: -5,
 			InheritColor: "Tail",
 		},
-		{ Name: "Hair4_LeftB", Layer: "HairBack", Pri: -4.9,
+		{ Name: "Hair4_LeftB", Layer: "HairPonytail", Pri: -4.9,
 			InheritColor: "Highlight",
 		},
 	])
@@ -312,10 +310,10 @@ AddModel({
 	Categories: ["Hairstyles"],
 	AddPose: ["Hair"],
 	Layers: ToLayerMap([
-		{ Name: "Hair4_Right", Layer: "HairBack", Pri: -5,
+		{ Name: "Hair4_Right", Layer: "HairPonytail", Pri: -5,
 			InheritColor: "Tail",
 		},
-		{ Name: "Hair4_RightB", Layer: "HairBack", Pri: -4.9,
+		{ Name: "Hair4_RightB", Layer: "HairPonytail", Pri: -4.9,
 			InheritColor: "Highlight",
 		},
 	])
@@ -369,7 +367,7 @@ AddModel({
 	Categories: ["Hairstyles"],
 	AddPose: ["Hair"],
 	Layers: ToLayerMap([
-		{ Name: "Hair5_Left", Layer: "HairBack", Pri: -4,
+		{ Name: "Hair5_Left", Layer: "HairPonytail", Pri: -4,
 			InheritColor: "Tail",
 		},
 	])
@@ -383,7 +381,7 @@ AddModel({
 	Categories: ["Hairstyles"],
 	AddPose: ["Hair"],
 	Layers: ToLayerMap([
-		{ Name: "Hair5_Right", Layer: "HairBack", Pri: -4,
+		{ Name: "Hair5_Right", Layer: "HairPonytail", Pri: -4,
 			InheritColor: "Tail",
 		},
 	])
@@ -419,7 +417,7 @@ AddModel({
 	Categories: ["Hairstyles"],
 	AddPose: ["Hair"],
 	Layers: ToLayerMap([
-		{ Name: "Hair6_Left", Layer: "HairBack", Pri: 30,
+		{ Name: "Hair6_Left", Layer: "HairPonytail", Pri: 30,
 			InheritColor: "Tail",
 		},
 	])
@@ -433,7 +431,7 @@ AddModel({
 	Categories: ["Hairstyles"],
 	AddPose: ["Hair"],
 	Layers: ToLayerMap([
-		{ Name: "Hair6_Right", Layer: "HairBack", Pri: 30,
+		{ Name: "Hair6_Right", Layer: "HairPonytail", Pri: 30,
 			InheritColor: "Tail",
 		},
 	])

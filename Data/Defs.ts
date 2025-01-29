@@ -458,6 +458,7 @@ let LAYERS_BASE = [
 
 	// Hair and hat back
 	"HairBack",
+	"HairPonytail",
 	"HatBack",
 
 	"Tail",
@@ -1589,6 +1590,22 @@ let LayerGroups = {
 		"ForeGloveLeft",
 		"ForeHandLeft",
 	]),
+	"MittL": ToMap([
+		"CrossGloveLeft",
+		"CrossHandLeft",
+		"GloveLeft",
+		"HandLeft",
+		"ForeGloveLeft",
+		"ForeHandLeft",
+	]),
+	"MittR": ToMap([
+		"CrossGloveRight",
+		"CrossHandRight",
+		"GloveRight",
+		"HandRight",
+		"ForeGloveRight",
+		"ForeHandRight",
+	]),
 	"RightHand": ToMap([
 		"GloveRight",
 		"HandRight",
@@ -1787,6 +1804,7 @@ let LayerGroups = {
 	"Pants",
 	"ShortsLeft",
 	"Shorts",
+	"Bodysuit",
 
 	"SleeveDecoLeft",
 	"SleeveLeft",
