@@ -279,7 +279,7 @@ let kdpixifogsprites: Map<string, any> = new Map();
 let kdpixibrisprites: Map<string, any> = new Map();
 
 /** Filters associated with a sprite, to be deleted*/
-let kdFilterSprites: Map<PIXISprite | PIXITexture, PIXIFilter[]> = new Map();
+let kdFilterSprites: Map<PIXISprite | PIXITexture, {hash: string, filter: PIXIFilter}[]> = new Map();
 
 
 
@@ -5247,7 +5247,7 @@ function KDDoGraphicsSanitize(): void {
 	KDMeshToDestroy = [];
 	let map = new Map();
 	for (let f of KDFilterCacheToDestroy) {
-		if (f.uniformGroup) {
+		if (f.uniformGroup?.uniforms) {
 			f.destroy();
 			map.set(f, true);
 		}
@@ -5256,7 +5256,7 @@ function KDDoGraphicsSanitize(): void {
 		KDLastFilterSpritesSanitize = CommonTime();
 		for (let f of kdFilterSprites.entries()) {
 			f[1] = f[1].filter((ff) => {
-				return !map.get(ff);
+				return !map.get(ff.filter);
 			});
 			if (f[1].length > 0) {
 				kdFilterSprites.set(f[0], f[1]);

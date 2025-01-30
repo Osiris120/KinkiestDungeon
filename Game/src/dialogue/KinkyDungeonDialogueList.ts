@@ -1592,8 +1592,8 @@ let KDDialogue: Record<string, KinkyDialogue> = {
 				prerequisiteFunction: (_gagged, _player) => {
 					let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
 
-					return !!(en && !en.player && (KDIsImprisoned(en) && en.prisondialogue)
-						|| en.specialdialogue);
+					return !!(en && !en.player && (KDIsImprisoned(en) && en?.prisondialogue)
+						|| en?.specialdialogue);
 				},
 				clickFunction: (_gagged, _player) => {
 					let en = KinkyDungeonEntityAt(KDGameData.InteractTargetX, KDGameData.InteractTargetY);
