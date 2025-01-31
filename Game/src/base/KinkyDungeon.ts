@@ -1224,6 +1224,14 @@ function KinkyDungeonLoad(): void {
 					KDZoomIndex = parsed;
 				}
 			}
+			if (localStorage.getItem("WToolsScrollMode") != undefined) {
+				let parsed = parseInt(localStorage.getItem("WToolsScrollMode"));
+				if (parsed != undefined) {
+					KDWToolsToggleScrollModeIndex = parsed;
+				}
+			}
+
+
 			// Initialize Cloud syncing login variables
 			KDCloudLogintype = localStorage.getItem('KDCloudLogintype') ? localStorage.getItem('KDCloudLogintype') : null
         	KDCloudLogintoken = localStorage.getItem('KDCloudLogintoken') ? localStorage.getItem('KDCloudLogintoken') : null

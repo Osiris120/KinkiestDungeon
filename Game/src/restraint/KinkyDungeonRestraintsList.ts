@@ -7762,7 +7762,7 @@ KinkyDungeonAddCursedVariants(KinkyDungeonCreateRestraint({
 		"Remove": 0.5,
 		"Pick": 0.15,
 	},
-	shrine: ["Armor", "TorsoArmor", "Cloth"],
+	shrine: ["Armor", "TorsoArmor", "Cloth", "Swimsuits"],
 	addPose: ["TorsoArmor"],
 
 	armor: true, bypass: true,
