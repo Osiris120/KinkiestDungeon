@@ -2452,6 +2452,10 @@ function GetModelLocInverse(C: Character, X: number, Y: number, ZoomInit: number
 	let differencey = (resultingPosition.y - hp.Y)*Zoom;
 	let differencea = Math.PI + resultingPosition.angle; // No idea why this works
 
+	// I have absolutely no idea why this is working. It seems to work in the usercases that I tested
+	// If you are doing high-level rendering stuff, you may run into issues stemming from the fact
+	// that I have no idea what I am doing
+	// cheers
 	pos.x += differencex*Math.cos(differencea) + differencey*Math.sin(differencea);
 	pos.y += differencey*Math.cos(differencea) - differencex*Math.sin(differencea);
 	pos.angle += differencea;
