@@ -70,6 +70,10 @@ Keybindings
 Управление
 
 
+### Show Enemy Binding as %
+
+### Auto-wait Through Delayed Actions
+
 ### Show Minimap Labels
 
 ### Auto loot all from chests
@@ -87,6 +91,8 @@ Keybindings
 ### Use character palette for default outfit
 
 ### Show Background Art
+
+### Experimental Rendering (unstable)
 
 ### Mute when Minimized
 
@@ -1316,7 +1322,7 @@ Magic puts you in a clear state of mind. Casting spells successfully reduces you
 
 ### Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
 
-### Unknown
+### Unknown 
 
 Copy (clipboard)
 Копировать в буфер
@@ -1396,9 +1402,9 @@ Everywhere!
 Везде!
 
 
-### Physical Armor:
+### Physical Armor: 
 
-### Magic Armor:
+### Magic Armor: 
 
 In the Shadows: You are harder to see.
 В тенях: Вас труднее увидеть.
@@ -1406,7 +1412,7 @@ Invisible: You are very difficult to see.
 Невидимость: Вас очень трудно увидеть.
 Quickness: Your next movement is so fast it doesn't advance a turn.
 Ускорение: Ваше следующее движение будет очень быстрым и не потратит ход.
-### All Damage Reduction:
+### All Damage Reduction: 
 
 You take PERCENT1 DAMAGETYPE damage, based on PERCENT2 DAMAGETYPE resist and PERCENT3 DAMAGECATEGORY modifier.
 Вы получаете PERCENT1 DAMAGETYPE урона, основываясь на PERCENT2 DAMAGETYPE сопротивлении и PERCENT3 DAMAGECATEGORY модификаторе.
@@ -1704,7 +1710,7 @@ Missing key
 Отсутствует ключ
 You are protected from damage and can't be bound until the shield is broken!
 Вы защищены от урона и не можете быть связаны до тех пор, пока щит не будет сломан!
-### Chance for a spell to fizzle:
+### Chance for a spell to fizzle: 
 
 Dodge Chance: Percent%, based on EVASIONSUM Evasion and EVASIONPENALTY% penalty.
 Шанс уклонения: Percent%, основываясь на EVASIONSUM Уклонения и EVASIONPENALTY% штрафа.
@@ -1874,7 +1880,7 @@ Delete Mod
 Удалить модификацию
 Clear Perks
 Очистить перки
-### Config
+### Config 
 
 Cancel
 Отмена
@@ -2010,15 +2016,15 @@ Floor FLOORNUMBER: DUNGEONNAME
 Этаж FLOORNUMBER: DUNGEONNAME
 
 
-### Lockpicks:
+### Lockpicks: 
 
-### Keys:
+### Keys: 
 
-### Magic Keys:
+### Magic Keys: 
 
-### Knife:
+### Knife: 
 
-### Mag. Knife:
+### Mag. Knife: 
 
 You climb down the stairs. The passage closes behind you.
 Вы спускаетесь по лестнице, а проход закрывается за вами.
@@ -2230,7 +2236,7 @@ You find a medley of potions.
 Вы находите смесь зелий.
 
 
-### Rarity:
+### Rarity: 
 
 Lesser
 Мусор
@@ -3106,7 +3112,7 @@ Dreamcatcher
 Ловец снов
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 Выкованный в кошмарах, сотканный из стали. Призывает Теневого воина на не подозревающие цели за 2% древней энергии.
-### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
+### Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
 
 Axe
 Топор
@@ -3114,11 +3120,11 @@ Great for cutting trees that happen to be underground.
 Отлично подходит для рубки деревьев, которые встречаются в подземелье.
 Also deals 20 damage to enemies next to you. Deals slash damage.
 Наносит рубящий урон. Также наносит 20 единиц урона врагам рядом с вами.
-### Accuracy:
+### Accuracy: 
 
-### Crit Multiplier:
+### Crit Multiplier: 
 
-### Bind Crit Multiplier:
+### Bind Crit Multiplier: 
 
 Find the keys..
 Нужно найти ключи...
@@ -3136,9 +3142,9 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 Вы нашли трещину и, возможно, могли бы воткнуть в нее нож или другой инструмент, чтобы неподвижно его закрепить.
 You found something sticky and might be able to pull off fabrics.
 Вы нашли что-то липкое и, возможно, сможете стянуть ткань.
-### Evasion:
+### Evasion: 
 
-### Visibility:
+### Visibility: 
 
 
 
@@ -3184,13 +3190,13 @@ Satisfied. Miscast chance is reduced.
 Удовлетворение. Шанс осечки в заклинаниях снижен.
 
 
-### Damage:
+### Damage: 
 
-### Bind:
+### Bind: 
 
-### Crit:
+### Crit: 
 
-### SP Cost:
+### SP Cost: 
 
 Cut PWR: AMNT%
 Эф.Разрез: AMNT%
@@ -6286,17 +6292,17 @@ Commerce
 Коммерция
 Shrine of SHRINETYPE
 Святилище: SHRINETYPE
-### Tablet of
+### Tablet of 
 
-### Goddess:
+### Goddess: 
 
-### Goddess Blessing:
+### Goddess Blessing: 
 
-### Goddess Curse:
+### Goddess Curse: 
 
-### Mana Bonus:
+### Mana Bonus: 
 
-### Lack of Mana Penalty:
+### Lack of Mana Penalty: 
 
 Your excess mana helps you suppress the enchantment!
 Избыток маны помогает вам подавить магические чары!
@@ -6322,11 +6328,11 @@ You try to read the runes but cannot understand them.
 Вы пытаетесь прочитать руины, но не можете их понять.
 
 
-### Allies:
+### Allies: 
 
-### Enemies:
+### Enemies: 
 
-### Favorable:
+### Favorable: 
 
 None
 Нет
@@ -6926,7 +6932,7 @@ Press RIGHT to confirm buy!
 
 
 
-### You find
+### You find 
 
 
 
@@ -9160,7 +9166,7 @@ Verbal
 Слова
 ### Vision
 
-### Components:
+### Components: 
 
 Arm Movements
 Жесты рук
@@ -11954,7 +11960,7 @@ You need more spell points.
 Вам нужно больше очков способностей.
 You don't have enough maximum mana to cast this spell!
 У вас недостаточно максимальной маны, чтобы произнести это заклинание!
-### School:
+### School: 
 
 Generic
 Общее
@@ -11964,15 +11970,15 @@ Special
 Особое
 Learn Spell
 Выучить заклинание
-### Spell Points:
+### Spell Points: 
 
 
 
-### Level:
+### Level: 
 
-### Spell Point Cost:
+### Spell Point Cost: 
 
-### Mana Cost:
+### Mana Cost: 
 
 
 
@@ -12004,19 +12010,19 @@ Replace Spell 6
 Заменить закл. 6
 Replace Spell 7
 Заменить закл. 7
-### Current Spell 1:
+### Current Spell 1: 
 
-### Current Spell 2:
+### Current Spell 2: 
 
-### Current Spell 3:
+### Current Spell 3: 
 
-### Current Spell 4:
+### Current Spell 4: 
 
-### Current Spell 5:
+### Current Spell 5: 
 
-### Current Spell 6:
+### Current Spell 6: 
 
-### Current Spell 7:
+### Current Spell 7: 
 
 ### ???
 
@@ -12052,7 +12058,7 @@ Bellows
 (Страница из Книги Вечности)|Некоторые говорят, что 'Катакомбы' старше самого времени. Когда Древняя цивилизация начала изучать бессмертие, никто не знал, возможно ли будет вернуть тех, кто уже умер. Таким образом, катакомбы использовались для хранения всех останков бывших людей, чтобы их тоже можно было оживить, когда архимаг, наконец, совершит свой прорыв.
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 (Страница из Книги Вечности)|Говорят, что архимаг Сариэль Винлага училась в этой самой библиотеке. Собрав воедино все человеческие знания, магические, духовные, технологические, она поручила своим двенадцати младшим магам работу по сортировке и сопоставлению богатства приобретенных ею знаний. Никто не знает, почему она вдруг отказалась от библиотеки и почему сегодня она находится в таком плачевном состоянии.
-### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
+### (A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
 
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 (Страница из Книги Вечности)|Проблема Энергии преследовала цивилизацию на протяжении тысячелетий. До того, как были открыты лейлинии, человечество полагалось на естественные источники энергии, такие как реки и дрова. Когда были обнаружены Хрустальные пещеры, произошла великая революция. Больше не полагаясь на природные источники, цивилизации могли использовать подземные источники хаотической энергии для приведения в действие невиданных ранее механизмов.
@@ -12722,11 +12728,11 @@ For 3 rep the goddess will grant you slipperiness, boosting your struggling.
 За 3 репутации богиня дарует вам 'скользкость', усиливая вашу борьбу.
 For 3 rep the goddess will grant you a key.
 За 3 репутации богиня дарует вам ключ.
-### For 3 rep the goddess will grant you
+### For 3 rep the goddess will grant you 
 
 For 3 rep the goddess
 За 3 репутации богиня
-For 3 rep the goddess
+For 3 rep the goddess 
 За 3 репутации богиня
 
 
@@ -13104,9 +13110,11 @@ Can disarm (chance: DISARMCHANCE%)
 Может разоружить (шанс: DISARMCHANCE%)
 Resistances:
 Сопротивления:
-### HP:
+### HP: 
 
-### Binding:
+### Shield: 
+
+### Binding: 
 
 Ambivalent
 Двойственное
@@ -13430,7 +13438,7 @@ Hard Mode
 
 A supposedly reasonable difficulty curve.
 Предположительно разумная кривая сложности.
-### Play the game the way it was intended. Cruel and restrictive.
+### Play the game the way it was intended. Cruel and restrictive. 
 
 Play at your own peril. Unlocked by double-clicking the Hard Mode button.
 Играйте на свой страх и риск. Разблокируется двойным щелчком по кнопке 'Сложного' режима.
@@ -19332,7 +19340,7 @@ What? (PERCENT chance to avoid)
 (SPEAKER прочищает горло)|Что ж, мы сейчас вновь набираем персонал!|Ты можешь присоединиться к нам, если согласишься бороться за справедливость!
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 (SPEAKER крепко пожимает вам руку)|Добро пожаловать в сестричество, искательница приключений!
-### (The SPEAKER tilts her head and shrugs)|Ah well.
+### (The SPEAKER tilts her head and shrugs)|Ah well. 
 
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 (SPEAKER хмурится)|Что это?|Ты ведь не враг правосудия, я надеюсь?
@@ -20988,7 +20996,7 @@ Give her a Scroll of Purity
 
 ### Hmmmph? Mmmm! (Act worried and whimper)
 
-### (The SPEAKER folds her arms)|Mistress Oriel's orders
+### (The SPEAKER folds her arms)|Mistress Oriel's orders 
 
 ### Not in the 'System'?
 
@@ -21154,6 +21162,8 @@ An enemy found you while you were busy!
 
 ### (Lock yourself inside)
 
+### (Check the occupant)
+
 ### (Try to lock NME into the furniture) (PRCNT% Chance)
 
 ### (You close the furniture around your unfortunate victim!)
@@ -21250,7 +21260,7 @@ Upcast Level LEVEL
 Уровень усиления LEVEL
 Prerequisite
 Предусловие
-### Unlocks:
+### Unlocks: 
 
 You need to learn REQUIREDSPELL before you can learn this one.
 Вам нужно выучить REQUIREDSPELL, прежде чем вы сможете выучить это заклинание.
@@ -21306,7 +21316,7 @@ Initiating prisoner lockdown protocol
 
 ### Your harness projects energy tethers between your cuffs EnemyName activates it!
 
-### Turn Count:
+### Turn Count: 
 
 The Shopkeeper leashes you!
 Владелица магазина вешает на вас поводок!
@@ -21750,7 +21760,9 @@ Items on Ground:
 Предметы на земле:
 
 
-### Preloading Character Assets:
+### Preloading Character Assets: 
+
+### Currently Worn
 
 Uniforms
 Униформа
@@ -22094,11 +22106,13 @@ Gloves
 
 ### Straight_Overstrap
 
+### Long Straight
+
 ### StraightBangs
 
 ### StraightBangs_Overstrap
 
-### MessyBack
+### Curly Back
 
 ### Messy
 
@@ -22109,8 +22123,6 @@ Gloves
 ### Underlight
 
 ### CurlyBack
-
-### Curly Back
 
 ### Ponytail
 
@@ -26186,6 +26198,384 @@ Mage
 
 ### FashionFestiveHarness
 
+### FrillyHeadband
+
+### HeadbandBand
+
+### HeadbandBow
+
+### BowHeadband
+
+### BowHeadbandFrill
+
+### BackHime
+
+### HimeBack
+
+### BackShort
+
+### BackFlat
+
+### Bob
+
+### BobFront
+
+### FrontStraight2
+
+### FrontStraight2_Front
+
+### FrontStraight2_Overstrap
+
+### FrontSwept
+
+### FrontSweptSide
+
+### Vents
+
+### VentL
+
+### VentR
+
+### VentsInnerR
+
+### VentsInnerL
+
+### VentsFront
+
+### BigBraidBack
+
+### CurlyPonytail
+
+### DrillLeft
+
+### DrillRight
+
+### Twindrills
+
+### Twintails
+
+### PointyAhoge
+
+### RoundHat
+
+### HatTop
+
+### TopHatSmall
+
+### TopHatSmallBow
+
+### BlondeFrontM
+
+### BlondeBangsM
+
+### BlondeBackM
+
+### Mascara
+
+### MascaraL
+
+### MascaraR
+
+### Scar
+
+### PointyAntennae
+
+### AnthenaL
+
+### AnthenaR
+
+### PointyHorns
+
+### HornL
+
+### HornR
+
+### PointyTail
+
+### Tail
+
+### WolfEars2
+
+### EarLeft
+
+### EarRight
+
+### HairclipDual
+
+### HairclipLower
+
+### HairclipUpper
+
+### ChainPanties
+
+### PantiesChain
+
+### ChainPanties2
+
+### KittyPetCuffsWristLeft
+
+### KittyPetCuffsWristRight
+
+### KittyPetCuffsWrists
+
+### KittyPetCuffsElbowLeft
+
+### KittyPetCuffsElbowRight
+
+### KittyPetCuffsElbows
+
+### KittyPetCuffsArms
+
+### KittyPetCuffsAnklesLeft
+
+### KittyPetCuffsAnklesRight
+
+### KittyPetCuffsAnkles
+
+### KittyPetCuffsThighLeft
+
+### KittyPetCuffsThighRight
+
+### KittyPetCuffsThigh
+
+### KittyPetCuffsCollar
+
+### FashionKittyPetCuffsCollar
+
+### FashionKittyPetCuffsWristLeft
+
+### FashionKittyPetCuffsWristRight
+
+### FashionKittyPetCuffsWrists
+
+### FashionKittyPetCuffsElbowLeft
+
+### FashionKittyPetCuffsElbowRight
+
+### FashionKittyPetCuffsElbows
+
+### FashionKittyPetCuffsArms
+
+### FashionKittyPetCuffsAnklesLeft
+
+### FashionKittyPetCuffsAnklesRight
+
+### FashionKittyPetCuffsAnkles
+
+### FashionKittyPetCuffsThighLeft
+
+### FashionKittyPetCuffsThighRight
+
+### FashionKittyPetCuffsThigh
+
+### KittyPawCuffsWristLeft
+
+### KittyPawCuffsWristRight
+
+### KittyPawCuffsWrists
+
+### KittyPawCuffsElbowLeft
+
+### KittyPawCuffsElbowRight
+
+### KittyPawCuffsElbows
+
+### KittyPawCuffsArms
+
+### KittyPawCuffsAnklesLeft
+
+### KittyPawCuffsAnklesRight
+
+### KittyPawCuffsAnkles
+
+### KittyPawCuffsThighLeft
+
+### KittyPawCuffsThighRight
+
+### KittyPawCuffsThigh
+
+### FashionKittyPawCuffsWristLeft
+
+### FashionKittyPawCuffsWristRight
+
+### FashionKittyPawCuffsWrists
+
+### FashionKittyPawCuffsElbowLeft
+
+### FashionKittyPawCuffsElbowRight
+
+### FashionKittyPawCuffsElbows
+
+### FashionKittyPawCuffsArms
+
+### FashionKittyPawCuffsAnklesLeft
+
+### FashionKittyPawCuffsAnklesRight
+
+### FashionKittyPawCuffsAnkles
+
+### FashionKittyPawCuffsThighLeft
+
+### FashionKittyPawCuffsThighRight
+
+### FashionKittyPawCuffsThigh
+
+### KittyPetLeotardUnder
+
+### LeotardStripes
+
+### LeotardChestStripes
+
+### KittyPetLeotard
+
+### KittyPetLeotardRestraint
+
+### KittyPetUniformCollar
+
+### LeotardChestCollar
+
+### LeotardChestCollarLeft
+
+### LeotardChestCollarStripes
+
+### LeotardChestCollarStripesLeft
+
+### CollarDecoSymbol
+
+### ShoulderCuffLeft
+
+### ShoulderCuffStripeLeft
+
+### ShoulderCuffRight
+
+### ShoulderCuffStripeRight
+
+### KittyPetTail
+
+### TailStripe
+
+### KittyPetBlindfold
+
+### BlindfoldRim
+
+### BlindfoldBrow
+
+### FashionKittyPetBlindfold
+
+### KittyPetSteelCollar
+
+### FashionKittyPetSteelCollar
+
+### KittyPetMittenLeft
+
+### GloveLeftPaw
+
+### ForeGloveLeftPaw
+
+### KittyPetMittenRight
+
+### GloveRightPaw
+
+### ForeGloveRightPaw
+
+### KittyPetMittens
+
+### FashionKittyPetMittenLeft
+
+### FashionKittyPetMittenRight
+
+### FashionKittyPetMittens
+
+### KittyPetEars1
+
+### Ears1L
+
+### Ears1R
+
+### Ears1InnerL
+
+### Ears1InnerR
+
+### KittyPetEars2
+
+### Ears2L
+
+### Ears2R
+
+### Ears2InnerL
+
+### Ears2InnerR
+
+### KittyPetEarmuffs
+
+### EarmuffersL
+
+### EarmuffersR
+
+### KittyPetEarmuffsRestraint
+
+### KittyPetEars1Restraint
+
+### KittyPetEars2Restraint
+
+### KittyPetGag
+
+### GagCollar
+
+### KittyPetGagSeamless
+
+### GagSeamless
+
+### KittyPetGagMouth
+
+### GagMouth
+
+### KittyPetGagMouthSeamless
+
+### GagMouthSeamless
+
+### FashionKittyPetGag
+
+### FashionKittyPetGagSeamless
+
+### FashionKittyPetGagMouth
+
+### FashionKittyPetGagMouthSeamless
+
+### KittyPetsuit
+
+### ArmsPaws
+
+### LeftLegsPaws
+
+### FootLeftHogtiePaws
+
+### KittyPetSockLeft
+
+### SockLeftPaws
+
+### KittyPetSockRight
+
+### KittyPetSocks
+
+### KittyPetSocksRestraint
+
+### KittyPetPawLeft
+
+### KittyPetPawRight
+
+### KittyPetPaws
+
+### KittyPetPawsRestraint
+
+### KittyPetPawShortLeft
+
+### KittyPetPawShortRight
+
+### KittyPetPawsShort
+
+### KittyPetPawsShortRestraint
+
 Hide Items
 Скрыть предметы
 Sort Items
@@ -27018,7 +27408,7 @@ Rubber Stick
 Резиновая палка
 A rubber cylinder without any lewd intentions whatsoever.
 Резиновый цилиндр без какого-либо непристойного предназначения.
-### Deals grope damage.
+### Deals grope damage. 
 
 You pick up a flexible rubber stick.
 Вы находите гибкую резиновую палку.
@@ -27698,9 +28088,7 @@ You feel holy energy neutralizing the cursed magic permanently.
 Вы чувствуете, как энергия света навсегда нейтрализует проклятую магию.
 Some say it comes from a bakery in heaven itself. Others say it is simply made from lab-grade materials, and actually tastes awful.
 Некоторые говорят, что его готовят в пекарне на небесах. Другие говорят, что он просто сделан из лабораторных материалов и на самом деле ужасен на вкус.
-Unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
-Разблокирует проклятый предмет и/или снимает все проклятия с одного из носимых в данный момент предметов по вашему выбору.
-
+### Purifies and unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
 
 Congratulations! Your continued patronage has earned you|one (1) round trip to the nearest affiliated shop!|Simply step into the portal to continue...|(the Goddess is not responsible for any mishaps or fraud pertaining to the use of this portal)
 Поздравляем! Ваше долгий патронаж принес вам|одну (1) поездку туда и обратно в ближайший дочерний магазин!|Просто войдите в портал...|(Богиня не несет ответственности за любые неприятности или мошенничества, связанные с использованием этого портала)
@@ -28108,9 +28496,9 @@ Your RestraintName shatters and falls off!
 Ваше RestraintName раскалывается на части, которые падают на землю!
 
 
-### Load Hotbar
+### Load Hotbar 
 
-### Save Hotbar
+### Save Hotbar 
 
 Clear Hotbar
 Очистить быструю панель
@@ -29036,6 +29424,10 @@ of Echoes
 (Отголоски)
 Infused
 (Насыщение)
+### Explosive
+
+### Flaming
+
 Focusing
 (Сосредоточие)
 of Empowerment
@@ -29496,7 +29888,7 @@ Experience a comprehensive rope bondage experience.
 
 
 
-### Receive the following restraints:
+### Receive the following restraints: 
 
 You will be bound with some form of restraint.
 Вы будете скованы с помощью неизвестных ограничителей.
@@ -30180,7 +30572,7 @@ Prisoner #NUMR/TTL
 
 Select a character to examine
 Выберите персонажа для осмотра
-### Former Faction:
+### Former Faction: 
 
 
 
@@ -30390,7 +30782,7 @@ You crouch and move slowly.
 Вы приседаете и двигаетесь медленнее.
 
 
-### Owned by:
+### Owned by: 
 
 Warden's Belt
 Пояс надзирательницы
@@ -31130,7 +31522,7 @@ You find a ceremonial leotard.
 
 ### You retrieve an interesting article dubbed 'the Robe of Chastity.
 
-### Took
+### Took 
 
 (As you slay the dragon, it begins shapeshifting into human form!)
 (Когда вы сражаете дракона, он начинает принимать человеческий облик!)
@@ -31330,6 +31722,8 @@ Darkstar Studios - Slimy Science
 Darkstar Studios - Наука слаймов
 Kocaeli - Doll Storage
 Kocaeli - Хранилище Кукол
+### Kocaeli - Factory
+
 ### Kocaeli - AAA
 
 ### Kocaeli - DD
@@ -31344,8 +31738,14 @@ Kocaeli - Ancient Tombs
 Kocaeli - Древние катакомбы
 Kocaeli - Magic Library
 Kocaeli - Магическая библиотека
+### Kocaeli - Black Cat
+
+### Kocaeli - Black Cat 2
+
 Kocaeli - Underground Jungle
 Kocaeli - Подземные джунгли
+### Kocaeli - Untitled
+
 Kocaeli - Lost Temple
 Kocaeli - Затерянный храм
 Kocaeli - Orrery
@@ -31946,6 +32346,10 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Protected
 
+### Displace Amount
+
+### Erase Amount
+
 ### Load from File
 
 ### Save to File
@@ -32094,9 +32498,9 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Runes
 
-### Stock:
+### Stock: 
 
-### Inputs:
+### Inputs: 
 
 ### You slip off the conveyor!
 
@@ -32162,17 +32566,17 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Heels
 
-### Equipped:
+### Equipped: 
 
-### Click to Add
+### Click to Add 
 
-### Apply
+### Apply 
 
-### Raw Material:
+### Raw Material: 
 
 ### Free Prisoner
 
-### Perk Unlocked:
+### Perk Unlocked: 
 
 ### Latex Solvent
 
@@ -32202,23 +32606,23 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Choose Restraint
 
-### Def. Palette:
+### Def. Palette: 
 
 ### Set All Palette
 
 ### Guests
 
-### Assign to
+### Assign to 
 
-### Remove from
+### Remove from 
 
-### Can't assign to
+### Can't assign to 
 
-### Remove from party to assign
+### Remove from party to assign 
 
 ### Imprison
 
-### Opinion:
+### Opinion: 
 
 ### Last Seen on Floor FLR, LOC
 
@@ -32244,17 +32648,17 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Any
 
-### NPC Opinion:
+### NPC Opinion: 
 
-### NPC Escape Status:
+### NPC Escape Status: 
 
-### NPC Binding:
+### NPC Binding: 
 
-### NPC Availability:
+### NPC Availability: 
 
-### Favorited:
+### Favorited: 
 
-### Rank:
+### Rank: 
 
 ### Minor
 
@@ -32366,7 +32770,7 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### Select a Binding Slot
 
-### Cost:
+### Cost: 
 
 ### Zoom set to PCNT%
 
@@ -32390,7 +32794,7 @@ Willpower: +50 max willpower. +1 stamina regen/turn.
 
 ### If arm components are unavailable, you can now apply bindings with verbal components only. Increases range of Truss em Up by 2 and all CMD spells by 1
 
-### Save Slot
+### Save Slot 
 
 ### Load Game
 
@@ -32448,11 +32852,11 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Chaos Route
 
-### Map Seed:
+### Map Seed: 
 
 ### Will Overwrite NME!
 
-### Play Slot
+### Play Slot 
 
 ### Play (NO SLOT!)
 
@@ -32638,7 +33042,7 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### Deposit All
 
-### Auto-loot found
+### Auto-loot found 
 
 ###  (not picked up)
 
@@ -33212,6 +33616,10 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### You can surrender in the menu if you want to be treated more gently.
 
+### That ghost looks less aggressive than the others. Maybe she can help?
+
+### Need help? Try asking a neutral NPC for assistance!
+
 ### You flanked the enemy! Now attack its weak point for massive damage!
 
 ### Enemies that miss an attack become vulnerable for a turn.
@@ -33220,7 +33628,17 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 
 ### before the attack lands! You can tell the difference by the border of the tiles.
 
+### Enemy attacks take time to hit. Make sure to step out of the warning tiles,
+
 ### You can dodge out of the way of most projectiles. Avoid the marked tiles.
+
+### 'Charge' is a unified ammunition for all of your weapons. Recharge it with ancient crystals.
+
+### Spent crystals can slot into some light fixtures to recharge them, but it requires 100 gold.
+
+### There is an elevator in this room, but it won't function until you defeat major enemies on this level.
+
+### If you can't escape from a restraint, try offering gold at a shrine devoted to its goddess.
 
 ### Defeating enemies recovers some willpower.
 
@@ -33579,3 +33997,31 @@ You've gotten yourself lost wandering in the ruins.|The order of tilesets is rev
 ### NME is not notable enough for your collection.
 
 ### Auto-released NME due to Escape.
+
+### Your ITMN1 was cursed and transforms into a ITMN2!
+
+### Equipping Restraint...
+
+### Equipping Armor...
+
+### Using Consumable...
+
+### Struggling...
+
+### The ITMN1 is purified and returns to being a ITMN2!
+
+### Reverts if purified with item.
+
+### ...smaller than expected.
+
+### Comes with an artistic flair.
+
+### Set Pivot
+
+### Toggle click & drag
+
+### Settings
+
+### Scroll Controls: 
+
+### Layer Text: 
