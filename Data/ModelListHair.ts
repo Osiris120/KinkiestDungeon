@@ -580,6 +580,17 @@ AddModel({
 	])
 });
 AddModel({
+	Name: "Twintails",
+	Folder: "Hair",
+	TopLevel: true,
+	Protected: true,
+	Categories: ["Hairstyles", "BackHair"],
+	Layers: ToLayerMap([
+		...GetModelLayers("TwintailLeft"),
+		...GetModelLayers("TwintailRight"),
+	])
+});
+AddModel({
 	Name: "Ahoge",
 	Folder: "Hair",
 	TopLevel: true,

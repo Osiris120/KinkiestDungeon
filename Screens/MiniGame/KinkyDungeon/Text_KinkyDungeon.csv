@@ -27345,3 +27345,9 @@ KDMimicCleanse,The ITMN1 is purified and returns to being a ITMN2!
 KDInvTooltip_MimicHolyGlow,Reverts if purified with item.
 KDInvTooltip_SkimpyCurse,...smaller than expected.
 KDInvTooltip_ShibariCurse,Comes with an artistic flair.
+
+KDWToolsButton1,Set Pivot
+KDWToolsButton2,"Toggle click & drag"
+KDWToolsButton3,Settings
+KDWToolsToggleScrollModeText,"Scroll Controls: "
+KDWToolsLayerAbbrText,"Layer Text: "

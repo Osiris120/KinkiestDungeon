@@ -2119,14 +2119,14 @@ async function ForceRefreshModelsAsync(C: Character, ms = 100) {
 /**
  * Returns a list of colorable layer names
  */
-function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
-	let ret = [];
+function KDGetColorableLayers(Model: Model, Properties: boolean): {name: string, layer: string}[] {
+	let ret: {name: string, layer: string}[] = [];
 	let dupe: Record<string, boolean> = {};
 	for (let layer of Object.values(Model.Layers)) {
-		if (layer.InheritColor && !ret.includes(layer.InheritColor)) {
+		if (layer.InheritColor && !ret.some((ee) => {return ee.name == layer.InheritColor;})) {
 		   if (!dupe[layer.InheritColor]) {
 			   dupe[layer.InheritColor] = true;
-			   ret.push(layer.InheritColor);
+			   ret.push({layer: layer.Name, name: layer.InheritColor});
 		   }
 
 	   }
@@ -2134,7 +2134,7 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 		if ((!layer.NoColorize || Properties) && (!layer.InheritColor || Properties)) {
 			if (!dupe[layer.Name]) {
 				dupe[layer.Name] = true;
-				ret.push(layer.Name);
+				ret.push({layer: layer.Name, name: layer.Name});
 			}
 			if (Properties && (layer.Poses || layer.MorphPoses || layer.GlobalDefaultOverride)) {
 				let poses: Record<string, boolean> = {};
@@ -2150,12 +2150,12 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 				for (let key of Object.keys(poses)) {
 					if (!dupe[layer.Name + key]) {
 						dupe[layer.Name + key] = true;
-						ret.push(layer.Name + key);
+						ret.push({layer: layer.Name, name: layer.Name + key});
 					}
 				}
 			}
 		}
-		if (layer.InheritColor && !ret.includes(layer.InheritColor)) {
+		if (layer.InheritColor && !ret.some((ee) => {return ee.name == layer.InheritColor;})) {
 			if (Properties && (layer.Poses || layer.MorphPoses || layer.GlobalDefaultOverride)) {
 				let poses: Record<string, boolean> = {};
 				if (layer.Poses)
@@ -2171,7 +2171,7 @@ function KDGetColorableLayers(Model: Model, Properties: boolean): string[] {
 
 					if (!dupe[layer.InheritColor + key]) {
 						dupe[layer.InheritColor + key] = true;
-						ret.push(layer.InheritColor + key);
+						ret.push({layer: layer.Name, name: layer.InheritColor + key});
 					}
 				}
 			}
@@ -2243,9 +2243,18 @@ function GetUnnamedModels() {
 	console.log(keys);
 }
 
-function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 1, Hardpoint: string, Flip: boolean) {
+
+interface Hardpoint {
+	Parent: string;
+	X: number;
+	Y: number;
+	OffsetX?: number,
+	OffsetY?: number,
+	Angle: number;
+};
+
+function GetModelLoc(C: Character, X: number, Y: number, ZoomInit: number = 1, hp: Hardpoint, Flip: boolean) {
 	let Zoom = (ZoomInit * MODEL_SCALE) || MODEL_SCALE
-	let hp = Hardpoints[Hardpoint];
 	let pos = {x: hp?.X*Zoom || 0, y: hp?.Y*Zoom || 0, angle: hp.Angle};
 
 	let MC = KDCurrentModels.get(C);
@@ -2332,6 +2341,119 @@ function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 
 	}
 	return pos;
 }
+
+/** Gets the location of hp (in screen space) on the player model */
+function GetModelLocInverse(C: Character, X: number, Y: number, ZoomInit: number = 1,
+	hp: Hardpoint, Flip: boolean) {
+	let Zoom = 1/((ZoomInit * MODEL_SCALE) || MODEL_SCALE)
+	let pos = {x: hp?.X*Zoom || 0, y: hp?.Y*Zoom || 0, angle: hp.Angle};
+
+	if (Flip) {
+		pos.x = Zoom*((0.5 * MODELHEIGHT) * MODEL_SCALE - hp?.X);
+		pos.angle = Math.PI - pos.angle;
+	}
+
+	let MC = KDCurrentModels.get(C);
+	let StartMods = MC.Mods.get(`${X},${Y},${ZoomInit}`);
+	let EndMods = MC.EndMods.get(`${X},${Y},${ZoomInit}`);
+	let mods = ModelGetPoseMods(MC.Poses);
+
+	for (let m of StartMods) {
+		if (!mods[m.Layer]) mods[m.Layer] = [];
+		mods[m.Layer].push(m);
+	}
+	for (let m of EndMods) {
+		if (!mods[m.Layer]) mods[m.Layer] = [];
+		mods[m.Layer].push(m);
+	}
+	if (!mods) return pos;
+
+
+
+    let { X_Offset, Y_Offset } = ModelGetPoseOffsets(MC.Poses, Flip);
+
+
+    let xx = (MODELWIDTH * X_Offset) + (MODEL_XOFFSET);
+    let yy = (MODELHEIGHT * Y_Offset);
+
+
+	let transform = new Transform(-xx, -yy);
+
+	let callbacks = [];
+
+	let layer = hp.Parent;
+	while (layer) {
+
+		// I have no idea how to fix.
+		// Oh well.
+
+		let mod_selected: PoseMod[] = mods[layer] || [];
+		callbacks.push(() => {
+			let ms = mod_selected;
+			for (let mod of ms.reverse()) {
+				let axx = mod.rotation_x_anchor ? mod.rotation_x_anchor : 0;
+				let ayy = mod.rotation_y_anchor ? mod.rotation_y_anchor : 0;
+				let oxx = mod.offset_x || 0;
+				let oyy = mod.offset_y || 0;
+				transform = transform.recursiveTransform(
+					-(oxx - axx) + axx,
+					-(oyy - ayy) + ayy,
+					axx,
+					ayy,
+					(mod.scale_x || 1),
+					(mod.scale_y || 1),
+					-(mod.rotation * Math.PI / 180) || 0
+				);
+			}
+		})
+
+		layer = LayerProperties[layer]?.Parent;
+	}
+
+	for (let cb of callbacks) cb();
+
+	// Move the hardpoint
+	transform = transform.recursiveTransform(
+		(Flip ? (0.5 * MODELHEIGHT) * MODEL_SCALE - hp?.X : hp.X) * Zoom,
+		hp.Y * Zoom,
+		0,
+		0,
+		1,
+		1,
+		0,
+	);
+
+	let ox = transform.ox;
+	let oy = transform.oy;
+	let rot = transform.rot;
+
+
+	pos.x = ox;
+	pos.y = oy;
+	pos.angle += rot;
+    let { rotation, X_Anchor, Y_Anchor } = ModelGetPoseRotation(MC.Poses);
+    let pivotx = MODELHEIGHT*0.5 / ZoomInit * X_Anchor;
+    let pivoty = MODELHEIGHT / ZoomInit * Y_Anchor;
+    let lx = pos.x - pivotx;
+    let ly = pos.y - pivoty;
+    let angle = -rotation * Math.PI / 180;
+    pos.x = pivotx + (lx) * Math.cos(angle) - (ly) * Math.sin(angle);
+    pos.y = pivoty + (ly) * Math.cos(angle) + (lx) * Math.sin(angle);
+
+	pos.angle += angle;
+
+
+
+
+
+	return pos;
+}
+
+
+function GetHardpointLoc(C: Character, X: number, Y: number, ZoomInit: number = 1, Hardpoint: string, Flip: boolean) {
+	return GetModelLoc(C, X, Y, ZoomInit, Hardpoints[Hardpoint], Flip);
+}
+
 
 function DrawModelProcessPoses(MC: ModelContainer, extraPoses: string[]) {
 	let flippedPoses = [];

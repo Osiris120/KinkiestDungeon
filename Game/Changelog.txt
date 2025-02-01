@@ -44,6 +44,7 @@ TODO add ability to recolor own restraints via palette
 - Added RoundHat
 - Added FrillyHeadband and BowHeadband
 - Added TopHatSmall
+- Added functionality from Ilyasnow's Wardrobe Tools mod
 
 5.4.39
 - New Experimental Rendering (unsstable) option
