@@ -316,7 +316,8 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				return true;
 			}, true, X, YY - 40, width/2 - 10, 30, TextGet("KDPasteLayer"), "#ffffff");
 		} else {
-			let CF = KDTextField("KDCopyProperties", X, YY - 50, width, 30, undefined, undefined, "300");
+			let CF = KDTextField("KDCopyProperties", X, YY - 50,
+				width, 30, undefined, undefined, "300", 12);
 			if (CF.Created) {
 				CF.Element.oninput = (_event: any) => {
 					let value = ElementValue("KDCopyProperties");
@@ -389,7 +390,7 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 
 				let FF = KDTextField("KDPropField" + field, X + XXOff, YY,
 					long ? width : width/2, 20,
-					undefined, undefined, "100", "18");
+					undefined, undefined, "100", 18);
 				if (FF.Created) {
 					if (Model.Properties && Model.Properties[KDCurrentLayer])
 						ElementValue("KDPropField" + field, Model.Properties[KDCurrentLayer][field]);
@@ -2171,6 +2172,8 @@ function KDWToolsDrawPivotPoint(C: Character, CurrentLayer: LayerPropertiesType,
 	if (!CurrentLayer.XPivot || !CurrentLayer.YPivot) return;
 	let X_Pivot = CurrentLayer.XPivot || 0;
 	let Y_Pivot = CurrentLayer.YPivot || 0;
+	let X_Offset = CurrentLayer.XOffset || 0;
+	let Y_Offset = CurrentLayer.YOffset || 0;
 
 	//if (KDToggles.FlipPlayer) X_Pivot = (MODELWIDTH + MODEL_XOFFSET * 2 - X_Pivot);
 
@@ -2178,8 +2181,8 @@ function KDWToolsDrawPivotPoint(C: Character, CurrentLayer: LayerPropertiesType,
 	let {x, y, angle} = GetModelLoc(C, 0, 0, Zoom, {
 		Angle: 0,
 		Parent: Parent || "Torso",
-		X: X_Pivot,
-		Y: Y_Pivot,
+		X: X_Offset,
+		Y: Y_Offset,
 	}, KDToggles.FlipPlayer);
 
 
@@ -2207,6 +2210,14 @@ function KDWToolsDrawPivotPoint(C: Character, CurrentLayer: LayerPropertiesType,
 		Radius: Radius,
 		Color: "red",
 		zIndex: 10,
+		alpha: 0.8,
+	});
+	FillCircleKD(kdcanvas, kdpixisprites, "pivotpointbg", {
+		Left: XX_Pivot,
+		Top: YY_Pivot,
+		Radius: Radius + 2,
+		Color: "white",
+		zIndex: 9,
 		alpha: 0.8,
 	});
 }

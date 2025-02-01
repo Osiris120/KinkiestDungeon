@@ -26114,10 +26114,10 @@ KDPropField_XPivot,X Pivot
 KDPropField_YPivot,Y Pivot
 KDPropField_Rotation,Rotation
 KDPropField_LayerBonus,Layer Bonus
-KDPropField_SuppressDynamic,NoDynamicArmor (0 or 1)
+KDPropField_SuppressDynamic,NoDynamicArmor (0/1)
 KDPropField_AddPose,AddPose
-KDPropField_HideOverridden,HideOverridden (0 or 1)
-KDPropField_NoOverride,NoOverride (0 or 1)
+KDPropField_HideOverridden,HideOverridden (0/1)
+KDPropField_NoOverride,NoOverride (0/1)
 KDPropField_ExtraHidePoses,Hide Pose (e.g. Xray)
 KDPropField_ExtraRequirePoses,Require Pose (e.g. ChestArmor)
 KDPropField_ExtraHidePrefixPose,Hide Prefix (e.g Encase)

@@ -5042,7 +5042,7 @@ function KDTextArea(Name: string, Left: number, Top: number, Width: number, Heig
  * @param [MaxLength]
  * @param [TextSize]
  */
-function KDTextField(Name: string, Left: number, Top: number, Width: number, Height: number, Type: string = "text", Value: string = "", MaxLength: string = "30", TextSize?: string) {
+function KDTextField(Name: string, Left: number, Top: number, Width: number, Height: number, Type: string = "text", Value: string = "", MaxLength: string = "30", TextSize?: number) {
 	let Element = KDTempElements.get(Name);
 	let created = false;
 	if (!Element) {
@@ -5054,7 +5054,7 @@ function KDTextField(Name: string, Left: number, Top: number, Width: number, Hei
 			Element.setAttribute("fontSize", TextSize);
 		}
 	}
-	KDElementPosition(Name, Left, Top, Width, Height);
+	KDElementPosition(Name, Left, Top, Width, Height, TextSize);
 	KDDrawnElements.set(Name, Element);
 	return {Element: Element, Created: created};
 }
@@ -5083,7 +5083,7 @@ function KDCullTempElements(): void {
  * @param W - Width of the element.
  * @param [H] - Height of the element.
  */
-function KDElementPosition(ElementID: string, X: number, Y: number, W: number, H?: number): void {
+function KDElementPosition(ElementID: string, X: number, Y: number, W: number, H?: number, FS?: number): void {
 	let E = document.getElementById(ElementID);
 
 	if (!E) {
@@ -5112,7 +5112,7 @@ function KDElementPosition(ElementID: string, X: number, Y: number, W: number, H
 
 	// Sets the element style
 	Object.assign(E.style, {
-		fontSize: Font + "px",
+		fontSize: (FS ? FS : Font) + "px",
 		fontFamily: "Verdana",
 		position: "fixed",
 		left: Left + "px",

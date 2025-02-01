@@ -1138,7 +1138,7 @@ Unidentified Wear
 身份不明的装备
 Enchanted (and cursed) wearables and weapons are unidentified until the item is used.
 被附魔（和诅咒）的拘束具和武器在使用之前无法被识别出。
-### Unknown 
+### Unknown
 
 Copy (clipboard)
 复制 ( 到剪贴板 )
@@ -1614,7 +1614,7 @@ Delete Mod
 移除模组
 Clear Perks
 清除词条
-Config 
+Config
 配置
 Cancel
 取消
@@ -1929,7 +1929,7 @@ You find a snow-like potion that's cold to the touch.
 You find a medley of potions.
 你会发现一堆药水。
 Rarity:
-稀有度 : 
+稀有度 :
 Lesser
 无价值
 Common
@@ -2704,7 +2704,7 @@ Dreamcatcher
 ”逐梦者“
 Forged in nightmares, woven in steel. Summons a Shadow Warrior on unaware targets for 2% ancient energy.
 与噩梦中铸造，用钢铁来编织。消耗 2% 的古代能量，在未察觉的目标身上召唤一个暗影武士。
-Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets. 
+Deals shadow damage. Deals up to 30 bonus psychic damage on unaware (100%) or vulnerable (50%) targets.
 造成暗影伤害。对未察觉（100%）或易受伤害（50%）的目标造成高达 30 的额外灵能伤害。
 Axe
 斧头
@@ -2712,11 +2712,11 @@ Great for cutting trees that happen to be underground.
 对于地下的树木也非常有效。
 Also deals 20 damage to enemies next to you. Deals slash damage.
 同时对你旁边的敌人造成 20 点伤害。造成斩击伤害。
-Accuracy: 
+Accuracy:
 命中率 : ‎
-Crit Multiplier: 
+Crit Multiplier:
 暴击倍率 : ‎
-Bind Crit Multiplier: 
+Bind Crit Multiplier:
 束缚暴击倍率 : ‎
 Find the keys..
 寻找钥匙...
@@ -2734,9 +2734,9 @@ You found a crack and could maybe wedge a knife or tool into it to keep it still
 你找到了一个缝隙，可以将刀或工具塞进去，让它保持稳定
 You found something sticky and might be able to pull off fabrics.
 你找到了一些黏糊糊的东西，也许可以用它来撕掉布料
-Evasion: 
+Evasion:
 闪避 : ‎
-Visibility: 
+Visibility:
 可见度 : ‎
 
 
@@ -2780,13 +2780,13 @@ Satisfied. Miscast chance is reduced.
 满足。减少失误的概率
 
 
-Damage: 
+Damage:
 基础伤害 :
-Bind: 
+Bind:
 束缚值 :
-Crit: 
+Crit:
 暴击倍率 :
-SP Cost: 
+SP Cost:
 SP 消耗 :
 Cut PWR: AMNT%
 力量削减 : ‎AMNT%
@@ -5361,15 +5361,15 @@ SHRINETYPE 神泉
 Tablet of
 的碑
 
-Goddess: 
+Goddess:
 女神 : ‎
-Goddess Blessing: 
+Goddess Blessing:
 女神祝福 : ‎
-Goddess Curse: 
+Goddess Curse:
 女神诅咒 : ‎
-Mana Bonus: 
+Mana Bonus:
 法力值加成 : ‎
-Lack of Mana Penalty: 
+Lack of Mana Penalty:
 缺乏法力惩罚 : ‎
 Your excess mana helps you suppress the enchantment!
 你多余的法力可以帮助你抵抗附魔！
@@ -7797,7 +7797,7 @@ Verbal
 言语
 ### Vision
 
-Components: 
+Components:
 释放部位
 Arm Movements
 手臂动作
@@ -10193,7 +10193,7 @@ Ejahl
 ( 《万古之书》中的一页 ) |有人说 '地下墓穴' 比时间本身还要古老。当旧文明开始研究永生时，没有人知道是否有可能让那些已经死去的人复活。因此，地下墓穴被用来储存前人类的所有遗骸，以便当大法师最终取得突破时，他们也可以复活。
 (A page from the Book of Aeons)|They say that Archmagus Sariel Vinlaga studied in this very library. Having gathered together all of human knowledge, magical, spiritual, technological, she tasked her twelve lesser magi with the job of sorting and collating the wealth of knowledge she had acquired. No one knows why she suddenly abandoned it, or why it remains in such disrepair today.
 ( 《万古之书》中的一页 ) |据说大法师萨里尔·文拉加(Sariel Vinlaga)就在这个图书馆学习过。在收集了所有人类知识 ( 魔法、精神、技术 ) 后，她指派十二位次级贤者负责整理和整理她所获得的知识财富。没有人知道她为什么突然放弃它，或者为什么它至今仍如此年久失修。
-(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground? 
+(A page from the Book of Aeons)|The Overgown Ruins remain a puzzle to scholars. Hardly any light comes through the cracks in the ceiling, and yet the area teems with life. It is known that the regenerative powers that keep humans from dying relies on an individual's own mana supply. So how do plants and beasts without mana survive? The devout say it is the Goddess of Restoration who preserves the jungle, but could it be that the Old Civilization developed a means of sustaining life underground?
 ( 《万古之书》中的一页 ) |长袍遗址仍然是学者们的一个谜。天花板的裂缝里几乎没有光线，但这个地区充满了生机。众所周知，使人类免于死亡的再生能力依赖于个人自身的法力供应。那么，没有魔法的植物和动物是如何生存的呢？虔诚的信徒们说，是恢复女神保护了丛林，但旧文明是否开发了一种维持地下生命的方法？
 (A page from the Book of Aeons)|The problem of Energy has plagued civilization for millenia. Before the leylines were discovered, humankind relied on natural sources of power such as rivers and firewood. When the Crystal Caves were discovered, a great revolution occurred. No longer reliant on natural sources, civilizations could tap the wellsprings of chaotic energy underground to power machinery like never seen before.
 ( 《万古之书》中的一页 ) |能源问题已经困扰了文明数千年。在地脉被发现之前，人类依赖河流和木柴等自然资源。当结晶洞被发现时，发生了一场伟大的革命。文明不再依赖自然资源，可以利用地下混沌能量的源泉为机械提供前所未有的动力。
@@ -16635,7 +16635,7 @@ What? (PERCENT chance to avoid)
 ( SPEAKER 清了清嗓子)|好吧，我们实际上是在招募人手|如果你同意为正义而战，你就可以自由加入我们！
 (The SPEAKER gives you a firm handshake)|Welcome to the sisterhood, adventurer!
 ( SPEAKER 坚定地与你握手)|欢迎加入姐妹会，冒险家！
-(The SPEAKER tilts her head and shrugs)|Ah well. 
+(The SPEAKER tilts her head and shrugs)|Ah well.
 ( SPEAKER 歪着头耸耸肩)|哎，好吧。
 (The SPEAKER frowns)|What is it?|You're not an enemy of justice, are you?
 ( SPEAKER 皱着眉头)|这是什么|你不是正义的敌人，是吗？
@@ -17997,7 +17997,7 @@ W-what does that entail?
 ( SPEAKER 咯咯地笑了起来)|这意味着我们可以把你打包起来，然后|决定怎么处理你，傻瓜~
 Hmmmph? Mmmm! (Act worried and whimper)
 Hmmmph? Mmmm!(表现出担忧和呜咽)
-(The SPEAKER folds her arms)|Mistress Oriel's orders 
+(The SPEAKER folds her arms)|Mistress Oriel's orders
 ( SPEAKER 双臂交叉)|这是女主人奥莉尔的命令
 Not in the 'System'?
 不在“系统”中？
@@ -18263,7 +18263,7 @@ Your harness projects energy tethers between your cuffs EnemyName activates it!
 你的束具在你的手铐之间投射能量绳索， EnemyName 会激活它！
 
 
-Turn Count: 
+Turn Count:
 回合计数 : ‎
 
 
@@ -24613,11 +24613,11 @@ Rotation
 旋转
 Layer Bonus
 图层补偿
-NoDynamicArmor (0 or 1)
+NoDynamicArmor (0/1)
 无动态护甲(0或1)
-HideOverridden (0 or 1)
+HideOverridden (0/1)
 隐藏覆盖(0或1)
-NoOverride (0 or 1)
+NoOverride (0/1)
 无覆盖(0或1）
 Hide Pose (e.g. Xray)
 造型隐藏(例如X射线)
@@ -24903,13 +24903,13 @@ NPC has managed to loosen her bonds.
 NPC 已成功解开她的束缚。
 Any
 全部
-NPC Opinion: 
+NPC Opinion:
 NPC 观点 :
-NPC Escape Status: 
+NPC Escape Status:
 NPC 逃脱状态 :
-NPC Binding: 
+NPC Binding:
 NPC 束缚状态 :
-NPC Availability: 
+NPC Availability:
 NPC 可用性 :
 Rank:
 等级 :
@@ -25033,7 +25033,7 @@ If arm components are unavailable, you can now apply bindings with verbal compon
 在手臂被限制的情况下，你仍可以通过嘴来说出口头咒语来施展束缚。“束缚术”的作用范围提升 2 格，且所有命令法术的作用范围增加 1 格。
 
 
-Save Slot 
+Save Slot
 存档槽
 Load Game
 加载游戏
@@ -25088,13 +25088,13 @@ Reverse Route
 颠倒路线 ‎
 Chaos Route
 混沌路线 ‎
-Map Seed: 
+Map Seed:
 地图种子 : ‎
 Will Overwrite NME!
 这会覆盖 NME!
 
 
-Play Slot 
+Play Slot
 加载存档
 Play (NO SLOT!)
 加载 ( 未选择存档! )
@@ -25256,7 +25256,7 @@ Deposit All
 全部存入
 
 
-Auto-loot found 
+Auto-loot found
 自动拾取战利品
  (not picked up)
 (未拾取）
