@@ -1228,6 +1228,15 @@ function KinkyDungeonLoad(): void {
 				let parsed = parseInt(localStorage.getItem("WToolsScrollMode"));
 				if (parsed != undefined) {
 					KDWToolsToggleScrollModeIndex = parsed;
+					KDWToolsToggleScrollMode = KDWToolsToggleScrollModes[KDWToolsToggleScrollModeIndex] || "Layer Bonus";
+				}
+			}
+
+			if (localStorage.getItem("WToolsLayerAbbr") != undefined) {
+				let parsed = parseInt(localStorage.getItem("WToolsLayerAbbr"));
+				if (parsed != undefined) {
+					KDWToolsLayerAbbrModeIndex = parsed;
+					KDWToolsLayerAbbrMode = KDWToolsLayerAbbrModes[KDWToolsLayerAbbrModeIndex] || "Short";
 				}
 			}
 

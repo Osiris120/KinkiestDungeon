@@ -2038,7 +2038,7 @@ let LayerProperties = {
 
 };
 
-let Hardpoints = {
+let Hardpoints: Record<string, Hardpoint> = {
 	Front: {
 		Parent: "Torso",
 		X: 1162,

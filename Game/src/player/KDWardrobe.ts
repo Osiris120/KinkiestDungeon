@@ -82,7 +82,7 @@ let KDWardrobeCategories = [
 
 if (TestMode) KDWardrobeCategories.push("Restraints");
 
-let KDSelectedModel = null;
+let KDSelectedModel: Model = null;
 let KDColorSliders: LayerFilter = {
 	gamma: 1,
 	saturation: 1,
@@ -101,6 +101,7 @@ let KDColorSliderColor = {
 	blue: "#5555ff",
 };
 let KDCurrentLayer = "";
+let KDCurrentLayerOrig = "";
 
 let KDSavedColorCount = 18;
 let KDSavedColorPerRow = 9;
@@ -263,7 +264,10 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 	let YY = Y;
 	let width = 300;
 	let layers = KDGetColorableLayers(Model, KDPropsSlider);
-	if (!KDCurrentLayer) KDCurrentLayer = layers[0] || "";
+	if (!KDCurrentLayer) {
+		KDCurrentLayer = layers[0].name || "";
+		KDCurrentLayerOrig = layers[0].layer || "";
+	}
 
 	if (KDPropsSlider) {
 		let Properties = (Model.Properties ? Model.Properties[KDCurrentLayer] : undefined) || KDProps;
@@ -767,7 +771,18 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 	let buttonSpacing = 30;
 	while (YY < 590) {
 		if (ii >= KDLayerIndex) {
-			let l = layers[ii];
+			let ll = layers[ii];
+			let l = ll?.name || "";
+			let str = "";
+			if (l) {
+				if (!KDPropsSlider || KDWToolsLayerAbbrMode == "Full") {
+					str = TextGet(`l_${Model.Name}_${l}`);
+				} else {
+					str = TextGet(`l_${Model.Name}_${l}`) == `l_${Model.Name}_${l}` ? KDAbbreviate(l)
+					: KDAbbreviate(TextGet(`l_${Model.Name}_${l}`));
+				}
+			}
+
 			DrawButtonKDExScroll("SelectLayer" + YY,
 				(amount) => {
 					KDLayerIndex += Math.min(5, Math.abs(amount)/35) * Math.sign(amount);
@@ -777,10 +792,12 @@ function KDDrawColorSliders(X: number, Y: number, C: Character, Model: Model): v
 				(_bdata) => {
 					if (l) {
 						KDCurrentLayer = l;
+						KDCurrentLayerOrig = ll.layer;
 					}
 					KDRefreshProps = true;
 					return true;
-				}, true, X - 220, YY, 200, buttonSpacing - 1, l ? TextGet(`l_${Model.Name}_${l}`) : "",
+				}, true, X - 220, YY, 200, buttonSpacing - 1,
+				l ? str : "",
 				"#ffffff", undefined, undefined, undefined, KDCurrentLayer != l, KDButtonColor);
 			YY += buttonSpacing;
 		}
@@ -1072,7 +1089,11 @@ function KDDrawModelList(X: number, C: Character) {
 			let name = KDModelList_Sublevel[KDModelList_Sublevel_index] || "";
 			if (name) {
 				KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
-			} else KDCurrentLayer = "";
+				KDCurrentLayerOrig = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
+			} else {
+				KDCurrentLayer = "";
+				KDCurrentLayerOrig = "";
+			}
 			KDRefreshProps = true;
 			return true;
 		};
@@ -1107,6 +1128,7 @@ function KDDrawModelList(X: number, C: Character) {
 
 			KDModelList_Sublevel_index = index;
 			KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
+			KDCurrentLayerOrig = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
 			KDRefreshProps = true;
 			KDUpdateModelList(3);
 			return true;
@@ -1387,6 +1409,7 @@ function KDDrawWardrobe(_screen: string, Character: Character) {
 			KDDrawColorSliders(1625, 100, C, KDSelectedModel);
 		} else {
 			KDCurrentLayer = "";
+			KDCurrentLayerOrig = "";
 			KDRefreshProps = true;
 		}
 	}
@@ -2053,12 +2076,27 @@ function KDWardrobeToolsDraw(C: Character) {
 		if (!KDSelectedModel.Properties[KDCurrentLayer])
 			KDSelectedModel.Properties[KDCurrentLayer] = Object.assign({}, KDProps);
 		let CurrentLayer = KDSelectedModel.Properties[KDCurrentLayer]
-		if (CurrentLayer) {
-			if (KDWToolsPivotAimRefresh)
-				CenterPivotToMouse(C, CurrentLayer);
+		if (CurrentLayer && KDSelectedModel.Layers[KDCurrentLayerOrig]) {
+			if (KDWToolsPivotAimRefresh) {
+				let parent = "";
+				let l = LayerLayer(KDCurrentModels.get(C),
+					KDSelectedModel.Layers[KDCurrentLayerOrig],
+					KDSelectedModel,
+					[]);
+				if (LayerProperties[l]) parent = LayerProperties[l].Parent;
+				else parent = "Torso";
+				CenterPivotToMouse(C, CurrentLayer, parent);
+			}
 			if (KDWToolsDraggingRefresh)
 				ApplyDragDisplacement(C, CurrentLayer);
-			KDWToolsDrawPivotPoint(CurrentLayer, Zoom);
+			let parent = "";
+			let l = LayerLayer(KDCurrentModels.get(C),
+				KDSelectedModel.Layers[KDCurrentLayerOrig],
+				KDSelectedModel,
+				[]);
+			if (LayerProperties[l]) parent = LayerProperties[l].Parent;
+			else parent = "Torso";
+			KDWToolsDrawPivotPoint(C, CurrentLayer, Zoom, parent);
 			return true;
 		}
 	}
@@ -2074,19 +2112,26 @@ let KDWToolsPivotAimRefresh = false;
 
 
 //Set pivot location to the mouse pointer
-function CenterPivotToMouse(C, CurrentLayer) {
+function CenterPivotToMouse(C: Character, CurrentLayer: LayerPropertiesType, Parent?: string) {
 	let Zoom = 1;
 	//Translate Mouse coordinates to canvas coordinates
-	let X_Pivot = (MouseX / (MODEL_SCALE * Zoom)) - MODEL_XOFFSET;
-	let Y_Pivot = MouseY / (MODEL_SCALE * Zoom);
+	let X_Pivot = MouseX;
+	let Y_Pivot = MouseY;
 
-	if (KDToggles.FlipPlayer) X_Pivot = MODELWIDTH - X_Pivot;
+	//if (KDToggles.FlipPlayer) X_Pivot = MODELWIDTH - X_Pivot;
 
 	//Consider offsets from poses (like hogtie)
-	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(KDCurrentModels.get(C).Poses, KDToggles.FlipPlayer);
+	/*let {X_Offset, Y_Offset} = ModelGetPoseOffsets(KDCurrentModels.get(C).Poses, KDToggles.FlipPlayer);
+*/
 
-	let XX_Pivot = X_Pivot - MODELWIDTH * X_Offset * Zoom;
-	let YY_Pivot = Y_Pivot - MODELHEIGHT * Y_Offset * Zoom;
+	let {x, y, angle} = GetModelLocInverse(C, 0, 0, Zoom, {
+		Angle: 0,
+		Parent: Parent || "Torso",
+		X: X_Pivot,
+		Y: Y_Pivot,
+	}, KDToggles.FlipPlayer);
+	let XX_Pivot = x;
+	let YY_Pivot = y;
 
 	// Rotation mod from poses
 	//let {rotation, X_Anchor, Y_Anchor} = ModelGetPoseRotation(KDCurrentModels.get(C).Poses);
@@ -2097,13 +2142,13 @@ function CenterPivotToMouse(C, CurrentLayer) {
 
 
 	//Round to two decimal places
-	let XOffset = Math.round((parseFloat(CurrentLayer.XOffset) || 0)*100)/100;
-	let YOffset = Math.round((parseFloat(CurrentLayer.YOffset) || 0)*100)/100;
-	let XPivot = Math.round((parseFloat(CurrentLayer.XPivot) || 0)*100)/100;
-	let YPivot = Math.round((parseFloat(CurrentLayer.YPivot) || 0)*100)/100;
-	let XScale = Math.round((parseFloat(CurrentLayer.XScale) || 1)*100)/100;
-	let YScale = Math.round((parseFloat(CurrentLayer.YScale) || 1)*100)/100;
-	let Rotation = Math.round((parseFloat(CurrentLayer.Rotation) || 0)*100)/100;
+	let XOffset = Math.round((parseFloat('' + CurrentLayer.XOffset) || 0)*100)/100;
+	let YOffset = Math.round((parseFloat('' + CurrentLayer.YOffset) || 0)*100)/100;
+	let XPivot = Math.round((parseFloat('' + CurrentLayer.XPivot) || 0)*100)/100;
+	let YPivot = Math.round((parseFloat('' + CurrentLayer.YPivot) || 0)*100)/100;
+	let XScale = Math.round((parseFloat('' + CurrentLayer.XScale) || 1)*100)/100;
+	let YScale = Math.round((parseFloat('' + CurrentLayer.YScale) || 1)*100)/100;
+	let Rotation = Math.round((parseFloat('' + CurrentLayer.Rotation) || 0)*100)/100;
 
 	KDChangeWardrobe(C);
 
@@ -2121,18 +2166,29 @@ function CenterPivotToMouse(C, CurrentLayer) {
 }
 
 //Draw red circle at the pivot location
-function KDWToolsDrawPivotPoint(CurrentLayer, Zoom) {
+function KDWToolsDrawPivotPoint(C: Character, CurrentLayer: LayerPropertiesType, Zoom: number, Parent: string) {
 	//Transform model coordiantes to screen coordinates
-	let X_Pivot = (CurrentLayer.XPivot + MODEL_XOFFSET) * MODEL_SCALE * Zoom;
-	let Y_Pivot = CurrentLayer.YPivot * MODEL_SCALE * Zoom;
+	if (!CurrentLayer.XPivot || !CurrentLayer.YPivot) return;
+	let X_Pivot = CurrentLayer.XPivot || 0;
+	let Y_Pivot = CurrentLayer.YPivot || 0;
 
-	if (KDToggles.FlipPlayer) X_Pivot = (MODELWIDTH + MODEL_XOFFSET * 2) * MODEL_SCALE * Zoom - X_Pivot ;
+	//if (KDToggles.FlipPlayer) X_Pivot = (MODELWIDTH + MODEL_XOFFSET * 2 - X_Pivot);
 
 	//Consider offsets from poses (like hogtie)
-	let {X_Offset, Y_Offset} = ModelGetPoseOffsets(KDCurrentModels.get(KinkyDungeonPlayer).Poses, KDToggles.FlipPlayer);
+	let {x, y, angle} = GetModelLoc(C, 0, 0, Zoom, {
+		Angle: 0,
+		Parent: Parent || "Torso",
+		X: X_Pivot,
+		Y: Y_Pivot,
+	}, KDToggles.FlipPlayer);
 
-	let XX_Pivot = X_Pivot + MODELWIDTH * X_Offset * MODEL_SCALE * Zoom;
-	let YY_Pivot = Y_Pivot + MODELHEIGHT * Y_Offset * MODEL_SCALE * Zoom;
+
+	//let {X_Offset, Y_Offset} = ModelGetPoseOffsets(KDCurrentModels.get(KinkyDungeonPlayer).Poses, KDToggles.FlipPlayer);
+
+	//let XX_Pivot = X_Pivot + MODELWIDTH * X_Offset * MODEL_SCALE * Zoom;
+	//let YY_Pivot = Y_Pivot + MODELHEIGHT * Y_Offset * MODEL_SCALE * Zoom;
+	let XX_Pivot = x;
+	let YY_Pivot = y;
 
 	//console.log("WardrobeTools.ks - X_Offset: " + X_Offset);
 	//console.log("WardrobeTools.ks - Y_Offset: " + Y_Offset);
@@ -2345,17 +2401,33 @@ function KDWToolsDrawSettingsMenu(X, Y, C, Model, Width) {
 		if (f) f.style = "display: none";
 		KDDrawnElements.delete("KDPropField"+field);
 	}
-
-	KDWToolsDrawOptionEntry(X+5, Y+5, Width-10, 40, TextGet("KDWToolsToggleScrollModeText") + KDWToolsToggleScrollMode,
+	let II = 0;
+	KDWToolsDrawOptionEntry(X+5, Y+5 + 45*II++, Width-10, 40, TextGet("KDWToolsToggleScrollModeText") + KDWToolsToggleScrollMode,
 		() => {	KDWToolsToggleScrollModeIndex = (KDWToolsToggleScrollModes.length + KDWToolsToggleScrollModeIndex - 1) % KDWToolsToggleScrollModes.length;
 				KDWToolsToggleScrollMode = KDWToolsToggleScrollModes[KDWToolsToggleScrollModeIndex];
+				localStorage.setItem("WToolsScrollMode", KDWToolsToggleScrollModeIndex + '');
 				//console.log("WardrobeTools.ks - KDWToolsToggleScrollMode: " + KDWToolsToggleScrollMode)
 				return true;
 				},
 		() => {	KDWToolsToggleScrollModeIndex = (KDWToolsToggleScrollModeIndex + 1) % KDWToolsToggleScrollModes.length,
 				KDWToolsToggleScrollMode = KDWToolsToggleScrollModes[KDWToolsToggleScrollModeIndex]
+				localStorage.setItem("WToolsScrollMode", KDWToolsToggleScrollModeIndex + '');
 				return true;
 				//console.log("WardrobeTools.ks - KDWToolsToggleScrollMode: " + KDWToolsToggleScrollMode)
+				},
+		zIndex, 0.5);
+	KDWToolsDrawOptionEntry(X+5, Y+5 + 45*II++, Width-10, 40, TextGet("KDWToolsToggleScrollModeText") + KDWToolsToggleScrollMode,
+		() => {	KDWToolsLayerAbbrModeIndex = (KDWToolsLayerAbbrModes.length + KDWToolsLayerAbbrModeIndex - 1) % KDWToolsLayerAbbrModes.length;
+				KDWToolsLayerAbbrMode = KDWToolsLayerAbbrModes[KDWToolsLayerAbbrModeIndex];
+				localStorage.setItem("WToolsLayerAbbr", KDWToolsLayerAbbrModeIndex + '');
+				//console.log("WardrobeTools.ks - KDWToolsLayerAbbrMode: " + KDWToolsLayerAbbrMode)
+				return true;
+				},
+		() => {	KDWToolsLayerAbbrModeIndex = (KDWToolsLayerAbbrModeIndex + 1) % KDWToolsLayerAbbrModes.length,
+				KDWToolsLayerAbbrMode = KDWToolsLayerAbbrModes[KDWToolsLayerAbbrModeIndex]
+				localStorage.setItem("WToolsLayerAbbr", KDWToolsLayerAbbrModeIndex + '');
+				return true;
+				//console.log("WardrobeTools.ks - KDWToolsLayerAbbrMode: " + KDWToolsLayerAbbrMode)
 				},
 		zIndex, 0.5);
 }
@@ -2399,4 +2471,43 @@ function KDGetLayerPropFields(): Record<keyof LayerPropertiesType, string> {
 		DisplaceAmount: "1",
 		EraseAmount: "1",
 	};
+}
+
+/** TODO */
+function KDGetAbbreviations(context?: string) {
+	return {
+		Right: "R.",
+		Left: "L.",
+		Dress: "Drs.",
+		Spread: "_Sprd",
+		Closed: "_Closed",
+		Hogtie: "_HogT",
+		Kneel: "_Knl",
+		KneelClosed: "_KnlCl",
+		Yoked: "_Yoke",
+		Free: "_Free",
+		Boxtie: "_Box",
+		Wristtie: "_Wrst",
+		Up: "_Up",
+		Crossed: "_Cross",
+		Front: "_Front",
+	}
+}
+
+function KDAbbreviate(str: string, context?: string) {
+	let abbreviations = KDGetAbbreviations(context);
+
+	for (let i = 0; i < 100; i++) {
+		let found = false;
+
+		for (let entry of Object.entries(abbreviations)) {
+			if (str.includes(entry[0])) {
+				found = true;
+				str = str.replace(entry[0], entry[1]);
+			}
+		}
+
+		if (!found) break;
+	}
+	return str;
 }
