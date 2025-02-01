@@ -2253,7 +2253,7 @@ interface Hardpoint {
 	Angle: number;
 };
 
-function GetModelLoc(C: Character, X: number, Y: number, ZoomInit: number = 1, hp: Hardpoint, Flip: boolean) {
+function GetModelLoc(C: Character, X: number, Y: number, ZoomInit: number = 1, hp: Hardpoint, Flip: boolean, NoMods: boolean = false) {
 	let Zoom = (ZoomInit * MODEL_SCALE) || MODEL_SCALE
 	let pos = {x: hp?.X*Zoom || 0, y: hp?.Y*Zoom || 0, angle: hp.Angle};
 
@@ -2273,22 +2273,26 @@ function GetModelLoc(C: Character, X: number, Y: number, ZoomInit: number = 1, h
 	if (!mods) return pos;
 
 	let transform = new Transform();
-	let layer = hp.Parent;
-	while (layer) {
-		let mod_selected: PoseMod[] = mods[layer] || [];
-		for (let mod of mod_selected) {
-			transform = transform.recursiveTransform(
-				mod.offset_x || 0,
+
+	if (!NoMods) {
+		let layer = hp.Parent;
+		while (layer) {
+			let mod_selected: PoseMod[] = mods[layer] || [];
+			for (let mod of mod_selected) {
+				transform = transform.recursiveTransform(
+					mod.offset_x || 0,
 				mod.offset_y || 0,
 				mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
 				mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
 				mod.scale_x || 1,
 				mod.scale_y || 1,
 				(mod.rotation * Math.PI / 180) || 0
-			);
+				);
+			}
+			layer = LayerProperties[layer]?.Parent;
 		}
-		layer = LayerProperties[layer]?.Parent;
 	}
+
 
 	// Move the hardpoint
 	transform = transform.recursiveTransform(
@@ -2383,34 +2387,27 @@ function GetModelLocInverse(C: Character, X: number, Y: number, ZoomInit: number
 
 	let layer = hp.Parent;
 	while (layer) {
-
-		// I have no idea how to fix.
-		// Oh well.
-
 		let mod_selected: PoseMod[] = mods[layer] || [];
 		callbacks.push(() => {
-			let ms = mod_selected;
-			for (let mod of ms.reverse()) {
-				let axx = mod.rotation_x_anchor ? mod.rotation_x_anchor : 0;
-				let ayy = mod.rotation_y_anchor ? mod.rotation_y_anchor : 0;
-				let oxx = mod.offset_x || 0;
-				let oyy = mod.offset_y || 0;
+			for (let i = mod_selected.length - 1; i >= 0; i--) {
+				let mod = mod_selected[i];
 				transform = transform.recursiveTransform(
-					-(oxx - axx) + axx,
-					-(oyy - ayy) + ayy,
-					axx,
-					ayy,
-					(mod.scale_x || 1),
-					(mod.scale_y || 1),
-					-(mod.rotation * Math.PI / 180) || 0
+					mod.offset_x || 0,
+				mod.offset_y || 0,
+				mod.rotation_x_anchor ? mod.rotation_x_anchor : 0,
+				mod.rotation_y_anchor ? mod.rotation_y_anchor : 0,
+				mod.scale_x || 1,
+				mod.scale_y || 1,
+				-(mod.rotation * Math.PI / 180) || 0
 				);
 			}
 		})
-
 		layer = LayerProperties[layer]?.Parent;
 	}
 
-	for (let cb of callbacks) cb();
+	for (let cb of callbacks) {
+		cb();
+	}
 
 	// Move the hardpoint
 	transform = transform.recursiveTransform(
@@ -2443,7 +2440,21 @@ function GetModelLocInverse(C: Character, X: number, Y: number, ZoomInit: number
 	pos.angle += angle;
 
 
+	// I give up. Im gonna do it the stupid way.
+	let resultingPosition = GetModelLoc(C, X, Y, ZoomInit, {
+		X: pos.x,
+		Y: pos.y,
+		Angle: 0,
+		Parent: hp.Parent
+	}, Flip);
+	//let resultingPosition2 = GetModelLoc(C, X, Y, ZoomInit, hp, Flip, true);
+	let differencex = (resultingPosition.x - hp.X)*Zoom;
+	let differencey = (resultingPosition.y - hp.Y)*Zoom;
+	let differencea = Math.PI + resultingPosition.angle; // No idea why this works
 
+	pos.x += differencex*Math.cos(differencea) + differencey*Math.sin(differencea);
+	pos.y += differencey*Math.cos(differencea) - differencex*Math.sin(differencea);
+	pos.angle += differencea;
 
 
 	return pos;

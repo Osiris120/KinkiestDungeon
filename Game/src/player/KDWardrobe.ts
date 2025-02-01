@@ -2476,8 +2476,8 @@ function KDGetLayerPropFields(): Record<keyof LayerPropertiesType, string> {
 /** TODO */
 function KDGetAbbreviations(context?: string) {
 	return {
-		Right: "R.",
-		Left: "L.",
+		Right: "R",
+		Left: "L",
 		Dress: "Drs.",
 		Spread: "_Sprd",
 		Closed: "_Closed",
@@ -2497,7 +2497,7 @@ function KDGetAbbreviations(context?: string) {
 function KDAbbreviate(str: string, context?: string) {
 	let abbreviations = KDGetAbbreviations(context);
 
-	for (let i = 0; i < 100; i++) {
+	for (let i = 0; i < 1; i++) {
 		let found = false;
 
 		for (let entry of Object.entries(abbreviations)) {
