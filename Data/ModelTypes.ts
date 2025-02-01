@@ -70,6 +70,8 @@ interface Model extends Namable {
     TopLevel?: boolean,
     /** Optional, this appears under a top level item*/
     Parent?: string,
+    /** Optional, this appears under a top level item*/
+    Parent2?: string[],
     /** Adds these as tempposes*/
     AddPose?: string[],
 	/** Conditional add pose. They are only added if the specified pose is NOT present */

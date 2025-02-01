@@ -49,7 +49,7 @@ AddModel({
 AddModel({
 	Name: "Hairband2",
 	Folder: "GagLeather",
-	TopLevel: true,
+	Parent: "Hairband",
 	Protected: true,
 	Categories: ["Hairstyles", "Accessories", "Hairbands"],
 	Layers: ToLayerMap([
@@ -86,7 +86,6 @@ AddModel({
 	Name: "FrillyHeadband",
 	Parent: "Hairband",
 	Folder: "Hat",
-	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles", "Accessories", "Hairbands"],
 	Layers: ToLayerMap([
@@ -111,7 +110,6 @@ AddModel({
 	Name: "BowHeadband",
 	Parent: "Hairband",
 	Folder: "Hat",
-	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles", "Accessories", "Hairbands"],
 	Layers: ToLayerMap([
@@ -128,54 +126,6 @@ AddModel({
 
 
 
-
-AddModel({
-	Name: "HeavyMaidKnightHairband",
-	Parent: "HeavyMaidKnight",
-	Folder: "MaidKnightHeavy",
-	TopLevel: true,
-	Protected: true,
-	Categories: ["Hairstyles", "Accessories", "Hairbands"],
-	Layers: ToLayerMap([
-		{ Name: "Headband", Layer: "HairFront", Pri: 17,
-			NoOverride: true,
-		},
-		{ Name: "HeadbandFrill", Layer: "HairFront", Pri: 17.1,
-			NoOverride: true, TieToLayer: "Headband",
-			InheritColor: "Frill",
-		},
-		{ Name: "HeadbandRibbon", Layer: "HairFront", Pri: 17.1,
-			NoOverride: true, TieToLayer: "Headband",
-			InheritColor: "Ribbon",
-		},
-		{ Name: "HeadbandRibbonBack", Layer: "Head", Pri: -1,
-			NoOverride: true, TieToLayer: "Headband",
-			InheritColor: "Ribbon",
-		},
-	])
-});
-
-AddModel({
-	Name: "LightMaidKnightHairband",
-	Parent: "LightMaidKnight",
-	Folder: "MaidKnightLight",
-	TopLevel: true,
-	Protected: true,
-	Categories: ["Hairstyles", "Accessories", "Hairbands"],
-	Layers: ToLayerMap([
-		{ Name: "Headband", Layer: "HairFront", Pri: 15,
-			NoOverride: true,
-		},
-		{ Name: "HeadbandFrill", Layer: "HairFront", Pri: 15.1,
-			NoOverride: true, TieToLayer: "Headband",
-			InheritColor: "Frill",
-		},
-		{ Name: "HeadbandRibbon", Layer: "HairFront", Pri: 15.1,
-			NoOverride: true, TieToLayer: "Headband",
-			InheritColor: "Ribbon",
-		},
-	])
-});
 
 AddModel({
 	Name: "Braid",
@@ -299,7 +249,7 @@ AddModel({
 AddModel({
 	Name: "Fluffy",
 	Folder: "Hair",
-	TopLevel: true,
+	Parent: "Curly",
 	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
 	AddPose: ["Hair"],
@@ -316,8 +266,9 @@ AddModel({
 AddModel({
 	Name: "FrontStraight",
 	Folder: "Hair",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
+	Parent: "Straight",
 	Categories: ["Hairstyles", "FrontHair"],
 	AddPose: ["Hair"],
 	Layers: ToLayerMap([
@@ -331,8 +282,9 @@ AddModel({
 AddModel({
 	Name: "Bob",
 	Folder: "Hair",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
+	Parent: "Straight",
 	Categories: ["Hairstyles", "FrontHair"],
 	AddPose: ["Hair"],
 	Layers: ToLayerMap([
@@ -347,7 +299,7 @@ AddModel({
 	Name: "FrontStraight2",
 	Folder: "Hair",
 	TopLevel: false,
-	Parent: "FrontStraight",
+	Parent: "Straight",
 	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
 	AddPose: ["Hair"],
@@ -397,7 +349,7 @@ AddModel({
 AddModel({
 	Name: "FrontSwept",
 	Folder: "Hair",
-	TopLevel: true,
+	Parent: "Curly",
 	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
 	AddPose: ["Hair"],
@@ -413,7 +365,7 @@ AddModel({
 AddModel({
 	Name: "Vents",
 	Folder: "Hair",
-	TopLevel: true,
+	Parent: "StraightBangs",
 	Protected: true,
 	Categories: ["Hairstyles", "FrontHair"],
 	AddPose: ["Hair"],
@@ -451,7 +403,6 @@ AddModel({
 	Name: "ShortMessyBack",
 	Parent: "MessyBack",
 	Folder: "Hair",
-	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
@@ -464,9 +415,8 @@ AddModel({
 });
 AddModel({
 	Name: "ShortCurlyBack",
-	Parent: "Curly",
+	Parent: "MessyBack",
 	Folder: "Hair",
-	TopLevel: true,
 	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
@@ -491,8 +441,9 @@ AddModel({
 AddModel({
 	Name: "BigBraidBack",
 	Folder: "Hair",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
+	Parent: "Braid",
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "BigBraidBack", Layer: "HairBack", Pri: -20,
@@ -502,9 +453,9 @@ AddModel({
 AddModel({
 	Name: "CurlyPonytail",
 	Folder: "Hair",
-	TopLevel: true,
+	TopLevel: false,
+	Parent: "Ponytail",
 	Protected: true,
-	Parent: "FrontSwept",
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "CurlyPonytail", Layer: "HairPonytail", Pri: 0,
@@ -515,7 +466,7 @@ AddModel({
 	Name: "FluffyPonytail",
 	Parent: "Ponytail",
 	Folder: "Hair",
-	TopLevel: true,
+	TopLevel: false,
 	Protected: true,
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
@@ -529,6 +480,7 @@ AddModel({
 	Folder: "Hair",
 	TopLevel: false,
 	Protected: true,
+	Parent: "Twindrills",
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "DrillLeft", Layer: "HairPonytail", Pri: 4,
@@ -540,6 +492,7 @@ AddModel({
 	Folder: "Hair",
 	TopLevel: false,
 	Protected: true,
+	Parent: "Twindrills",
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "DrillRight", Layer: "HairPonytail", Pri: 4,
@@ -551,6 +504,7 @@ AddModel({
 	Folder: "Hair",
 	TopLevel: false,
 	Protected: true,
+	Parent: "Twintails",
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "TwintailLeft", Layer: "HairPonytail", Pri: 0,
@@ -562,6 +516,7 @@ AddModel({
 	Folder: "Hair",
 	TopLevel: false,
 	Protected: true,
+	Parent: "Twintails",
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		{ Name: "TwintailRight", Layer: "HairPonytail", Pri: 0,
@@ -573,6 +528,7 @@ AddModel({
 	Folder: "Hair",
 	TopLevel: true,
 	Protected: true,
+	Parent: "Ponytail",
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		...GetModelLayers("DrillLeft"),
@@ -584,6 +540,7 @@ AddModel({
 	Folder: "Hair",
 	TopLevel: true,
 	Protected: true,
+	Parent: "Ponytail",
 	Categories: ["Hairstyles", "BackHair"],
 	Layers: ToLayerMap([
 		...GetModelLayers("TwintailLeft"),
@@ -607,9 +564,8 @@ AddModel({
 AddModel({
 	Name: "PointyAhoge",
 	Folder: "Pointy",
-	TopLevel: true,
+	Parent: "Ahoge",
 	Protected: true,
-	Parent: "PointyAntennae",
 	Categories: ["Hairstyles"],
 	Layers: ToLayerMap([
 		{ Name: "Ahoge", Layer: "Ahoge", Pri: 0,
@@ -672,6 +628,57 @@ AddModel({
 			InheritColor: "Ribbon",
 			NoOverride: true,
 			TieToLayer: "TopHatSmall",
+		},
+	])
+});
+
+
+AddModel({
+	Name: "HeavyMaidKnightHairband",
+	Parent: "HeavyMaidKnight",
+	Parent2: ["Hairband"],
+	Folder: "MaidKnightHeavy",
+	TopLevel: false,
+	Protected: true,
+	Categories: ["Hairstyles", "Accessories", "Hairbands"],
+	Layers: ToLayerMap([
+		{ Name: "Headband", Layer: "HairFront", Pri: 17,
+			NoOverride: true,
+		},
+		{ Name: "HeadbandFrill", Layer: "HairFront", Pri: 17.1,
+			NoOverride: true, TieToLayer: "Headband",
+			InheritColor: "Frill",
+		},
+		{ Name: "HeadbandRibbon", Layer: "HairFront", Pri: 17.1,
+			NoOverride: true, TieToLayer: "Headband",
+			InheritColor: "Ribbon",
+		},
+		{ Name: "HeadbandRibbonBack", Layer: "Head", Pri: -1,
+			NoOverride: true, TieToLayer: "Headband",
+			InheritColor: "Ribbon",
+		},
+	])
+});
+
+AddModel({
+	Name: "LightMaidKnightHairband",
+	Parent: "LightMaidKnight",
+	Parent2: ["Hairband"],
+	Folder: "MaidKnightLight",
+	TopLevel: false,
+	Protected: true,
+	Categories: ["Hairstyles", "Accessories", "Hairbands"],
+	Layers: ToLayerMap([
+		{ Name: "Headband", Layer: "HairFront", Pri: 15,
+			NoOverride: true,
+		},
+		{ Name: "HeadbandFrill", Layer: "HairFront", Pri: 15.1,
+			NoOverride: true, TieToLayer: "Headband",
+			InheritColor: "Frill",
+		},
+		{ Name: "HeadbandRibbon", Layer: "HairFront", Pri: 15.1,
+			NoOverride: true, TieToLayer: "Headband",
+			InheritColor: "Ribbon",
 		},
 	])
 });

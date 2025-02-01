@@ -45,6 +45,8 @@ TODO add ability to recolor own restraints via palette
 - Added FrillyHeadband and BowHeadband
 - Added TopHatSmall
 - Added functionality from Ilyasnow's Wardrobe Tools mod
+- Reorganized hairs
+- Added 'Currently Worn' category in wardrobe
 
 5.4.39
 - New Experimental Rendering (unsstable) option

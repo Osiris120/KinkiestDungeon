@@ -52,7 +52,16 @@ let KDModelListFilter = "";
 
 let KDRefreshProps = false;
 
+let KDCategoryFilterSpecial: Record<string, (C: Character, m: Model, stage: number) => boolean> = {
+	Worn: (C: Character, m: Model, stage: number) => {
+		return !!KDCurrentModels.get(C)?.Models?.get(m.Name) && (
+			m.TopLevel || stage > 1
+		);
+	}
+}
+
 let KDWardrobeCategories = [
+	"Worn",
 	"Hairstyles",
 	"Cosplay",
 	"Face",
@@ -996,7 +1005,8 @@ function KDDrawPoseButtons(C: Character, X: number = 960, Y: number = 750, allow
  * Updates the mopel list, only altering a level if the specified altered level is that low
  * @param level
  */
-function KDUpdateModelList(level: number = 0): void {
+function KDUpdateModelList(level: number = 0, C?: Character): void {
+	if (!C) C = KinkyDungeonPlayer;
 	if (level <= 0) {
 		KDModelList_Categories = [];
 		KDModelList_Categories_index = 0;
@@ -1012,36 +1022,56 @@ function KDUpdateModelList(level: number = 0): void {
 		KDModelList_Toplevel_index = 0;
 		KDModelList_Toplevel_viewindex.index = 0;
 		for (let model of Object.entries(ModelDefs)) {
-			if (model[1].TopLevel && (KDModelListFilter || model[1].Categories?.includes(category)) && (TestMode || !model[1].Restraint)) {
-				if (!KDModelListFilter || TextGet(model[0]).toLowerCase().includes(KDModelListFilter.toLowerCase()))
+			if (model[1].TopLevel && (KDModelListFilter ||
+				(KDCategoryFilterSpecial[category] ? KDCategoryFilterSpecial[category](C, model[1], level)
+				: model[1].Categories?.includes(category))) && (TestMode || !model[1].Restraint)) {
+				if (!KDModelListFilter
+					|| TextGet(model[0]).toLowerCase().includes(KDModelListFilter.toLowerCase()))
 					KDModelList_Toplevel.push(model[0]);
 			}
 		}
 
 	}
-	let toplevel = KDModelList_Toplevel[KDModelList_Toplevel_index];
+	let toplevel: string = KDModelList_Toplevel[KDModelList_Toplevel_index];
 
 	if (level <= 2) {
 		KDModelList_Sublevel = [];
 		KDModelList_Sublevel_index = 0;
 		KDModelList_Sublevel_viewindex.index = 0;
 		if (toplevel) {
+			let already = {};
 			// Put these at the top of the list
 			for (let model of Object.entries(ModelDefs)) {
-				if (model[1].Parent != toplevel && model[0] == toplevel && (TestMode || !model[1].Restraint)) {
+				if (already[model[0]]) continue;
+				if ((model[1].Parent != toplevel
+					&& (!model[1].Parent2 || !model[1].Parent2.some((p) => {
+						return toplevel == p;
+					}))
+				)
+					 && model[0] == toplevel && (TestMode || !model[1].Restraint)) {
 					if (!KDModelListFilter || TextGet(model[1].Parent).toLowerCase().includes(KDModelListFilter.toLowerCase()))
-						KDModelList_Sublevel.push(model[0]);
+						{already[model[0]] = true; KDModelList_Sublevel.push(model[0]);}
 				}
 			}
 			for (let model of Object.entries(ModelDefs)) {
-				if ((model[1].Parent == toplevel || KDModelListFilter) && (TestMode || !model[1].Restraint)) {
+				if (already[model[0]]) continue;
+				if (((model[1].Parent == toplevel
+					|| (model[1].Parent2 && model[1].Parent2.some((p) => {
+						return toplevel == p;
+					}))) || KDModelListFilter) && (TestMode || !model[1].Restraint)) {
 					if (!KDModelListFilter || TextGet(model[1].Name).toLowerCase().includes(KDModelListFilter.toLowerCase()))
-						KDModelList_Sublevel.push(model[0]);
+						{already[model[0]] = true; KDModelList_Sublevel.push(model[0]);}
+				}
+			}
+			if (KDCategoryFilterSpecial[category]) {
+				for (let model of Object.entries(ModelDefs)) {
+					if (already[model[0]]) continue;
+					if (
+						KDCategoryFilterSpecial[category](C, model[1], level))
+							{already[model[0]] = true; KDModelList_Sublevel.push(model[0]);}
 				}
 			}
 		}
-
-
 	}
 }
 
@@ -1070,10 +1100,10 @@ function KDDrawModelList(X: number, C: Character) {
 			KDModelList_Categories_index = index;
 			if (KDModelListFilter) {
 				KDModelListFilter = "";
-				KDUpdateModelList(0);
-				KDUpdateModelList(2);
+				KDUpdateModelList(0, C);
+				KDUpdateModelList(2, C);
 			}
-			KDUpdateModelList(1);
+			KDUpdateModelList(1, C);
 			return true;
 		};
 	};
@@ -1083,10 +1113,10 @@ function KDDrawModelList(X: number, C: Character) {
 			KDModelList_Toplevel_index = index;
 			if (KDModelListFilter) {
 				KDModelListFilter = "";
-				KDUpdateModelList(0);
-				KDUpdateModelList(1);
+				KDUpdateModelList(0, C);
+				KDUpdateModelList(1, C);
 			}
-			KDUpdateModelList(2);
+			KDUpdateModelList(2, C);
 			let name = KDModelList_Sublevel[KDModelList_Sublevel_index] || "";
 			if (name) {
 				KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
@@ -1131,7 +1161,7 @@ function KDDrawModelList(X: number, C: Character) {
 			KDCurrentLayer = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
 			KDCurrentLayerOrig = Object.keys(ModelDefs[name]?.Layers || {})[0] || "";
 			KDRefreshProps = true;
-			KDUpdateModelList(3);
+			KDUpdateModelList(3, C);
 			return true;
 		};
 	};
@@ -1148,8 +1178,8 @@ function KDDrawModelList(X: number, C: Character) {
 			KDModelListFilter = ElementValue("KDModelListFilter");
 
 			//KDUpdateModelList(1);
-			KDUpdateModelList(2);
-			KDUpdateModelList(3);
+			KDUpdateModelList(2, C);
+			KDUpdateModelList(3, C);
 		};
 	}
 

@@ -17,7 +17,16 @@ let CHIBIMODEND: PoseMod[] = [
 	{
 		Layer: "HairBack",
 		scale_x: 1.0,
-		scale_y: 0.65,
+		scale_y: 0.7,
+		rotation_x_anchor: 1220,
+		rotation_y_anchor: 420,
+		offset_x: 1220,
+		offset_y: 420,
+	},
+	{
+		Layer: "HairPonytail",
+		scale_x: 1.0,
+		scale_y: 0.7,
 		rotation_x_anchor: 1220,
 		rotation_y_anchor: 420,
 		offset_x: 1220,

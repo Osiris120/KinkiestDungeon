@@ -1990,6 +1990,9 @@ let LayerProperties = {
 	HairBack: {
 		Parent: "Head",
 	},
+	HairPonytail: {
+		Parent: "Head",
+	},
 	Mouth: {
 		Parent: "Head",
 	},

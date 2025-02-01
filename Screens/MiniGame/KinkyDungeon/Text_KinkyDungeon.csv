@@ -13719,6 +13719,7 @@ KDTooltipItems,Items on Ground:
 
 KDLoading,"Preloading Character Assets: "
 
+cat_Worn,"Currently Worn"
 cat_Uniforms,"Uniforms"
 cat_Suits,"Suits"
 cat_Armor,"Armor"
@@ -14018,10 +14019,10 @@ l_FrontStraight_FrontStraight_Overstrap,FrontStraight_Overstrap
 m_Straight,Straight
 l_Straight_Straight,Straight
 l_Straight_Straight_Overstrap,Straight_Overstrap
-m_StraightBangs,StraightBangs
+m_StraightBangs,Long Straight
 l_StraightBangs_StraightBangs,StraightBangs
 l_StraightBangs_StraightBangs_Overstrap,StraightBangs_Overstrap
-m_MessyBack,MessyBack
+m_MessyBack,Curly Back
 l_MessyBack_Messy,Messy
 m_ShortMessyBack,MessyBackShort
 l_ShortMessyBack_BackShortMessy,"Short Messy"
@@ -21809,6 +21810,7 @@ m_DrillLeft_l_DrillLeft,DrillLeft
 m_DrillRight,DrillRight
 m_DrillRight_l_DrillRight,DrillRight
 m_Twindrills,Twindrills
+m_Twintails,Twintails
 m_Twindrills_l_DrillLeft,DrillLeft
 m_Twindrills_l_DrillRight,DrillRight
 m_PointyAhoge,PointyAhoge
