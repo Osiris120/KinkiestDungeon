@@ -25858,27 +25858,349 @@ You've used Shock Collar recently and it costs more DP.
 
 Essence Crystal
 精华水晶
-### When you miscast, 50% chance to emit a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+Show Enemy Binding as %
+敌方捆绑显示为百分比
+Auto-wait Through Delayed Actions
+自动等待通过延迟操作
+Show Minimap Labels
+显示小地图标签
+Use Palette regardless of Outfit
+无论衣着如何，都可以使用调色板。
+Experimental Rendering (unstable)
+实验渲染（不稳定）
+Automatically Take All from Chests
+自动从箱子中全部拿走
+Mental Defiance
+精神抵抗
+Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While below 25% WP, quickly convert 'Defiance' into WP.
+被动：通过临界高潮、高潮或挑逗损失的WP会储存为“抵抗”，最高上限为你缺失的DP值。切换：当WP低于25%时，快速将“抵抗”转化为WP。
+Mental Fortitude
+坚韧的意志
+Passive: Losing WP from edging, letting go, or teasing damage stores 'Defiance', capped at the value of your missing DP. Toggle: While above 75% WP but below 100%, quickly convert 'Defiance' into WP. Exclusive with Mental Defiance.
+被动：通过临界高潮、高潮或挑逗损失的WP会储存为“抵抗”，上限为你的缺失DP值。切换：当WP超过75%但低于100%时，迅速将抵抗值转换为WP。与精神抵抗互斥。
+The old civilization did not use crystal resin-based restraints in their capture robots.
+旧文明没有在他们的捕获机器人中使用水晶树脂基的束缚。
+Mana Burst
+能量爆发
+You have stored willpower.
+你储备了意志力。
+You recapture an essence mote and concentrate on its essence!
+你重新捕捉到一个精华尘埃，并集中于它的精华！
+Choose an essence mote to absorb.
+选择一个精华尘埃来吸收。
+Journey Map
+旅程地图
+plus XXX
+plus XXX
+You find a magical necklace that seems to concentrate magic.
+你找到一个似乎集中魔法的魔法项链。
+The bandit pet applies a lock! (DamageTaken)
+强盗宠物上了锁！（受到伤害）
+Witch's Apprentice
+女巫的学徒
+The witch's apprentice confidently admits defeat.
+女巫的学徒自信地承认失败。
+The witch's apprentice conjures magic bindings on you! (+RestraintAdded)
+女巫的学徒对你施加了魔法束缚！ (+束缚已添加)
+The witch's apprentice smiles and summons a lock onto you! (DamageTaken)
+女巫的学徒微笑着召唤了一个锁链向你袭来！（受到伤害）
+The witch's apprentice smiles as she squeezes your chest! (DamageTaken)
+女巫的学徒笑着捏了捏你的胸部!(受到伤害)
+After many failed attempts to unlock the TargetRestraint, you realize this lock is more than you can handle.
+经过多次尝试解锁TargetRestraint后，你意识到这个锁超出了你的能力范围。
+You insert the card the wrong way and the reader ejects it onto the floor!
+你将卡插错了方向，阅读器把它弹到了地上！
+Metal Stand
+金属支架
+As long as it's locked around you, you won't be going anywhere!
+只要被锁住，你就别想走了！
+Happy Face
+高兴的脸
+Just put on a happy face and enjoy it.
+戴上笑脸，好好享受吧。
+Empty Fixture
+空置装置
+Filled Fixture
+填充装置
+You are unable to see, so you can't target this spell...
+你无法看清，所以无法瞄准这个法术...
+You can't get a good look at the target!
+你无法清楚地看到目标！
+Shadow Strike
+暗袭
+EnemyName supports a witch with a magical shield!
+EnemyName 支持一个拥有魔法护盾的女巫！
+Shield the Witch!
+护盾女巫！
+Water Ball
+水球
+Your toys pulse and tingle occasionally.
+你的玩具偶尔阵阵脉动和刺痒。
+Your toys tease you and buzz gently...
+你的玩具在逗弄你，轻声嗡嗡作响……
+Your vibrating toys are difficult to ignore...
+你震动的玩具难以忽视……
+Your toys buzz strongly, making it difficult to concentrate!
+你的玩具嗡嗡作响，很难集中注意力！
+You tremble as the toys give off intense vibrations!
+你颤抖着，玩具发出强烈的震动！
+Your toys torture you with intense pulsations!
+你的玩具用强烈的脉动来折磨你！
+Your restraints rub you in sensitive places as you move...
+你的束缚在你移动时摩擦到你敏感的地方……
+Poison Gas
+剧毒气体
+Why do I hire these people...
+为什么我要雇用这些人...
+Face my SPL!
+我面对你的挑战！
+Nyah!!! *blushes*
+Nyah!!! *脸红了*
+(The SPEAKER cracks her knuckles)|Finally, I get to have some fun~
+(SPEAKER 捏了捏手指关节)终于可以玩了~
+(The SPEAKER tilts her head)|It smells funny...|Still, it'd be a shame for it to go to waste!
+(SPEAKER 倾斜着头) | 这气味有点奇怪... | 但是，让它浪费了就太可惜了！
+(Remove BINDAMNT binding from her) UNTIETURNS
+解除BINDAMNT束缚从她身上 UNTIETURNS
+(You remove BINDANTPREV binding from the SPEAKER, excluding actual bindings)|(Use the 'Truss em Up' skill to remove bindings)
+(你从 SPEAKER 移除了 BINDANTPREV 的绑定，但不包括实际的绑定)|(使用'Truss em Up'技能移除绑定)
+Must have HP to untie.
+必须有HP才能解开。
+(The SPEAKER folds her arms)|Mistress Oriel's orders were clear:|Anyone not logged in the System shall be entered into the System.
+(SPEAKER 将双臂交叉) | 奥里尔夫人下达的命令非常明确： | 系统中未注册的任何人将被录入系统。
+Use CMD: Unlock
+CMD: 解锁
+(Check the occupant)
+检查住客
+Area isn't clear.
+区域不清晰。
+A group of slimes jump out!
+一群史莱姆跳了出来！
+Essence Mote
+精华尘埃
+A trainee can use this to focus.
+学员可以用这个来集中注意力。
+Seal Sigil
+封印符文
+Walk over it to erase it and unlock the next floor.
+跨过去擦掉它并解锁下一楼层。
+Draw upon 35 WP to ignore spell components for Duration turns and fully restore your mana. The energy is uncontrollable, so there will be consequences...
+利用35 WP，忽略持续时间内的法术组件，并完全恢复你的魔力。能量无法控制，因此会有后果……
+Purifies and unlocks a cursed item and/or removes all curses from one currently worn item of your choice.
+净化并解除一个被诅咒的物品和/或移除你当前穿着的某件物品上的所有诅咒。
+Magical Focus
+魔法专注
+Magical Focus: Instead of losing accuracy, the stamina cost is increased when distracted.
+魔法专注：在分心时，耐力消耗会增加，而不是命中率降低。
+Equip to hotbar and cast to designate an Offhand weapon to gain passive effects such as a light source or extra crit damage.|Rogues cannot wield heavy or massive weapons in the offhand unless they are multiclass.|(Equip Dual Wield spell to equip an offhand weapon, or use the Items menu)
+将其装备到快捷栏并施放，以指定副手武器，从而获得被动效果，例如光源或额外的暴击伤害。|盗贼不能在副手使用重型或巨型武器，除非他们具备多职业技能。|（装备双持法术以装备副手武器，或使用物品菜单。）
+Exit sealed!|Find the lair!
+出口封死了！|找到巢穴！
+Sigils erased!
+符文被抹去了！
+Dragon defeated!
+龙战败了！
+Draconic Seal
+龙之封印
+A dragon has sealed the entrance. Defeat the dragon, or erase the sigil from her lair.
+一条巨龙封死了入口。击败巨龙，或者擦除她巢穴中的符文。
+A draconic spell keeps the door sealed. You will have to confront its owner.
+一条龙的咒语将门封住了。你必须面对它的主人。
+Exits locked!|Destroy NUMBER Servers!
+出口被锁上了！|摧毁NUMBER服务器！
+Security System Compromised!
+安全系统被攻破了！
+Clearance Granted!
+批准通过！
+Destroy Nevermere Servers
+摧毁Nevermere服务器
+Destroy Nevermere servers to unlock the door.
+摧毁Nevermere服务器以解锁门。
+Nevermere Inc. placed a computerized lock on the door. Destroy the security servers to pass.
+Nevermere Inc. 在门口安装了一个电子锁。摧毁安全服务器以通过。
+Nevermere Server
+Nevermere 服务器
+Server smashed!
+服务器崩溃了！
+Destroy Drone Servers
+摧毁无人机服务器
+Destroy Drone Node Servers to unlock the door.
+摧毁无人机节点服务器以解锁大门。
+The path forward is controlled by several ancient Drone Servers. Destroy them.
+前进的道路掌握在几个古老的Drone服务器手中。摧毁它们。
+Drone Server Node
+无人机服务器节点
+Drone node destroyed!
+无人机节点被摧毁！
+Rusty Server Node
+生锈的服务器节点
+loud beeping...
+尖叫声...
+The Doll Shoppe
+娃娃店
+Overload Essence motes in an area, costing 10% max DP worth of Desire each. They explode, dealing (10 + 20% max DP) charm damage to enemies hit. If you don't have enough desire, the damage is reduced proportionally.||(Desire is the heart-shaped meter below your DP bar, and is gained slowly by being distracted)
+在区域内超载精华尘埃，消耗10%最大DP值的欲望。它们爆炸，对击中的敌人造成（10 + 20%最大DP）魅惑伤害。如果你欲望不足，伤害会相应减少。||(欲望是位于你DP条下的心形计量器，被分散注意力会逐渐增加)
+You channel your distraction into the mote, overloading it!
+你将注意力转移到尘埃上，将其彻底淹没！
+You channel your distraction into the motes, overloading them!
+将注意力转移到尘埃上，过载它们！
+You must target at least one Essence Mote.
+你必须针对至少一个精华尘埃。
+Reset to NME
+重置为NME
+Dragon's Lair
+龙的宝藏
+Dragon Sighting
+龙 sighting
+A magical leotard whose power infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+一件充满神力却又人工的魔力紧身衣，其力量蕴含一种类似于神的力，但却是人工的。由一种织法制成，能够将穿戴者的深层能量转化为强大的能量，只要没有其他衣物覆盖在它之上。
+A magical leotard infused with a power resembling divinity, but artificial. Made from a weave that channel's the wearer's deeper energies into powerful energies as long as no clothes are worn over it.
+充满神性却人工的魔法紧身衣。由一种织物制成，这种织物能够将穿戴者的深层能量转化为强大的能量，只要没有其他衣物覆盖在上面。
+The dragon girl conjures crystalline locks on you! (+RestraintAdded)
+龙女在你身上召唤出了水晶般的发丝！(+束缚增加)
+A shadowy sphere rises from the ground and wraps over you tightly!
+一个模糊的球体从地上升起，并紧紧地包裹在你身上！
+Kocaeli - Factory
+Kocaeli - 工厂
+Kocaeli - Black Cat
+Kocaeli - 黑猫
+Kocaeli - Black Cat 2
+Kocaeli - 黑猫2
+Kocaeli - Untitled
+Kocaeli - 无标题
+AMNT1 -> AMNT2
+AMNT1 -> AMNT2
+Must visit the Summit or be in a perk shrine to recycle restraints.
+必须去峰顶或者在强化神殿中回收束缚。
+Def. Palette:
+调色板
+Remove from party to assign
+将其从队伍中移除以进行分配。
+Already present in summit
+已经站在峰顶。
+NPC is unavailable
+NPC 不可用
+Only available in the Summit
+仅在峰顶可用
+Extra Options
+额外选项
+Preview without Armor
+无盔预览
+Click again to automatically mine the wall with your pickaxe.
+再次点击以自动用你的铁镐挖掘墙壁。
+Shield the Witch
+护盾女巫
+Tracer Rounds
+追踪弹
+The Spookening
+惊悚时刻
+The Muffling
+窒息
+Conjure Tickle Hands
+召唤挠痒手
+Conjure Gags
+调戏
+Scriptum Ferri
+铁之誓
+Scrimptum Habena
+剧本控
+Scriptum Ligni
+木之书
+Magnum Opus
+巅峰之作
+Scriptum Limus
+泥浆文书
+Scriptum Glacis
+冰之书
+Scriptim Vinea
+经文之藤
+Scriptum Infernus
+地狱文书
+Scriptum Arcanum
+秘密文书
+Scriptum Celeste
+天之书
+Scriptum Electri
+电气文书
+That ghost looks less aggressive than the others. Maybe she can help?
+那具鬼魂看起来比其他鬼魂不那么咄咄逼人。或许她能帮上忙？
+Need help? Try asking a neutral NPC for assistance!
+需要帮助？试着向一个中立的NPC求助！
+Enemy attacks take time to hit. Make sure to step out of the warning tiles,
+敌人攻击需要时间才能命中。确保步出警告方块，
+'Charge' is a unified ammunition for all of your weapons. Recharge it with ancient crystals.
+“冲锋”是你的所有武器的统一弹药。用古老的晶体给它充能。
+Spent crystals can slot into some light fixtures to recharge them, but it requires 100 gold.
+耗尽的水晶可以插入一些灯具中为其充电，但需要100金币。
+There is an elevator in this room, but it won't function until you defeat major enemies on this level.
+这个房间里有一个电梯，但直到你在这个级别击败主要敌人，它才会正常工作。
+If you can't escape from a restraint, try offering gold at a shrine devoted to its goddess.
+如果无法摆脱束缚，可以尝试向供奉其女神的神社献金。
+Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain between the two of you. Requires that you and the target be able to see each other.
+施放20点精神伤害，然后在你和一个目标之间建立一个精神链接，持续50回合，伤害分摊给双方。要求你和目标必须能互相看到。
+The psychic link ends between you and the ENMY.
+你与ENMY的精神连接结束了。
+A knife won't cut it, it simply reforms around the cut.
+一刀切不进去，只是在伤口周围重新形成。
+It will occasionally cause Capture Foam to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of Capture Foam you have on you.
+它会偶尔无缘无故地产生泡沫捕捉并束缚佩戴者。效果根据你身上的泡沫捕捉量而增加。
+It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you.
+偶尔会突然出现战术橡胶并束缚穿戴者。效果根据你身上的橡胶量而增加。
+Your ITMN1 was cursed and transforms into a ITMN2!
+您的ITMN1被诅咒并转变为ITMN2！
+Equipping Restraint...
+装备束缚...
+Equipping Armor...
+装备防具...
+Using Consumable...
+使用消耗品...
+The ITMN1 is purified and returns to being a ITMN2!
+ITMN1被净化，恢复为ITMN2！
+Reverts if purified with item.
+如果使用物品净化，将会恢复。
+...smaller than expected.
+意料之中的。
+Comes with an artistic flair.
+具有艺术气息。
+Struggling...
+挣扎中...
+bonus
+奖励
+penalty
+惩罚
 
-### A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast.
+When you miscast, 50% chance to emit a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+当你施法失误时，有50%的概率生成一个尘埃，你可以走过去吸收。它能在短时间内大大减少施法失误的概率。
 
-### When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+A necklace designed for mages who are novices or easily distracted. It helps recover magical essence lost during miscast.
+这是一条专为新手或容易分心的法师设计的项链。它有助于恢复在施法失误期间损失的魔法精华。
 
-### You erase the seal sigil.
+When you miscast, the necklace emits a mote that you can walk over to absorb. It reduces miscast chance greatly for a short time.
+当你施法失误时，项链会生成一个尘埃，你可以走过去吸收。它在短时间内大大减少施法失误的概率。
 
-### You absorb the mote, granting miscast reduction.
+You erase the seal sigil.
+你抹去了封印符文。
 
-### Your necklace emits a mote as a result of miscasting.
+You absorb the mote, granting miscast reduction.
+你吸收了光点，获得了施法失误的减少效果。
 
-### Your distraction reaches a critical point! -100% miscast chance.
+Your necklace emits a mote as a result of miscasting.
+由于施法失误，你的项链生成一个尘埃。
 
-### While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
+Your distraction reaches a critical point! -100% miscast chance.
+你的分心达到了临界点！-100%施法失误概率。
 
-### -100% miscast chance, but casting spells can send you over the edge.
+While at 100% distraction, you gain -100% miscast chance, but spending too much mana at once may cause you to go over the edge.
+在100%分心时，你获得-100%施法失误概率，但一次性消耗过多的魔力可能会导致你失控。
 
-### The psychic link conducts away some of the intensity...
+-100% miscast chance, but casting spells can send you over the edge.
+-100%施法失误概率，但施法可能会让你失控。
 
-### Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
+The psychic link conducts away some of the intensity...
+心灵链接减轻了一些强度……
+
+Your linked target lets go of herself, transmitting a wave of pleasure to yourself...
+你链接的目标放弃了自我，向你传递了一阵愉悦的波动……
 
 ### FCTN RMTPE
 
@@ -25886,280 +26208,376 @@ Essence Crystal
 
 ### Leads to PLCE
 
-### (You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'
 
-### It becomes hard to resist the dragon's fury...
+(You find a girl clad in a pink catsuit and restrained with straps.)|(She wears a backpack with a note attached to it.)|'My pet here can pick up and deliver restraints for you~'|'Try opening the Facilities tab and depositing restraints!'|'Signed: Your Loyal Warden'
+（你发现一个穿着粉色连体衣并被绑带束缚的女孩。）|(她背着一个附有便条的背包。)'我这里的宠物可以为你拿取和递送束缚器~'|'试着打开设施标签并存入束缚器！'|'签名：你忠实的监护人'
 
-### The dragon overwhelms you with sheer force...
+It becomes hard to resist the dragon's fury...
+抵抗龙的愤怒变得困难……
 
-### Your strength begins to fade...
+The dragon overwhelms you with sheer force...
+龙以强大的力量压倒了你……
 
-### >Entrance
+Your strength begins to fade...
+你的力量开始减弱……
 
-### >Exit
+>Entrance
+>入口
 
-### >Stairs
+>Exit
+>出口
 
-### Quest(GDSNM)
+>Stairs
+>楼梯
 
-### [GDSNM]
+Quest(GDSNM)
+任务（GDSNM）
+
+[GDSNM]
+[GDSNM]
 
 
 
-### Bed!
+
+Bed!
+床！
 
 ### Silver
 
-### Mecha
+Mecha
+机械人
 
-### chest
+chest
+箱子
 
-### Lost Items
+Lost Items
+遗失物品
 
-### Cache
+Cache
+缓存
 
-### Toy Chest
+Toy Chest
+玩具箱
 
 ### (L)
 
+(The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+(SPEAKER 坐在紧身橡胶中，直到鼻子。|虽然她嘴上的乳胶光滑平坦，|但你从她微微的哀鸣中知道，她的嘴|完全被一个塞子填满，就像她身体的其他部分一样无用。|某种支架将她固定在地板上。)
 
+(You don't have any solvents that work on latex)
+(你没有任何可以在乳胶上起作用的溶剂)
 
-### (The SPEAKER sits encased in skintight rubber up to her nose.|Though the latex over her mouth is smooth and flat,|you know from her whimpering moans that her mouth|is totally filled with a gag, useless like the rest of her body.|Some sort of stand affixes her to the floor.)
+(You dissolve her restraints, fumbling around for a while with your bound hands)
+(你溶解了她的约束，手被绑住的你摸索了一会儿)
 
-### (You don't have any solvents that work on latex)
+(You rescue the SPEAKER)|Thank you!|Let's get out of here!
+(你救了 SPEAKER )|谢谢你！|我们快走吧！
 
-### (You dissolve her restraints, fumbling around for a while with your bound hands)
+(You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+(你救了 SPEAKER )|嗯嗯！|(她想保持她的口塞...)
 
-### (You rescue the SPEAKER)|Thank you!|Let's get out of here!
+(You are not holding a cutting tool)
+(你没有拿剪切工具)
 
-### (You rescue the SPEAKER)|Mmmmph!|(She wants to keep her gag...)
+(You cut her restraints, fumbling around for a while with your bound hands)
+(手被绑住的你摸索了一会儿才切断了她的约束)
 
-### (You are not holding a cutting tool)
+(You don't have enough mana for Remove Slime)
+(你没有足够的法力来施展去除史莱姆)
 
-### (You cut her restraints, fumbling around for a while with your bound hands)
+(You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
+(你说出解锁的咒语，释放了 SPEAKER )|非常感谢！|我们走吧！
 
-### (You don't have enough mana for Remove Slime)
+(You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+(你说出解锁的咒语，释放了 SPEAKER)|嗯嗯！|(她又重新锁上了她的口塞...)
 
-### (You utter a word of release to free the SPEAKER)|Many thanks!|Let's go!
+Dissolve the latex with a SLVNT
+用 SLVNT 溶解乳胶
 
-### (You utter a word of release to free the SPEAKER)|Mmmmph!|(She locks her gag back on...)
+Cut her out with a sharp tool
+用锐利的工具切她出来
 
-### Dissolve the latex with a SLVNT
+Use Remove Slime to unlock her
+使用去除史莱姆来解锁她
 
-### Cut her out with a sharp tool
+Local Saves
+本地存档
 
-### Use Remove Slime to unlock her
+Cloud Saves
+云存档
 
-### Local Saves
+solvent
+溶剂
 
-### Cloud Saves
+Latex Doll Stand
+乳胶玩偶支架
 
-### solvent
+A stand for your latex dolls, coated in a smooth rubber coating.
+一个为你的乳胶玩偶提供的支架，涂有光滑的橡胶涂层。
 
-### Latex Doll Stand
+Has a flange for propping up even dolls wearing chastity belts.
+有一个法兰，用于支撑穿着贞操带的玩偶。
 
-### A stand for your latex dolls, coated in a smooth rubber coating.
 
-### Has a flange for propping up even dolls wearing chastity belts.
 
+(The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
+(SPEAKER 用手抚摸着你的身体)|看起来你携带了一些危险品。|囚犯不应该携带不属于他们的东西~
 
+(The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+(SPEAKER 双手合并)|小姐，我接到指示，确保你没有|任何危险的东西。我要开始搜查你了。
 
-### (The SPEAKER strokes a hand over your body)|It looks like you're carrying some dangerous goods.|Prisoners shouldn't be carrying what doesn't belong to them~
+(The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
+(SPEAKER 平静地看着你)|你以为你能带着那些东西悄悄溜进来吗？
 
-### (The SPEAKER folds her hands together)|Miss, I was instructed to make sure you don't have|anything dangerous. I'm going to search you now.
+(The SPEAKER smiles)|Let's see, what loot do we have here...|(SPEAKER 要开始搜查你)
+(SPEAKER 微笑)|让我们看看，这里有什么战利品...|（SPEAKER 要开始搜查你）
 
-### (The SPEAKER looks at you plainly)|Did you think you were going to sneak in with all of that?
+(The SPEAKER scans you with a red light)|Enumerating contraband...|Please comply for removal.
+(SPEAKER 用红光扫描你)|正在列举违禁品...|请配合以便移除。
 
-### (The SPEAKER smiles)|Let's see, what loot do we have here...|(SPEAKER is going to search you)
+Yes, miss... (Begin search and confiscation)
+是的，小姐...（开始搜索和没收）
+Mmph... (Nod politely) (Begin search and confiscation)
+嗯...（礼貌地点头）（开始搜索和没收）
+No, I refuse! (Fight)
+不，我拒绝！（反抗）
+Mmph! (Shake your head and fight)
+嗯！（摇头反抗）
+Option not available at 0 WP
+当前WP为0，此选项不可用
+(The SPEAKER starts by removing most of your clothes...)
+(SPEAKER 首先脱掉了你大部分的衣服...)
 
-### (The SPEAKER scans you with a red light)|Enumerating contraband...|Please comply for removal.
+(Next, the SPEAKER looks through your weapons)
+(接下来，SPEAKER 查看了你的武器)
 
-### Yes, miss... (Begin search and confiscation)
+(Finally, the SPEAKER opens the rest of your bag)
+(最后，SPEAKER 打开了你包里的其他东西)
 
-### Mmph... (Nod politely) (Begin search and confiscation)
+(The search is complete)|There! Now let's get you situated~
+(搜索完成)|好了！现在让我们让你就位吧~
 
-### No, I refuse! (Fight)
+(The search is complete)|Alright miss, please behave, okay?
+(搜索完成)|好的，小姐，请乖乖的，好吗？
 
-### Mmph! (Shake your head and fight)
 
-### Option not available at 0 WP
 
-### (The SPEAKER starts by removing most of your clothes...)
+Confiscated AMNTx ITMN!
+没收的AMNTx ITMN!
 
-### (Next, the SPEAKER looks through your weapons)
+Kept AMNTx ITMN.
+保存的AMNTx ITMN.
 
-### (Finally, the SPEAKER opens the rest of your bag)
+Sneaked in AMNTx ITMN!
+偷偷带入AMNTx ITMN!
 
-### (The search is complete)|There! Now let's get you situated~
+GUN
+枪
 
-### (The search is complete)|Alright miss, please behave, okay?
+The room echoes with the sound of a rubber bullet being fired!
+房间回响着橡胶子弹被发射的声音！
 
+Tactical Rubber Bullet
+战术橡胶子弹
 
+A powerful rubber bullet bounces you to the ground!
+一颗强力橡胶子弹将你击倒在地！
 
-### Confiscated AMNTx ITMN!
+The powerful rubber bullet knocks you down and congeals into Capture Foam!
+这颗强力橡胶子弹将你击倒并凝结成捕获泡沫！
 
-### Kept AMNTx ITMN.
+Capture Foam (Feet)
+捕获泡沫（脚）
 
-### Sneaked in AMNTx ITMN!
+A sticky foam that spreads quickly and hardens into a tight rubbery layer.
+一种粘性的泡沫迅速扩散并硬化成紧密的橡胶层。
 
-### GUN
+A knife won't cut it, it simply reforms around the cut.
+刀子无法切割它，它只是简单地在切口处重新形成。
 
-### The room echoes with the sound of a rubber bullet being fired!
+Capture Foam (Ankles)
+捕获泡沫（脚踝）
 
-### Tactical Rubber Bullet
+Capture Foam (Legs)
+捕获泡沫（腿）
 
-### A powerful rubber bullet bounces you to the ground!
+Capture Foam (Arms)
+捕获泡沫（手臂）
 
-### The powerful rubber bullet knocks you down and congeals into Capture Foam!
+Capture Foam (Hands)
+捕获泡沫（手）
 
+Capture Foam (Mouth)
+捕获泡沫（嘴）
 
+Capture Foam (Head)
+捕获泡沫（头）
 
-### Capture Foam (Feet)
+Capture Foam Dispenser
+捕获泡沫分配器
 
-### A sticky foam that spreads quickly and hardens into a tight rubbery layer.
+This collar is designed to make sure its wearer does not escape at all costs.
+这个项圈的设计目的是保证佩戴者在任何情况下都无法逃脱。
 
-### A knife won't cut it, it simply reforms around the cut.
+It will occasionally cause Capture Foam to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of Capture Foam you have on you.
+它偶尔会导致捕获泡沫凭空出现并束缚佩戴者。效果会根据你身上捕获泡沫的数量而加快。
 
-### Capture Foam (Ankles)
 
-### Capture Foam (Legs)
 
-### Capture Foam (Arms)
+Tactical Rubber
+战术橡胶
 
-### Capture Foam (Hands)
+An alchemical substance made to be stretchy and more resilient than natural rubber.
+一种经过炼金术处理的物质，具有可伸展性和比天然橡胶更强的韧性。
 
-### Capture Foam (Mouth)
+Developed by kinky alchemists and marketed to PMCs across the islands.
+由好色的炼金术士开发，并在各个岛屿的私人军事公司中销售。
 
-### Capture Foam (Head)
+Capture Foam
+捕获泡沫
 
-### Capture Foam Dispenser
+A restraining weapon used to apprehend difficult targets.
+一种用于抓捕难以对付目标的约束武器。
 
-### This collar is designed to make sure its wearer does not escape at all costs.
+Tactical Rubber (Feet)
+战术橡胶（脚）
 
-### It will occasionally cause Capture Foam to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of Capture Foam you have on you.
+The end result of capture foam. Strict. Sustainable. Affordable.
+捕获泡沫的最终结果。严格。可持续。经济实惠。
 
+Tactical Rubber (Ankles)
+战术橡胶（脚踝）
 
+Tactical Rubber (Legs)
+战术橡胶（腿）
 
-### Tactical Rubber
+Tactical Rubber (Arms)
+战术橡胶（手臂）
 
-### An alchemical substance made to be stretchy and more resilient than natural rubber.
+Tactical Rubber (Hands)
+战术橡胶（手）
 
-### Developed by kinky alchemists and marketed to PMCs across the islands.
+Tactical Rubber (Mouth)
+战术橡胶（嘴）
 
-### Capture Foam
+Tactical Rubber (Head)
+战术橡胶（头）
 
-### A restraining weapon used to apprehend difficult targets.
+Tactical Rubber Collar
+战术橡胶项圈
 
-### Tactical Rubber (Feet)
+It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer. Effect increases in speed based on the amount of rubber you have on you.
+它会偶尔让战术橡胶凭空出现并束缚佩戴者。效果的速度会根据你身上橡胶的数量而增加。
 
-### The end result of capture foam. Strict. Sustainable. Affordable.
+Sweeping Strike
+横扫攻击
 
-### Tactical Rubber (Ankles)
+Headlong Rush
+全力冲锋
 
-### Tactical Rubber (Legs)
 
-### Tactical Rubber (Arms)
+Maid Squire
+女仆侍卫
 
-### Tactical Rubber (Hands)
+Maid Knight
+女仆骑士
 
-### Tactical Rubber (Mouth)
+You humiliate the Maid Squire!
+你羞辱了女仆侍卫！
 
-### Tactical Rubber (Head)
+You defeat the Maid Knight! For now... she swears revenge.
+你暂时击败了女仆骑士！她发誓要报仇。
 
-### Tactical Rubber Collar
+The Squire zips you up in comfy leather gear!
+侍卫把你装进舒适的皮革装备里！
 
-### It will occasionally cause tactical rubber to appear out of nowhere and bind the wearer.  Effect increases in speed based on the amount of rubber you have on you.
+The Maid Knight places you in strict bondage!
+女仆骑士把你放入严格的束缚中！
 
+The Squire secures your restraints!
+侍卫固定你的束缚装置！
 
+The Maid Knight secures your restraints!
+女仆骑士固定你的束缚装置！
 
-### Sweeping Strike
+The Squire dusts you with her duster plug.
+侍卫用她的除尘塞给你除尘。
 
-### Headlong Rush
+The Maid Knight sweeps you with her cleaning halberd!
+女仆骑士用她的清洁长矛扫你！
 
+The EnemyName retreats!
+EnemyName 撤退了！
 
+The EnemyName manages to squirm out of sight!
+EnemyName 设法逃出了视线！
 
-### Maid Squire
+servers humming...
+服务器嗡嗡作响...
 
-### Maid Knight
+bouncy noises
+有弹性的声音
 
-### You humiliate the Maid Squire!
+goopy noises
+黏糊糊的声音
 
-### You defeat the Maid Knight! For now... she swears revenge.
+bubbling noise
+冒泡声
 
-### The Squire zips you up in comfy leather gear!
+rubber squeaking
+橡胶 squeaking声
 
-### The Maid Knight places you in strict bondage!
+blaring siren
+刺耳的警报声
 
-### The Squire secures your restraints!
+You claim the Sweeper.
+你获得了扫帚。
 
-### The Maid Knight secures your restraints!
+The Sweeper
+扫帚
 
-### The Squire dusts you with her duster plug.
+Foe of the unclean. Bringer of neat and tidy workspaces.
+不洁之物的敌人。带来整洁工作空间的使者。
 
-### The Maid Knight sweeps you with her cleaning halberd!
+Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack.
+造成斩击伤害。同时在一个区域内造成30点搔痒伤害。拥有远程攻击。
 
-### The EnemyName retreats!
+Make a ranged attack with the Sweeper.
+用扫帚进行远程攻击。
 
-### The EnemyName manages to squirm out of sight!
+You claim the Persuader.
+你获得了劝说者。
 
+The Persuader
+劝说者
 
+Military forces sought a solution with higher stopping power after the Great Work made brute force obsolete. Capture Foam rounds are now the standard.
+军队寻求一种更强制止能力的解决方案，因为伟大的工作使粗暴的力量变得过时。捕获泡沫子弹现在是标准配置。
 
-### servers humming...
+Equipped with a duster plug, it deals tickle damage on melee. Can fire a high caliber rubber bullet to deal 80 glue damage from a distance. Takes 3 turns to reload.
+配有除尘塞，它在近战中造成搔痒伤害。可以发射高口径橡胶子弹，从远处造成80点粘合剂伤害。需要3个回合重新装载。
 
-### bouncy noises
+Make a ranged attack with the Persuader for 25 charge. Deals 80 glue damage.
+用劝说者进行一次25点充能的远程攻击。造成80点粘合剂伤害。
 
-### goopy noises
+Persuader Round
+劝说者子弹
 
-### bubbling noise
+You fire the Persuader!
+你发射了劝说者！
 
-### rubber squeaking
 
-### blaring siren
-
-### You claim the Sweeper.
-
-### The Sweeper
-
-### Foe of the unclean. Bringer of neat and tidy workspaces.
-
-### Deals slash damage. Also deals 30 tickle damage in an area. Has a ranged attack.
-
-### Make a ranged attack with the Sweeper.
-
-### You claim the Persuader.
-
-### The Persuader
-
-### Military forces sought a solution with higher stopping power after the Great Work made brute force obsolete. Capture Foam rounds are now the standard.
-
-### Equipped with a duster plug, it deals tickle damage on melee. Can fire a high caliber rubber bullet to deal 80 glue damage from a distance. Takes 3 turns to reload.
-
-### Make a ranged attack with the Persuader for 25 charge. Deals 80 glue damage.
-
-### Persuader Round
-
-### You fire the Persuader!
-
-### Wait for current save to finish...
-
-### Please wait for save to finish...
-
-### Debug Defeat
-
-### You cast devastating ASCII glyphs!
-
-### Debug Bind
-
-### You cast bondage ASCII glyphs!
-
-### , Floor AMNT
-
-### Recolor
-
-### Only collect notable
-
-### Autorelease escaped
-
-### NME is not notable enough for your collection.
-
-### Auto-released NME due to Escape.
+You briefly lock eyes with the target, forming a psychic link!
+你与目标短暂对视，形成了一个心理链接！
+The psychic link ends between you and the ENMY.
+心理链接在你和ENEMY之间结束。
+Condense your aroused thoughts into stimulating electricity, consuming 30 DP to zap anyone that's currently holding your leash for 40 e-stim damage. 25% chance to stun for a long time, otherwise stuns briefly. Subsequent uses cost 2x the DP.
+将你的亢奋思绪凝聚成刺激的电流，消耗30 DP对任何当前握着你链条的人发出电击，造成40点电刺激伤害。25%的几率使其长时间眩晕，否则短暂眩晕。后续使用成本为2倍的DP。
+Deals 20 Psychic damage, then creates a psychic link between you and a single target for 50 turns, splitting distraction gain betwaceen the two of you. Requires that you and the target be able to see each other.
+造成 20 点 Psychic 伤害，然后在你和一个目标之间创建一个精神链接，持续 50 回合，分摊你们之间的分散注意力增益。需要你和目标能够相互看见。
+Temporary enemies and summons don't restore anything, however.
+然而，临时敌人和召唤并不会恢复任何东西。
+Attacking a helpless enemy captures her and sends her to your Collection.
+攻击一个无助的敌人会捕获她并将她送到你的收藏中
+You can access the Collection in the Items screen, 2nd tab.
+你可以在物品界面的第二个标签中访问收藏。
